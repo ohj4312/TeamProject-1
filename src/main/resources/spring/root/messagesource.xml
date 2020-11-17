@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!--에러 및 국제화 메시지를 관리하는 객체 등록  -->			
+	<bean id="messageSource"					
+			class="org.springframework.context.support.ResourceBundleMessageSource"><!-- 스프링 프레임웍이 제공해주는것 중에서 리소스번들메세지소스가 프로퍼티 파일들을 관리. -->
+		<property name="basenames"><!-- 메세지의 키 값들을 ResourceBundleMessageSource가 저장한다. -->
+			<list>
+				<value>message.error</value>	<!-- message는  message폴더   properties파일의 이름을 얘기하는 ch04_error _언어 부분은 빼야한다. -->
+			
+				
+				
+			</list>
+		</property>
+		<property name="defaultEncoding" value="UTF-8"></property>		<!-- property 파일들을 UTF-8로 잘 저장해서 넣어라.. -->
+	</bean>			<!-- 여기 bean이 properties 파일들을 관리해준다. -->
+		<!-- 이 부분은 프로젝트 새로 만들때 그냥 복사 copy해서 써라.. -->			
+</beans>

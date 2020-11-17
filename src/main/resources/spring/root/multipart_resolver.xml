@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+		
+		
+		<!-- 파일 업로드를 위한 MultipartResolver 등록 -->
+		<bean id="multipartResolver"
+			class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>		<!-- 이런 객체들이 root IoC에 저장. -->
+			
+		<!--  이 org.springframework.web.multipart.commons.CommonsMultipartResolver클래스를 가지고 객체를 생성해라 뜻. 그것을 multipartResolver라는 이름으로 관리 하겠다. -->
+		
+		<!-- 기능 단위로 하려고 root 하위에 xml이 3개다. -->
+</beans>

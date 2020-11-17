@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	
+	<!--☆ ☆ ☆ View 이름을 객체로 연결 시켜주는 객체 -->
+	<bean id="viewResolver2" class="org.springframework.web.servlet.view.BeanNameViewResolver">	<!-- 객체를 생성할때 id의 이름으로 관리해라~ 근데 여기가 생략되면 기본적으로 클래스의 첫자를 소문자로한 이름으로  생성-->
+		
+		<property name="order" value="0"/>			<!-- 컨트롤러가 리턴하는 뷰 이름을  BeanNameView..가 응답을 만들겠다는것.  0번이니까!  여기는 객체를 찾는거고 위는 JSP를 찾는거야. 여기 없으면 order1번으로-->
+	</bean><!-- 그러면beanNameViewResolver가 된다. -->	<!-- 예로 ch11 컨트롤러에서  return 중에서 ch11/content라는 이름으로 만들어진 객체가 있냐?인데 지금은 있을수가 없지. -->
+	
+</beans>

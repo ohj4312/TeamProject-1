@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>		
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee" 		
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 	
+		 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
+		 					http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" 
+		 					id="WebApp_ID" version="4.0">
+		<!-- 접두사 없이 선언된  --> <!-- web-app은 루트태그 --> 
+		<!-- 이 속성이 디폴트 네임공간에 속하는게 아니고  두번째 http://~~~instance에 속하기 때문에 xsi를 별도로 선언해 준것. --> <!-- 디폴트 이름공간 띄어쓰기 .xsd파일이 어디있다고 정의 해준것. -->
+ <!--  <display-name>webapp1</display-name> --> <!-- 생략 가능 -->
+ 
+ 	<!-- 책 26 P  -->
+ 	<!-- ContextLoaderListener(ServletContextListener) 등록 -->
+ 	
+ 	<!-- Root WebApplicationContext(IoC 컨테이너) 를 만든 것이다.-->
+ 	<listener>
+ 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+ 	</listener>
+ 	
+ 	<context-param>
+ 		<!-- 설정 파일의 위치를 전달해주는 파라미터명 절대로 오타내면 안된다. -->
+ 		<param-name>contextConfigLocation</param-name>		<!-- 여기엔 반드시 예약된 이름을 써야한다. 대소문자 가린다. -->
+ 		
+ 		<!-- 설정 파일의 위치 -->
+ 		<param-value>classpath:spring/root/*.xml</param-value>  <!-- classpath는 src/main/java 아니면 src/main/resources이다.  결국 이 2개는 나중에 결합되어서 classes폴더에 들어가니까 아무데나 작성해도됨 -->
+ 		<!-- 공유객체를 만들 xml파일을 만들건데 그 경로를 적어줬다. 거기에 선언된 대로 객체를 만들겠다. --><!-- 근데 확장명이.xml이라 resources에 만들자 -->
+ 	</context-param>	
+ 	
+ 	
+ 		
+ 	<!-- DispatcherServlet -->	
+ 	<!-- WebApplicationConext(IoC 컨테이너)  -->
+ 	<servlet>
+ 		<servlet-name>DispatcherServlet</servlet-name>
+ 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>	<!-- 얘가 dispatcher 파일의 xml을 사용한다 -->
+ 		<init-param>
+ 			<!-- 설정 파일의 위치를 전달해주는 파라미터명 -->
+ 			<param-name>contextConfigLocation</param-name>
+ 			<!-- 설정파일의 위치 -->
+ 			<param-value>classpath:spring/dispatcher/*.xml</param-value><!-- 아스타 자리에 ch01_component_scan.을 넣을수 있다. --> 
+ 		</init-param>			<!-- WEB-INF에 넣을경우 /WEB-INF/spring/dispatchernews/*.xml -->
+ 		<load-on-startup>1</load-on-startup>
+ 	</servlet>
+ 					
+ 	<!-- 서블릿 등록 했으면 매핑해서 실행 할수 있게 해야함. -->
+ 	<servlet-mapping>
+ 		<servlet-name>DispatcherServlet</servlet-name>
+ 		<url-pattern>/</url-pattern>  <!--  / 앞에 http://xxx.xxx.xxx:8080/webapp1 contextRoot 생략 -->
+ 	</servlet-mapping>					<!-- http://xxx.xxx.xxx.xxx:8080/webapp1/news/....뒤에 뭐가 나와도 DispatcherServlet 실행 -->	<!-- /하면 뒤에 뭐가나와도 실행. -->		
+	<!--  디스패쳐서블릿뉴스는 지금 /news가 붙어야 실행되니까 뉴스 컨트롤러로 가서 리퀘스트맵핑 봐라 -->
+	<!-- ☆☆ 여기같은 경우 /만 해주고 서블릿도 하나밖에 안쓰니까 / 처리만 해준것이고  결국 아무것도 없다는 뜻이고,결국  해당 컨트롤러레 컨텍스트 루트까지가 생략되있는 것,(Contextroot/ch01/content) -->
+	<!--  /*면은 jsp 포함해서 모든경로 라서 jsp 실행안된다. -->
+	
+	
+	
+	
+	<!-- 문자 인코딩을 위한 필터 등록 -->
+	<filter>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>			<!-- 인코딩 부분은 /*로 -->
+	</filter-mapping>
+
+
+	<error-page>			<!-- 웹 애플리케이션 내부니까  /WEB/INF 이렇게 써도된다 원래 브라우저에선 이거 접근 안된다. -->
+		<error-code>404</error-code>
+		<location>/WEB-INF/views/ch10/error404.jsp</location>
+	</error-page>
+</web-app>
+
+
+
+
+
+

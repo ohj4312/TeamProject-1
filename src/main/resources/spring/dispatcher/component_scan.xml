@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+	
+	<!-- 컴포넌트 스캔이 기본적으로는 어노테이션이 뭐가 붙어있느냐를 찾아서 내가 관리를 할 것인지 판단을 하는 거고. -->
+	<!-- 어노테이션위주로 driven한다는것은  객체를 검사한다는 건데. webapp.news 패키지 밑에서 부터 검사를 하겠다는 뜻. -->
+	<!-- Annotation을 사용할 수 있도록 설정.! -->
+	<mvc:annotation-driven/>  <!-- 관리객체가 되려면 어노테이션 붙어있어야하고 -->
+	<!-- 태그 잘봐! -->
+	
+	<!-- 어노테이션을 기준으로 스캔하겠다는 뜻. -->
+	<!-- IoC 컨테이너에서 관리해야할 객체를 찾는 설정 -->
+	<context:component-scan base-package="com.mycompany.webapp" use-default-filters="true"> <!-- src/main/java아래 패키지의 위치! -->
+			<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service"/>	<!-- @Service 제외 하겠다는 것.-->
+			
+			<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+	</context:component-scan>
+	<!-- 객체(object) 빈(bean)내가 무엇을 관리할 것인지 찾겟다가 컴포넌트 스캔 --><!-- IOC컨테이너가 관리해야할 객체를 찾는 것 이 컴포넌트 스캔 -->
+	
+	
+	<!-- View와 JSP의 연결 역할.(매핑역할)하는 객체. --> <!-- 객체를 만들어서 IoC 컨테이너에 넣어라. -->
+	<bean id="viewResolver1" class="org.springframework.web.servlet.view.InternalResourceViewResolver">	<!-- viewResolver1로 관리되는 class이하의 객체를 만들어라. -->
+		<property name="order" value="1"/>
+		<property name="prefix" value="/WEB-INF/views/"></property>	<!-- 접두어로 뭘 사용할까? -->
+		<property name="suffix" value=".jsp"></property>			<!-- Setter 주입으로 주고있다. -->
+		<!-- 프로퍼티2줄,   컨트롤러에서 리턴한것이 뷰 이름이지  그 뷰 이름에다  접두사와 접미사를 붙여준다는것. -->
+		<!--  news/list ->View 이름         /WEB-INF-/views/news/list.jsp 처럼 만들어 주는것. -->
+		<!-- 이렇게 만들어주는 역할을 InternalResourceViewResolver 얘가 한다는것. --> <!-- 이 부분은 나중에 또 해주신다 -->
+		
+		<!-- 접두사에 value처럼 WEB-INF 하위에 views 폴더가 있어야함. 그 안에 news/list의 news 폴더가 있어야하고. 그 안에 list.jsp가 있어야한다. -->
+	</bean>
+	
+	
+	
+	
+	<!-- DispatcherServlet 실행이 필요없는 resources 경로 설정 -->
+	<mvc:resources location="/resources/" mapping="/resources/**"></mvc:resources>
+	<!-- location /앞에는 컨텍스트 루트가 생략  뒤/는 아무거나 와도 상관없다.-->
+	<!--  클라이언트가 어떻게 요청하게되면?  /resources/** 경로 뭐든지 상관없이. -->
+	<!--  이러면 이제 http://localhost:8080/webspring2/resources/images/photo1.jpg 가 실행된다.   -->
+	
+</beans>

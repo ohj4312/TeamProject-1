@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	
+	<!-- 여기가 ContextLoaderListener 이다. -->
+	
+	<!-- context namespace를 추가해줌. -->
+	<!-- 아까는 com.mycompany.webapp.news or cafe로 했었는데  저기까지 해야 news나 cafe를 다 검색할수 있다.  -->
+	<!-- <context:component-scan base-package="com.mycompany.webapp"></context:component-scan> -->
+	<!-- 이렇게만 적어주면  use-default-filter=true다 -->
+	
+	<context:component-scan base-package="com.mycompany.webapp" use-default-filters="false">
+		<!-- @Service , @Repository만 객체로 -->
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/><!-- 서비스 클래스에대한 전체이름 -->
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>	<!-- 어노테이션중 sevice와 Repository는 root에서 처리. -->
+		<!-- 딱 이 2개만 객체로 만든다. -->
+		
+		<!-- 그럼 CafeService 객체와 NewsService 객체는 root에서 관리하고 다른 곳에서 공유해서 쓰는것 가능하다. -->
+	</context:component-scan>
+	
+</beans>

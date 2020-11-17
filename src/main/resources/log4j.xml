@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/xml/doc-files/log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+	<appender name="console" class="org.apache.log4j.ConsoleAppender">		<!-- appender라는 태그에서 console 로그를 출력할때 출력의 주체는 appender의 class="안에 문자열이 주체 -->
+		<param name="Target" value="System.out" />							<!-- 이 class안의 어펜더는 param의 value인 내부적으로 system.out 을 쓴다는 것이고 -->
+		<layout class="org.apache.log4j.PatternLayout">						<!-- patternLayout은 한줄로 출력을 하겠다는것. -->
+			<param name="ConversionPattern" value="%-5p: %c.%M() - %m%n" /> <!-- value를 보면  %-5p는 앞에 5개의 빈 공간을 마련해라 -는 왼쪽으로 정렬해라 뜻  p는 그냥 포지션임 :는 콜론을 찍어라 ->ERROR: -->
+		</layout>															<!-- %c는 패키지 포함 클래스 전체 이름 com.mycompany.HomeController  .%M() 어떤 메소드에서 로그를 출력했냐. -->
+	</appender>																<!-- %m 은 메시지 즉 로그 내용 %n은 줄바꿈을 해라. -->
+
+	<!-- com.mycompany 패키지 하위 모든 클래스에 대한 로그 레벨 설정 -->
+	<!-- com.mycompany 의 하위 패키지 controller에 있어도 된다는것. -->
+	<logger name="com.mycompany">		<!-- 자바 패키지 이름 -->
+		<level value="info" />		<!-- info를 debug로 바꾸게 되면. 기본적으로 debug레벨로 출력이 된다는뜻.  -->
+	</logger>							<!-- logger는 어떤 패키지에 있는 log를 value로 설정하겠다. HomeController.java는 지금  이 단락의 영향을 받고있다. -->
+	
+	
+	<!-- SQL 로그 레벨 설정 -->
+	<logger name="jdbc.sqltiming">
+		<level value="info" />
+	</logger>                                                                                                                                                                      
+
+	<root> <!-- 위의 로그가 없을 경우 default로 설정 되는 부분. -->
+		<priority value="warn" />
+		<appender-ref ref="console"/>
+	</root>
+</log4j:configuration>
+
