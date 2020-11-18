@@ -86,39 +86,44 @@
 
         <div class="section-title" data-aos="fade-up">
           <h2>Services</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <p>Motive Today House , Korea interior platform & comunity site O-house.<br/>
+          made by team2 </p>
         </div>
 
         <div class="row">
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="fade-up">
             <div class="icon-box icon-box-pink">
               <div class="icon"><i class="bx bxl-dribbble"></i></div>
-              <h4 class="title"><a href="">Lorem Ipsum</a></h4>
-              <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate</p>
+              <h4 class="title"><a href="">요구사항 분석 및 설계</a></h4>
+              <p class="description"> 국내 1위 인테리어 플랫폼 오늘의 집을 모티브로 하여 홈페이지를 분류, 분석하여 
+              	장점을 파악하고 단점을 보완하는 페이지를 구상. 요청, 처리, 응답 기능을 mvc 개발패턴을 이용하여 제작.</p>
             </div>
           </div>
 
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="fade-up" data-aos-delay="100">
             <div class="icon-box icon-box-cyan">
               <div class="icon"><i class="bx bx-file"></i></div>
-              <h4 class="title"><a href="">Sed ut perspiciatis</a></h4>
-              <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla</p>
+              <h4 class="title"><a href=""><strong>Bootstrap</strong>을 활용한 <br> 디자인</a></h4>
+              <p class="description">HTML, CSS, JavaScript 뿐만 아니라 bootstrap, jQuery, Ajax를 이용한 디자인 구현, 사용자에게 편리한
+              	최적화된 UI를 구현. 요청을 받고 처리하기 위한 view 페이지 제작.</p>
             </div>
           </div>
 
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="fade-up" data-aos-delay="200">
             <div class="icon-box icon-box-green">
               <div class="icon"><i class="bx bx-tachometer"></i></div>
-              <h4 class="title"><a href="">Magni Dolores</a></h4>
-              <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim</p>
+              <h4 class="title"><a href="">DB설계 & 스키마구현</a></h4>
+              <p class="description">Star UML을 이용해 UseDiagram 설계, 구현기능을 분석하여 usecase로 작성.
+              DBMS로 Oracle DB를 사용하고 sqldeveloper를 이용해 제 3정규화 상태로  논리적 설계 & 물리적 설계 구현.</p>
             </div>
           </div>
 
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="fade-up" data-aos-delay="300">
             <div class="icon-box icon-box-blue">
               <div class="icon"><i class="bx bx-world"></i></div>
-              <h4 class="title"><a href="">Nemo Enim</a></h4>
-              <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum</p>
+              <h4 class="title"><a href=""><strong>Springframework</strong>를 <br> 이용한 기능 구현</a></h4>
+              <p class="description">Spring framework를 사용해 mvc 개발 패턴 구현과 페이지의 흐름 파악.
+              DTO 객체를 이용하여 데이터 저장 및 전달. Spring 라이브러리를 적극활용한 효과적인 기능 구현 & DB 연동 설정</p>
             </div>
           </div>
 
@@ -132,8 +137,9 @@
       <div class="container">
 
         <div class="section-title" data-aos="fade-up">
-          <h2>Testimonials</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <h2>TEAM2</h2>
+          <p> We are IT developer trained by Korea Software Industry Association. We learend Java , 
+          JSP/Servlet , Spring framework etc. And We develope with Eclipse, vscode, sqldeveloper, Git etc. We can use our front-end & back-end prograiming skills to build a project well. </p>
         </div>
 
         <div class="owl-carousel testimonials-carousel" data-aos="fade-up">
