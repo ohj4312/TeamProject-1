@@ -1,18 +1,26 @@
 package com.mycompany.webapp.dto;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class Post_like {
-	//좋아요 수
+	
 	private int likenumber;
-	
-	
-	//Member클래스의 이메일 참조
 	private String memail;
-	
-	
-	//Register_photo의 pnumber 참조.
 	private int pnumber;
 
+	
+	
+	
+	
+	
+	
+	public Post_like(int likenumber) {
+		super();
+		this.likenumber = likenumber;
+	}
 
+
+	//Getter  ,  Setter
 	public int getLikenumber() {
 		return likenumber;
 	}

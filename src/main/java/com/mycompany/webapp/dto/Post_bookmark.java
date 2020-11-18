@@ -1,15 +1,15 @@
 package com.mycompany.webapp.dto;
 
 
-//°Ô½Ã¹° ºÏ¸¶Å© Å¬·¡½º
+//ï¿½Ô½Ã¹ï¿½ ï¿½Ï¸ï¿½Å© Å¬ï¿½ï¿½ï¿½ï¿½
 public class Post_bookmark {
 	
 	
-	private String memail;	  //memberÀÇ ÀÌ¸ÞÀÏ
-	
+	private String memail;	  //memberï¿½ï¿½ 
+	 
 	private int bnumber;
 	
-	private int pnumber;  //register photoÀÇ ¹øÈ£.
+	private int pnumber;  //register photo
 	
 	public int getBnumber() {
 		return bnumber;

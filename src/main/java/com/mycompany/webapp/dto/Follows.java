@@ -10,7 +10,7 @@ public class Follows {
 
 	
 	
-	//»ý¼ºÀÚ
+	//
 	public Follows(int fnumber, String follower, String following) {
 		super();
 		this.fnumber = fnumber;

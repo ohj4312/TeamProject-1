@@ -2,25 +2,29 @@ package com.mycompany.webapp.dto;
 
 import org.springframework.web.multipart.MultipartFile;
 
+//register_photoëŠ” ê²Œì‹œë¬¼ ë“±ë¡ê³¼ ìƒì„¸ì¡°íšŒ í˜ì´ì§€
+//A_photo í´ë˜ìŠ¤ëŠ”  ì‚¬ì§„ í•œ ì„¸íŠ¸(ë“±ë¡ ì‹œ ìµœëŒ€ 10ê°œ) 
 public class A_photo {
-	//»çÁø ÇÑ°³ÀÇ ¹øÈ£.
+	//register_photoì˜ pnumberë¥¼ ì°¸ì¡°í•˜ëŠ” ê²ƒê³¼ ë™ì‹œì— ê¸°ë³¸í‚¤
 	private int anumber;
-	//»çÁø ÀÌ¹ÌÁö
+	
+	
+	//ì‚¬ì§„ ì—…ë¡œë“œ 
 	private MultipartFile aimage;
-	//ÇØ´ç »çÁø¿¡ ´ëÇÑ ¼³¸í ³»¿ë
+	//ì‚¬ì§„ ì˜†  ì„¤ëª… ë‚´ìš©
 	private String acontent;
 	
-	//À§Ä¡(¾ÆÀÌµé ¹æ, °Å½Ç, ÁÖ¹æ ...)
+	//ì‚¬ì§„
 	private int alocation_number;
 	private String alocation_name;
 	
-	//µî·Ï ¹øÈ£
+	//
 	private int register_number;
 
 	
 	
 	
-	//»ı¼ºÀÚ 
+	//
 	
 	public A_photo(int anumber, 
 			MultipartFile aimage, 

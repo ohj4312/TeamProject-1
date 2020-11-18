@@ -18,7 +18,7 @@ public class Member {
 	
 	@DateTimeFormat(pattern="yyyy-MM-dd") private Date mbirthday;
 	
-	//»ı¼ºÀÚ -----------
+	//
 	
 	public Member(String memail, 
 			String mpassword, 

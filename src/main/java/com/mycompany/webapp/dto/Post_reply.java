@@ -3,9 +3,10 @@ package com.mycompany.webapp.dto;
 import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.multipart.MultipartFile;
 
 
-//°Ô½Ã¹°¿¡ ´ëÇÑ ´ñ±Û.
+//ê²Œì‹œë¬¼ ëŒ“ê¸€ 
 public class Post_reply {
 	private int rnumber;
 	
@@ -13,13 +14,30 @@ public class Post_reply {
 	
 	@DateTimeFormat(pattern="yyyy-MM-dd") private Date register_date;
 	
-	//register_photo ÀÇ pnumber; ÂüÁ¶
+	//register_photo  pnumber; 
 	private int pnumber; 
 	
 	private String rwriter;
 
+	private MultipartFile rimage;
 	
 	
+	
+
+	public Post_reply(int rnumber, 
+			String rcontent, 
+			Date register_date,  
+			String rwriter,
+			MultipartFile rimage) {
+		super();
+		this.rnumber = rnumber;
+		this.rcontent = rcontent;
+		this.register_date = register_date;
+		this.rwriter = rwriter;
+		this.rimage= rimage;
+		
+	}
+
 	public int getRnumber() {
 		return rnumber;
 	}
@@ -58,6 +76,14 @@ public class Post_reply {
 
 	public void setRwriter(String rwriter) {
 		this.rwriter = rwriter;
+	}
+
+	public MultipartFile getRimage() {
+		return rimage;
+	}
+
+	public void setRimage(MultipartFile rimage) {
+		this.rimage = rimage;
 	}
 	
 }

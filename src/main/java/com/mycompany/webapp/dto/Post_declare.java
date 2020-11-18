@@ -1,20 +1,25 @@
 package com.mycompany.webapp.dto;
 
-//°Ô½Ã¹° ½Å°íÇÏ±â
+//ê²Œì‹œë¬¼ ì‹ ê³ .
 public class Post_declare {
 	private int dnumber;
 	
 	private String dcontent;
 	
-	
-	//MemberÀÇ memailÀ» ÂüÁ¶
+		
 	private String mwriter;
 	
-	
-	//½Å°íÇÒ °Ô½Ã¹° ¹øÈ£.
+		
 	private int pnumber;
 		
 		
+	public Post_declare(int dnumber, String dcontent) {
+		super();
+		this.dnumber = dnumber;
+		this.dcontent = dcontent;
+	}
+
+
 	public int getDnumber() {
 		return dnumber;
 	}

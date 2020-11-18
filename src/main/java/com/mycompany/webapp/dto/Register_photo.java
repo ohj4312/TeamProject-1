@@ -7,41 +7,41 @@ import java.util.List;
 import org.springframework.format.annotation.DateTimeFormat;
 
 
-//»çÁø »ó¼¼Á¶È¸ & »çÁøµî·Ï   Å×ÀÌºí.
+
 
 public class Register_photo {
-	//»çÁø µî·Ï½Ã ±¸º° À§ÇÑ ¹øÈ£
+	
 	private int pnumber;
 	
-	//½ºÅ¸ÀÏ (¸ğ´ø, Çö´ë, antic)
+	//ìŠ¤íƒ€ì¼(í˜„ëŒ€, antic, ë¹ˆí‹°ì§€)
 	private int pstyle;
 	private String pstyle_name;
 	
-	//µî·Ï ³¯Â¥
+	//ë“±ë¡ì¼
 	@DateTimeFormat(pattern="yyyy-MM-dd") private Date register_pdate;
 	
-	//Á¶È¸¼ö
+	
 	private int phit_count;
 	
-	//±Û¾´ÀÌ
+	
 	private String pwriter;
 	
-	//	Æò	¼ö
+	
 	private int psize;
 	private int psize_min;
 	private int psize_max;
 	
-	//ÁÖ°Å ÇüÅÂ
+	
 	private int ptype;
 	private String ptype_name;
 	
 	
-	//A_photo¿¡¼­ÀÇ »çÁøÀ» ¸®½ºÆ®·Î.
+	
 	List<A_photo> list;
 	
 	
 
-	//»ı¼ºÀÚ  //size_min/max  ptype_name, pstyle_name ¾øÀ½.
+	  //size_min/max  ptype_name, pstyle_name
 	public Register_photo(int pnumber,
 			int pstyle, 
 			Date register_pdate, 
