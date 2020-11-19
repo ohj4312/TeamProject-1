@@ -7,6 +7,6 @@
 	</insert>
 	
 	<select id="selectMember" parameterType="member" resultType="member">
-		select * from member where memail = #{memail}
+		select * from member where memail = #{memail} 
 	</select>
 </mapper>
