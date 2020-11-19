@@ -15,6 +15,7 @@ import com.mycompany.webapp.dto.Register_photo;
 public class PhotoController {
 	private static final Logger logger = LoggerFactory.getLogger(PhotoController.class);
 	
+	
 	@GetMapping("/list")
 	public String photoList() {
 		return "photo/photolist";
@@ -35,6 +36,6 @@ public class PhotoController {
 		
 		
 		
-		return "";
+		return "ㅁㅁㅁ";
 	}
 }
