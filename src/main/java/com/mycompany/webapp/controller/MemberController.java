@@ -41,7 +41,7 @@ public class MemberController {
 	}
 	
 	@PostMapping("/join")
-	public String join(Member member) {
+	public String join() {
 		logger.info("실행");
 		boolean result = true;//memberService.memberJoin(member);
 		if(result) {
