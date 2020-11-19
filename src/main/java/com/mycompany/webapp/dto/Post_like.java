@@ -4,19 +4,22 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class Post_like {
 	
+	private int mypushtotalRows;
+	public int getMypushtotalRows() {
+		return mypushtotalRows;
+	}
+
+
+	public void setMypushtotalRows(int mypushtotalRows) {
+		this.mypushtotalRows = mypushtotalRows;
+	}
+
+
 	private int likenumber;
 	private String memail;
 	private int pnumber;
 
 	
-	
-	
-	
-	
-	
-
-
-
 	//Getter  ,  Setter
 	public int getLikenumber() {
 		return likenumber;

@@ -18,4 +18,17 @@ public class PhotoController {
 	}
 	
 	
+	
+	@PostMapping("/writePhoto")
+	public String writePhoto(A_photo photo, Register_photo rphoto) {
+		logger.info(photo.getAlocation());
+		logger.info(rphoto.getPsize());
+		logger.info(rphoto.getPstyle());
+		logger.info(rphoto.getPtype());
+		
+		
+		
+		
+		return "";
+	}
 }
