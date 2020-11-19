@@ -40,92 +40,65 @@
 
 <body>
 
-  <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top">
-    <div class="container d-flex">
+  <jsp:include page="/WEB-INF/views/include/Header.jsp"/>
 
-      <div class="logo mr-auto">
-        <h1 class="text-light"><a href="index.html">Maxim</a></h1>
-        <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-      </div>
 
-      <nav class="nav-menu d-none d-lg-block">
-        <ul>
-          <li class="active"><a href="index.html">Home</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#portfolio">Photo List</a></li>
-          <li><a href="#team">Team</a></li>
-          <li><a href="login.html">Login</a></li>
-          <li><a href="join.html">Register</a></li>
-
-        </ul>
-      </nav><!-- .nav-menu -->
-
-    </div>
-  </header><!-- End Header -->
-
-  <!-- ======= Hero Section ======= -->
  
 
   <main id="main">
 
-    
-
-    
-
-    <!-- ======= Team Section ======= -->
-    
-    <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact mt-3">
       <div class="container" id="firstForm">
+        <form action="forms/contact.php" method="post" role="form">
 				<div class="row">
 					<div class="col">
-						<h2>ì¬ì§ ì¬ë¦¬ê¸°</h2>
+						<h2>사진 올리기</h2>
 					</div>
 				</div>
 				<div class="row">
-					<div>
-						<form id="selectform" action="#" class="form-group form-inline">
+					<div class="form-group form-inline">
 							<select id="home_select1" name="home_select1" class="form-control mr-2 ml-2"
 								style="height: auto;">
-								<option selected>íì</option>
-								<option value="0">10í ë¯¸ë§</option>
-								<option value="1">10íë</option>
-								<option value="2">20íë</option>
-								<option value="3">30íë</option>
-								<option value="4">40íë</option>
-								<option value="5">50í ì´ì</option>
+								<option selected>평수</option>
+								<option value="0">10평 미만</option>
+								<option value="1">10평대</option>
+								<option value="2">20평대</option>
+								<option value="3">30평대</option>
+								<option value="4">40평대</option>
+								<option value="5">50평 이상</option>
 							</select>
 							<select id="home_select2" name="home_select2" class="form-control mr-2 ml-2"
 								style="height: auto;">
-								<option selected>ì£¼ê±°íí</option>
-								<option value="0">ìë£¸&ì¤í¼ì¤í</option>
-								<option value="1">ìíí¸</option>
-								<option value="2">ë¹ë¼&ì°ë¦½</option>
-								<option value="3">ë¨ëì£¼í</option>
-								<option value="4">ì¬ë¬´ê³µê°</option>
-								<option value="5">ììê³µê°</option>
-								<option value="6">ê¸°í</option>
+								<option selected>주거형태</option>
+								<option value="0">원룸&오피스텔</option>
+								<option value="1">아파트</option>
+								<option value="2">빌라&연립</option>
+								<option value="3">단독주택</option>
+								<option value="4">사무공간</option>
+								<option value="5">상업공간</option>
+								<option value="6">기타</option>
 							</select>
 							<select id="home_select3" name="home_select3" class="form-control mr-2 ml-2"
 								style="height: auto;">
-								<option selected>ì¤íì¼</option>
-								<option value="0">ëª¨ë</option>
-								<option value="1">ë¶ì ë½</option>
-								<option value="2">ë¹í°ì§</option>
-								<option value="3">ë´ì¸ë´</option>
-								<option value="4">íë¡ë°©ì¤&ë¡ë§¨í±</option>
-								<option value="5">íêµ­&ììì</option>
-								<option value="6">ì ëí¬</option>
-								<option value="7">ê¸°í</option>
-							</select>
+								<option selected>스타일</option>
+								<option value="0">모던</option>
+								<option value="1">북유럽</option>
+								<option value="2">빈티지</option>
+								<option value="3">내츄럴</option>
+								<option value="4">프로방스&로맨틱</option>
+								<option value="5">한국&아시아</option>
+								<option value="6">유니크</option>
+								<option value="7">기타</option>
+              </select>
+          
 
-						</form>
+                <button type="submit" class="btn btn-info">글등록</button>
+              
+              
 					</div>
 				</div>
 				<div id = "addForm">
-				<div id = "cloneForm" class="row align-self-center d-none" >
+				<div id = "cloneForm" class="row align-self-center" >
 					<div class="col-lg-6 text-center mb-4 fancybox" style=" position: relative; height: 300px;">
 						<div style="background-color:lightslategray;">
 
@@ -146,38 +119,38 @@
 					<div class="col-lg-6">
 
 						<select id="homespace" name="homespace" style="height: auto;" class="form-control mb-3">
-							<option selected>ê³µê°(íì)</option>
-							<option value="0">ìë£¸</option>
-							<option value="1">ê±°ì¤</option>
-							<option value="2">ì¹¨ì¤</option>
-							<option value="3">ì£¼ë°©</option>
-							<option value="4">ìì¤</option>
-							<option value="5">ìì´ë°©</option>
-							<option value="6">ëë ì¤ë£¸</option>
-							<option value="7">ë² ëë¤</option>
-							<option value="7">ì¬ë¬´ê³µê°</option>
-							<option value="7">ììê³µê°</option>
-							<option value="7">ê°êµ¬&ìí</option>
-							<option value="7">íê´</option>
-							<option value="7">ì¸ê´&ê¸°í</option>
-							<option value="7">ì íë¦¬ë·°</option>
+							<option selected>공간(필수)</option>
+							<option value="0">원룸</option>
+							<option value="1">거실</option>
+							<option value="2">침실</option>
+							<option value="3">주방</option>
+							<option value="4">욕실</option>
+							<option value="5">아이방</option>
+							<option value="6">드레스룸</option>
+							<option value="7">베란다</option>
+							<option value="7">사무공간</option>
+							<option value="7">상업공간</option>
+							<option value="7">가구&소품</option>
+							<option value="7">현관</option>
+							<option value="7">외관&기타</option>
+							<option value="7">제품리뷰</option>
 						</select>
 
 						<div>
 							<div class="form-group">
 								<textarea class="form-control" rows="10" id="comment" name="text"
-									placeholder="ì¬ì§ì ëí ì¤ëªì ìì±í´ì£¼ì¸ì."></textarea>
+									placeholder="사진에 대한 설명을 작성해주세요."></textarea>
 							</div>
 						</div>
 					</div>
-        </div>
+        </div> 
 
         
         
         
       </div>
       
-      
+      </form>
 			</div>
 			</div>
 			</div>
@@ -186,25 +159,15 @@
     </section><!-- End Contact Section -->
 
     <div class="container">
-			<!-- ì¶ê°íê¸° ë²í¼ êµ¬í -->
+			<!-- 추가하기 버튼 구현 -->
 
 			<div style="height: 50px;"></div>
-			<button type="button" class="btn btn-lg btn-light btn-block" onClick="addform()">ì¶ê°íê¸°</button>
+			<button type="button" class="btn btn-lg btn-light btn-block" onClick="addform()">추가하기</button>
 
 		</div>
 
   </main><!-- End #main -->
-  <script>
-    var $cloneform;
   
-  
-    function addform(){
-      console.log($cloneform);
-      $("#addForm").append($cloneform);
-      //$("#addingForm") .attr('id',"addForm");/*$("#addingForm") .attr('id',"addingForm"+i);  */
-      //i++;
-    }
-  </script>
   <!-- ======= Footer ======= -->
   <footer id="footer">
     <div class="footer-top">
