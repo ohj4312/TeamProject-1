@@ -42,7 +42,7 @@ public class BookMarkController {
 	@GetMapping("/delBookMark")
 	public String delBookMark(int bnumber) {
 		String result =service.Delete(bnumber);
-		return"";
+		return""; 
 	}
 	
 	//업데이트

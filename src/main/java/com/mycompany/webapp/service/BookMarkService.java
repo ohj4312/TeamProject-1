@@ -13,7 +13,7 @@ import com.mycompany.webapp.dto.Post_bookmark;
 public class BookMarkService {
 	
 	
-	@Resource
+	@Resource 
 	private BookMarkDAO bookmarkDAO;
 	
 	

@@ -5,7 +5,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.mybatis.spring.SqlSessionTemplate;
-
+ 
 import com.mycompany.webapp.dto.Post_bookmark;
 
 public class BookMarkDAO {
