@@ -16,4 +16,6 @@ public class PhotoController {
 	public String photoDetail() {
 		return "photo-detail";
 	}
+	
+	
 }
