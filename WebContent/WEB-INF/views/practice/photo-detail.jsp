@@ -90,7 +90,20 @@
                     <img class="rounded-circle" style="width:60px; height:60px;" src="resources/images/photo7.jpg" />
                     <span class="card-detail-writer__name">KWJ</span>
                   </a>
-                  <a href="#" class="btn btn-info btn-sm" role="button">팔로우</a>
+                  <a id="follow_check" href="javascript:checkFollow()" class="btn btn-light btn-sm" role="button">팔로우</a>
+                	<script>
+                	//여기에 follows 객체를 넣어주는 코드 작성
+                	function checkFollow(){
+						$.ajax({
+							url:"checkFollow()",
+							data:{follows:follows}, 
+							success:function(data) {
+								$("#follow_check").removeClass("btn-light");
+								$("#follow_check").addClass("btn-info");
+							}
+						});
+					} 
+                	</script>
                 </div>
               </div>
               
