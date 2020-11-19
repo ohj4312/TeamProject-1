@@ -14,10 +14,7 @@ public class Post_like {
 	
 	
 	
-	public Post_like(int likenumber) {
-		super();
-		this.likenumber = likenumber;
-	}
+
 
 
 	//Getter  ,  Setter
