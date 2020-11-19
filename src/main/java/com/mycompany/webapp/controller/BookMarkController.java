@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.mycompany.webapp.dto.Post_bookmark;
@@ -24,16 +25,16 @@ public class BookMarkController {
 	@GetMapping("/regBookMark")
 	public String regBookMark(Post_bookmark bookmark) {
 		
-		String result = service.Register(bookmark);
-		return "views/mypage";
+		service.Register(bookmark);
+		return "redirect:/views/photo-detail";
 	}
 	
 	
 	//조회를 위한 리스트.
 	@GetMapping("/getBookMarkList")
-	public String getBookMarkList(Post_bookmark bookmark) {
+	public String getBookMarkList(Post_bookmark bookmark,Model model) {
 		List<Post_bookmark> list= service.Inquiry(bookmark);	
-		
+		model.addAttribute("list",list);
 		return "views/bookmark-detail";
 	}
 	

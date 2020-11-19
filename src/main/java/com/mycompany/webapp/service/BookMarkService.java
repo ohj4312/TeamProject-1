@@ -18,9 +18,9 @@ public class BookMarkService {
 	
 	
 	//등 록
-	public String Register(Post_bookmark bookmark) {
+	public void Register(Post_bookmark bookmark) {
+		bookmarkDAO.insertBookMark(bookmark);
 		
-		return "";
 	}
 	
 	//조 회
