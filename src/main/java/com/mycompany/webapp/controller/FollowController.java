@@ -44,4 +44,9 @@ public class FollowController {
 		logger.info("followsnum : "+followsnum);
 	}
 	
+	@GetMapping("/photo-detail")
+	public String aaa() {
+		return "practice/photo-detail";
+	}
+	
 }
