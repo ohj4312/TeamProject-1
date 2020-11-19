@@ -10,7 +10,8 @@ public class A_photo {
 	
 	
 	//사진 업로드 
-	private MultipartFile aimage;
+	private String aimage;
+	private MultipartFile aimageAttach;
 	//사진 옆  설명 내용
 	private String acontent;
 	
@@ -26,22 +27,27 @@ public class A_photo {
 	
 	//
 	
+
+	//------------------Getter  ,  Setter-------------------//
+	
 	public A_photo(int anumber, 
-			MultipartFile aimage, 
+			String aimage, 
+			MultipartFile aimageAttach, 
 			String acontent, 
-			int alocation_number, 
+			int alocation_number,
+			String alocation_name, 
 			int register_number) 
 	{
 		super();
 		this.anumber = anumber;
 		this.aimage = aimage;
+		this.aimageAttach = aimageAttach;
 		this.acontent = acontent;
 		this.alocation_number = alocation_number;
+		this.alocation_name = alocation_name;
 		this.register_number = register_number;
 	}
 
-	//------------------Getter  ,  Setter-------------------//
-	
 	public int getAnumber() {
 		return anumber;
 	}
@@ -50,13 +56,7 @@ public class A_photo {
 		this.anumber = anumber;
 	}
 
-	public MultipartFile getAimage() {
-		return aimage;
-	}
-
-	public void setAimage(MultipartFile aimage) {
-		this.aimage = aimage;
-	}
+	
 
 	public String getAcontent() {
 		return acontent;
@@ -88,6 +88,22 @@ public class A_photo {
 
 	public void setRegister_number(int register_number) {
 		this.register_number = register_number;
+	}
+
+	public String getAimage() {
+		return aimage;
+	}
+
+	public void setAimage(String aimage) {
+		this.aimage = aimage;
+	}
+
+	public MultipartFile getAimageAttach() {
+		return aimageAttach;
+	}
+
+	public void setAimageAttach(MultipartFile aimageAttach) {
+		this.aimageAttach = aimageAttach;
 	}
 	
 	

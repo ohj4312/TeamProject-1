@@ -5,7 +5,7 @@ package com.mycompany.webapp.dto;
 public class Post_bookmark {
 	
 	
-	private String memail;	  //member�� 
+	private String memail;	  
 	 
 	private int bnumber;
 	

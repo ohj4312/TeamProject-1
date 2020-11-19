@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.mapper.bookmark">
+
+	
+	
+	<insert id="insertBookMark" parameterType="bookmark">
+		insert into POST_BOOKMARK (bnumber , pnumber , memail) values(seq_bnum.nextval,#{pnumber},#{memail})
+	</insert>
+	
+	<select id="selectBookMark" resultType="bookmark">
+		select bnumber , pnumber, memail from POST_BOOKMARK order by bnumber desc
+	</select>
+	
+	<!--  <delete id="deleteBookMark" parameterType="bookmark">
+		delete from POST_BOOKMARK where bnumber=#{bnumber}
+	</delete>-->
+</mapper>

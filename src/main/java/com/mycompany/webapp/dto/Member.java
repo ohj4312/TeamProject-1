@@ -12,7 +12,8 @@ public class Member {
 	
 	private String mnickname;
 	
-	private MultipartFile mimage;
+	private String mimage;
+	private MultipartFile mimageAttach;
 	
 	private int mgender;
 	
@@ -20,25 +21,26 @@ public class Member {
 	
 	//
 	
+	//Getter   ,   Setter,
+	public String getMemail() {
+		return memail;
+	}
+
 	public Member(String memail, 
 			String mpassword, 
 			String mnickname, 
-			MultipartFile mimage, 
-			int mgender,
-			Date mbirthday)
-	{
+			String mimage, 
+			MultipartFile mimageAttach,
+			int mgender, 
+			Date mbirthday) {
 		super();
 		this.memail = memail;
 		this.mpassword = mpassword;
 		this.mnickname = mnickname;
 		this.mimage = mimage;
+		this.mimageAttach = mimageAttach;
 		this.mgender = mgender;
 		this.mbirthday = mbirthday;
-	}
-	
-	//Getter   ,   Setter,
-	public String getMemail() {
-		return memail;
 	}
 
 	public void setMemail(String memail) {
@@ -61,14 +63,7 @@ public class Member {
 		this.mnickname = mnickname;
 	}
 
-	public MultipartFile getMimage() {
-		return mimage;
-	}
-
-	public void setMimage(MultipartFile mimage) {
-		this.mimage = mimage;
-	}
-
+	
 	public int getMgender() {
 		return mgender;
 	}
@@ -83,6 +78,22 @@ public class Member {
 
 	public void setMbirthday(Date mbirthday) {
 		this.mbirthday = mbirthday;
+	}
+
+	public String getMimage() {
+		return mimage;
+	}
+
+	public void setMimage(String mimage) {
+		this.mimage = mimage;
+	}
+
+	public MultipartFile getMimageAttach() {
+		return mimageAttach;
+	}
+
+	public void setMimageAttach(MultipartFile mimageAttach) {
+		this.mimageAttach = mimageAttach;
 	}
 
 	

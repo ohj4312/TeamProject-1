@@ -43,50 +43,43 @@
 
   <jsp:include page="/WEB-INF/views/include/Header.jsp"/>
 
-  <!-- ======= Hero Section ======= -->
-  
-    <!-- ======= Portfolio Section ======= -->
-    <section id="portfolio" class="portfolio section-bg">
-      <div class="container mt-5">
-      	<jsp:include page="/WEB-INF/views/include/photoFilter.jsp"/>
-        <div id="addtag" class="row col-md-12 col-lg-6 mb-4">
+ 
 
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact mt-5">
+      <div class="container mt-6">
+
+        <div class="section-title" data-aos="fade-up">
+        
+          <h2>회원가입에 성공하셨습니다~! 로그인 하시겠습니까?</h2>
+          
         </div>
 
         
 
-        <div class="row portfolio-container" data-aos="fade-up">
+        <div class="row mt-5 justify-content-center" data-aos="fade-up">
+          <div class="col-lg-5 col-md-5">
+            <form action="<%=application.getContextPath()%>/member/login" method="post" class="php-email-form">
+              <div class="form-group">
+                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="이메일을 입력하지 않았습니다." />
+                  <div class="validate"></div>
+              </div>
+              <div class="form-group">
+                <input type="password" class="form-control" name="password" id="password" placeholder="Your Password" data-rule="minlen:8" data-msg="최소 8자 이상 입력해주세요." />
+                  <div class="validate"></div>
+              </div>
+     
+              <div class="text-center"><button type="submit">Login</button></div>
+            </form>
+          </div>
 
-			<c:forEach var="i" begin="1" end="6">
-				<div class="col-lg-4 col-md-6 portfolio-item filter-app">
-					<div class="portfolio-wrap">
-						<img
-							src="<%=application.getContextPath()%>/resources/img/portfolio/portfolio-${i}.jpg"
-							class="img-fluid" alt="">
-						<div class="portfolio-info">
-							<h4>App 1</h4>
-							<p>App</p>
-							<div class="portfolio-links">
-								<a
-									href="<%=application.getContextPath()%>/resources/img/portfolio/portfolio-${i}.jpg"
-									data-gall="portfolioGallery" class="venobox" title="App 1">
-									<i class="bx bx-plus"></i>
-								</a>
-								<a href="<%=application.getContextPath()%>/photo/detail" title="More Details">
-									<i class="bx bx-link"></i>
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</c:forEach>
         </div>
 
       </div>
-    </section>
-    <!-- End Portfolio Section -->
+    </section><!-- End Contact Section -->
 
-    
+  </main><!-- End #main -->
+
   <!-- ======= Footer ======= -->
   <footer id="footer">
     <div class="footer-top">

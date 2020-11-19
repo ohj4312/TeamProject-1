@@ -18,24 +18,24 @@ public class Post_reply {
 	private int pnumber; 
 	
 	private String rwriter;
+	
+	private String rimage;
+	private MultipartFile rimageAttach;
+	
+	
 
-	private MultipartFile rimage;
-	
-	
 	
 
-	public Post_reply(int rnumber, 
-			String rcontent, 
-			Date register_date,  
-			String rwriter,
-			MultipartFile rimage) {
+	public Post_reply(int rnumber, String rcontent, Date register_date, int pnumber, String rwriter, String rimage,
+			MultipartFile rimageAttach) {
 		super();
 		this.rnumber = rnumber;
 		this.rcontent = rcontent;
 		this.register_date = register_date;
+		this.pnumber = pnumber;
 		this.rwriter = rwriter;
-		this.rimage= rimage;
-		
+		this.rimage = rimage;
+		this.rimageAttach = rimageAttach;
 	}
 
 	public int getRnumber() {
@@ -78,12 +78,21 @@ public class Post_reply {
 		this.rwriter = rwriter;
 	}
 
-	public MultipartFile getRimage() {
+	public String getRimage() {
 		return rimage;
 	}
 
-	public void setRimage(MultipartFile rimage) {
+	public void setRimage(String rimage) {
 		this.rimage = rimage;
 	}
+
+	public MultipartFile getRimageAttach() {
+		return rimageAttach;
+	}
+
+	public void setRimageAttach(MultipartFile rimageAttach) {
+		this.rimageAttach = rimageAttach;
+	}
+
 	
 }
