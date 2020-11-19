@@ -53,29 +53,27 @@
           
         </div>
 
-        
-
         <div class="row mt-5 justify-content-center" data-aos="fade-up">
           <div class="col-lg-5 col-md-7">
             <form action="<%=application.getContextPath()%>/member/join" method="post" role="form" class="php-email-form">
               <div class="form-group">
                 <label>이메일 주소</label> 
-                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="이메일을 입력하지 않았습니다." />
+                <input type="email" class="form-control" name="memail" id="memail" placeholder="Your Email" data-rule="email" data-msg="이메일을 입력하지 않았습니다." />
                   <div class="validate"></div>
               </div>
               <div class="form-group">
                 <label>비밀번호</label> 
-                <input type="password" class="form-control" name="password" id="password" placeholder="Your Password" data-rule="minlen:8" data-msg="최소 8자 이상 입력해주세요." />
+                <input type="password" class="form-control" name="mpassword" id="mpassword" placeholder="Your Password" data-rule="minlen:8" data-msg="최소 8자 이상 입력해주세요." />
                   <div class="validate"></div>
               </div>
               <div class="form-group">
                 <label>비밀번호 확인</label> 
-                <input type="password" class="form-control" name="password" id="password" placeholder="Your Password" data-rule="minlen:8" data-msg="최소 8자 이상 입력해주세요." />
+                <input type="password" class="form-control" name="checkingpassword" id="checkingpassword" placeholder="Your Password" data-rule="minlen:8" data-msg="최소 8자 이상 입력해주세요." />
                   <div class="validate"></div>
               </div>
               <div class="form-group">
                 <label>별명</label> 
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Your NickName" data-rule="minlen:4" data-msg="별명은 최소 3자 이상 입력해주세요." />
+                <input type="text" class="form-control" name="mnickname" id="mnickname" placeholder="Your NickName" data-rule="minlen:4" data-msg="별명은 최소 3자 이상 입력해주세요." />
                 <div class="validate"></div>
               </div>
               <div class="mb-3">
