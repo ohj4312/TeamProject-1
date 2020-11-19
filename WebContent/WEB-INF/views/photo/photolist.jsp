@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
@@ -42,58 +43,10 @@
 
   <jsp:include page="/WEB-INF/views/include/Header.jsp"/>
 
- 
+  
+  <jsp:include page="/WEB-INF/views/include/photos.jsp"/>
 
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact mt-5">
-      <div class="container mt-6">
-
-        <div class="section-title" data-aos="fade-up">
-          <h2>회원가입</h2>
-          
-        </div>
-
-        
-
-        <div class="row mt-5 justify-content-center" data-aos="fade-up">
-          <div class="col-lg-5 col-md-7">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-              <div class="form-group">
-                <label>이메일 주소</label> 
-                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
-                  <div class="validate"></div>
-              </div>
-              <div class="form-group">
-                <label>비밀번호</label> 
-                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
-                  <div class="validate"></div>
-              </div>
-              <div class="form-group">
-                <label>비밀번호 확인</label> 
-                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
-                  <div class="validate"></div>
-              </div>
-              <div class="form-group">
-                <label>별명</label> 
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
-                <div class="validate"></div>
-              </div>
-              <div class="mb-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
-            </form>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Contact Section -->
-
-  </main><!-- End #main -->
-
+    
   <!-- ======= Footer ======= -->
   <footer id="footer">
     <div class="footer-top">
@@ -170,6 +123,7 @@
 
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 
+  <!-- Vendor JS Files -->
    <script src="<%=application.getContextPath() %>/resources/vendor/jquery/jquery.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/jquery.easing/jquery.easing.min.js"></script>

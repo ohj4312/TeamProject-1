@@ -1,5 +1,4 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
@@ -43,50 +42,58 @@
 
   <jsp:include page="/WEB-INF/views/include/Header.jsp"/>
 
-  <!-- ======= Hero Section ======= -->
-  
-    <!-- ======= Portfolio Section ======= -->
-    <section id="portfolio" class="portfolio section-bg">
-      <div class="container mt-5">
-      	<jsp:include page="/WEB-INF/views/include/photoFilter.jsp"/>
-        <div id="addtag" class="row col-md-12 col-lg-6 mb-4">
+ 
 
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact mt-5">
+      <div class="container mt-6">
+
+        <div class="section-title" data-aos="fade-up">
+          <h2>회원가입</h2>
+          
         </div>
 
         
 
-        <div class="row portfolio-container" data-aos="fade-up">
+        <div class="row mt-5 justify-content-center" data-aos="fade-up">
+          <div class="col-lg-5 col-md-7">
+            <form action="<%=application.getContextPath()%>/member/join" method="post" role="form" class="php-email-form">
+              <div class="form-group">
+                <label>이메일 주소</label> 
+                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="이메일을 입력하지 않았습니다." />
+                  <div class="validate"></div>
+              </div>
+              <div class="form-group">
+                <label>비밀번호</label> 
+                <input type="password" class="form-control" name="password" id="password" placeholder="Your Password" data-rule="minlen:8" data-msg="최소 8자 이상 입력해주세요." />
+                  <div class="validate"></div>
+              </div>
+              <div class="form-group">
+                <label>비밀번호 확인</label> 
+                <input type="password" class="form-control" name="password" id="password" placeholder="Your Password" data-rule="minlen:8" data-msg="최소 8자 이상 입력해주세요." />
+                  <div class="validate"></div>
+              </div>
+              <div class="form-group">
+                <label>별명</label> 
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Your NickName" data-rule="minlen:4" data-msg="별명은 최소 3자 이상 입력해주세요." />
+                <div class="validate"></div>
+              </div>
+              <div class="mb-3">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Your message has been sent. Thank you!</div>
+              </div>
+              <div class="text-center"><button type="submit">Send Message</button></div>
+            </form>
+          </div>
 
-			<c:forEach var="i" begin="1" end="6">
-				<div class="col-lg-4 col-md-6 portfolio-item filter-app">
-					<div class="portfolio-wrap">
-						<img
-							src="<%=application.getContextPath()%>/resources/img/portfolio/portfolio-${i}.jpg"
-							class="img-fluid" alt="">
-						<div class="portfolio-info">
-							<h4>App 1</h4>
-							<p>App</p>
-							<div class="portfolio-links">
-								<a
-									href="<%=application.getContextPath()%>/resources/img/portfolio/portfolio-${i}.jpg"
-									data-gall="portfolioGallery" class="venobox" title="App 1">
-									<i class="bx bx-plus"></i>
-								</a>
-								<a href="<%=application.getContextPath()%>/photo/detail" title="More Details">
-									<i class="bx bx-link"></i>
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</c:forEach>
         </div>
 
       </div>
-    </section>
-    <!-- End Portfolio Section -->
+    </section><!-- End Contact Section -->
 
-    
+  </main><!-- End #main -->
+
   <!-- ======= Footer ======= -->
   <footer id="footer">
     <div class="footer-top">
@@ -163,7 +170,6 @@
 
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 
-  <!-- Vendor JS Files -->
    <script src="<%=application.getContextPath() %>/resources/vendor/jquery/jquery.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/jquery.easing/jquery.easing.min.js"></script>
