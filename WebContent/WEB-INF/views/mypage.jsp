@@ -40,35 +40,9 @@
 
 <body>
 
-  <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top">
-    <div class="container d-flex">
+  <jsp:include page="/WEB-INF/views/include/Header.jsp"/>
 
-      <div class="logo mr-auto">
-        <h1 class="text-light"><a href="index.html">Maxim</a></h1>
-        <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-      </div>
-
-      <nav class="nav-menu d-none d-lg-block">
-        <ul>
-          <li class="active"><a href="index.html">Home</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#portfolio">Photo List</a></li>
-          <li><a href="#team">Team</a></li>
-          <li><a href="login.html">Login</a></li>
-          <li><a href="join.html">Register</a></li>
-
-        </ul>
-      </nav><!-- .nav-menu -->
-
-    </div>
-  </header><!-- End Header -->
-
-  <!-- ======= Hero Section ======= -->
- 
-
-  <main id="main">
+   <main id="main">
 
     
 
@@ -88,9 +62,9 @@
         		<div class="user-profile mt-5" style="border:1px solid #dadce0; ">
         			<div class="user-profile__container">
         				<div class="user-profile__profile-image" style="text-align: center;">
-                  <img class="rounded-circle mt-3" width="53%"; height="53%"; src="assets/img/person_1.jpg">
+                  <img class="rounded-circle mt-3" width="53%"; height="53%"; src="<%=application.getContextPath() %>/resources/img/person_1.jpg">
         					<div class="profile-info__name mt-2">
-        						<span>íì</span>
+        						<span>힌아</span>
         						<hr/>
         					</div>
         				</div>
@@ -99,21 +73,21 @@
         				<div class="col-4 col">
        						<a href="#">
 								<div><span class="material-icons">bookmark_border</span></div>
-								<div><small>ì¤í¬ë©ë¶</small></div>
+								<div><small>스크랩북</small></div>
        						</a>
         				</div>
         				
         				<div class="col-4">
        						<a href="#">
 								<div><span class="material-icons">favorite_border</span></div>
-								<div><small>ì¢ìì</small></div>
+								<div><small>좋아요</small></div>
        						</a>
         				</div>
         				
         				<div class="col-4">
        						<a href="#">
        							<div><span class="material-icons">sentiment_satisfied_alt</span></div>
-       							<div><small>ì¤ì </small></div>
+       							<div><small>설정</small></div>
        						</a>
         				</div>
         			
@@ -132,11 +106,11 @@
           <div class="col-lg-5">
         		<div class="contents">
         			<section class="post post--cards">
-        				<h5><strong>ì¬ì§</strong></h5>
+        				<h5><strong>사진</strong></h5>
                 <div id="mypagephoto" style="border:1px dashed #dbdbdb; width:100%;  text-align: center; ">
                     <div class="row justify-content-center " style="margin-top: 30%;">
                           <span class="material-icons ">add </span>
-                          <a class="post__upload" href="#"> ì²« ë²ì§¸ ì¬ì§ì ì¬ë ¤ë³´ì¸ì</a>
+                          <a class="post__upload" href="#"> 첫 번째 사진을 올려보세요</a>
                     </div>
                 </div>  
         			</section>

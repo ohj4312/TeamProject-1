@@ -18,11 +18,10 @@
           <c:if test="${user == null}">
           	<li><a href="<%=application.getContextPath()%>/member/login">Login</a></li>
           	<li><a href="<%=application.getContextPath()%>/member/join">Register</a></li>
-          	<li><a href="<%=application.getContextPath()%>/member/join">${user}</a></li>
           </c:if>
           <c:if test="${user != null}">
           	<li><a href="<%=application.getContextPath()%>/member/login">Mypage</a></li>
-          	<li><a href="<%=application.getContextPath()%>/member/join">${user}</a></li>
+          	<li><a href="<%=application.getContextPath()%>/member/join">LogOut</a></li>
           </c:if>
 
         </ul>

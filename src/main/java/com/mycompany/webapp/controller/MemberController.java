@@ -19,14 +19,19 @@ public class MemberController {
 	}
 	
 	@PostMapping("/login")
-	public String login(HttpSession session) {
+	public String login(HttpSession session, String password) {
 		logger.info("실행");
-		session.setAttribute("user", "userid");
+		session.setAttribute("user", password);
 		return "redirect:/";
 	}
 	
 	@GetMapping("/join")
 	public String joinForm() {
 		return "join";
+	}
+	
+	@GetMapping("/mypage")
+	public String mypage() {
+		return "mypage";
 	}
 }

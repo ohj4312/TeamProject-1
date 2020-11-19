@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
@@ -53,12 +54,19 @@
 
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li class="active"><a href="<%=application.getContextPath()%>/">Home</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#portfolio">Photo List</a></li>
-          <li><a href="<%=application.getContextPath()%>/member/login">Login</a></li>
-          <li><a href="<%=application.getContextPath()%>/member/join">Register</a></li>
-
+        	<li class="active"><a href="<%=application.getContextPath()%>/">Home</a></li>
+          	<li><a href="#services">Services</a></li>
+          	<li><a href="#portfolio">Photo List</a></li>
+        	
+        	<c:if test="${user == null}">
+          		<li><a href="<%=application.getContextPath()%>/member/login">Login</a></li>
+          		<li><a href="<%=application.getContextPath()%>/member/join">Register</a></li>
+          		<li><a href="<%=application.getContextPath()%>/member/join">${user}</a></li>
+          	</c:if>
+          	<c:if test="${user != null}">
+          		<li><a href="<%=application.getContextPath()%>/member/mypage">Mypage</a></li>
+          		<li><a href="<%=application.getContextPath()%>/member/join">LogOut</a></li>
+          	</c:if>
         </ul>
       </nav><!-- .nav-menu -->
 
