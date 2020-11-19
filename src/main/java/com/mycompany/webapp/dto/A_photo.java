@@ -10,7 +10,8 @@ public class A_photo {
 	
 	
 	//사진 업로드 
-	private MultipartFile aimage;
+	private String aimage;
+	private MultipartFile aimageAttach;
 	//사진 옆  설명 내용
 	private String acontent;
 	
@@ -30,6 +31,7 @@ public class A_photo {
 
 	//------------------Getter  ,  Setter-------------------//
 	
+
 	public int getAnumber() {
 		return anumber;
 	}
@@ -38,13 +40,7 @@ public class A_photo {
 		this.anumber = anumber;
 	}
 
-	public MultipartFile getAimage() {
-		return aimage;
-	}
-
-	public void setAimage(MultipartFile aimage) {
-		this.aimage = aimage;
-	}
+	
 
 	public String getAcontent() {
 		return acontent;
@@ -76,6 +72,22 @@ public class A_photo {
 
 	public void setRegister_number(int register_number) {
 		this.register_number = register_number;
+	}
+
+	public String getAimage() {
+		return aimage;
+	}
+
+	public void setAimage(String aimage) {
+		this.aimage = aimage;
+	}
+
+	public MultipartFile getAimageAttach() {
+		return aimageAttach;
+	}
+
+	public void setAimageAttach(MultipartFile aimageAttach) {
+		this.aimageAttach = aimageAttach;
 	}
 	
 	

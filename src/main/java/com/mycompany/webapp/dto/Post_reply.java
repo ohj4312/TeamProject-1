@@ -18,9 +18,9 @@ public class Post_reply {
 	private int pnumber; 
 	
 	private String rwriter;
-
-	private MultipartFile rimage;
 	
+	private String rimage;
+	private MultipartFile rimageAttach;
 	
 	
 
@@ -66,12 +66,21 @@ public class Post_reply {
 		this.rwriter = rwriter;
 	}
 
-	public MultipartFile getRimage() {
+	public String getRimage() {
 		return rimage;
 	}
 
-	public void setRimage(MultipartFile rimage) {
+	public void setRimage(String rimage) {
 		this.rimage = rimage;
 	}
+
+	public MultipartFile getRimageAttach() {
+		return rimageAttach;
+	}
+
+	public void setRimageAttach(MultipartFile rimageAttach) {
+		this.rimageAttach = rimageAttach;
+	}
+
 	
 }

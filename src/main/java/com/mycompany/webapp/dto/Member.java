@@ -11,8 +11,8 @@ public class Member {
 	private String mpassword;
 	
 	private String mnickname;
-	
-	private MultipartFile mimage;
+	private String mimage;
+	private MultipartFile mimageAttach;
 	
 	private int mgender;
 	
@@ -47,13 +47,7 @@ public class Member {
 		this.mnickname = mnickname;
 	}
 
-	public MultipartFile getMimage() {
-		return mimage;
-	}
-
-	public void setMimage(MultipartFile mimage) {
-		this.mimage = mimage;
-	}
+	
 
 	public int getMgender() {
 		return mgender;
@@ -79,6 +73,23 @@ public class Member {
 		this.loginResult = loginResult;
 	}
 
+	public String getMimage() {
+		return mimage;
+	}
+
+	public void setMimage(String mimage) {
+		this.mimage = mimage;
+	}
+
+	public MultipartFile getMimageAttach() {
+		return mimageAttach;
+	}
+
+	public void setMimageAttach(MultipartFile mimageAttach) {
+		this.mimageAttach = mimageAttach;
+	}
+
+	
 	
 	
 }

@@ -28,16 +28,10 @@ public class MemberController {
 	}
 	
 	@PostMapping("/login")
-	public String login(HttpSession session, Member member) {
+	public String login(HttpSession session, String password) {
 		logger.info("실행");
-		Member result = memberService.login(member);
-		
-		if(result.isLoginResult()) {
-			session.setAttribute("member", result);
-			return "redirect:/";
-		}else {
-			return "redirect:/member/login";
-		}
+		session.setAttribute("user", password);
+		return "redirect:/";
 	}
 	
 	@GetMapping("/join")
@@ -52,20 +46,10 @@ public class MemberController {
 		member.setMgender(0);
 		boolean result = memberService.memberJoin(member);
 		if(result) {
-			return "redirect:/member/login_success";
+			return "member/login_success";
 		}else {
-			return "redirect:/member/login_false";
+			return "member/login_false";
 		}
-	}
-	
-	@GetMapping("/login_success")
-	public String login_success() {
-		return "member/login_success";
-	}
-	
-	@GetMapping("/login_false")
-	public String login_false() {
-		return "member/login_false";
 	}
 	
 	@GetMapping("/mypage")
