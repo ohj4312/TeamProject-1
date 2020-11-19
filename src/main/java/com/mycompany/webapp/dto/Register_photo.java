@@ -31,34 +31,14 @@ public class Register_photo {
 	private int psize_min;
 	private int psize_max;
 	
-	
 	private int ptype;
 	private String ptype_name;
-	
-	
 	
 	List<A_photo> list;
 	
 	
 
-	  //size_min/max  ptype_name, pstyle_name
-	public Register_photo(int pnumber,
-			int pstyle, 
-			Date register_pdate, 
-			int phit_count, 
-			String pwriter, 
-			int psize,
-			int ptype, List<A_photo> list) {
-		super();
-		this.pnumber = pnumber;
-		this.pstyle = pstyle;
-		this.register_pdate = register_pdate;
-		this.phit_count = phit_count;
-		this.pwriter = pwriter;
-		this.psize = psize;
-		this.ptype = ptype;
-		this.list = list;
-	}
+
 
 
 	//----------------Getter  ,  Setter Method()-------------------//

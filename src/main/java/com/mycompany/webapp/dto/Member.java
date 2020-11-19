@@ -19,28 +19,12 @@ public class Member {
 	
 	@DateTimeFormat(pattern="yyyy-MM-dd") private Date mbirthday;
 	
-	//
-	
+
+
 	//Getter   ,   Setter,
 	public String getMemail() {
 		return memail;
-	}
 
-	public Member(String memail, 
-			String mpassword, 
-			String mnickname, 
-			String mimage, 
-			MultipartFile mimageAttach,
-			int mgender, 
-			Date mbirthday) {
-		super();
-		this.memail = memail;
-		this.mpassword = mpassword;
-		this.mnickname = mnickname;
-		this.mimage = mimage;
-		this.mimageAttach = mimageAttach;
-		this.mgender = mgender;
-		this.mbirthday = mbirthday;
 	}
 
 	public void setMemail(String memail) {

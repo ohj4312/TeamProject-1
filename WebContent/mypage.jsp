@@ -42,48 +42,82 @@
 
   <jsp:include page="/WEB-INF/views/include/Header.jsp"/>
 
- 
+   <main id="main">
 
+    
+
+    
+
+    <!-- ======= Team Section ======= -->
+    
     <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact mt-5">
-      <div class="container mt-6">
+    <section id="contact" class="contact mt-3">
+      <div class="container mt-5">
 
         <div class="section-title" data-aos="fade-up">
-          <h2>회원가입</h2>
-          
-        </div>
+          <h2>My Page</h2>
+        <div class="row no-gutters justify-content-center" style="display: flex;" data-aos="fade-up">
 
-        <div class="row mt-5 justify-content-center" data-aos="fade-up">
-          <div class="col-lg-5 col-md-7">
-            <form action="<%=application.getContextPath()%>/member/join" method="post" role="form" class="php-email-form">
-              <div class="form-group">
-                <label>이메일 주소</label> 
-                <input type="email" class="form-control" name="memail" id="memail" placeholder="Your Email" data-rule="email" data-msg="이메일을 입력하지 않았습니다." />
-                  <div class="validate"></div>
-              </div>
-              <div class="form-group">
-                <label>비밀번호</label> 
-                <input type="password" class="form-control" name="mpassword" id="mpassword" placeholder="Your Password" data-rule="minlen:8" data-msg="최소 8자 이상 입력해주세요." />
-                  <div class="validate"></div>
-              </div>
-              <div class="form-group">
-                <label>비밀번호 확인</label> 
-                <input type="password" class="form-control" name="checkingpassword" id="checkingpassword" placeholder="Your Password" data-rule="minlen:8" data-msg="최소 8자 이상 입력해주세요." />
-                  <div class="validate"></div>
-              </div>
-              <div class="form-group">
-                <label>별명</label> 
-                <input type="text" class="form-control" name="mnickname" id="mnickname" placeholder="Your NickName" data-rule="minlen:4" data-msg="별명은 최소 3자 이상 입력해주세요." />
-                <div class="validate"></div>
-              </div>
-              <div class="mb-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
-            </form>
+          <div class="col-lg-5 mr-3">
+        		<div class="user-profile mt-5" style="border:1px solid #dadce0; ">
+        			<div class="user-profile__container">
+        				<div class="user-profile__profile-image" style="text-align: center;">
+                  <img class="rounded-circle mt-3" width="53%"; height="53%"; src="<%=application.getContextPath() %>/resources/img/person_1.jpg">
+        					<div class="profile-info__name mt-2">
+        						<span>힌아</span>
+        						<hr/>
+        					</div>
+        				</div>
+        			</div>
+        		<div class="row" style="text-align:center">
+        				<div class="col-4 col">
+       						<a href="#">
+								<div><span class="material-icons">bookmark_border</span></div>
+								<div><small>스크랩북</small></div>
+       						</a>
+        				</div>
+        				
+        				<div class="col-4">
+       						<a href="#">
+								<div><span class="material-icons">favorite_border</span></div>
+								<div><small>좋아요</small></div>
+       						</a>
+        				</div>
+        				
+        				<div class="col-4">
+       						<a href="#">
+       							<div><span class="material-icons">sentiment_satisfied_alt</span></div>
+       							<div><small>설정</small></div>
+       						</a>
+        				</div>
+        			
+        			</div>
+        			<br/>
+        			
+        		</div>
           </div>
+          
+         
+
+          <!-- <div class="col-lg-5 d-flex align-items-stretch">
+            <iframe style="border:0; width: 100%; height: 270px;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" allowfullscreen></iframe>
+          </div> -->
+
+          <div class="col-lg-5">
+        		<div class="contents">
+        			<section class="post post--cards">
+        				<h5><strong>사진</strong></h5>
+                <div id="mypagephoto" style="border:1px dashed #dbdbdb; width:100%;  text-align: center; ">
+                    <div class="row justify-content-center " style="margin-top: 30%;">
+                          <span class="material-icons ">add </span>
+                          <a class="post__upload" href="#"> 첫 번째 사진을 올려보세요</a>
+                    </div>
+                </div>  
+        			</section>
+        		</div>
+        	</div> 
+
+
 
         </div>
 
@@ -168,6 +202,7 @@
 
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 
+  <!-- Vendor JS Files -->
    <script src="<%=application.getContextPath() %>/resources/vendor/jquery/jquery.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/jquery.easing/jquery.easing.min.js"></script>
