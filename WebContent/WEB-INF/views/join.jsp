@@ -49,7 +49,8 @@
       <div class="container mt-6">
 
         <div class="section-title" data-aos="fade-up">
-          <h2>회원가입</h2>
+          <h2>회원가입</h2>
+          
         </div>
 
         
@@ -58,7 +59,7 @@
           <div class="col-lg-5 col-md-7">
             <form action="forms/contact.php" method="post" role="form" class="php-email-form">
               <div class="form-group">
-                <label>이메일주소</label> 
+                <label>이메일 주소</label> 
                 <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
                   <div class="validate"></div>
               </div>
