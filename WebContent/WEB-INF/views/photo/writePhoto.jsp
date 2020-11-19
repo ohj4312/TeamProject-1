@@ -95,7 +95,7 @@
                 <button type="submit" class="btn btn-info">글등록</button>
               
               
-					</div>
+				</div>
 				</div>
 				<div id = "addForm">
 				<div id = "cloneForm" class="row align-self-center" >
