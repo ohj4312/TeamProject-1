@@ -11,12 +11,7 @@ public class Follows {
 	
 	
 	//
-	public Follows(int fnumber, String follower, String following) {
-		super();
-		this.fnumber = fnumber;
-		this.follower = follower;
-		this.following = following;
-	}
+	
 
 	
 	//Getter  ,  Setter

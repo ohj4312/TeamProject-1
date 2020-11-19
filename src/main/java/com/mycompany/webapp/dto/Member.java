@@ -16,25 +16,11 @@ public class Member {
 	
 	private int mgender;
 	
+	private boolean loginResult;
+	
 	@DateTimeFormat(pattern="yyyy-MM-dd") private Date mbirthday;
 	
-	//
 	
-	public Member(String memail, 
-			String mpassword, 
-			String mnickname, 
-			MultipartFile mimage, 
-			int mgender,
-			Date mbirthday)
-	{
-		super();
-		this.memail = memail;
-		this.mpassword = mpassword;
-		this.mnickname = mnickname;
-		this.mimage = mimage;
-		this.mgender = mgender;
-		this.mbirthday = mbirthday;
-	}
 	
 	//Getter   ,   Setter,
 	public String getMemail() {
@@ -85,5 +71,14 @@ public class Member {
 		this.mbirthday = mbirthday;
 	}
 
+	public boolean isLoginResult() {
+		return loginResult;
+	}
+
+	public void setLoginResult(boolean loginResult) {
+		this.loginResult = loginResult;
+	}
+
+	
 	
 }

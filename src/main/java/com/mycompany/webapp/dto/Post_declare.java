@@ -13,11 +13,7 @@ public class Post_declare {
 	private int pnumber;
 		
 		
-	public Post_declare(int dnumber, String dcontent) {
-		super();
-		this.dnumber = dnumber;
-		this.dcontent = dcontent;
-	}
+
 
 
 	public int getDnumber() {

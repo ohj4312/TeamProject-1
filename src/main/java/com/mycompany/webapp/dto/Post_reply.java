@@ -24,19 +24,7 @@ public class Post_reply {
 	
 	
 
-	public Post_reply(int rnumber, 
-			String rcontent, 
-			Date register_date,  
-			String rwriter,
-			MultipartFile rimage) {
-		super();
-		this.rnumber = rnumber;
-		this.rcontent = rcontent;
-		this.register_date = register_date;
-		this.rwriter = rwriter;
-		this.rimage= rimage;
-		
-	}
+
 
 	public int getRnumber() {
 		return rnumber;

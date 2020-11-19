@@ -26,19 +26,7 @@ public class A_photo {
 	
 	//
 	
-	public A_photo(int anumber, 
-			MultipartFile aimage, 
-			String acontent, 
-			int alocation_number, 
-			int register_number) 
-	{
-		super();
-		this.anumber = anumber;
-		this.aimage = aimage;
-		this.acontent = acontent;
-		this.alocation_number = alocation_number;
-		this.register_number = register_number;
-	}
+
 
 	//------------------Getter  ,  Setter-------------------//
 	
