@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class PhotoController {
 	@GetMapping("/list")
 	public String photoList() {
-		return "photo/photolist";
+		return "photolist";
 	}
 	
 	@GetMapping("/detail")
 	public String photoDetail() {
-		return "photo/photo-detail";
+		return "photo-detail";
 	}
 	
 	
