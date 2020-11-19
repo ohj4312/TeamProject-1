@@ -57,38 +57,38 @@
 				</div>
 				<div class="row">
 					<div class="form-group form-inline">
-							<select id="home_select1" name="home_select1" class="form-control mr-2 ml-2"
+							<select id="home_select1" name="psize" class="form-control mr-2 ml-2"
 								style="height: auto;">
 								<option selected>평수</option>
-								<option value="0">10평 미만</option>
-								<option value="1">10평대</option>
-								<option value="2">20평대</option>
-								<option value="3">30평대</option>
-								<option value="4">40평대</option>
-								<option value="5">50평 이상</option>
+								<option value="10평 미만">10평 미만</option>
+								<option value="10평대">10평대</option>
+								<option value="20평대">20평대</option>
+								<option value="30평대">30평대</option>
+								<option value="40평대">40평대</option>
+								<option value="50평 이상">50평 이상</option>
 							</select>
-							<select id="home_select2" name="home_select2" class="form-control mr-2 ml-2"
+							<select id="home_select2" name="ptype" class="form-control mr-2 ml-2"
 								style="height: auto;">
 								<option selected>주거형태</option>
-								<option value="0">원룸&오피스텔</option>
-								<option value="1">아파트</option>
-								<option value="2">빌라&연립</option>
-								<option value="3">단독주택</option>
-								<option value="4">사무공간</option>
-								<option value="5">상업공간</option>
-								<option value="6">기타</option>
+								<option value="원룸&오피스텔">원룸&오피스텔</option>
+								<option value="아파트">아파트</option>
+								<option value="빌라&연립">빌라&연립</option>
+								<option value="단독주택">단독주택</option>
+								<option value="사무공간">사무공간</option>
+								<option value="상업공간">상업공간</option>
+								<option value="기타">기타</option>
 							</select>
-							<select id="home_select3" name="home_select3" class="form-control mr-2 ml-2"
+							<select id="home_select3" name="pstyle" class="form-control mr-2 ml-2"
 								style="height: auto;">
 								<option selected>스타일</option>
-								<option value="0">모던</option>
-								<option value="1">북유럽</option>
-								<option value="2">빈티지</option>
-								<option value="3">내츄럴</option>
-								<option value="4">프로방스&로맨틱</option>
-								<option value="5">한국&아시아</option>
-								<option value="6">유니크</option>
-								<option value="7">기타</option>
+								<option value="모던">모던</option>
+								<option value="북유럽">북유럽</option>
+								<option value="빈티지">빈티지</option>
+								<option value="내츄럴">내츄럴</option>
+								<option value="프로방스&로맨틱">프로방스&로맨틱</option>
+								<option value="한국&아시아">한국&아시아</option>
+								<option value="유니크">유니크</option>
+								<option value="기타">기타</option>
               </select>
           
 
@@ -118,22 +118,22 @@
 
 					<div class="col-lg-6">
 
-						<select id="homespace" name="homespace" style="height: auto;" class="form-control mb-3">
+						<select id="homespace" name="alocation" style="height: auto;" class="form-control mb-3">
 							<option selected>공간(필수)</option>
-							<option value="0">원룸</option>
-							<option value="1">거실</option>
-							<option value="2">침실</option>
-							<option value="3">주방</option>
-							<option value="4">욕실</option>
-							<option value="5">아이방</option>
-							<option value="6">드레스룸</option>
-							<option value="7">베란다</option>
-							<option value="7">사무공간</option>
-							<option value="7">상업공간</option>
-							<option value="7">가구&소품</option>
-							<option value="7">현관</option>
-							<option value="7">외관&기타</option>
-							<option value="7">제품리뷰</option>
+							<option value="원룸">원룸</option>
+							<option value="거실">거실</option>
+							<option value="침실">침실</option>
+							<option value="주방">주방</option>
+							<option value="욕실">욕실</option>
+							<option value="아이방">아이방</option>
+							<option value="드레스룸">드레스룸</option>
+							<option value="베란다">베란다</option>
+							<option value="사무공간">사무공간</option>
+							<option value="상업공간">상업공간</option>
+							<option value="가구&소품">가구&소품</option>
+							<option value="현관">현관</option>
+							<option value="외관&기타">외관&기타</option>
+							<option value="제품리뷰">제품리뷰</option>
 						</select>
 
 						<div>

@@ -16,9 +16,9 @@ public class Register_photo {
 	private String pwriter;
 	//등록일
 	@DateTimeFormat(pattern="yyyy-MM-dd") private Date register_pdate;
-	private int psize;
-	private int ptype;
-	private int pstyle;
+	private String psize;
+	private String ptype;
+	private String pstyle;
 	
 	List<A_photo> list;
 
@@ -54,27 +54,27 @@ public class Register_photo {
 		this.register_pdate = register_pdate;
 	}
 
-	public int getPsize() {
+	public String getPsize() {
 		return psize;
 	}
 
-	public void setPsize(int psize) {
+	public void setPsize(String psize) {
 		this.psize = psize;
 	}
 
-	public int getPtype() {
+	public String getPtype() {
 		return ptype;
 	}
 
-	public void setPtype(int ptype) {
+	public void setPtype(String ptype) {
 		this.ptype = ptype;
 	}
 
-	public int getPstyle() {
+	public String getPstyle() {
 		return pstyle;
 	}
 
-	public void setPstyle(int pstyle) {
+	public void setPstyle(String pstyle) {
 		this.pstyle = pstyle;
 	}
 
