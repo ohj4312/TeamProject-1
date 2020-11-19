@@ -4,8 +4,14 @@
 <configuration>
 	<typeAliases>
 		<typeAlias alias="member" type="com.mycompany.webapp.dto.Member" />
-		<typeAlias alias="photo" type="com.mycompany.webapp.dto.Register_photo" />
+		<typeAlias alias="aPhoto" type="com.mycompany.webapp.dto.A_photo" />
+		<typeAlias alias="bookmark" type="com.mycompany.webapp.dto.Post_bookmark" />
 		<typeAlias alias="follows" type="com.mycompany.webapp.dto.Follows" />
+		<typeAlias alias="declare" type="com.mycompany.webapp.dto.Post_declare" />
+		<typeAlias alias="like" type="com.mycompany.webapp.dto.Post_like" />
+		<typeAlias alias="reply" type="com.mycompany.webapp.dto.Post_reply" />
+		<typeAlias alias="registerPhoto" type="com.mycompany.webapp.dto.Register_photo"/>
+		<typeAlias alias="pager" type="com.mycompany.webapp.dto.Pager"/>		
 	</typeAliases>
 </configuration>
   
