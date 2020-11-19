@@ -64,7 +64,7 @@
         				<div class="user-profile__profile-image" style="text-align: center;">
                   <img class="rounded-circle mt-3" width="53%"; height="53%"; src="<%=application.getContextPath() %>/resources/img/person_1.jpg">
         					<div class="profile-info__name mt-2">
-        						<span>힌아</span>
+        						<span>${member.mnickname}</span>
         						<hr/>
         					</div>
         				</div>
@@ -121,6 +121,7 @@
 
         </div>
 
+      </div>
       </div>
     </section><!-- End Contact Section -->
 

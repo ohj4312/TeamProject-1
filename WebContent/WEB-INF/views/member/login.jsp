@@ -59,11 +59,11 @@
           <div class="col-lg-5 col-md-5">
             <form action="<%=application.getContextPath()%>/member/login" method="post" class="php-email-form">
               <div class="form-group">
-                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="이메일을 입력하지 않았습니다." />
+                <input type="email" class="form-control" name="memail" id="memail" placeholder="Your Email" data-rule="email" data-msg="이메일을 입력하지 않았습니다." />
                   <div class="validate"></div>
               </div>
               <div class="form-group">
-                <input type="password" class="form-control" name="password" id="password" placeholder="Your Password" data-rule="minlen:8" data-msg="최소 8자 이상 입력해주세요." />
+                <input type="password" class="form-control" name="mpassword" id="mpassword" placeholder="Your Password" data-rule="minlen:8" data-msg="최소 8자 이상 입력해주세요." />
                   <div class="validate"></div>
               </div>
      
