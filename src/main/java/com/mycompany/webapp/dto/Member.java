@@ -16,6 +16,8 @@ public class Member {
 	
 	private int mgender;
 	
+	private boolean loginResult;
+	
 	@DateTimeFormat(pattern="yyyy-MM-dd") private Date mbirthday;
 	
 	
@@ -69,5 +71,14 @@ public class Member {
 		this.mbirthday = mbirthday;
 	}
 
+	public boolean isLoginResult() {
+		return loginResult;
+	}
+
+	public void setLoginResult(boolean loginResult) {
+		this.loginResult = loginResult;
+	}
+
+	
 	
 }

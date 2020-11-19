@@ -5,4 +5,8 @@
 	<insert id="insert" parameterType="member">
 		INSERT INTO member (memail, mpassword, mnickname) VALUES (#{memail}, #{mpassword}, #{mnickname})
 	</insert>
+	
+	<select id="selectMember" parameterType="member" resultType="member">
+		select * from member where memail = #{memail}
+	</select>
 </mapper>
