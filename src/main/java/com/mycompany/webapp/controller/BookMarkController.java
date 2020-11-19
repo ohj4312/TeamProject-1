@@ -39,11 +39,11 @@ public class BookMarkController {
 	}
 	 
 	//삭제
-	@GetMapping("/delBookMark")
+	/*@GetMapping("/delBookMark")
 	public String delBookMark(int bnumber) {
 		String result =service.Delete(bnumber);
 		return""; 
-	}
+	}*/
 	
 	//업데이트
 	/*@GetMapping("/upBookMark")

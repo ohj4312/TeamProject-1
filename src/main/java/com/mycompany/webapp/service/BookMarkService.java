@@ -30,10 +30,10 @@ public class BookMarkService {
 		return list;
 	}
 	//삭 제
-	public String Delete(int bnumber) {
+	/*public String Delete(int bnumber) {
 	
 		return "";
-	}
+	}*/
 	
 	//북마크 업데이트 (삭제나 추가시 개수가 줄거나 늘어남)
 	/*public String Update(int bnumber) {
