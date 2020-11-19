@@ -11,7 +11,7 @@ import com.mycompany.webapp.dto.Post_bookmark;
 
 @Service
 public class BookMarkService {
-	
+	 
 	
 	@Resource 
 	private BookMarkDAO bookmarkDAO;

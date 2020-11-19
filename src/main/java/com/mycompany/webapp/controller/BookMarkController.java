@@ -37,7 +37,7 @@ public class BookMarkController {
 		model.addAttribute("list",list);
 		return "views/bookmark-detail";
 	}
-	
+	 
 	//삭제
 	@GetMapping("/delBookMark")
 	public String delBookMark(int bnumber) {

@@ -4,5 +4,5 @@
 
 	<insert id="insert" parameterType="member">
 		INSERT INTO member (memail, mpassword, mnickname) VALUES (#{memail}, #{mpassword}, #{mnickname})
-	</insert>
+	</insert> 
 </mapper>
