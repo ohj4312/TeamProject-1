@@ -57,26 +57,16 @@
 
         <div class="row mt-5 justify-content-center" data-aos="fade-up">
           <div class="col-lg-5 col-md-5">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+            <form action="<%=application.getContextPath()%>/member/login" method="post" class="php-email-form">
               <div class="form-group">
-                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="이메일을 입력하지 않았습니다." />
                   <div class="validate"></div>
               </div>
               <div class="form-group">
-                <input type="email" class="form-control" name="email" id="email" placeholder="Your Password" data-rule="email" data-msg="Please enter a valid email" />
+                <input type="password" class="form-control" name="password" id="password" placeholder="Your Password" data-rule="minlen:8" data-msg="최소 8자 이상 입력해주세요." />
                   <div class="validate"></div>
               </div>
-             
-         
-              
-              <div class="mb-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-             
-                          
-          
+     
               <div class="text-center"><button type="submit">Login</button></div>
             </form>
           </div>
