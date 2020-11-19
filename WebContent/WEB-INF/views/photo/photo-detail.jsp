@@ -40,57 +40,119 @@
 
 <body>
 
+  <!-- ======= Header ======= -->
   <jsp:include page="/WEB-INF/views/include/Header.jsp"/>
 
- 
+  <main id="main">
 
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact mt-5">
-      <div class="container mt-6">
-
-        <div class="section-title" data-aos="fade-up">
-          <h2>회원가입</h2>
-          
+    <!-- ======= Breadcrumbs Section ======= -->
+    <section class="section mt-3">
+      <div class="container mt-5">
+        <div class="row">
+          <div class="col-md-8" data-aos="fade-up">
+            <h2>40평대 | 모던스타일 | 아파트</h2>
+            
+          </div>
         </div>
+      </div>
 
-        
 
-        <div class="row mt-5 justify-content-center" data-aos="fade-up">
-          <div class="col-lg-5 col-md-7">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-              <div class="form-group">
-                <label>이메일 주소</label> 
-                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
-                  <div class="validate"></div>
-              </div>
-              <div class="form-group">
-                <label>비밀번호</label> 
-                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
-                  <div class="validate"></div>
-              </div>
-              <div class="form-group">
-                <label>비밀번호 확인</label> 
-                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
-                  <div class="validate"></div>
-              </div>
-              <div class="form-group">
-                <label>별명</label> 
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
-                <div class="validate"></div>
-              </div>
-              <div class="mb-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
-            </form>
+
+      <div class="container">
+        <div class="row">
+          <!-- <div class="col-md-8" data-aos="fade-up">
+         
+
+           <img src="resources/images/photo2.jpg" alt="Image" class="img-fluid">
+         </div> -->
+
+          <div class="owl-carousel portfolio-details-carousel col-md-8">
+            <img src="assets/img/portfolio/portfolio-details-1.jpg" class="img-fluid" alt="">
+            <img src="assets/img/portfolio/portfolio-details-2.jpg" class="img-fluid" alt="">
+            <img src="assets/img/portfolio/portfolio-details-3.jpg" class="img-fluid" alt="">
           </div>
 
-        </div>
+          <div id="head" class="col-md-4">
 
+
+
+            <button type="button" class="btn btn-light" style="width:120px; box-shadow:none;">
+              <span class="material-icons">favorite_border</span></button>
+            <button type="button" class="btn btn-light" style="width:120px;  box-shadow:none;">
+              <span class="material-icons">bookmark_border</span></button>
+
+
+            
+            <div class="card-detail-sidebar__content">
+              <div class="card-detail-writer">
+                <div class="card-detail-writer__user mt-3">
+                  <a class="card-detail-writer__link" href="#">
+                    <img class="rounded-circle" style="width:60px; height:60px;" src="resources/images/photo7.jpg" />
+                    <span class="card-detail-writer__name">KWJ</span>
+                  </a>
+                  <a href="#" class="btn btn-info btn-sm" role="button">팔로우</a>
+                </div>
+              </div>
+              
+            </div>
+
+          </div>
+        </div>
       </div>
-    </section><!-- End Contact Section -->
+      </div>
+
+
+
+
+    </section>
+
+    <div class="container">
+
+
+
+      <div class="col-md-8" style="width:100%">
+
+        <div class="input-group mb-3" style="width:100%; float:none; margin:0 auto">
+          <h4>댓글 </h4>
+          <h4 style="color:DodgerBlue">&nbsp;#개</h4>
+        </div>
+      </div>
+      <div class="col-md-8" style="width:100%">
+
+        <div class="input-group mb-3" style="width:100%; float:none; margin:0 auto">
+          <span class="material-icons" style="font-size:45px; color:#4169E1;">
+            face
+          </span>
+          <input type="text" class="form-control" placeholder="칭찬과 격려는 큰 힘이됩니다!">
+          <div class="input-group-apeend">
+            <button class="btn btn-outline btn-primary" type="submit">등록</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="container">
+      <div>
+        <h5 style="text-align:left;">댓글들이 나오는 부분</h5>
+      </div>
+
+      <div class="row text-center" style="width:100%">
+
+        <div class="input-group mb-3" style="width:50%; float:none; margin:0 auto">
+
+          <ul class="pagination" style="text-align:left">
+            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">4</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
 
   </main><!-- End #main -->
 
@@ -170,6 +232,7 @@
 
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 
+  <!-- Vendor JS Files -->
    <script src="<%=application.getContextPath() %>/resources/vendor/jquery/jquery.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/jquery.easing/jquery.easing.min.js"></script>

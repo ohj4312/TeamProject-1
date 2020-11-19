@@ -104,9 +104,7 @@
 	}else{
 		return true;
 	}
-	/*console.log(ferror);
-    if(!ferror) return false;
-	if(ferror) return true;*/
+	
 
   });
 	
