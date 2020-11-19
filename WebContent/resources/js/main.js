@@ -213,13 +213,9 @@ function removeTag(removeID) {
   $(removeID1).remove();
 }
 
-
-  
-  
-    function addform(){
-      console.log($cloneform);
-      var $cloneform;
-      $cloneform = $("#cloneForm").clone();
-      $("#addForm").append($cloneform);
-      
-    }
+function addform(){
+  var $cloneform;
+  $cloneform = $("#cloneForm").clone();
+  $cloneform.find('textarea').val('');
+  $("#addForm").append($cloneform);
+}

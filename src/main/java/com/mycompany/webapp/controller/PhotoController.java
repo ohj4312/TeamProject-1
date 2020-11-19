@@ -16,4 +16,9 @@ public class PhotoController {
 	public String photoDetail() {
 		return "photo/photo-detail";
 	}
+	
+	@GetMapping("/write")
+	public String write() {
+		return "photo/writePhoto";
+	}
 }

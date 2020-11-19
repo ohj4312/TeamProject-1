@@ -21,6 +21,7 @@
           </c:if>
           <c:if test="${member != null}">
           	<li><a href="<%=application.getContextPath()%>/member/mypage">Mypage</a></li>
+          	<li><a href="<%=application.getContextPath()%>/photo/write">Photo Write</a></li>
           	<li><a href="<%=application.getContextPath()%>/member/logout">LogOut</a></li>
           </c:if>
 
