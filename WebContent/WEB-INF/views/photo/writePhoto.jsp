@@ -29,6 +29,9 @@
 
   <!-- Template Main CSS File -->
   <link href="<%=application.getContextPath() %>/resources/css/style.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  
+  
 
   <!-- =======================================================
   * Template Name: Maxim - v2.2.0
@@ -49,7 +52,7 @@
 
     <section id="contact" class="contact mt-3">
       <div class="container" id="firstForm">
-        <form action="<%=application.getContextPath()%>/photo/write" method="post" role="form">
+        <form action="<%=application.getContextPath()%>/photo/write" method="post" role="form" enctype="multipart/form-data">
 				<div class="row">
 					<div class="col">
 						<h2>사진 올리기</h2>
@@ -103,18 +106,16 @@
 						
 							
 							<a href="#" class="item-wrap">
-								<div >
-									<label for="ex_file"> <i class="material-icons "
-										style="font-size: 7rem; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">photo_camera</i>
+								<div id = "imgdiv">
+									<label id = "srclabel" for="aimageAttach"> <i class="material-icons "
+										style="font-size: 7rem; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+										photo_camera
+										</i>
 									</label> 
-									<input type="file" id="ex_file" style="display: none">
+									<!-- //<input type="file" id="aimage" style="display: none" accept="image/*" onchange="setThumbnail(event);"/> -->
+									<input type="file" id="aimageAttach" name = "aimageAttach" style="display: none"> 
 								</div>
 							</a>
-						
-						<script>
-
-
-						</script>
 					</div>
 
 					<div class="col-lg-6">
@@ -145,9 +146,15 @@
 						</div>
 					</div>
         </div> 
-
-        
-        
+        <script> 
+							
+							$("#aimageAttach").on('change', function(e){
+							  let elem = e.target;
+							  var src1 = URL.createObjectURL(elem.files[0]);
+							  var $div = $('<img src="'+src1+'" width="100%" height="100%" />');
+							  $("#srclabel").html($div);
+							});
+						 </script>
         
       </div>
       
@@ -168,6 +175,10 @@
 		</div>
 
   </main><!-- End #main -->
+  
+  
+
+
   
   <!-- ======= Footer ======= -->
   <footer id="footer">
@@ -254,7 +265,7 @@
   <script src="<%=application.getContextPath() %>/resources/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/venobox/venobox.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/aos/aos.js"></script>
-
+	
   <!-- Template Main JS File -->
   <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>
 

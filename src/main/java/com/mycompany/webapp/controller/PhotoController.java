@@ -39,6 +39,7 @@ public class PhotoController {
 		logger.info(rphoto.getPstyle());
 		logger.info(rphoto.getPtype());
 		logger.info(photo.getAcontent());
+		logger.info(photo.getAimageAttach().getOriginalFilename());
 		
 		
 		
