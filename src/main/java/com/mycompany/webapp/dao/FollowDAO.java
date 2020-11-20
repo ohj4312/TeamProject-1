@@ -21,6 +21,7 @@ public class FollowDAO {
 	//follow 추가하기
 	public int insertfollow(Follows follows) {
 		int rows=sst.insert("mybatis.mapper.board.following", follows);
+		logger.info("insert확인 : "+rows);
 		return rows;
 	}
 	

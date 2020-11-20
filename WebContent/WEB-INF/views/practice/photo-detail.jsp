@@ -11,8 +11,8 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="<%=application.getContextPath() %>/resources/assets/img/favicon.png" rel="icon">
+  <link href="<%=application.getContextPath() %>/resources/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -67,9 +67,9 @@
          </div> -->
 
           <div class="owl-carousel portfolio-details-carousel col-md-8">
-            <img src="assets/img/portfolio/portfolio-details-1.jpg" class="img-fluid" alt="">
-            <img src="assets/img/portfolio/portfolio-details-2.jpg" class="img-fluid" alt="">
-            <img src="assets/img/portfolio/portfolio-details-3.jpg" class="img-fluid" alt="">
+            <img src="<%=application.getContextPath() %>/resources/assets/img/portfolio/portfolio-details-1.jpg" class="img-fluid" alt="">
+            <img src="<%=application.getContextPath() %>/resources/assets/img/portfolio/portfolio-details-2.jpg" class="img-fluid" alt="">
+            <img src="<%=application.getContextPath() %>/resources/assets/img/portfolio/portfolio-details-3.jpg" class="img-fluid" alt="">
           </div>
 
           <div id="head" class="col-md-4">
@@ -87,20 +87,18 @@
               <div class="card-detail-writer">
                 <div class="card-detail-writer__user mt-3">
                   <a class="card-detail-writer__link" href="#">
-                    <img class="rounded-circle" style="width:60px; height:60px;" src="resources/images/photo7.jpg" />
+                    <img class="rounded-circle" style="width:60px; height:60px;" src="<%=application.getContextPath() %>/resources/images/photo7.jpg" />
                     <span class="card-detail-writer__name">KWJ</span>
                   </a>
-                  <a id="follow_check" href="javascript:checkFollow()" class="btn btn-info btn-sm" role="button">팔로우</a>
+                  <a id="follow_check" href="javascript:checkFollow('following@aa.com')" class="btn btn-info btn-sm" role="button">팔로우</a>
                 	<script>
-                	//여기에 follows 객체를 넣어주는 코드 작성
-                	function checkFollow(){
+                	
+                	function checkFollow(followingEmail){
 						$.ajax({
-							url:"checkFollow()",
-							//data:{follows:follows}, 
+							url:"checkFollow",
+							data:{followingEmail:followingEmail}, 
 							success:function(data) {
-							//	$("#follow_check").attr('btn-light','btn-info');
-								$("#follow_check").removeClass("btn-light");
-								$("#follow_check").addClass("btn-info");
+								$("#follow_check").attr("class","btn btn-danger btn-sm");
 							}
 						});
 					} 

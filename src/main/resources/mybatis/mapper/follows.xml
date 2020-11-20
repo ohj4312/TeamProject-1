@@ -10,9 +10,11 @@
 		
 	</select>
 	
-	<insert id="following">
-	
+	<insert id="following" parameterType="follows">
+		insert into follows (fnumber,follower, following) 
+		values (follow_seq_fnum, #{follower}, #{following})
 	</insert>
+
 
 	<delete id="cancelfollow">
 	

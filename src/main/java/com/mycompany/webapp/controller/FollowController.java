@@ -3,6 +3,7 @@ package com.mycompany.webapp.controller;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mycompany.webapp.dto.Follows;
+import com.mycompany.webapp.dto.Member;
 import com.mycompany.webapp.service.FollowService;
 
 @Controller
@@ -39,14 +41,24 @@ public class FollowController {
 	}
 	
 	@GetMapping("/checkFollow")
-	public void checkFollow(Follows follows) {
+	public void checkFollow(String followingEmail, HttpSession session,Model model) {
+		Member member=(Member)session.getAttribute("member");
+		String follower=member.getMemail();
+		Follows follows = new Follows();
+		follows.setFollowing(followingEmail);
+		follows.setFollower(follower);
 		int followsnum=followService.checkFollow(follows);
-		logger.info("followsnum : "+followsnum);
+		logger.info("컨트롤러의 팔로우수 : "+followsnum);
 	}
 	
 	@GetMapping("/photo-detail")
 	public String aaa() {
 		return "practice/photo-detail";
+	}
+	
+	@GetMapping("/mypage")
+	public String bbb() {
+		return "practice/mypage";
 	}
 	
 }
