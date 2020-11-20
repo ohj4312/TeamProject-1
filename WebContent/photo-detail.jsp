@@ -78,11 +78,38 @@
 
             <button type="button" class="btn btn-light" style="width:120px; box-shadow:none;">
               <span class="material-icons">favorite_border</span></button>
-            <button  type="button" class="btn btn-light" style="width:120px;  box-shadow:none;">
-              <span class="material-icons">bookmark_border</span></button>
+           <!--  <button  type="button" class="btn btn-light" style="width:120px;  box-shadow:none;">
+              <span class="material-icons">bookmark_border</span></button> -->
+              <a type="button" class="btn btn-light" href="javascript:RegBookMark(1)" style="width:120px; box-shadow:none;">
+              <span class="material-icons">bookmark_border</span>
+              </a>
+           
+            
+             
+            <script type="text/javascript">
+            	function RegBookMark(pnumber){
+            		if(!pnumber){
+            			$("#bookmark").html("aa");
+            		}
+            		$.ajax({
+            			url : "<%=application.getContextPath()%>/BK/delBookMark",
+                		data: {pnumber:pnumber},
+                		method:"get",
+                		success:function(data){
+                			$("#bookmark").html(data);
+                		}
+            		});
+            		
+            		
+            	}
+            </script>
+            <div id="bookmark"></div>
+            
+            
+           
 			
 
-            
+            	
             <div class="card-detail-sidebar__content">
               <div class="card-detail-writer">
                 <div class="card-detail-writer__user mt-3">
