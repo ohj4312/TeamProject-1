@@ -20,12 +20,11 @@ public class BookMarkDAO {
 		return list;
 	}
 
-	public int insertBookMark(Post_bookmark bookmark) {
-		int rows = sst.insert("mybatis.mapper.bookmark.insertBookMark",bookmark);
-		return rows;
+	public void insertBookMark(Post_bookmark pb) {
+		sst.insert("mybatis.mapper.bookmark.insertBookMark",pb);
+		
 	}
 
 	//delete 부분.
-	
 	
 }
