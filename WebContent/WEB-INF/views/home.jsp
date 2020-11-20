@@ -58,12 +58,13 @@
           	<li><a href="#services">Services</a></li>
           	<li><a href="#portfolio">Photo List</a></li>
         	
-        	<c:if test="${user == null}">
+        	<c:if test="${member == null}">
           		<li><a href="<%=application.getContextPath()%>/member/login">Login</a></li>
           		<li><a href="<%=application.getContextPath()%>/member/join">Register</a></li>
           	</c:if>
-          	<c:if test="${user != null}">
+          	<c:if test="${member != null}">
           		<li><a href="<%=application.getContextPath()%>/member/mypage">Mypage</a></li>
+          		<li><a href="<%=application.getContextPath()%>/photo/write">Photo Write</a></li>
           		<li><a href="<%=application.getContextPath()%>/member/logout">LogOut</a></li>
           	</c:if>
         </ul>

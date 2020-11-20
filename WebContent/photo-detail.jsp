@@ -40,134 +40,122 @@
 
 <body>
 
+  <!-- ======= Header ======= -->
   <jsp:include page="/WEB-INF/views/include/Header.jsp"/>
-
-
- 
 
   <main id="main">
 
-    <section id="contact" class="contact mt-3">
-      <div class="container" id="firstForm">
-        <form action="forms/contact.php" method="post" role="form">
-				<div class="row">
-					<div class="col">
-						<h2>사진 올리기</h2>
-					</div>
-				</div>
-				<div class="row">
-					<div class="form-group form-inline">
-							<select id="home_select1" name="psize" class="form-control mr-2 ml-2"
-								style="height: auto;">
-								<option selected>평수</option>
-								<option value="10평 미만">10평 미만</option>
-								<option value="10평대">10평대</option>
-								<option value="20평대">20평대</option>
-								<option value="30평대">30평대</option>
-								<option value="40평대">40평대</option>
-								<option value="50평 이상">50평 이상</option>
-							</select>
-							<select id="home_select2" name="ptype" class="form-control mr-2 ml-2"
-								style="height: auto;">
-								<option selected>주거형태</option>
-								<option value="원룸&오피스텔">원룸&오피스텔</option>
-								<option value="아파트">아파트</option>
-								<option value="빌라&연립">빌라&연립</option>
-								<option value="단독주택">단독주택</option>
-								<option value="사무공간">사무공간</option>
-								<option value="상업공간">상업공간</option>
-								<option value="기타">기타</option>
-							</select>
-							<select id="home_select3" name="pstyle" class="form-control mr-2 ml-2"
-								style="height: auto;">
-								<option selected>스타일</option>
-								<option value="모던">모던</option>
-								<option value="북유럽">북유럽</option>
-								<option value="빈티지">빈티지</option>
-								<option value="내츄럴">내츄럴</option>
-								<option value="프로방스&로맨틱">프로방스&로맨틱</option>
-								<option value="한국&아시아">한국&아시아</option>
-								<option value="유니크">유니크</option>
-								<option value="기타">기타</option>
-              </select>
-          
-
-                <button type="submit" class="btn btn-info">글등록</button>
-              
-              
-				</div>
-				</div>
-				<div id = "addForm">
-				<div id = "cloneForm" class="row align-self-center" >
-					<div class="col-lg-6 text-center mb-4 fancybox" style=" position: relative; height: 300px;">
-						<div style="background-color:lightslategray;">
-
-							<a href="javascript:addPhoto();" class="item-wrap">
-								<i type="File" class="material-icons" 
-									style="font-size: 7rem;     position: absolute;
-										top: 50%;
-										left: 50%;
-										transform: translate(-50%, -50%);">photo_camera</i>
-							</a>
-						</div>
-						<script>
-
-
-						</script>
-					</div>
-
-					<div class="col-lg-6">
-
-						<select id="homespace" name="alocation" style="height: auto;" class="form-control mb-3">
-							<option selected>공간(필수)</option>
-							<option value="원룸">원룸</option>
-							<option value="거실">거실</option>
-							<option value="침실">침실</option>
-							<option value="주방">주방</option>
-							<option value="욕실">욕실</option>
-							<option value="아이방">아이방</option>
-							<option value="드레스룸">드레스룸</option>
-							<option value="베란다">베란다</option>
-							<option value="사무공간">사무공간</option>
-							<option value="상업공간">상업공간</option>
-							<option value="가구&소품">가구&소품</option>
-							<option value="현관">현관</option>
-							<option value="외관&기타">외관&기타</option>
-							<option value="제품리뷰">제품리뷰</option>
-						</select>
-
-						<div>
-							<div class="form-group">
-								<textarea class="form-control" rows="10" id="comment" name="text"
-									placeholder="사진에 대한 설명을 작성해주세요."></textarea>
-							</div>
-						</div>
-					</div>
-        </div> 
-
-        
-        
-        
+    <!-- ======= Breadcrumbs Section ======= -->
+    <section class="section mt-3">
+      <div class="container mt-5">
+        <div class="row">
+          <div class="col-md-8" data-aos="fade-up">
+            <h2>40평대 | 모던스타일 | 아파트</h2>
+            
+          </div>
+        </div>
       </div>
-      
-      </form>
-			</div>
-			</div>
-			</div>
+
+
+
+      <div class="container">
+        <div class="row">
+          <!-- <div class="col-md-8" data-aos="fade-up">
+         
+
+           <img src="resources/images/photo2.jpg" alt="Image" class="img-fluid">
+         </div> -->
+
+          <div class="owl-carousel portfolio-details-carousel col-md-8">
+            <img src="assets/img/portfolio/portfolio-details-1.jpg" class="img-fluid" alt="">
+            <img src="assets/img/portfolio/portfolio-details-2.jpg" class="img-fluid" alt="">
+            <img src="assets/img/portfolio/portfolio-details-3.jpg" class="img-fluid" alt="">
+          </div>
+
+          <div id="head" class="col-md-4">
+
+
+
+            <button type="button" class="btn btn-light" style="width:120px; box-shadow:none;">
+              <span class="material-icons">favorite_border</span></button>
+            <button  type="button" class="btn btn-light" style="width:120px;  box-shadow:none;">
+              <span class="material-icons">bookmark_border</span></button>
 			
-	
-    </section><!-- End Contact Section -->
+
+            
+            <div class="card-detail-sidebar__content">
+              <div class="card-detail-writer">
+                <div class="card-detail-writer__user mt-3">
+                  <a class="card-detail-writer__link" href="#">
+                    <img class="rounded-circle" style="width:60px; height:60px;" src="resources/images/photo7.jpg" />
+                    <span class="card-detail-writer__name">KWJ</span>
+                  </a>
+                  <a href="#" class="btn btn-info btn-sm" role="button">팔로우</a>
+                </div>
+              </div>
+              
+            </div>
+
+          </div>
+        </div>
+      </div>
+      </div>
+
+
+
+
+    </section>
 
     <div class="container">
-			<!-- 추가하기 버튼 구현 -->
 
-			<div style="height: 50px;"></div>
-			<button type="button" class="btn btn-lg btn-light btn-block" onClick="addform()">추가하기</button>
 
-		</div>
+
+      <div class="col-md-8" style="width:100%">
+
+        <div class="input-group mb-3" style="width:100%; float:none; margin:0 auto">
+          <h4>댓글 </h4>
+          <h4 style="color:DodgerBlue">&nbsp;#개</h4>
+        </div>
+      </div>
+      <div class="col-md-8" style="width:100%">
+
+        <div class="input-group mb-3" style="width:100%; float:none; margin:0 auto">
+          <span class="material-icons" style="font-size:45px; color:#4169E1;">
+            face
+          </span>
+          <input type="text" class="form-control" placeholder="칭찬과 격려는 큰 힘이됩니다!">
+          <div class="input-group-apeend">
+            <button class="btn btn-outline btn-primary" type="submit">등록</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="container">
+      <div>
+        <h5 style="text-align:left;">댓글들이 나오는 부분</h5>
+      </div>
+
+      <div class="row text-center" style="width:100%">
+
+        <div class="input-group mb-3" style="width:50%; float:none; margin:0 auto">
+
+          <ul class="pagination" style="text-align:left">
+            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">4</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
 
   </main><!-- End #main -->
-  
+
   <!-- ======= Footer ======= -->
   <footer id="footer">
     <div class="footer-top">

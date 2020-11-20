@@ -17,4 +17,10 @@ public class MemberDAO {
 		return sst.insert("mybatis.mapper.member.insert", member);
 	}
 
+
+
+	public Member selectMember(Member member) {
+		return sst.selectOne("mybatis.mapper.member.selectMember", member);
+	}
+
 }
