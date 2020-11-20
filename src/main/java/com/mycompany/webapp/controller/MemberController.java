@@ -28,16 +28,10 @@ public class MemberController {
 	}
 	
 	@PostMapping("/login")
-	public String login(HttpSession session, Member member) {
+	public String login(HttpSession session, String password) {
 		logger.info("실행");
-		Member result = memberService.login(member);
-
-		if(result.isLoginResult()) {
-			session.setAttribute("member", result);
-			return "redirect:/";
-		}else {
-			return "redirect:/member/login";
-		}
+		session.setAttribute("user", password);
+		return "redirect:/";
 	}
 	
 	@GetMapping("/join")
