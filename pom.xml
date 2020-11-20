@@ -151,8 +151,8 @@
 		<version>6</version>
 		<scope>system</scope>
 		<systemPath>${basedir}/WebContent/WEB-INF/lib/ojdbc6.jar</systemPath>
-	</dependency>   
-	   
+	</dependency>
+	
 	</dependencies>
 </project>
 
