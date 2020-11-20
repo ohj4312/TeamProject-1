@@ -1,5 +1,8 @@
 package com.mycompany.webapp.controller;
 
+import java.io.File;
+import java.util.Date;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
@@ -49,12 +52,19 @@ public class PhotoController {
 		logger.info(photo.getAimageAttach().getOriginalFilename());
 		Member member = (Member) session.getAttribute("member");
 		rphoto.setPwriter(member.getMemail());
-		//photoService.writePhoto(photo, rphoto);
 		
+		if(!member.getMimageAttach().isEmpty()) {
 		
-		
-		
-		
+		//파일 이름 중복 방지를 위한 밀리세컨드 단위의 시간초를 파일 이름 앞에 붙여줌.
+		String saveFilename = new Date().getTime()+"_"+member.getMimageAttach().getOriginalFilename();
+		logger.info(saveFilename);
+		try {
+			//실제 사용자의 요청에 파일을 서버에 저장
+			member.getMimageAttach().transferTo(new File("C:/Temp/upload/"+saveFilename));
+		} catch (Exception e) {} 
+	}
+		photoService.writePhoto(photo, rphoto);
+
 		return "redirect:/photo/list";
 	}
 }
