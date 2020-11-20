@@ -7,7 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class A_photo {
 	//register_photo의 pnumber를 참조하는 것과 동시에 기본키
 	
-	private int pnumber;
+
 	private int anumber;
 	private String aimage;
 	private MultipartFile aimageAttach;
@@ -16,12 +16,7 @@ public class A_photo {
 	private int register_number;
 	
 	
-	public int getPnumber() {
-		return pnumber;
-	}
-	public void setPnumber(int pnumber) {
-		this.pnumber = pnumber;
-	}
+	
 	public int getAnumber() {
 		return anumber;
 	}

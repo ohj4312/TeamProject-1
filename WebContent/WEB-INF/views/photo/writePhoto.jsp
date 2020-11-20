@@ -29,6 +29,9 @@
 
   <!-- Template Main CSS File -->
   <link href="<%=application.getContextPath() %>/resources/css/style.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  
+  
 
   <!-- =======================================================
   * Template Name: Maxim - v2.2.0
@@ -49,7 +52,7 @@
 
     <section id="contact" class="contact mt-3">
       <div class="container" id="firstForm">
-        <form action="forms/contact.php" method="post" role="form">
+        <form action="<%=application.getContextPath()%>/photo/write" method="post" role="form" enctype="multipart/form-data">
 				<div class="row">
 					<div class="col">
 						<h2>사진 올리기</h2>
@@ -100,20 +103,19 @@
 				<div id = "addForm">
 				<div id = "cloneForm" class="row align-self-center" >
 					<div class="col-lg-6 text-center mb-4 fancybox" style=" position: relative; height: 300px;">
-						<div style="background-color:lightslategray;">
-
-							<a href="javascript:addPhoto();" class="item-wrap">
-								<i type="File" class="material-icons" 
-									style="font-size: 7rem;     position: absolute;
-										top: 50%;
-										left: 50%;
-										transform: translate(-50%, -50%);">photo_camera</i>
+						
+							
+							<a href="#" class="item-wrap">
+								<div id = "imgdiv">
+									<label id = "srclabel" for="aimageAttach"> <i class="material-icons "
+										style="font-size: 7rem; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+										photo_camera
+										</i>
+									</label> 
+									<!-- //<input type="file" id="aimage" style="display: none" accept="image/*" onchange="setThumbnail(event);"/> -->
+									<input type="file" id="aimageAttach" name = "aimageAttach" style="display: none"> 
+								</div>
 							</a>
-						</div>
-						<script>
-
-
-						</script>
 					</div>
 
 					<div class="col-lg-6">
@@ -138,15 +140,21 @@
 
 						<div>
 							<div class="form-group">
-								<textarea class="form-control" rows="10" id="comment" name="text"
+								<textarea class="form-control" rows="10" id="comment" name="acontent"
 									placeholder="사진에 대한 설명을 작성해주세요."></textarea>
 							</div>
 						</div>
 					</div>
         </div> 
-
-        
-        
+        <script> 
+							
+							$("#aimageAttach").on('change', function(e){
+							  let elem = e.target;
+							  var src1 = URL.createObjectURL(elem.files[0]);
+							  var $div = $('<img src="'+src1+'" width="100%" height="100%" />');
+							  $("#srclabel").html($div);
+							});
+						 </script>
         
       </div>
       
@@ -167,6 +175,10 @@
 		</div>
 
   </main><!-- End #main -->
+  
+  
+
+
   
   <!-- ======= Footer ======= -->
   <footer id="footer">
@@ -253,7 +265,7 @@
   <script src="<%=application.getContextPath() %>/resources/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/venobox/venobox.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/aos/aos.js"></script>
-
+	
   <!-- Template Main JS File -->
   <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>
 
