@@ -15,7 +15,7 @@ public class BookMarkService {
 	
 	@Resource 
 	private BookMarkDAO bookmarkDAO;
-	
+	 
 	
 	//등 록
 	public void Register(Post_bookmark pb) {

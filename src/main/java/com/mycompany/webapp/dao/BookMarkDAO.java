@@ -19,7 +19,7 @@ public class BookMarkDAO {
 		List<Post_bookmark> list = sst.selectList("mybatis.mapper.bookmark.selectBookMark",bookmark);
 		return list;
 	}
-
+ 
 	public void insertBookMark(Post_bookmark pb) {
 		sst.insert("mybatis.mapper.bookmark.insertBookMark",pb);
 		

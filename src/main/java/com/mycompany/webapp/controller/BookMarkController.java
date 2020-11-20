@@ -57,7 +57,7 @@ public class BookMarkController {
 	public void delBookMark(int pnumber,HttpSession session) {
 		logger.info("실행");
 		
-		service.Delete(pnumber);
+		//service.Delete(pnumber);
 		
 	}
 	
