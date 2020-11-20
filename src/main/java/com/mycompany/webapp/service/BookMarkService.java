@@ -15,11 +15,11 @@ public class BookMarkService {
 	
 	@Resource 
 	private BookMarkDAO bookmarkDAO;
-	
+	 
 	
 	//등 록
-	public void Register(Post_bookmark bookmark) {
-		bookmarkDAO.insertBookMark(bookmark);
+	public void Register(Post_bookmark pb) {
+		bookmarkDAO.insertBookMark(pb);
 		
 	}
 	
@@ -30,11 +30,13 @@ public class BookMarkService {
 		return list;
 	}
 	//삭 제
-	/*public String Delete(int bnumber) {
 	
-		return "";
-	}*/
-	
+	 //public String Delete(int pnumber) {
+		 
+		
+	 
+	// }
+	 
 	//북마크 업데이트 (삭제나 추가시 개수가 줄거나 늘어남)
 	/*public String Update(int bnumber) {
 		

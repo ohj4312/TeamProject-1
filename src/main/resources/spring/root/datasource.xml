@@ -7,9 +7,9 @@
 	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close"> <!-- connection tool을 관리할뿐 연결은 아니고. -->
 		<property name="driverClassName" value="net.sf.log4jdbc.DriverSpy"></property><!-- 여기가 연결을 관리하는 부분이다 --> <!-- oracle.jdbc.OracleDriver 얘를 가지고 연결을 한다는것. -->
 		
-		<property name="url" value="jdbc:log4jdbc:oracle:thin:@localhost:1521:orcl"></property>
+		<property name="url" value="jdbc:log4jdbc:oracle:thin:@106.253.56.122:1521:orcl"></property>
 		
-		<property name="username" value="scott"></property>
+		<property name="username" value="team2"></property>
 		
 		<property name="password" value="kosa12345"></property>
 		

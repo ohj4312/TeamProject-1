@@ -38,6 +38,8 @@ public class MemberController {
 		}else {
 			return "redirect:/member/login";
 		}
+		
+		
 	}
 	
 	@GetMapping("/join")
