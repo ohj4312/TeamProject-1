@@ -96,9 +96,9 @@
                 	function checkFollow(){
 						$.ajax({
 							url:"checkFollow()",
-							data:{follows:follows}, 
+							//data:{follows:follows}, 
 							success:function(data) {
-								$("#follow_check").attr('btn-light','btn-info');
+							//	$("#follow_check").attr('btn-light','btn-info');
 								$("#follow_check").removeClass("btn-light");
 								$("#follow_check").addClass("btn-info");
 							}
