@@ -67,6 +67,8 @@
 		<filter-name>CharacterEncodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>			<!-- 인코딩 부분은 /*로 -->
 	</filter-mapping>
+	
+	
 
 
 	<error-page>			<!-- 웹 애플리케이션 내부니까  /WEB/INF 이렇게 써도된다 원래 브라우저에선 이거 접근 안된다. -->

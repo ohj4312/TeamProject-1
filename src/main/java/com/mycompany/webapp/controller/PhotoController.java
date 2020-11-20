@@ -26,16 +26,24 @@ public class PhotoController {
 		return "photo/photo-detail";
 	}
 	
-	@PostMapping("/writePhoto")
+	@GetMapping("/write")
+	public String writeForm() {
+		
+		return "photo/writePhoto";
+	}
+	
+	@PostMapping("/write")
 	public String writePhoto(A_photo photo, Register_photo rphoto) {
 		logger.info(photo.getAlocation());
 		logger.info(rphoto.getPsize());
 		logger.info(rphoto.getPstyle());
 		logger.info(rphoto.getPtype());
+		logger.info(photo.getAcontent());
+		logger.info(photo.getAimageAttach().getOriginalFilename());
 		
 		
 		
 		
-		return "ㅁㅁㅁ";
+		return "";
 	}
 }
