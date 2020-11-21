@@ -53,7 +53,7 @@
 
     <section id="contact" class="contact mt-3">
       <div class="container" id="firstForm">
-        <form action="<%=application.getContextPath()%>/photo/write" method="post" role="form" enctype="multipart/form-data">
+        <form action="<%=application.getContextPath()%>/photo/write" method="post" role="form" onsubmit="return writePhoto()" enctype="multipart/form-data">
 				<div class="row">
 					<div class="col">
 						<h2>사진 올리기</h2>
@@ -96,13 +96,13 @@
               </select>
           
 
-                <button type="submit" class="btn btn-info">글등록</button>
+                <button type="submit" class="btn btn-info" >글등록</button>
               
               
 				</div>
 				</div>
 				<div id = "addDiv">
-				<div id = "cloneForm" class="row align-self-center" >
+				<div id = "cloneForm" class="row align-self-center" style = "">
           			<div class="col-lg-6 text-center mb-4 fancybox" style=" position: relative; height: 300px; color: #1bac91;">
             
              
