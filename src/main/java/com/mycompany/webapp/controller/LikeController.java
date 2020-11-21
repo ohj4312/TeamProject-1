@@ -40,7 +40,7 @@ public class LikeController {
 
 		model.addAttribute("likelist", likelist);
 
-		return "ahm/getLikePhotolist";
+		return "like/getLikePhotolist";
 	}
 
 	@GetMapping("/photodownload")
