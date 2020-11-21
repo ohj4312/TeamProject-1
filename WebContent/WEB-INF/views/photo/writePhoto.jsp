@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
@@ -29,7 +30,7 @@
 
   <!-- Template Main CSS File -->
   <link href="<%=application.getContextPath() %>/resources/css/style.css" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ 
   
   
 
@@ -100,27 +101,24 @@
               
 				</div>
 				</div>
-				<div id = "addForm">
+				<div id = "addDiv">
 				<div id = "cloneForm" class="row align-self-center" >
-					<div class="col-lg-6 text-center mb-4 fancybox" style=" position: relative; height: 300px;">
-						
-							
-							<a href="#" class="item-wrap">
-								<div id = "imgdiv">
-									<label id = "srclabel" for="aimageAttach"> <i class="material-icons "
-										style="font-size: 7rem; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-										photo_camera
-										</i>
-									</label> 
-									<!-- //<input type="file" id="aimage" style="display: none" accept="image/*" onchange="setThumbnail(event);"/> -->
-									<input type="file" id="aimageAttach" name = "aimageAttach" style="display: none"> 
-								</div>
-							</a>
+          			<div class="col-lg-6 text-center mb-4 fancybox" style=" position: relative; height: 300px; color: #1bac91;">
+            
+             
+	                <input type="file" id="list[0].aimageAttach" name = "list[0].aimageAttach" style="display: none"> 
+	                <label id = "srclabel" for="list[0].aimageAttach" style="width: 100%; height: 100%;"> 
+	                  <i class="material-icons "
+	                  style="font-size: 7rem; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+	                  photo_camera
+	                  </i>
+	                </label> 
+            
 					</div>
 
 					<div class="col-lg-6">
 
-						<select id="homespace" name="alocation" style="height: auto;" class="form-control mb-3">
+						<select id="list[0].alocation" name="list[0].alocation" style="height: auto;" class="form-control mb-3">
 							<option selected>공간(필수)</option>
 							<option value="원룸">원룸</option>
 							<option value="거실">거실</option>
@@ -132,39 +130,76 @@
 							<option value="베란다">베란다</option>
 							<option value="사무공간">사무공간</option>
 							<option value="상업공간">상업공간</option>
-							<option value="가구&소품">가구&소품</option>
+							<option value="가구/소품">가구/소품</option>
 							<option value="현관">현관</option>
-							<option value="외관&기타">외관&기타</option>
+							<option value="외관/기타">외관/기타</option>
 							<option value="제품리뷰">제품리뷰</option>
 						</select>
 
 						<div>
 							<div class="form-group">
-								<textarea class="form-control" rows="10" id="comment" name="acontent"
+								<textarea class="form-control" rows="10" id="list[0].acontent" name="list[0].acontent"
 									placeholder="사진에 대한 설명을 작성해주세요."></textarea>
 							</div>
 						</div>
 					</div>
-        </div> 
-        <script> 
-							
-							$("#aimageAttach").on('change', function(e){
-							  let elem = e.target;
-							  var src1 = URL.createObjectURL(elem.files[0]);
-							  var $div = $('<img src="'+src1+'" width="100%" height="100%" />');
-							  $("#srclabel").html($div);
-							});
-						 </script>
-        
+        		</div> 
+				<c:forEach var="i" begin="1" end="9">
+					<div id = "cloneForm${i }" class="row align-self-center" style = "display:none;">
+          			<div class="col-lg-6 text-center mb-4 fancybox" style=" position: relative; height: 300px; color: #1bac91;">
+            
+             
+	                <input type="file" id="list[${i }].aimageAttach" name = "list[${i }].aimageAttach" style="display: none"> 
+	                <label id = "srclabel" for="list[${i }].aimageAttach" style="width: 100%; height: 100%;"> 
+	                  <i class="material-icons "
+	                  style="font-size: 7rem; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+	                  photo_camera
+	                  </i>
+	                </label> 
+            
+					</div>
+
+					<div class="col-lg-6">
+						
+						<div class = "row mb-3 ml-1 mr-1">
+						<select id="list[${i }].alocation" name="list[${i }].alocation" style="height: auto;" class="col form-control">
+							<option selected>공간(필수)</option>
+							<option value="원룸">원룸</option>
+							<option value="거실">거실</option>
+							<option value="침실">침실</option>
+							<option value="주방">주방</option>
+							<option value="욕실">욕실</option>
+							<option value="아이방">아이방</option>
+							<option value="드레스룸">드레스룸</option>
+							<option value="베란다">베란다</option>
+							<option value="사무공간">사무공간</option>
+							<option value="상업공간">상업공간</option>
+							<option value="가구/소품">가구/소품</option>
+							<option value="현관">현관</option>
+							<option value="외관/기타">외관/기타</option>
+							<option value="제품리뷰">제품리뷰</option>
+						</select>
+						
+						<a type="button" class="btn btn-sm btn-danger col-3" href="javascript:removeform('cloneForm${i}');">삭제하기</a>
+						</div>
+
+						<div>
+							<div class="form-group">
+								<textarea class="form-control" rows="10" id="list[${i }].acontent" name="list[${i }].acontent"
+									placeholder="사진에 대한 설명을 작성해주세요."></textarea>
+							</div>
+						</div>
+					</div>
+        		</div> 
+				</c:forEach>
+		
       </div>
       
       </form>
 			</div>
 			</div>
 			</div>
-			
-	
-    </section><!-- End Contact Section -->
+	</section><!-- End Contact Section -->
 
     <div class="container">
 			<!-- 추가하기 버튼 구현 -->
@@ -175,9 +210,8 @@
 		</div>
 
   </main><!-- End #main -->
-  
-  
 
+	
 
   
   <!-- ======= Footer ======= -->
@@ -257,7 +291,7 @@
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 
   <!-- Vendor JS Files -->
-   <script src="<%=application.getContextPath() %>/resources/vendor/jquery/jquery.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/jquery.easing/jquery.easing.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/php-email-form/validate.js"></script>

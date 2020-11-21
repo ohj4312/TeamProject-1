@@ -213,9 +213,108 @@ function removeTag(removeID) {
   $(removeID1).remove();
 }
 
+$("input:file").on('change', function(e){
+        let elem = e.target;
+		console.log(elem);
+        var src1 = URL.createObjectURL(elem.files[0]);
+        var $div = $('<img src="'+src1+'" width="100%" height="100%" />');
+        // $("#srclabel").html($div);
+        $(elem).next().html($div);
+      });
+      
 function addform(){
-  var $cloneform;
-  $cloneform = $("#cloneForm").clone();
-  $cloneform.find('textarea').val('');
-  $("#addForm").append($cloneform);
+	  var list = $('#addDiv > div[style = "display:none;"]');
+		console.log(list.length);
+	  if(list.length > 0){
+		console.log(list[0]);
+		$(list[0]).attr('style', '');
+	}
 }
+
+function removeform(idnum){
+	
+	//숨기려는 폼의 아이디값 가져오기
+	var idnum = '#'+idnum;
+	
+	//숨기려는 폼의 이미지 태그를 초기화 하기 위해서 해당 부분의 태그 가져오기
+	var label = idnum + ' label';
+	var label1 = $(label);
+	
+	
+	
+	//숨기려는 폼의 텍스트 에리어를 초기화
+	var textarea = idnum + ' textarea';
+	var textarea1 = $(textarea);
+	
+	var filevalue = $(idnum + ' input');
+	console.log(filevalue[0]);
+	//숨기려는 폼의 파일값 초기화
+	$(filevalue[0]).val('');
+	//초기화 하기 위한 값
+	var imagetag = $('<i class="material-icons "'+
+	                  'style="font-size: 7rem; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">'+
+	                  'photo_camera'+
+	                  '</i>');
+
+	
+	//받아온 아이디로 폼 숨기기
+	$(idnum).attr('style', 'display:none;');
+	
+	//해당 폼의 이미지를 초기화
+	$(label1[0]).html(imagetag);
+	$(textarea1[0]).val('');
+	console.log(textarea1[0]);
+	//숨긴 폼을 복사하여 맨마지막 요소로 추가하고 원본은 지우기
+	var cloneform = $(idnum).clone();
+	$(idnum).remove();
+	$("#addDiv").append(cloneform);
+	
+	$("input:file").on('change', function(e){
+        let elem = e.target;
+		console.log(elem);
+        var src1 = URL.createObjectURL(elem.files[0]);
+        var $div = $('<img src="'+src1+'" width="100%" height="100%" />');
+        // $("#srclabel").html($div);
+        $(elem).next().html($div);
+      });
+	
+}
+
+/*function addform(){
+      var $cloneform = $('<div id = "cloneForm" class="row align-self-center" >'+
+      '<div class="col-lg-6 text-center mb-4 fancybox" style=" position: relative; height: 300px; color: #1bac91;">'+
+            '<label id = "srclabel" for="aimageAttach" style="width: 100%; height: 100%;"> <i class="material-icons"'+
+              'style="font-size: 7rem; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">'+
+              'photo_camera'+
+              '</i>'+
+            '</label>'+
+            '<input type="file" id="aimageAttach" name = "aimageAttach" style="display: none">'+  
+      '</div>'+
+      '<div class="col-lg-6">'+
+        '<select id="homespace" name="homespace" style="height: auto;" class="form-control mb-3">'+
+          '<option selected>공간(필수)</option>'+
+          '<option value="0">원룸</option>'+
+          '<option value="1">거실</option>'+
+          '<option value="침실">침실</option>'+
+          '<option value="3">주방</option>'+
+          '<option value="4">욕실</option>'+
+          '<option value="5">아이방</option>'+
+          '<option value="6">드레스룸</option>'+
+          '<option value="7">베란다</option>'+
+          '<option value="7">사무공간</option>'+
+          '<option value="7">상업공간</option>'+
+          '<option value="7">가구&소품</option>'+
+          '<option value="7">현관</option>'+
+          '<option value="7">외관&기타</option>'+
+          '<option value="7">제품리뷰</option>'+
+        '</select>'+
+        '<div>'+
+          '<div class="form-group">'+
+            '<textarea class="form-control" rows="10" id="comment" name="text"'+
+              'placeholder="사진에 대한 설명을 작성해주세요."></textarea>'+
+          '</div>'+
+        '</div>'+
+      '</div>'+
+    '</div>');
+    $("#addForm").append($cloneform);
+    }*/
