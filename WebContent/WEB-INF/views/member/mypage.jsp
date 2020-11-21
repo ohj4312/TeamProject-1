@@ -78,11 +78,26 @@
         				</div>
         				
         				<div class="col-4">
-       						<a href="#">
+       						<a href="javascript:getLikephotolist()">
 								<div><span class="material-icons">favorite_border</span></div>
 								<div><small>좋아요</small></div>
        						</a>
         				</div>
+        				<script type="text/javascript">
+        				
+        				function getLikephotolist(){
+        					$.ajax({
+        						url:"<%=application.getContextPath() %>/like/getLikePhotolist",
+        						
+        						success:function(data){
+        							$("#photoList").html(data);
+        						
+        						}
+        					});
+							
+						}     				       				     				
+        				</script>
+        				
         				
         				<div class="col-4">
        						<a href="#">
@@ -104,7 +119,7 @@
           </div> -->
 
           <div class="col-lg-5">
-        		<div class="contents">
+        		<div id="photoList" class="contents">
         			<section class="post post--cards">
         				<h5><strong>사진</strong></h5>
                 <div id="mypagephoto" style="border:1px dashed #dbdbdb; width:100%;  text-align: center; ">

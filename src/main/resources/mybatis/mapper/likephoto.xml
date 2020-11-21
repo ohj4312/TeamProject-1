@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mybatis.mapper.likephoto">
-<select id="likePhotocountAll" resultType="int">
-select count(*) from member
-where memail='h' 
+
+<select id="likePhotoAll" parameterType="String" resultType="like" >
+SELECT  a.aimage from a_photo a 
+where a.register_number in(
+select r.pnumber From register_photo r where r.pnumber in (
+SELECT p.pnumber from post_like p where p.memail=#{memail}))
 </select>
 
 </mapper>
