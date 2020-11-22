@@ -281,31 +281,72 @@ function removeform(idnum){
 }
 
 function writePhoto(){
+	var result = 0;
+			if($('#psize').val() == '평수'){
+						$('#psize').attr('style', 'border-color: red;');
+					}else{
+						$('#psize').attr('style', 'height: auto;');
+					}
+					
+					if($('#ptype').val() == '주거형태'){
+						$('#ptype').attr('style', 'border-color: red;');
+					}else{
+						$('#ptype').attr('style', 'height: auto;');
+					}
+					
+					if($('#pstyle').val() == '스타일'){
+						$('#pstyle').attr('style', 'border-color: red;');
+					}else{
+						$('#pstyle').attr('style', 'height: auto;');
+					}
+					
+					
+			if($('#psize').val() == '평수' || $('#ptype').val() == '주거형태' || $('#pstyle').val() == '스타일' ){
+					
+					
+					result++;
+				}
+				
+				
             var list = $('#addDiv > div[style = ""]');
 			for(var i = 0; i < list.length; i++){
 				//아이디 값 받아오기
 				var idkey = '#' + $(list[i]).attr('id');
-				console.log(idkey);
-				
+
 				//아이디 값을 이용하여 텍스트 에리어 값 가져오기
 				var textarea = $(idkey + ' textarea');
 				var checktxt = $(textarea[0]).val();
-				console.log(checktxt);
-				
+
 				//아이디 값을 이용하여 이미지 소스 가져오기
 				var filevalue = $(idkey + ' input');
 				var checkfile = $(filevalue[0]).val();
-				console.log(checkfile);
-				
+
 				//아이디 값을 이용하여 공간을 잘 선택했는지 가져오기
 				var selectvalue = $(idkey + ' select');
 				var checkselect = $(selectvalue[0]).val();
-				console.log(checkselect);
-				
+
+				if(checktxt.trim() == ''){
+						$(textarea).attr('style', 'border-color: red;');
+					}else{
+						$(textarea).attr('style', '');
+					}
+					
+					if(checkselect == '공간(필수)'){
+						$(selectvalue).attr('style', 'border-color: red;');
+					}else{
+						$(selectvalue).attr('style', 'height: auto;');
+					}
+					
+					
 				if(checktxt.trim() == '' || checkfile.trim() == '' || checkselect == '공간(필수)' ){
+					
+					result++;
+				}
+			}
+			
+			if(result > 0){
 					alert("값을 제대로 입력해주세요.");
 					return false;
-				}
 			}
 			return true;
             
