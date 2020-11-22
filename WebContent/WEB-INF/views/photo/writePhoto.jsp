@@ -61,7 +61,7 @@
 				</div>
 				<div class="row">
 					<div class="form-group form-inline">
-							<select id="home_select1" name="psize" class="form-control mr-2 ml-2"
+							<select id="psize" name="psize" class="form-control mr-2 ml-2"
 								style="height: auto;">
 								<option selected>평수</option>
 								<option value="10평 미만">10평 미만</option>
@@ -71,7 +71,7 @@
 								<option value="40평대">40평대</option>
 								<option value="50평 이상">50평 이상</option>
 							</select>
-							<select id="home_select2" name="ptype" class="form-control mr-2 ml-2"
+							<select id="ptype" name="ptype" class="form-control mr-2 ml-2"
 								style="height: auto;">
 								<option selected>주거형태</option>
 								<option value="원룸&오피스텔">원룸&오피스텔</option>
@@ -82,7 +82,7 @@
 								<option value="상업공간">상업공간</option>
 								<option value="기타">기타</option>
 							</select>
-							<select id="home_select3" name="pstyle" class="form-control mr-2 ml-2"
+							<select id="pstyle" name="pstyle" class="form-control mr-2 ml-2"
 								style="height: auto;">
 								<option selected>스타일</option>
 								<option value="모던">모던</option>
