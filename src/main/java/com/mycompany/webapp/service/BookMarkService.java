@@ -24,18 +24,19 @@ public class BookMarkService {
 	}
 	
 	//조 회
-	public List<Post_bookmark> Inquiry(Post_bookmark bookmark) {
-		List<Post_bookmark> list = bookmarkDAO.selectBookMark(bookmark);
+	public List<Post_bookmark> Inquiry(Post_bookmark pb) {
+		List<Post_bookmark> list = bookmarkDAO.selectBookMark(pb);
 		
 		return list;
 	}
 	//삭 제
 	
-	 //public String Delete(int pnumber) {
+	public void Delete(Post_bookmark pb) {
 		 
+		bookmarkDAO.deleteBookMark(pb);
 		
 	 
-	// }
+	}
 	 
 	//북마크 업데이트 (삭제나 추가시 개수가 줄거나 늘어남)
 	/*public String Update(int bnumber) {

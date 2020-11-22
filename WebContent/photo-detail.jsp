@@ -92,21 +92,18 @@
             			$("#bookmark").html("aa");
             		}
             		$.ajax({
-            			url : "<%=application.getContextPath()%>/BK/delBookMark",
+            			url : "<%=application.getContextPath()%>/BK/regBookMark",
                 		data: {pnumber:pnumber},
                 		method:"get",
                 		success:function(data){
                 			$("#bookmark").html(data);
                 		}
-            		});
-            		
-            		
+            		});		
             	}
             </script>
             <div id="bookmark"></div>
             
-            
-           
+      
 			
 
             	
@@ -126,7 +123,7 @@
           </div>
         </div>
       </div>
-      </div>
+    
 
 
 
