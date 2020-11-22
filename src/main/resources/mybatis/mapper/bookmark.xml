@@ -15,4 +15,5 @@
 	<delete id="deleteBookMark" parameterType="bookmark">
 		delete from POST_BOOKMARK where pnumber=#{pnumber}
 	</delete>
+
 </mapper>

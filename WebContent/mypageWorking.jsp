@@ -64,7 +64,7 @@
         				<div class="user-profile__profile-image" style="text-align: center;">
                   <img class="rounded-circle mt-3" width="53%"; height="53%"; src="<%=application.getContextPath() %>/resources/img/person_1.jpg">
         					<div class="profile-info__name mt-2">
-        						<span>${member.mnickname}</span>
+        						<span>힌아</span>
         						<hr/>
         					</div>
         				</div>
@@ -87,17 +87,15 @@
         				
         				function getLikephotolist(){
         					$.ajax({
-        						url:"<%=application.getContextPath() %>/like/getLikePhotolist",
-        						
+        						url:"photo2/getLikePhotolist",
         						success:function(data){
-        							$("#photoList").html(data);
+        							$("#mypageList").html(data);
         						
         						}
         					});
 							
 						}     				       				     				
         				</script>
-        				
         				
         				<div class="col-4">
        						<a href="#">
@@ -119,16 +117,8 @@
           </div> -->
 
           <div class="col-lg-5">
-        		<div id="photoList" class="contents">
-        			<section class="post post--cards">
-        				<h5><strong>사진</strong></h5>
-                <div id="mypagephoto" style="border:1px dashed #dbdbdb; width:100%;  text-align: center; ">
-                    <div class="row justify-content-center " style="margin-top: 30%;">
-                          <span class="material-icons ">add </span>
-                          <a class="post__upload" href="#"> 첫 번째 사진을 올려보세요</a>
-                    </div>
-                </div>  
-        			</section>
+        		<div  id="mypageList" class="contents">
+        			
         		</div>
         	</div> 
 
@@ -136,7 +126,6 @@
 
         </div>
 
-      </div>
       </div>
     </section><!-- End Contact Section -->
 
