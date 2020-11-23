@@ -81,28 +81,65 @@
               <span class="material-icons">favorite_border</span></button>
            <!--  <button  type="button" class="btn btn-light" style="width:120px;  box-shadow:none;">
               <span class="material-icons">bookmark_border</span></button> -->
-              <a type="button" class="btn btn-light" href="javascript:RegBookMark(2)" style="width:120px; box-shadow:none;">
+              <a type="button" id="RegBookMark" class="btn btn-light" href="javascript:RegBookMark(4)" style="width:120px; box-shadow:none;" onclick="">
               <span class="material-icons">bookmark_border</span>
               </a>
-           
             
+              
+              <script type="text/javascript">
+              	function CheckBookMark(pnumber){
+              		$.ajax({
+              			url: "<%=application.getContextPath()%>/BK/CheckBookMark",
+              			data : {pnumber : pnumber},
+              			method: "get",
+              			success: function(data){
+              				if(data.result=="success"){
+              					$("#RegBookMark").attr("class","btn btn-light");
+              					$("#RegBookMark").attr("onclick","RegBookMark(pnumber)");
+              				}else{
+              					$("#RegBookMark").attr("class","btn btn-primary");
+              					$("#RegBookMark").attr("onclick","CancelBookMark(pnumber)");
+              				}
+              			}
+              		});
+              	}
+              </script>
              
-            <script type="text/javascript">
+             
+              <script type="text/javascript">
             	function RegBookMark(pnumber){
-            		if(pnumber == 2){
+            		if(pnumber==5){
             			$("#bookmark").html("이미 존재하는 pnumber입니다.");
+            			return;
             		}
             		$.ajax({
             			url : "<%=application.getContextPath()%>/BK/regBookMark",
                 		data: {pnumber:pnumber},
                 		method:"get",
                 		success:function(data){
-                			$("#bookmark").html(data);
+                			if(data.result=="success"){
+                				CheckBookMark(pnumber);
+                			}
                 		}
             		});		
             	}
+              </script>
+            
+            <script type="text/javascript">
+            	function CancelBookMark(pnumber){
+            		$.ajax({
+                		url:"<%=application.getContextPath()%>/BK/CancelBookMark",
+                		data : {pnumber:pnumber},
+                		method:"get",
+                		success:function(data){
+                			if(data.result == "success"){
+                				CheckBookMark(pnumber);
+                			}
+                		}
+            		});	
+            	}
+            	
             </script>
-            <div id="bookmark"></div>
             
       
 			

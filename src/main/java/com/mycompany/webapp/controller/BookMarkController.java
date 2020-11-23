@@ -1,13 +1,17 @@
 package com.mycompany.webapp.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -52,7 +56,7 @@ public class BookMarkController {
 	
 	//photo-detail에서 요청 매핑을 받았을때  //여기가 photo-detail에서 북마크를 눌렀을때 요청매핑에 의해 컨트롤러로 넘어옴.
 	@GetMapping("/regBookMark")
-	public String regBookMark(int pnumber, HttpSession session,Member member) { 
+	public void regBookMark(int pnumber,HttpServletResponse response, HttpSession session,Member member) throws Exception { 
 		logger.info("실행");
 		
 		String memail = (String) session.getAttribute("memail");
@@ -66,9 +70,85 @@ public class BookMarkController {
 		
 		service.Register(pb);
 		
-		return "redirect:/views/photo-detail";
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("result", "success");
+		String json = jsonObject.toString();
+		// 응답보내기
+		PrintWriter out = response.getWriter();
+		response.setContentType("application/json;charset=utf-8");
+		out.println(json);
+		out.flush();
+		out.close();
+		
+		
 	}
 	//웹에 애초에 들어갈때 
+	
+	@GetMapping("/CancelBookMark")
+	public void BookMarkCancel(int pnumber,HttpSession session, HttpServletResponse response) throws Exception {
+		Member member = (Member) session.getAttribute("member");
+		String memail = member.getMemail();
+		
+		Post_bookmark pb = new Post_bookmark();
+		pb.setMemail(memail);
+		pb.setPnumber(pnumber);
+		
+		service.CancelBookMark(pb);
+		
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("result", "success");
+		String json = jsonObject.toString();
+		// 응답보내기
+		PrintWriter out = response.getWriter();
+		response.setContentType("application/json;charset=utf-8");
+		out.println(json);
+		out.flush();
+		out.close();
+	}
+	
+	
+	@GetMapping("/CheckBookMark")
+	public void CheckBookMark(int pnumber, HttpSession session, HttpServletResponse response ) throws Exception {
+		//Post_bookmark pb = (Post_bookmark) session.getAttribute("memail");
+		/*String memail = (String) session.getAttribute("memail");
+		if(memail==null) {
+			memail = "test1@naver.com";
+		}*/
+		Member member = (Member) session.getAttribute("member");
+		String memail = "test1@naver.com";
+		
+		Post_bookmark pb = new Post_bookmark();
+		pb.setPnumber(pnumber);
+		pb.setMemail(memail);
+		
+		JSONObject jsonObject = new JSONObject();
+		
+		int check = service.CheckBookMark(pb);
+		
+		if(check ==0) {
+			jsonObject.put("result", "success");
+			String json = jsonObject.toString();
+			// 응답보내기
+			PrintWriter out = response.getWriter();
+			response.setContentType("application/json;charset=utf-8");
+			out.println(json);
+			out.flush();
+			out.close();
+		}else {
+			jsonObject.put("result", "failure");
+			String json = jsonObject.toString();
+			// 응답보내기
+			PrintWriter out = response.getWriter();
+			response.setContentType("application/json;charset=utf-8");
+			out.println(json);
+			out.flush();
+			out.close();
+		}
+	}
+	
+	
+	
+	
 	
 	//조회를 위한 리스트.
 	@GetMapping("/getBookMarkList")
@@ -87,9 +167,13 @@ public class BookMarkController {
 		return "member/bookmark";
 	}
 	 
+	
+
+	
+	
 	//삭제
 	@GetMapping("/delBookMark")
-	public void delBookMark(int pnumber,HttpSession session) {
+	public void delBookMark(int pnumber,HttpSession session,HttpServletResponse response) {
 		logger.info("실행");
 		Post_bookmark pb = new Post_bookmark();
 		
