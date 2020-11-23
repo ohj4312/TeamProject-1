@@ -12,7 +12,7 @@
 		select bnumber , pnumber, memail from POST_BOOKMARK order by bnumber desc
 	</select>
 	
-	<!--  <delete id="deleteBookMark" parameterType="bookmark">
+	<delete id="deleteBookMark" parameterType="bookmark">
 		delete from POST_BOOKMARK where bnumber=#{bnumber}
-	</delete>-->
+	</delete>
 </mapper>

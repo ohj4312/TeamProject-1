@@ -71,11 +71,28 @@
         			</div>
         		<div class="row" style="text-align:center">
         				<div class="col-4 col">
-       						<a href="#">
-								<div><span class="material-icons">bookmark_border</span></div>
-								<div><small>스크랩북</small></div>
+       						
+       						<a class="btn btn-info" href="javascript:bookmarkList(1)">
+       							<div><span class="material-icons">bookmark_border</span></div>
+       							<div><small>스크랩북</small></div>
        						</a>
+						<script type="text/javascript">
+							function bookmarkList(pnumber) {
+								if(!pnumber){		//값을 안줬으면.. 값을 애초에 넘길때 그럼 false니까  1로 설정해준다고.
+									pnumber=1;
+								}
+								$.ajax({
+									url:"<%=application.getContextPath()%>/BK/",
+									data: {pnumber:pnumber},
+									success:function(data) {
+										$("#board_result").html(data);		//이말이 곧 HTML 조각을 넣어준다는거야.
+									}
+								});
+							}
+						</script>
         				</div>
+        				
+        				
         				
         				<div class="col-4">
        						<a href="#">
@@ -96,6 +113,8 @@
         			
         		</div>
           </div>
+          
+          
           
          
 

@@ -1,5 +1,8 @@
 package com.mycompany.webapp.controller;
 
+import java.io.File;
+import java.util.Date;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
@@ -30,6 +33,7 @@ public class PhotoController {
 	
 	@GetMapping("/detail")
 	public String photoDetail() {
+		
 		return "photo/photo-detail";
 	}
 	
@@ -40,21 +44,34 @@ public class PhotoController {
 	}
 	
 	@PostMapping("/write")
-	public String writePhoto(A_photo photo, Register_photo rphoto, HttpSession session) {
-		logger.info(photo.getAlocation());
+	public String writePhoto(Register_photo rphoto, HttpSession session) {
 		logger.info(rphoto.getPsize());
 		logger.info(rphoto.getPstyle());
 		logger.info(rphoto.getPtype());
-		logger.info(photo.getAcontent());
-		logger.info(photo.getAimageAttach().getOriginalFilename());
-		Member member = (Member) session.getAttribute("member");
+		
+		for(A_photo photo: rphoto.getList()) {
+			if(!photo.getAimageAttach().isEmpty()) {
+				logger.info(photo.getAlocation());
+				logger.info(photo.getAcontent());
+				logger.info(photo.getAimageAttach().getOriginalFilename());
+			}
+		}	
+		/*Member member = (Member) session.getAttribute("member");
 		rphoto.setPwriter(member.getMemail());
-		//photoService.writePhoto(photo, rphoto);
 		
+		if(!member.getMimageAttach().isEmpty()) {
 		
-		
-		
-		
-		return "redirect:/photo/list";
+		//파일 이름 중복 방지를 위한 밀리세컨드 단위의 시간초를 파일 이름 앞에 붙여줌.
+		String saveFilename = new Date().getTime()+"_"+member.getMimageAttach().getOriginalFilename();
+		logger.info(saveFilename);
+		try {
+			//실제 사용자의 요청에 파일을 서버에 저장
+			member.getMimageAttach().transferTo(new File("C:/Temp/upload/"+saveFilename));
+		} catch (Exception e) {} 
+		}
+		photoService.writePhoto(photo, rphoto);*/
+
+		//return "redirect:/photo/list";
+		return "";
 	}
 }
