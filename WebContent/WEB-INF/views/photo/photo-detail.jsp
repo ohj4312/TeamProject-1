@@ -124,9 +124,54 @@
 						}
 										
 				</script>
-            <button type="button" class="btn btn-light" style="width:120px;  box-shadow:none;">
-              <span class="material-icons">bookmark_border</span></button>
-
+            <button id="RegBookMark"type="button" class="btn btn-light" style="width:120px; box-shadow:none;" onclick="">
+              <span id="RegBookMark"class="material-icons">bookmark_border</span></button>        
+			
+              <script type="text/javascript">
+              	function CheckBookMark(){
+              		$.ajax({
+              			url: "<%=application.getContextPath()%>/BK/CheckBookMark",
+              			
+              			method: "get",
+              			success: function(data){
+              				if(data.result=="success"){
+              					$("#RegBookMark").attr("class","btn btn-light");
+              					$("#RegBookMark").attr("onclick","RegBookMark()");
+              				}else{
+              					$("#RegBookMark").attr("class","btn btn-primary");
+              					$("#RegBookMark").attr("onclick","CancelBookMark()");
+              				}
+              			}
+              		});
+              	}
+              
+            	function RegBookMark(){
+            		
+            		$.ajax({
+            			url : "<%=application.getContextPath()%>/BK/regBookMark",
+                		method:"get",
+                		success:function(data){
+                			if(data.result=="success"){
+                				CheckBookMark();
+                			}
+                		}
+            		});		
+            	}
+            
+            	function CancelBookMark(){
+            		$.ajax({
+                		url:"<%=application.getContextPath()%>/BK/CancelBookMark",
+                		
+                		method:"get",
+                		success:function(data){
+                			if(data.result == "success"){
+                				CheckBookMark();
+                			}
+                		}
+            		});	
+            	}
+            	
+            </script>
 
             
             <div class="card-detail-sidebar__content">
@@ -291,7 +336,12 @@
 		 likepushCheck();
 	 			});
   </script>
-
+  
+   <script type="text/javascript">
+  $(function(){
+		 CheckBookMark();
+	 			});
+  </script>	
 </body>
 
 </html>

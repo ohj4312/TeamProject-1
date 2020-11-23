@@ -56,13 +56,14 @@ public class BookMarkController {
 	
 	//photo-detail에서 요청 매핑을 받았을때  //여기가 photo-detail에서 북마크를 눌렀을때 요청매핑에 의해 컨트롤러로 넘어옴.
 	@GetMapping("/regBookMark")
-	public void regBookMark(int pnumber,HttpServletResponse response, HttpSession session,Member member) throws Exception { 
+	public void regBookMark(int pnumber,HttpServletResponse response, HttpSession session) throws Exception { 
 		logger.info("실행");
 		
-		String memail = (String) session.getAttribute("memail");
-		if(memail == null) {
-			memail = "test1@naver.com";
-		}
+		//형모 것 참조
+		Member member = (Member) session.getAttribute("member");
+		String memail=member.getMemail();
+		
+		pnumber =34;
 		
 		Post_bookmark pb = new Post_bookmark();
 		pb.setMemail(memail);
@@ -86,9 +87,10 @@ public class BookMarkController {
 	
 	@GetMapping("/CancelBookMark")
 	public void BookMarkCancel(int pnumber,HttpSession session, HttpServletResponse response) throws Exception {
+		
 		Member member = (Member) session.getAttribute("member");
 		String memail = member.getMemail();
-		
+		pnumber =34;
 		Post_bookmark pb = new Post_bookmark();
 		pb.setMemail(memail);
 		pb.setPnumber(pnumber);
@@ -109,14 +111,10 @@ public class BookMarkController {
 	
 	@GetMapping("/CheckBookMark")
 	public void CheckBookMark(int pnumber, HttpSession session, HttpServletResponse response ) throws Exception {
-		//Post_bookmark pb = (Post_bookmark) session.getAttribute("memail");
-		/*String memail = (String) session.getAttribute("memail");
-		if(memail==null) {
-			memail = "test1@naver.com";
-		}*/
-		Member member = (Member) session.getAttribute("member");
-		String memail = "test1@naver.com";
 		
+		Member member = (Member) session.getAttribute("member");
+		String memail= member.getMemail();
+		pnumber =34;
 		Post_bookmark pb = new Post_bookmark();
 		pb.setPnumber(pnumber);
 		pb.setMemail(memail);
