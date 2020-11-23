@@ -9,6 +9,7 @@ public class Post_like {
 	private int pnumber;
 	private int likenumber;
 	private String aimage;
+	
 
 
 	public String getAimage() {

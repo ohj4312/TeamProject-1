@@ -9,4 +9,14 @@ select r.pnumber From register_photo r where r.pnumber in (
 SELECT p.pnumber from post_like p where p.memail=#{memail}))
 </select>
 
+<insert id="likePhotoInsert" parameterType="like">
+INSERT into post_like(likenumber, memail, pnumber)
+VALUES(SEQ_LIKENUMBER.nextval,#{memail},#{pnumber})
+</insert>
+<select id="likepushCheck" parameterType="like" resultType="int">
+select count(*) from post_like where memail=#{memail} and pnumber=#{pnumber}
+</select>
+<delete id="likePhotoDelete" parameterType="like">
+delete from post_like where memail=#{memail} and pnumber=#{pnumber}
+</delete>
 </mapper>
