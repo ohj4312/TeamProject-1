@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
@@ -80,7 +81,7 @@
               <span class="material-icons">favorite_border</span></button>
            <!--  <button  type="button" class="btn btn-light" style="width:120px;  box-shadow:none;">
               <span class="material-icons">bookmark_border</span></button> -->
-              <a type="button" class="btn btn-light" href="javascript:RegBookMark(1)" style="width:120px; box-shadow:none;">
+              <a type="button" class="btn btn-light" href="javascript:RegBookMark(2)" style="width:120px; box-shadow:none;">
               <span class="material-icons">bookmark_border</span>
               </a>
            
@@ -88,25 +89,22 @@
              
             <script type="text/javascript">
             	function RegBookMark(pnumber){
-            		if(!pnumber){
-            			$("#bookmark").html("aa");
+            		if(pnumber == 2){
+            			$("#bookmark").html("이미 존재하는 pnumber입니다.");
             		}
             		$.ajax({
-            			url : "<%=application.getContextPath()%>/BK/delBookMark",
+            			url : "<%=application.getContextPath()%>/BK/regBookMark",
                 		data: {pnumber:pnumber},
                 		method:"get",
                 		success:function(data){
                 			$("#bookmark").html(data);
                 		}
-            		});
-            		
-            		
+            		});		
             	}
             </script>
             <div id="bookmark"></div>
             
-            
-           
+      
 			
 
             	
@@ -126,7 +124,7 @@
           </div>
         </div>
       </div>
-      </div>
+    
 
 
 
@@ -274,4 +272,4 @@
 
 </body>
 
-</html>
+
