@@ -53,7 +53,10 @@ public class PhotoService {
 			
 		
 		}
-		return null;
+		Register_photo photo = photoDAO.selectRegPhoto(pnumber);
+		photo.setList(aphotos);
+		
+		return photo;
 	}
 
 

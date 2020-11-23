@@ -45,4 +45,9 @@ public class PhotoDAO {
 		// TODO Auto-generated method stub
 		return sst.selectList("mybatis.mapper.photo.selectAphotoList" , pnumber);
 	}
+
+	public Register_photo selectRegPhoto(int pnumber) {
+		// TODO Auto-generated method stub
+		return sst.selectOne("mybatis.mapper.photo.selectRegPhoto" , pnumber);
+	}
 }

@@ -52,7 +52,7 @@
       <div class="container mt-5">
         <div class="row">
           <div class="col-md-8" data-aos="fade-up">
-            <h2>40평대 | 모던스타일 | 아파트</h2>
+            <h2>${photo.psize} | ${photo.ptype} | ${photo.pstyle}</h2>
             
           </div>
         </div>
@@ -67,11 +67,11 @@
 
            <img src="resources/images/photo2.jpg" alt="Image" class="img-fluid">
          </div> -->
-
+			
           <div class="owl-carousel portfolio-details-carousel col-md-8">
-            <img src="assets/img/portfolio/portfolio-details-1.jpg" class="img-fluid" alt="">
-            <img src="assets/img/portfolio/portfolio-details-2.jpg" class="img-fluid" alt="">
-            <img src="assets/img/portfolio/portfolio-details-3.jpg" class="img-fluid" alt="">
+          	<c:forEach var="photo" items="${photo.list}">
+          		<img src="photodownload?fileName=${photo.aimage}" class="img-fluid" alt="">
+			</c:forEach>
           </div>
 
           <div id="head" class="col-md-4">
@@ -134,7 +134,7 @@
                 <div class="card-detail-writer__user mt-3">
                   <a class="card-detail-writer__link" href="#">
                     <img class="rounded-circle" style="width:60px; height:60px;" src="resources/images/photo7.jpg" />
-                    <span class="card-detail-writer__name">KWJ</span>
+                    <span class="card-detail-writer__name">${photo.mnickname}</span>
                   </a>
                   <a href="#" class="btn btn-info btn-sm" role="button">팔로우</a>
                 </div>
