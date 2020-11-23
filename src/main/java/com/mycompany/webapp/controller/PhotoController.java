@@ -47,8 +47,15 @@ public class PhotoController {
 	}
 	
 	@GetMapping("/detail")
-	public String photoDetail() {
-		
+	public String photoDetail(int pnumber, Model model) {
+		logger.info(String.valueOf(pnumber));
+		Register_photo photo = photoService.selectPhoto(pnumber);
+		logger.info(photo.getPsize());
+		logger.info(photo.getPstyle());
+		logger.info(photo.getPtype());
+		logger.info(photo.getPwriter());
+		logger.info(photo.getFirst_image());
+		model.addAttribute("photo", photo);
 		return "photo/photo-detail";
 	}
 	
@@ -74,10 +81,11 @@ public class PhotoController {
 			if(!photo.getAimageAttach().isEmpty()) {
 				//파일 오리지널 이름 aphot에 set
 				logger.info(photo.getAimageAttach().getOriginalFilename());
-				photo.setAimage(photo.getAimageAttach().getOriginalFilename());
+				
 				
 				//파일 이름 중복 방지를 위한 밀리세컨드 단위의 시간초를 파일 이름 앞에 붙여줌.
 				String saveFilename = new Date().getTime()+"_"+photo.getAimageAttach().getOriginalFilename();
+				photo.setAimage(saveFilename);
 				if(savefirst == 0) {
 					rphoto.setFirst_image(saveFilename);
 				}

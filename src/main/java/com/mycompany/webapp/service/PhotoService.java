@@ -42,5 +42,19 @@ public class PhotoService {
 		return photoDAO.getPhotoList();
 	}
 
+	public Register_photo selectPhoto(int pnumber) {
+		List<A_photo> aphotos = photoDAO.selectAphotoList(pnumber);
+		for(A_photo photo: aphotos) {
+			logger.info(photo.getAcontent());
+			logger.info(photo.getAimage());
+			logger.info(photo.getAlocation());
+			logger.info(String.valueOf(photo.getAnumber()));
+			logger.info(String.valueOf(photo.getRegister_number()));
+			
+		
+		}
+		return null;
+	}
+
 
 }
