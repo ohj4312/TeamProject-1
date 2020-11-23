@@ -13,7 +13,7 @@ import com.mycompany.webapp.dto.Post_bookmark;
 @Repository
 public class BookMarkDAO {
 
-	@Resource
+	@Resource 
 	private SqlSessionTemplate sst;
 	
 	public List<Post_bookmark> selectBookMark(Post_bookmark pb) {
