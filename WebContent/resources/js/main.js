@@ -224,10 +224,13 @@ $("input:file").on('change', function(e){
       
 function addform(){
 	  var list = $('#addDiv > div[style = "display:none;"]');
-
 	  if(list.length > 0){
 
 		$(list[0]).attr('style', '');
+	}
+	
+	if(list.length == 0){
+		alert("사진은 10개까지만 등록 가능합니다.");
 	}
 }
 
@@ -344,10 +347,9 @@ function writePhoto(){
 				}
 			}
 			
-			if(result > 0){
-					alert("값을 제대로 입력해주세요.");
-					return false;
-			}
+			
+			
+			
 			return true;
             
         }

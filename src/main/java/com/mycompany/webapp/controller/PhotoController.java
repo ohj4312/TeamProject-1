@@ -45,33 +45,39 @@ public class PhotoController {
 	
 	@PostMapping("/write")
 	public String writePhoto(Register_photo rphoto, HttpSession session) {
-		logger.info(rphoto.getPsize());
-		logger.info(rphoto.getPstyle());
-		logger.info(rphoto.getPtype());
 		
-		for(A_photo photo: rphoto.getList()) {
-			if(!photo.getAimageAttach().isEmpty()) {
-				logger.info(photo.getAlocation());
-				logger.info(photo.getAcontent());
-				logger.info(photo.getAimageAttach().getOriginalFilename());
-			}
-		}	
-		/*Member member = (Member) session.getAttribute("member");
+		//현재 로그인 이메일 가져오기
+		Member member = (Member) session.getAttribute("member");
+		
+		//이메일 정보 set
 		rphoto.setPwriter(member.getMemail());
 		
-		if(!member.getMimageAttach().isEmpty()) {
 		
-		//파일 이름 중복 방지를 위한 밀리세컨드 단위의 시간초를 파일 이름 앞에 붙여줌.
-		String saveFilename = new Date().getTime()+"_"+member.getMimageAttach().getOriginalFilename();
-		logger.info(saveFilename);
-		try {
-			//실제 사용자의 요청에 파일을 서버에 저장
-			member.getMimageAttach().transferTo(new File("C:/Temp/upload/"+saveFilename));
-		} catch (Exception e) {} 
-		}
-		photoService.writePhoto(photo, rphoto);*/
+		//리스트로 받아온 aphoto에 이미지 업로드
+		for(A_photo photo: rphoto.getList()) {
+			if(!photo.getAimageAttach().isEmpty()) {
+				//파일 오리지널 이름 aphot에 set
+				logger.info(photo.getAimageAttach().getOriginalFilename());
+				photo.setAimage(photo.getAimageAttach().getOriginalFilename());
+				
+				//파일 이름 중복 방지를 위한 밀리세컨드 단위의 시간초를 파일 이름 앞에 붙여줌.
+				String saveFilename = new Date().getTime()+"_"+photo.getAimageAttach().getOriginalFilename();
+				logger.info(saveFilename);
+				try {
+					//실제 사용자의 요청에 파일을 서버에 저장
+					photo.getAimageAttach().transferTo(new File("C:/Temp/upload/"+saveFilename));
+				} catch (Exception e) {} 
+				}
+			}
+		
+		//두개의 테이블에 insert하기 위한 service 요청
+		photoService.writePhoto(rphoto);
+		
+		
+		
+		
 
-		//return "redirect:/photo/list";
-		return "";
+		return "redirect:/photo/list";
+
 	}
 }
