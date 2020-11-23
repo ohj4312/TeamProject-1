@@ -1,3 +1,4 @@
+
 package com.mycompany.webapp.dao;
 
 import java.util.List;
@@ -15,8 +16,8 @@ public class BookMarkDAO {
 	@Resource
 	private SqlSessionTemplate sst;
 	
-	public List<Post_bookmark> selectBookMark(Post_bookmark bookmark) {
-		List<Post_bookmark> list = sst.selectList("mybatis.mapper.bookmark.selectBookMark",bookmark);
+	public List<Post_bookmark> selectBookMark(Post_bookmark pb) {
+		List<Post_bookmark> list = sst.selectList("mybatis.mapper.bookmark.selectBookMark",pb);
 		return list;
 	}
  
@@ -26,5 +27,12 @@ public class BookMarkDAO {
 	}
 
 	//delete 부분.
+	public void deleteBookMark(Post_bookmark pb) {
+		
+		sst.delete("mybatis.mapper.bookmark.deleteBookMark",pb);
+	}
 	
 }
+
+
+
