@@ -145,20 +145,6 @@
           </div>
         </div>
       </div>
-      
-
-	  <a class="btn btn-primary btn-sm" href="<%=application.getContextPath()%>/BK/getBookMarkList">리스트</a>
-	  <c:forEach var="pb" items="${list}">
-				<!-- list는 컨트롤러가 제공해야함. -->
-				<tr>
-					<!-- var "board"에다 저장. -->
-					<td>${pb.bnumber}</td>
-					<td>${pb.pnumber}</td>
-					<td>${pb.memail}</td>
- 
-				</tr>
-			</c:forEach>
-
 
 		</section>
 
