@@ -15,4 +15,12 @@
 	<delete id="deleteBookMark" parameterType="bookmark">
 		delete from POST_BOOKMARK where pnumber=#{pnumber}
 	</delete>
+	
+	<select id="CheckBookMark" parameterType="bookmark" resultType="int">
+		select count(*) from POST_BOOKMARK where memail=#{memail} and pnumber=#{pnumber}
+	</select>
+	
+	<delete id="CancelBookMark" parameterType="bookmark">
+		delete from POST_BOOKMARK where memail = #{memail} and pnumber=${pnumber}
+	</delete>
 </mapper>

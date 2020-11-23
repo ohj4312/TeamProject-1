@@ -31,6 +31,16 @@ public class BookMarkDAO {
 		
 		sst.delete("mybatis.mapper.bookmark.deleteBookMark",pb);
 	}
+
+	public int CheckBookMark(Post_bookmark pb) {
+		int check = sst.selectOne("mybatis.mapper.bookmark.CheckBookMark",pb);
+		return check;
+	}
+
+	public int CancelBookMark(Post_bookmark pb) {
+		int row = sst.delete("mybatis.mapper.bookmark.CancelBookMark",pb);
+		return row; 
+	}
 	
 }
 
