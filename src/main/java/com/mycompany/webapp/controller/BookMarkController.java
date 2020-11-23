@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.mycompany.webapp.dto.A_photo;
 import com.mycompany.webapp.dto.Member;
 import com.mycompany.webapp.dto.Post_bookmark;
+import com.mycompany.webapp.dto.Register_photo;
 import com.mycompany.webapp.service.BookMarkService;
 
 @Controller
@@ -56,17 +57,20 @@ public class BookMarkController {
 	
 	//photo-detail에서 요청 매핑을 받았을때  //여기가 photo-detail에서 북마크를 눌렀을때 요청매핑에 의해 컨트롤러로 넘어옴.
 	@GetMapping("/regBookMark")
-	public void regBookMark(int pnumber,HttpServletResponse response, HttpSession session,Member member) throws Exception { 
+	public void regBookMark(int pnumber,HttpServletResponse response, HttpSession session) throws Exception { 
 		logger.info("실행");
+		logger.info(String.valueOf(pnumber));
 		
-		String memail = (String) session.getAttribute("memail");
-		if(memail == null) {
-			memail = "test1@naver.com";
-		}
+		
+		Member member = (Member) session.getAttribute("member");
+		String memail = member.getMemail();
+		
+		logger.info(memail);
 		
 		Post_bookmark pb = new Post_bookmark();
 		pb.setMemail(memail);
 		pb.setPnumber(pnumber);
+		
 		
 		service.Register(pb);
 		
@@ -85,7 +89,8 @@ public class BookMarkController {
 	//웹에 애초에 들어갈때 
 	
 	@GetMapping("/CancelBookMark")
-	public void BookMarkCancel(int pnumber,HttpSession session, HttpServletResponse response) throws Exception {
+	public void BookMarkCancel(int pnumber,HttpSession session,Register_photo ph, HttpServletResponse response) throws Exception {
+		
 		Member member = (Member) session.getAttribute("member");
 		String memail = member.getMemail();
 		
@@ -109,14 +114,10 @@ public class BookMarkController {
 	
 	@GetMapping("/CheckBookMark")
 	public void CheckBookMark(int pnumber, HttpSession session, HttpServletResponse response ) throws Exception {
-		//Post_bookmark pb = (Post_bookmark) session.getAttribute("memail");
-		/*String memail = (String) session.getAttribute("memail");
-		if(memail==null) {
-			memail = "test1@naver.com";
-		}*/
-		Member member = (Member) session.getAttribute("member");
-		String memail = "test1@naver.com";
 		
+		Member member = (Member) session.getAttribute("member");
+		String memail= member.getMemail();
+		logger.info(memail);
 		Post_bookmark pb = new Post_bookmark();
 		pb.setPnumber(pnumber);
 		pb.setMemail(memail);
@@ -124,7 +125,7 @@ public class BookMarkController {
 		JSONObject jsonObject = new JSONObject();
 		
 		int check = service.CheckBookMark(pb);
-		
+		logger.info(String.valueOf(check));
 		if(check ==0) {
 			jsonObject.put("result", "success");
 			String json = jsonObject.toString();
@@ -171,27 +172,8 @@ public class BookMarkController {
 
 	
 	
-	//삭제
-	@GetMapping("/delBookMark")
-	public void delBookMark(int pnumber,HttpSession session,HttpServletResponse response) {
-		logger.info("실행");
-		Post_bookmark pb = new Post_bookmark();
-		
-		
-		pb.setPnumber(pnumber);
-		service.Delete(pb);
-		
-	}
 	
 	
-	
-	//조회
-	@GetMapping("/detail")
-	public String photoDetail() {
-		
-		
-		return "photo/photo-detail";
-	}
 	
 }
 
