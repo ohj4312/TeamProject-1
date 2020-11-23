@@ -62,13 +62,7 @@
 
       <div class="container">
         <div class="row">
-          <!-- <div class="col-md-8" data-aos="fade-up">
-         
-
-           <img src="resources/images/photo2.jpg" alt="Image" class="img-fluid">
-         </div> -->
-			
-          <div class="owl-carousel portfolio-details-carousel col-md-8">
+         <div class="owl-carousel portfolio-details-carousel col-md-8">
           	<c:forEach var="photo" items="${photo.list}">
           		<img src="photodownload?fileName=${photo.aimage}" class="img-fluid" alt="">
 			</c:forEach>
@@ -141,6 +135,7 @@
               </div>
               
             </div>
+            <div>가나다라마바사</div>
 
           </div>
         </div>
@@ -286,11 +281,7 @@
 
   <!-- Template Main JS File -->
   <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>
-   <script type="text/javascript">
-  $(function(){
-		 likepushCheck();
-	 			});
-  </script>
+
 
 </body>
 
