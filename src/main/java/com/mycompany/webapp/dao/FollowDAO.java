@@ -28,13 +28,24 @@ public class FollowDAO {
 	
 	//following한 사람들 조회하기
 	public List<Follows> selectByFollowing(String memail){
-		List<Follows> list=sst.selectList("mybatis.mapper.board.selectByFollowing",memail);
+		List<Follows> list=sst.selectList("mybatis.mapper.follows.selectByFollowing",memail);
 		return list;
 	}
 	//follow한 사람들 조회하기
 	public List<Follows> selectByFollow(String memail){
-		List<Follows> list=sst.selectList("mybatis.mapper.board.selectByfollow",memail);
+		List<Follows> list=sst.selectList("mybatis.mapper.follows.selectByfollow",memail);
 		return list;
+	}
+	
+	public void deletefollow(Follows follows) {
+		sst.delete("mybatis.mapper.follows.deleteByFollow", follows);
+	}
+
+	public int selectChecking(Follows follow) {
+		logger.info("실행1111111111");
+		int result=sst.selectOne("mybatis.mapper.follows.selectChecking",follow);
+		logger.info(""+result);
+		return result;
 	}
 	
 }

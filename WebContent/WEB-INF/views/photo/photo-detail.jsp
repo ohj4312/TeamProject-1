@@ -88,11 +88,9 @@
 									success : function(data) {
 								if (data.result == "success") {							
 									$("#likepush").attr("class", "btn btn-light");
-									$("#likepush").attr("onclick","likePush()");
 				
 								} else {									
 									$("#likepush").attr("class", "btn btn-danger");
-									$("#likepush").attr("onclick","likePushcancel()");
 								}
 				
 							}

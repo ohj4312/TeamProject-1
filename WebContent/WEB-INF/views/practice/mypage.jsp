@@ -66,14 +66,13 @@
         					<div class="profile-info__name mt-2">
         						<span>힌아</span>
         						<div>
-        						 <a class="btn btn-info btn-sm" href="javascsript:getfollowList('following@naver.com')">팔로우</a>
-        						 <a class="btn btn-info btn-sm" href="javascsript:getfollowingList()">팔로잉</a>
+        						 <a class="btn btn-info btn-sm" href="javascript:getfollowList()">팔로우</a>
+        						 <a class="btn btn-info btn-sm" href="javascript:getfollowingList()">팔로잉</a>
         						</div>
         							<script>
-										function getfollowList(memail){
+										function getfollowList(){
 											$.ajax({
-												url:"followList",
-												data:{memail:memail}, 
+												url:"followList", 
 												success:function(data) {
 													$("#mypageList").html(data);
 												}
@@ -83,7 +82,6 @@
 										function getfollowingList(){
 											$.ajax({
 												url:"followingList",
-												data:{memail:memail}, 
 												success:function(data) {
 													$("#mypageList").html(data);
 												}

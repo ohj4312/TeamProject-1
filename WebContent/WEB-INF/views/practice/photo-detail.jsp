@@ -90,7 +90,7 @@
                     <img class="rounded-circle" style="width:60px; height:60px;" src="<%=application.getContextPath() %>/resources/images/photo7.jpg" />
                     <span class="card-detail-writer__name">KWJ</span>
                   </a>
-                  <a id="follow_check" href="javascript:checkFollow('following@aa.com')" class="btn btn-info btn-sm" role="button">팔로우</a>
+                  <a id="follow_check" href="javascript:checkFollow('following@aa.com')" class="btn btn-danger btn-sm" role="button">팔로우</a>
                 	<script>
                 	
                 	function checkFollow(followingEmail){
@@ -98,10 +98,38 @@
 							url:"checkFollow",
 							data:{followingEmail:followingEmail}, 
 							success:function(data) {
-								$("#follow_check").attr("class","btn btn-danger btn-sm");
+								$("#follow_check").attr("class","btn btn-info btn-sm");
 							}
 						});
-					} 
+					}
+                	
+                	function followCheck(){
+						consol.log("aaaaaaaaaaaa");
+                		$.ajax({
+							url:"followCheck",
+							success:function(data) {
+								consol.log(data.result+"++++++++++++++++++++++++++++++++++");
+								if(data.result="success"){
+									$("#follow_check").attr("class","btn btn-info btn-sm");
+								}
+								else{
+									$("#follow_check").attr("class","btn btn-light btn-sm");
+								}
+							}
+						});
+					}
+                	
+                	
+                	
+                	function cancelFollow(followingEmail){
+                		$.ajax({
+							url:"checkFollow",
+							data:{followingEmail:followingEmail}, 
+							success:function(data) {
+								$("#follow_check").attr("class","btn btn-lingt btn-sm");
+							}
+						});
+                	}
                 	</script>
                 </div>
               </div>
@@ -256,6 +284,11 @@
 
   <!-- Template Main JS File -->
   <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>
+ <script type="text/javascript">
+  $(function(){
+		followCheck();
+	 			});
+  </script>
 
 </body>
 
