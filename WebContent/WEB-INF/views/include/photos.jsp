@@ -25,10 +25,13 @@
 								<a
 									href="<%=application.getContextPath()%>/resources/img/portfolio/portfolio-${i}.jpg"
 									data-gall="portfolioGallery" class="venobox" title="App 1">
-									<i class="bx bx-plus"></i>
+									<i class="material-icons">bookmark_border</i>
 								</a>
 								<a href="<%=application.getContextPath()%>/photo/detail" title="More Details">
 									<i class="bx bx-link"></i>
+								</a>
+								<a href="<%=application.getContextPath()%>/photo/detail" title="More Details">
+									<i class="material-icons">favorite_border</i>
 								</a>
 							</div>
 						</div>

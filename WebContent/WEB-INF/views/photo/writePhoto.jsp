@@ -74,9 +74,9 @@
 							<select id="ptype" name="ptype" class="form-control mr-2 ml-2"
 								style="height: auto;">
 								<option selected>주거형태</option>
-								<option value="원룸&오피스텔">원룸&오피스텔</option>
+								<option value="원룸/오피스텔">원룸/오피스텔</option>
 								<option value="아파트">아파트</option>
-								<option value="빌라&연립">빌라&연립</option>
+								<option value="빌라/연립">빌라/연립</option>
 								<option value="단독주택">단독주택</option>
 								<option value="사무공간">사무공간</option>
 								<option value="상업공간">상업공간</option>
@@ -89,16 +89,12 @@
 								<option value="북유럽">북유럽</option>
 								<option value="빈티지">빈티지</option>
 								<option value="내츄럴">내츄럴</option>
-								<option value="프로방스&로맨틱">프로방스&로맨틱</option>
-								<option value="한국&아시아">한국&아시아</option>
+								<option value="프로방스/로맨틱">프로방스/로맨틱</option>
+								<option value="한국/아시아">한국/아시아</option>
 								<option value="유니크">유니크</option>
 								<option value="기타">기타</option>
-              </select>
-          
-
-                <button type="submit" class="btn btn-info" >글등록</button>
-              
-              
+              				</select>
+				 			
 				</div>
 				</div>
 				<div id = "addDiv">
@@ -195,20 +191,17 @@
 		
       </div>
       
+      <div class ="row fancybox pl-3 pr-3">
+				<button type="button" class="btn btn-lg col-6 pl-1" style = "color: white; background-color: #1bac91;" onClick="addform()">추가하기</button>
+				<button type="submit" class="btn btn-lg col-6 btn-info pr-1">글등록</button>
+				
+			</div>
+      
       </form>
 			</div>
 			</div>
 			</div>
 	</section><!-- End Contact Section -->
-
-    <div class="container">
-			<!-- 추가하기 버튼 구현 -->
-
-			<div style="height: 50px;"></div>
-			<button type="button" class="btn btn-lg btn-light btn-block" onClick="addform()">추가하기</button>
-
-		</div>
-
   </main><!-- End #main -->
 
 	
