@@ -17,10 +17,26 @@ public class LikeDAO {
 	@Resource
 	private SqlSessionTemplate sst;
 
-	public List<Post_like> likePhotoAll(String memail) {
+	public List<Post_like> likePhotoAllSelect(String memail) {
 		
 		List<Post_like> likelist = sst.selectList("mybatis.mapper.likephoto.likePhotoAll",memail);
 		
 		return likelist;
+	}
+
+	public  int PhotolikeInsert(Post_like post_like) {
+		
+		int rows=sst.insert("mybatis.mapper.likephoto.likePhotoInsert",post_like);
+		return rows;
+	}
+
+	public int likephotoCheck(Post_like post_like) {
+		int check = sst.selectOne("mybatis.mapper.likephoto.likepushCheck",post_like);
+		return check;
+	}
+
+	public int likePhotoDelete(Post_like post_like) {
+		int row =sst.delete("mybatis.mapper.likephoto.likePhotoDelete", post_like);
+		return row;
 	}
 }

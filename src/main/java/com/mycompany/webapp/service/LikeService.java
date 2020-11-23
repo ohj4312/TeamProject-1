@@ -16,8 +16,26 @@ public class LikeService {
 	private LikeDAO likeDao;
 
 	public List<Post_like> getLikePhotoList(String memail) {
-		List<Post_like> likelist = likeDao.likePhotoAll(memail);
+		List<Post_like> likelist = likeDao.likePhotoAllSelect(memail);
 		return likelist;
+	}
+
+	public void likepushphoto(Post_like post_like) {
+		
+		 likeDao.PhotolikeInsert(post_like);
+			
+	}
+
+	public int likepushCheck(Post_like post_like) {
+		int check= likeDao.likephotoCheck(post_like);
+		
+		
+		return check;
+	}
+
+	public void likepushCancel(Post_like post_like) {
+		likeDao.likePhotoDelete(post_like);
+		
 	}
 
 }
