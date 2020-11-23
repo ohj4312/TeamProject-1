@@ -23,4 +23,9 @@
 	<select id="selectList" resultType="registerPhoto">
 		select pnumber, first_image from register_photo
 	</select>
+	
+	<select id="selectAphotoList" parameterType="int" resultType="aPhoto">
+		select * from A_PHOTO where REGISTER_NUMBER = #{pnumber}
+		
+	</select>
 </mapper>
