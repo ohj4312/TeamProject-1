@@ -28,4 +28,10 @@
 		select * from A_PHOTO where REGISTER_NUMBER = #{pnumber}
 		
 	</select>
+	
+	<select id="selectRegPhoto" parameterType="int" resultType="registerPhoto">
+		select PNUMBER, REGISTER_PDATE, PHIT_COUNT, PWRITER, PTYPE, PSIZE, PSTYLE, mnickname 
+		from REGISTER_PHOTO r, member m 
+		where r.pwriter = m.memail and pnumber = #{pnumber}
+	</select>
 </mapper>

@@ -20,10 +20,20 @@ public class Register_photo {
 	private String ptype;
 	private String pstyle;
 	private String first_image;
+	private String mnickname;
 	
 	List<A_photo> list;
 
 	
+	
+	public String getMnickname() {
+		return mnickname;
+	}
+
+	public void setMnickname(String mnickname) {
+		this.mnickname = mnickname;
+	}
+
 	public String getFirst_image() {
 		return first_image;
 	}
