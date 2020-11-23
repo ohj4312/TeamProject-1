@@ -1,5 +1,7 @@
 package com.mycompany.webapp.service;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.slf4j.Logger;
@@ -34,5 +36,11 @@ public class PhotoService {
 		}	
 		
 	}
+
+	public List<Register_photo> getPhotoList() {
+		
+		return photoDAO.getPhotoList();
+	}
+
 
 }

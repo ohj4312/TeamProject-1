@@ -1,5 +1,7 @@
 package com.mycompany.webapp.dao;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -32,5 +34,10 @@ public class PhotoDAO {
 	public void insertAphoto(A_photo photo) {
 		sst.insert("mybatis.mapper.photo.insertAPhoto", photo);
 		
+	}
+
+	public List<Register_photo> getPhotoList() {
+		// TODO Auto-generated method stub
+		return sst.selectList("mybatis.mapper.photo.selectList");
 	}
 }

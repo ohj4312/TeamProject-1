@@ -19,8 +19,18 @@ public class Register_photo {
 	private String psize;
 	private String ptype;
 	private String pstyle;
+	private String first_image;
 	
 	List<A_photo> list;
+
+	
+	public String getFirst_image() {
+		return first_image;
+	}
+
+	public void setFirst_image(String first_image) {
+		this.first_image = first_image;
+	}
 
 	public int getPnumber() {
 		return pnumber;
