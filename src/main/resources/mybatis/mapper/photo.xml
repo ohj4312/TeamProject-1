@@ -2,5 +2,36 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mybatis.mapper.photo">
 
+	<insert id="insertRegPhoto" parameterType="registerPhoto">
+	
+		<selectKey order="BEFORE" resultType="int" keyProperty="pnumber">
+			select SEQ_REGPHOTO_PNUMBER.nextval from dual
+		</selectKey>
+		
+		insert into register_photo (pnumber, REGISTER_PDATE, PHIT_COUNT, PWRITER, PTYPE,PSIZE,PSTYLE, FIRST_IMAGE) 
+		values (SEQ_REGPHOTO_PNUMBER.currval, sysdate, 0, #{pwriter},#{ptype},#{psize},#{pstyle}, #{first_image})
+	</insert>
+	
+	
+	
+	<insert id="insertAPhoto" parameterType="aPhoto">
 
+		insert into A_PHOTO (ANUMBER, AIMAGE, ACONTENT, ALOCATION, REGISTER_NUMBER) 
+		values (SEQ_APHOTO_ANUMBER.nextval, #{aimage}, #{acontent}, #{alocation},#{register_number})
+	</insert>
+	
+	<select id="selectList" resultType="registerPhoto">
+		select pnumber, first_image from register_photo
+	</select>
+	
+	<select id="selectAphotoList" parameterType="int" resultType="aPhoto">
+		select * from A_PHOTO where REGISTER_NUMBER = #{pnumber}
+		
+	</select>
+	
+	<select id="selectRegPhoto" parameterType="int" resultType="registerPhoto">
+		select PNUMBER, REGISTER_PDATE, PHIT_COUNT, PWRITER, PTYPE, PSIZE, PSTYLE, mnickname 
+		from REGISTER_PHOTO r, member m 
+		where r.pwriter = m.memail and pnumber = #{pnumber}
+	</select>
 </mapper>
