@@ -3,16 +3,16 @@
 <mapper namespace="mybatis.mapper.follows">
 	
 	<select id="selectByFollowing" parameterType="String" resultType="follows">
-		
+		select following from follows where memail=#{memail}
 	</select>
 	
 	<select id="selectByfollow" parameterType="String" resultType="follows">
-		
+		select follower from follows where memail=#{memail}
 	</select>
 	
 	<insert id="following" parameterType="follows">
 		insert into follows (fnumber,follower, following) 
-		values (follow_seq_fnum, #{follower}, #{following})
+		values (follow_seq_fnum.nextval, #{follower}, #{following})
 	</insert>
 
 

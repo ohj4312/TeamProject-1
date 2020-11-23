@@ -66,7 +66,7 @@
         					<div class="profile-info__name mt-2">
         						<span>힌아</span>
         						<div>
-        						 <a class="btn btn-info btn-sm" href="javascsript:getfollowList(${member.memail})">팔로우</a>
+        						 <a class="btn btn-info btn-sm" href="javascsript:getfollowList('following@naver.com')">팔로우</a>
         						 <a class="btn btn-info btn-sm" href="javascsript:getfollowingList()">팔로잉</a>
         						</div>
         							<script>

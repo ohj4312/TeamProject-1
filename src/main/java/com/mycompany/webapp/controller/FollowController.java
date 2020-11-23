@@ -27,6 +27,7 @@ public class FollowController {
 	//followList 조회
 	@GetMapping("/followList")
 	public String followList(String memail,Model model) {
+		System.out.println(memail);
 		List<Follows> follows=followService.getFollowList(memail);
 		model.addAttribute("follows",follows);
 		return "practice/followList";
@@ -41,9 +42,11 @@ public class FollowController {
 	}
 	
 	@GetMapping("/checkFollow")
-	public void checkFollow(String followingEmail, HttpSession session,Model model) {
+	public void checkFollow(String followingEmail, HttpSession session) {
+		System.out.println(followingEmail);
 		Member member=(Member)session.getAttribute("member");
 		String follower=member.getMemail();
+		System.out.println(follower);
 		Follows follows = new Follows();
 		follows.setFollowing(followingEmail);
 		follows.setFollower(follower);
@@ -57,7 +60,8 @@ public class FollowController {
 	}
 	
 	@GetMapping("/mypage")
-	public String bbb() {
+	public String bbb(Member member) {
+		logger.info(member.getMemail());
 		return "practice/mypage";
 	}
 	

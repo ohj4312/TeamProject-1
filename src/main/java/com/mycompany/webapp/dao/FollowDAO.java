@@ -20,7 +20,8 @@ public class FollowDAO {
 	
 	//follow 추가하기
 	public int insertfollow(Follows follows) {
-		int rows=sst.insert("mybatis.mapper.board.following", follows);
+		System.out.println(follows);
+		int rows=sst.insert("mybatis.mapper.follows.following", follows);
 		logger.info("insert확인 : "+rows);
 		return rows;
 	}
@@ -31,7 +32,7 @@ public class FollowDAO {
 		return list;
 	}
 	//follow한 사람들 조회하기
-	public List<Follows> selectByfollow(String memail){
+	public List<Follows> selectByFollow(String memail){
 		List<Follows> list=sst.selectList("mybatis.mapper.board.selectByfollow",memail);
 		return list;
 	}
