@@ -397,10 +397,4 @@ function replyWrite(pnumber){
 
  
 
-=======
-//===============안형모=================================
-  
-			
-		
->>>>>>> branch 'master' of https://github.com/mw7895la/TeamProject
 
