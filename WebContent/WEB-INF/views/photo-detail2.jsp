@@ -1,6 +1,5 @@
-
-
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
@@ -135,7 +134,10 @@
           </span>
           <input type="text" id ="rcontent" class="form-control" placeholder="칭찬과 격려는 큰 힘이됩니다!">
           <div class="input-group-apeend">
+          	
+          	<c:if test="${rwriter != null}">
             <a class="btn btn-outline btn-primary" href="javascript:replyWrite()">등록</a>
+          
             <script>
             	function replyWrite(){
             		var rcontent = $("#rcontent").val().trim();
@@ -153,24 +155,11 @@
             		});
             	}
             </script>
+            </c:if>
           </div>
         </div>
-        <!-- <a class="btn btn-info" href="javascript:replyList()">댓글 리스트</a> -->
+        
     	<script>
-    		/* function replyList(pageNo){
-    			if(!pageNo){
-    				pageNo=1;
-    			}
-    			$.ajax({
-    				url:"replyList",
-    				data:{pageNo:pageNo},
-    				success:function(data){
-    					$("#reply_result").html(data);
-    				}
-    			});
-    		} */
-    		
-    		
     		function replyList(pageNo){
     			if(!pageNo){
     				pageNo=1;
@@ -183,7 +172,6 @@
     				}
     			});
     		}
-    		
     	</script>
       </div>
     </div>
