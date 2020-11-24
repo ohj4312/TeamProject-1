@@ -72,7 +72,6 @@ public class FollowController {
 	public String followList(Model model,HttpSession session) {
 		Member member=(Member)session.getAttribute("member");
 		String memail=member.getMemail();
-		System.out.println(memail);
 		List<Follows> follows=followService.getFollowList(memail);
 		model.addAttribute("follows",follows);
 		return "practice/followList";
@@ -83,7 +82,6 @@ public class FollowController {
 	public String followingList(Model model,HttpSession session) {
 		Member member=(Member)session.getAttribute("member");
 		String memail=member.getMemail();
-		System.out.println(memail);
 		List<Follows> follows=followService.getFollowingList(memail);
 		model.addAttribute("follows",follows);
 		return "practice/followingList";
