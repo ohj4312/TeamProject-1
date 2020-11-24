@@ -79,11 +79,11 @@ public class LikeController {
 	}
 
 	@GetMapping("/likePush")
-	public void likePush(HttpSession session, HttpServletResponse response) throws Exception {
+	public void likePush(int pnumber,HttpSession session, HttpServletResponse response) throws Exception {
 
 		Member member = (Member) session.getAttribute("member");
 		String memail = member.getMemail();
-		int pnumber = 4;
+		
 		Post_like post_like = new Post_like();
 		post_like.setMemail(memail);
 		post_like.setPnumber(pnumber);
@@ -102,11 +102,11 @@ public class LikeController {
 
 	}
 	@GetMapping("/likePushCancel")
-	public void likePushCancel(Model model, HttpSession session, HttpServletResponse response) throws Exception {
+	public void likePushCancel(int pnumber,Model model, HttpSession session, HttpServletResponse response) throws Exception {
 		
 		Member member = (Member) session.getAttribute("member");
 		String memail = member.getMemail();
-		int pnumber = 4;
+		
 		Post_like post_like = new Post_like();
 		post_like.setMemail(memail);
 		post_like.setPnumber(pnumber);
@@ -126,12 +126,12 @@ public class LikeController {
 	}
 
 	@GetMapping("/likePushCheck")
-	public void likePushCheck(Model model, HttpSession session, HttpServletResponse response) throws Exception {
+	public void likePushCheck(int pnumber,Model model, HttpSession session, HttpServletResponse response) throws Exception {
 
 		
 		Member member = (Member) session.getAttribute("member");
 		String memail = member.getMemail();
-		int pnumber = 4;
+		
 		Post_like post_like = new Post_like();
 		post_like.setMemail(memail);
 		post_like.setPnumber(pnumber);
