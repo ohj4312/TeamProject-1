@@ -194,6 +194,7 @@
 
 })(jQuery);
 
+//===========================노성규==============================
 function addTag(btncon, btnid) {
   var button = $(
     '<button type = "button" onclick="removeTag(' + btnid + ');" id = "' + btnid + '"class = "btn btn-outline-primary btn-sm mr-2">' + btncon + '<i class="material-icons" style="font-size: x-small;">close</i></button>'
@@ -354,4 +355,8 @@ function writePhoto(){
             
         }
 
+//===============안형모=================================
+  
+			
+		
 

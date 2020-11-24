@@ -1,18 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-<section id="portfolio" class="portfolio section-bg">
-      <div class="container mt-5">
-      	<jsp:include page="/WEB-INF/views/include/photoFilter.jsp"/>
-        <div id="addtag" class="row col-md-12 col-lg-6 mb-4">
-
-        </div>
-
-        
-
-        <div class="row portfolio-container" data-aos="fade-up">
-
-			<c:forEach var="photo" items="${list}">
+<div class="row portfolio-container" data-aos="fade-up">
+<c:forEach var="photo" items="${list}">
 				<div class="col-lg-4 col-md-6 portfolio-item filter-app">
 					<div class="portfolio-wrap">
 						<img
@@ -38,7 +27,4 @@
 					</div>
 				</div>
 			</c:forEach>
-        </div>
-
-      </div>
-    </section>
+			</div>

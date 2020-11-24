@@ -40,8 +40,9 @@ public class FollowService {
 		return fnumber;
 	}
 	
-	public void cancelfollow(Follows follows) {
-		followDao.deletefollow(follows);
+	public int cancelfollow(Follows follows) {
+		int row=followDao.deletefollow(follows);
+		return row;
 	}
 	public int followCheck(Follows follow) {
 		logger.info(follow.getFollower());
@@ -51,5 +52,7 @@ public class FollowService {
 		return result;
 		
 	}
+	
+
 
 }

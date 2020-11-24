@@ -102,34 +102,36 @@
 							}
 						});
 					}
-                	
+               	
                 	function followCheck(){
-						consol.log("aaaaaaaaaaaa");
                 		$.ajax({
 							url:"followCheck",
 							success:function(data) {
-								consol.log(data.result+"++++++++++++++++++++++++++++++++++");
 								if(data.result="success"){
 									$("#follow_check").attr("class","btn btn-info btn-sm");
+									$("#follow_check").attr("href","javascript:cancelFollow()");
 								}
-								else{
-									$("#follow_check").attr("class","btn btn-light btn-sm");
+								if(data.result="fail"){
+									$("#follow_check").attr("class","btn btn-danger btn-sm");
+									$("#follow_check").attr("href","javascript:checkFollow('following@aa.com')");
 								}
 							}
 						});
-					}
+					} 
                 	
                 	
                 	
-                	function cancelFollow(followingEmail){
+                	function cancelFollow(){
                 		$.ajax({
-							url:"checkFollow",
-							data:{followingEmail:followingEmail}, 
+							url:"cancelfollow",
 							success:function(data) {
 								$("#follow_check").attr("class","btn btn-lingt btn-sm");
 							}
 						});
                 	}
+					
+					
+					
                 	</script>
                 </div>
               </div>
@@ -284,7 +286,7 @@
 
   <!-- Template Main JS File -->
   <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>
- <script type="text/javascript">
+<script type="text/javascript">
   $(function(){
 		followCheck();
 	 			});

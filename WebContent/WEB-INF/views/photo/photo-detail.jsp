@@ -80,48 +80,7 @@
 
             <button id="likepush"type="button" class="btn btn-light" style="width:120px; box-shadow:none;" onclick="">
               <span id="likepush"class="material-icons">favorite_border</span></button>        
-				<script type="text/javascript">
-				function likepushCheck(){
-				            	 $.ajax({
-				 					url:"<%=application.getContextPath()%>/like/likePushCheck",
-									method : "get",
-									success : function(data) {
-								if (data.result == "success") {							
-									$("#likepush").attr("class", "btn btn-light");
-				
-								} else {									
-									$("#likepush").attr("class", "btn btn-danger");
-								}
-				
-							}
-						});
-				
-					}
-				function likePushcancel(){				            								
-				             	$.ajax({
-									url:"<%=application.getContextPath()%>/like/likePushCancel",
-									method : "get",
-									success : function(data) {
-										if (data.result == "success") {
-											likepushCheck();												
-												}				
-											}
-										});
-									}
-				
-				function likePush() {				            								
-	             	$.ajax({
-						url:"<%=application.getContextPath()%>/like/likePush",
-						method : "get",
-						success : function(data) {
-							if (data.result == "success") {
-								likepushCheck();												
-									}				
-								}
-							});
-						}
-										
-				</script>
+
             <button type="button" class="btn btn-light" style="width:120px;  box-shadow:none;">
               <span class="material-icons">bookmark_border</span></button>
 
@@ -283,13 +242,70 @@
   <script src="<%=application.getContextPath() %>/resources/vendor/aos/aos.js"></script>
 
   <!-- Template Main JS File -->
-  <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>
-   <script type="text/javascript">
-  $(function(){
-		 likepushCheck();
+  <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>  
+  <script type="text/javascript">
+				
+				$(function(){
+		 			likepushCheck();		 
 	 			});
-  </script>
-
+				function likepushCheck(){
+					var pnumber = ${photo.pnumber}
+					
+						 $.ajax({
+							 
+							 		url:"<%=application.getContextPath()%>/like/likePushCheck",
+									method : "get",
+									data : {pnumber:pnumber},
+									success : function(data) {
+										
+								if (data.result == "success") {							
+									$("#likepush").attr("class", "btn btn-light");
+									$("#likepush").attr("onclick","likePush()");
+				
+								} else {									
+									$("#likepush").attr("class", "btn btn-danger");
+									$("#likepush").attr("onclick","likePushcancel()");
+								}
+				
+							}
+						}); 
+				
+					}
+				
+				function likePushcancel(){		
+							
+					var pnumber = ${photo.pnumber}
+							
+				             	$.ajax({
+									url:"<%=application.getContextPath()%>/like/likePushCancel",
+									method : "get",
+									data : {pnumber:pnumber},
+									success : function(data) {
+										if (data.result == "success") {
+											likepushCheck();												
+												}				
+											}
+										});
+									}
+				
+				function likePush() {				            								
+					var pnumber = ${photo.pnumber}	
+					$.ajax({
+						url:"<%=application.getContextPath()%>/like/likePush",
+						method : "get",
+						data : {pnumber:pnumber},
+						success : function(data) {
+							if (data.result == "success") {
+								likepushCheck();												
+									}				
+								}
+							});
+						} 
+						
+						
+										
+				</script>
+					 
 </body>
 
 </html>

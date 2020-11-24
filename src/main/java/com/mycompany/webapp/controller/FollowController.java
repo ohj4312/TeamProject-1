@@ -150,6 +150,16 @@ public class FollowController {
 		
 	}
 	
+	@GetMapping("/cancelfollow")
+	public void cancelfollow(HttpSession session) {
+		Member member=(Member)session.getAttribute("member");
+		String memail=member.getMemail();
+		Follows follow=new Follows();
+		follow.setFollowing("following@aa.com");
+		follow.setFollower(memail);
+		int row=followService.cancelfollow(follow);
+		logger.info("삭제가 성공됐으면 1이나옹!!!!!!!!!!!"+row);
+	}
 	
 	
 	@GetMapping("/photo-detail")

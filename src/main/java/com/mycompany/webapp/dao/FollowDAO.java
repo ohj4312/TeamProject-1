@@ -37,8 +37,9 @@ public class FollowDAO {
 		return list;
 	}
 	
-	public void deletefollow(Follows follows) {
-		sst.delete("mybatis.mapper.follows.deleteByFollow", follows);
+	public int deletefollow(Follows follows) {
+		int row=sst.delete("mybatis.mapper.follows.deleteByFollow", follows);
+		return row;
 	}
 
 	public int selectChecking(Follows follow) {

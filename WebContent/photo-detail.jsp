@@ -81,7 +81,7 @@
               <span class="material-icons">favorite_border</span></button>
            <!--  <button  type="button" class="btn btn-light" style="width:120px;  box-shadow:none;">
               <span class="material-icons">bookmark_border</span></button> -->
-              <a type="button" id="RegBookMark" class="btn btn-light" href="javascript:RegBookMark(4)" style="width:120px; box-shadow:none;" onclick="">
+              <a type="button" id="RegBookMark" class="btn btn-light" href="javascript:RegBookMark(5)" style="width:120px; box-shadow:none;" onclick="">
               <span class="material-icons">bookmark_border</span>
               </a>
             
@@ -108,7 +108,7 @@
              
               <script type="text/javascript">
             	function RegBookMark(pnumber){
-            		if(pnumber==5){
+            		if(pnumber==6){
             			$("#bookmark").html("이미 존재하는 pnumber입니다.");
             			return;
             		}
@@ -306,7 +306,11 @@
 
   <!-- Template Main JS File -->
   <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>
-
+   <script type="text/javascript">
+  $(function(){
+		 CheckBookMark();
+	 			});
+  </script>
 </body>
 
 
