@@ -162,8 +162,7 @@ public class BookMarkController {
 		Post_bookmark pb = new Post_bookmark();
 		pb.setPnumber(pnumber); pb.setMemail(memail);
 		
-		
-		//list= service.Inquiry(pb);	
+		List<Post_bookmark> list = service.getBookMarkList(pb);
 		
 		
 		

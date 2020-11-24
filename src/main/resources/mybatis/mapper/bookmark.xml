@@ -8,8 +8,8 @@
 		insert into POST_BOOKMARK (bnumber , pnumber , memail) values(seq_bnum.nextval,#{pnumber},#{memail})
 	</insert>
 	
-	<select id="selectBookMark" resultType="bookmark">
-		select bnumber , pnumber, memail from POST_BOOKMARK order by bnumber desc
+	<select id="selectBookMark" parameterType="bookmark" resultType="bookmark">
+		select first_image from Register_photo where pnumber = #{pnumber}
 	</select>
 	
 	
