@@ -10,7 +10,7 @@
        			<p>
 	       			<a href="#">
 	       				<img class="rounded-circle" width="50px" height="50px" src="resources/images/photo7.jpg">
-	       				<span>${reply.rwriter}</span>
+	       				<span>${reply.mnickname}</span>
 	       			</a>
 	       			<span>${reply.rcontent}</span>
        			</p>

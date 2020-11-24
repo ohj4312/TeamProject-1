@@ -54,14 +54,15 @@ public class ReplyController {
 
 		
 		String rwriter = member.getMemail();
-
+		String mnickname = member.getMnickname();
+		logger.info("mnickname:"+mnickname);
+		
 		reply.setRwriter(rwriter);
 		reply.setPnumber(pnumber);
 		reply.setRcontent(rcontent);
-		
-		/*model.addAttribute("rwriter", rwriter);
-		model.addAttribute("pnumber", pnumber);
-		model.addAttribute("rcontent", rcontent);*/
+		reply.setMnickname(mnickname);
+
+		//model.addAttribute("mnickname", mnickname);
 		service.replyWrite(reply);
 		response.setContentType("application/json; charset=utf-8");
 		
@@ -69,8 +70,6 @@ public class ReplyController {
 		jsonObject.put("result", "success");
 		String json = jsonObject.toString();
 		PrintWriter out = response.getWriter();
-		
-		
 		out.println(json);
 		out.flush();
 		out.close();
