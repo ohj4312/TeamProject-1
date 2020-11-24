@@ -72,38 +72,50 @@
         				</div>
         			</div>
         		<div class="row" style="text-align:center">
-        				<div class="col-4 col">
+        				<div class="col-3 col">
        						
        						<a class="btn btn-info" href="javascript:bookmarkList(1)">
        							<div><span class="material-icons">bookmark_border</span></div>
-       							<div><small>스크랩북</small></div>
+       							<div><small>북마크 불러오기</small></div>
        						</a>
-						<script type="text/javascript">
-							function bookmarkList(pnumber) {
-								if(!pnumber){		//값을 안줬으면.. 값을 애초에 넘길때 그럼 false니까  1로 설정해준다고.
-									pnumber=1;
+							<script type="text/javascript">
+								function getBookMarkList(pnumber){
+									$.ajax({
+										url:"<%=application.getContextPath()%>/BK/getBookMarkList",
+										data:{pnumber : pnumber},
+										method: "get",
+										success: function(data){
+											$("#list_result").html(data);
+										}
+									});
 								}
-								$.ajax({
-									url:"<%=application.getContextPath()%>/BK/",
-									data: {pnumber:pnumber},
-									success:function(data) {
-										$("#board_result").html(data);		//이말이 곧 HTML 조각을 넣어준다는거야.
-									}
-								});
-							}
-						</script>
+							</script>
+							
         				</div>
         				
+        				<div class="col-3 col">
+       						
+       						<a class="btn btn-info btn-sm" href="javascript:delBookMark(1)">
+       							<div><span class="material-icons">bookmark_border</span></div>
+       							<div><small>북마크  삭제</small></div>
+       						</a>
+						</div>
         				
-        				
-        				<div class="col-4">
+
+						
+
+
+
+
+
+						<div class="col-3">
        						<a href="#">
 								<div><span class="material-icons">favorite_border</span></div>
 								<div><small>좋아요</small></div>
        						</a>
         				</div>
         				
-        				<div class="col-4">
+        				<div class="col-3">
        						<a href="#">
        							<div><span class="material-icons">sentiment_satisfied_alt</span></div>
        							<div><small>설정</small></div>
@@ -136,7 +148,9 @@
                 </div>  
         			</section>
         		</div>
-        	</div> 
+        	</div>
+        	
+        	<div id="list_result"></div> 
 
 
 
