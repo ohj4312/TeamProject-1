@@ -41,14 +41,11 @@
   
    <style media="screen">
    .scroll{
-     width: 1000px;
-     height: 300px;
+     
      overflow-x: scroll;
      white-space:nowrap
    }
    .scroll img{
-       width:300px;
-       height:100%;
    }
  </style>
 </head>
@@ -75,10 +72,8 @@
 
       <div class="container">
         <div class="row">
-         <div id = "owl-carousel"class="owl-carousel portfolio-details-carousel col-md-8">
-          	<c:forEach var="photo" items="${photo.list}">
-          		<img src="photodownload?fileName=${photo.aimage}" class="img-fluid" alt="">
-			</c:forEach>
+         <div id = "owl-carousel"class="col-md-8">
+          	<img src="photodownload?fileName=${photo.first_image}" class="img-fluid" alt="">
           </div>
 
           <div id="head" class="col-md-4">
@@ -239,6 +234,7 @@
 
   <!-- Template Main JS File -->
   <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>
+
   <script type="text/javascript">
 				
 				function likepushCheck(){
@@ -349,15 +345,15 @@
             		});	
             	}
             	
+            	 $(function(){
+		 			likepushCheck();	
+					CheckBookMark();
+	 			});
+            	
             </script>
 				
-   <script type="text/javascript">
-  $(function(){
-		 likepushCheck();	
-		 CheckBookMark();
-	 			});
-  
-  </script>
+
+
 </body>
 
 </html>
