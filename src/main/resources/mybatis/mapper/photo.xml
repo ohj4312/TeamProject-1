@@ -30,7 +30,7 @@
 	</select>
 	
 	<select id="selectRegPhoto" parameterType="int" resultType="registerPhoto">
-		select PNUMBER, REGISTER_PDATE, PHIT_COUNT, PWRITER, PTYPE, PSIZE, PSTYLE, mnickname 
+		select PNUMBER, REGISTER_PDATE, PHIT_COUNT, PWRITER, PTYPE, PSIZE, PSTYLE, mnickname, FIRST_IMAGE 
 		from REGISTER_PHOTO r, member m 
 		where r.pwriter = m.memail and pnumber = #{pnumber}
 	</select>

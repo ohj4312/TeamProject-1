@@ -1,12 +1,13 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+
 
   <title>Maxim Bootstrap Template - Index</title>
   <meta content="" name="descriptison">
@@ -38,16 +39,11 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-  
-   <style media="screen">
-   .scroll{
-     
-     overflow-x: scroll;
-     white-space:nowrap
-   }
-   .scroll img{
-   }
- </style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
 </head>
 
 <body>
@@ -62,31 +58,38 @@
       <div class="container mt-5">
         <div class="row">
           <div class="col-md-8" data-aos="fade-up">
-            <h2>${photo.psize} | ${photo.ptype} | ${photo.pstyle}</h2>
+            <h2>40평대 | 모던스타일 | 아파트</h2>
             
           </div>
         </div>
       </div>
-
-
-
+		<script>
+		 $(document).ready(function(){
+    			replyList(1);
+    		});
+		</script>
       <div class="container">
         <div class="row">
-         <div id = "owl-carousel"class="col-md-8">
-          	<img src="photodownload?fileName=${photo.first_image}" class="img-fluid" alt="">
+          <!-- <div class="col-md-8" data-aos="fade-up">
+         
+
+           <img src="resources/images/photo2.jpg" alt="Image" class="img-fluid">
+         </div> -->
+
+          <div class="owl-carousel portfolio-details-carousel col-md-8">
+            <img src="assets/img/portfolio/portfolio-details-1.jpg" class="img-fluid" alt="">
+            <img src="assets/img/portfolio/portfolio-details-2.jpg" class="img-fluid" alt="">
+            <img src="assets/img/portfolio/portfolio-details-3.jpg" class="img-fluid" alt="">
           </div>
 
           <div id="head" class="col-md-4">
 
 
 
-            <button id="likepush" type="button" class="btn btn-light" style="width:120px; box-shadow:none;" onclick="">
-              <span id="likepush"class="material-icons">favorite_border</span></button>        
-				
-            <a id="RegBookMark" class="btn btn-light" style="width:120px; box-shadow:none;" onclick="javascript:RegBookMark()">
-				<span id="RegBookMark"class="material-icons">bookmark_border</span>
-			</a>
-				
+            <button type="button" class="btn btn-light" style="width:120px; box-shadow:none;">
+              <span class="material-icons">favorite_border</span></button>
+            <button type="button" class="btn btn-light" style="width:120px;  box-shadow:none;">
+              <span class="material-icons">bookmark_border</span></button>
 
 
             
@@ -95,7 +98,7 @@
                 <div class="card-detail-writer__user mt-3">
                   <a class="card-detail-writer__link" href="#">
                     <img class="rounded-circle" style="width:60px; height:60px;" src="resources/images/photo7.jpg" />
-                    <span class="card-detail-writer__name">${photo.mnickname}</span>
+                    <span class="card-detail-writer__name">KWJ</span>
                   </a>
                   <a href="#" class="btn btn-info btn-sm" role="button">팔로우</a>
                 </div>
@@ -107,7 +110,10 @@
         </div>
       </div>
 
-		</section>
+
+
+
+    </section>
 
     <div class="container">
 
@@ -126,22 +132,56 @@
           <span class="material-icons" style="font-size:45px; color:#4169E1;">
             face
           </span>
-          <input type="text" id="rcontent" class="form-control" placeholder="칭찬과 격려는 큰 힘이됩니다!">
+          <input type="text" id ="rcontent" class="form-control" placeholder="칭찬과 격려는 큰 힘이됩니다!">
           <div class="input-group-apeend">
-	           <c:if test="${member.memail != null}">
-	            <a class="btn btn-outline btn-primary" href="javascript:replyWrite(${photo.pnumber })">등록</a>
-	            </c:if>
+          	
+          	<c:if test="${rwriter != null}">
+            <a class="btn btn-outline btn-primary" href="javascript:replyWrite()">등록</a>
+          
+            <script>
+            	function replyWrite(){
+            		var rcontent = $("#rcontent").val().trim();
+            		
+            		$.ajax({
+            			url:"replyWrite",
+            			method:"post",
+            			data : {rcontent:rcontent},
+            			succes:function(data){
+            				if(data.result=="success"){
+            					replyList();
+            				}
+            				$("#reply_result").html(data);
+            			}
+            		});
+            	}
+            </script>
+            </c:if>
           </div>
         </div>
+        
+    	<script>
+    		function replyList(pageNo){
+    			if(!pageNo){
+    				pageNo=1;
+    			}
+    			$.ajax({
+    				url:"replyList",
+    				data:{pageNo:pageNo},
+    				success:function(data){
+    					$("#reply_result").html(data);
+    				}
+    			});
+    		}
+    	</script>
       </div>
     </div>
 
 
     <div class="container">
-      <div id="reply_result" style="margin-top:30px">
-     
-      </div>
+    	<div id="reply_result" style="margin-top:30px"></div>	
     </div>
+
+     
 
 
   </main><!-- End #main -->
@@ -234,125 +274,6 @@
 
   <!-- Template Main JS File -->
   <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>
-
-  <script type="text/javascript">
-				
-				function likepushCheck(){
-					var pnumber = ${photo.pnumber}
-					
-						 $.ajax({
-							 
-							 		url:"<%=application.getContextPath()%>/like/likePushCheck",
-									method : "get",
-									data : {pnumber:pnumber},
-									success : function(data) {
-										
-								if (data.result == "success") {							
-									$("#likepush").attr("class", "btn btn-light");
-									$("#likepush").attr("onclick","likePush()");
-				
-								} else {									
-									$("#likepush").attr("class", "btn btn-danger");
-									$("#likepush").attr("onclick","likePushcancel()");
-								}
-				
-							}
-						}); 
-				
-					}
-				
-				function likePushcancel(){		
-							
-					var pnumber = ${photo.pnumber}
-							
-				             	$.ajax({
-									url:"<%=application.getContextPath()%>/like/likePushCancel",
-									method : "get",
-									data : {pnumber:pnumber},
-									success : function(data) {
-										if (data.result == "success") {
-											likepushCheck();												
-												}				
-											}
-										});
-									}
-				
-				function likePush() {				            								
-					var pnumber = ${photo.pnumber}	
-					$.ajax({
-						url:"<%=application.getContextPath()%>/like/likePush",
-						method : "get",
-						data : {pnumber:pnumber},
-						success : function(data) {
-							if (data.result == "success") {
-								likepushCheck();												
-									}				
-								}
-							});
-						} 
-										
-				</script>
-				 <script type="text/javascript">
-              	function CheckBookMark(){
-              		console.log("check로 넘어간 후");
-              		var pnumber = ${photo.pnumber}
-              		$.ajax({
-              			url: "<%=application.getContextPath()%>/BK/CheckBookMark",
-              			data : {pnumber:pnumber},
-              			method: "get",
-              			success: function(data){
-              				
-              				if(data.result== "success"){
-              					$("#RegBookMark").attr("class","btn btn-light");
-              					$("#RegBookMark").attr("onclick","RegBookMark()");
-              				}else{
-              					$("#RegBookMark").attr("class","btn btn-primary");
-              					$("#RegBookMark").attr("onclick","CancelBookMark()");
-              				}
-              			}
-              		});
-              	}
-              
-            	function RegBookMark(){
-            		console.log("실행");
-            		var pnumber = ${photo.pnumber}
-            		
-            		$.ajax({
-            			url : "<%=application.getContextPath()%>/BK/regBookMark",
-            			data: {pnumber: pnumber },
-                		method:"get",
-                		success:function(data){
-                			if(data.result=="success"){
-                				console.log("check 넘어가기 전");
-                				CheckBookMark();
-                			}
-                		}
-            		});		
-            	}
-            
-            	function CancelBookMark(){
-            		console.log("Cancel로 넘어옴");
-            		var pnumber = ${photo.pnumber}
-            		$.ajax({
-                		url:"<%=application.getContextPath()%>/BK/CancelBookMark",
-                		data :{pnumber:pnumber},
-                		method:"get",
-                		success:function(data){
-                			if(data.result == "success"){
-                				CheckBookMark();
-                			}
-                		}
-            		});	
-            	}
-            	
-            	 $(function(){
-		 			likepushCheck();	
-					CheckBookMark();
-	 			});
-            	
-            </script>
-				
-
 
 </body>
 

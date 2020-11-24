@@ -355,8 +355,46 @@ function writePhoto(){
             
         }
 
-//===============안형모=================================
-  
-			
-		
+
+//============서윤아=====================================
+ $(document).ready(function(){
+	replyList(1);
+});
+	 
+function replyList(pageNo){
+	if(!pageNo){
+		pageNo=1;
+	}
+	$.ajax({
+		url:"/teamproject/reply/replyList",
+		data:{pageNo:pageNo},
+		success:function(data){
+			$("#reply_result").html(data);
+		}
+	});
+}
+
+function replyWrite(pnumber){
+	var rcontent = $("#rcontent").val().trim();
+	
+	console.log(pnumber);
+	$.ajax({
+		url:"/teamproject/reply/replyWrite",
+		method:"post",
+		data : {rcontent:rcontent, pnumber:pnumber},
+		succes:function(data){
+			console.log("성공후 실행");
+			if(data.result=="success"){
+				
+				replyList();
+			}
+			$("#reply_result").html(data);
+		}
+	});
+}
+
+
+
+ 
+
 
