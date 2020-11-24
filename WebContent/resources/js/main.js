@@ -392,7 +392,7 @@ function replyWrite(pnumber){
 		url:"/teamproject/reply/replyWrite",
 		method:"post",
 		data : {rcontent:rcontent, pnumber:pnumber},
-		succes:function(data){
+		success:function(data){
 			console.log("성공후 실행");
 			if(data.result=="success"){
 				
