@@ -123,10 +123,11 @@ public class FollowController {
 		int result=followService.followCheck(follow);
 		logger.info("CONTROLLER RESULT: "+result);
 		JSONObject jsonObject = new JSONObject(); 
-		if(result != 1) {
+		if(result == 0) {
 			 
 			jsonObject.put("result", "fail");
 			String json = jsonObject.toString();
+			logger.info(json);
 			// 응답 보내기
 			PrintWriter out = response.getWriter();
 			response.setContentType("application/json;charset=utf-8");
@@ -139,6 +140,7 @@ public class FollowController {
 
 			jsonObject.put("result", "success");
 			String json = jsonObject.toString();
+			logger.info(json);
 			// 응답 보내기
 			PrintWriter out = response.getWriter();
 			response.setContentType("application/json;charset=utf-8");
