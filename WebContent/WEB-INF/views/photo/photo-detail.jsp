@@ -88,8 +88,10 @@
             <button id="likepush" type="button" class="btn btn-light" style="width:120px; box-shadow:none;" onclick="">
               <span id="likepush"class="material-icons">favorite_border</span></button>        
 				
-            <button type="button" class="btn btn-light" style="width:120px;  box-shadow:none;">
-              <span class="material-icons">bookmark_border</span></button>
+            <a id="RegBookMark" class="btn btn-light" style="width:120px; box-shadow:none;" onclick="javascript:RegBookMark()">
+				<span id="RegBookMark"class="material-icons">bookmark_border</span>
+			</a>
+				
 
 
             
@@ -307,12 +309,67 @@
 						} 
 										
 				</script>
-				
+				 <script type="text/javascript">
+              	function CheckBookMark(){
+              		console.log("check로 넘어간 후");
+              		var pnumber = ${photo.pnumber}
+              		$.ajax({
+              			url: "<%=application.getContextPath()%>/BK/CheckBookMark",
+              			data : {pnumber:pnumber},
+              			method: "get",
+              			success: function(data){
+              				
+              				if(data.result== "success"){
+              					$("#RegBookMark").attr("class","btn btn-light");
+              					$("#RegBookMark").attr("onclick","RegBookMark()");
+              				}else{
+              					$("#RegBookMark").attr("class","btn btn-primary");
+              					$("#RegBookMark").attr("onclick","CancelBookMark()");
+              				}
+              			}
+              		});
+              	}
+              
+            	function RegBookMark(){
+            		console.log("실행");
+            		var pnumber = ${photo.pnumber}
+            		
+            		$.ajax({
+            			url : "<%=application.getContextPath()%>/BK/regBookMark",
+            			data: {pnumber: pnumber },
+                		method:"get",
+                		success:function(data){
+                			if(data.result=="success"){
+                				console.log("check 넘어가기 전");
+                				CheckBookMark();
+                			}
+                		}
+            		});		
+            	}
+            
+            	function CancelBookMark(){
+            		console.log("Cancel로 넘어옴");
+            		var pnumber = ${photo.pnumber}
+            		$.ajax({
+                		url:"<%=application.getContextPath()%>/BK/CancelBookMark",
+                		data :{pnumber:pnumber},
+                		method:"get",
+                		success:function(data){
+                			if(data.result == "success"){
+                				CheckBookMark();
+                			}
+                		}
+            		});	
+            	}
+            	
+            </script>
 				
    <script type="text/javascript">
   $(function(){
-		 likepushCheck();		 
+		 likepushCheck();	
+		 CheckBookMark();
 	 			});
+  
   </script>
 </body>
 
