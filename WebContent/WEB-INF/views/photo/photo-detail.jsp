@@ -106,11 +106,17 @@
           </div>
         </div>
       </div>
+      
+      
 
 		</section>
 
     <div class="container">
-
+		<div class="scroll col-md-8 h-25" style="width:100%">
+		 	<c:forEach var="photo" items="${photo.list}">
+          		<img src="photodownload?fileName=${photo.aimage}" class= "w-25 h-25">
+			</c:forEach>
+		 </div>
 
 
       <div class="col-md-8" style="width:100%">
