@@ -72,36 +72,42 @@
 
       <div class="container">
         <div class="row">
-         <div id = "owl-carousel"class="col-md-8">
-          	<img src="photodownload?fileName=${photo.first_image}" class="img-fluid" alt="">
+         <div class="col-md-8">
+          	<img id = "thumbnail_image" src="photodownload?fileName=${photo.first_image}" class="img-fluid" alt="">
           </div>
 
           <div id="head" class="col-md-4">
-
-
-
-            <button id="likepush" type="button" class="btn btn-light" style="width:120px; box-shadow:none;" onclick="">
-              <span id="likepush"class="material-icons">favorite_border</span></button>        
+			<div class= "container" style="text-align: center;">
+				<div class="row mx-auto">
+				<button id="likepush" type="button" class="btn btn-light col-4" style=" box-shadow:none;" onclick="">
+              		<span id="likepush"class="material-icons">favorite_border</span>
+              	</button>        
 				
-            <a id="RegBookMark" class="btn btn-light" style="width:120px; box-shadow:none;" onclick="javascript:RegBookMark()">
-				<span id="RegBookMark"class="material-icons">bookmark_border</span>
-			</a>
+	            <a id="RegBookMark" class="btn btn-light col-4" style=" box-shadow:none;" onclick="javascript:RegBookMark()">
+					<span id="RegBookMark"class="material-icons">bookmark_border</span>
+				</a>
+				<a href="#" class="btn btn-info btn-sm col-4" role="button" style=" box-shadow:none;">
+					팔로우
+				</a>		
+				</div>
 				
-
-
-            
-            <div class="card-detail-sidebar__content">
-              <div class="card-detail-writer">
-                <div class="card-detail-writer__user mt-3">
-                  <a class="card-detail-writer__link" href="#">
-                    <img class="rounded-circle" style="width:60px; height:60px;" src="resources/images/photo7.jpg" />
-                    <span class="card-detail-writer__name">${photo.mnickname}</span>
-                  </a>
-                  <a href="#" class="btn btn-info btn-sm" role="button">팔로우</a>
-                </div>
-              </div>
+				<div class="row mx-auto">
+					<div class="card-detail-sidebar__content mx-auto">
+		              <div class="card-detail-writer">
+		                <div class="card-detail-writer__user mt-3">
+		                  <a class="card-detail-writer__link" href="#">
+		                    <img class="rounded-circle" style="width:60px; height:60px;" src="resources/images/photo7.jpg" />
+		                    <span class="card-detail-writer__name">${photo.mnickname}</span>
+		                  </a>
+		                </div>
+		              </div>
               
-            </div>
+            		</div>
+				</div>
+				<div id = "acontent"class="row mx-auto">
+					
+				</div>
+			</div>
 
           </div>
         </div>
@@ -114,7 +120,7 @@
     <div class="container">
 		<div class="scroll col-md-8 h-25" style="width:100%">
 		 	<c:forEach var="photo" items="${photo.list}">
-          		<img src="photodownload?fileName=${photo.aimage}" class= "w-25 h-25">
+          		<a href="javascript:photoChange('${photo.aimage}', '${photo.acontent}')"><img src="photodownload?fileName=${photo.aimage}" class= "w-25 h-25"></a>
 			</c:forEach>
 		 </div>
 

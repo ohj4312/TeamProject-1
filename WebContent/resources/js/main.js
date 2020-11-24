@@ -355,6 +355,16 @@ function writePhoto(){
             
         }
 
+function photoChange(aimage, acontent){
+	
+	var imagepath = 'photodownload?fileName='+aimage;
+	console.log(imagepath);
+	console.log(acontent);
+	$('#thumbnail_image').attr('src', imagepath);
+	$('#acontent').html(acontent);
+	
+}
+
 
 //============서윤아=====================================
  $(document).ready(function(){
