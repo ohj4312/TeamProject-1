@@ -375,7 +375,7 @@ function replyList(pageNo){
 }
 
 function replyWrite(pnumber){
-	var rcontent = $('#rcontent').val().trim();
+	var rcontent = $("#rcontent").val().trim();
 	
 	console.log(pnumber);
 	$.ajax({

@@ -131,7 +131,7 @@
           <span class="material-icons" style="font-size:45px; color:#4169E1;">
             face
           </span>
-          <input type="text" class="form-control" placeholder="칭찬과 격려는 큰 힘이됩니다!">
+          <input type="text" id="rcontent" class="form-control" placeholder="칭찬과 격려는 큰 힘이됩니다!">
           <div class="input-group-apeend">
 	           <c:if test="${member.memail != null}">
 	            <a class="btn btn-outline btn-primary" href="javascript:replyWrite(${photo.pnumber })">등록</a>
