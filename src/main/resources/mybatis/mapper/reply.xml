@@ -11,7 +11,7 @@
 	
 	<!-- 댓글 가져오기 -->
 	 <select id="selectAll" resultType="reply">
-		select rnumber, rcontent, register_date, rwriter, mimage
+		select rnumber, rcontent, register_date, rwriter, mimage, mnickname
 		from post_reply, member
 		order by register_date desc
 	</select> 

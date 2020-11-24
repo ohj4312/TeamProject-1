@@ -57,6 +57,7 @@
           </div>
         </div>
       </div>
+     
 
 
 
@@ -165,33 +166,21 @@
           <span class="material-icons" style="font-size:45px; color:#4169E1;">
             face
           </span>
-          <input type="text" class="form-control" placeholder="칭찬과 격려는 큰 힘이됩니다!">
+          <input type="text" id ="rcontent" class="form-control" placeholder="칭찬과 격려는 큰 힘이됩니다!">
           <div class="input-group-apeend">
-            <button class="btn btn-outline btn-primary" type="submit">등록</button>
+            <c:if test="${member.memail != null}">
+            <a class="btn btn-outline btn-primary" href="javascript:replyWrite(${photo.pnumber })">등록</a>
+            </c:if>
           </div>
         </div>
+     
       </div>
     </div>
 
 
     <div class="container">
-      <div>
-        <h5 style="text-align:left;">댓글들이 나오는 부분</h5>
-      </div>
-
-      <div class="row text-center" style="width:100%">
-
-        <div class="input-group mb-3" style="width:50%; float:none; margin:0 auto">
-
-          <ul class="pagination" style="text-align:left">
-            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">4</a></li>
-            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-          </ul>
-        </div>
+      <div id="reply_result" style="margin-top:30px">
+     
       </div>
     </div>
 
@@ -290,6 +279,7 @@
   $(function(){
 		 likepushCheck();
 	 			});
+ 
   </script>
 
 </body>
