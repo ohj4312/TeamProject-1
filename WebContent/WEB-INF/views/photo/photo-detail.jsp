@@ -75,94 +75,9 @@
             <button id="likepush" type="button" class="btn btn-light" style="width:120px; box-shadow:none;" onclick="">
               <span id="likepush"class="material-icons">favorite_border</span></button>        
 				
-<<<<<<< HEAD
             <button type="button" class="btn btn-light" style="width:120px;  box-shadow:none;">
               <span class="material-icons">bookmark_border</span></button>
 
-=======
-								} else {									
-									$("#likepush").attr("class", "btn btn-danger");
-									$("#likepush").attr("onclick","likePushcancel()");
-								}
-				
-							}
-						});
-				
-					}
-				function likePushcancel(){				            								
-				             	$.ajax({
-									url:"<%=application.getContextPath()%>/like/likePushCancel",
-									method : "get",
-									success : function(data) {
-										if (data.result == "success") {
-											likepushCheck();												
-												}				
-											}
-										});
-									}
-				
-				function likePush() {				            								
-	             	$.ajax({
-						url:"<%=application.getContextPath()%>/like/likePush",
-						method : "get",
-						success : function(data) {
-							if (data.result == "success") {
-								likepushCheck();												
-									}				
-								}
-							});
-						}
-										
-				</script>
-            <button id="RegBookMark"type="button" class="btn btn-light" style="width:120px; box-shadow:none;" onclick="">
-              <span id="RegBookMark"class="material-icons">bookmark_border</span></button>        
-			
-              <script type="text/javascript">
-              	function CheckBookMark(){
-              		$.ajax({
-              			url: "<%=application.getContextPath()%>/BK/CheckBookMark",
-              			
-              			method: "get",
-              			success: function(data){
-              				if(data.result=="success"){
-              					$("#RegBookMark").attr("class","btn btn-light");
-              					$("#RegBookMark").attr("onclick","RegBookMark()");
-              				}else{
-              					$("#RegBookMark").attr("class","btn btn-primary");
-              					$("#RegBookMark").attr("onclick","CancelBookMark()");
-              				}
-              			}
-              		});
-              	}
-              
-            	function RegBookMark(){
-            		
-            		$.ajax({
-            			url : "<%=application.getContextPath()%>/BK/regBookMark",
-                		method:"get",
-                		success:function(data){
-                			if(data.result=="success"){
-                				CheckBookMark();
-                			}
-                		}
-            		});		
-            	}
-            
-            	function CancelBookMark(){
-            		$.ajax({
-                		url:"<%=application.getContextPath()%>/BK/CancelBookMark",
-                		
-                		method:"get",
-                		success:function(data){
-                			if(data.result == "success"){
-                				CheckBookMark();
-                			}
-                		}
-            		});	
-            	}
-            	
-            </script>
->>>>>>> branch 'master' of https://github.com/mw7895la/TeamProject
 
             
             <div class="card-detail-sidebar__content">
@@ -322,7 +237,6 @@
 
   <!-- Template Main JS File -->
   <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>
-<<<<<<< HEAD
   <script type="text/javascript">
 				
 				function likepushCheck(){
@@ -380,19 +294,13 @@
 						} 
 										
 				</script>
-				<script type="text/javascript">
-				$(function() {
-					likepushCheck();
-				});
-				</script> 
-=======
+				
+				
    <script type="text/javascript">
   $(function(){
-		 likepushCheck();
-		 CheckBookMark();
+		 likepushCheck();		 
 	 			});
   </script>
->>>>>>> branch 'master' of https://github.com/mw7895la/TeamProject
 </body>
 
 </html>
