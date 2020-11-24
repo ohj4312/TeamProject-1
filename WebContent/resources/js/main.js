@@ -418,11 +418,6 @@ function replyWrite(pnumber){
 }
 
 
-
- 
-
-
-=======
 /**
 * Template Name: Maxim - v2.2.0
 * Template URL: https://bootstrapmade.com/maxim-free-onepage-bootstrap-theme/
