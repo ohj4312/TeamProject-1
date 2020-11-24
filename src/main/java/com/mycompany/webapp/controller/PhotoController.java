@@ -80,7 +80,7 @@ public class PhotoController {
 		logger.info(photo.getPstyle());
 		logger.info(photo.getPtype());
 		logger.info(photo.getPwriter());
-		logger.info(photo.getFirst_image());
+		logger.info("대표이미지"+photo.getFirst_image());
 		model.addAttribute("photo", photo);
 		return "photo/photo-detail";
 	}

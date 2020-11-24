@@ -41,14 +41,11 @@
   
    <style media="screen">
    .scroll{
-     width: 1000px;
-     height: 300px;
+     
      overflow-x: scroll;
      white-space:nowrap
    }
    .scroll img{
-       width:300px;
-       height:100%;
    }
  </style>
 </head>
@@ -75,10 +72,8 @@
 
       <div class="container">
         <div class="row">
-         <div id = "owl-carousel"class="owl-carousel portfolio-details-carousel col-md-8">
-          	<c:forEach var="photo" items="${photo.list}">
-          		<img src="photodownload?fileName=${photo.aimage}" class="img-fluid" alt="">
-			</c:forEach>
+         <div id = "owl-carousel"class="col-md-8">
+          	<img src="photodownload?fileName=${photo.first_image}" class="img-fluid" alt="">
           </div>
 
           <div id="head" class="col-md-4">
@@ -193,7 +188,6 @@
               </div>
               
             </div>
-
           </div>
         </div>
       </div>
@@ -203,9 +197,9 @@
     <div class="container">
 
 
-		 <div class="scroll col-md-8" style="width:100%">
+		 <div class="scroll col-md-8 h-25" style="width:100%">
 		 	<c:forEach var="photo" items="${photo.list}">
-          		<img src="photodownload?fileName=${photo.aimage}">
+          		<img src="photodownload?fileName=${photo.aimage}" class= "w-25 h-25">
 			</c:forEach>
 		 </div>
       <div class="col-md-8" style="width:100%">
