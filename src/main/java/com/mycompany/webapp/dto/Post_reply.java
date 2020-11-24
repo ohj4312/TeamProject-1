@@ -22,9 +22,17 @@ public class Post_reply {
 	private String rimage;
 	private MultipartFile rimageAttach;
 	
+	private String mnickname;
 	
 
 
+	public String getMnickname() {
+		return mnickname;
+	}
+
+	public void setMnickname(String mnickname) {
+		this.mnickname = mnickname;
+	}
 
 	public int getRnumber() {
 		return rnumber;
