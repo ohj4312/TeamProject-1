@@ -7,13 +7,29 @@ public class Follows {
 	private String follower;
 	
 	private String following;
-
-	
+	private String memail;
+	private String mimage;
 	
 	//
 	
 
 	
+	public String getMemail() {
+		return memail;
+	}
+
+	public void setMemail(String memail) {
+		this.memail = memail;
+	}
+
+	public String getMimage() {
+		return mimage;
+	}
+
+	public void setMimage(String mimage) {
+		this.mimage = mimage;
+	}
+
 	//Getter  ,  Setter
 	public int getFnumber() {
 		return fnumber;

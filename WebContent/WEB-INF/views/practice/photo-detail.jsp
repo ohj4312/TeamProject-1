@@ -1,6 +1,4 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 
@@ -13,8 +11,8 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="<%=application.getContextPath() %>/resources/assets/img/favicon.png" rel="icon">
+  <link href="<%=application.getContextPath() %>/resources/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -42,122 +40,161 @@
 
 <body>
 
+  <!-- ======= Header ======= -->
   <jsp:include page="/WEB-INF/views/include/Header.jsp"/>
 
-   <main id="main">
+  <main id="main">
 
-    
-
-    
-
-    <!-- ======= Team Section ======= -->
-    
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact mt-3">
+    <!-- ======= Breadcrumbs Section ======= -->
+    <section class="section mt-3">
       <div class="container mt-5">
-
-        <div class="section-title" data-aos="fade-up">
-          <h2>My Page</h2>
-        <div class="row no-gutters justify-content-center" style="display: flex;" data-aos="fade-up">
-
-          <div class="col-lg-5 mr-3">
-        		<div class="user-profile mt-5" style="border:1px solid #dadce0; ">
-        			<div class="user-profile__container">
-        				<div class="user-profile__profile-image" style="text-align: center;">
-                  <img class="rounded-circle mt-3" width="53%"; height="53%"; src="<%=application.getContextPath() %>/resources/img/person_1.jpg">
-        					<div class="profile-info__name mt-2">
-        						<span>힌아</span>
-        						<hr/>
-        					</div>
-        				</div>
-        			</div>
-        		<div class="row" style="text-align:center">
-        				<div class="col-3 col">
-       						
-       						<a class="btn btn-info" href="javascript:bookmarkList(1)">
-       							<div><span class="material-icons">bookmark_border</span></div>
-       							<div><small>북마크 불러오기</small></div>
-       						</a>
-							<script type="text/javascript">
-								function getBookMarkList(pnumber){
-									$.ajax({
-										url:"<%=application.getContextPath()%>/BK/getBookMarkList",
-										data:{pnumber : pnumber},
-										method: "get",
-										success: function(data){
-											$("#list_result").html(data);
-										}
-									});
-								}
-							</script>
-							
-        				</div>
-        				
-        				<div class="col-3 col">
-       						
-       						<a class="btn btn-info btn-sm" href="javascript:delBookMark(1)">
-       							<div><span class="material-icons">bookmark_border</span></div>
-       							<div><small>북마크  삭제</small></div>
-       						</a>
-						</div>
-        				
-
-						
-
-
-
-
-
-						<div class="col-3">
-       						<a href="#">
-								<div><span class="material-icons">favorite_border</span></div>
-								<div><small>좋아요</small></div>
-       						</a>
-        				</div>
-        				
-        				<div class="col-3">
-       						<a href="#">
-       							<div><span class="material-icons">sentiment_satisfied_alt</span></div>
-       							<div><small>설정</small></div>
-       						</a>
-        				</div>
-        			
-        			</div>
-        			<br/>
-        			
-        		</div>
+        <div class="row">
+          <div class="col-md-8" data-aos="fade-up">
+            <h2>40평대 | 모던스타일 | 아파트</h2>
+            
           </div>
-          
-          
-          
+        </div>
+      </div>
+
+
+
+      <div class="container">
+        <div class="row">
+          <!-- <div class="col-md-8" data-aos="fade-up">
          
 
-          <!-- <div class="col-lg-5 d-flex align-items-stretch">
-            <iframe style="border:0; width: 100%; height: 270px;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" allowfullscreen></iframe>
-          </div> -->
+           <img src="resources/images/photo2.jpg" alt="Image" class="img-fluid">
+         </div> -->
 
-          <div class="col-lg-5">
-        		<div class="contents">
-        			<section class="post post--cards">
-        				<h5><strong>사진</strong></h5>
-                <div id="mypagephoto" style="border:1px dashed #dbdbdb; width:100%;  text-align: center; ">
-                    <div class="row justify-content-center " style="margin-top: 30%;">
-                          <span class="material-icons ">add </span>
-                          <a class="post__upload" href="#"> 첫 번째 사진을 올려보세요</a>
-                    </div>
-                </div>  
-        			</section>
-        		</div>
-        	</div>
-        	
-        	<div id="list_result"></div> 
+          <div class="owl-carousel portfolio-details-carousel col-md-8">
+            <img src="<%=application.getContextPath() %>/resources/assets/img/portfolio/portfolio-details-1.jpg" class="img-fluid" alt="">
+            <img src="<%=application.getContextPath() %>/resources/assets/img/portfolio/portfolio-details-2.jpg" class="img-fluid" alt="">
+            <img src="<%=application.getContextPath() %>/resources/assets/img/portfolio/portfolio-details-3.jpg" class="img-fluid" alt="">
+          </div>
+
+          <div id="head" class="col-md-4">
 
 
 
+            <button type="button" class="btn btn-light" style="width:120px; box-shadow:none;">
+              <span class="material-icons">favorite_border</span></button>
+            <button type="button" class="btn btn-light" style="width:120px;  box-shadow:none;">
+              <span class="material-icons">bookmark_border</span></button>
+
+
+            
+            <div class="card-detail-sidebar__content">
+              <div class="card-detail-writer">
+                <div class="card-detail-writer__user mt-3">
+                  <a class="card-detail-writer__link" href="#">
+                    <img class="rounded-circle" style="width:60px; height:60px;" src="<%=application.getContextPath() %>/resources/images/photo7.jpg" />
+                    <span class="card-detail-writer__name">KWJ</span>
+                  </a>
+                  <a id="follow_check" href="javascript:checkFollow('following@aa.com')" class="btn btn-danger btn-sm" role="button">팔로우</a>
+                	<script>
+                	
+                	function checkFollow(followingEmail){
+						$.ajax({
+							url:"checkFollow",
+							data:{followingEmail:followingEmail}, 
+							success:function(data) {
+								$("#follow_check").attr("class","btn btn-info btn-sm");
+							}
+						});
+					}
+               	
+                	function followCheck(){
+                		$.ajax({
+							url:"followCheck",
+							success:function(data) {
+								if(data.result="success"){
+									$("#follow_check").attr("class","btn btn-info btn-sm");
+									$("#follow_check").attr("href","javascript:cancelFollow()");
+								}
+								if(data.result="fail"){
+									$("#follow_check").attr("class","btn btn-danger btn-sm");
+									$("#follow_check").attr("href","javascript:checkFollow('following@aa.com')");
+								}
+							}
+						});
+					} 
+                	
+                	
+                	
+                	function cancelFollow(){
+                		$.ajax({
+							url:"cancelfollow",
+							success:function(data) {
+								$("#follow_check").attr("class","btn btn-lingt btn-sm");
+							}
+						});
+                	}
+					
+					
+					
+                	</script>
+                </div>
+              </div>
+              
+            </div>
+
+          </div>
         </div>
-
       </div>
-    </section><!-- End Contact Section -->
+
+
+
+
+
+    </section>
+
+    <div class="container">
+
+
+
+      <div class="col-md-8" style="width:100%">
+
+        <div class="input-group mb-3" style="width:100%; float:none; margin:0 auto">
+          <h4>댓글 </h4>
+          <h4 style="color:DodgerBlue">&nbsp;#개</h4>
+        </div>
+      </div>
+      <div class="col-md-8" style="width:100%">
+
+        <div class="input-group mb-3" style="width:100%; float:none; margin:0 auto">
+          <span class="material-icons" style="font-size:45px; color:#4169E1;">
+            face
+          </span>
+          <input type="text" class="form-control" placeholder="칭찬과 격려는 큰 힘이됩니다!">
+          <div class="input-group-apeend">
+            <button class="btn btn-outline btn-primary" type="submit">등록</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="container">
+      <div>
+        <h5 style="text-align:left;">댓글들이 나오는 부분</h5>
+      </div>
+
+      <div class="row text-center" style="width:100%">
+
+        <div class="input-group mb-3" style="width:50%; float:none; margin:0 auto">
+
+          <ul class="pagination" style="text-align:left">
+            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">4</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
 
   </main><!-- End #main -->
 
@@ -249,6 +286,11 @@
 
   <!-- Template Main JS File -->
   <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>
+<script type="text/javascript">
+  $(function(){
+		followCheck();
+	 			});
+  </script>
 
 </body>
 

@@ -20,16 +20,21 @@
 		<property name="maxIdle" value="1"></property>
 	</bean>
 	
+	<!-- 여기 아래는 그냥 복사해서 써라, 외우진 말고 -->
+	
+	<!-- 객체를 SQL 로  SQL을 다시 객체로 만들어주는 역할 -->	<!-- 아까 connection을 dataSource라고 했었으니까. --><!-- 설정파일 -->
 	<bean id="sqlSessionFactory"
-		  class="org.mybatis.spring.SqlSessionFactoryBean">
+		  class="org.mybatis.spring.SqlSessionFactoryBean">		<!-- 커넥션 툴 = dataSource,  mybatis자체에 대한 설정파일과  , 테이블별 xml파일들 -->
 		<property name="dataSource" ref="dataSource"/>
 		<property name="configLocation" value="classpath:mybatis/mapper-config.xml"/>						
 		<property name="mapperLocations" value="classpath:mybatis/mapper/*.xml"/>						
 	</bean>
-	
+	<!-- DB에 테이블이 3개있다  3개의 xml을 만들어라 (테이블수 만큼) mapper 폴더에  
+	  
+	우리가 직접 사용해야될 객체이다  여기를 통해서 위의 sqlsessionfactorybean 객체를 사용한다.
+	빨간줄이 뜬 이유는 기본생성자가 없었기 때문임 그래서 생성자 주입해줘라 -->
 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate"> 
 		<constructor-arg ref = "sqlSessionFactory"></constructor-arg>
-	</bean>
-	
+	</bean>			<!-- DAO 클래스에서 SqlSessionTemplate를 사용한다   -->
 	
 </beans>
