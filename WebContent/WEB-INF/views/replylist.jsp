@@ -4,6 +4,7 @@
 
 <div>
 	<ul style="list-style:none;">
+<<<<<<< HEAD
         	<li style="font-size:14px">
         		<article>
 	     			<c:forEach var="reply" items="${list}">
@@ -19,6 +20,20 @@
 	     			</div>
 	     			</c:forEach>
         		</article>
+=======
+        	<li>
+        		
+       			<c:forEach var="reply" items="${list}">
+       			<p>
+	       			<a href="#">
+	       				<img class="rounded-circle" width="50px" height="50px" src="<%=application.getContextPath() %>/resources/img/person_1.jpg">
+	       				<span>${reply.mnickname}</span>
+	       			</a>
+	       			<span>${reply.rcontent}</span>
+       			</p>
+       			</c:forEach>
+        		
+>>>>>>> branch 'master' of https://github.com/mw7895la/TeamProject
         	</li>
     </ul>
     

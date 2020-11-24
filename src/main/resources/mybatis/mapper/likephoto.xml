@@ -3,10 +3,9 @@
 <mapper namespace="mybatis.mapper.likephoto">
 
 <select id="likePhotoAll" parameterType="String" resultType="like" >
-SELECT  a.aimage from a_photo a 
-where a.register_number in(
-select r.pnumber From register_photo r where r.pnumber in (
-SELECT p.pnumber from post_like p where p.memail=#{memail}))
+
+select r.first_image From register_photo r where r.pnumber in (
+SELECT p.pnumber from post_like p where p.memail=#{memail})
 </select>
 
 <insert id="likePhotoInsert" parameterType="like">
