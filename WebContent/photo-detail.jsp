@@ -81,69 +81,56 @@
               <span class="material-icons">favorite_border</span></button>
            <!--  <button  type="button" class="btn btn-light" style="width:120px;  box-shadow:none;">
               <span class="material-icons">bookmark_border</span></button> -->
-              <a type="button" id="RegBookMark" class="btn btn-light" href="javascript:RegBookMark(5)" style="width:120px; box-shadow:none;" onclick="">
-              <span class="material-icons">bookmark_border</span>
-              </a>
-            
               
+            <button id="RegBookMark"type="button" class="btn btn-light" style="width:120px; box-shadow:none;" onclick="">
+              <span id="RegBookMark"class="material-icons">bookmark_border</span></button>        
+			
               <script type="text/javascript">
-              	function CheckBookMark(pnumber){
+              	function CheckBookMark(){
               		$.ajax({
               			url: "<%=application.getContextPath()%>/BK/CheckBookMark",
-              			data : {pnumber : pnumber},
+              			
               			method: "get",
               			success: function(data){
               				if(data.result=="success"){
               					$("#RegBookMark").attr("class","btn btn-light");
-              					$("#RegBookMark").attr("onclick","RegBookMark(pnumber)");
+              					$("#RegBookMark").attr("onclick","RegBookMark()");
               				}else{
               					$("#RegBookMark").attr("class","btn btn-primary");
-              					$("#RegBookMark").attr("onclick","CancelBookMark(pnumber)");
+              					$("#RegBookMark").attr("onclick","CancelBookMark()");
               				}
               			}
               		});
               	}
-              </script>
-             
-             
-              <script type="text/javascript">
-            	function RegBookMark(pnumber){
-            		if(pnumber==6){
-            			$("#bookmark").html("이미 존재하는 pnumber입니다.");
-            			return;
-            		}
+              
+            	function RegBookMark(){
+            		
             		$.ajax({
             			url : "<%=application.getContextPath()%>/BK/regBookMark",
-                		data: {pnumber:pnumber},
                 		method:"get",
                 		success:function(data){
                 			if(data.result=="success"){
-                				CheckBookMark(pnumber);
+                				CheckBookMark();
                 			}
                 		}
             		});		
             	}
-              </script>
             
-            <script type="text/javascript">
-            	function CancelBookMark(pnumber){
+            	function CancelBookMark(){
             		$.ajax({
                 		url:"<%=application.getContextPath()%>/BK/CancelBookMark",
-                		data : {pnumber:pnumber},
+                		
                 		method:"get",
                 		success:function(data){
                 			if(data.result == "success"){
-                				CheckBookMark(pnumber);
+                				CheckBookMark();
                 			}
                 		}
             		});	
             	}
             	
             </script>
-            
-      
-			
-
+              
             	
             <div class="card-detail-sidebar__content">
               <div class="card-detail-writer">

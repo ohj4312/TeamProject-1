@@ -99,25 +99,8 @@
        							<div><span class="material-icons">bookmark_border</span></div>
        							<div><small>북마크  삭제</small></div>
        						</a>
-						<script type="text/javascript">
-							function delBookMark(pnumber){
-								if(!pnumber){
-									$("#Errors").html("Errors");
-								}
-								$.ajax({
-									url : "<%=application.getContextPath()%>/BK/delBookMark",
-									data: {pnumber : pnumber},
-									method:"get",
-									success:function(data){
-										logger.info("삭제 성공");
-									}
-									 
-								});
-							}
-						</script>
-						
-        				</div>
-        				<div id="Errors"></div>
+						</div>
+        				
 
 						
 
