@@ -52,7 +52,7 @@ public class LikeController {
 		logger.info("fileName:" + fileName);
 
 		// 파일의 데이터를 읽기 위한 입력 스트림 얻기
-		String saveFilePath = "C:/Temp/upload/" + fileName;
+		String saveFilePath = "C:/Temp/upload/"+fileName;
 		InputStream is = new FileInputStream(saveFilePath);
 		// 응답 HTTP 헤더 구성
 		// Content-Type 헤더 구성
