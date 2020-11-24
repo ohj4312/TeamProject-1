@@ -355,7 +355,7 @@ function writePhoto(){
             
         }
 
-<<<<<<< HEAD
+
 //============서윤아=====================================
  $(document).ready(function(){
 	replyList(1);
