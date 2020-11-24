@@ -52,7 +52,7 @@ public class LikeController {
 		logger.info("fileName:" + fileName);
 
 		// 파일의 데이터를 읽기 위한 입력 스트림 얻기
-		String saveFilePath = "D:/MyWorkspace/photo/" + fileName;
+		String saveFilePath = "C:/Temp/upload/" + fileName;
 		InputStream is = new FileInputStream(saveFilePath);
 		// 응답 HTTP 헤더 구성
 		// Content-Type 헤더 구성
@@ -79,11 +79,11 @@ public class LikeController {
 	}
 
 	@GetMapping("/likePush")
-	public void likePush(HttpSession session, HttpServletResponse response) throws Exception {
+	public void likePush(int pnumber,HttpSession session, HttpServletResponse response) throws Exception {
 
 		Member member = (Member) session.getAttribute("member");
 		String memail = member.getMemail();
-		int pnumber = 4;
+		
 		Post_like post_like = new Post_like();
 		post_like.setMemail(memail);
 		post_like.setPnumber(pnumber);
@@ -102,11 +102,11 @@ public class LikeController {
 
 	}
 	@GetMapping("/likePushCancel")
-	public void likePushCancel(Model model, HttpSession session, HttpServletResponse response) throws Exception {
+	public void likePushCancel(int pnumber,Model model, HttpSession session, HttpServletResponse response) throws Exception {
 		
 		Member member = (Member) session.getAttribute("member");
 		String memail = member.getMemail();
-		int pnumber = 4;
+		
 		Post_like post_like = new Post_like();
 		post_like.setMemail(memail);
 		post_like.setPnumber(pnumber);
@@ -126,12 +126,12 @@ public class LikeController {
 	}
 
 	@GetMapping("/likePushCheck")
-	public void likePushCheck(Model model, HttpSession session, HttpServletResponse response) throws Exception {
+	public void likePushCheck(int pnumber,Model model, HttpSession session, HttpServletResponse response) throws Exception {
 
 		
 		Member member = (Member) session.getAttribute("member");
 		String memail = member.getMemail();
-		int pnumber = 4;
+		
 		Post_like post_like = new Post_like();
 		post_like.setMemail(memail);
 		post_like.setPnumber(pnumber);

@@ -44,7 +44,20 @@
   <jsp:include page="/WEB-INF/views/include/Header.jsp"/>
 
   
-  <jsp:include page="/WEB-INF/views/include/photos.jsp"/>
+  
+  <section id="portfolio" class="portfolio section-bg">
+      <div id = "listappend" class="container mt-5">
+      	<jsp:include page="/WEB-INF/views/include/photoFilter.jsp"/>
+        <div id="addtag" class="row col-md-12 col-lg-6 mb-4">
+
+        </div>
+
+      
+        <jsp:include page="/WEB-INF/views/include/photos.jsp"/>
+        
+
+      </div>
+    </section>
 
     
   <!-- ======= Footer ======= -->
@@ -112,14 +125,14 @@
         &copy; Copyright <strong><span>Maxim</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/maxim-free-onepage-bootstrap-theme/ -->
+        All the links in the footer should remain intact.
+        You can delete the links only if you purchased the pro version.
+        Licensing information: https://bootstrapmade.com/license/
+        Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/maxim-free-onepage-bootstrap-theme/
         Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
       </div>
     </div>
-  </footer><!-- End Footer -->
+  </footer> <!-- End Footer -->
 
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 
@@ -135,6 +148,55 @@
 
   <!-- Template Main JS File -->
   <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>
+  
+  <script type="text/javascript">
+  var page = 2;
+		  $(function(){
+		      $(window).scroll(function(){
+		          var $window = $(this);
+		          var scrollTop = $window.scrollTop();
+		          var windowHeight = $window.height();
+		          var documentHeight = $(document).height();
+		          
+		          console.log("documentHeight:" + documentHeight + " | scrollTop:" + scrollTop + " | windowHeight: " + windowHeight );
+		          
+		          if( scrollTop + windowHeight + 1000 > documentHeight ){
+		        	  getList(page);
+			           page++; 
+		            }
+		      })
+		    
+		  })
+     
+		/* $(window).scroll(function(){   //스크롤이 최하단 으로 내려가면 리스트를 조회하고 page를 증가시킨다.
+		       if($(window).scrollTop() >= $(document).height() - $(window).height()){
+		          getList(page);
+		           page++;   
+		     } 
+		
+		     if( $(window).scrollTop() + $(window).height() + 100 > $(document).height() ){
+		    	 getList(page);
+		           page++;  
+		        }
+		}); */
+		 
+		function getList(page){
+			
+			$.ajax({
+				type : 'POST',
+				url:"list",
+				data: {"pageNo" : page},
+				success : function(data) {
+					$("#listappend").append(data);
+		       		},
+		       error:function(e){
+		           if(e.status==300){
+		               alert("데이터를 가져오는데 실패하였습니다.");
+		           };
+		       }
+			});
+		}
+</script>
 
 </body>
 

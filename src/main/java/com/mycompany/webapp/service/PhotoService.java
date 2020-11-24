@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.mycompany.webapp.controller.PhotoController;
 import com.mycompany.webapp.dao.PhotoDAO;
 import com.mycompany.webapp.dto.A_photo;
+import com.mycompany.webapp.dto.Pager;
 import com.mycompany.webapp.dto.Register_photo;
 
 @Service
@@ -57,6 +58,15 @@ public class PhotoService {
 		photo.setList(aphotos);
 		
 		return photo;
+	}
+
+	public int getTotalRows() {
+		return photoDAO.countAll();
+	}
+
+	public List<Register_photo> getPhotoList(Pager pager) {
+		
+		return photoDAO.selectByPage(pager);
 	}
 
 
