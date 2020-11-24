@@ -34,4 +34,18 @@
 		from REGISTER_PHOTO r, member m 
 		where r.pwriter = m.memail and pnumber = #{pnumber}
 	</select>
+	
+	<select id="countAll" resultType="int">
+		select count(*)from register_photo
+	</select>
+	
+	<select id="selectByPage" resultType="registerPhoto" parameterType="pager">
+		select rnum, pnumber, first_image
+		from(
+		select rownum as rnum, pnumber, first_image
+		from (select pnumber, first_image from register_photo order by pnumber desc)
+		where rownum &lt;= #{endRowNo}
+		)
+		where rnum &gt;= #{startRowNo} 
+	</select>
 </mapper>

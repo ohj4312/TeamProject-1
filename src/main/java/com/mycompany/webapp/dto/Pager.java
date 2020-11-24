@@ -11,7 +11,7 @@ public class Pager {
 	private int groupNo;		//현재 그룹 번호
 	private int rowsPerPage;	//페이지당 행 수 
 	private int startRowNo; 	//페이지의 시작 행 번호
-	private int endRowNo; 		//페이지의 시작 행 번호
+	private int endRowNo; 		//페이지의 끝 행 번호
 	public Pager(int rowsPerPage, int pagesPerGroup, int totalRows, int pageNo) {
 		this.rowsPerPage = rowsPerPage;
 		this.pagesPerGroup = pagesPerGroup;

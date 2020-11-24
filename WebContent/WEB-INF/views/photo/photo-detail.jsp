@@ -38,6 +38,19 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  
+   <style media="screen">
+   .scroll{
+     width: 1000px;
+     height: 300px;
+     overflow-x: scroll;
+     white-space:nowrap
+   }
+   .scroll img{
+       width:300px;
+       height:100%;
+   }
+ </style>
 </head>
 
 <body>
@@ -62,7 +75,7 @@
 
       <div class="container">
         <div class="row">
-         <div class="owl-carousel portfolio-details-carousel col-md-8">
+         <div id = "owl-carousel"class="owl-carousel portfolio-details-carousel col-md-8">
           	<c:forEach var="photo" items="${photo.list}">
           		<img src="photodownload?fileName=${photo.aimage}" class="img-fluid" alt="">
 			</c:forEach>
