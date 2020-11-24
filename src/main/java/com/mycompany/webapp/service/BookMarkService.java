@@ -11,7 +11,7 @@ import com.mycompany.webapp.dto.Post_bookmark;
 
 @Service
 public class BookMarkService {
-	 
+	  
 	
 	@Resource 
 	private BookMarkDAO bookmarkDAO;
@@ -24,7 +24,7 @@ public class BookMarkService {
 	}
 	
 	//조 회
-	public List<Post_bookmark> Inquiry(Post_bookmark pb) {
+	public List<Post_bookmark> getBookMarkList(Post_bookmark pb) {
 		List<Post_bookmark> list = bookmarkDAO.selectBookMark(pb);
 		
 		return list;

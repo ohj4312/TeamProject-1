@@ -11,6 +11,7 @@ public class Post_bookmark {
 	
 	private int pnumber;  //register photo
 	
+	
 	public int getBnumber() {
 		return bnumber;
 	}

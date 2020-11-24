@@ -21,9 +21,11 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mycompany.webapp.dto.A_photo;
 import com.mycompany.webapp.dto.Member;
+import com.mycompany.webapp.dto.Pager;
 import com.mycompany.webapp.dto.Register_photo;
 import com.mycompany.webapp.service.PhotoService;
 
@@ -36,15 +38,39 @@ public class PhotoController {
 	PhotoService photoService;
 	
 	@GetMapping("/list")
-	public String photoList(Model model) {
+	public String photoList(Model model, @RequestParam(defaultValue = "1") int pageNo) {
+		int totalRows = photoService.getTotalRows();
 		
-		List<Register_photo> photolist =  photoService.getPhotoList();
+		Pager pager = new Pager(12, 5, totalRows, pageNo);
+		
+		List<Register_photo> photolist =  photoService.getPhotoList(pager);
 		for(Register_photo photo : photolist) {
 			logger.info("list로 들어오는 파일명과 pnumber:"+ photo.getFirst_image() + "/"+photo.getPnumber());
 		}
 		model.addAttribute("list", photolist);
+		
+		
 		return "photo/photolist";
+		
 	}
+	
+	@PostMapping("/list")
+	public String photoListByPage(Model model, @RequestParam(defaultValue = "1") int pageNo) {
+		int totalRows = photoService.getTotalRows();
+		
+		Pager pager = new Pager(9, 5, totalRows, pageNo);
+		logger.info(String.valueOf(pager.getEndRowNo()));
+		List<Register_photo> photolist =  photoService.getPhotoList(pager);
+		for(Register_photo photo : photolist) {
+			logger.info("list로 들어오는 파일명과 pnumber:"+ photo.getFirst_image() + "/"+photo.getPnumber());
+		}
+		model.addAttribute("list", photolist);
+		
+		return "include/photos";
+		
+	}
+	
+	
 	
 	@GetMapping("/detail")
 	public String photoDetail(int pnumber, Model model) {

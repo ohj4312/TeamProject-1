@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mycompany.webapp.controller.PhotoController;
 import com.mycompany.webapp.dto.A_photo;
+import com.mycompany.webapp.dto.Pager;
 import com.mycompany.webapp.dto.Register_photo;
 
 @Repository
@@ -49,5 +50,15 @@ public class PhotoDAO {
 	public Register_photo selectRegPhoto(int pnumber) {
 		// TODO Auto-generated method stub
 		return sst.selectOne("mybatis.mapper.photo.selectRegPhoto" , pnumber);
+	}
+
+	public int countAll() {
+		// TODO Auto-generated method stub
+		return sst.selectOne("mybatis.mapper.photo.countAll");
+	}
+
+	public List<Register_photo> selectByPage(Pager pager) {
+		
+		return sst.selectList("mybatis.mapper.photo.selectByPage", pager);
 	}
 }

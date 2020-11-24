@@ -38,6 +38,19 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  
+   <style media="screen">
+   .scroll{
+     width: 1000px;
+     height: 300px;
+     overflow-x: scroll;
+     white-space:nowrap
+   }
+   .scroll img{
+       width:300px;
+       height:100%;
+   }
+ </style>
 </head>
 
 <body>
@@ -57,19 +70,12 @@
           </div>
         </div>
       </div>
-     
 
 
 
       <div class="container">
         <div class="row">
-          <!-- <div class="col-md-8" data-aos="fade-up">
-         
-
-           <img src="resources/images/photo2.jpg" alt="Image" class="img-fluid">
-         </div> -->
-			
-          <div class="owl-carousel portfolio-details-carousel col-md-8">
+         <div id = "owl-carousel"class="owl-carousel portfolio-details-carousel col-md-8">
           	<c:forEach var="photo" items="${photo.list}">
           		<img src="photodownload?fileName=${photo.aimage}" class="img-fluid" alt="">
 			</c:forEach>
@@ -79,54 +85,13 @@
 
 
 
-            <button id="likepush"type="button" class="btn btn-light" style="width:120px; box-shadow:none;" onclick="">
+            <button id="likepush" type="button" class="btn btn-light" style="width:120px; box-shadow:none;" onclick="">
               <span id="likepush"class="material-icons">favorite_border</span></button>        
-				<script type="text/javascript">
-				function likepushCheck(){
-				            	 $.ajax({
-				 					url:"<%=application.getContextPath()%>/like/likePushCheck",
-									method : "get",
-									success : function(data) {
-								if (data.result == "success") {							
-									$("#likepush").attr("class", "btn btn-light");
-									$("#likepush").attr("onclick","likePush()");
 				
-								} else {									
-									$("#likepush").attr("class", "btn btn-danger");
-									$("#likepush").attr("onclick","likePushcancel()");
-								}
+            <a id="RegBookMark" class="btn btn-light" style="width:120px; box-shadow:none;" onclick="javascript:RegBookMark()">
+				<span id="RegBookMark"class="material-icons">bookmark_border</span>
+			</a>
 				
-							}
-						});
-				
-					}
-				function likePushcancel(){				            								
-				             	$.ajax({
-									url:"<%=application.getContextPath()%>/like/likePushCancel",
-									method : "get",
-									success : function(data) {
-										if (data.result == "success") {
-											likepushCheck();												
-												}				
-											}
-										});
-									}
-				
-				function likePush() {				            								
-	             	$.ajax({
-						url:"<%=application.getContextPath()%>/like/likePush",
-						method : "get",
-						success : function(data) {
-							if (data.result == "success") {
-								likepushCheck();												
-									}				
-								}
-							});
-						}
-										
-				</script>
-            <button type="button" class="btn btn-light" style="width:120px;  box-shadow:none;">
-              <span class="material-icons">bookmark_border</span></button>
 
 
             
@@ -166,21 +131,33 @@
           <span class="material-icons" style="font-size:45px; color:#4169E1;">
             face
           </span>
-          <input type="text" id ="rcontent" class="form-control" placeholder="칭찬과 격려는 큰 힘이됩니다!">
+          <input type="text" class="form-control" placeholder="칭찬과 격려는 큰 힘이됩니다!">
           <div class="input-group-apeend">
-            <c:if test="${member.memail != null}">
-            <a class="btn btn-outline btn-primary" href="javascript:replyWrite(${photo.pnumber })">등록</a>
-            </c:if>
+            <button class="btn btn-outline btn-primary" type="submit">등록</button>
           </div>
         </div>
-     
       </div>
     </div>
 
 
     <div class="container">
-      <div id="reply_result" style="margin-top:30px">
-     
+      <div>
+        <h5 style="text-align:left;">댓글들이 나오는 부분</h5>
+      </div>
+
+      <div class="row text-center" style="width:100%">
+
+        <div class="input-group mb-3" style="width:50%; float:none; margin:0 auto">
+
+          <ul class="pagination" style="text-align:left">
+            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">4</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+          </ul>
+        </div>
       </div>
     </div>
 
@@ -275,13 +252,125 @@
 
   <!-- Template Main JS File -->
   <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>
+  <script type="text/javascript">
+				
+				function likepushCheck(){
+					var pnumber = ${photo.pnumber}
+					
+						 $.ajax({
+							 
+							 		url:"<%=application.getContextPath()%>/like/likePushCheck",
+									method : "get",
+									data : {pnumber:pnumber},
+									success : function(data) {
+										
+								if (data.result == "success") {							
+									$("#likepush").attr("class", "btn btn-light");
+									$("#likepush").attr("onclick","likePush()");
+				
+								} else {									
+									$("#likepush").attr("class", "btn btn-danger");
+									$("#likepush").attr("onclick","likePushcancel()");
+								}
+				
+							}
+						}); 
+				
+					}
+				
+				function likePushcancel(){		
+							
+					var pnumber = ${photo.pnumber}
+							
+				             	$.ajax({
+									url:"<%=application.getContextPath()%>/like/likePushCancel",
+									method : "get",
+									data : {pnumber:pnumber},
+									success : function(data) {
+										if (data.result == "success") {
+											likepushCheck();												
+												}				
+											}
+										});
+									}
+				
+				function likePush() {				            								
+					var pnumber = ${photo.pnumber}	
+					$.ajax({
+						url:"<%=application.getContextPath()%>/like/likePush",
+						method : "get",
+						data : {pnumber:pnumber},
+						success : function(data) {
+							if (data.result == "success") {
+								likepushCheck();												
+									}				
+								}
+							});
+						} 
+										
+				</script>
+				 <script type="text/javascript">
+              	function CheckBookMark(){
+              		console.log("check로 넘어간 후");
+              		var pnumber = ${photo.pnumber}
+              		$.ajax({
+              			url: "<%=application.getContextPath()%>/BK/CheckBookMark",
+              			data : {pnumber:pnumber},
+              			method: "get",
+              			success: function(data){
+              				
+              				if(data.result== "success"){
+              					$("#RegBookMark").attr("class","btn btn-light");
+              					$("#RegBookMark").attr("onclick","RegBookMark()");
+              				}else{
+              					$("#RegBookMark").attr("class","btn btn-primary");
+              					$("#RegBookMark").attr("onclick","CancelBookMark()");
+              				}
+              			}
+              		});
+              	}
+              
+            	function RegBookMark(){
+            		console.log("실행");
+            		var pnumber = ${photo.pnumber}
+            		
+            		$.ajax({
+            			url : "<%=application.getContextPath()%>/BK/regBookMark",
+            			data: {pnumber: pnumber },
+                		method:"get",
+                		success:function(data){
+                			if(data.result=="success"){
+                				console.log("check 넘어가기 전");
+                				CheckBookMark();
+                			}
+                		}
+            		});		
+            	}
+            
+            	function CancelBookMark(){
+            		console.log("Cancel로 넘어옴");
+            		var pnumber = ${photo.pnumber}
+            		$.ajax({
+                		url:"<%=application.getContextPath()%>/BK/CancelBookMark",
+                		data :{pnumber:pnumber},
+                		method:"get",
+                		success:function(data){
+                			if(data.result == "success"){
+                				CheckBookMark();
+                			}
+                		}
+            		});	
+            	}
+            	
+            </script>
+				
    <script type="text/javascript">
   $(function(){
-		 likepushCheck();
+		 likepushCheck();	
+		 CheckBookMark();
 	 			});
- 
+  
   </script>
-
 </body>
 
 </html>

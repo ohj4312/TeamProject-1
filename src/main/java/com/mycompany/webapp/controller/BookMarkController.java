@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -15,13 +16,12 @@ import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.mycompany.webapp.dto.A_photo;
 import com.mycompany.webapp.dto.Member;
 import com.mycompany.webapp.dto.Post_bookmark;
+import com.mycompany.webapp.dto.Register_photo;
 import com.mycompany.webapp.service.BookMarkService;
 
 @Controller
@@ -56,17 +56,20 @@ public class BookMarkController {
 	
 	//photo-detail에서 요청 매핑을 받았을때  //여기가 photo-detail에서 북마크를 눌렀을때 요청매핑에 의해 컨트롤러로 넘어옴.
 	@GetMapping("/regBookMark")
-	public void regBookMark(int pnumber,HttpServletResponse response, HttpSession session,Member member) throws Exception { 
+	public void regBookMark(int pnumber,HttpServletResponse response, HttpSession session) throws Exception { 
 		logger.info("실행");
+		logger.info(String.valueOf(pnumber));
 		
-		String memail = (String) session.getAttribute("memail");
-		if(memail == null) {
-			memail = "test1@naver.com";
-		}
+		
+		Member member = (Member) session.getAttribute("member");
+		String memail = member.getMemail();
+		
+		logger.info(memail);
 		
 		Post_bookmark pb = new Post_bookmark();
 		pb.setMemail(memail);
 		pb.setPnumber(pnumber);
+		
 		
 		service.Register(pb);
 		
@@ -85,7 +88,8 @@ public class BookMarkController {
 	//웹에 애초에 들어갈때 
 	
 	@GetMapping("/CancelBookMark")
-	public void BookMarkCancel(int pnumber,HttpSession session, HttpServletResponse response) throws Exception {
+	public void BookMarkCancel(int pnumber,HttpSession session,Register_photo ph, HttpServletResponse response) throws Exception {
+		
 		Member member = (Member) session.getAttribute("member");
 		String memail = member.getMemail();
 		
@@ -109,14 +113,10 @@ public class BookMarkController {
 	
 	@GetMapping("/CheckBookMark")
 	public void CheckBookMark(int pnumber, HttpSession session, HttpServletResponse response ) throws Exception {
-		//Post_bookmark pb = (Post_bookmark) session.getAttribute("memail");
-		/*String memail = (String) session.getAttribute("memail");
-		if(memail==null) {
-			memail = "test1@naver.com";
-		}*/
-		Member member = (Member) session.getAttribute("member");
-		String memail = "test1@naver.com";
 		
+		Member member = (Member) session.getAttribute("member");
+		String memail= member.getMemail();
+		logger.info(memail);
 		Post_bookmark pb = new Post_bookmark();
 		pb.setPnumber(pnumber);
 		pb.setMemail(memail);
@@ -124,7 +124,7 @@ public class BookMarkController {
 		JSONObject jsonObject = new JSONObject();
 		
 		int check = service.CheckBookMark(pb);
-		
+		logger.info(String.valueOf(check));
 		if(check ==0) {
 			jsonObject.put("result", "success");
 			String json = jsonObject.toString();
@@ -152,46 +152,39 @@ public class BookMarkController {
 	
 	//조회를 위한 리스트.
 	@GetMapping("/getBookMarkList")
-	public String getBookMarkList(int pnumber,A_photo ap,Post_bookmark pb,Model model) {
+	public void getBookMarkList(int pnumber,HttpServletResponse response,HttpSession session) throws Exception {
+		//여기의 pnumber가  A_Photo의 register_number와  같다.
+		//pnumber == register_number
+		//Aphoto의 사진만 일단 먼저 출력해보자  
+
+		Member member = (Member) session.getAttribute("memail"); 
+		String memail =	member.getMemail();
+		Post_bookmark pb = new Post_bookmark();
+		pb.setPnumber(pnumber); pb.setMemail(memail);
 		
-		pb.setPnumber(pnumber);
-		ap.setRegister_number(pnumber);
-		List<Post_bookmark> list= service.Inquiry(pb);	
+		List<Post_bookmark> list = service.getBookMarkList(pb);
 		
-		for(int i=0; i<list.size(); i++) {
-			logger.info("list:"+list.get(i).getPnumber());
-			logger.info("list:"+list.get(i).getMemail());
-			logger.info("list:"+list.get(i).getBnumber());
-		}
-		model.addAttribute("list",list);
-		return "member/bookmark";
+		
+		
+		
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("result", "success");
+		String json = jsonObject.toString();
+		// 응답보내기
+		PrintWriter out = response.getWriter();
+		response.setContentType("application/json;charset=utf-8");
+		out.println(json);
+		out.flush();
+		out.close();
+		
 	}
 	 
 	
 
 	
 	
-	//삭제
-	@GetMapping("/delBookMark")
-	public void delBookMark(int pnumber,HttpSession session,HttpServletResponse response) {
-		logger.info("실행");
-		Post_bookmark pb = new Post_bookmark();
-		
-		
-		pb.setPnumber(pnumber);
-		service.Delete(pb);
-		
-	}
 	
 	
-	
-	//조회
-	@GetMapping("/detail")
-	public String photoDetail() {
-		
-		
-		return "photo/photo-detail";
-	}
 	
 }
 
