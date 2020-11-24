@@ -107,11 +107,11 @@
                 		$.ajax({
 							url:"followCheck",
 							success:function(data) {
-								if(data.result="success"){
+								if(data.result=="success"){
 									$("#follow_check").attr("class","btn btn-info btn-sm");
 									$("#follow_check").attr("href","javascript:cancelFollow()");
 								}
-								if(data.result="fail"){
+								if(data.result=="fail"){
 									$("#follow_check").attr("class","btn btn-danger btn-sm");
 									$("#follow_check").attr("href","javascript:checkFollow('following@aa.com')");
 								}
