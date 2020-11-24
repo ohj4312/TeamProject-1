@@ -80,100 +80,14 @@
 
 
 
-            <button id="likepush"type="button" class="btn btn-light" style="width:120px; box-shadow:none;" onclick="">
+            <button id="likepush" type="button" class="btn btn-light" style="width:120px; box-shadow:none;" onclick="">
               <span id="likepush"class="material-icons">favorite_border</span></button>        
-				<script type="text/javascript">
-				function likepushCheck(){
-				            	 $.ajax({
-				 					url:"<%=application.getContextPath()%>/like/likePushCheck",
-									method : "get",
-									success : function(data) {
-								if (data.result == "success") {							
-									$("#likepush").attr("class", "btn btn-light");
-									$("#likepush").attr("onclick","likePush()");
 				
-								} else {									
-									$("#likepush").attr("class", "btn btn-danger");
-									$("#likepush").attr("onclick","likePushcancel()");
-								}
+            <a id="RegBookMark" class="btn btn-light" style="width:120px; box-shadow:none;" onclick="javascript:RegBookMark()">
+				<span id="RegBookMark"class="material-icons">bookmark_border</span>
+			</a>
 				
-							}
-						});
-				
-					}
-				function likePushcancel(){				            								
-				             	$.ajax({
-									url:"<%=application.getContextPath()%>/like/likePushCancel",
-									method : "get",
-									success : function(data) {
-										if (data.result == "success") {
-											likepushCheck();												
-												}				
-											}
-										});
-									}
-				
-				function likePush() {				            								
-	             	$.ajax({
-						url:"<%=application.getContextPath()%>/like/likePush",
-						method : "get",
-						success : function(data) {
-							if (data.result == "success") {
-								likepushCheck();												
-									}				
-								}
-							});
-						}
-										
-				</script>
-            <button id="RegBookMark"type="button" class="btn btn-light" style="width:120px; box-shadow:none;" onclick="">
-              <span id="RegBookMark"class="material-icons">bookmark_border</span></button>        
-			
-              <script type="text/javascript">
-              	function CheckBookMark(){
-              		$.ajax({
-              			url: "<%=application.getContextPath()%>/BK/CheckBookMark",
-              			
-              			method: "get",
-              			success: function(data){
-              				if(data.result=="success"){
-              					$("#RegBookMark").attr("class","btn btn-light");
-              					$("#RegBookMark").attr("onclick","RegBookMark()");
-              				}else{
-              					$("#RegBookMark").attr("class","btn btn-primary");
-              					$("#RegBookMark").attr("onclick","CancelBookMark()");
-              				}
-              			}
-              		});
-              	}
-              
-            	function RegBookMark(){
-            		
-            		$.ajax({
-            			url : "<%=application.getContextPath()%>/BK/regBookMark",
-                		method:"get",
-                		success:function(data){
-                			if(data.result=="success"){
-                				CheckBookMark();
-                			}
-                		}
-            		});		
-            	}
-            
-            	function CancelBookMark(){
-            		$.ajax({
-                		url:"<%=application.getContextPath()%>/BK/CancelBookMark",
-                		
-                		method:"get",
-                		success:function(data){
-                			if(data.result == "success"){
-                				CheckBookMark();
-                			}
-                		}
-            		});	
-            	}
-            	
-            </script>
+
 
             
             <div class="card-detail-sidebar__content">
@@ -188,6 +102,7 @@
               </div>
               
             </div>
+
           </div>
         </div>
       </div>
@@ -197,11 +112,7 @@
     <div class="container">
 
 
-		 <div class="scroll col-md-8 h-25" style="width:100%">
-		 	<c:forEach var="photo" items="${photo.list}">
-          		<img src="photodownload?fileName=${photo.aimage}" class= "w-25 h-25">
-			</c:forEach>
-		 </div>
+
       <div class="col-md-8" style="width:100%">
 
         <div class="input-group mb-3" style="width:100%; float:none; margin:0 auto">
@@ -336,12 +247,126 @@
 
   <!-- Template Main JS File -->
   <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>
-   <script type="text/javascript">
-  $(function(){
-		 likepushCheck();
-		 CheckBookMark();
+
+  <script type="text/javascript">
+				
+				function likepushCheck(){
+					var pnumber = ${photo.pnumber}
+					
+						 $.ajax({
+							 
+							 		url:"<%=application.getContextPath()%>/like/likePushCheck",
+									method : "get",
+									data : {pnumber:pnumber},
+									success : function(data) {
+										
+								if (data.result == "success") {							
+									$("#likepush").attr("class", "btn btn-light");
+									$("#likepush").attr("onclick","likePush()");
+				
+								} else {									
+									$("#likepush").attr("class", "btn btn-danger");
+									$("#likepush").attr("onclick","likePushcancel()");
+								}
+				
+							}
+						}); 
+				
+					}
+				
+				function likePushcancel(){		
+							
+					var pnumber = ${photo.pnumber}
+							
+				             	$.ajax({
+									url:"<%=application.getContextPath()%>/like/likePushCancel",
+									method : "get",
+									data : {pnumber:pnumber},
+									success : function(data) {
+										if (data.result == "success") {
+											likepushCheck();												
+												}				
+											}
+										});
+									}
+				
+				function likePush() {				            								
+					var pnumber = ${photo.pnumber}	
+					$.ajax({
+						url:"<%=application.getContextPath()%>/like/likePush",
+						method : "get",
+						data : {pnumber:pnumber},
+						success : function(data) {
+							if (data.result == "success") {
+								likepushCheck();												
+									}				
+								}
+							});
+						} 
+										
+				</script>
+				 <script type="text/javascript">
+              	function CheckBookMark(){
+              		console.log("check로 넘어간 후");
+              		var pnumber = ${photo.pnumber}
+              		$.ajax({
+              			url: "<%=application.getContextPath()%>/BK/CheckBookMark",
+              			data : {pnumber:pnumber},
+              			method: "get",
+              			success: function(data){
+              				
+              				if(data.result== "success"){
+              					$("#RegBookMark").attr("class","btn btn-light");
+              					$("#RegBookMark").attr("onclick","RegBookMark()");
+              				}else{
+              					$("#RegBookMark").attr("class","btn btn-primary");
+              					$("#RegBookMark").attr("onclick","CancelBookMark()");
+              				}
+              			}
+              		});
+              	}
+              
+            	function RegBookMark(){
+            		console.log("실행");
+            		var pnumber = ${photo.pnumber}
+            		
+            		$.ajax({
+            			url : "<%=application.getContextPath()%>/BK/regBookMark",
+            			data: {pnumber: pnumber },
+                		method:"get",
+                		success:function(data){
+                			if(data.result=="success"){
+                				console.log("check 넘어가기 전");
+                				CheckBookMark();
+                			}
+                		}
+            		});		
+            	}
+            
+            	function CancelBookMark(){
+            		console.log("Cancel로 넘어옴");
+            		var pnumber = ${photo.pnumber}
+            		$.ajax({
+                		url:"<%=application.getContextPath()%>/BK/CancelBookMark",
+                		data :{pnumber:pnumber},
+                		method:"get",
+                		success:function(data){
+                			if(data.result == "success"){
+                				CheckBookMark();
+                			}
+                		}
+            		});	
+            	}
+            	
+            	 $(function(){
+		 			likepushCheck();	
+					CheckBookMark();
 	 			});
-  </script>
+            	
+            </script>
+				
+
+
 </body>
 
 </html>

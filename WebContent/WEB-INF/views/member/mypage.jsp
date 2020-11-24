@@ -70,12 +70,29 @@
         				</div>
         			</div>
         		<div class="row" style="text-align:center">
-        				<div class="col-4 col">
-       						<a href="#">
+        				<div class="col-4">
+       						<a onclick="javascript:GetBookMarkList()">
 								<div><span class="material-icons">bookmark_border</span></div>
 								<div><small>스크랩북</small></div>
        						</a>
         				</div>
+        				<script type="text/javascript">
+        					function GetBookMarkList(){
+        						console.log("리스트 불러오기");
+        						var pnumber = ${photo.pnumber}
+        						$.ajax({
+        							url : "<%=application.getContextPath()%>/BK/getBookMarkList",
+        							data : {pnumber:pnumber},
+        							method: "get",
+        							success : function(data){
+        								console.log("함수 안에부분 실행");
+        								$("#photoList").hide();
+        								$("#mypagephoto").hide();
+        								$("#BookMarkList").html(data);
+        							}
+        						});
+        					}
+        				</script>
         				
         				<div class="col-4">
        						<a href="javascript:getLikephotolist()">
@@ -90,6 +107,7 @@
         						url:"<%=application.getContextPath() %>/like/getLikePhotolist",
         						
         						success:function(data){
+        							
         							$("#photoList").html(data);
         						
         						}
@@ -128,11 +146,14 @@
                           <a class="post__upload" href="#"> 첫 번째 사진을 올려보세요</a>
                     </div>
                 </div>  
+                <div id="BookMarkList"></div>
         			</section>
+        		
+        		
         		</div>
         	</div> 
 
-
+			
 
         </div>
 
