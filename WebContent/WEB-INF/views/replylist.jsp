@@ -9,7 +9,7 @@
        			<c:forEach var="reply" items="${list}">
        			<p>
 	       			<a href="#">
-	       				<img class="rounded-circle" width="50px" height="50px" src="resources/images/photo7.jpg">
+	       				<img class="rounded-circle" width="50px" height="50px" src="<%=application.getContextPath() %>/resources/img/person_1.jpg">
 	       				<span>${reply.mnickname}</span>
 	       			</a>
 	       			<span>${reply.rcontent}</span>

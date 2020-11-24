@@ -62,7 +62,6 @@ public class ReplyController {
 		reply.setRcontent(rcontent);
 		reply.setMnickname(mnickname);
 
-		//model.addAttribute("mnickname", mnickname);
 		service.replyWrite(reply);
 		response.setContentType("application/json; charset=utf-8");
 		
