@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 /**
 * Template Name: Maxim - v2.2.0
 * Template URL: https://bootstrapmade.com/maxim-free-onepage-bootstrap-theme/
@@ -829,8 +829,3 @@ function replyWrite(pnumber){
 }
 
 
-
- 
-
-
->>>>>>> branch 'master' of https://github.com/mw7895la/TeamProject.git
