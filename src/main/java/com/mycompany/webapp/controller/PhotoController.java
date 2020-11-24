@@ -127,6 +127,7 @@ public class PhotoController {
 			}
 		
 		//두개의 테이블에 insert하기 위한 service 요청
+		
 		photoService.writePhoto(rphoto);
 		
 		

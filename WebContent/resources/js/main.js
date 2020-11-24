@@ -196,9 +196,10 @@
 
 //===========================노성규==============================
 function addTag(btncon, btnid) {
-  var button = $(
-    '<button type = "button" onclick="removeTag(' + btnid + ');" id = "' + btnid + '"class = "btn btn-outline-primary btn-sm mr-2">' + btncon + '<i class="material-icons" style="font-size: x-small;">close</i></button>'
-  );
+  var button = $('<button type = "button" onclick="removeTag(' + btnid + ');"'+
+				'id = "' + btnid + '"class = "btn btn-outline-primary btn-sm mr-2">' 
+				+ btncon + '<i class="material-icons" style="font-size: x-small;">close</i></button>');
+				
   var id1 = '#' + btnid;
   if ($(id1).length > 0) {
     var icon = '<i class="material-icons" style="font-size: x-small;">close</i>';
@@ -364,6 +365,18 @@ function photoChange(aimage, acontent){
 	$('#acontent').html(acontent);
 	
 }
+
+$(document).ready(function(){
+	$('.dropdown-item').on('click', function(){
+	var content = $('#addtag button');
+	console.log(content.length);
+});
+});
+
+$("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+
 
 
 //============서윤아=====================================
