@@ -196,6 +196,7 @@
 })(jQuery);
 
 //===========================노성규==============================
+var filterCon;
 function addTag(btncon, btnid) {
   var button = $('<button type = "button" onclick="removeTag(' + btnid + ');"'+
 				'id = "' + btnid + '"class = "btn btn-outline-primary btn-sm mr-2">' 
@@ -208,7 +209,8 @@ function addTag(btncon, btnid) {
   } else {
     $("#addtag").append(button);
   }
-	console.log(btncon);
+	filterCon += btncon;
+	console.log(filterCon);
 }
 
 function removeTag(removeID) {
