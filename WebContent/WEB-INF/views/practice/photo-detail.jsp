@@ -90,13 +90,16 @@
                     <img class="rounded-circle" style="width:60px; height:60px;" src="<%=application.getContextPath() %>/resources/images/photo7.jpg" />
                     <span class="card-detail-writer__name">KWJ</span>
                   </a>
-                  <a id="follow_check" href="javascript:checkFollow()" class="btn btn-danger btn-sm" role="button">팔로우</a>
+                  <a id="follow_check" href="javascript:checkFollow('following@aa.com')" class="btn btn-danger btn-sm" role="button">팔로우</a>
                 	<script>
                 	
-                	function checkFollow(followingEmail){
+                	function checkFollow(followingemail){
+                		console.log("checkFollow() 자바슼크립트 실행");
 						$.ajax({
 							url:"checkFollow",
+							data:{followingemail:followingemail},
 							success:function(data) {
+								console.log("팔로우체크실행");
 								$("#follow_check").attr("class","btn btn-info btn-sm");
 								$("#follow_check").attr("href","javascript:cancelFollow()");
 							}
@@ -113,7 +116,7 @@
 								}
 								if(data.result=="fail"){
 									$("#follow_check").attr("class","btn btn-danger btn-sm");
-									$("#follow_check").attr("href","javascript:cancelFollow()");
+									$("#follow_check").attr("href","javascript:checkFollow('following@aa.com')");
 								}
 							}
 						});
@@ -122,12 +125,15 @@
                 	
                 	
                 	function cancelFollow(){
+                		console.log("cancelFollow() 자바슼크립트 실행");
                 		$.ajax({
-							url:"cancelfollow",
+							url:"cancelFollow",
 							success:function(data) {
-								console.log("Aaaaaaaaaaaaaaa");
+								
+								console.log("팔로우취소실행");
 								$("#follow_check").attr("class","btn btn-danger btn-sm");
-								$("#follow_check").attr("href","javascript:cancelFollow()");
+								$("#follow_check").attr("href","javascript:checkFollow('following@aa.com')");
+							
 							}
 						});
                 	}

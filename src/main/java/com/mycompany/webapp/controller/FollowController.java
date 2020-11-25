@@ -88,27 +88,43 @@ public class FollowController {
 	}
 	
 	@GetMapping("/checkFollow")
-	public void checkFollow(String followingEmail, HttpSession session) {
+	public void checkFollow(String followingEmail, HttpSession session,HttpServletResponse response) throws IOException {
 		System.out.println(followingEmail);
 		Member member=(Member)session.getAttribute("member");
 		String follower=member.getMemail();
 		System.out.println(follower);
 		Follows follows = new Follows();
-		follows.setFollowing(followingEmail);
+		follows.setFollowing("following@aa.com");
 		follows.setFollower(follower);
 		int followsnum=followService.checkFollow(follows);
 		logger.info("컨트롤러의 팔로우수 : "+followsnum);
+		if(followsnum==1) {
+			PrintWriter out = response.getWriter();
+			response.setContentType("text/html;charset=utf-8");
+			out.println(followsnum);
+			out.flush();
+			out.close();
+		}
+
 	}
 	
 	@GetMapping("/cancelFollow")
-	public String cancelfollow(String followingEmail,Model model,HttpSession session) {
+	public void cancelFollow(Model model,HttpSession session,HttpServletResponse response) throws IOException {
 		Member member=(Member)session.getAttribute("member");
 		String memail=member.getMemail();
 		Follows follows=new Follows();
 		follows.setFollower(memail);
-		follows.setFollowing(followingEmail);
-		followService.cancelfollow(follows);
-		return "practice/photo-detail";
+		follows.setFollowing("following@aa.com");
+		int row=followService.cancelfollow(follows);
+		logger.info("취소가 잘됐으면 1이 와요!  : "+row);
+		if(row==1) {
+			PrintWriter out = response.getWriter();
+			response.setContentType("text/html;charset=utf-8");
+			out.println(row);
+			out.flush();
+			out.close();
+		}
+		
 	}
 	
 	@GetMapping("/followCheck")
@@ -146,21 +162,8 @@ public class FollowController {
 			out.flush();
 			out.close();
 		}
-		
-		
+			
 	}
-	
-	@GetMapping("/cancelfollow")
-	public void cancelfollow(HttpSession session) {
-		Member member=(Member)session.getAttribute("member");
-		String memail=member.getMemail();
-		Follows follow=new Follows();
-		follow.setFollowing("following@aa.com");
-		follow.setFollower(memail);
-		int row=followService.cancelfollow(follow);
-		logger.info("삭제가 성공됐으면 1이나옹!!!!!!!!!!!"+row);
-	}
-	
 	
 	@GetMapping("/photo-detail")
 	public String aaa() {
