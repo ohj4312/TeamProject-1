@@ -4,8 +4,8 @@
 
 <div>
 	<ul style="list-style:none;">
-<<<<<<< HEAD
-        	<li style="font-size:14px">
+
+		<li style="font-size:14px">
         		<article>
 	     			<c:forEach var="reply" items="${list}">
 	     			<p style="display:inline-block; width:58%">
@@ -20,7 +20,7 @@
 	     			</div>
 	     			</c:forEach>
         		</article>
-=======
+
         	<li>
         		
        			<c:forEach var="reply" items="${list}">
@@ -33,7 +33,7 @@
        			</p>
        			</c:forEach>
         		
->>>>>>> branch 'master' of https://github.com/mw7895la/TeamProject
+
         	</li>
     </ul>
     
