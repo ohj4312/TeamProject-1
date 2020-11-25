@@ -44,20 +44,18 @@
   <jsp:include page="/WEB-INF/views/include/Header.jsp"/>
 
   
-  
-  <section id="portfolio" class="portfolio section-bg">
-      <div id = "listappend" class="container mt-5">
-      	<jsp:include page="/WEB-INF/views/include/photoFilter.jsp"/>
-        <div id="addtag" class="row col-md-12 col-lg-6 mb-4">
+  <main id="main">
 
-        </div>
+    
 
-      
-        <jsp:include page="/WEB-INF/views/include/photos.jsp"/>
-        
+    
 
-      </div>
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="section-bg mt-5">
+      	여기에 작성하면 되
     </section>
+    </main>
+  
 
     
   <!-- ======= Footer ======= -->
@@ -149,26 +147,6 @@
   <!-- Template Main JS File -->
   <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>
   
-  <script type="text/javascript">
-
-		 
-		function getList(page){
-			
-			$.ajax({
-				type : 'POST',
-				url:"list",
-				data: {"pageNo" : page},
-				success : function(data) {
-					$("#listappend").append(data);
-		       		},
-		       error:function(e){
-		           if(e.status==300){
-		               alert("데이터를 가져오는데 실패하였습니다.");
-		           };
-		       }
-			});
-		}
-</script>
 
 </body>
 
