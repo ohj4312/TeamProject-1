@@ -62,9 +62,32 @@
         		<div class="user-profile mt-5" style="border:1px solid #dadce0; ">
         			<div class="user-profile__container">
         				<div class="user-profile__profile-image" style="text-align: center;">
-                  <img class="rounded-circle mt-3" width="53%"; height="53%"; src="<%=application.getContextPath() %>/resources/img/person_1.jpg">
+                  <img class="rounded-circle mt-3" width="53%" height="53%" src="<%=application.getContextPath() %>/resources/img/person_1.jpg">
         					<div class="profile-info__name mt-2">
         						<span>${member.mnickname}</span>
+        						<div>
+        						 <a class="btn btn-info btn-sm" href="javascript:getfollowList()">팔로우</a>
+        						 <a class="btn btn-info btn-sm" href="javascript:getfollowingList()">팔로잉</a>
+        						</div>
+        							<script>
+										function getfollowList(){
+											$.ajax({
+												url:"<%=application.getContextPath()%>/follow/followList", 
+												success:function(data) {
+													$("#photoList").html(data);
+												}
+											});
+										} 
+										
+										function getfollowingList(){
+											$.ajax({
+												url:"<%=application.getContextPath()%>/follow/followingList",
+												success:function(data) {
+													$("#photoList").html(data);
+												}
+											});
+										} 
+        							</script>
         						<hr/>
         					</div>
         				</div>

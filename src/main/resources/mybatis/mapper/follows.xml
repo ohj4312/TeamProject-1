@@ -13,7 +13,7 @@
 	</select>
 	
 	<select id="selectChecking" parameterType="follows" resultType="int">
-		select count(*) from follows where follower=#{follower} and following='111'
+		select count(*) from follows where follower=#{follower} and following=#{following}
 	</select>
 	
 	<insert id="following" parameterType="follows">
