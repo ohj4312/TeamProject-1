@@ -16,15 +16,8 @@ public class ReplyService {
 	@Resource
 	private ReplyDAO replyDao;
 	
-	public List<Post_reply> getReplyList() {
-		List<Post_reply> list = replyDao.selectAll();
-		return list;
-	}
 	
-	public List<Post_reply> getReplyList(Pager pager) {
-		List<Post_reply> list = replyDao.selectByPage(pager);
-		return list;
-	}
+
 	
 	public int replyWrite(Post_reply reply) {
 		return replyDao.insert(reply);
@@ -42,5 +35,10 @@ public class ReplyService {
 	
 	public void replyDelete(int rnumber) {
 		int rows = replyDao.deleteByRnumber(rnumber);
+	}
+
+	public List<Post_reply> getReplyList(Post_reply reply) {
+		List<Post_reply> list = replyDao.selectByPage(reply);
+		return list;
 	}
 }

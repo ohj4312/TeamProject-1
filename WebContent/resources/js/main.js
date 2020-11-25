@@ -405,14 +405,11 @@ function getList(page){
 
 
 //============서윤아=====================================
- $(document).ready(function(){
-	replyList();
-});
+
 	 
-function replyList(pageNo,pnumber){
-	if(!pageNo){
-		pageNo=1;
-	}
+function replyList(pnumber){
+	var pageNo = 1;
+	console.log("replyList:"+pnumber);
 	$.ajax({
 		url:"/teamproject/reply/replyList",
 		data:{pageNo:pageNo, pnumber:pnumber},
