@@ -87,8 +87,8 @@
         							method: "get",
         							success : function(data){
         								console.log("함수 안에부분 실행");
-        								$("#mypagephoto").hide();
-        								$("#BookMarkList").html(data);
+        								
+        								$("#photoList").html(data);
         							}
         						});
         					}
@@ -146,7 +146,7 @@
                           <a class="post__upload" href="#"> 첫 번째 사진을 올려보세요</a>
                     </div>
                 </div>  
-                <div id="BookMarkList"></div>
+                
                	
         			</section>
         			

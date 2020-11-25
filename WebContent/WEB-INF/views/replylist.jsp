@@ -15,9 +15,11 @@
 	      			</a>
 	      			<span>${reply.rcontent}</span>
 	     			</p>
+	     			<c:if test="${member.memail==reply.rwriter}">
 	     			<div style="display:inline-block; width:10%">
 	     			<a style="font-size:13px;" href="javascript:replyDelete(${reply.rnumber})">삭제</a>
 	     			</div>
+	     			</c:if>
 	     			</c:forEach>
         		</article>
         	</li>
