@@ -174,18 +174,22 @@
 		
 		
 		function App1BK_CheckBookMark(pnumber){
-			console.log("App1BK_CHECK에 넘어왔냐");
+			console.log("App1BK_CheckBookMark에 넘어왔다.");
 			$.ajax({
 				url: "<%=application.getContextPath()%>/BK/CheckBookMark",
 				data: {pnumber: pnumber},
 				success:function(data){ 
 					if(data.result == "success"){
-						console.log("App1BK_CHECK data success 성공");
-						$("#App1BK").attr("href","App1BK_RegBookMark(pnumber)");
+						console.log("App1BK_CheckBookMark의 data @success@ ");
 						
+						$("#itag").html("bookmark");
+						App1BK_RegBookMark(pnumber);
 					}else{
-						console.log("App1BK_CHECK data failure 성공");
-						$("#App1BK").attr("href","App1BK_CancelBookMark(pnumber)");
+						console.log("App1BK_CheckBookMark의  data @failure@ ");
+						
+						$("#itag").html("bookmark_border");
+						App1BK_CancelBookMark(pnumber);
+						
 					}
 				}
 					
@@ -193,7 +197,7 @@
 		}
 		
     	function App1BK_RegBookMark(pnumber){
-    		console.log("app1 reg로 넘어옴");
+    		console.log("App1BK_RegBookMark 로 넘어옴");
     		    		 
     		$.ajax({
     			url : "<%=application.getContextPath()%>/BK/regBookMark",
@@ -201,15 +205,15 @@
         		method:"get",
         		success:function(data){
         			if(data.result=="success"){
-        				console.log("app1bk check 넘어가기 전");
-        				App1BK_CheckBookMark(pnumber);
+        				return;
+        				//App1BK_CheckBookMark(pnumber);
         			}
         		}
     		});		
     	}
     
     	function App1BK_CancelBookMark(pnumber){
-    		console.log("app1 Cancel로 넘어옴");
+    		console.log("App1BK_CancelBookMark 로 넘어옴");
     		
     		$.ajax({
         		url:"<%=application.getContextPath()%>/BK/CancelBookMark",
@@ -217,7 +221,8 @@
         		method:"get",
         		success:function(data){
         			if(data.result == "success"){
-        				App1BK_CheckBookMark(pnumber);
+        				//App1BK_CheckBookMark(pnumber);
+        				return;
         			}
         		}
     		});	

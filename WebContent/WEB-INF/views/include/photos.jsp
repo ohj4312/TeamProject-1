@@ -11,8 +11,8 @@
 							<h4>조회수</h4>
 							<p>${photo.phit_count}</p>
 							<div class="portfolio-links">
-								<a id="App1BK" href="App1BK_CheckBookMark(${photo.pnumber })" title="App 1">
-									<i class="material-icons ">bookmark_border</i>
+								<a id="App1BK" href="javascript:App1BK_CheckBookMark(${photo.pnumber })" title="App 1">
+									<i id="itag" class="material-icons">bookmark_border</i>
 								</a>
 								<a href="<%=application.getContextPath()%>/photo/detail?pnumber=${photo.pnumber}" title="More Details">
 									<i class="bx bx-link"></i>
