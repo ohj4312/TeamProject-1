@@ -52,8 +52,9 @@
 
         </div>
 
-      
+      <div id = "12345" class="row portfolio-container abcd" data-aos="fade-up">
         <jsp:include page="/WEB-INF/views/include/photos.jsp"/>
+       </div>
         
 
       </div>
@@ -139,17 +140,62 @@
   <!-- Vendor JS Files -->
    <script src="<%=application.getContextPath() %>/resources/vendor/jquery/jquery.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="<%=application.getContextPath() %>/resources/vendor/jquery.easing/jquery.easing.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/php-email-form/validate.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/owl.carousel/owl.carousel.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/venobox/venobox.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/aos/aos.js"></script>
+  <script src="<%=application.getContextPath() %>/resources/vendor/jquery.easing/jquery.easing.min.js"></script>
 
   <!-- Template Main JS File -->
   <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>
   
   <script type="text/javascript">
+
+  function aos_init() {
+	    AOS.init({
+	      duration: 1000,
+	      easing: "ease-in-out",
+	      once: true
+	    });
+	  }
+  
+		  var page = 2;
+		  $(function(){
+		      $(window).scroll(function(){
+		          var $window = $(this);
+		          var scrollTop = $window.scrollTop();
+		          var windowHeight = $window.height();
+		          var documentHeight = $(document).height();
+		          
+		          //console.log("documentHeight:" + documentHeight + " | scrollTop:" + scrollTop + " | windowHeight: " + windowHeight );
+		          
+		          if( scrollTop + windowHeight + 1000 > documentHeight ){
+		        	  getList(page);
+			           page++; 
+						
+		
+		            }
+		          console.log(filterCon);
+		          
+		         var portfolioIsotope = $('.portfolio-container').isotope({
+		              itemSelector: '.portfolio-item',
+		              layoutMode: 'fitRows'
+		            });
+		          
+		         portfolioIsotope.isotope({
+		              filter: filterCon
+		            }); 
+		          
+		          
+		   });
+		   aos_init();
+				    
+		});
+		  
+		  
+	
+
 
 		 
 		function getList(page){
@@ -159,7 +205,7 @@
 				url:"list",
 				data: {"pageNo" : page},
 				success : function(data) {
-					$("#listappend").append(data);
+					$("#12345").append(data);
 		       		},
 		       error:function(e){
 		           if(e.status==300){
@@ -167,6 +213,7 @@
 		           };
 		       }
 			});
+			
 		}
 </script>
 
