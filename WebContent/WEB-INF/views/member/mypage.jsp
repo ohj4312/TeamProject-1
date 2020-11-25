@@ -71,7 +71,7 @@
         			</div>
         		<div class="row" style="text-align:center">
         				<div class="col-4">
-       						<a onclick="javascript:GetBookMarkList()">
+       						<a href="javascript:GetBookMarkList()">
 								<div><span class="material-icons">bookmark_border</span></div>
 								<div><small>스크랩북</small></div>
        						</a>
@@ -79,15 +79,14 @@
         				<script type="text/javascript">
         					function GetBookMarkList(){
         						console.log("리스트 불러오기");
-        						var pnumber = ${photo.pnumber}
+        						
         						$.ajax({
         							url : "<%=application.getContextPath()%>/BK/getBookMarkList",
-        							data : {pnumber:pnumber},
+        							
         							method: "get",
         							success : function(data){
         								console.log("함수 안에부분 실행");
-        								$("#photoList").hide();
-        								$("#mypagephoto").hide();
+        								
         								$("#BookMarkList").html(data);
         							}
         						});
