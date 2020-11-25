@@ -9,35 +9,35 @@
 	</insert> 
 	
 	
-	<!-- 댓글 가져오기 -->
-	 <select id="selectAll" resultType="reply">
-		select rnumber, rcontent, register_date, rwriter, mimage, mnickname
-		from post_reply, member
-		order by register_date desc
-	</select> 
+	
 	
 	<!-- 댓글 페이지 별로 분리하기 -->
-	 <select id="selectByPage" parameterType="pager" resultType="reply">
-		select rnum, rnumber, rcontent, register_date, rwriter, mimage, mnickname
+	 <select id="selectByPage" parameterType="reply" resultType="reply">
+		
+		select rnum, rcontent,  mimage, mnickname
+		from(
+		select rownum as rnum, rcontent,  mimage, mnickname
 		from (
-			select rownum as rnum,  rnumber, rcontent, register_date, rwriter, mimage, mnickname
-			from (
-			select rnumber, rcontent, register_date, rwriter, mimage, mnickname
-			from post_reply p, member m
-			where p.rwriter = m.memail
-			order by rnumber desc
-			)
-			where rownum &lt; = #{endRowNo}
+		select rcontent,  mimage, mnickname 
+		from post_reply r, member m 
+		where r.rwriter=m.memail and pnumber = #{pnumber} 
+		order by rnumber desc
 		)
-		where rnum &gt; = #{startRowNo}
+		where rownum &lt;= #{endRowNo}
+		)
+		where rnum &gt;= #{startRowNo} 
 	</select> 
+	
+	<select id="selectAll" parameterType="int" resultType="reply">
+		select rcontent,  mimage, mnickname from post_reply r, member m where r.rwriter=m.memail and pnumber = #{pnumber} order by rnumber desc
+	</select>
 	
 	<select id="countAll" resultType="int">
 		select count(*) from post_reply
 	</select>
 	
 	<select id="selectByRno" parameterType="int" resultType="reply">
-		select rnumber, rcontent, register_date, rwriter, mimage, mnickname
+		select rcontent,  mimage, mnickname
 		from post_reply p, member m
 		where p.rwriter = m.memail and p.rnumber = #{rnumber}
 	</select>

@@ -405,17 +405,14 @@ function getList(page){
 
 
 //============서윤아=====================================
- $(document).ready(function(){
-	replyList();
-});
+
 	 
-function replyList(pageNo){
-	if(!pageNo){
-		pageNo=1;
-	}
+function replyList(pnumber){
+	var pageNo = 1;
+	console.log("replyList:"+pnumber);
 	$.ajax({
 		url:"/teamproject/reply/replyList",
-		data:{pageNo:pageNo},
+		data:{pageNo:pageNo, pnumber:pnumber},
 		success:function(data){
 			$("#reply_result").html(data);
 		}
@@ -433,7 +430,6 @@ function replyWrite(pnumber){
 		success:function(data){
 			console.log("성공후 실행");
 			if(data.result=="success"){
-				
 				replyList();
 			}
 			$("#reply_result").html(data);
