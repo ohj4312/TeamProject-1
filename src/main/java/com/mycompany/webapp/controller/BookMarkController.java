@@ -167,11 +167,14 @@ public class BookMarkController {
 		Member member = (Member) session.getAttribute("member"); 
 		String memail =	member.getMemail();
 		
-		 
-		
+		//Post_bookmark pb = new Post_bookmark();
+		//pb.setPnumber(pnumber);
+		//pb.setMemail(memail);
 		
 		
 		List<Register_photo> list = service.getBookMarkList(memail);
+		
+		
 		
 		model.addAttribute("list",list);
 		

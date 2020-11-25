@@ -12,8 +12,8 @@
                 <div id="mypagephoto" style="border:1px dashed #dbdbdb; width:100%;  ">
                     
                 <c:forEach var="bookmark" items="${list }">
-					<img onclick=""style="margin:5px;" align="left" class="rounded" width="75px" height="75px"
-					src="<%=application.getContextPath() %>/BK/photodownload?fileName=${bookmark.first_image}">
+					<a href="<%=application.getContextPath()%>/photo/detail?pnumber=${bookmark.pnumber}"><img style="margin:5px;" align="left" class="rounded" width="75px" height="75px"
+					src="<%=application.getContextPath() %>/BK/photodownload?fileName=${bookmark.first_image}"></a>
 				</c:forEach>
                 
                 </div>  
