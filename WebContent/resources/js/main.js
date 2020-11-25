@@ -352,8 +352,56 @@ function photoChange(aimage, acontent){
 
 
 
- 
-
+//리스트 페이징 처리
+var page = 2;
+		  $(function(){
+		      $(window).scroll(function(){
+		          var $window = $(this);
+		          var scrollTop = $window.scrollTop();
+		          var windowHeight = $window.height();
+		          var documentHeight = $(document).height();
+		          
+		          //console.log("documentHeight:" + documentHeight + " | scrollTop:" + scrollTop + " | windowHeight: " + windowHeight );
+		          
+		          if( scrollTop + windowHeight + 1000 > documentHeight ){
+		        	  getList(page);
+		        	  
+			           page++; 
+						console.log(page);
+		
+		            }   
+		          
+		   });
+				    
+		});
+		  
+function getList(page){
+			$.ajax({
+				type : 'POST',
+				url:"list",
+				data: {"pageNo" : page},
+				success : function(data) {
+			
+			         
+					$("#12345").append(data);
+					var portfolioIsotope = $('.portfolio-container').isotope({
+			              itemSelector: '.portfolio-item',
+			              layoutMode: 'fitRows'
+			            });
+			          
+			         portfolioIsotope.isotope({
+			              filter: filterCon
+			            });
+					$('.portfolio-container').isotope('reloadItems');
+		       		},
+		       error:function(e){
+		           if(e.status==300){
+		               alert("데이터를 가져오는데 실패하였습니다.");
+		           };
+		       }
+			});
+			
+}
 
 
 //============서윤아=====================================
