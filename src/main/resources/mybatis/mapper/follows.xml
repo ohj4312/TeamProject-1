@@ -13,7 +13,7 @@
 	</select>
 	
 	<select id="selectChecking" parameterType="follows" resultType="int">
-		select count(*) from follows where follower=#{follower} and following=#{following}
+		select count(*) from follows where follower=#{follower} and following='111'
 	</select>
 	
 	<insert id="following" parameterType="follows">
@@ -23,7 +23,7 @@
 
 
 	<delete id="deleteByFollow" parameterType="follows">
-		delete from follows where follewer=#{follower} and following=#{following}
+		delete from follows where follower=#{follower} and following=#{following}
 
 	</delete>
 </mapper>

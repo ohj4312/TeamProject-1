@@ -4,18 +4,24 @@
 
 <div>
 	<ul style="list-style:none;">
-        	<li>
-        		
-       			<c:forEach var="reply" items="${list}">
-       			<p>
-	       			<a href="#">
-	       				<img class="rounded-circle" width="50px" height="50px" src="<%=application.getContextPath() %>/resources/img/person_1.jpg">
-	       				<span>${reply.mnickname}</span>
-	       			</a>
-	       			<span>${reply.rcontent}</span>
-       			</p>
-       			</c:forEach>
-        		
+
+		<li style="font-size:14px">
+        		<article>
+	     			<c:forEach var="reply" items="${list}">
+	     			<p style="display:inline-block; width:58%">
+	      			<a href="#">
+	      				<img class="rounded-circle" width="50px" height="50px" src="<%=application.getContextPath() %>/resources/img/person_1.jpg">
+	      				<span style="padding-right:5px">${reply.mnickname}</span>
+	      			</a>
+	      			<span>${reply.rcontent}</span>
+	     			</p>
+	     			<c:if test="${member.memail==reply.rwriter}">
+	     			<div style="display:inline-block; width:10%">
+	     			<a style="font-size:13px;" href="javascript:replyDelete(${reply.rnumber})">삭제</a>
+	     			</div>
+	     			</c:if>
+	     			</c:forEach>
+        		</article>
         	</li>
     </ul>
     

@@ -169,6 +169,61 @@
 			});
 		}
 </script>
+	<script type="text/javascript">
+				
+				function likepushCheckIcons(pnumber){														 
+					$.ajax({
+							 
+							 		url:"<%=application.getContextPath()%>/like/likePushCheck",
+									method : "get",
+									data : {pnumber:pnumber},
+									success : function(data) {
+										
+								if (data.result == "success") {									
+									
+									$("#likeicon"+pnumber).html("favorite_border");
+									$("#likeicon"+pnumber).attr("style","");
+									$("#likepush"+pnumber).attr("href","javascript:likePush("+pnumber+")");
+									
+				
+								} else {									
+									$("#likeicon"+pnumber).html("favorite");
+									$("#likeicon"+pnumber).attr("style","color: red");
+									
+									$("#likepush"+pnumber).attr("href","javascript:likePushcancel("+pnumber+")");
+								}
+				
+							}
+						}); 
+				
+					}				
+				function likePushcancel(pnumber){																					
+				             	$.ajax({
+									url:"<%=application.getContextPath()%>/like/likePushCancel",
+									method : "get",
+									data : {pnumber:pnumber},
+									success : function(data) {
+										if (data.result == "success") {
+											likepushCheckIcons(pnumber)												
+												}				
+											}
+										});
+									}				
+				function likePush(pnumber) {				            								
+					
+					$.ajax({
+						url:"<%=application.getContextPath()%>/like/likePush",
+				method : "get",
+				data : {pnumber : pnumber},
+				success : function(data) {
+					if (data.result == "success") {						
+						likepushCheckIcons(pnumber);
+					}
+				}
+			});
+		}
+	</script>
+
 
 </body>
 

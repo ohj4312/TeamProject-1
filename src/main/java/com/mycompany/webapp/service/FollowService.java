@@ -31,12 +31,8 @@ public class FollowService {
 	
 	//user가 팔로우 버튼을 클릭했을 경우 팔로우 체크되도록 함. 팔로우 한 경우 해당 사람을 follows 테이블에 삽입, following 수 증가
 	public int checkFollow(Follows follows) {
-
-		logger.info(follows.getFollower());
-		logger.info(follows.getFollowing());
 		int fnumber=followDao.insertfollow(follows);
 		System.out.println(fnumber);
-		logger.info("서비스의 팔로우수 : "+fnumber);
 		return fnumber;
 	}
 	
@@ -45,10 +41,7 @@ public class FollowService {
 		return row;
 	}
 	public int followCheck(Follows follow) {
-		logger.info(follow.getFollower());
-		logger.info(follow.getFollowing());
 		int result=followDao.selectChecking(follow);
-		logger.info(""+result);
 		return result;
 		
 	}
