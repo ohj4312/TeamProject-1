@@ -75,7 +75,7 @@ public class FollowController {
 		String memail=member.getMemail();
 		List<Follows> follows=followService.getFollowList(memail);
 		model.addAttribute("follows",follows);
-		return "practice/followList";
+		return "member/followList";
 	}
 	
 	//followingList 조회
@@ -85,7 +85,7 @@ public class FollowController {
 		String memail=member.getMemail();
 		List<Follows> follows=followService.getFollowingList(memail);
 		model.addAttribute("follows",follows);
-		return "practice/followingList";
+		return "member/followingList";
 	}
 	
 	@GetMapping("/checkFollow")
@@ -137,6 +137,7 @@ public class FollowController {
 		follow.setFollower(memail);
 		int result=followService.followCheck(follow);
 		JSONObject jsonObject = new JSONObject(); 
+		logger.info("여기에 1이오면 success가 보내지니까 빠랑빠랑 빠랑쌕"+result);
 		if(result == 0) {
 			 
 			jsonObject.put("result", "fail");
