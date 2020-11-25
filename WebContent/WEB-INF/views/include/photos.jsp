@@ -2,14 +2,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="row portfolio-container" data-aos="fade-up">
 <c:forEach var="photo" items="${list}">
-				<div class="col-lg-4 col-md-6 portfolio-item filter-app">
+				<div class="col-lg-4 col-md-6 portfolio-item ${photo.ptype} ${photo.psize} ${photo.pstyle}">
 					<div class="portfolio-wrap">
 						<img
 							src="photodownload?fileName=${photo.first_image}"
 							class="img-fluid" alt="">
 						<div class="portfolio-info">
-							<h4>App 1</h4>
-							<p>App</p>
+							<h4>조회수</h4>
+							<p>${photo.phit_count}</p>
 							<div class="portfolio-links">
 								<a
 									href="#"
