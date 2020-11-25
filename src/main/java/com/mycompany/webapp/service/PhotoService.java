@@ -57,7 +57,7 @@ public class PhotoService {
 		}
 		Register_photo photo = photoDAO.selectRegPhoto(pnumber);
 		int hitcount = photo.getPhit_count();
-		photoDAO.updateHitCount(hitcount+1);
+		//photoDAO.updateHitCount(hitcount+1);
 		photo.setList(aphotos);
 		
 		return photo;

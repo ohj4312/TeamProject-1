@@ -248,6 +248,12 @@
   <!-- Template Main JS File -->
   <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>
 
+<script>
+$(document).ready(function(){
+	var pnumber = ${photo.pnumber };
+	replyList(pnumber);
+});
+</script>
   <script type="text/javascript">
 				
 				function likepushCheck(){
