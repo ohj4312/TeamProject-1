@@ -64,8 +64,8 @@ public class PhotoDAO {
 
 
 
-	public void updateHitCount(int i) {
-		sst.update("mybatis.mapper.photo.updateRphoto", i);
+	public void updateHitCount(Register_photo rphoto) {
+		sst.update("mybatis.mapper.photo.updateHitCount",rphoto);
 		
 	}
 }
