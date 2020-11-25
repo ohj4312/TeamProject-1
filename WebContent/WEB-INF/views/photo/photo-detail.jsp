@@ -398,7 +398,6 @@
         	function cancelFollow(pwriter){
         		console.log(pwriter);
         		$.ajax({
-        			console.log(photo.pwriter);
 					url:"<%=application.getContextPath()%>/follow/cancelFollow",
 					data : {pwriter:pwriter},
 					success:function(data) {
