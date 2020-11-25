@@ -16,24 +16,10 @@
 	      			<span>${reply.rcontent}</span>
 	     			</p>
 	     			<div style="display:inline-block; width:10%">
-	     			<a>삭제</a>
+	     			<a style="font-size:13px;" href="javascript:replyDelete(${reply.rnumber})">삭제</a>
 	     			</div>
 	     			</c:forEach>
         		</article>
-
-        	<li>
-        		
-       			<c:forEach var="reply" items="${list}">
-       			<p>
-	       			<a href="#">
-	       				<img class="rounded-circle" width="50px" height="50px" src="<%=application.getContextPath() %>/resources/img/person_1.jpg">
-	       				<span>${reply.mnickname}</span>
-	       			</a>
-	       			<span>${reply.rcontent}</span>
-       			</p>
-       			</c:forEach>
-        		
-
         	</li>
     </ul>
     

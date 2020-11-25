@@ -36,7 +36,11 @@ public class ReplyService {
 	}
 
 	public Post_reply getReply(int rnumber) {
-		Post_reply reply = replyDao.selectByBno(rnumber);
+		Post_reply reply = replyDao.selectByRno(rnumber);
 		return reply;
+	}
+	
+	public void replyDelete(int rnumber) {
+		int rows = replyDao.deleteByRnumber(rnumber);
 	}
 }
