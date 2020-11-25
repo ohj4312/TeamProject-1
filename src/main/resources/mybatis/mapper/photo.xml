@@ -49,7 +49,7 @@
 		where rnum &gt;= #{startRowNo} 
 	</select>
 	
-	<update id="updateRphoto" parameterType="int">
-		
+	<update id="updateHitCount" parameterType="registerPhoto">
+		UPDATE REGISTER_PHOTO SET PHIT_COUNT = #{phit_count} WHERE PNUMBER = #{pnumber}
 	</update>
 </mapper>
