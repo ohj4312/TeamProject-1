@@ -365,13 +365,13 @@ function removeform(idnum){
 	replyList();
 });
 	 
-function replyList(pageNo){
+function replyList(pageNo,pnumber){
 	if(!pageNo){
 		pageNo=1;
 	}
 	$.ajax({
 		url:"/teamproject/reply/replyList",
-		data:{pageNo:pageNo},
+		data:{pageNo:pageNo, pnumber:pnumber},
 		success:function(data){
 			$("#reply_result").html(data);
 		}
@@ -389,7 +389,6 @@ function replyWrite(pnumber){
 		success:function(data){
 			console.log("성공후 실행");
 			if(data.result=="success"){
-				
 				replyList();
 			}
 			$("#reply_result").html(data);
