@@ -19,6 +19,7 @@ public class Pager {
 		this.pageNo = pageNo;
 
 		
+		
 		//전체 행수 / 페이지 당 행수
 		totalPageNo = totalRows / rowsPerPage;
 		if(totalRows % rowsPerPage != 0) totalPageNo++;

@@ -411,73 +411,7 @@
 
   <!-- Template Main JS File -->
   <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>
-  
-  <script type="text/javascript">
 
-  function aos_init() {
-	    AOS.init({
-	      duration: 1000,
-	      easing: "ease-in-out",
-	      once: true
-	    });
-	  }
-  
-		  var page = 2;
-		  $(function(){
-		      $(window).scroll(function(){
-		          var $window = $(this);
-		          var scrollTop = $window.scrollTop();
-		          var windowHeight = $window.height();
-		          var documentHeight = $(document).height();
-		          
-		          //console.log("documentHeight:" + documentHeight + " | scrollTop:" + scrollTop + " | windowHeight: " + windowHeight );
-		          
-		          if( scrollTop + windowHeight + 1000 > documentHeight ){
-		        	  getList(page);
-			           page++; 
-						
-		
-		            }
-		          console.log(filterCon);
-		          
-		         var portfolioIsotope = $('.portfolio-container').isotope({
-		              itemSelector: '.portfolio-item',
-		              layoutMode: 'fitRows'
-		            });
-		          
-		         portfolioIsotope.isotope({
-		              filter: filterCon
-		            }); 
-		          
-		          
-		   });
-		   aos_init();
-				    
-		});
-		  
-		  
-	
-
-
-		 
-		function getList(page){
-			
-			$.ajax({
-				type : 'POST',
-				url:"list",
-				data: {"pageNo" : page},
-				success : function(data) {
-					$("#12345").append(data);
-		       		},
-		       error:function(e){
-		           if(e.status==300){
-		               alert("데이터를 가져오는데 실패하였습니다.");
-		           };
-		       }
-			});
-			
-		}
-</script>
 	<script type="text/javascript">
 				
 				function likepushCheckIcons(pnumber){														 

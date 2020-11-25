@@ -61,4 +61,11 @@ public class PhotoDAO {
 		
 		return sst.selectList("mybatis.mapper.photo.selectByPage", pager);
 	}
+
+
+
+	public void updateHitCount(int i) {
+		sst.update("mybatis.mapper.photo.updateRphoto", i);
+		
+	}
 }
