@@ -122,13 +122,11 @@ public class LikeController {
 		out.println(json);
 		out.flush();
 		out.close();
-
 	}
-
 	@GetMapping("/likePushCheck")
 	public void likePushCheck(int pnumber,Model model, HttpSession session, HttpServletResponse response) throws Exception {
 
-		
+		 
 		Member member = (Member) session.getAttribute("member");
 		String memail = member.getMemail();
 		
@@ -142,6 +140,8 @@ public class LikeController {
 		if (check == 0) {
 
 			jsonObject.put("result", "success");
+			jsonObject.put("pnumber",pnumber);
+			
 			String json = jsonObject.toString();
 			// 응답보내기
 			PrintWriter out = response.getWriter();

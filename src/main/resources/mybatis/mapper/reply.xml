@@ -42,6 +42,9 @@
 		where p.rwriter = m.memail and p.rnumber = #{rnumber}
 	</select>
 	
+	<delete id="deleteByRnumber" parameterType="int">
+		delete from post_reply where rnumber=#{rnumber}
+	</delete>
 	
 	
 </mapper>

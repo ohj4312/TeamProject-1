@@ -117,6 +117,23 @@ public class ReplyController {
 		return "replylist";
 	}
 	
+	@PostMapping("/replyDelete")
+	public void replyDelete(int rnumber, HttpServletResponse response) throws Exception{
+		logger.info("replyDelete: 실행");
+		
+		//서비스를 이용해서 게시물 삭제
+		service.replyDelete(rnumber);
+		response.setContentType("application/json; charset=utf-8");
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("result", "success");
+		String json = jsonObject.toString();			//{"result", "success"}
+		//응답 보내기
+		PrintWriter out = response.getWriter();
+		out.println(json);
+		out.flush();
+		out.close();
+	}
+	
 	
 	
 }
