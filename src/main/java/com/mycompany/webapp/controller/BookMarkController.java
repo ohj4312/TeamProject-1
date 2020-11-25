@@ -117,6 +117,7 @@ public class BookMarkController {
 	}
 	
 	
+	
 	@GetMapping("/CheckBookMark")
 	public void CheckBookMark(int pnumber, HttpSession session, HttpServletResponse response ) throws Exception {
 		

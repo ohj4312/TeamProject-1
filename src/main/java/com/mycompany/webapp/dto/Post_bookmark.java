@@ -36,7 +36,7 @@ public class Post_bookmark {
 	public void setMemail(String memail) {
 		this.memail = memail;
 	}
-
+	
 	
 
 	

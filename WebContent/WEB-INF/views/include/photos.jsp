@@ -11,20 +11,20 @@
 							<h4>조회수</h4>
 							<p>${photo.phit_count}</p>
 							<div class="portfolio-links">
-								<a
-									href="#"
-									data-gall="portfolioGallery" class="venobox" title="App 1">
-									<i class="material-icons">bookmark_border</i>
+								<a id="App1BK" href="App1BK_CheckBookMark(${photo.pnumber })" title="App 1">
+									<i class="material-icons ">bookmark_border</i>
 								</a>
 								<a href="<%=application.getContextPath()%>/photo/detail?pnumber=${photo.pnumber}" title="More Details">
 									<i class="bx bx-link"></i>
 								</a>
 								<a href="#" title="More Details">
 									<i class="material-icons">favorite_border</i>
-								</a>
+								</a>  
 							</div>
 						</div>
 					</div>
 				</div>
 			</c:forEach>
 			</div>
+			
+			

@@ -324,7 +324,8 @@
               			}
               		});
               	}
-              
+              	
+              	
             	function RegBookMark(){
             		console.log("실행");
             		var pnumber = ${photo.pnumber}
@@ -361,6 +362,7 @@
 		 			likepushCheck();	
 					CheckBookMark();
 					followCheck();
+					
 	 			});
             	
             </script>
@@ -404,7 +406,7 @@
 					}
 				});
         	}
-			
+			 
 			
             </script>
 				
