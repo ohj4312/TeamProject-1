@@ -4,6 +4,23 @@
 
 <div>
 	<ul style="list-style:none;">
+<<<<<<< HEAD
+        	<li style="font-size:14px">
+        		<article>
+	     			<c:forEach var="reply" items="${list}">
+	     			<p style="display:inline-block; width:58%">
+	      			<a href="#">
+	      				<img class="rounded-circle" width="50px" height="50px" src="<%=application.getContextPath() %>/resources/img/person_1.jpg">
+	      				<span style="padding-right:5px">${reply.mnickname}</span>
+	      			</a>
+	      			<span>${reply.rcontent}</span>
+	     			</p>
+	     			<div style="display:inline-block; width:10%">
+	     			<a>삭제</a>
+	     			</div>
+	     			</c:forEach>
+        		</article>
+=======
         	<li>
         		
        			<c:forEach var="reply" items="${list}">
@@ -16,6 +33,7 @@
        			</p>
        			</c:forEach>
         		
+>>>>>>> branch 'master' of https://github.com/mw7895la/TeamProject
         	</li>
     </ul>
     
