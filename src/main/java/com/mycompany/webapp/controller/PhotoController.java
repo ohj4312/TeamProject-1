@@ -63,6 +63,7 @@ public class PhotoController {
 		List<Register_photo> photolist =  photoService.getPhotoList(pager);
 		for(Register_photo photo : photolist) {
 			logger.info("list로 들어오는 파일명과 pnumber:"+ photo.getFirst_image() + "/"+photo.getPnumber());
+			logger.info(photo.getPsize() + photo.getPstyle() + photo.getPtype());
 		}
 		model.addAttribute("list", photolist);
 		

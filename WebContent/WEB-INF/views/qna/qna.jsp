@@ -1,6 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 
@@ -44,123 +43,21 @@
 
   <jsp:include page="/WEB-INF/views/include/Header.jsp"/>
 
-   <main id="main">
+  
+  <main id="main">
 
     
 
     
 
-    <!-- ======= Team Section ======= -->
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="section-bg mt-5">
+      	여기에 작성하면 되
+    </section>
+    </main>
+  
+
     
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact mt-3">
-      <div class="container mt-5">
-
-        <div class="section-title" data-aos="fade-up">
-          <h2>My Page</h2>
-        <div class="row no-gutters justify-content-center" style="display: flex;" data-aos="fade-up">
-
-          <div class="col-lg-5 mr-3">
-        		<div class="user-profile mt-5" style="border:1px solid #dadce0; ">
-        			<div class="user-profile__container">
-        				<div class="user-profile__profile-image" style="text-align: center;">
-                  <img class="rounded-circle mt-3" width="53%"; height="53%"; src="<%=application.getContextPath() %>/resources/img/person_1.jpg">
-        					<div class="profile-info__name mt-2">
-        						<span>힌아</span>
-        						<hr/>
-        					</div>
-        				</div>
-        			</div>
-        		<div class="row" style="text-align:center">
-        				<div class="col-3 col">
-       						
-       						<a class="btn btn-info" href="javascript:bookmarkList(1)">
-       							<div><span class="material-icons">bookmark_border</span></div>
-       							<div><small>북마크 불러오기</small></div>
-       						</a>
-							<script type="text/javascript">
-								function getBookMarkList(pnumber){
-									$.ajax({
-										url:"<%=application.getContextPath()%>/BK/getBookMarkList",
-										data:{pnumber : pnumber},
-										method: "get",
-										success: function(data){
-											$("#list_result").html(data);
-										}
-									});
-								}
-							</script>
-							
-        				</div>
-        				
-        				<div class="col-3 col">
-       						
-       						<a class="btn btn-info btn-sm" href="javascript:delBookMark(1)">
-       							<div><span class="material-icons">bookmark_border</span></div>
-       							<div><small>북마크  삭제</small></div>
-       						</a>
-						</div>
-        				
-
-						
-
-
-
-
-
-						<div class="col-3">
-       						<a href="#">
-								<div><span class="material-icons">favorite_border</span></div>
-								<div><small>좋아요</small></div>
-       						</a>
-        				</div>
-        				
-        				<div class="col-3">
-       						<a href="#">
-       							<div><span class="material-icons">sentiment_satisfied_alt</span></div>
-       							<div><small>설정</small></div>
-       						</a>
-        				</div>
-        			
-        			</div>
-        			<br/>
-        			
-        		</div>
-          </div>
-          
-          
-          
-         
-
-          <!-- <div class="col-lg-5 d-flex align-items-stretch">
-            <iframe style="border:0; width: 100%; height: 270px;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" allowfullscreen></iframe>
-          </div> -->
-
-          <div class="col-lg-5">
-        		<div class="contents">
-        			<section class="post post--cards">
-        				<h5><strong>사진</strong></h5>
-                <div id="mypagephoto" style="border:1px dashed #dbdbdb; width:100%;  text-align: center; ">
-                    <div class="row justify-content-center " style="margin-top: 30%;">
-                          <span class="material-icons ">add </span>
-                          <a class="post__upload" href="#"> 첫 번째 사진을 올려보세요</a>
-                    </div>
-                </div>  
-        			</section>
-        		</div>
-        	</div>
-        	
-        	<div id="list_result"></div> 
-
-
-
-        </div>
-
-      </div>
-    </section><!-- End Contact Section -->
-
-  </main><!-- End #main -->
-
   <!-- ======= Footer ======= -->
   <footer id="footer">
     <div class="footer-top">
@@ -226,14 +123,14 @@
         &copy; Copyright <strong><span>Maxim</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/maxim-free-onepage-bootstrap-theme/ -->
+        All the links in the footer should remain intact.
+        You can delete the links only if you purchased the pro version.
+        Licensing information: https://bootstrapmade.com/license/
+        Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/maxim-free-onepage-bootstrap-theme/
         Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
       </div>
     </div>
-  </footer><!-- End Footer -->
+  </footer> <!-- End Footer -->
 
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 
@@ -249,6 +146,7 @@
 
   <!-- Template Main JS File -->
   <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>
+  
 
 </body>
 
