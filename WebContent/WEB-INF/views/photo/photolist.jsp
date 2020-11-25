@@ -203,6 +203,92 @@
 				}
 			});
 		}
+				
+
+				function App1BK_CheckBookMark(pnumber){
+					console.log("App1BK_CheckBookMark에 넘어왔다.");
+					$.ajax({
+						url: "<%=application.getContextPath()%>/BK/CheckBookMark",
+						data: {pnumber: pnumber},
+						success:function(data){ 
+							
+							 if(data.result == "success"){
+								//console.log("App1BK_CheckBookMark의 data @success@ ");
+								
+								$("#itag"+pnumber).html("bookmark_border");
+								
+								//App1BK_RegBookMark(pnumber);
+							}else{
+								console.log("App1BK_CheckBookMark의  data @failure@ ");
+								
+								$("#itag"+pnumber).html("bookmark");
+								//App1BK_CancelBookMark(pnumber);
+								
+								
+							}
+						} 
+							
+					}); 
+				}
+				
+				function App1BK_CheckBookMark2(pnumber){
+					console.log("App1BK_CheckBookMark  2   에 넘어왔다.");
+					$.ajax({
+						url: "<%=application.getContextPath()%>/BK/CheckBookMark",
+						data: {pnumber: pnumber},
+						success:function(data){ 
+							
+							 if(data.result == "success"){
+								console.log("App1BK_CheckBookMark 2 의 data @success@ ");
+								
+								$("#itag"+pnumber).html("bookmark");
+								
+								App1BK_RegBookMark(pnumber);
+							}else{
+								console.log("App1BK_CheckBookMark 2 의  data @failure@ ");
+								
+								$("#itag"+pnumber).html("bookmark_border");
+								App1BK_CancelBookMark(pnumber);
+								
+								
+							}
+						} 
+							
+					}); 
+				}
+				
+				
+				
+		    	function App1BK_RegBookMark(pnumber){
+		    		console.log("App1BK_RegBookMark 로 넘어옴");
+		    		    		 
+		    		$.ajax({
+		    			url : "<%=application.getContextPath()%>/BK/regBookMark",
+		    			data: {pnumber: pnumber },
+		        		method:"get",
+		        		success:function(data){
+		        			if(data.result=="success"){
+		        				
+		        				
+		        			}
+		        		}
+		    		});		
+		    	}
+		    
+		    	function App1BK_CancelBookMark(pnumber){
+		    		console.log("App1BK_CancelBookMark 로 넘어옴");
+		    		
+		    		$.ajax({
+		        		url:"<%=application.getContextPath()%>/BK/CancelBookMark",
+						data : {pnumber : pnumber},
+						method : "get",
+						success : function(data) {
+					if (data.result == "success") {
+
+					}
+				}
+			});
+		}
 	</script>
 
  
