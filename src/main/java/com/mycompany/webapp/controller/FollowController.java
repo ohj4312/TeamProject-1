@@ -89,12 +89,12 @@ public class FollowController {
 	}
 	
 	@GetMapping("/checkFollow")
-	public void checkFollow(String pwirter, HttpSession session,HttpServletResponse response) throws IOException {
-		System.out.println(pwirter);
+	public void checkFollow(String pwriter, HttpSession session,HttpServletResponse response) throws IOException {
+		logger.info("################" + pwriter);
 		Member member=(Member)session.getAttribute("member");
 		String follower=member.getMemail();
 		Follows follows = new Follows();
-		follows.setFollowing(pwirter);
+		follows.setFollowing(pwriter);
 		follows.setFollower(follower);
 		int followsnum=followService.checkFollow(follows);
 		logger.info("컨트롤러의 팔로우수 : "+followsnum);
@@ -109,12 +109,12 @@ public class FollowController {
 	}
 	
 	@GetMapping("/cancelFollow")
-	public void cancelFollow(String pwirter,Model model,HttpSession session,HttpServletResponse response) throws IOException {
+	public void cancelFollow(String pwriter,Model model,HttpSession session,HttpServletResponse response) throws IOException {
 		Member member=(Member)session.getAttribute("member");
 		String memail=member.getMemail();
 		Follows follows=new Follows();
 		follows.setFollower(memail);
-		follows.setFollowing(pwirter);
+		follows.setFollowing(pwriter);
 		int row=followService.cancelfollow(follows);
 		if(row==1) {
 			PrintWriter out = response.getWriter();
@@ -127,13 +127,13 @@ public class FollowController {
 	}
 	
 	@GetMapping("/followCheck")
-	public void followCheck(String pwirter,HttpSession session,HttpServletResponse response) throws IOException {
-		System.out.println(pwirter);
+	public void followCheck(String pwriter,HttpSession session,HttpServletResponse response) throws IOException {
+		System.out.println(pwriter);
 		Member member=(Member)session.getAttribute("member");
 		String memail=member.getMemail();
 		Follows follow=new Follows();
-		follow.setFollowing(pwirter);
-		logger.info(pwirter);
+		follow.setFollowing(pwriter);
+		logger.info(pwriter);
 		follow.setFollower(memail);
 		int result=followService.followCheck(follow);
 		JSONObject jsonObject = new JSONObject(); 

@@ -364,7 +364,6 @@
             var pwi
 			
         	function checkFollow(pwriter){
-            	console.log(pwriter);
 				$.ajax({
 					url:"<%=application.getContextPath()%>/follow/checkFollow",
 					data:{pwriter:pwriter},
