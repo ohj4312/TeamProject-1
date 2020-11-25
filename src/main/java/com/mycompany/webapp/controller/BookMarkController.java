@@ -166,14 +166,15 @@ public class BookMarkController {
 		Member member = (Member) session.getAttribute("member"); 
 		String memail =	member.getMemail();
 		
+		 
 		
 		
 		
-		List<Post_bookmark> list = service.getBookMarkList(memail);
+		List<Register_photo> list = service.getBookMarkList(memail);
 		
 		model.addAttribute("list",list);
 		
-		return "member/bookmark";
+		return "member/bookmark"; 
 		
 		
 		
@@ -196,7 +197,7 @@ public class BookMarkController {
 		
 		//1) Content - Type 헤더 구성	-	응답으로 보내는 파일의 종류가 뭐냐  어떤 종류의 파일이 다운로드 되고 있다. 이런 정보는 브라우저가 실행할 파일(워드? 그림판?)을 결정하기 위함임.
 		ServletContext application = request.getServletContext();
-		String fileType= application.getMimeType(fileName);// 이 파일 네임의 확장명.
+		//String fileType= application.getMimeType(fileName);// 이 파일 네임의 확장명.
 		response.setContentType(fileName);
 		
 		

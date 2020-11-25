@@ -9,6 +9,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.mycompany.webapp.dto.Post_bookmark;
+import com.mycompany.webapp.dto.Register_photo;
 
 @Repository
 public class BookMarkDAO {
@@ -16,8 +17,13 @@ public class BookMarkDAO {
 	@Resource 
 	private SqlSessionTemplate sst;
 	
-	public List<Post_bookmark> selectBookMark(String memail) {
+	/*public List<Post_bookmark> selectBookMark(String memail) {
 		List<Post_bookmark> list = sst.selectList("mybatis.mapper.bookmark.selectBookMark",memail);
+		return list;
+	}*/
+	
+	public List<Register_photo> selectBookMark(String memail) {
+		List<Register_photo> list = sst.selectList("mybatis.mapper.bookmark.selectBookMark",memail);
 		return list;
 	}
  

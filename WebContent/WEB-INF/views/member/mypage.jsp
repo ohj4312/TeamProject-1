@@ -79,10 +79,10 @@
         				<script type="text/javascript">
         					function GetBookMarkList(){
         						console.log("리스트 불러오기");
-        						var pnumber = ${photo.pnumber}
+        						
         						$.ajax({
         							url : "<%=application.getContextPath()%>/BK/getBookMarkList",
-        							data : {pnumber:pnumber},
+        							
         							method: "get",
         							success : function(data){
         								console.log("함수 안에부분 실행");

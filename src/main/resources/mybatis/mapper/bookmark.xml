@@ -8,7 +8,13 @@
 		insert into POST_BOOKMARK (bnumber , pnumber , memail) values(seq_bnum.nextval,#{pnumber},#{memail})
 	</insert>
 	
-	<select id="selectBookMark" parameterType="String" resultType="bookmark">
+	<!-- <select id="selectBookMark" parameterType="String" resultType="bookmark">
+		select r.first_image from Register_photo r where r.pnumber in ( 
+		select p.pnumber from Post_bookmark p where p.memail = #{memail} )
+		
+	</select> -->
+	
+	<select id="selectBookMark" parameterType="String" resultType="registerPhoto">
 		select r.first_image from Register_photo r where r.pnumber in ( 
 		select p.pnumber from Post_bookmark p where p.memail = #{memail} )
 		

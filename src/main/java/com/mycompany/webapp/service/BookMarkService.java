@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.mycompany.webapp.dao.BookMarkDAO;
 import com.mycompany.webapp.dto.Post_bookmark;
+import com.mycompany.webapp.dto.Register_photo;
 
 @Service
 public class BookMarkService {
@@ -24,8 +25,14 @@ public class BookMarkService {
 	}
 	
 	//조 회
-	public List<Post_bookmark> getBookMarkList(String memail) {
+	/*public List<Post_bookmark> getBookMarkList(String memail) {
 		List<Post_bookmark> list = bookmarkDAO.selectBookMark(memail);
+		
+		return list;
+	}*/
+	
+	public List<Register_photo> getBookMarkList(String memail) {
+		List<Register_photo> list = bookmarkDAO.selectBookMark(memail);
 		
 		return list;
 	}
