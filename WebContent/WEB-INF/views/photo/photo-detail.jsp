@@ -86,8 +86,9 @@
 	            <a id="RegBookMark" class="btn btn-light col-4" style=" box-shadow:none;" onclick="javascript:RegBookMark()">
 					<span id="RegBookMark"class="material-icons">bookmark_border</span>
 				</a>
-				<a href="#" class="btn btn-info btn-sm col-4" role="button" style=" box-shadow:none;">
+				<a id="follow_check" href="javascript:checkFollow('${photo.pwriter}')" class="btn btn-light btn-sm col-4" role="button" style=" box-shadow:none;">
 					팔로우
+					${photo.pwriter}
 				</a>		
 				</div>
 				
@@ -357,11 +358,60 @@
             		});	
             	}
             	
-            	 $(function(){
+            	
+            </script>
+            <script type="text/javascript">
+            var pwi
+			
+        	function checkFollow(pwriter){
+				$.ajax({
+					url:"<%=application.getContextPath()%>/follow/checkFollow",
+					data:{pwriter:pwriter},
+					success:function(data) {
+						$("#follow_check").attr("class","btn btn-info btn-sm col-4");
+						$("#follow_check").attr("href","javascript:cancelFollow('${photo.pwriter}')");
+					}
+				});
+			}
+       	
+        	function followCheck(pwriter){
+        		console.log(pwriter);
+        		$.ajax({
+					url:"<%=application.getContextPath()%>/follow/followCheck",
+					data:{pwriter:pwriter},
+					success:function(data) {
+						if(data.result=="success"){
+							$("#follow_check").attr("class","btn btn-info btn-sm col-4");
+							$("#follow_check").attr("href","javascript:cancelFollow('${photo.pwriter}')");
+						}
+						if(data.result=="fail"){
+							$("#follow_check").attr("class","btn btn-light btn-sm col-4");
+							$("#follow_check").attr("href","javascript:checkFollow('${photo.pwriter}')");
+						}
+					}
+				});
+			} 
+        	
+        	
+        	
+        	function cancelFollow(pwriter){
+        		console.log(pwriter);
+        		$.ajax({
+					url:"<%=application.getContextPath()%>/follow/cancelFollow",
+					data : {pwriter:pwriter},
+					success:function(data) {
+						$("#follow_check").attr("class","btn btn-light btn-sm col-4");
+						$("#follow_check").attr("href","javascript:checkFollow('${photo.pwriter}')");
+					}
+				});
+        	}
+			
+        	 $(function(){
 		 			likepushCheck();	
 					CheckBookMark();
+					followCheck('${photo.pwriter}');
 	 			});
-            	
+         	
             </script>
 				
 

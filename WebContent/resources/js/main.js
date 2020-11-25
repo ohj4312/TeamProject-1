@@ -362,7 +362,7 @@ function removeform(idnum){
 
 //============서윤아=====================================
  $(document).ready(function(){
-	replyList(1);
+	replyList();
 });
 	 
 function replyList(pageNo){
@@ -393,6 +393,19 @@ function replyWrite(pnumber){
 				replyList();
 			}
 			$("#reply_result").html(data);
+		}
+	});
+}
+
+function replyDelete(rnumber){
+	$.ajax({
+		url:"/teamproject/reply/replyDelete",
+		data:{rnumber:rnumber},
+		method:"post",
+		success:function(data){
+			if(data.result=="success"){
+				replyList();
+			}
 		}
 	});
 }

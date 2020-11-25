@@ -4,8 +4,8 @@
 
 <div>
 	<ul style="list-style:none;">
-<<<<<<< HEAD
-        	<li style="font-size:14px">
+
+		<li style="font-size:14px">
         		<article>
 	     			<c:forEach var="reply" items="${list}">
 	     			<p style="display:inline-block; width:58%">
@@ -15,25 +15,13 @@
 	      			</a>
 	      			<span>${reply.rcontent}</span>
 	     			</p>
+	     			<c:if test="${member.memail==reply.rwriter}">
 	     			<div style="display:inline-block; width:10%">
-	     			<a>삭제</a>
+	     			<a style="font-size:13px;" href="javascript:replyDelete(${reply.rnumber})">삭제</a>
 	     			</div>
+	     			</c:if>
 	     			</c:forEach>
         		</article>
-=======
-        	<li>
-        		
-       			<c:forEach var="reply" items="${list}">
-       			<p>
-	       			<a href="#">
-	       				<img class="rounded-circle" width="50px" height="50px" src="<%=application.getContextPath() %>/resources/img/person_1.jpg">
-	       				<span>${reply.mnickname}</span>
-	       			</a>
-	       			<span>${reply.rcontent}</span>
-       			</p>
-       			</c:forEach>
-        		
->>>>>>> branch 'master' of https://github.com/mw7895la/TeamProject
         	</li>
     </ul>
     

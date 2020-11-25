@@ -13,6 +13,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.sound.midi.SysexMessage;
 
 import org.json.JSONObject;
 import org.slf4j.Logger;
@@ -28,7 +29,7 @@ import com.mycompany.webapp.dto.Member;
 import com.mycompany.webapp.service.FollowService;
 
 @Controller
-@RequestMapping("/practice")
+@RequestMapping("/follow")
 public class FollowController {
 	private static final Logger logger = LoggerFactory.getLogger(FollowController.class);
 		
@@ -88,13 +89,12 @@ public class FollowController {
 	}
 	
 	@GetMapping("/checkFollow")
-	public void checkFollow(String followingEmail, HttpSession session,HttpServletResponse response) throws IOException {
-		System.out.println(followingEmail);
+	public void checkFollow(String pwriter, HttpSession session,HttpServletResponse response) throws IOException {
+		logger.info("################" + pwriter);
 		Member member=(Member)session.getAttribute("member");
 		String follower=member.getMemail();
-		System.out.println(follower);
 		Follows follows = new Follows();
-		follows.setFollowing("following@aa.com");
+		follows.setFollowing(pwriter);
 		follows.setFollower(follower);
 		int followsnum=followService.checkFollow(follows);
 		logger.info("컨트롤러의 팔로우수 : "+followsnum);
@@ -109,14 +109,13 @@ public class FollowController {
 	}
 	
 	@GetMapping("/cancelFollow")
-	public void cancelFollow(Model model,HttpSession session,HttpServletResponse response) throws IOException {
+	public void cancelFollow(String pwriter,Model model,HttpSession session,HttpServletResponse response) throws IOException {
 		Member member=(Member)session.getAttribute("member");
 		String memail=member.getMemail();
 		Follows follows=new Follows();
 		follows.setFollower(memail);
-		follows.setFollowing("following@aa.com");
+		follows.setFollowing(pwriter);
 		int row=followService.cancelfollow(follows);
-		logger.info("취소가 잘됐으면 1이 와요!  : "+row);
 		if(row==1) {
 			PrintWriter out = response.getWriter();
 			response.setContentType("text/html;charset=utf-8");
@@ -128,20 +127,20 @@ public class FollowController {
 	}
 	
 	@GetMapping("/followCheck")
-	public void followCheck(HttpSession session,HttpServletResponse response) throws IOException {
+	public void followCheck(String pwriter,HttpSession session,HttpServletResponse response) throws IOException {
+		System.out.println(pwriter);
 		Member member=(Member)session.getAttribute("member");
 		String memail=member.getMemail();
 		Follows follow=new Follows();
-		follow.setFollowing("following@aa.com");
+		follow.setFollowing(pwriter);
+		logger.info(pwriter);
 		follow.setFollower(memail);
 		int result=followService.followCheck(follow);
-		logger.info("CONTROLLER RESULT: "+result);
 		JSONObject jsonObject = new JSONObject(); 
 		if(result == 0) {
 			 
 			jsonObject.put("result", "fail");
 			String json = jsonObject.toString();
-			logger.info(json);
 			// 응답 보내기
 			PrintWriter out = response.getWriter();
 			response.setContentType("application/json;charset=utf-8");
@@ -151,10 +150,9 @@ public class FollowController {
 			
 
 		}else {
-
+ 
 			jsonObject.put("result", "success");
 			String json = jsonObject.toString();
-			logger.info(json);
 			// 응답 보내기
 			PrintWriter out = response.getWriter();
 			response.setContentType("application/json;charset=utf-8");
@@ -164,16 +162,4 @@ public class FollowController {
 		}
 			
 	}
-	
-	@GetMapping("/photo-detail")
-	public String aaa() {
-		return "practice/photo-detail";
-	}
-	
-	@GetMapping("/mypage")
-	public String bbb(Member member) {
-		logger.info(member.getMemail());
-		return "practice/mypage";
-	}
-	
 }
