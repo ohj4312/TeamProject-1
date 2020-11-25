@@ -127,6 +127,7 @@ public class FollowController {
 	
 	@GetMapping("/followCheck")
 	public void followCheck(String pwirter,HttpSession session,HttpServletResponse response) throws IOException {
+		logger.info(pwirter);
 		Member member=(Member)session.getAttribute("member");
 		String memail=member.getMemail();
 		Follows follow=new Follows();
