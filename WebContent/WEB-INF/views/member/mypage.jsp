@@ -82,7 +82,7 @@
 										function getfollowingList(){
 											$.ajax({
 												url:"<%=application.getContextPath()%>/follow/followingList",
-												success:function(data) {
+												success:function(data) { 
 													$("#photoList").html(data);
 												}
 											});
