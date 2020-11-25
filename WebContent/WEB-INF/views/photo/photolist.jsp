@@ -150,35 +150,7 @@
   <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>
   
   <script type="text/javascript">
-  var page = 2;
-		  $(function(){
-		      $(window).scroll(function(){
-		          var $window = $(this);
-		          var scrollTop = $window.scrollTop();
-		          var windowHeight = $window.height();
-		          var documentHeight = $(document).height();
-		          
-		          console.log("documentHeight:" + documentHeight + " | scrollTop:" + scrollTop + " | windowHeight: " + windowHeight );
-		          
-		          if( scrollTop + windowHeight + 1000 > documentHeight ){
-		        	  getList(page);
-			           page++; 
-		            }
-		      })
-		    
-		  })
-     
-		/* $(window).scroll(function(){   //스크롤이 최하단 으로 내려가면 리스트를 조회하고 page를 증가시킨다.
-		       if($(window).scrollTop() >= $(document).height() - $(window).height()){
-		          getList(page);
-		           page++;   
-		     } 
-		
-		     if( $(window).scrollTop() + $(window).height() + 100 > $(document).height() ){
-		    	 getList(page);
-		           page++;  
-		        }
-		}); */
+
 		 
 		function getList(page){
 			

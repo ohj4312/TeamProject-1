@@ -24,6 +24,7 @@
           	<li><a href="<%=application.getContextPath()%>/photo/write">Photo Write</a></li>
           	<li><a href="<%=application.getContextPath()%>/member/logout">LogOut</a></li>
           </c:if>
+          	<li><a href="<%=application.getContextPath()%>/qna/qnaindex">Q&A</a></li>
 
         </ul>
       </nav><!-- .nav-menu -->

@@ -40,10 +40,10 @@
 	</select>
 	
 	<select id="selectByPage" resultType="registerPhoto" parameterType="pager">
-		select rnum, pnumber, first_image
+		select rnum, pnumber, first_image, PHIT_COUNT, PTYPE, PSIZE, PSTYLE
 		from(
-		select rownum as rnum, pnumber, first_image
-		from (select pnumber, first_image from register_photo order by pnumber desc)
+		select rownum as rnum, pnumber, first_image, PHIT_COUNT, PTYPE, PSIZE, PSTYLE
+		from (select pnumber, first_image, PHIT_COUNT, PTYPE, PSIZE, PSTYLE from register_photo order by pnumber desc)
 		where rownum &lt;= #{endRowNo}
 		)
 		where rnum &gt;= #{startRowNo} 
