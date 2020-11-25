@@ -379,7 +379,7 @@
         		console.log(pwriter);
         		$.ajax({
 					url:"<%=application.getContextPath()%>/follow/followCheck",
-					data : {pwriter:pwriter},
+					data:{pwriter:pwriter},
 					success:function(data) {
 						if(data.result=="success"){
 							$("#follow_check").attr("class","btn btn-info btn-sm col-4");

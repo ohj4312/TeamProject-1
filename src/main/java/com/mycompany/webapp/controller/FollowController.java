@@ -13,6 +13,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.sound.midi.SysexMessage;
 
 import org.json.JSONObject;
 import org.slf4j.Logger;
@@ -127,7 +128,7 @@ public class FollowController {
 	
 	@GetMapping("/followCheck")
 	public void followCheck(String pwirter,HttpSession session,HttpServletResponse response) throws IOException {
-		logger.info(pwirter);
+		System.out.println(pwirter);
 		Member member=(Member)session.getAttribute("member");
 		String memail=member.getMemail();
 		Follows follow=new Follows();
