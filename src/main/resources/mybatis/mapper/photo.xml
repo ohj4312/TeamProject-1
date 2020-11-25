@@ -48,4 +48,8 @@
 		)
 		where rnum &gt;= #{startRowNo} 
 	</select>
+	
+	<update id="updateRphoto" parameterType="int">
+		
+	</update>
 </mapper>
