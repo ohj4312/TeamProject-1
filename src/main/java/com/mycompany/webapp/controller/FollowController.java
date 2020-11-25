@@ -88,13 +88,12 @@ public class FollowController {
 	}
 	
 	@GetMapping("/checkFollow")
-	public void checkFollow(String followingEmail, HttpSession session,HttpServletResponse response) throws IOException {
-		System.out.println(followingEmail);
+	public void checkFollow(String pwirter, HttpSession session,HttpServletResponse response) throws IOException {
+		System.out.println(pwirter);
 		Member member=(Member)session.getAttribute("member");
 		String follower=member.getMemail();
-		System.out.println(follower);
 		Follows follows = new Follows();
-		follows.setFollowing("following@aa.com");
+		follows.setFollowing(pwirter);
 		follows.setFollower(follower);
 		int followsnum=followService.checkFollow(follows);
 		logger.info("컨트롤러의 팔로우수 : "+followsnum);
@@ -109,12 +108,12 @@ public class FollowController {
 	}
 	
 	@GetMapping("/cancelFollow")
-	public void cancelFollow(Model model,HttpSession session,HttpServletResponse response) throws IOException {
+	public void cancelFollow(String pwirter,Model model,HttpSession session,HttpServletResponse response) throws IOException {
 		Member member=(Member)session.getAttribute("member");
 		String memail=member.getMemail();
 		Follows follows=new Follows();
 		follows.setFollower(memail);
-		follows.setFollowing("following@aa.com");
+		follows.setFollowing(pwirter);
 		int row=followService.cancelfollow(follows);
 		if(row==1) {
 			PrintWriter out = response.getWriter();
@@ -127,11 +126,12 @@ public class FollowController {
 	}
 	
 	@GetMapping("/followCheck")
-	public void followCheck(HttpSession session,HttpServletResponse response) throws IOException {
+	public void followCheck(String pwirter,HttpSession session,HttpServletResponse response) throws IOException {
 		Member member=(Member)session.getAttribute("member");
 		String memail=member.getMemail();
 		Follows follow=new Follows();
-		follow.setFollowing("following@aa.com");
+		follow.setFollowing(pwirter);
+		logger.info(pwirter);
 		follow.setFollower(memail);
 		int result=followService.followCheck(follow);
 		JSONObject jsonObject = new JSONObject(); 
@@ -160,5 +160,4 @@ public class FollowController {
 		}
 			
 	}
-
 }

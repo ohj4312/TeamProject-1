@@ -86,7 +86,7 @@
 	            <a id="RegBookMark" class="btn btn-light col-4" style=" box-shadow:none;" onclick="javascript:RegBookMark()">
 					<span id="RegBookMark"class="material-icons">bookmark_border</span>
 				</a>
-				<a id="follow_check" href="javascript:checkFollow('following@aa.com')" class="btn btn-info btn-sm col-4" role="button" style=" box-shadow:none;">
+				<a id="follow_check" href="javascript:checkFollow(${photo.pwriter})" class="btn btn-light btn-sm col-4" role="button" style=" box-shadow:none;">
 					팔로우
 				</a>		
 				</div>
@@ -365,29 +365,31 @@
             	
             </script>
             <script type="text/javascript">
-
-        	function checkFollow(followingemail){
+            var pwi
+			
+        	function checkFollow(pwriter){
 				$.ajax({
 					url:"<%=application.getContextPath()%>/follow/checkFollow",
-					data:{followingemail:followingemail},
+					data:{pwriter:pwriter},
 					success:function(data) {
 						$("#follow_check").attr("class","btn btn-info btn-sm col-4");
-						$("#follow_check").attr("href","javascript:cancelFollow()");
+						$("#follow_check").attr("href","javascript:cancelFollow(${photo.pwriter})");
 					}
 				});
 			}
        	
-        	function followCheck(){
+        	function followCheck(pwriter){
         		$.ajax({
 					url:"<%=application.getContextPath()%>/follow/followCheck",
+					data : {pwriter:pwriter},
 					success:function(data) {
 						if(data.result=="success"){
 							$("#follow_check").attr("class","btn btn-info btn-sm col-4");
-							$("#follow_check").attr("href","javascript:cancelFollow()");
+							$("#follow_check").attr("href","javascript:cancelFollow(${photo.pwriter})");
 						}
 						if(data.result=="fail"){
-							$("#follow_check").attr("class","btn btn-danger btn-sm col-4");
-							$("#follow_check").attr("href","javascript:checkFollow('following@aa.com')");
+							$("#follow_check").attr("class","btn btn-light btn-sm col-4");
+							$("#follow_check").attr("href","javascript:checkFollow(${photo.pwriter})");
 						}
 					}
 				});
@@ -395,12 +397,13 @@
         	
         	
         	
-        	function cancelFollow(){
+        	function cancelFollow(pwriter){
         		$.ajax({
 					url:"<%=application.getContextPath()%>/follow/cancelFollow",
+					data : {pwriter:pwriter},
 					success:function(data) {
-						$("#follow_check").attr("class","btn btn-danger btn-sm col-4");
-						$("#follow_check").attr("href","javascript:checkFollow('following@aa.com')");
+						$("#follow_check").attr("class","btn btn-light btn-sm col-4");
+						$("#follow_check").attr("href","javascript:checkFollow(${photo.pwriter})");
 					}
 				});
         	}
