@@ -3,7 +3,7 @@
 <div class="row portfolio-container" data-aos="fade-up">
 <c:forEach var="photo" items="${list}">
 				<div class="col-lg-4 col-md-6 portfolio-item ${photo.ptype} ${photo.psize} ${photo.pstyle}">
-					<div class="portfolio-wrap">
+					<div class="portfolio-wrap" onmouseenter="javascript:likepushCheckIcons(${photo.pnumber})">
 						<img
 							src="photodownload?fileName=${photo.first_image}"
 							class="img-fluid" alt="">
@@ -19,12 +19,14 @@
 								<a href="<%=application.getContextPath()%>/photo/detail?pnumber=${photo.pnumber}" title="More Details">
 									<i class="bx bx-link"></i>
 								</a>
-								<a href="#" title="More Details">
-									<i class="material-icons">favorite_border</i>
+								<a id="likepush${photo.pnumber}" href="" title="More Details" style="">
+									<i id="likeicon${photo.pnumber}" class="material-icons">favorite_border</i>
 								</a>
 							</div>
 						</div>
 					</div>
 				</div>
 			</c:forEach>
+			
+			
 			</div>
