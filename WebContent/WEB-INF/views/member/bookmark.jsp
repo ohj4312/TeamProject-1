@@ -15,8 +15,7 @@
 						<img style="margin:5px;" align="left" class="rounded" width="75px" height="75px"
 						src="<%=application.getContextPath() %>/BK/photodownload?fileName=${bookmark.first_image}">
 					</c:forEach>
-                          
-                   
+                
                 </div>  
 </section>
 

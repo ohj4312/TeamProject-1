@@ -169,9 +169,7 @@
                           <a class="post__upload" href="#"> 첫 번째 사진을 올려보세요</a>
                     </div>
                 </div>  
-                
-               	
-        			</section>
+                	</section>
         			
         		</div>
         		

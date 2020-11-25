@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<div class="row portfolio-container" data-aos="fade-up">
+
 <c:forEach var="photo" items="${list}">
 				<div class="col-lg-4 col-md-6 portfolio-item ${photo.ptype} ${photo.psize} ${photo.pstyle}">
 					<div class="portfolio-wrap"  onmouseenter="javascript:likepushCheckIcons(${photo.pnumber}),App1BK_CheckBookMark(${photo.pnumber })">
@@ -28,5 +28,7 @@
 			</c:forEach>
 			
 			
+
 			
-			</div>
+			
+
