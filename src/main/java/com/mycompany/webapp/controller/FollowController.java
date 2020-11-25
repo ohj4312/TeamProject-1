@@ -28,7 +28,7 @@ import com.mycompany.webapp.dto.Member;
 import com.mycompany.webapp.service.FollowService;
 
 @Controller
-@RequestMapping("/practice")
+@RequestMapping("/follow")
 public class FollowController {
 	private static final Logger logger = LoggerFactory.getLogger(FollowController.class);
 		
@@ -116,7 +116,6 @@ public class FollowController {
 		follows.setFollower(memail);
 		follows.setFollowing("following@aa.com");
 		int row=followService.cancelfollow(follows);
-		logger.info("취소가 잘됐으면 1이 와요!  : "+row);
 		if(row==1) {
 			PrintWriter out = response.getWriter();
 			response.setContentType("text/html;charset=utf-8");
@@ -135,13 +134,11 @@ public class FollowController {
 		follow.setFollowing("following@aa.com");
 		follow.setFollower(memail);
 		int result=followService.followCheck(follow);
-		logger.info("CONTROLLER RESULT: "+result);
 		JSONObject jsonObject = new JSONObject(); 
 		if(result == 0) {
 			 
 			jsonObject.put("result", "fail");
 			String json = jsonObject.toString();
-			logger.info(json);
 			// 응답 보내기
 			PrintWriter out = response.getWriter();
 			response.setContentType("application/json;charset=utf-8");
@@ -151,10 +148,9 @@ public class FollowController {
 			
 
 		}else {
-
+ 
 			jsonObject.put("result", "success");
 			String json = jsonObject.toString();
-			logger.info(json);
 			// 응답 보내기
 			PrintWriter out = response.getWriter();
 			response.setContentType("application/json;charset=utf-8");
@@ -164,16 +160,5 @@ public class FollowController {
 		}
 			
 	}
-	
-	@GetMapping("/photo-detail")
-	public String aaa() {
-		return "practice/photo-detail";
-	}
-	
-	@GetMapping("/mypage")
-	public String bbb(Member member) {
-		logger.info(member.getMemail());
-		return "practice/mypage";
-	}
-	
+
 }

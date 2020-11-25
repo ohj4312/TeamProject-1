@@ -86,7 +86,7 @@
 	            <a id="RegBookMark" class="btn btn-light col-4" style=" box-shadow:none;" onclick="javascript:RegBookMark()">
 					<span id="RegBookMark"class="material-icons">bookmark_border</span>
 				</a>
-				<a href="#" class="btn btn-info btn-sm col-4" role="button" style=" box-shadow:none;">
+				<a id="follow_check" href="javascript:checkFollow('following@aa.com')" class="btn btn-info btn-sm col-4" role="button" style=" box-shadow:none;">
 					팔로우
 				</a>		
 				</div>
@@ -360,8 +360,52 @@
             	 $(function(){
 		 			likepushCheck();	
 					CheckBookMark();
+					followCheck();
 	 			});
             	
+            </script>
+            <script type="text/javascript">
+
+        	function checkFollow(followingemail){
+				$.ajax({
+					url:"<%=application.getContextPath()%>/follow/checkFollow",
+					data:{followingemail:followingemail},
+					success:function(data) {
+						$("#follow_check").attr("class","btn btn-info btn-sm col-4");
+						$("#follow_check").attr("href","javascript:cancelFollow()");
+					}
+				});
+			}
+       	
+        	function followCheck(){
+        		$.ajax({
+					url:"<%=application.getContextPath()%>/follow/followCheck",
+					success:function(data) {
+						if(data.result=="success"){
+							$("#follow_check").attr("class","btn btn-info btn-sm col-4");
+							$("#follow_check").attr("href","javascript:cancelFollow()");
+						}
+						if(data.result=="fail"){
+							$("#follow_check").attr("class","btn btn-danger btn-sm col-4");
+							$("#follow_check").attr("href","javascript:checkFollow('following@aa.com')");
+						}
+					}
+				});
+			} 
+        	
+        	
+        	
+        	function cancelFollow(){
+        		$.ajax({
+					url:"<%=application.getContextPath()%>/follow/cancelFollow",
+					success:function(data) {
+						$("#follow_check").attr("class","btn btn-danger btn-sm col-4");
+						$("#follow_check").attr("href","javascript:checkFollow('following@aa.com')");
+					}
+				});
+        	}
+			
+			
             </script>
 				
 
