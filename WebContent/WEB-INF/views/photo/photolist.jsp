@@ -164,21 +164,20 @@
 		        	  getList(page);
 			           page++; 
 		            }
+		          
+		          var portfolioIsotope = $('.portfolio-container').isotope({
+		              itemSelector: '.portfolio-item',
+		              layoutMode: 'fitRows'
+		            });
+		          
+		          portfolioIsotope.isotope({
+		              filter: '*'
+		            }); 
+		          
+		          
 		      })
 		    
 		  })
-     
-		/* $(window).scroll(function(){   //스크롤이 최하단 으로 내려가면 리스트를 조회하고 page를 증가시킨다.
-		       if($(window).scrollTop() >= $(document).height() - $(window).height()){
-		          getList(page);
-		           page++;   
-		     } 
-		
-		     if( $(window).scrollTop() + $(window).height() + 100 > $(document).height() ){
-		    	 getList(page);
-		           page++;  
-		        }
-		}); */
 		 
 		function getList(page){
 			
