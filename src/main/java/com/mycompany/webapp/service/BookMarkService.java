@@ -24,8 +24,8 @@ public class BookMarkService {
 	}
 	
 	//조 회
-	public List<Post_bookmark> getBookMarkList(Post_bookmark pb) {
-		List<Post_bookmark> list = bookmarkDAO.selectBookMark(pb);
+	public List<Post_bookmark> getBookMarkList(String memail) {
+		List<Post_bookmark> list = bookmarkDAO.selectBookMark(memail);
 		
 		return list;
 	}

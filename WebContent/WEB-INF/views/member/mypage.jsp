@@ -71,7 +71,7 @@
         			</div>
         		<div class="row" style="text-align:center">
         				<div class="col-4">
-       						<a onclick="javascript:GetBookMarkList()">
+       						<a href="javascript:GetBookMarkList()">
 								<div><span class="material-icons">bookmark_border</span></div>
 								<div><small>스크랩북</small></div>
        						</a>
@@ -86,8 +86,7 @@
         							method: "get",
         							success : function(data){
         								console.log("함수 안에부분 실행");
-        								$("#photoList").hide();
-        								$("#mypagephoto").hide();
+        								
         								$("#BookMarkList").html(data);
         							}
         						});

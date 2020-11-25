@@ -16,8 +16,8 @@ public class BookMarkDAO {
 	@Resource 
 	private SqlSessionTemplate sst;
 	
-	public List<Post_bookmark> selectBookMark(Post_bookmark pb) {
-		List<Post_bookmark> list = sst.selectList("mybatis.mapper.bookmark.selectBookMark",pb);
+	public List<Post_bookmark> selectBookMark(String memail) {
+		List<Post_bookmark> list = sst.selectList("mybatis.mapper.bookmark.selectBookMark",memail);
 		return list;
 	}
  
