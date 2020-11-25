@@ -34,8 +34,12 @@ public class ReplyDAO {
 		return totalRows;
 	}
 
-	public Post_reply selectByBno(int bno) {
-		Post_reply board = sst.selectOne("mybatis.mapper.reply.selectByBno", bno);
-		return board;
+	public Post_reply selectByRno(int rnumber) {
+		Post_reply reply = sst.selectOne("mybatis.mapper.reply.selectByRno", rnumber);
+		return reply;
+	}
+	public int deleteByRnumber(int rnumber) {
+		int rows = sst.delete("mybatis.mapper.reply.deleteByRnumber", rnumber);
+		return rows;
 	}
 }
