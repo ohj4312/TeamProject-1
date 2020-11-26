@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.mycompany.webapp.dao.FollowDAO;
 import com.mycompany.webapp.dto.Follows;
+import com.mycompany.webapp.dto.Member;
 
 @Service
 public class FollowService {
@@ -17,6 +18,11 @@ public class FollowService {
 	//FollowDAO 주입
 	@Resource
 	private FollowDAO followDao;
+	
+	public Member getFollowInfo(String memail) {
+		Member member=followDao.selectFollowInfo(memail);
+		return member;
+	}
 	
 	//user를 follow한 사람을 user memail을 통해 조회, follow한 사람들의 정보를 리스트로 리턴
 	public List<Follows> getFollowList(String memail) {

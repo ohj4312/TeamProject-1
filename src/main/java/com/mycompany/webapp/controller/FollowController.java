@@ -164,17 +164,19 @@ public class FollowController {
 	}
 	
 	@GetMapping("/followmypage")
-	public String moveFollowMypage(Follows follow,Model model,HttpServletRequest request) {
-		logger.info(""+follow);
-		
-		
-		
+	public String redirectFollowMypage(String memail,HttpSession session,HttpServletRequest request) {
+		logger.info(""+memail);
+		session.setAttribute("followingmemail", memail);
 		return "redirect:/follow/member/followmypage";
 	}
 	
 	@RequestMapping("/member/followmypage")
-	public String gggg() {
-		
+	public String moveFollowfollowPage(HttpSession session,Model model) {
+		String memail=(String)session.getAttribute("followingmemail");
+		logger.info(memail);
+		Member followmember=new Member();
+		followmember=followService.getFollowInfo(memail);
+		model.addAttribute("followmember", followmember);
 		return "member/followmypage";
 	}
 }

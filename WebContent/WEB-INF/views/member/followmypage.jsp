@@ -64,11 +64,67 @@
         				<div class="user-profile__profile-image" style="text-align: center;">
                   <img class="rounded-circle mt-3" width="53%" height="53%" src="<%=application.getContextPath() %>/resources/img/person_1.jpg">
         					<div class="profile-info__name mt-2">
-        						<span>${member.mnickname}</span>
+        						<span>${followmember.mnickname}</span>
         						<div>
-        						 <a class="btn btn-info" href="javascript:getfollowList()">팔로우</a>
+        						 <a id="follow_check" class="btn btn-info" class="btn btn-info btn-sm col-4" href="javascript:cancelFollow('${followmember.memail}')">
+        							<span id="follow_change" class="mt-3" style="font-size:17px">팔로잉</span>
+        						 </a>
         						</div>
-        						
+					
+        						<script type="text/javascript">
+        							$(function(){
+        								followCheck('${followmember.memail}');
+        			 				});
+        							
+
+        				        	function checkFollow(pwriter){
+        								$.ajax({
+        									url:"<%=application.getContextPath()%>/follow/checkFollow",
+        									data:{pwriter:pwriter},
+        									success:function(data) {
+        										$("#follow_check").attr("class","btn btn-info btn-sm col-4");
+        										$("#follow_check").attr("href","javascript:cancelFollow('${followmember.memail}')");
+        										$("#follow_change").html("팔로잉");
+        									}
+        								});
+        							}
+        				       	
+        				        	function followCheck(pwriter){
+        				        		console.log(pwriter);
+        				        		$.ajax({
+        									url:"<%=application.getContextPath()%>/follow/followCheck",
+        									data:{pwriter:pwriter},
+        									success:function(data) {
+        										if(data.result=="success"){
+        											$("#follow_check").attr("class","btn btn-info btn-sm col-4");
+        											$("#follow_check").attr("href","javascript:cancelFollow('${followmember.memail}')");
+        											$("#follow_change").html("팔로잉");
+        										}
+        										if(data.result=="fail"){
+        											$("#follow_check").attr("class","btn btn-light btn-sm col-4");
+        											$("#follow_check").attr("href","javascript:checkFollow('${followmember.memail}')");
+        											$("#follow_change").html("팔로우");
+        										}
+        									}
+        								});
+        							} 
+        				        	
+        				        	
+        				        	
+        				        	function cancelFollow(pwriter){
+        				        		console.log(pwriter);
+        				        		$.ajax({
+        									url:"<%=application.getContextPath()%>/follow/cancelFollow",
+        									data : {pwriter:pwriter},
+        									success:function(data) {
+        										$("#follow_check").attr("class","btn btn-light btn-sm col-4");
+        										$("#follow_check").attr("href","javascript:checkFollow('${followmember.memail}')");
+        										$("#follow_change").html("팔로우");
+        									}
+        								});
+        				        	}
+        							
+        						</script>
         					</div>
         				</div>
         			</div>
@@ -89,10 +145,10 @@
         			<section class="post post--cards">
         				<h5><strong>사진</strong></h5>
                 <div id="mypagephoto" style="border:1px dashed #dbdbdb; width:100%;  text-align: center; ">
-                    <div class="row justify-content-center " style="margin-top: 30%;">
+<!--                     <div class="row justify-content-center " style="margin-top: 30%;">
                           <span class="material-icons ">add </span>
                           <a class="post__upload" href="#"> 첫 번째 사진을 올려보세요</a>
-                    </div>
+                    </div> -->
                 </div>  
                 <div id="BookMarkList"></div>
         			</section>

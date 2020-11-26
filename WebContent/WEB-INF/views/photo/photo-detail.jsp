@@ -348,8 +348,7 @@ $(document).ready(function(){
             	
             </script>
             <script type="text/javascript">
-            var pwi
-			
+
         	function checkFollow(pwriter){
 				$.ajax({
 					url:"<%=application.getContextPath()%>/follow/checkFollow",
