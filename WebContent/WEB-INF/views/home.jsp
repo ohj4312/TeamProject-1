@@ -58,7 +58,7 @@
         	<li class="active"><a href="<%=application.getContextPath()%>/">Home</a></li>
           	<li><a href="#services">Services</a></li>
           	<li><a href="#portfolio">Photo List</a></li>
-        	
+        	<li><a href="<%=application.getContextPath()%>/photo/SelfGuide">Self Guide</a></li>
         	<sec:authorize access="isAnonymous()">
           		<li><a href="<%=application.getContextPath()%>/member/login">Login</a></li>
           		<li><a href="<%=application.getContextPath()%>/member/join">Register</a></li>

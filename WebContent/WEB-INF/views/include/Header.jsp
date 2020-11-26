@@ -15,12 +15,14 @@
         	
           <li><a href="<%=application.getContextPath()%>/">Home</a></li>
           <li><a href="<%=application.getContextPath()%>/photo/list">Photo List</a></li>
+          <li><a href="<%=application.getContextPath()%>/photo/SelfGuide">Self Guide</a></li>	
           
           <sec:authorize access="isAnonymous()">
           	<li><a href="<%=application.getContextPath()%>/member/login">Login</a></li>
           	<li><a href="<%=application.getContextPath()%>/member/join">Register</a></li>
           </sec:authorize>
           <sec:authorize access="isAuthenticated()">
+          	
           	<li><a href="<%=application.getContextPath()%>/member/mypage">Mypage</a></li>
           	<li><a href="<%=application.getContextPath()%>/photo/write">Photo Write</a></li>
           	<li><a href="<%=application.getContextPath()%>/logout">LogOut</a></li>

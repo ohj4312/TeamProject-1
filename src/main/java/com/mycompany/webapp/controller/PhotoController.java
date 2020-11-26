@@ -184,4 +184,9 @@ public class PhotoController {
 		
 		
 	}
+	
+	@RequestMapping("/SelfGuide")
+	public String SelfGuide() {
+		return "photo/selfguide";
+	}
 }
