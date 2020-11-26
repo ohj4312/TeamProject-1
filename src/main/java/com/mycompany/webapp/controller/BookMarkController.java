@@ -152,7 +152,10 @@ public class BookMarkController {
 			out.close();
 		}
 	}
-	
+	@GetMapping("/Return")
+	public void Return() {
+		
+	}
 	
 	
 	
@@ -163,13 +166,10 @@ public class BookMarkController {
 		//여기의 pnumber가  A_Photo의 register_number와  같다.
 		//pnumber == register_number
 		//Aphoto의 사진만 일단 먼저 출력해보자  
-
+		
 		Member member = (Member) session.getAttribute("member"); 
 		String memail =	member.getMemail();
 		
-		//Post_bookmark pb = new Post_bookmark();
-		//pb.setPnumber(pnumber);
-		//pb.setMemail(memail);
 		
 		
 		List<Register_photo> list = service.getBookMarkList(memail);
@@ -230,7 +230,10 @@ public class BookMarkController {
 
 	
 	
-	
+	@GetMapping("/returnmypage")
+	public String returnmypage() {
+		return "member/returnmypage";
+	}
 	
 	
 }

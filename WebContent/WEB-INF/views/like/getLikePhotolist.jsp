@@ -8,8 +8,9 @@
                 <div id="mypagephoto" style="border:1px dashed #dbdbdb; width:100%;">
                     <div>
                        <c:forEach var="like" items="${likelist}">
-                       <img  style="margin:5px" width="100px" height="100px" src="<%=application.getContextPath() %>/like/photodownload?fileName=${like.first_image}"/>
-                       
+                       <a href="<%=application.getContextPath()%>/photo/detail?pnumber=${like.pnumber}">
+                       <img style="margin:5px" align="left" width="100px" height="100px" src="<%=application.getContextPath() %>/like/photodownload?fileName=${like.first_image}"/>
+                       </a>
                        </c:forEach>
                     </div>
                 </div>  

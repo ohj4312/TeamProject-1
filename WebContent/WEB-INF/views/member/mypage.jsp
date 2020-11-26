@@ -60,9 +60,9 @@
 
           <div class="col-lg-5 mr-3">
         		<div class="user-profile mt-5" style="border:1px solid #dadce0; ">
-        			<div class="user-profile__container">
+        			<div class="user-profile__container"> 
         				<div class="user-profile__profile-image" style="text-align: center;">
-                  <img class="rounded-circle mt-3" width="53%" height="53%" src="<%=application.getContextPath() %>/resources/img/person_1.jpg">
+                  <a href="javascript:Return()"><img class="rounded-circle mt-3" width="53%" height="53%" src="<%=application.getContextPath()%>/resources/img/person_1.jpg"></a>
         					<div class="profile-info__name mt-2">
         						<span>${member.mnickname}</span>
         						<div>
@@ -101,6 +101,22 @@
         				</div>
         				
         				<script type="text/javascript">
+        						
+        					  function Return(){
+        						
+        						$.ajax({  
+        						url : "<%=application.getContextPath()%>/BK/returnmypage",
+        				 						
+        						success : function(data){
+        							console.log("return 스크립트 넘어옴.");
+        							$("#photoList").html(data);
+        						}
+        						});
+        					}  
+        				
+        				
+        				
+        				        				
         					function GetBookMarkList(){
         						console.log("리스트 불러오기");
         						
