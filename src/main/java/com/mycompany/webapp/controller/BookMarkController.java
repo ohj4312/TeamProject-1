@@ -128,29 +128,26 @@ public class BookMarkController {
 		pb.setPnumber(pnumber);
 		pb.setMemail(memail);
 		
-		JSONObject jsonObject = new JSONObject();
-		
 		int check = service.CheckBookMark(pb);
+		
+		JSONObject jsonObject = new JSONObject();
 		logger.info(String.valueOf(check));
 		if(check ==0) {
+			//service.Register(pb);
 			jsonObject.put("result", "success");
-			String json = jsonObject.toString();
-			// 응답보내기
-			PrintWriter out = response.getWriter();
-			response.setContentType("application/json;charset=utf-8");
-			out.println(json);
-			out.flush();
-			out.close();
+			
 		}else {
+			//service.CancelBookMark(pb);
 			jsonObject.put("result", "failure");
-			String json = jsonObject.toString();
-			// 응답보내기
-			PrintWriter out = response.getWriter();
-			response.setContentType("application/json;charset=utf-8");
-			out.println(json);
-			out.flush();
-			out.close();
 		}
+		
+		String json = jsonObject.toString();
+		// 응답보내기
+		PrintWriter out = response.getWriter();
+		response.setContentType("application/json;charset=utf-8");
+		out.println(json);
+		out.flush();
+		out.close();
 	}
 	@GetMapping("/Return")
 	public void Return() {
