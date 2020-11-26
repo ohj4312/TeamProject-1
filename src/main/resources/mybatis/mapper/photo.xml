@@ -8,8 +8,8 @@
 			select SEQ_REGPHOTO_PNUMBER.nextval from dual
 		</selectKey>
 		
-		insert into register_photo (pnumber, REGISTER_PDATE, PHIT_COUNT, PWRITER, PTYPE,PSIZE,PSTYLE, FIRST_IMAGE) 
-		values (SEQ_REGPHOTO_PNUMBER.currval, sysdate, 0, #{pwriter},#{ptype},#{psize},#{pstyle}, #{first_image})
+		insert into register_photo (pnumber, REGISTER_PDATE, PHIT_COUNT, PWRITER, PTYPE,PSIZE,PSTYLE, FIRST_IMAGE, first_content) 
+		values (SEQ_REGPHOTO_PNUMBER.currval, sysdate, 0, #{pwriter},#{ptype},#{psize},#{pstyle}, #{first_image}, #{first_content})
 	</insert>
 	
 	
@@ -40,10 +40,13 @@
 	</select>
 	
 	<select id="selectByPage" resultType="registerPhoto" parameterType="pager">
-		select rnum, pnumber, first_image, PHIT_COUNT, PTYPE, PSIZE, PSTYLE
+		select rnum, pnumber, first_image, PHIT_COUNT, PTYPE, PSIZE, PSTYLE, mnickname, first_content, MIMAGE
 		from(
-		select rownum as rnum, pnumber, first_image, PHIT_COUNT, PTYPE, PSIZE, PSTYLE
-		from (select pnumber, first_image, PHIT_COUNT, PTYPE, PSIZE, PSTYLE from register_photo order by pnumber desc)
+		select rownum as rnum, pnumber, first_image, PHIT_COUNT, PTYPE, PSIZE, PSTYLE, mnickname, first_content, MIMAGE
+		from (
+		select pnumber, first_image, PHIT_COUNT, PTYPE, PSIZE, PSTYLE, mnickname, first_content,MIMAGE
+		from register_photo r, member m
+		where r.PWRITER = m.MEMAIL order by pnumber desc)
 		where rownum &lt;= #{endRowNo}
 		)
 		where rnum &gt;= #{startRowNo} 

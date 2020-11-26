@@ -38,45 +38,16 @@
                     </span>
                   </button>
                   <div class="dropdown-menu">
-                    <a class="dropdown-item" href="javascript:addTag('원룸','type');">원룸/오피스텔</a>
+                    <a class="dropdown-item" href="javascript:addTag('원룸','type');">원룸</a>
                     <a class="dropdown-item" href="javascript:addTag('아파트','type');">아파트</a>
-                    <a class="dropdown-item" href="javascript:addTag('빌라','type');">빌라/연립</a>
+                    <a class="dropdown-item" href="javascript:addTag('빌라','type');">빌라</a>
                     <a class="dropdown-item" href="javascript:addTag('단독주택','type');">단독주택</a>
                     <a class="dropdown-item" href="javascript:addTag('상업공간','type');">상업공간</a>
+                    <a class="dropdown-item" href="javascript:addTag('사무공간','type');">사무공간</a>
                     <a class="dropdown-item" href="javascript:addTag('기타','type');">기타</a>
                   </div>
                 </div>
               </li>
-
-              <!-- <li class="nav-item mr-3">
-                <div class="dropdown">
-                  <button class="btn btn-light"type="button" data-toggle="dropdown" aria-haspopup="true">
-                    <span class="row">
-                     	 공간
-                      <i class="material-icons">
-                        keyboard_arrow_down
-                      </i>
-                    </span>
-                  </button>
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" href="javascript:addTag('원룸',3);">원룸</a>
-                    <a class="dropdown-item" href="javascript:addTag('거실',3);">거실</a>
-                    <a class="dropdown-item" href="javascript:addTag('침실',3);">침실</a>
-                    <a class="dropdown-item" href="javascript:addTag('주방',3);">주방</a>
-                    <a class="dropdown-item" href="javascript:addTag('욕실',3);">욕실</a>
-                    <a class="dropdown-item" href="javascript:addTag('아이방',3);">아이방</a>
-                    <a class="dropdown-item" href="javascript:addTag('드레스룸',3);">드레스룸</a>
-                    <a class="dropdown-item" href="javascript:addTag('서재&작업실',3);">서재&작업실</a>
-                    <a class="dropdown-item" href="javascript:addTag('베란다',3);">베란다</a>
-                    <a class="dropdown-item" href="javascript:addTag('사무공간',3);">사무공간</a>
-                    <a class="dropdown-item" href="javascript:addTag('상업공간',3);">상업공간</a>
-                    <a class="dropdown-item" href="javascript:addTag('가구&소품',3);">가구&소품</a>
-                    <a class="dropdown-item" href="javascript:addTag('현관',3);">현관</a>
-                    <a class="dropdown-item" href="javascript:addTag('외관&기타',3);">외관&기타</a>
-
-                  </div>
-                </div>
-              </li> -->
 
               <li class="nav-item mr-3">
                 <div class="dropdown">

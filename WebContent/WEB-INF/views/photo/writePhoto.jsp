@@ -74,9 +74,9 @@
 							<select id="ptype" name="ptype" class="form-control mr-2 ml-2"
 								style="height: auto;">
 								<option selected>주거형태</option>
-								<option value="원룸/오피스텔">원룸/오피스텔</option>
+								<option value="원룸">원룸</option>
 								<option value="아파트">아파트</option>
-								<option value="빌라/연립">빌라/연립</option>
+								<option value="빌라">빌라</option>
 								<option value="단독주택">단독주택</option>
 								<option value="사무공간">사무공간</option>
 								<option value="상업공간">상업공간</option>
@@ -126,7 +126,7 @@
 							<option value="베란다">베란다</option>
 							<option value="사무공간">사무공간</option>
 							<option value="상업공간">상업공간</option>
-							<option value="가구/소품">가구/소품</option>
+							<option value="가구">가구</option>
 							<option value="현관">현관</option>
 							<option value="외관/기타">외관/기타</option>
 							<option value="제품리뷰">제품리뷰</option>
@@ -170,7 +170,7 @@
 							<option value="베란다">베란다</option>
 							<option value="사무공간">사무공간</option>
 							<option value="상업공간">상업공간</option>
-							<option value="가구/소품">가구/소품</option>
+							<option value="가구">가구</option>
 							<option value="현관">현관</option>
 							<option value="외관/기타">외관/기타</option>
 							<option value="제품리뷰">제품리뷰</option>

@@ -113,6 +113,7 @@ public class PhotoController {
 				photo.setAimage(saveFilename);
 				if(savefirst == 0) {
 					rphoto.setFirst_image(saveFilename);
+					rphoto.setFirst_content(photo.getAcontent());
 				}
 				
 				savefirst++;
