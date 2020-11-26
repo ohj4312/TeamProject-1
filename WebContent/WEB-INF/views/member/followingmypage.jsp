@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 
@@ -64,16 +65,16 @@
         				<div class="user-profile__profile-image" style="text-align: center;">
                   <img class="rounded-circle mt-3" width="53%" height="53%" src="<%=application.getContextPath() %>/resources/img/person_1.jpg">
         					<div class="profile-info__name mt-2">
-        						<span>${followmember.mnickname}</span>
+        						<span>${followingmember.mnickname}</span>
         						<div>
-        						 <a id="follow_check" class="btn btn-info" class="btn btn-light btn-sm col-4" href="javascript:checkFollow('${followmember.memail}')">
+        						 <a id="follow_check" class="btn btn-info" class="btn btn-info btn-sm col-4" href="javascript:cancelFollow('${followingmember.memail}')">
         							<span id="follow_change" class="mt-3" style="font-size:17px">팔로우</span>
         						 </a>
         						</div>
 					
         						<script type="text/javascript">
         							$(function(){
-        								followCheck('${followmember.memail}');
+        								followCheck('${followingmember.memail}');
         			 				});
         							
 
@@ -84,7 +85,7 @@
         									data:{pwriter:pwriter},
         									success:function(data) {
         										$("#follow_check").attr("class","btn btn-info btn-sm col-4");
-        										$("#follow_check").attr("href","javascript:cancelFollow('${followmember.memail}')");
+        										$("#follow_check").attr("href","javascript:cancelFollow('${followingmember.memail}')");
         										$("#follow_change").html("팔로잉");
         									}
         								});
@@ -98,12 +99,12 @@
         									success:function(data) {
         										if(data.result=="success"){
         											$("#follow_check").attr("class","btn btn-info btn-sm col-4");
-        											$("#follow_check").attr("href","javascript:cancelFollow('${followmember.memail}')");
+        											$("#follow_check").attr("href","javascript:cancelFollow('${followingmember.memail}')");
         											$("#follow_change").html("팔로잉");
         										}
         										if(data.result=="fail"){
         											$("#follow_check").attr("class","btn btn-light btn-sm col-4");
-        											$("#follow_check").attr("href","javascript:checkFollow('${followmember.memail}')");
+        											$("#follow_check").attr("href","javascript:checkFollow('${followingmember.memail}')");
         											$("#follow_change").html("팔로우");
         										}
         									}
@@ -119,7 +120,7 @@
         									data : {pwriter:pwriter},
         									success:function(data) {
         										$("#follow_check").attr("class","btn btn-light btn-sm col-4");
-        										$("#follow_check").attr("href","javascript:checkFollow('${followmember.memail}')");
+        										$("#follow_check").attr("href","javascript:checkFollow('${followingmember.memail}')");
         										$("#follow_change").html("팔로우");
         									}
         								});

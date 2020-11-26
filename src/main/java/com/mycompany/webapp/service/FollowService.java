@@ -24,6 +24,11 @@ public class FollowService {
 		return member;
 	}
 	
+	public Member getFollowingInfo(String memail) {
+		Member member=followDao.selectFollowingInfo(memail);
+		return member;
+	}
+	
 	//user를 follow한 사람을 user memail을 통해 조회, follow한 사람들의 정보를 리스트로 리턴
 	public List<Follows> getFollowList(String memail) {
 		List<Follows> list=followDao.selectByFollow(memail);

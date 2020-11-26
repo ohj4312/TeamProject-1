@@ -48,6 +48,11 @@ public class FollowDAO {
 		return result;
 	}
 
+	public Member selectFollowingInfo(String memail) {
+		Member member=sst.selectOne("mybatis.mapper.follows.selectFollowingInfo",memail);
+		return member;
+	}
+	
 	public Member selectFollowInfo(String memail) {
 		Member member=sst.selectOne("mybatis.mapper.follows.selectFollowInfo",memail);
 		return member;
