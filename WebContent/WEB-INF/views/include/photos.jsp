@@ -9,7 +9,7 @@
 							class="img-fluid" alt="">
 						<div class="portfolio-info">
 							<h4>조회수</h4>
-							<p>${photo.phit_count}</p>
+							<p class = "hitcount">${photo.phit_count}</p>
 							<div class="portfolio-links">
 								<a id="App1BK${photo.pnumber}" href="javascript:App1BK_CheckBookMark2(${photo.pnumber })"
 									style="" title="App 1">

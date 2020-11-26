@@ -1,6 +1,7 @@
 package com.mycompany.webapp.controller;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -22,24 +23,10 @@ public class MemberController {
 	MemberService memberService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
-	@GetMapping("/login")
-	public String loginForm() {
+	@RequestMapping("/login")
+	public String loginForm(HttpServletRequest request) {
+		logger.info(request.getParameter("failed"));
 		return "member/login";
-	}
-	
-	@PostMapping("/login")
-	public String login(HttpSession session, Member member) {
-		logger.info("실행");
-		Member result = memberService.login(member);
-
-		if(result.isLoginResult()) {
-			session.setAttribute("member", result);
-			return "redirect:/";
-		}else {
-			return "redirect:/member/login";
-		}
-		
-		
 	}
 	
 	@GetMapping("/join")
