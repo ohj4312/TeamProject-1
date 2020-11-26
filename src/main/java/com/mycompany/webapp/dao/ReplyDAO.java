@@ -21,7 +21,10 @@ public class ReplyDAO {
 		return rows;
 	}
 	
-
+	public int replyCount(Post_reply reply) {
+		int count = sst.selectOne("mybatis.mapper.reply.replyCount", reply);
+		return count;
+	}
 
 	public int countAll() {
 		int totalRows = sst.selectOne("mybatis.mapper.reply.countAll");

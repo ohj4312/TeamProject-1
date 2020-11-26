@@ -109,8 +109,6 @@ public class ReplyController {
 	@GetMapping("/replyList")
 	public String replyList(@RequestParam(defaultValue="1")int pageNo, Model model, int pnumber) {
 		logger.info("replyList : 실행");
-		
-		logger.info("replyList :"+pnumber);
 		int totalRows = service.getTotalRows();
 		
 		Pager pager = new Pager(5, 5, totalRows, pageNo);
@@ -125,8 +123,11 @@ public class ReplyController {
 			logger.info(r.getRcontent());
 			logger.info(r.getRimage());
 		}
+		int replyCount = service.getreplyCount(reply);
 		model.addAttribute("list", list);
 		model.addAttribute("pager", pager);
+		logger.info("pager.getTotalRows : "+replyCount);
+		model.addAttribute("count",replyCount);
 		return "replylist";
 	}
 	
