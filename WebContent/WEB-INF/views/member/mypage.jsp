@@ -82,7 +82,7 @@
 										function getfollowingList(){
 											$.ajax({
 												url:"<%=application.getContextPath()%>/follow/followingList",
-												success:function(data) {
+												success:function(data) { 
 													$("#photoList").html(data);
 												}
 											});
@@ -99,6 +99,7 @@
 								<div><small>스크랩북</small></div>
        						</a>
         				</div>
+        				
         				<script type="text/javascript">
         					function GetBookMarkList(){
         						console.log("리스트 불러오기");
@@ -110,7 +111,7 @@
         							success : function(data){
         								console.log("함수 안에부분 실행");
         								
-        								$("#BookMarkList").html(data);
+        								$("#photoList").html(data);
         							}
         						});
         					}
@@ -158,7 +159,7 @@
             <iframe style="border:0; width: 100%; height: 270px;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" allowfullscreen></iframe>
           </div> -->
 
-          <div class="col-lg-5">
+          <div class="col-lg-5 mr-3">
         		<div id="photoList" class="contents">
         			<section class="post post--cards">
         				<h5><strong>사진</strong></h5>
@@ -168,15 +169,14 @@
                           <a class="post__upload" href="#"> 첫 번째 사진을 올려보세요</a>
                     </div>
                 </div>  
-                <div id="BookMarkList"></div>
-        			</section>
-        		
-        		
+                	</section>
+        			
         		</div>
+        		
+        		
+        		
         	</div> 
-
-			
-
+        	
         </div>
 
       </div>

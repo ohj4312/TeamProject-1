@@ -1,3 +1,4 @@
+
 package com.mycompany.webapp.dto;
 
 public class Pager {
@@ -18,6 +19,7 @@ public class Pager {
 		this.totalRows = totalRows;
 		this.pageNo = pageNo;
 
+		
 		
 		//전체 행수 / 페이지 당 행수
 		totalPageNo = totalRows / rowsPerPage;

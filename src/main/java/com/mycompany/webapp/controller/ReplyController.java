@@ -107,11 +107,24 @@ public class ReplyController {
 	}
 	
 	@GetMapping("/replyList")
-	public String replyList(@RequestParam(defaultValue="1")int pageNo, Model model) {
+	public String replyList(@RequestParam(defaultValue="1")int pageNo, Model model, int pnumber) {
 		logger.info("replyList : 실행");
+		
+		logger.info("replyList :"+pnumber);
 		int totalRows = service.getTotalRows();
+		
 		Pager pager = new Pager(5, 5, totalRows, pageNo);
-		List<Post_reply> list = service.getReplyList(pager);
+		Post_reply reply = new Post_reply();
+		reply.setPnumber(pnumber);
+		reply.setEndRowNo(pager.getEndRowNo());
+		reply.setStartRowNo(pager.getStartRowNo());
+		
+		List<Post_reply> list = service.getReplyList(reply);
+		for(Post_reply r : list) {
+			logger.info(r.getMnickname());
+			logger.info(r.getRcontent());
+			logger.info(r.getRimage());
+		}
 		model.addAttribute("list", list);
 		model.addAttribute("pager", pager);
 		return "replylist";

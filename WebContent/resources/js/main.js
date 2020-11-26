@@ -44,7 +44,7 @@
   // Activate smooth scroll on page load with hash links in the url
   $(document).ready(function() {
 
-    // console.log("실행");
+    console.log("ready실행");
     // $cloneform = $("#cloneForm").clone();
 
     if (window.location.hash) {
@@ -196,9 +196,24 @@
 })(jQuery);
 
 //===========================노성규==============================
-var filterCon;
+var filterCon = '';
+var pstyle = '';
+var ptype = '';
+var psize = '';
 function addTag(btncon, btnid) {
-  var button = $('<button type = "button" onclick="removeTag(' + btnid + ');"'+
+	switch (btnid){
+    case 'type' :
+        ptype = '.'+btncon;
+        break;
+    case 'size' :
+        psize = '.'+btncon;
+        break;
+    case 'style' :
+        pstyle = '.'+btncon;
+        break;
+	}
+
+  var button = $('<button type = "button" onclick="removeTag(\''+ btnid +'\');"'+
 				'id = "' + btnid + '"class = "btn btn-outline-primary btn-sm mr-2">' 
 				+ btncon + '<i class="material-icons" style="font-size: x-small;">close</i></button>');
 				
@@ -209,13 +224,48 @@ function addTag(btncon, btnid) {
   } else {
     $("#addtag").append(button);
   }
-	filterCon += btncon;
+	filterCon = pstyle+ptype+psize;
 	console.log(filterCon);
+	
+
+	var portfolioIsotope = $('.portfolio-container').isotope({
+              itemSelector: '.portfolio-item',
+              layoutMode: 'fitRows'
+            });
+          
+         portfolioIsotope.isotope({
+              filter: filterCon
+            });
 }
 
 function removeTag(removeID) {
-  var removeID1 = '#' + removeID;
-  $(removeID1).remove();
+	switch (removeID){
+    case 'type' :
+        ptype = '';
+        break;
+    case 'size' :
+        psize = '';
+        break;
+    case 'style' :
+        pstyle = '';
+        break;
+	}
+	filterCon = pstyle+ptype+psize;
+	console.log(filterCon);
+  	var removeID1 = '#' + removeID;
+  	$(removeID1).remove();
+
+	
+
+	var portfolioIsotope = $('.portfolio-container').isotope({
+              itemSelector: '.portfolio-item',
+              layoutMode: 'fitRows'
+            });
+          
+         portfolioIsotope.isotope({
+              filter: filterCon
+            });
+	
 }
 
 $("input:file").on('change', function(e){
@@ -288,37 +338,9 @@ function removeform(idnum){
 	
 }
 
-  var page = 2;
-  $(function(){
-      $(window).scroll(function(){
-          var $window = $(this);
-          var scrollTop = $window.scrollTop();
-          var windowHeight = $window.height();
-          var documentHeight = $(document).height();
-          
-          //console.log("documentHeight:" + documentHeight + " | scrollTop:" + scrollTop + " | windowHeight: " + windowHeight );
-          
-          if( scrollTop + windowHeight + 1000 > documentHeight ){
-        	  getList(page);
-	           page++; 
-            }
-          
-          var portfolioIsotope = $('.portfolio-container').isotope({
-              itemSelector: '.portfolio-item',
-              layoutMode: 'fitRows'
-            });
-          
-          portfolioIsotope.isotope({
-              filter: '*'
-            }); 
-          
-          
-   })
-		    
-})
+  
 
-
-/*function photoChange(aimage, acontent){
+function photoChange(aimage, acontent){
 	
 	var imagepath = 'photodownload?fileName='+aimage;
 	console.log(imagepath);
@@ -327,51 +349,70 @@ function removeform(idnum){
 	$('#acontent').html(acontent);
 	
 }
-*/
 
 
-  // Porfolio isotope and filter
-  $(window).on('load', function() {
-    var portfolioIsotope = $('.portfolio-container').isotope({
-      itemSelector: '.portfolio-item',
-      layoutMode: 'fitRows'
-    });
 
-    /*$('#portfolio-flters li').on('click', function() {
-      $("#portfolio-flters li").removeClass('filter-active');
-      $(this).addClass('filter-active');
-
-      portfolioIsotope.isotope({
-        filter: '.30평대'
-      });
-      aos_init();
-    });*/
-
-		portfolioIsotope.isotope({
-        filter: '*'
-      });
-
-    // Initiate venobox (lightbox feature used in portofilo)
-    $(document).ready(function() {
-      $('.venobox').venobox();
-    });
-  });
-
-
+//리스트 페이징 처리
+var page = 2;
+		  $(function(){
+		      $(window).scroll(function(){
+		          var $window = $(this);
+		          var scrollTop = $window.scrollTop();
+		          var windowHeight = $window.height();
+		          var documentHeight = $(document).height();
+		          
+		          //console.log("documentHeight:" + documentHeight + " | scrollTop:" + scrollTop + " | windowHeight: " + windowHeight );
+		          
+		          if( scrollTop + windowHeight + 1000 > documentHeight ){
+		        	  getList(page);
+		        	  
+			           page++; 
+						console.log(page);
+		
+		            }   
+		          
+		   });
+				    
+		});
+		  
+function getList(page){
+			$.ajax({
+				type : 'POST',
+				url:"list",
+				data: {"pageNo" : page},
+				success : function(data) {
+			
+			         
+					$("#12345").append(data);
+					var portfolioIsotope = $('.portfolio-container').isotope({
+			              itemSelector: '.portfolio-item',
+			              layoutMode: 'fitRows'
+			            });
+			          
+			         portfolioIsotope.isotope({
+			              filter: filterCon
+			            });
+					$('.portfolio-container').isotope('reloadItems');
+		       		},
+		       error:function(e){
+		           if(e.status==300){
+		               alert("데이터를 가져오는데 실패하였습니다.");
+		           };
+		       }
+			});
+			
+}
 
 
 //============서윤아=====================================
- $(document).ready(function(){
-	replyList();
-});
+
 	 
-function replyList(pageNo){
-	if(!pageNo){
-		pageNo=1;
-	}
+function replyList(pnumber){
+	var pageNo = 1;
+	console.log("replyList:"+pnumber);
 	$.ajax({
 		url:"/teamproject/reply/replyList",
-		data:{pageNo:pageNo},
+		data:{pageNo:pageNo, pnumber:pnumber},
 		success:function(data){
 			$("#reply_result").html(data);
 		}
@@ -389,7 +430,6 @@ function replyWrite(pnumber){
 		success:function(data){
 			console.log("성공후 실행");
 			if(data.result=="success"){
-				
 				replyList();
 			}
 			$("#reply_result").html(data);

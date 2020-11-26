@@ -15,8 +15,8 @@
 	</select> -->
 	
 	<select id="selectBookMark" parameterType="String" resultType="registerPhoto">
-		select r.first_image from Register_photo r where r.pnumber in ( 
-		select p.pnumber from Post_bookmark p where p.memail = #{memail} )
+		select r.first_image , r.pnumber from Register_photo r where r.pnumber in ( 
+		select p.pnumber from Post_bookmark p where p.memail = #{memail}  )
 		
 	</select>
 	

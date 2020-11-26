@@ -52,8 +52,9 @@
 
         </div>
 
-      
+      <div id = "12345" class="row portfolio-container abcd" data-aos="fade-up">
         <jsp:include page="/WEB-INF/views/include/photos.jsp"/>
+       </div>
         
 
       </div>
@@ -139,36 +140,16 @@
   <!-- Vendor JS Files -->
    <script src="<%=application.getContextPath() %>/resources/vendor/jquery/jquery.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="<%=application.getContextPath() %>/resources/vendor/jquery.easing/jquery.easing.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/php-email-form/validate.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/owl.carousel/owl.carousel.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/venobox/venobox.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/aos/aos.js"></script>
+  <script src="<%=application.getContextPath() %>/resources/vendor/jquery.easing/jquery.easing.min.js"></script>
 
   <!-- Template Main JS File -->
   <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>
-  
-  <script type="text/javascript">
 
-		 
-		function getList(page){
-			
-			$.ajax({
-				type : 'POST',
-				url:"list",
-				data: {"pageNo" : page},
-				success : function(data) {
-					$("#listappend").append(data);
-		       		},
-		       error:function(e){
-		           if(e.status==300){
-		               alert("데이터를 가져오는데 실패하였습니다.");
-		           };
-		       }
-			});
-		}
-</script>
 	<script type="text/javascript">
 				
 				function likepushCheckIcons(pnumber){														 
@@ -222,9 +203,95 @@
 				}
 			});
 		}
+				
+
+				function App1BK_CheckBookMark(pnumber){
+					console.log("App1BK_CheckBookMark에 넘어왔다.");
+					$.ajax({
+						url: "<%=application.getContextPath()%>/BK/CheckBookMark",
+						data: {pnumber: pnumber},
+						success:function(data){ 
+							
+							 if(data.result == "success"){
+								//console.log("App1BK_CheckBookMark의 data @success@ ");
+								
+								$("#itag"+pnumber).html("bookmark_border");
+								
+								//App1BK_RegBookMark(pnumber);
+							}else{
+								console.log("App1BK_CheckBookMark의  data @failure@ ");
+								
+								$("#itag"+pnumber).html("bookmark");
+								//App1BK_CancelBookMark(pnumber);
+								
+								
+							}
+						} 
+							
+					}); 
+				}
+				
+				function App1BK_CheckBookMark2(pnumber){
+					console.log("App1BK_CheckBookMark  2   에 넘어왔다.");
+					$.ajax({
+						url: "<%=application.getContextPath()%>/BK/CheckBookMark",
+						data: {pnumber: pnumber},
+						success:function(data){ 
+							
+							 if(data.result == "success"){
+								console.log("App1BK_CheckBookMark 2 의 data @success@ ");
+								
+								$("#itag"+pnumber).html("bookmark");
+								
+								App1BK_RegBookMark(pnumber);
+							}else{
+								console.log("App1BK_CheckBookMark 2 의  data @failure@ ");
+								
+								$("#itag"+pnumber).html("bookmark_border");
+								App1BK_CancelBookMark(pnumber);
+								
+								
+							}
+						} 
+							
+					}); 
+				}
+				
+				
+				
+		    	function App1BK_RegBookMark(pnumber){
+		    		console.log("App1BK_RegBookMark 로 넘어옴");
+		    		    		 
+		    		$.ajax({
+		    			url : "<%=application.getContextPath()%>/BK/regBookMark",
+		    			data: {pnumber: pnumber },
+		        		method:"get",
+		        		success:function(data){
+		        			if(data.result=="success"){
+		        				
+		        				
+		        			}
+		        		}
+		    		});		
+		    	}
+		    
+		    	function App1BK_CancelBookMark(pnumber){
+		    		console.log("App1BK_CancelBookMark 로 넘어옴");
+		    		
+		    		$.ajax({
+		        		url:"<%=application.getContextPath()%>/BK/CancelBookMark",
+						data : {pnumber : pnumber},
+						method : "get",
+						success : function(data) {
+					if (data.result == "success") {
+
+					}
+				}
+			});
+		}
 	</script>
 
-
+ 
 </body>
 
 </html>
