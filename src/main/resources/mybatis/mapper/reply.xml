@@ -36,6 +36,10 @@
 		select count(*) from post_reply
 	</select>
 	
+	<select id="replyCount" parameterType="reply" resultType="int">
+		select count(*) from post_reply p where p.pnumber = #{pnumber}
+	</select>
+	
 	<select id="selectByRno" parameterType="int" resultType="reply">
 		select rcontent,  mimage, mnickname
 		from post_reply p, member m

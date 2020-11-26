@@ -27,6 +27,11 @@ public class ReplyService {
 		int totalRows = replyDao.countAll();
 		return totalRows;
 	}
+	
+	public int getreplyCount(Post_reply reply) {
+		int count = replyDao.replyCount(reply);
+		return count;
+	}
 
 	public Post_reply getReply(int rnumber) {
 		Post_reply reply = replyDao.selectByRno(rnumber);

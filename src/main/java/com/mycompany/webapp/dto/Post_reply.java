@@ -26,8 +26,18 @@ public class Post_reply {
 	private int startRowNo; 	//페이지의 시작 행 번호
 	private int endRowNo; 		//페이지의 끝 행 번호
 	
+	private int count;
+	
 
 	
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+
 	public int getStartRowNo() {
 		return startRowNo;
 	}

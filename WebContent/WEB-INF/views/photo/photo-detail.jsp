@@ -126,28 +126,10 @@
 		 </div>
 
 
-      <div class="col-md-8" style="width:100%">
-
-        <div class="input-group mb-3" style="width:100%; float:none; margin:0 auto">
-          <h4>댓글 </h4>
-          <h4 style="color:DodgerBlue">&nbsp;#개</h4>
-        </div>
-      </div>
-      <div class="col-md-8" style="width:100%">
-
-        <div class="input-group mb-3" style="width:100%; float:none; margin:0 auto">
-          <span class="material-icons" style="font-size:45px; color:#4169E1;">
-            face
-          </span>
-          <input type="text" id="rcontent" class="form-control" placeholder="칭찬과 격려는 큰 힘이됩니다!">
-          <div class="input-group-apeend">
-	           <c:if test="${member.memail != null}">
-	            <a class="btn btn-outline btn-primary" href="javascript:replyWrite(${photo.pnumber })">등록</a>
-	            </c:if>
-          </div>
-        </div>
-      </div>
-    </div>
+      
+     
+     
+   </div>
 
 
     <div class="container">
