@@ -21,11 +21,31 @@ public class Register_photo {
 	private String pstyle;
 	private String first_image;
 	private String mnickname;
+	private String first_content;
+	private String mimage;
 	
 	List<A_photo> list;
 
 	
 	
+	
+	
+	public String getMimage() {
+		return mimage;
+	}
+
+	public void setMimage(String mimage) {
+		this.mimage = mimage;
+	}
+
+	public String getFirst_content() {
+		return first_content;
+	}
+
+	public void setFirst_content(String first_content) {
+		this.first_content = first_content;
+	}
+
 	public String getMnickname() {
 		return mnickname;
 	}
