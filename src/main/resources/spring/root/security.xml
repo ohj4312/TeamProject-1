@@ -148,6 +148,6 @@
 		defaultTargetUrl:생략, 컨텍스트 루트 경로(/index.jsp)로 리다이렉트
 		defaultTargetUrl:지정, defaultTargetUrl로 강제 리다이렉트
 		 -->
-		<property name="defaultTargetUrl" value="/ch17/content"/>
+		<property name="defaultTargetUrl" value="/"/>
 	</bean>	
 </beans>
