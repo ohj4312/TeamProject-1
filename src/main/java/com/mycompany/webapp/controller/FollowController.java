@@ -13,7 +13,6 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.sound.midi.SysexMessage;
 
 import org.json.JSONObject;
 import org.slf4j.Logger;
@@ -165,8 +164,9 @@ public class FollowController {
 	}
 	
 	@GetMapping("/followmypage")
-	public String moveFollowMypage(String memail,Model model,HttpServletRequest request) {
-		logger.info(memail);
+	public String moveFollowMypage(Follows follow,Model model,HttpServletRequest request) {
+		logger.info(""+follow);
+		
 		
 		
 		return "redirect:/follow/member/followmypage";
