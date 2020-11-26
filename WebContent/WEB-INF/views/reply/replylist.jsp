@@ -2,13 +2,30 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-
-<div class="col-md-8" style="width:100%">
+<div class="row">
+<div class="col-sm-12" style="width:100%">
        <div class="input-group mb-3" style="width:100%; float:none; margin:0 auto">
          <h4>댓글 </h4>
          <h4 style="color:DodgerBlue; padding-left:10px">${count}</h4>
        </div>
 </div>
+<div class="col-sm-12" style="width:100%">
+ <div class="container">
+	      <div class="col-md-8" style="width:100%">
+	        <div class="input-group mb-3" style="width:100%; float:none; margin:0 auto">
+	          <span class="material-icons" style="font-size:45px; color:#4169E1;">
+	            face
+	          </span>
+	          <input type="text" id="rcontent" class="form-control" placeholder="칭찬과 격려는 큰 힘이됩니다!">
+	          <div class="input-group-apeend">
+	          <c:if test="${member.memail != null}">
+	           <a class="btn btn-outline btn-primary" href="javascript:replyWrite(${pnumber})">등록</a>
+	           </c:if>
+	          </div>
+	        </div>
+	      </div>
+</div>
+
 	
 
 <div>
@@ -25,7 +42,7 @@
 				</p>
 			<c:if test="${member.memail==reply.rwriter}">
 				<div style="display:inline-block; width:10%">
-					<a style="font-size:13px;" href="javascript:replyDelete(${reply.rnumber})">삭제</a>
+					<a style="font-size:13px;" href="javascript:replyDelete(${reply.rnumber},${pnumber})">삭제</a>
 				</div>
 			</c:if>
 			</c:forEach>
@@ -45,10 +62,10 @@
 	            
 	            <c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
 					<c:if test="${pager.pageNo==i}">
-	           	 		<li class="page-item"><a class="page-link" href="javascript:replyList(${i})">${i}</a></li>
+	           	 		<li class="page-item"><a class="page-link" href="javascript:replyList(${pnumber},${i})">${i}</a></li>
 	            	</c:if>
 	            	<c:if test="${pager.pageNo!=i}">
-	            		<li class="page-item"><a class="page-link" href="javascript:replyList(${i})">${i}</a></li>
+	            		<li class="page-item"><a class="page-link" href="javascript:replyList(${pnumber},${i})">${i}</a></li>
 	            	</c:if>
 	             </c:forEach>
 	             <c:if test="${pager.groupNo<pager.totalGroupNo}">
@@ -59,3 +76,5 @@
 	        </c:if>
 	      </div>
 	</div>
+	</div>
+</div>

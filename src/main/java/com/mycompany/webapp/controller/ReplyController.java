@@ -38,10 +38,7 @@ public class ReplyController {
 	
 	
 	
-	@GetMapping("/detail")
-	public String photoDetail() {
-		return "photo/photo-detail";
-	}
+
 	
 	@Resource
 	private ReplyService service;
@@ -113,7 +110,7 @@ public class ReplyController {
 		Pager pager = new Pager(5, 5, replyCount, pageNo);
 		reply.setEndRowNo(pager.getEndRowNo());
 		reply.setStartRowNo(pager.getStartRowNo());
-		
+
 		List<Post_reply> list = service.getReplyList(reply);
 		for(Post_reply r : list) {
 			logger.info(r.getMnickname());
@@ -122,16 +119,17 @@ public class ReplyController {
 		}
 		model.addAttribute("list", list);
 		model.addAttribute("pager", pager);
-		logger.info("pager.getTotalRows : "+replyCount);
-		logger.info("pnumber : "+pnumber);
+		model.addAttribute("pnumber", pnumber);
 		model.addAttribute("count",replyCount);
 		return "reply/replylist";
 	}
 	
+	
 	@PostMapping("/replyDelete")
-	public void replyDelete(int rnumber, HttpServletResponse response) throws Exception{
+	public void replyDelete(int rnumber, int pnumber,HttpServletResponse response) throws Exception{
 		logger.info("replyDelete: 실행");
-		
+		Post_reply reply = new Post_reply();
+		reply.setPnumber(pnumber);
 		//서비스를 이용해서 게시물 삭제
 		service.replyDelete(rnumber);
 		response.setContentType("application/json; charset=utf-8");

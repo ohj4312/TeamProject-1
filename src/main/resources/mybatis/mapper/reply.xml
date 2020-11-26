@@ -13,11 +13,11 @@
 	
 	<!-- 댓글 페이지 별로 분리하기 -->
 	 <select id="selectByPage" parameterType="reply" resultType="reply">
-		select rnum, rnumber,rcontent,  mimage, mnickname
+		select rnum, rwriter,rnumber,rcontent,  mimage, mnickname
 		from(
-		select rownum as rnum, rnumber, rcontent,  mimage, mnickname
+		select rownum as rnum, rnumber, rcontent,  mimage, mnickname, rwriter
 		from (
-		select rnumber, rcontent,  mimage, mnickname 
+		select rnumber, rcontent,  mimage, mnickname, rwriter
 		from post_reply r, member m 
 		where r.rwriter=m.memail and pnumber = #{pnumber} 
 		order by rnumber desc
@@ -33,7 +33,7 @@
 	</select>
 	
 	<select id="selectByRno" parameterType="int" resultType="reply">
-		select rcontent,  mimage, mnickname
+		select rcontent,  mimage, mnickname, rwriter, rnumber
 		from post_reply p, member m
 		where p.rwriter = m.memail and p.rnumber = #{rnumber}
 	</select>

@@ -467,9 +467,12 @@ function getList(page){
 //============서윤아=====================================
 
 	 
-function replyList(pnumber){
-	var pageNo = 1;
+function replyList(pnumber, pageNo){
+	if(!pageNo){
+		pageNo=1;
+	}
 	console.log("replyList:"+pnumber);
+	console.log("replyList:"+pageNo);
 	$.ajax({
 		url:"/teamproject/reply/replyList",
 		data:{pageNo:pageNo, pnumber:pnumber},
@@ -490,8 +493,6 @@ function replyWrite(pnumber){
 		success:function(data){
 			console.log("성공후 실행");
 			if(data.result=="success"){
-				console.log("이건 list로 가기전 ");
-				console.log(pnumber);
 				replyList(pnumber);
 			}
 			$("#reply_result").html(data);
@@ -499,14 +500,15 @@ function replyWrite(pnumber){
 	});
 }
 
-function replyDelete(rnumber){
+function replyDelete(rnumber, pnumber){
 	$.ajax({
 		url:"/teamproject/reply/replyDelete",
-		data:{rnumber:rnumber},
+		data:{rnumber:rnumber, pnumber:pnumber},
 		method:"post",
 		success:function(data){
 			if(data.result=="success"){
-				replyList();
+				console.log("여기는 삭제 창!");
+				replyList(pnumber);
 			}
 		}
 	});
