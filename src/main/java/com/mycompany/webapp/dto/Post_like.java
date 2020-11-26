@@ -5,14 +5,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class Post_like {
 
 	private String first_image;
-	public String getFirst_image() {
-		return first_image;
-	}
-
-	public void setFirst_image(String first_image) {
-		this.first_image = first_image;
-	}
-
+	
 	private String memail;
 	private int pnumber;
 	private int likenumber;
@@ -52,4 +45,12 @@ public class Post_like {
 	public void setPnumber(int pnumber) {
 		this.pnumber = pnumber;
 	}
+	public String getFirst_image() {
+		return first_image;
+	}
+
+	public void setFirst_image(String first_image) {
+		this.first_image = first_image;
+	}
+
 }
