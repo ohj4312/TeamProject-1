@@ -125,7 +125,7 @@ public class ReplyController {
 		logger.info("pager.getTotalRows : "+replyCount);
 		logger.info("pnumber : "+pnumber);
 		model.addAttribute("count",replyCount);
-		return "replylist";
+		return "reply/replylist";
 	}
 	
 	@PostMapping("/replyDelete")
