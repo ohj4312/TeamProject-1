@@ -44,9 +44,7 @@ public class PhotoController {
 		Pager pager = new Pager(12, 5, totalRows, pageNo);
 		
 		List<Register_photo> photolist =  photoService.getPhotoList(pager);
-		for(Register_photo photo : photolist) {
-			logger.info("list로 들어오는 파일명과 pnumber:"+ photo.getFirst_image() + "/"+photo.getPnumber());
-		}
+		
 		model.addAttribute("list", photolist);
 		
 		

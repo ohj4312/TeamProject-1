@@ -13,6 +13,8 @@ public class Member {
 	private String mnickname;
 	private String mimage;
 	private MultipartFile mimageAttach;
+	private boolean menabled;
+	private String mrole;
 	
 	private int mgender;
 	
@@ -88,6 +90,24 @@ public class Member {
 	public void setMimageAttach(MultipartFile mimageAttach) {
 		this.mimageAttach = mimageAttach;
 	}
+
+	public boolean isMenabled() {
+		return menabled;
+	}
+
+	public void setMenabled(boolean menabled) {
+		this.menabled = menabled;
+	}
+
+	public String getMrole() {
+		return mrole;
+	}
+
+	public void setMrole(String mrole) {
+		this.mrole = mrole;
+	}
+	
+	
 
 	
 	

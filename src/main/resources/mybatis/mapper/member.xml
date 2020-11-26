@@ -3,10 +3,10 @@
 <mapper namespace="mybatis.mapper.member">
 
 	<insert id="insert" parameterType="member">
-		INSERT INTO member (memail, mpassword, mnickname) VALUES (#{memail}, #{mpassword}, #{mnickname})
+		INSERT INTO member (memail, mpassword, mnickname , menabled, mrole) VALUES (#{memail}, #{mpassword}, #{mnickname}, #{menabled}, #{mrole} )
 	</insert>
 	
-	<select id="selectMember" parameterType="member" resultType="member">
+	<select id="selectMember" parameterType="String" resultType="member">
 		select * from member where memail = #{memail} 
 	</select>
 </mapper>

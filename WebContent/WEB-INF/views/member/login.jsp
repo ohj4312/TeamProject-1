@@ -49,17 +49,16 @@
       <div class="container mt-6">
 
         <div class="section-title" data-aos="fade-up">
-          <h2>로그인</h2>
-          
+          <h2>로그인 </h2>
         </div>
 
         
 
         <div class="row mt-5 justify-content-center" data-aos="fade-up">
           <div class="col-lg-5 col-md-5">
-            <form action="<%=application.getContextPath()%>/member/login" method="post" class="php-email-form">
+            <form action="<%=application.getContextPath()%>/login" method="post" class="php-email-form">
               <div class="form-group">
-                <input type="email" class="form-control" name="memail" id="memail" placeholder="Your Email" data-rule="email" data-msg="이메일을 입력하지 않았습니다." />
+                <input type="email" class="form-control" name="memail" id="memail" placeholder="Your Email" data-rule="email"  value="${failed}" data-msg="이메일을 입력하지 않았습니다." />
                   <div class="validate"></div>
               </div>
               <div class="form-group">

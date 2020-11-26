@@ -23,22 +23,9 @@ public class MemberService {
 		}
 	}
 
-
-	public Member login(Member member) {
-		Member loginMember = memberDAO.selectMember(member); 
-		if(loginMember.getMemail().isEmpty()) {
-			loginMember.setLoginResult(false);
-			return loginMember;
-		}else {
-			if(member.getMemail().equals(loginMember.getMemail()) && member.getMpassword().equals(loginMember.getMpassword())) {
-				loginMember.setLoginResult(true);
-				return loginMember;
-			}
-			loginMember.setLoginResult(false);
-			return loginMember;
-			
-		}
+	public Member getMember(String name) {
 		
+		return memberDAO.selectMember(name);
 	}
 
 }
