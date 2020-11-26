@@ -9,11 +9,12 @@
 	<br/>
 	<c:forEach var="following" items="${follows}">
 		
-		<a href="#">
+		<a href="<%=application.getContextPath() %>/follow/followmypage?follower=${following.follower}">
 		   <img class="rounded-circle" style="margin:5px" width="30px" height="30px" 
 		  src="<%=application.getContextPath() %>/follow/photodownload?fileName=${following.mimage}"/>
-		  ${following.memail}
+		  ${following.memail} 
 		</a>
+<%-- 		<a href="<%=application.getContextPath() %>/follow/cancelFollow?pwriter=${follows.following}"><span class="material-icons mr-2" style="float: right">clear</span></a> --%>
 		 <hr/>
 		
 	</c:forEach>

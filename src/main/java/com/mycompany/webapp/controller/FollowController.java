@@ -163,4 +163,18 @@ public class FollowController {
 		}
 			
 	}
+	
+	@GetMapping("/followmypage")
+	public String moveFollowMypage(String follower,Model model,HttpServletRequest request) {
+		logger.info(follower);
+		
+		
+		return "redirect:/follow/member/followmypage";
+	}
+	
+	@RequestMapping("/member/followmypage")
+	public String gggg() {
+		
+		return "member/followmypage";
+	}
 }

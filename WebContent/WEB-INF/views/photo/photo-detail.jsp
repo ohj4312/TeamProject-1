@@ -87,8 +87,7 @@
 					<span id="RegBookMark"class="material-icons">bookmark_border</span>
 				</a>
 				<a id="follow_check" href="javascript:checkFollow('${photo.pwriter}')" class="btn btn-light btn-sm col-4" role="button" style=" box-shadow:none;">
-					팔로우
-					${photo.pwriter}
+					<span id="follow_change" class="mt-3" style="font-size:17px">팔로우</span>
 				</a>		
 				</div>
 				
@@ -370,6 +369,7 @@
 					success:function(data) {
 						$("#follow_check").attr("class","btn btn-info btn-sm col-4");
 						$("#follow_check").attr("href","javascript:cancelFollow('${photo.pwriter}')");
+						$("#follow_change").html("팔로잉");
 					}
 				});
 			}
@@ -383,10 +383,12 @@
 						if(data.result=="success"){
 							$("#follow_check").attr("class","btn btn-info btn-sm col-4");
 							$("#follow_check").attr("href","javascript:cancelFollow('${photo.pwriter}')");
+							$("#follow_change").html("팔로잉");
 						}
 						if(data.result=="fail"){
 							$("#follow_check").attr("class","btn btn-light btn-sm col-4");
 							$("#follow_check").attr("href","javascript:checkFollow('${photo.pwriter}')");
+							$("#follow_change").html("팔로우");
 						}
 					}
 				});
@@ -402,6 +404,7 @@
 					success:function(data) {
 						$("#follow_check").attr("class","btn btn-light btn-sm col-4");
 						$("#follow_check").attr("href","javascript:checkFollow('${photo.pwriter}')");
+						$("#follow_change").html("팔로우");
 					}
 				});
         	}

@@ -66,87 +66,13 @@
         					<div class="profile-info__name mt-2">
         						<span>${member.mnickname}</span>
         						<div>
-        						 <a class="btn btn-info btn-sm" href="javascript:getfollowList()">팔로워</a>
-        						 <a class="btn btn-info btn-sm" href="javascript:getfollowingList()">팔로잉</a>
+        						 <a class="btn btn-info" href="javascript:getfollowList()">팔로우</a>
         						</div>
-        							<script>
-										function getfollowList(){
-											$.ajax({
-												url:"<%=application.getContextPath()%>/follow/followList", 
-												success:function(data) {
-													$("#photoList").html(data);
-												}
-											});
-										} 
-										
-										function getfollowingList(){
-											$.ajax({
-												url:"<%=application.getContextPath()%>/follow/followingList",
-												success:function(data) {
-													$("#photoList").html(data);
-												}
-											});
-										} 
-        							</script>
-        						<hr/>
+        						
         					</div>
         				</div>
         			</div>
-        		<div class="row" style="text-align:center">
-        				<div class="col-4">
-       						<a href="javascript:GetBookMarkList()">
-								<div><span class="material-icons">bookmark_border</span></div>
-								<div><small>스크랩북</small></div>
-       						</a>
-        				</div>
-        				<script type="text/javascript">
-        					function GetBookMarkList(){
-        						console.log("리스트 불러오기");
-        						
-        						$.ajax({
-        							url : "<%=application.getContextPath()%>/BK/getBookMarkList",
-        							
-        							method: "get",
-        							success : function(data){
-        								console.log("함수 안에부분 실행");
-        								
-        								$("#BookMarkList").html(data);
-        							}
-        						});
-        					}
-        				</script>
-        				
-        				<div class="col-4">
-       						<a href="javascript:getLikephotolist()">
-								<div><span class="material-icons">favorite_border</span></div>
-								<div><small>좋아요</small></div>
-       						</a>
-        				</div>
-        				<script type="text/javascript">
-        				
-        				function getLikephotolist(){
-        					$.ajax({
-        						url:"<%=application.getContextPath() %>/like/getLikePhotolist",
-        						
-        						success:function(data){
-        							
-        							$("#photoList").html(data);
-        						
-        						}
-        					});
-							
-						}     				       				     				
-        				</script>
-        				
-        				
-        				<div class="col-4">
-       						<a href="#">
-       							<div><span class="material-icons">sentiment_satisfied_alt</span></div>
-       							<div><small>설정</small></div>
-       						</a>
-        				</div>
-        			
-        			</div>
+        		
         			<br/>
         			
         		</div>
