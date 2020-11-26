@@ -485,6 +485,8 @@ function replyList(pnumber, pageNo){
 function replyWrite(pnumber){
 	var rcontent = $("#rcontent").val().trim();
 	
+	if(rcontent!=""){
+	
 	console.log(pnumber);
 	$.ajax({
 		url:"/teamproject/reply/replyWrite",
@@ -498,6 +500,10 @@ function replyWrite(pnumber){
 			$("#reply_result").html(data);
 		}
 	});
+	}
+	else{
+		
+	}
 }
 
 function replyDelete(rnumber, pnumber){
