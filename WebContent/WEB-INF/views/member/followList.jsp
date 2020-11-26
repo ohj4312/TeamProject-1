@@ -11,7 +11,7 @@
 		<a href="#">
 		   <img class="rounded-circle" style="margin:5px" width="30px" height="30px" 
 		  src="<%=application.getContextPath() %>/follow/photodownload?fileName=${follower.mimage}"/>
-		  ${follower.memail}
+		  ${follower.mnickname}
 		</a>
 		 <br/>
 		 <hr/>

@@ -165,8 +165,8 @@ public class FollowController {
 	}
 	
 	@GetMapping("/followmypage")
-	public String moveFollowMypage(String follower,Model model,HttpServletRequest request) {
-		logger.info(follower);
+	public String moveFollowMypage(String memail,Model model,HttpServletRequest request) {
+		logger.info(memail);
 		
 		
 		return "redirect:/follow/member/followmypage";

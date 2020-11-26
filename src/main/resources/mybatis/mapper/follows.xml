@@ -3,12 +3,12 @@
 <mapper namespace="mybatis.mapper.follows">
 	
 	<select id="selectByFollowing" parameterType="String" resultType="follows">
-		select mimage,memail from member 
+		select mimage,memail,mnickname from member 
 		where memail in(select following from follows where follower=#{memail})
 	</select>
 	
 	<select id="selectByfollow" parameterType="String" resultType="follows">
-		select mimage,memail from member 
+		select mimage,memail,mnickname from member 
 		where memail in(select follower from follows where following=#{memail})
 	</select>
 	
