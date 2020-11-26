@@ -51,17 +51,14 @@ public class ReplyController {
 		logger.info("실행");
 		
 		Member member = (Member) session.getAttribute("member");
-
-		
 		String rwriter = member.getMemail();
 		String mnickname = member.getMnickname();
 		logger.info("mnickname:"+mnickname);
-		
+		logger.info("pnumber:"+pnumber);
 		reply.setRwriter(rwriter);
 		reply.setPnumber(pnumber);
 		reply.setRcontent(rcontent);
 		reply.setMnickname(mnickname);
-
 		service.replyWrite(reply);
 		response.setContentType("application/json; charset=utf-8");
 		
@@ -109,11 +106,11 @@ public class ReplyController {
 	@GetMapping("/replyList")
 	public String replyList(@RequestParam(defaultValue="1")int pageNo, Model model, int pnumber) {
 		logger.info("replyList : 실행");
-		int totalRows = service.getTotalRows();
-		
-		Pager pager = new Pager(5, 5, totalRows, pageNo);
 		Post_reply reply = new Post_reply();
 		reply.setPnumber(pnumber);
+		int replyCount = service.getreplyCount(reply);
+		
+		Pager pager = new Pager(5, 5, replyCount, pageNo);
 		reply.setEndRowNo(pager.getEndRowNo());
 		reply.setStartRowNo(pager.getStartRowNo());
 		
@@ -123,10 +120,10 @@ public class ReplyController {
 			logger.info(r.getRcontent());
 			logger.info(r.getRimage());
 		}
-		int replyCount = service.getreplyCount(reply);
 		model.addAttribute("list", list);
 		model.addAttribute("pager", pager);
 		logger.info("pager.getTotalRows : "+replyCount);
+		logger.info("pnumber : "+pnumber);
 		model.addAttribute("count",replyCount);
 		return "replylist";
 	}

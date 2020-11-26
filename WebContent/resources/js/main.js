@@ -430,7 +430,9 @@ function replyWrite(pnumber){
 		success:function(data){
 			console.log("성공후 실행");
 			if(data.result=="success"){
-				replyList();
+				console.log("이건 list로 가기전 ");
+				console.log(pnumber);
+				replyList(pnumber);
 			}
 			$("#reply_result").html(data);
 		}

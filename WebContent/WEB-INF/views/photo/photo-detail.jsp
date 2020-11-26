@@ -124,13 +124,25 @@
           		<a href="javascript:photoChange('${photo.aimage}', '${photo.acontent}')"><img src="photodownload?fileName=${photo.aimage}" class= "w-25 h-25"></a>
 			</c:forEach>
 		 </div>
+	</div>
+	 <div style="padding-top:5%"class="container">
+	      <div class="col-md-8" style="width:100%">
+	        <div class="input-group mb-3" style="width:100%; float:none; margin:0 auto">
+	          <span class="material-icons" style="font-size:45px; color:#4169E1;">
+	            face
+	          </span>
+	          <input type="text" id="rcontent" class="form-control" placeholder="칭찬과 격려는 큰 힘이됩니다!">
+	          <div class="input-group-apeend">
+	          <c:if test="${member.memail != null}">
+	           <a class="btn btn-outline btn-primary" href="javascript:replyWrite('${photo.pnumber}')">등록</a>
+	           </c:if>
+	          </div>
+	        </div>
+	      </div>
+      </div>
 
-
-      
-     
-     
-   </div>
-
+	
+	
 
     <div class="container">
       <div id="reply_result" style="margin-top:30px">
@@ -232,7 +244,7 @@
 
 <script>
 $(document).ready(function(){
-	var pnumber = ${photo.pnumber };
+	var pnumber = ${photo.pnumber};
 	replyList(pnumber);
 });
 </script>

@@ -169,8 +169,7 @@
 				
 								} else {									
 									$("#likeicon"+pnumber).html("favorite");
-									$("#likeicon"+pnumber).attr("style","color: red");
-									
+									$("#likeicon"+pnumber).attr("style","color: red");									
 									$("#likepush"+pnumber).attr("href","javascript:likePushcancel("+pnumber+")");
 								}
 				
@@ -178,7 +177,8 @@
 						}); 
 				
 					}				
-				function likePushcancel(pnumber){																					
+				function likePushcancel(pnumber){				
+					
 				             	$.ajax({
 									url:"<%=application.getContextPath()%>/like/likePushCancel",
 									method : "get",
@@ -189,7 +189,7 @@
 												}				
 											}
 										});
-									}				
+				}				
 				function likePush(pnumber) {				            								
 					
 					$.ajax({
