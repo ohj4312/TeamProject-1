@@ -4,7 +4,7 @@
 
 <select id="likePhotoAll" parameterType="String" resultType="like" >
 
-select r.first_image From register_photo r where r.pnumber in (
+select r.first_image,r.pnumber From register_photo r where r.pnumber in (
 SELECT p.pnumber from post_like p where p.memail=#{memail}) 
 </select>
 
