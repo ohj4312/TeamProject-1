@@ -17,9 +17,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.mycompany.webapp.dto.Member;
 import com.mycompany.webapp.dto.SelfGuide;
 import com.mycompany.webapp.service.SelfGuideService;
 
@@ -45,6 +47,23 @@ public class SelfGuideController {
 		return "guide/selfguide-write";
 	}
 	
+	
+	@PostMapping("/selfwrite")
+	public String selfwritePhoto(SelfGuide sg,HttpSession session) {
+		
+		Member member = (Member) session.getAttribute("member");
+		String swriter = member.getMemail();
+		
+		sg.setSwriter(swriter);
+		
+		
+		
+		return "";
+		
+		
+	}
+	
+	
 	//셀프 가이드 리스트 페이징 해서 보이도록
 	@RequestMapping("/selflist")
 	public String selfphotoList(Model model,@RequestParam(defaultValue = "1") int pageNo, HttpSession session) {
@@ -59,6 +78,10 @@ public class SelfGuideController {
 		logger.info(String.valueOf(snumber));
 		
 		SelfGuide sg = service.selectSelfPhoto(snumber);
+		
+		logger.info(sg.getStype());
+		logger.info(sg.getSwriter());
+		logger.info("이미지"+sg.getSimage());
 		model.addAttribute("sg",sg);
 		return "guide/selfguide-detail";
 	}

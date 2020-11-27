@@ -31,10 +31,10 @@
 	
 
           <div style="width:100%;">
-            
-		
-              
-               <a class="col-md-2" href="">
+             <ul class="nav" >
+
+              <li class="nav-item col-md-2 ">
+               <a  href="">
                 <div class="jb-wrap">
 					<div class="jb-image"><img src="<%=application.getContextPath() %>/resources/img/all.png" alt=""></div>
 					<div class="jb-text">
@@ -42,12 +42,12 @@
 					</div>
 				</div>
 				</a>
-              
+              </li>  
               
 
                               
-              
-               <a class="col-md-2" href="">
+               <li class="nav-item col-md-2 ">
+               <a href="">
                 <div class="jb-wrap">
 					<div class="jb-image"><img src="<%=application.getContextPath() %>/resources/img/cost.png" alt=""></div>
 					<div class="jb-text">
@@ -56,10 +56,10 @@
 				</div>
 				</a>
                 
-              
+              </li>
 
-              
-               <a class="col-md-2 " href="">
+              <li class="nav-item col-md-2">
+               <a href="">
                 <div class="jb-wrap">
 					<div class="jb-image"><img src="<%=application.getContextPath() %>/resources/img/space.png" alt=""></div>
 					<div class="jb-text">
@@ -68,10 +68,10 @@
 				</div>
 				</a>
                 
-             
+              </li>
               
-              
-               <a class="col-md-2" href="">
+               <li class="nav-item col-md-2 ">
+               <a href="">
                 <div class="jb-wrap">
 					<div class="jb-image"><img src="<%=application.getContextPath() %>/resources/img/plan.png" alt=""></div>
 					<div class="jb-text">
@@ -80,10 +80,10 @@
 				</div>
 				</a>
                 
+              </li>
               
-              
-               
-               <a class="col-md-2" href="">
+               <li class="nav-item col-md-2">
+               <a href="">
                 <div class="jb-wrap">
 					<div class="jb-image"><img src="<%=application.getContextPath() %>/resources/img/drawing.png" alt=""></div>
 					<div class="jb-text">
@@ -92,10 +92,10 @@
 				</div>
 				</a>
                 
+              </li>
               
-              
-               
-               <a class="col-md-2 " href="">
+               <li class="nav-item col-md-2">
+               <a href="">
                 <div class="jb-wrap">
 					<div class="jb-image"><img src="<%=application.getContextPath() %>/resources/img/tile.png" alt=""></div>
 					<div class="jb-text">
@@ -103,6 +103,12 @@
 					</div>
 				</div>
 				</a>
+                
+              </li>
+			
+			 
+            </ul>
+              
                 
               
 			
