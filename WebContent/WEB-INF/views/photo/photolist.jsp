@@ -45,7 +45,7 @@
 
   
   
-  <section id="portfolio" class="portfolio section-bg">
+  <section id="portfolio" class="portfolio">
       <div id = "listappend" class="container mt-5">
       	<jsp:include page="/WEB-INF/views/include/photoFilter.jsp"/>
         <div id="addtag" class="row col-md-12 col-lg-6 mb-4">
@@ -146,6 +146,7 @@
   <script src="<%=application.getContextPath() %>/resources/vendor/venobox/venobox.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/aos/aos.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/jquery.easing/jquery.easing.min.js"></script>
+  
 
   <!-- Template Main JS File -->
   <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>

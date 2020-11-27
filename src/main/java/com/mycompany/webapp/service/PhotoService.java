@@ -43,19 +43,15 @@ public class PhotoService {
 		return photoDAO.getPhotoList();
 	}
 
-	public Register_photo selectPhoto(int pnumber) {
-		List<A_photo> aphotos = photoDAO.selectAphotoList(pnumber);
+	public Register_photo selectPhoto(Register_photo photo) {
+		List<A_photo> aphotos = photoDAO.selectAphotoList(photo.getPnumber());
 		
-		for(A_photo photo: aphotos) {
-			logger.info(photo.getAcontent());
-			logger.info(photo.getAimage());
-			logger.info(photo.getAlocation());
-			logger.info(String.valueOf(photo.getAnumber()));
-			logger.info(String.valueOf(photo.getRegister_number()));
-			
 		
+		if(photo.getPwriter() == null) {
+			photo = photoDAO.selectRegPhoto(photo.getPnumber());
+		}else {
+			photo = photoDAO.selectRegPhoto(photo);
 		}
-		Register_photo photo = photoDAO.selectRegPhoto(pnumber);
 		int hitcount = photo.getPhit_count();
 		photo.setPhit_count(hitcount+1);
 		photoDAO.updateHitCount(photo);
@@ -63,6 +59,8 @@ public class PhotoService {
 		
 		return photo;
 	}
+	
+	
 
 	public int getTotalRows() {
 		return photoDAO.countAll();
@@ -77,6 +75,8 @@ public class PhotoService {
 		// TODO Auto-generated method stub
 		return photoDAO.selectByPage(photo);
 	}
+
+	
 
 
 }

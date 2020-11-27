@@ -30,7 +30,19 @@
 	</select>
 	
 	<select id="selectRegPhoto" parameterType="int" resultType="registerPhoto">
-		select PNUMBER, REGISTER_PDATE, PHIT_COUNT, PWRITER, PTYPE, PSIZE, PSTYLE, mnickname, FIRST_IMAGE 
+		select PNUMBER, REGISTER_PDATE, PHIT_COUNT, PWRITER, PTYPE, PSIZE, PSTYLE, mnickname, FIRST_IMAGE, mimage, 
+		(select count(*) from post_bookmark where pnumber = #{pnumber}) bookcount, 
+		(select count(*) from post_like where pnumber = #{pnumber}) likecount
+		from REGISTER_PHOTO r, member m 
+		where r.pwriter = m.memail and pnumber = #{pnumber}
+	</select>
+	
+	<select id="selectcheckRegPhoto" parameterType="registerPhoto" resultType="registerPhoto">
+		select PNUMBER, REGISTER_PDATE, PHIT_COUNT, PWRITER, PTYPE, PSIZE, PSTYLE, mnickname, FIRST_IMAGE, mimage, 
+		(select count(*) from post_bookmark where pnumber = #{pnumber}) bookcount, 
+		(select count(*) from post_like where pnumber = #{pnumber}) likecount,
+		(select count(*) from post_bookmark where memail = #{pwriter} and pnumber = #{pnumber}) bnumber, 
+		(select count(*) from post_like where memail = #{pwriter} and pnumber = #{pnumber}) likenumber
 		from REGISTER_PHOTO r, member m 
 		where r.pwriter = m.memail and pnumber = #{pnumber}
 	</select>
@@ -53,14 +65,15 @@
 	</select>
 	
 	<select id="selectCheckByPageList" resultType="registerPhoto" parameterType="registerPhoto">
-		select rnum, pnumber , first_image, PHIT_COUNT, PTYPE, PSIZE, PSTYLE, mnickname, first_content,MIMAGE, bnumber, LIKENUMBER
-		from( select rownum as rnum, list.pnumber, first_image, PHIT_COUNT, PTYPE, PSIZE, PSTYLE,  mnickname, first_content, MIMAGE, bnumber, LIKENUMBER
-		from ( select pnumber, first_image, PHIT_COUNT, PTYPE, PSIZE, PSTYLE, mnickname, first_content,MIMAGE
-		from register_photo r, member m
-		where r.PWRITER = m.MEMAIL 
-		order by pnumber desc) list, (select * from post_bookmark where memail = #{pwriter}) pb, (select * from post_like where memail = #{pwriter}) pl 
-		where rownum &lt;= #{endRowNo} and list.pnumber = pb.pnumber(+) and list.pnumber = pl.pnumber(+)) 
-		where rnum &gt;= #{startRowNo} 
+		select rnum, pnumber , first_image, PHIT_COUNT, PTYPE, PSIZE, PSTYLE, mnickname, first_content,MIMAGE, bnumber, LIKENUMBER,FOLLOWING, pwriter
+		from( select rownum as rnum, list.pnumber, first_image, PHIT_COUNT, PTYPE, PSIZE, PSTYLE, mnickname, first_content, MIMAGE, bnumber, LIKENUMBER ,FOLLOWING, pwriter
+		from 
+		( select pnumber, first_image, PHIT_COUNT, PTYPE, PSIZE, PSTYLE, mnickname, first_content,MIMAGE, PWRITER from register_photo r, member m where r.PWRITER = m.MEMAIL order by pnumber desc) list, 
+		(select * from post_bookmark where memail = #{pwriter}) pb, 
+		(select * from post_like where memail = #{pwriter}) pl,
+		(select FOLLOWING from FOLLOWS where FOLLOWER = #{pwriter}) fl
+		where rownum &lt;= #{endRowNo} and list.pnumber = pb.pnumber(+) and list.pnumber = pl.pnumber(+) and list.pwriter = fl.FOLLOWING(+)) 
+		where rnum &gt;= #{startRowNo}
 	</select>
 	
 	<update id="updateHitCount" parameterType="registerPhoto">
