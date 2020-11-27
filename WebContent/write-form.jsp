@@ -62,7 +62,7 @@
   color:#424242;
   box-sizing:border-box;
   display: block;
-  width:100%; 
+  width:50%; 
   height:300px;
 }
 #question-form{
@@ -136,21 +136,22 @@
             <input placeholder="제목을 적어주세요." class="form-control"  type="text" id="question_title">
           </div>
         </header>
-
+		
+		<div >
+		 <i class="material-icons">
+          photo_camera
+          </i>
+         </div>
+         
         <div class="question-from__meta">
             <textarea id="question_content" placeholder="내용을 적어주세요."></textarea>
       	</div>
-      </form>
-      <section>
-     
-        
-          <i class="material-icons ">
-          photo_camera
-          </i>
-        <div class="floating-bar__Content">
+      	
+      	<div class="floating-bar__Content">
           <input type="submit" value="질문 저장하기" class="btn btn-lg btn-priority col-6 offset-3"></button>
         </div>
-    </section>
+      </form>
+     
     </div>
 
 
