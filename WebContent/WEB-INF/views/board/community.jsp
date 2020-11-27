@@ -1,11 +1,13 @@
-<%@page contentType="text/html; charset=UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-	<head>
-		 <meta charset="utf-8">
+
+<head>
+  <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Blog - Eterna Bootstrap Template</title>
+  <title>Maxim Bootstrap Template - Index</title>
   <meta content="" name="descriptison">
   <meta content="" name="keywords">
 
@@ -17,24 +19,25 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="<%=application.getContextPath() %>/resources/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="<%=application.getContextPath() %>/resources/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
-  <link href="<%=application.getContextPath() %>/resources/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="<%=application.getContextPath() %>/resources/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
-  <link href="<%=application.getContextPath() %>/resources/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
-  <link href="<%=application.getContextPath() %>/resources/assets/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="<%=application.getContextPath() %>/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="<%=application.getContextPath() %>/resources/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="<%=application.getContextPath() %>/resources/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="<%=application.getContextPath() %>/resources/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="<%=application.getContextPath() %>/resources/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="<%=application.getContextPath() %>/resources/vendor/aos/aos.css" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="<%=application.getContextPath() %>/resources/assets/css/style.css" rel="stylesheet">
+  <link href="<%=application.getContextPath() %>/resources/css/style.css" rel="stylesheet">
 
   <!-- =======================================================
-  * Template Name: Eterna - v2.1.0
-  * Template URL: https://bootstrapmade.com/eterna-free-multipurpose-bootstrap-template/
+  * Template Name: Maxim - v2.2.0
+  * Template URL: https://bootstrapmade.com/maxim-free-onepage-bootstrap-theme/
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-	
-	</head>
+</head>
 	<body> 
 	 
 	 <jsp:include page="/WEB-INF/views/include/Header.jsp"/>
@@ -295,10 +298,24 @@
       </div>
     </div>
   </footer>
+  
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+  <!-- Vendor JS Files -->
+   <script src="<%=application.getContextPath() %>/resources/vendor/jquery/jquery.min.js"></script>
+  <script src="<%=application.getContextPath() %>/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="<%=application.getContextPath() %>/resources/vendor/php-email-form/validate.js"></script>
+  <script src="<%=application.getContextPath() %>/resources/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="<%=application.getContextPath() %>/resources/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="<%=application.getContextPath() %>/resources/vendor/venobox/venobox.min.js"></script>
+  <script src="<%=application.getContextPath() %>/resources/vendor/aos/aos.js"></script>
+  <script src="<%=application.getContextPath() %>/resources/vendor/jquery.easing/jquery.easing.min.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>
 
   
-  <!-- Template Main JS File -->
-  <script src="<%=application.getContextPath() %>/resources/assets/js/main.js"></script>
+  
 		
 	</body>
 </html>

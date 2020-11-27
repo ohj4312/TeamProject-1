@@ -11,6 +11,7 @@ public class CommunityController {
 	@GetMapping("")
 	public String board() {
 		
+		
 		return "board/community";
 	}
 
