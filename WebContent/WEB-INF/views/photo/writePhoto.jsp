@@ -104,7 +104,7 @@
              
 	                <input type="file" id="list[0].aimageAttach" name = "list[0].aimageAttach" style="display: none"> 
 	                <label id = "srclabel" for="list[0].aimageAttach" style="width: 100%; height: 100%;"> 
-	                  <i class="material-icons"
+	                  <i class="material-icons "
 	                  style="font-size: 7rem; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
 	                  photo_camera
 	                  </i>

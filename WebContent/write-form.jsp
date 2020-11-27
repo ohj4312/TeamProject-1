@@ -53,16 +53,16 @@
 #question_content{
   padding-left:2%;
   padding-top:1%;
+  margin-bottom:3%;
   font-size:15px;
   line-height: 1.5;
-  margin-bottom: 10%;
   border-radius:4px;
   border:solid 1px #dbdbdb;
   background-color:#ffffff;
   color:#424242;
   box-sizing:border-box;
   display: block;
-  width:50%; 
+  width:100%; 
   height:300px;
 }
 #question-form{
@@ -115,12 +115,29 @@
   font-size:18px;
 }
 .btn{
-  display: inline;
+  display:inline-block;
   border-width: 1px;
   border-style: solid;
   text-align: center;
   border-radius:4px;
   font-weight:bold;
+}
+.photo-add{
+ 	position: absolute;
+	left: 35%;
+	transform: translate(-35%, -35%);
+	font-size:13px;
+}
+.question-photo{
+  font-size:15px;
+  line-height: 1.5;
+  margin-bottom: 10%;
+  border-radius:4px;
+  border:solid 1px #dbdbdb;
+  background-color:#ffffff;
+  color:#424242;
+  box-sizing:border-box;
+  display: block;
 }
 </style>
 	<body>
@@ -137,18 +154,19 @@
           </div>
         </header>
 		
-		<div >
-		 <i class="material-icons">
-          photo_camera
-          </i>
-         </div>
+			
          
         <div class="question-from__meta">
             <textarea id="question_content" placeholder="내용을 적어주세요."></textarea>
+			<div class="question-photo">
+			<input type="file" id="list[0].aimageAttach" name = "list[0].aimageAttach" style="width:100%; height:100%;"> 
+	         <label id = "srclabel" for="list[0].aimageAttach">
+	         </label>   
+	        </div>
       	</div>
       	
       	<div class="floating-bar__Content">
-          <input type="submit" value="질문 저장하기" class="btn btn-lg btn-priority col-6 offset-3"></button>
+          <input type="submit" value="질문 저장하기" class="btn btn-lg btn-priority col-6 offset-3"></input>
         </div>
       </form>
      
