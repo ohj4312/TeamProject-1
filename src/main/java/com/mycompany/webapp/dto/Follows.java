@@ -9,11 +9,19 @@ public class Follows {
 	private String following;
 	private String memail;
 	private String mimage;
-	
+	private String mnickname;
 	//
 	
 
 	
+	public String getMnickname() {
+		return mnickname;
+	}
+
+	public void setMnickname(String mnickname) {
+		this.mnickname = mnickname;
+	}
+
 	public String getMemail() {
 		return memail;
 	}

@@ -8,10 +8,10 @@
 	<div id="mypagephoto" style="border:1px dashed #dbdbdb; width:100%;  text-align: center; ">
 	
 	<c:forEach var="follower" items="${follows}">
-		<a href="#">
+		<a href="<%=application.getContextPath() %>/follow/followmypage?memail=${follower.memail}">
 		   <img class="rounded-circle" style="margin:5px" width="30px" height="30px" 
 		  src="<%=application.getContextPath() %>/follow/photodownload?fileName=${follower.mimage}"/>
-		  ${follower.memail}
+		  ${follower.mnickname}
 		</a>
 		 <br/>
 		 <hr/>

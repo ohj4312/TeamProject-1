@@ -13,7 +13,6 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.sound.midi.SysexMessage;
 
 import org.json.JSONObject;
 import org.slf4j.Logger;
@@ -94,8 +93,13 @@ public class FollowController {
 		Member member=(Member)session.getAttribute("member");
 		String follower=member.getMemail();
 		Follows follows = new Follows();
-		follows.setFollowing(pwriter);
-		follows.setFollower(follower);
+		if(pwriter.contentEquals(follower)) {
+			follows.setFollowing(follower);
+			follows.setFollower(pwriter);
+		}else {
+			follows.setFollowing(pwriter);
+			follows.setFollower(follower);
+		}
 		int followsnum=followService.checkFollow(follows);
 		logger.info("컨트롤러의 팔로우수 : "+followsnum);
 		if(followsnum==1) {
@@ -162,5 +166,42 @@ public class FollowController {
 			out.close();
 		}
 			
+	}
+	
+	@GetMapping("/followingmypage")
+	public String redirectFollowingMypage(String memail,HttpSession session,HttpServletRequest request) {
+		logger.info(""+memail);
+		session.setAttribute("followingmemail", memail);
+		return "redirect:/follow/member/followingmypage";
+	}
+	
+	@GetMapping("/followmypage")
+	public String redirectFollowMypage(String memail,HttpSession session,HttpServletRequest request) {
+		logger.info(""+memail);
+		session.setAttribute("followmemail", memail);
+		return "redirect:/follow/member/followmypage";
+	}
+	
+	
+	
+	
+	@RequestMapping("/member/followingmypage")
+	public String moveFollowfollowingPage(HttpSession session,Model model) {
+		String memail=(String)session.getAttribute("followingmemail");
+		logger.info(memail);
+		Member followingmember=new Member();
+		followingmember=followService.getFollowingInfo(memail);
+		model.addAttribute("followingmember", followingmember);
+		return "member/followingmypage";
+	}
+	
+	@RequestMapping("/member/followmypage")
+	public String moveFollowfollowPage(HttpSession session,Model model) {
+		String memail=(String)session.getAttribute("followmemail");
+		logger.info(memail);
+		Member followmember=new Member();
+		followmember=followService.getFollowInfo(memail);
+		model.addAttribute("followmember", followmember);
+		return "member/followmypage";
 	}
 }

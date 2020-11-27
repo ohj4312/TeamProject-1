@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 
@@ -60,110 +61,76 @@
 
           <div class="col-lg-5 mr-3">
         		<div class="user-profile mt-5" style="border:1px solid #dadce0; ">
-        			<div class="user-profile__container"> 
+        			<div class="user-profile__container">
         				<div class="user-profile__profile-image" style="text-align: center;">
-                  <a href="javascript:Return()"><img class="rounded-circle mt-3" width="53%" height="53%" src="<%=application.getContextPath()%>/resources/img/person_1.jpg"></a>
+                  <img class="rounded-circle mt-3" width="53%" height="53%" src="<%=application.getContextPath() %>/resources/img/person_1.jpg">
         					<div class="profile-info__name mt-2">
-        						<span>${member.mnickname}</span>
+        						<span>${followingmember.mnickname}</span>
         						<div>
-        						 <a class="btn btn-info btn-sm" href="javascript:getfollowList()">팔로워</a>
-        						 <a class="btn btn-info btn-sm" href="javascript:getfollowingList()">팔로잉</a>
+        						 <a id="follow_check" class="btn btn-info" class="btn btn-info btn-sm col-4" href="javascript:cancelFollow('${followingmember.memail}')">
+        							<span id="follow_change" class="mt-3" style="font-size:17px">팔로우</span>
+        						 </a>
         						</div>
-        							<script>
-										function getfollowList(){
-											$.ajax({
-												url:"<%=application.getContextPath()%>/follow/followList", 
-												success:function(data) {
-													$("#photoList").html(data);
-												}
-											});
-										} 
-										
-										function getfollowingList(){
-											$.ajax({
-												url:"<%=application.getContextPath()%>/follow/followingList",
-												success:function(data) { 
-													$("#photoList").html(data);
-												}
-											});
-										} 
-        							</script>
-        						<hr/>
+					
+        						<script type="text/javascript">
+        							$(function(){
+        								followCheck('${followingmember.memail}');
+        			 				});
+        							
+
+        				        	function checkFollow(pwriter){
+        				        		
+        								$.ajax({
+        									url:"<%=application.getContextPath()%>/follow/checkFollow",
+        									data:{pwriter:pwriter},
+        									success:function(data) {
+        										$("#follow_check").attr("class","btn btn-info btn-sm col-4");
+        										$("#follow_check").attr("href","javascript:cancelFollow('${followingmember.memail}')");
+        										$("#follow_change").html("팔로잉");
+        									}
+        								});
+        							}
+        				       	
+        				        	function followCheck(pwriter){
+        				        		console.log(pwriter);
+        				        		$.ajax({
+        									url:"<%=application.getContextPath()%>/follow/followCheck",
+        									data:{pwriter:pwriter},
+        									success:function(data) {
+        										if(data.result=="success"){
+        											$("#follow_check").attr("class","btn btn-info btn-sm col-4");
+        											$("#follow_check").attr("href","javascript:cancelFollow('${followingmember.memail}')");
+        											$("#follow_change").html("팔로잉");
+        										}
+        										if(data.result=="fail"){
+        											$("#follow_check").attr("class","btn btn-light btn-sm col-4");
+        											$("#follow_check").attr("href","javascript:checkFollow('${followingmember.memail}')");
+        											$("#follow_change").html("팔로우");
+        										}
+        									}
+        								});
+        							} 
+        				        	
+        				        	
+        				        	
+        				        	function cancelFollow(pwriter){
+        				        		console.log(pwriter);
+        				        		$.ajax({
+        									url:"<%=application.getContextPath()%>/follow/cancelFollow",
+        									data : {pwriter:pwriter},
+        									success:function(data) {
+        										$("#follow_check").attr("class","btn btn-light btn-sm col-4");
+        										$("#follow_check").attr("href","javascript:checkFollow('${followingmember.memail}')");
+        										$("#follow_change").html("팔로우");
+        									}
+        								});
+        				        	}
+        							
+        						</script>
         					</div>
         				</div>
         			</div>
-        		<div class="row" style="text-align:center">
-        				<div class="col-4">
-       						<a href="javascript:GetBookMarkList()">
-								<div><span class="material-icons">bookmark_border</span></div>
-								<div><small>스크랩북</small></div>
-       						</a>
-        				</div>
-        				
-        				<script type="text/javascript">
-        						
-        					  function Return(){
-        						
-        						$.ajax({  
-        						url : "<%=application.getContextPath()%>/BK/returnmypage",
-        				 						
-        						success : function(data){
-        							console.log("return 스크립트 넘어옴.");
-        							$("#photoList").html(data);
-        						}
-        						});
-        					}  
-        				
-        				
-        				
-        				        				
-        					function GetBookMarkList(){
-        						console.log("리스트 불러오기");
-        						
-        						$.ajax({
-        							url : "<%=application.getContextPath()%>/BK/getBookMarkList",
-        							
-        							method: "get",
-        							success : function(data){
-        								console.log("함수 안에부분 실행");
-        								
-        								$("#photoList").html(data);
-        							}
-        						});
-        					}
-        				</script>
-        				
-        				<div class="col-4">
-       						<a href="javascript:getLikephotolist()">
-								<div><span class="material-icons">favorite_border</span></div>
-								<div><small>좋아요</small></div>
-       						</a>
-        				</div>
-        				<script type="text/javascript">
-        				
-        				function getLikephotolist(){
-        					$.ajax({
-        						url:"<%=application.getContextPath() %>/like/getLikePhotolist",
-        						
-        						success:function(data){
-        							
-        							$("#photoList").html(data);
-        						
-        						}
-        					});
-							
-						}     				       				     				
-        				</script>
-        				
-        				
-        				<div class="col-4">
-       						<a href="#">
-       							<div><span class="material-icons">sentiment_satisfied_alt</span></div>
-       							<div><small>설정</small></div>
-       						</a>
-        				</div>
-        			
-        			</div>
+        		
         			<br/>
         			
         		</div>
@@ -175,24 +142,25 @@
             <iframe style="border:0; width: 100%; height: 270px;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" allowfullscreen></iframe>
           </div> -->
 
-          <div class="col-lg-5 mr-3">
+          <div class="col-lg-5">
         		<div id="photoList" class="contents">
         			<section class="post post--cards">
         				<h5><strong>사진</strong></h5>
                 <div id="mypagephoto" style="border:1px dashed #dbdbdb; width:100%;  text-align: center; ">
-                    <div class="row justify-content-center " style="margin-top: 30%;">
+<!--                     <div class="row justify-content-center " style="margin-top: 30%;">
                           <span class="material-icons ">add </span>
-                          <a class="post__upload" href="<%=application.getContextPath()%>/photo/write"> 첫 번째 사진을 올려보세요</a>
-                    </div>
+                          <a class="post__upload" href="#"> 첫 번째 사진을 올려보세요</a>
+                    </div> -->
                 </div>  
-                	</section>
-        			
+                <div id="BookMarkList"></div>
+        			</section>
+        		
+        		
         		</div>
-        		
-        		
-        		
         	</div> 
-        	
+
+			
+
         </div>
 
       </div>

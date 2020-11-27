@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import com.mycompany.webapp.dto.Follows;
+import com.mycompany.webapp.dto.Member;
 
 
 @Repository
@@ -45,6 +46,16 @@ public class FollowDAO {
 		int result=sst.selectOne("mybatis.mapper.follows.selectChecking",follow);
 		logger.info(""+result);
 		return result;
+	}
+
+	public Member selectFollowingInfo(String memail) {
+		Member member=sst.selectOne("mybatis.mapper.follows.selectFollowingInfo",memail);
+		return member;
+	}
+	
+	public Member selectFollowInfo(String memail) {
+		Member member=sst.selectOne("mybatis.mapper.follows.selectFollowInfo",memail);
+		return member;
 	}
 	
 }
