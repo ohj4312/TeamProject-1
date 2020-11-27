@@ -57,7 +57,7 @@
 								<a>${photo.first_content}</a>
 					</div>
 				</div>
-			</c:forEach>
+</c:forEach>
 			
 			
 
