@@ -11,7 +11,9 @@
 		<typeAlias alias="like" type="com.mycompany.webapp.dto.Post_like" />
 		<typeAlias alias="reply" type="com.mycompany.webapp.dto.Post_reply" />
 		<typeAlias alias="registerPhoto" type="com.mycompany.webapp.dto.Register_photo"/>
-		<typeAlias alias="pager" type="com.mycompany.webapp.dto.Pager"/>		
+		<typeAlias alias="pager" type="com.mycompany.webapp.dto.Pager"/>	
+		<typeAlias alias="selfguide" type="com.mycompany.webapp.dto.SelfGuide"/>	
+		<typeAlias alias="selfreply" type="com.mycompany.webapp.dto.SelfGuide_reply"/>	
 	</typeAliases>
 </configuration>
   
