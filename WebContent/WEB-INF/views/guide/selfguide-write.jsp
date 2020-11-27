@@ -44,14 +44,7 @@
 	 <jsp:include page="/WEB-INF/views/include/Header.jsp"/>
 
   
-  
-  <section id="portfolio" class="portfolio section" style="margin-bottom:0px">
-      <div id = "listappend" class="container mt-5">
-      		<p><h2 style="font-size:3vw">셀프 인테리어 가이드북 </h2></p>
-			<h5>나만의 노하우 올리기 </h5>
-			<hr/>
-      </div>
-    </section>
+
   <!-- ======= script ======= -->
 	
 	<script type="text/javascript">
@@ -82,9 +75,15 @@
  
 
   <main id="main">
-
+	<div class="mt-5 mb-5 row">    </div>
     <!-- ======= Breadcrumbs ======= -->
     <section id="portfolio" class="portfolio_section">
+    	<div id = "listappend" class="container">
+      		<p><h2 style="font-size:3vw">셀프 인테리어 가이드북 </h2></p>
+			<h5>나만의 노하우 올리기 </h5>
+			<hr/>
+			<br/>
+      </div>
       <div class="container">
 		<form action="<%=application.getContextPath()%>/photo/write" method="post" role="form" onsubmit="return writePhoto()" enctype="multipart/form-data">	
 			<div class="row">
