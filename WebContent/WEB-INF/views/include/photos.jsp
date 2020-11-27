@@ -1,20 +1,31 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <c:forEach var="photo" items="${list}">
 				<div class="mb-4 mt-5 col-lg-4 col-md-6 portfolio-item ${photo.ptype} ${photo.psize} ${photo.pstyle}">
 					<div class = "row pl-3 pr-2 mb-4">
 						<a href = "#" class = "pr-3 " style="color: black;">
 							<img class="rounded-circle mr-2 "style="width:30px; height:30px;"  src="photodownload?fileName=${photo.mimage}" />
-							${photo.mnickname} 
-						</a> 
-						<a class="font-weight-bolder" class = "pl-2" href = "#"style = "color: #1bac91;">팔로우</a>
+							${photo.mnickname}
+						</a>
+						<c:if test="${photo.following == null}">
+								<a class = "pl-2 font-weight-bolder btn btn-sm btn-outline-info ${fn:substring(photo.pwriter,0,fn:indexOf(photo.pwriter,'@'))}" style = "color: #1bac91;" href="javascript:followCheck('${photo.pwriter}', '<%=application.getContextPath()%>/follow/followCheck', '${fn:substring(photo.pwriter,0,fn:indexOf(photo.pwriter,'@'))}')">
+								팔로우
+								</a>
+						</c:if>
+						<c:if test="${photo.following != null}">
+								<a class = "pl-2 font-weight-bolder btn btn-sm ${fn:substring(photo.pwriter,0,fn:indexOf(photo.pwriter,'@'))}" style = "background-color: #1bac91; color: white;" href="javascript:followCheck('${photo.following}', '<%=application.getContextPath()%>/follow/followCheck','${fn:substring(photo.pwriter,0,fn:indexOf(photo.pwriter,'@'))}')">
+								팔로잉
+								</a>
+						</c:if> 
+		
 					</div>
-					<a href="<%=application.getContextPath()%>/photo/detail?pnumber=${photo.pnumber}" title="More Details">
+					<a href="<%=application.getContextPath()%>/photo/detail?pnumber=${photo.pnumber}">
 					<div class="portfolio-wrap">
 						<img style=" height: 280px;"
 							src="photodownload?fileName=${photo.first_image}"
-							class="img-fluid" alt="">
+							class="img-fluid rounded" alt="">
 						<div class="portfolio-info">
 								<h4>조회수</h4>
 								<p class = "hitcount">${photo.phit_count}</p>
@@ -46,7 +57,7 @@
 								<a>${photo.first_content}</a>
 					</div>
 				</div>
-			</c:forEach>
+</c:forEach>
 			
 			
 

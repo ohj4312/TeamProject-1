@@ -58,21 +58,21 @@
         	<li class="active"><a href="<%=application.getContextPath()%>/">Home</a></li>
           	<li><a href="#services">Services</a></li>
           	<li><a href="#portfolio">Photo List</a></li>
-        	
+        	<li><a href="<%=application.getContextPath()%>/selfguide/selfguidelist">Self Guide</a></li>
+
+        	<li><a href="<%=application.getContextPath()%>/community">community</a></li>
+
         	<sec:authorize access="isAnonymous()">
           		<li><a href="<%=application.getContextPath()%>/member/login">Login</a></li>
           		<li><a href="<%=application.getContextPath()%>/member/join">Register</a></li>
+          		
           	</sec:authorize>
           	<sec:authorize access="isAuthenticated()">
           		<li><a href="<%=application.getContextPath()%>/member/mypage">Mypage</a></li>
           		<li><a href="<%=application.getContextPath()%>/photo/write">Photo Write</a></li>
           		<li><a href="<%=application.getContextPath()%>/logout">LogOut</a></li>
-          	</sec:authorize>
           		<li><a href="<%=application.getContextPath()%>/qna/qnaindex">Q&A</a></li>
-          		
-          		
-          		
-          		
+          	</sec:authorize>
         </ul>
       </nav><!-- .nav-menu -->
 
@@ -389,7 +389,7 @@
               <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
             </ul>
-          </div>
+          </div> 
 
           <div class="col-lg-4 col-md-6 footer-newsletter">
             <h4>Our Newsletter</h4>

@@ -27,12 +27,48 @@ public class Register_photo {
 	private int likenumber;
 	private int startRowNo; 	//페이지의 시작 행 번호
 	private int endRowNo; 		//페이지의 끝 행 번호
-	
+	private String following;
+	private int bookcount;
+	private int likecount;
+	private int follownumber;
 	
 	List<A_photo> list;
 	
 	
 	
+	
+	public int getFollownumber() {
+		return follownumber;
+	}
+
+	public void setFollownumber(int follownumber) {
+		this.follownumber = follownumber;
+	}
+
+	public int getBookcount() {
+		return bookcount;
+	}
+
+	public void setBookcount(int bookcount) {
+		this.bookcount = bookcount;
+	}
+
+	public int getLikecount() {
+		return likecount;
+	}
+
+	public void setLikecount(int likecount) {
+		this.likecount = likecount;
+	}
+
+	public String getFollowing() {
+		return following;
+	}
+
+	public void setFollowing(String following) {
+		this.following = following;
+	}
+
 	public int getStartRowNo() {
 		return startRowNo;
 	}

@@ -41,7 +41,7 @@ public class FollowController {
 		logger.info("fileName:" + fileName);
 
 		// 파일의 데이터를 읽기 위한 입력 스트림 얻기
-		String saveFilePath = "D:/MyWorkspace/photo/" + fileName;
+		String saveFilePath = "C:/Temp/upload/" + fileName;
 		InputStream is = new FileInputStream(saveFilePath);
 		// 응답 HTTP 헤더 구성
 		// Content-Type 헤더 구성
@@ -77,6 +77,7 @@ public class FollowController {
 		return "member/followList";
 	}
 	
+
 	//followingList 조회
 	@GetMapping("/followingList")
 	public String followingList(Model model,HttpSession session) {
@@ -89,7 +90,7 @@ public class FollowController {
 	
 	@GetMapping("/checkFollow")
 	public void checkFollow(String pwriter, HttpSession session,HttpServletResponse response) throws IOException {
-		logger.info("################" + pwriter);
+
 		Member member=(Member)session.getAttribute("member");
 		String follower=member.getMemail();
 		Follows follows = new Follows();
@@ -132,39 +133,33 @@ public class FollowController {
 	
 	@GetMapping("/followCheck")
 	public void followCheck(String pwriter,HttpSession session,HttpServletResponse response) throws IOException {
-		System.out.println(pwriter);
+		logger.info(pwriter);
+		
 		Member member=(Member)session.getAttribute("member");
-		String memail=member.getMemail();
+		
 		Follows follow=new Follows();
 		follow.setFollowing(pwriter);
-		logger.info(pwriter);
-		follow.setFollower(memail);
+		follow.setFollower(member.getMemail());
 		int result=followService.followCheck(follow);
+		
 		JSONObject jsonObject = new JSONObject(); 
-		logger.info("여기에 1이오면 success가 보내지니까 빠랑빠랑 빠랑쌕"+result);
 		if(result == 0) {
-			 
 			jsonObject.put("result", "fail");
-			String json = jsonObject.toString();
-			// 응답 보내기
-			PrintWriter out = response.getWriter();
-			response.setContentType("application/json;charset=utf-8");
-			out.println(json);
-			out.flush();
-			out.close();
+			followService.checkFollow(follow);
 			
-
+		
 		}else {
- 
 			jsonObject.put("result", "success");
-			String json = jsonObject.toString();
-			// 응답 보내기
-			PrintWriter out = response.getWriter();
-			response.setContentType("application/json;charset=utf-8");
-			out.println(json);
-			out.flush();
-			out.close();
+			followService.cancelfollow(follow);
 		}
+		
+		String json = jsonObject.toString();
+		// 응답 보내기
+		PrintWriter out = response.getWriter();
+		response.setContentType("application/json;charset=utf-8");
+		out.println(json);
+		out.flush();
+		out.close();
 			
 	}
 	

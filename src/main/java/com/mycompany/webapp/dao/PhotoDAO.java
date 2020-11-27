@@ -51,6 +51,11 @@ public class PhotoDAO {
 		// TODO Auto-generated method stub
 		return sst.selectOne("mybatis.mapper.photo.selectRegPhoto" , pnumber);
 	}
+	
+	public Register_photo selectRegPhoto(Register_photo photo) {
+		// TODO Auto-generated method stub
+		return sst.selectOne("mybatis.mapper.photo.selectcheckRegPhoto" , photo);
+	}
 
 	public int countAll() {
 		// TODO Auto-generated method stub
@@ -79,6 +84,8 @@ public class PhotoDAO {
 	public int selectOneBookMark(String memail) {
 		return sst.selectOne("mybatis.mapper.photo.bookmarkCount", memail);
 	}
+
+	
 
 	
 }

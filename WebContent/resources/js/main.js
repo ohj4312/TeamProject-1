@@ -43,8 +43,6 @@
 
   // Activate smooth scroll on page load with hash links in the url
   $(document).ready(function() {
-
-    console.log("ready실행");
     // $cloneform = $("#cloneForm").clone();
 
     if (window.location.hash) {
@@ -526,7 +524,10 @@ function replyDelete(rnumber, pnumber){
 function toggleUpdate(pnumber, urlpath){
 	console.log(pnumber);
 	console.log(urlpath);
-	
+	console.log($("#bkcount").html());
+	console.log($("#lkcount").html());
+	var bkcount = $("#bkcount").html();
+	var lkcount = $("#lkcount").html();
 	$.ajax({
 		url: urlpath,
 		data: {pnumber: pnumber},
@@ -536,21 +537,28 @@ function toggleUpdate(pnumber, urlpath){
 				 
 				console.log("bookmarksuccess");
 				$("#itag"+pnumber).html("bookmark");
-				
+				++bkcount;
+				$("#bkcount").html(bkcount);
 			}else if(data.result == "bookmarkfailure"){
 				
 				console.log("bookmarkfailure");
 				$("#itag"+pnumber).html("bookmark_border");
+				--bkcount;
+				$("#bkcount").html(bkcount);
 				
 			}else if(data.result == "likesuccess"){
 				
 				console.log("likesuccess");
 				$("#likeicon"+pnumber).html("favorite");
+				++lkcount;
+				$("#lkcount").html(lkcount);
 		
 			}else if(data.result == "likefailure"){
 				
 				console.log("likefailure");
 				$("#likeicon"+pnumber).html("favorite_border");
+				--lkcount;
+				$("#lkcount").html(lkcount);
 				
 			}
 			 
@@ -558,3 +566,53 @@ function toggleUpdate(pnumber, urlpath){
 			
 	});
 }
+
+//팔로워 기능
+function followCheck(pwriter, urlpath, classname){
+	console.log("팔로워 체크 실행")
+	if(classname == null){
+		console.log("detail체크");
+		$.ajax({
+		url: urlpath,
+		data:{pwriter:pwriter},
+		success:function(data) {
+			if(data.result=="success"){
+				console.log("해제");
+				$('#follow_check').toggleClass('btn-outline-info');
+				$('#follow_check').attr('style', 'color: #1bac91');
+				$('#follow_check').html('팔로우');
+		
+			}
+			if(data.result=="fail"){
+				console.log("등록");
+				$('#follow_check').toggleClass('btn-outline-info');
+				$('#follow_check').attr('style', 'background-color: #1bac91; color: white;');
+				$('#follow_check').html('팔로잉');
+
+			}
+		}
+		});
+	
+	}else{
+		$.ajax({
+		url: urlpath,
+		data:{pwriter:pwriter},
+		success:function(data) {
+			if(data.result=="success"){
+				console.log("해제");
+				$('.'+classname).toggleClass('btn-outline-info');
+				$('.'+classname).attr('style', 'color: #1bac91');
+		
+			}
+			if(data.result=="fail"){
+				console.log("등록");
+				$('.'+classname).toggleClass('btn-outline-info');
+				$('.'+classname).attr('style', 'background-color: #1bac91; color: white;');
+
+			}
+		}
+		});
+		
+	}
+
+} 
