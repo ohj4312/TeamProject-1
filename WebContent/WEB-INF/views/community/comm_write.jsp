@@ -146,11 +146,11 @@
 <main id="main">
 
     <div class="question-form container">
-      <form id="question-form">
+      <form id="question-form" action="<%=application.getContextPath()%>/community/comm_write">
         <header class="question-form_header" style="padding-bottom:3%; padding-top:10%">
           <h2 style="color:black; font-size:20px; font-weight:bold">질문하기</h2>
           <div>
-            <input placeholder="제목을 적어주세요." class="form-control"  type="text" id="question_title">
+            <input placeholder="제목을 적어주세요." class="form-control"  type="text" id="c_title" name="c_title">
           </div>
         </header>
 		
@@ -159,14 +159,14 @@
         <div class="question-from__meta">
             <textarea id="question_content" placeholder="내용을 적어주세요."></textarea>
 			<div class="question-photo">
-			<input type="file" id="list[0].aimageAttach" name = "list[0].aimageAttach" style="width:100%; height:100%;"> 
-	         <label id = "srclabel" for="list[0].aimageAttach">
+			<input type="file" id="c_image" name = "c_image" style="width:100%; height:100%;"> 
+	         <label id = "srclabel" for="c_image">
 	         </label>   
 	        </div>
       	</div>
       	
       	<div class="floating-bar__Content">
-          <input type="submit" value="질문 저장하기" class="btn btn-lg btn-priority col-6 offset-3"></input>
+          <input id="c_content" name="c_content" type="submit" value="질문 저장하기" class="btn btn-lg btn-priority col-6 offset-3"></input>
         </div>
       </form>
      
