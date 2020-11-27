@@ -116,8 +116,8 @@
 							<div class="col-12 text-center mb-4 fancybox"
 								style="position: relative; height: 300px;">
 								<div style="background-color: lightslategray;">
-
-									<a href="javascript:addPhoto;" class="item-wrap "> <i
+											<!-- <a href="javascript:addPhoto;"  -->
+									<a href="#" class="item-wrap "> <i
 										class="material-icons"
 										style="font-size: 7rem; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">photo_camera</i>
 									</a>
@@ -144,7 +144,7 @@
       <div class="container">
 
 			<div style="height: 50px;"></div>
-			<button type="button" class="btn btn-lg btn-light btn-block" onClick="">추가하기</button>
+			<button method="post" type="button" class="btn btn-lg btn-light btn-block" href="<%=application.getContextPath()%>/selfguide/selfwrite">추가하기</button>
 
 		</div>
     </section>
@@ -156,26 +156,7 @@
 
     </section><!-- End Portfolio Section -->
 
-    <!-- ======= Clients Section ======= -->
-    <section id="clients" class="clients">
-      <div class="container">
-
-       
-
-        <div class="owl-carousel clients-carousel">
-          <img src="assets/img/clients/client-1.png" alt="">
-          <img src="assets/img/clients/client-2.png" alt="">
-          <img src="assets/img/clients/client-3.png" alt="">
-          <img src="assets/img/clients/client-4.png" alt="">
-          <img src="assets/img/clients/client-5.png" alt="">
-          <img src="assets/img/clients/client-6.png" alt="">
-          <img src="assets/img/clients/client-7.png" alt="">
-          <img src="assets/img/clients/client-8.png" alt="">
-        </div>
-
-      </div>
-    </section><!-- End Clients Section -->
-
+   
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->

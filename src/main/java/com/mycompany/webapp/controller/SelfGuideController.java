@@ -42,26 +42,27 @@ public class SelfGuideController {
 	}
 	
 	//셀프 가이드에 사진 올리기
-	/*	@GetMapping("/selfwrite")
+		@RequestMapping("/selfguide-write")
 		public String selfwriteForm() {
 			return "guide/selfguide-write";
-		}*/
+		}
 	
 	
-	/*	@PostMapping("/selfwrite")
-		public String selfwritePhoto(SelfGuide sg,HttpSession session) {
-			
+		@PostMapping("/selfwrite")
+		public String selfwritePhoto(SelfGuide sg,HttpSession session,Model model) {
+			logger.info(sg.getScontent());
+			logger.info(sg.getStitle());
+			logger.info(sg.getStype());
 			Member member = (Member) session.getAttribute("member");
 			String swriter = member.getMemail();
-			
 			sg.setSwriter(swriter);
 			
 			
 			
-			return "";
+			return "redirect:/selfguide/selfguidelist";
 			
 			
-		}*/
+		}
 	
 	
 	//셀프 가이드 리스트 페이징 해서 보이도록
@@ -85,13 +86,6 @@ public class SelfGuideController {
 		model.addAttribute("sg",sg);
 		return "guide/selfguide-detail";
 	}
-	
-	@GetMapping("/selfguide-write")
-	public String selfguideWrite() {
-		return "guide/selfguide-write";
-	}
-	
-
 	
 	
 	//사진 다운로드
