@@ -8,7 +8,7 @@ import com.mycompany.webapp.dao.C_ReplyDao;
 import com.mycompany.webapp.dao.CommunityDao;
 
 @Service
-public class BoardService {
+public class CommunityService {
 	@Resource
 	private CommunityDao boardDao;
 	private C_ReplyDao b_replyDao;

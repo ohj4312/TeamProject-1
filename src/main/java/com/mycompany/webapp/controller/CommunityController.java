@@ -12,7 +12,7 @@ public class CommunityController {
 	public String board() {
 		
 		
-		return "board/community";
+		return "community/community";
 	}
 
 }
