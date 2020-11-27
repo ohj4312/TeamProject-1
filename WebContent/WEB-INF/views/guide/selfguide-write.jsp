@@ -1,13 +1,13 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html lang="en">
+<html >
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Portfolio - Eterna Bootstrap Template</title>
+  <title>Self Guide </title>
   <meta content="" name="descriptison">
   <meta content="" name="keywords">
 
@@ -17,17 +17,23 @@
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
   <!-- Vendor CSS Files -->
   <link href="<%=application.getContextPath() %>/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="<%=application.getContextPath() %>/resources/vendor/icofont/icofont.min.css" rel="stylesheet">
   <link href="<%=application.getContextPath() %>/resources/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="<%=application.getContextPath() %>/resources/vendor/animate.css/animate.min.css" rel="stylesheet">
-  <link href="<%=application.getContextPath() %>/resources/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
-  <link href="<%=application.getContextPath() %>/resources/vendor/venobox/venobox.css" rel="stylesheet">
-  <link href="<%=application.getContextPath() %>/resources/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+   <link href="<%=application.getContextPath() %>/resources/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
   <link href="<%=application.getContextPath() %>/resources/vendor/venobox/venobox.css" rel="stylesheet">
   <link href="<%=application.getContextPath() %>/resources/vendor/aos/aos.css" rel="stylesheet">
+  <link href="<%=application.getContextPath() %>/resources/vendor/animate.css/animate.min.css" rel="stylesheet">
+
+  <link href="<%=application.getContextPath() %>/resources/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="<%=application.getContextPath() %>/resources/vendor/venobox/venobox.css" rel="stylesheet">
+	<link href="<%=application.getContextPath() %>/resources/vendor/aos/aos.css" rel="stylesheet">
+
+ 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+ 	
   <!-- Template Main CSS File -->
   <link href="<%=application.getContextPath() %>/resources/css/style.css" rel="stylesheet">
 
@@ -173,6 +179,7 @@
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
+   <!-- ======= Footer ======= -->
   <footer id="footer">
     <div class="footer-top">
       <div class="container">
@@ -258,25 +265,14 @@
   <script src="<%=application.getContextPath() %>/resources/vendor/aos/aos.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/jquery.easing/jquery.easing.min.js"></script>
 
-  <!-- Template Main JS File -->
-  <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>
+
   
   <!-- End Footer -->
 
-  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+ 
 
   <!-- Vendor JS Files -->
-  <script src="<%=application.getContextPath() %>/resources/vendor/jquery/jquery.min.js"></script>
-  <script src="<%=application.getContextPath() %>/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="<%=application.getContextPath() %>/resources/vendor/jquery.easing/jquery.easing.min.js"></script>
-  <script src="<%=application.getContextPath() %>/resources/vendor/php-email-form/validate.js"></script>
-  <script src="<%=application.getContextPath() %>/resources/vendor/jquery-sticky/jquery.sticky.js"></script>
-  <script src="<%=application.getContextPath() %>/resources/vendor/owl.carousel/owl.carousel.min.js"></script>
-  <script src="<%=application.getContextPath() %>/resources/vendor/waypoints/jquery.waypoints.min.js"></script>
-  <script src="<%=application.getContextPath() %>/resources/vendor/counterup/counterup.min.js"></script>
-  <script src="<%=application.getContextPath() %>/resources/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="<%=application.getContextPath() %>/resources/vendor/venobox/venobox.min.js"></script>
-
+ 
   <!-- Template Main JS File -->
   <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>
 
