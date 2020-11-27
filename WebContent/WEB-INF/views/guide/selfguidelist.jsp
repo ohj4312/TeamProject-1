@@ -7,13 +7,13 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Portfolio - Eterna Bootstrap Template</title>
+  <title>Self Guide </title>
   <meta content="" name="descriptison">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="<%=application.getContextPath() %>/resources/img/favicon.png" rel="icon">
+  <link href="<%=application.getContextPath() %>/resources/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -46,14 +46,15 @@
   <section id="portfolio" class="portfolio section">
       <div id = "listappend" class="container mt-5">
       		<p><h2 style="font-size:3vw">셀프 인테리어 가이드북 </h2></p><br/>
-      		<img style="width:100%; height:200px;"src="https://image.ohou.se/i/bucketplace-v2-development/uploads/advices/guides/self_interior/pc_banner_image.v3.png?gif=1&w=1280&webp=1"/>
       		
-        <div id="addtag" class="row col-md-12 col-lg-8 mb-4">
+      		<img style="width:100%; height:200px;"src="https://image.ohou.se/i/bucketplace-v2-development/uploads/advices/guides/self_interior/pc_banner_image.v3.png?gif=1&w=1280&webp=1"/>
+      		<p></p>
+        <div id="addtag" class="row col-md-12 mb-4">
 			<jsp:include page="/WEB-INF/views/guide/selfguideFilter.jsp"/>
         </div>
 
       <div id = "12345" class="row portfolio-container abcd" data-aos="fade-up">
-        <jsp:include page="/WEB-INF/views/include/photos.jsp"/>
+        <jsp:include page="/WEB-INF/views/guide/selfguide-photos.jsp"/>
        </div>
         
 
@@ -92,142 +93,22 @@
 
     <!-- ======= Breadcrumbs ======= -->
     <section id="portfolio" class="portfolio section">
-      <div class="container">
-			
-			<!-- <img style="width:100%; height:200px;"src="https://image.ohou.se/i/bucketplace-v2-development/uploads/advices/guides/self_interior/pc_banner_image.v3.png?gif=1&w=1280&webp=1"/> -->
-      </div>
-    </section><!-- End Breadcrumbs -->
-
-    <!-- ======= Portfolio Section ======= -->
-    <section id="portfolio" class="portfolio">
-      <div class="container">
-
-        <div class="row">
-          <div class="col-lg-12 d-flex justify-content-center">
-            <ul id="portfolio-flters">
-              <li data-filter="*" class="filter-active">전체</li>
-              <li data-filter=".filter-plan">계획 하기</li>
-              <li data-filter=".filter-cost">비용 정리</li>
-              <li data-filter=".filter-space">공간 배치</li>
-               <li data-filter=".filter-paint">페인트 도배</li>
-                <li data-filter=".filter-tile">바닥 깔기</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="row portfolio-container">
-			<!-- 계획 하기 -->
-          <div class="col-lg-4 col-md-6 portfolio-item filter-plan">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>App 1</h4>
-                <p>App</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-1.jpg" data-gall="portfolioGallery" class="venobox" title="App 1"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-			<!-- 비용 정리 -->	
-          <div class="col-lg-4 col-md-6 portfolio-item filter-cost">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Web 3</h4>
-                <p>Web</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-2.jpg" data-gall="portfolioGallery" class="venobox" title="Web 3"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-				<!--공간 배치-->	
-          <div class="col-lg-4 col-md-6 portfolio-item filter-space">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>App 2</h4>
-                <p>App</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-3.jpg" data-gall="portfolioGallery" class="venobox" title="App 2"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-			<!--페인트 도배-->	
-          <div class="col-lg-4 col-md-6 portfolio-item filter-paint">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Card 2</h4>
-                <p>Card</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-4.jpg" data-gall="portfolioGallery" class="venobox" title="Card 2"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-			<!--바닥 깔기-->
-          <div class="col-lg-4 col-md-6 portfolio-item filter-tile">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Web 2</h4>
-                <p>Web</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-5.jpg" data-gall="portfolioGallery" class="venobox" title="Web 2"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>App 3</h4>
-                <p>App</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-6.jpg" data-gall="portfolioGallery" class="venobox" title="App 3"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Card 1</h4>
-                <p>Card</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-7.jpg" data-gall="portfolioGallery" class="venobox" title="Card 1"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        
-
-        </div>
-
-      </div>
+    
+    
+    
+    
+    
     </section><!-- End Portfolio Section -->
 
+
+
+
     <!-- ======= Clients Section ======= -->
-    <section id="clients" class="clients">
+   <!--  <section id="clients" class="clients">
       <div class="container">
 
        
-
+ 
         <div class="owl-carousel clients-carousel">
           <img src="assets/img/clients/client-1.png" alt="">
           <img src="assets/img/clients/client-2.png" alt="">
@@ -240,7 +121,7 @@
         </div>
 
       </div>
-    </section><!-- End Clients Section -->
+    </section> --><!-- End Clients Section -->
 
   </main><!-- End #main -->
 

@@ -10,18 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/selfguide")
-public class SelfGuideController {
+public class SelfGuideReplyController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(SelfGuideController.class);
+	private static final Logger logger = LoggerFactory.getLogger(SelfGuideReplyController.class);
 	
 	@Resource
-	private SelfGuideController service;
+	private SelfGuideReplyController service;
 	
 	
-	@GetMapping("selfguidelist")
-	public String selfguidelist() {
-		return "guide/selfguidelist";
-	}
 	
 	
 	
