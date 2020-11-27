@@ -10,8 +10,11 @@ import com.mycompany.webapp.dao.CommunityDao;
 @Service
 public class CommunityService {
 	@Resource
-	private CommunityDao boardDao;
-	private C_ReplyDao b_replyDao;
+	private CommunityDao communityDao;
+	@Resource
+	private C_ReplyDao c_replyDao;
+	
+	
 	
 
 }
