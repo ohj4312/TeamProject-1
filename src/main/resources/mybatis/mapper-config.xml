@@ -13,7 +13,8 @@
 		<typeAlias alias="registerPhoto" type="com.mycompany.webapp.dto.Register_photo"/>
 		<typeAlias alias="pager" type="com.mycompany.webapp.dto.Pager"/>	
 		<typeAlias alias="selfguide" type="com.mycompany.webapp.dto.SelfGuide"/>	
-		<typeAlias alias="selfreply" type="com.mycompany.webapp.dto.SelfGuide_reply"/>	
+		<typeAlias alias="selfreply" type="com.mycompany.webapp.dto.SelfGuide_reply"/>
+		<typeAlias alias="board" type="com.mycompany.webapp.dto.Board" />	
 	</typeAliases>
 </configuration>
   

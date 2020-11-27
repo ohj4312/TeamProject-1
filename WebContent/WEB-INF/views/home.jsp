@@ -59,6 +59,10 @@
           	<li><a href="#services">Services</a></li>
           	<li><a href="#portfolio">Photo List</a></li>
         	<li><a href="<%=application.getContextPath()%>/selfguide/selfguidelist">Self Guide</a></li>
+<<<<<<< HEAD
+=======
+        	<li><a href="<%=application.getContextPath()%>/community">community</a></li>
+>>>>>>> branch 'master' of https://github.com/mw7895la/TeamProject
         	<sec:authorize access="isAnonymous()">
           		<li><a href="<%=application.getContextPath()%>/member/login">Login</a></li>
           		<li><a href="<%=application.getContextPath()%>/member/join">Register</a></li>
@@ -390,7 +394,7 @@
               <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
             </ul>
-          </div>
+          </div> 
 
           <div class="col-lg-4 col-md-6 footer-newsletter">
             <h4>Our Newsletter</h4>
