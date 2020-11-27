@@ -14,24 +14,23 @@ import com.mycompany.webapp.service.CommunityService;
 public class CommunityController {
 
 	@Resource
-	private CommunityService service; 
-	
+	private CommunityService service;
+
 	@GetMapping("")
 	public String board() {
-		
-		
+
 		return "community/community";
-	}			
+	}
+
 	@GetMapping("/comm_writeFrom")
-	public String Comm_WriteFrom(){
-				
-		
+	public String Comm_WriteFrom() {
+
 		return "community/comm_write";
 	}
+
 	@PostMapping("/comm_write")
-	public String Comm_Write(){
-		
-		
+	public String Comm_Write() {
+
 		return "community/comm_write";
 	}
 
