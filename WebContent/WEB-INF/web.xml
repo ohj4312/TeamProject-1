@@ -91,6 +91,11 @@
 			org.springframework.security.web.session.HttpSessionEventPublisher
 		</listener-class>
 	</listener>
+	
+	<!-- session 지속 시간 설정 -->
+	<session-config>
+        <session-timeout>90</session-timeout>
+    </session-config>
 </web-app>
 
 

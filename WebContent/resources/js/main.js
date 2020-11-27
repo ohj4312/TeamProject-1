@@ -519,3 +519,42 @@ function replyDelete(rnumber, pnumber){
 		}
 	});
 }
+
+
+//=====================토글 업데이트 및 체크
+//토글 체크 및 업데이트
+function toggleUpdate(pnumber, urlpath){
+	console.log(pnumber);
+	console.log(urlpath);
+	
+	$.ajax({
+		url: urlpath,
+		data: {pnumber: pnumber},
+		success:function(data){ 
+			
+			 if(data.result == "bookmarksuccess"){
+				 
+				console.log("bookmarksuccess");
+				$("#itag"+pnumber).html("bookmark");
+				
+			}else if(data.result == "bookmarkfailure"){
+				
+				console.log("bookmarkfailure");
+				$("#itag"+pnumber).html("bookmark_border");
+				
+			}else if(data.result == "likesuccess"){
+				
+				console.log("likesuccess");
+				$("#likeicon"+pnumber).html("favorite");
+		
+			}else if(data.result == "likefailure"){
+				
+				console.log("likefailure");
+				$("#likeicon"+pnumber).html("favorite_border");
+				
+			}
+			 
+		} 
+			
+	});
+}
