@@ -63,7 +63,12 @@ public class SelfGuideController {
 		return "guide/selfguide-detail";
 	}
 	
+	@GetMapping("/selfguide-write")
+	public String selfguideWrite() {
+		return "guide/selfguide-write";
+	}
 	
+
 	
 	
 	//사진 다운로드
@@ -114,4 +119,5 @@ public class SelfGuideController {
 		
 	}
 	
+
 }
