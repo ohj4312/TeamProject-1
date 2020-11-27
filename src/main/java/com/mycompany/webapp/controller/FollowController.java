@@ -197,7 +197,7 @@ public class FollowController {
 	
 	@RequestMapping("/member/followmypage")
 	public String moveFollowfollowPage(HttpSession session,Model model) {
-		String memail=(String)session.getAttribute("followingmemail");
+		String memail=(String)session.getAttribute("followmemail");
 		logger.info(memail);
 		Member followmember=new Member();
 		followmember=followService.getFollowInfo(memail);
