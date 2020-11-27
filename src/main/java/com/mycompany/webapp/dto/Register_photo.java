@@ -23,13 +23,48 @@ public class Register_photo {
 	private String mnickname;
 	private String first_content;
 	private String mimage;
+	private int bnumber;
+	private int likenumber;
+	private int startRowNo; 	//페이지의 시작 행 번호
+	private int endRowNo; 		//페이지의 끝 행 번호
+	
 	
 	List<A_photo> list;
+	
+	
+	
+	public int getStartRowNo() {
+		return startRowNo;
+	}
 
-	
-	
-	
-	
+	public void setStartRowNo(int startRowNo) {
+		this.startRowNo = startRowNo;
+	}
+
+	public int getEndRowNo() {
+		return endRowNo;
+	}
+
+	public void setEndRowNo(int endRowNo) {
+		this.endRowNo = endRowNo;
+	}
+
+	public int getBnumber() {
+		return bnumber;
+	}
+
+	public void setBnumber(int bnumber) {
+		this.bnumber = bnumber;
+	}
+
+	public int getLikenumber() {
+		return likenumber;
+	}
+
+	public void setLikenumber(int likenumber) {
+		this.likenumber = likenumber;
+	}
+
 	public String getMimage() {
 		return mimage;
 	}

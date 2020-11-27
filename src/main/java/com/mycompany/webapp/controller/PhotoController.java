@@ -37,37 +37,44 @@ public class PhotoController {
 	@Resource
 	PhotoService photoService;
 	
-	@GetMapping("/list")
-	public String photoList(Model model, @RequestParam(defaultValue = "1") int pageNo) {
+	@RequestMapping("/list")
+	public String photoList(Model model, @RequestParam(defaultValue = "1") int pageNo, HttpSession session) {
+		
+		Member member = (Member) session.getAttribute("member");
+		List<Register_photo> photolist;
 		int totalRows = photoService.getTotalRows();
+		int count = 0;
+		String returnurl;
 		
-		Pager pager = new Pager(12, 5, totalRows, pageNo);
+		if(pageNo > 1) {
+			count = 9;
+			returnurl = "include/photos";
+		}else {
+			count = 12;
+			returnurl = "photo/photolist";
+		}
+		Pager pager = new Pager(count, 5, totalRows, pageNo);
 		
-		List<Register_photo> photolist =  photoService.getPhotoList(pager);
+		if(member == null) {
+			photolist =  photoService.getPhotoList(pager);
+		}else {
+			Register_photo photo = new Register_photo();
+			photo.setPwriter(member.getMemail());
+			photo.setEndRowNo(pager.getEndRowNo());
+			photo.setStartRowNo(pager.getStartRowNo());
+			photolist =  photoService.getPhotoList(photo);
+		}
 		
-		model.addAttribute("list", photolist);
-		
-		
-		return "photo/photolist";
-		
-	}
-	
-	@PostMapping("/list")
-	public String photoListByPage(Model model, @RequestParam(defaultValue = "1") int pageNo) {
-		int totalRows = photoService.getTotalRows();
-		
-		Pager pager = new Pager(9, 5, totalRows, pageNo);
-		logger.info(String.valueOf(pager.getEndRowNo()));
-		List<Register_photo> photolist =  photoService.getPhotoList(pager);
-		for(Register_photo photo : photolist) {
-			logger.info("list로 들어오는 파일명과 pnumber:"+ photo.getFirst_image() + "/"+photo.getPnumber());
-			logger.info(photo.getPsize() + photo.getPstyle() + photo.getPtype());
+		for(Register_photo photo: photolist) {
+			logger.info(String.valueOf(photo.getBnumber()));
+			logger.info(String.valueOf(photo.getLikenumber()));
 		}
 		model.addAttribute("list", photolist);
 		
-		return "include/photos";
+		return returnurl;
 		
 	}
+	
 	
 	
 	
