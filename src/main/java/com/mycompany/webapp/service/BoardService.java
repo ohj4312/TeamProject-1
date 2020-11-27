@@ -4,14 +4,14 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.mycompany.webapp.dao.B_ReplyDao;
-import com.mycompany.webapp.dao.BoardDao;
+import com.mycompany.webapp.dao.C_ReplyDao;
+import com.mycompany.webapp.dao.CommunityDao;
 
 @Service
 public class BoardService {
 	@Resource
-	private BoardDao boardDao;
-	private B_ReplyDao b_replyDao;
+	private CommunityDao boardDao;
+	private C_ReplyDao b_replyDao;
 	
 
 }
