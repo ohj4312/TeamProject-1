@@ -151,8 +151,6 @@
   <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>
 
 	<script type="text/javascript">
-		
-		
 			//리스트 페이징 처리
 			var page = 2;
 			  $(function(){

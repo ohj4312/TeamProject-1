@@ -124,13 +124,11 @@
           		<a href="javascript:photoChange('${photo.aimage}', '${photo.acontent}')"><img src="photodownload?fileName=${photo.aimage}" class= "w-25 h-25"></a>
 			</c:forEach>
 		 </div>
+	</div>
+	
 
-
-      
-     
-     
-   </div>
-
+	
+	
 
     <div class="container">
       <div id="reply_result" style="margin-top:30px">
@@ -232,7 +230,7 @@
 
 <script>
 $(document).ready(function(){
-	var pnumber = ${photo.pnumber };
+	var pnumber = ${photo.pnumber};
 	replyList(pnumber);
 });
 </script>

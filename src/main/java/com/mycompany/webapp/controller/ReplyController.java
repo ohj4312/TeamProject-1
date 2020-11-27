@@ -38,10 +38,7 @@ public class ReplyController {
 	
 	
 	
-	@GetMapping("/detail")
-	public String photoDetail() {
-		return "photo/photo-detail";
-	}
+
 	
 	@Resource
 	private ReplyService service;
@@ -51,17 +48,14 @@ public class ReplyController {
 		logger.info("실행");
 		
 		Member member = (Member) session.getAttribute("member");
-
-		
 		String rwriter = member.getMemail();
 		String mnickname = member.getMnickname();
 		logger.info("mnickname:"+mnickname);
-		
+		logger.info("pnumber:"+pnumber);
 		reply.setRwriter(rwriter);
 		reply.setPnumber(pnumber);
 		reply.setRcontent(rcontent);
 		reply.setMnickname(mnickname);
-
 		service.replyWrite(reply);
 		response.setContentType("application/json; charset=utf-8");
 		
@@ -109,32 +103,33 @@ public class ReplyController {
 	@GetMapping("/replyList")
 	public String replyList(@RequestParam(defaultValue="1")int pageNo, Model model, int pnumber) {
 		logger.info("replyList : 실행");
-		int totalRows = service.getTotalRows();
-		
-		Pager pager = new Pager(5, 5, totalRows, pageNo);
 		Post_reply reply = new Post_reply();
 		reply.setPnumber(pnumber);
+		int replyCount = service.getreplyCount(reply);
+		
+		Pager pager = new Pager(5, 5, replyCount, pageNo);
 		reply.setEndRowNo(pager.getEndRowNo());
 		reply.setStartRowNo(pager.getStartRowNo());
-		
+
 		List<Post_reply> list = service.getReplyList(reply);
 		for(Post_reply r : list) {
 			logger.info(r.getMnickname());
 			logger.info(r.getRcontent());
 			logger.info(r.getRimage());
 		}
-		int replyCount = service.getreplyCount(reply);
 		model.addAttribute("list", list);
 		model.addAttribute("pager", pager);
-		logger.info("pager.getTotalRows : "+replyCount);
+		model.addAttribute("pnumber", pnumber);
 		model.addAttribute("count",replyCount);
-		return "replylist";
+		return "reply/replylist";
 	}
 	
+	
 	@PostMapping("/replyDelete")
-	public void replyDelete(int rnumber, HttpServletResponse response) throws Exception{
+	public void replyDelete(int rnumber, int pnumber,HttpServletResponse response) throws Exception{
 		logger.info("replyDelete: 실행");
-		
+		Post_reply reply = new Post_reply();
+		reply.setPnumber(pnumber);
 		//서비스를 이용해서 게시물 삭제
 		service.replyDelete(rnumber);
 		response.setContentType("application/json; charset=utf-8");
