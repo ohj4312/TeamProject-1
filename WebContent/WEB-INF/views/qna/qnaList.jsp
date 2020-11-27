@@ -3,7 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <div>
-	<a class="btn btn-info" style="margin-bottom:10px" 
+	<!-- <a class="btn btn-info" style="margin-bottom:10px" 
 		href="javascript:qnaWrite()">글쓰기</a>
 		
 		<script type="text/javascript">
@@ -15,7 +15,7 @@
 					}
 				});
 			}
-		</script>
+		</script> -->
 		
 		<div>
 			<table style="width:auto" class="table table-lg table-bordered">

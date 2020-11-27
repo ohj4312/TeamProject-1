@@ -10,12 +10,6 @@ public class Qna {
 	private String mnickname;
 	private String answer;
 	
-	public String getAnswer() {
-		return answer;
-	}
-	public void setAnswer(String answer) {
-		this.answer = answer;
-	}
 	public int getQnumber() {
 		return qnumber;
 	}
@@ -34,11 +28,11 @@ public class Qna {
 	public void setQdate(Date qdate) {
 		this.qdate = qdate;
 	}
-	public String getQcontet() {
+	public String getQcontent() {
 		return qcontent;
 	}
-	public void setQcontet(String qcontet) {
-		this.qcontent = qcontet;
+	public void setQcontent(String qcontent) {
+		this.qcontent = qcontent;
 	}
 	public String getMnickname() {
 		return mnickname;
@@ -46,5 +40,10 @@ public class Qna {
 	public void setMnickname(String mnickname) {
 		this.mnickname = mnickname;
 	}
-	
+	public String getAnswer() {
+		return answer;
+	}
+	public void setAnswer(String answer) {
+		this.answer = answer;
+	}
 }

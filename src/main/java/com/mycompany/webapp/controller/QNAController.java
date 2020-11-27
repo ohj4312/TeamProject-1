@@ -31,6 +31,7 @@ public class QNAController {
 	
 	@GetMapping("/qnaindex")
 	public String qnaindex(@RequestParam(defaultValue="1") int pageNo, Model model) {
+		logger.info("실행");
 		int totalRows = service.getTotalRows();
 		Pager pager = new Pager(5, 5, totalRows, pageNo);
 		List<Qna> list = service.getqnaList(pager);
@@ -41,26 +42,18 @@ public class QNAController {
 	
 	
 	
-	
 	@GetMapping("/qnaWrite")
 	public String qnaWriteForm() {
 		return "qna/qnaWriteForm";
 	}
 	
 	@PostMapping("/qnaWrite")
-	public void qnaWrite(Qna qna,HttpServletResponse response) throws Exception{//json응답을 직접 여기서 만들어서 void라고 줌
+	public String qnaWrite(Qna qna) {//json응답을 직접 여기서 만들어서 void라고 줌
+		/*logger.info(qna.getQtitle());
+		logger.info(qna.getQcontent());
+		logger.info(qna.getMnickname());*/
 		//서비스를 이용해서 게시물 쓰기
 		service.qnaWrite(qna);//클라이언트가 전송한 내용을 넣어준다.내용을 받기 위해서Ch14Board board써주고 (board)써준다.
-		//JSON생성
-		JSONObject jsonObject = new JSONObject();
-		jsonObject.put("result", "success");//실행이 되면 success가 전송이 된다. 
-		String json = jsonObject.toString(); //{"result":"success"}
-		//응답보내기
-		PrintWriter out = response.getWriter();
-		response.setContentType("application/json;charset=utf-8");
-		out.println(json);
-		out.flush();
-		out.close();
-		
+		return "redirect:/qna/qnaindex";
 	}
 }

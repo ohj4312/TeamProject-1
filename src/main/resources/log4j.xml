@@ -19,7 +19,7 @@
 	
 	<!-- SQL 로그 레벨 설정 -->
 	<logger name="jdbc.sqltiming">
-		<level value="info" />
+		<level value="error" />
 	</logger>                                                                                                                                                                      
 
 	<root> <!-- 위의 로그가 없을 경우 default로 설정 되는 부분. -->

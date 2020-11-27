@@ -69,141 +69,69 @@ td a {
 <body>
 
 	<jsp:include page="/WEB-INF/views/include/Header.jsp" />
+	<section id="services" class="section-bg mt-5" style="background-color: #ffffff;">
+	
+<%-- ########################################################################### --%>
 
-	<main id="main">
+	<div>
+		<h3 style="text-align:center; margin-bottom:50px">Q&A</h3>
 
-		<!-- ======= Services Section ======= -->
-		<section id="services" class="section-bg mt-5"
-			style="background-color: #ffffff;">
-			<div class="sector">
-				<!-- <h2 style="text-align:center; ">고객센터</h2> -->
-				<div>
-					<div id="menu" class="container">
-						<h2>고객센터</h2>
-						<p></p>
-							<script type="text/javascript">
-								function qnaWrite() {
-									$.ajax({
-										url:"qnaWrite",
-										success:function(data) {
-											$("#service").html(data);
-										}
-									});
-								}
-							</script>
-						<div class=" btn-group-vertical">
-							<!-- <button type="button" class="btn btn-white">공지사항</button> -->
-							<button type="button" class="btn btn-white" onclick="qnaWrite()">Q&A</button>
-							<!-- <button type="button" class="btn btn-white">의견제시하기</button> -->
-						</div>
-					</div>
-				</div>
-				<div>
-					<h3 style="text-align:center; margin-bottom:50px">Q&A</h3>
-					<table
-						style="width: 1000px; margin-left: auto; margin-right: auto; background-color: #ffffff"
-						class="table table-lg table-bordered fade-up">
-						<thead class="thead-light ">
-							<tr>
-								<th style="width: 50px; font-weight: bold;">번호</th>
-								<th style="width: 50px; font-weight: bold;">제목</th>
-								<th style="width: 50px; font-weight: bold;">작성자</th>
-								<th style="width: 50px; font-weight: bold;">날짜</th>
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach var="qna" items="${list}">
-								<tr>
-									<td>${qna.qnumber}</td>
-									<td><a href="javascript:qnaDetail(${qna.qnumber})">${qna.qtitle}</a></td>
-									<td>${qna.mnickname}</td>
-									<td><fmt:formatDate value="${qna.qdate}" pattern="yyyy-MM-dd"/></td>
-								</tr>
-							</c:forEach>
-							<tr>
-								<td>1</td>
-								<td><a href="#">오늘</a></td>
-								<td>작성자</td>
-								<td>2020-11-24</td>
-							</tr>
-							<tr>
-								<td>2</td>
-								<td><a href="#">하루</a></td>
-								<td>작성자</td>
-								<td>2020-11-25</td>
-							</tr>
-							<tr>
-								<td>3</td>
-								<td><a href="#">종일</a></td>
-								<td>작성자</td>
-								<td>2020-11-26</td>
-							</tr>
-							<tr>
-								<td>4</td>
-								<td><a href="#">공부</a></td>
-								<td>작성자</td>
-								<td>2020-11-24</td>
-							</tr>
-							<tr>
-								<td>5</td>
-								<td><a href="#">ㄱㄱ</a></td>
-								<td>작성자</td>
-								<td>2020-11-25</td>
-							</tr>
-							<tr>
-								<td>6</td>
-								<td><a href="#">ㄱㄱ</a></td>
-								<td>작성자</td>
-								<td>2020-11-26</td>
-							</tr>
-							<tr>
-								<td>7</td>
-								<td><a href="#">ㄱㄱ</a></td>
-								<td>작성자</td>
-								<td>2020-11-24</td>
-							</tr>
-							<tr>
-								<td>8</td>
-								<td><a href="#">ㄱㄱ</a></td>
-								<td>작성자</td>
-								<td>2020-11-25</td>
-							</tr>
+		<div style="width: 1000px; margin-left: auto; margin-right: auto; text-align: right; margin-bottom: 10px; ">
+			<a type="button" class="btn btn-info" href="qnaWrite">글작성</a>
+		</div>
+		
+		<table
+			style="width: 1000px; margin-left: auto; margin-right: auto; background-color: #ffffff"
+			class="table table-lg table-bordered fade-up">
+			<thead class="thead-light ">
+				<tr>
+					<th style="width: 50px; font-weight: bold;">번호</th>
+					<th style="width: 50px; font-weight: bold;">제목</th>
+					<th style="width: 50px; font-weight: bold;">작성자</th>
+					<th style="width: 50px; font-weight: bold;">날짜</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach var="qna" items="${list}">
+					<tr>
+						<td>${qna.qnumber}</td>
+						<td><a href="javascript:qnaDetail(${qna.qnumber})">${qna.qtitle}</a></td>
+						<td>${qna.mnickname}</td>
+						<td><fmt:formatDate value="${qna.qdate}" pattern="yyyy-MM-dd"/></td>
+					</tr>
+				</c:forEach>
 
+				<!-- 컬럼 합침 -->
+				<tr>
+					<td colspan="4" style="text-align: center;"><a
+						class="btn btn-outline-primary btn-sm"
+						href="javascript:qnaList(1)">처음</a> <c:if
+							test="${pager.groupNo > 1}">
+							<a class="btn btn-outline-primary btn-sm"
+								href="javascript:qnaList(${pager.startPageNo-1})">이전</a>
+						</c:if> <c:forEach var="i" begin="${pager.startPageNo}"
+							end="${pager.endPageNo}">
+							<c:if test="${pager.pageNo == i }">
+								<a class="btn btn-danger btn-sm"
+									href="javascript:qnaList(${i})">${i}</a>
+							</c:if>
+							<c:if test="${pager.pageNo != i }">
+								<a class="btn btn-outline-success btn-sm"
+									href="javascript:qnaList(${i})">${i}</a>
+							</c:if>
+						</c:forEach> <c:if test="${pager.groupNo < pager.totalGroupNo}">
+							<a class="btn btn-outline-info btn-sm"
+								href="javascript:qnaList(${pager.endPageNo+1})">다음</a>
+						</c:if> <a class="btn btn-outline-primary btn-sm"
+						href="javascript:qnaList(${pager.totalPageNo})">맨끝</a></td>
 
-							<!-- 컬럼 합침 -->
-							<tr>
-								<td colspan="4" style="text-align: center;"><a
-									class="btn btn-outline-primary btn-sm"
-									href="javascript:qnaList(1)">처음</a> <c:if
-										test="${pager.groupNo > 1}">
-										<a class="btn btn-outline-primary btn-sm"
-											href="javascript:qnaList(${pager.startPageNo-1})">이전</a>
-									</c:if> <c:forEach var="i" begin="${pager.startPageNo}"
-										end="${pager.endPageNo}">
-										<c:if test="${pager.pageNo == i }">
-											<a class="btn btn-danger btn-sm"
-												href="javascript:qnaList(${i})">${i}</a>
-										</c:if>
-										<c:if test="${pager.pageNo != i }">
-											<a class="btn btn-outline-success btn-sm"
-												href="javascript:qnaList(${i})">${i}</a>
-										</c:if>
-									</c:forEach> <c:if test="${pager.groupNo < pager.totalGroupNo}">
-										<a class="btn btn-outline-info btn-sm"
-											href="javascript:qnaList(${pager.endPageNo+1})">다음</a>
-									</c:if> <a class="btn btn-outline-primary btn-sm"
-									href="javascript:qnaList(${pager.totalPageNo})">맨끝</a></td>
-
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</section>
-	</main>
-
-
-
+				</tr>
+			</tbody>
+		</table>
+	</div>
+		
+<%-- ########################################################################### --%>	
+	</section>
 	<!-- ======= Footer ======= -->
 	<footer id="footer">
 		<div class="footer-top">
@@ -310,9 +238,9 @@ td a {
 		src="<%=application.getContextPath()%>/resources/vendor/aos/aos.js"></script>
 
 	<!-- Template Main JS File -->
-	<script src="<%=application.getContextPath()%>/resources/js/main.js"></script>
+	<%-- <script src="<%=application.getContextPath()%>/resources/js/main.js"></script> --%>
 
 
 </body>
 
-</html>
+</html>	
