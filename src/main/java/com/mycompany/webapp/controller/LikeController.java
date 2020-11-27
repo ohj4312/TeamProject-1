@@ -138,29 +138,23 @@ public class LikeController {
 
 		int check = service.likepushCheck(post_like);
 		if (check == 0) {
-
-			jsonObject.put("result", "success");
-			jsonObject.put("pnumber",pnumber);
+			service.likepushphoto(post_like);
+			jsonObject.put("result", "likesuccess");
 			
-			String json = jsonObject.toString();
-			// 응답보내기
-			PrintWriter out = response.getWriter();
-			response.setContentType("application/json;charset=utf-8");
-			out.println(json);
-			out.flush();
-			out.close();
 		} else {
-
-			jsonObject.put("result", "failure");
-			String json = jsonObject.toString();
-			// 응답보내기
-			PrintWriter out = response.getWriter();
-			response.setContentType("application/json;charset=utf-8");
-			out.println(json);
-			out.flush();
-			out.close();
+			service.likepushCancel(post_like);
+			jsonObject.put("result", "likefailure");
+		
 
 		}
+		
+		String json = jsonObject.toString();
+		// 응답보내기
+		PrintWriter out = response.getWriter();
+		response.setContentType("application/json;charset=utf-8");
+		out.println(json);
+		out.flush();
+		out.close();
 	}
 
 	

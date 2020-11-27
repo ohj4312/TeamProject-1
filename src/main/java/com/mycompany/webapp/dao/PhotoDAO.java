@@ -62,10 +62,23 @@ public class PhotoDAO {
 		return sst.selectList("mybatis.mapper.photo.selectByPage", pager);
 	}
 
-
+	public List<Register_photo> selectByPage(Register_photo photo) {
+		// TODO Auto-generated method stub
+		return sst.selectList("mybatis.mapper.photo.selectCheckByPageList", photo);
+	}
 
 	public void updateHitCount(Register_photo rphoto) {
 		sst.update("mybatis.mapper.photo.updateHitCount",rphoto);
 		
 	}
+
+	public int selectOneLike(String memail) {
+		return sst.selectOne("mybatis.mapper.photo.likeCount", memail);
+	}
+
+	public int selectOneBookMark(String memail) {
+		return sst.selectOne("mybatis.mapper.photo.bookmarkCount", memail);
+	}
+
+	
 }
