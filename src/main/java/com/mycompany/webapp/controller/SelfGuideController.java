@@ -68,12 +68,7 @@ public class SelfGuideController {
 		return "guide/selfguide-write";
 	}
 	
-<<<<<<< HEAD
-	@GetMapping("/selfguidelist")
-	public String selfguidelist() {
-		return "guide/selfguidelist";
-	}
-=======
+
 	
 	
 	//사진 다운로드
@@ -124,5 +119,5 @@ public class SelfGuideController {
 		
 	}
 	
->>>>>>> branch 'master' of https://github.com/mw7895la/TeamProject
+
 }
