@@ -66,7 +66,7 @@
               </div>
 
               <div class="read-more" >
-                <a href="blog-single.html" class="btn btn-sm">
+                <a href="<%=application.getContextPath() %>/community/comm_writeFrom" class="btn btn-sm">
                   <h3 class="sidebar-title">Write</h3>
                 </a>
               </div>
