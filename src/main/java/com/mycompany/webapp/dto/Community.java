@@ -3,124 +3,105 @@ package com.mycompany.webapp.dto;
 public class Community {
 
 //Community_reply
-	private int CR_CNUMBER;	//Community넘버	 //커뮤니티 넘버 참조 
-	private int CR_RDATE;	//리플시간
-	private int CR_RNUMBER; // 리플 넘버
-	private String CR_RCONTENT; // 리플 내용
-	private String CR_MIMAGE;// 리플 이미지 //멤버이미지 참조
-	private String CR_RMNIKNAME; // 리플 작성자 //멤머닉네임 참조
+	private int cr_cnumber;	//Community넘버	 //커뮤니티 넘버 참조 
+	private int cr_rdate;	//리플시간
+	private int cr_rnumber; // 리플 넘버
+	private String cr_rcontent; // 리플 내용
+	private String cr_mimage;// 리플 이미지 //멤버이미지 참조
+	private String cr_rmnickname;// 리플 작성자 //멤머닉네임 참조
 
 //Community	
-	private String C_MNICKNAME; //작성자 // 멤버 닉네임 참조
-	private String C_CONTENT; // 커뮤니티 내용
-	private String C_TILTLE; // 커뮤니티 타이틀
-	private String C_IMAGE; // 커뮤니티 사진 
-	private int C_COUNT; // 조회수 
-	private int C_NUMBER; //커뮤니티 넘버
-	private int C_DATE; // 커뮤니티 시간 
-
-	public String getCR_RMNIKNAME() {
-		return CR_RMNIKNAME;
+	private String c_mnickname; //작성자 // 멤버 닉네임 참조
+	private String c_content;// 커뮤니티 내용
+	private String c_title;// 커뮤니티 타이틀
+	private String c_image;// 커뮤니티 사진 
+	private int c_count;// 조회수 
+	private int c_number;//커뮤니티 넘버
+	private int c_date;// 커뮤니티 시간 
+	
+	
+	
+	
+	public int getCr_cnumber() {
+		return cr_cnumber;
 	}
-
-	public void setCR_RMNIKNAME(String cR_RMNIKNAME) {
-		CR_RMNIKNAME = cR_RMNIKNAME;
+	public void setCr_cnumber(int cr_cnumber) {
+		this.cr_cnumber = cr_cnumber;
 	}
-
-	public int getCR_CNUMBER() {
-		return CR_CNUMBER;
+	public int getCr_rdate() {
+		return cr_rdate;
 	}
-
-	public void setCR_CNUMBER(int cR_CNUMBER) {
-		CR_CNUMBER = cR_CNUMBER;
+	public void setCr_rdate(int cr_rdate) {
+		this.cr_rdate = cr_rdate;
 	}
-
-	public String getCR_MIMAGE() {
-		return CR_MIMAGE;
+	public int getCr_rnumber() {
+		return cr_rnumber;
 	}
-
-	public void setCR_MIMAGE(String cR_MIMAGE) {
-		CR_MIMAGE = cR_MIMAGE;
+	public void setCr_rnumber(int cr_rnumber) {
+		this.cr_rnumber = cr_rnumber;
 	}
-
-	public int getCR_RDATE() {
-		return CR_RDATE;
+	public String getCr_rcontent() {
+		return cr_rcontent;
 	}
-
-	public void setCR_RDATE(int cR_RDATE) {
-		CR_RDATE = cR_RDATE;
+	public void setCr_rcontent(String cr_rcontent) {
+		this.cr_rcontent = cr_rcontent;
 	}
-
-	public String getCR_RCONTENT() {
-		return CR_RCONTENT;
+	public String getCr_mimage() {
+		return cr_mimage;
 	}
-
-	public void setCR_RCONTENT(String cR_RCONTENT) {
-		CR_RCONTENT = cR_RCONTENT;
+	public void setCr_mimage(String cr_mimage) {
+		this.cr_mimage = cr_mimage;
 	}
-
-	public int getCR_RNUMBER() {
-		return CR_RNUMBER;
+	public String getCr_rmnickname() {
+		return cr_rmnickname;
 	}
-
-	public void setCR_RNUMBER(int cR_RNUMBER) {
-		CR_RNUMBER = cR_RNUMBER;
+	public void setCr_rmnickname(String cr_rmnickname) {
+		this.cr_rmnickname = cr_rmnickname;
 	}
-
-	public String getC_MNICKNAME() {
-		return C_MNICKNAME;
+	public String getC_mnickname() {
+		return c_mnickname;
 	}
-
-	public void setC_MNICKNAME(String c_MNICKNAME) {
-		C_MNICKNAME = c_MNICKNAME;
+	public void setC_mnickname(String c_mnickname) {
+		this.c_mnickname = c_mnickname;
 	}
-
-	public String getC_CONTENT() {
-		return C_CONTENT;
+	public String getC_content() {
+		return c_content;
 	}
-
-	public void setC_CONTENT(String c_CONTENT) {
-		C_CONTENT = c_CONTENT;
+	public void setC_content(String c_content) {
+		this.c_content = c_content;
 	}
-
-	public int getC_COUNT() {
-		return C_COUNT;
+	public String getC_title() {
+		return c_title;
 	}
-
-	public void setC_COUNT(int c_COUNT) {
-		C_COUNT = c_COUNT;
+	public void setC_title(String c_title) {
+		this.c_title = c_title;
 	}
-
-	public String getC_TILTLE() {
-		return C_TILTLE;
+	public String getC_image() {
+		return c_image;
 	}
-
-	public void setC_TILTLE(String c_TILTLE) {
-		C_TILTLE = c_TILTLE;
+	public void setC_image(String c_image) {
+		this.c_image = c_image;
 	}
-
-	public int getC_NUMBER() {
-		return C_NUMBER;
+	public int getC_count() {
+		return c_count;
 	}
-
-	public void setC_NUMBER(int c_NUMBER) {
-		C_NUMBER = c_NUMBER;
+	public void setC_count(int c_count) {
+		this.c_count = c_count;
 	}
-
-	public int getC_DATE() {
-		return C_DATE;
+	public int getC_number() {
+		return c_number;
 	}
-
-	public void setC_DATE(int c_DATE) {
-		C_DATE = c_DATE;
+	public void setC_number(int c_number) {
+		this.c_number = c_number;
 	}
-
-	public String getC_MIMAGE() {
-		return C_IMAGE;
+	public int getC_date() {
+		return c_date;
 	}
-
-	public void setC_MIMAGE(String c_IMAGE) {
-		C_IMAGE = c_IMAGE;
+	public void setC_date(int c_date) {
+		this.c_date = c_date;
 	}
+	
+
+	
 
 }
