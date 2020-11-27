@@ -42,26 +42,26 @@ public class SelfGuideController {
 	}
 	
 	//셀프 가이드에 사진 올리기
-	@GetMapping("/selftwrite")
-	public String selfwriteForm() {
-		return "guide/selfguide-write";
-	}
+	/*	@GetMapping("/selfwrite")
+		public String selfwriteForm() {
+			return "guide/selfguide-write";
+		}*/
 	
 	
-	@PostMapping("/selfwrite")
-	public String selfwritePhoto(SelfGuide sg,HttpSession session) {
-		
-		Member member = (Member) session.getAttribute("member");
-		String swriter = member.getMemail();
-		
-		sg.setSwriter(swriter);
-		
-		
-		
-		return "";
-		
-		
-	}
+	/*	@PostMapping("/selfwrite")
+		public String selfwritePhoto(SelfGuide sg,HttpSession session) {
+			
+			Member member = (Member) session.getAttribute("member");
+			String swriter = member.getMemail();
+			
+			sg.setSwriter(swriter);
+			
+			
+			
+			return "";
+			
+			
+		}*/
 	
 	
 	//셀프 가이드 리스트 페이징 해서 보이도록
