@@ -34,7 +34,7 @@
              <ul class="nav" >
 
               <li class="nav-item col-md-2 ">
-               <a  href="">
+               <a  href="<%=application.getContextPath()%>/selfguide/selfdetail">
                 <div class="jb-wrap">
 					<div class="jb-image"><img src="<%=application.getContextPath() %>/resources/img/all.png" alt=""></div>
 					<div class="jb-text">
