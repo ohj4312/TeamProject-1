@@ -62,6 +62,7 @@
         	<sec:authorize access="isAnonymous()">
           		<li><a href="<%=application.getContextPath()%>/member/login">Login</a></li>
           		<li><a href="<%=application.getContextPath()%>/member/join">Register</a></li>
+          		
           	</sec:authorize>
           	<sec:authorize access="isAuthenticated()">
           		<li><a href="<%=application.getContextPath()%>/member/mypage">Mypage</a></li>

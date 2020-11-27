@@ -185,8 +185,8 @@ public class PhotoController {
 		
 	}
 	
-	@RequestMapping("/SelfGuide")
+	@GetMapping("/SelfGuide")
 	public String SelfGuide() {
-		return "photo/selfguide";
+		return "photo/selfguidelist";
 	}
 }
