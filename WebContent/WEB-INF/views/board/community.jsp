@@ -35,7 +35,7 @@
   ======================================================== -->
 	
 	</head>
-	<body>
+	<body> 
 	 
 	 <jsp:include page="/WEB-INF/views/include/Header.jsp"/>
 	 
