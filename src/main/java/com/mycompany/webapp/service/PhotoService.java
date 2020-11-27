@@ -73,5 +73,10 @@ public class PhotoService {
 		return photoDAO.selectByPage(pager);
 	}
 
+	public List<Register_photo> getPhotoList(Register_photo photo) {
+		// TODO Auto-generated method stub
+		return photoDAO.selectByPage(photo);
+	}
+
 
 }
