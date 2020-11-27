@@ -74,15 +74,14 @@ public class SelfGuideController {
 	
 	//셀프 가이드 리스트에서 한 게시물 선택시 상세 뷰.
 	@GetMapping("/selfdetail")
-	public String selfphotoDetail(int snumber, Model model) {
-		logger.info(String.valueOf(snumber));
-		
-		SelfGuide sg = service.selectSelfPhoto(snumber);
-		
-		logger.info(sg.getStype());
-		logger.info(sg.getSwriter());
-		logger.info("이미지"+sg.getSimage());
-		model.addAttribute("sg",sg);
+	public String selfphotoDetail() {
+		//logger.info(String.valueOf(snumber));
+		//SelfGuide sg = service.selectSelfPhoto(snumber);
+		//logger.info(sg.getStype()); 
+		//logger.info(sg.getSwriter());
+		//logger.info("이미지"+sg.getSimage()); 
+		//model.addAttribute("sg",sg);
+		 
 		return "guide/selfguide-detail";
 	}
 	
