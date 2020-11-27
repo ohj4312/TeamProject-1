@@ -45,11 +45,11 @@
   
   <section id="portfolio" class="portfolio section">
       <div id = "listappend" class="container mt-5">
-      		<p><h2 style="font-size:3vw">셀프 인테리어 가이드북 </h2></p><br/>
+      		<p><h2 style="font-size:2vw">셀프 인테리어 가이드북 </h2></p><br/>
       		
       		<img style="width:100%; height:200px;"src="https://image.ohou.se/i/bucketplace-v2-development/uploads/advices/guides/self_interior/pc_banner_image.v3.png?gif=1&w=1280&webp=1"/>
       		<p></p>
-        <div id="addtag" class="row col-md-12 mb-4">
+        <div id="addtag" style="width:100%;" class="row col-md-12 mb-4">
 			<jsp:include page="/WEB-INF/views/guide/selfguideFilter.jsp"/>
         </div>
 
