@@ -17,10 +17,13 @@ public class SelfGuideController {
 	@Resource
 	private SelfGuideController service;
 	
+	@GetMapping("/selfguide-write")
+	public String selfguideWrite() {
+		return "guide/selfguide-write";
+	}
 	
-	
-	
-	
-	
-	
+	@GetMapping("/selfguidelist")
+	public String selfguidelist() {
+		return "guide/selfguidelist";
+	}
 }
