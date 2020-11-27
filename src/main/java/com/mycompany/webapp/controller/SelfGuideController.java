@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletContext;
@@ -48,6 +49,7 @@ public class SelfGuideController {
 	}
 	
 	
+	
 	@PostMapping("/selfwrite")
 	public String selfwritePhoto(SelfGuide sg,HttpSession session) {
 		
@@ -63,13 +65,19 @@ public class SelfGuideController {
 		
 	}
 	
-	
+	//  /selfguide/selflist
 	//셀프 가이드 리스트 페이징 해서 보이도록
 	@RequestMapping("/selflist")
 	public String selfphotoList(Model model,@RequestParam(defaultValue = "1") int pageNo, HttpSession session) {
+		Member member = (Member) session.getAttribute("member");
+		List<SelfGuide> list;
 		
+		int rows = service.getRows();
+		logger.info(String.valueOf(rows));
+		String returnurl;
+		model.addAttribute("rows",rows);
+		return "guide/selfguidelist";
 		
-		return "";
 	}
 	
 	//셀프 가이드 리스트에서 한 게시물 선택시 상세 뷰.

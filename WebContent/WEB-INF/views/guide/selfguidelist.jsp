@@ -91,6 +91,16 @@
 	   });
 			    
 	});
+	function pagingList(){
+	  $.ajax({
+			url : "<%=application.getContextPath()%>/selfguide/selflist",
+			method: "get",
+			success:function(data){
+				console.log("rows값 리턴까지 성공");
+			}
+		});
+	}
+	
 	</script>
 
   <!-- ======= script ======= -->
