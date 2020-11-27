@@ -6,9 +6,16 @@ public class Qna {
 	private int qnumber;
 	private String qtitle;
 	private Date	qdate;
-	private String qcontet;
-	private String qnickname;
+	private String qcontent;
+	private String mnickname;
+	private String answer;
 	
+	public String getAnswer() {
+		return answer;
+	}
+	public void setAnswer(String answer) {
+		this.answer = answer;
+	}
 	public int getQnumber() {
 		return qnumber;
 	}
@@ -28,15 +35,16 @@ public class Qna {
 		this.qdate = qdate;
 	}
 	public String getQcontet() {
-		return qcontet;
+		return qcontent;
 	}
 	public void setQcontet(String qcontet) {
-		this.qcontet = qcontet;
+		this.qcontent = qcontet;
 	}
-	public String getQnickname() {
-		return qnickname;
+	public String getMnickname() {
+		return mnickname;
 	}
-	public void setQnickname(String qnickname) {
-		this.qnickname = qnickname;
+	public void setMnickname(String mnickname) {
+		this.mnickname = mnickname;
 	}
+	
 }

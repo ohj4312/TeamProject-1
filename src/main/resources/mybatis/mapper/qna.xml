@@ -1,3 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="mybatis.mapper.qna"></mapper>
+<mapper namespace="mybatis.mapper.qna">
+	
+	<select id="selectAll" resultType="qna">
+		select qnumber, qtitle, qdate, qcontent, mnickname, answer from qna order by qdate desc
+	</select>
+	
+	<select id="selectByPage" parameterType="pager" resultType="qna">
+		select rnum, qnumber, qtitle, qdate, qcontent, mnickname, answer
+		from(
+			select rownum as rnum, qnumber, qtitle, qdate, qcontent, mnickname, answer
+			from(
+					select qnumber, qtitle, qdate, qcontent, qna.mnickname, answer
+					from qna, member
+					where qna.mnickname = member.mnickname
+					order by qnumber desc
+			)
+			where rownum &lt;= #{endRowNo}
+		)
+		where rnum &gt;= #{startRowNo}
+	</select>
+	
+	<select id="countAll" resultType="int">
+		select count(*) from qna
+	</select>
+	
+	<insert id="insert" parameterType="qna">
+		insert into qna (qnumber, qtitle, qdate, qcontent, mnickname)
+		values (seq_qnumber.nextval, #{qtitle}, sysdate, #{qcontent}, #{mnickname})
+	</insert>
+</mapper>
