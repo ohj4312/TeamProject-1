@@ -79,20 +79,42 @@
           <div id="head" class="col-md-4">
 			<div class= "container" style="text-align: center;">
 				<div class="row mx-auto">
-				<button id="likepush" type="button" class="btn btn-light col-4" style=" box-shadow:none;" onclick="">
-              		<span id="likepush"class="material-icons">favorite_border</span>
-              	</button>        
-				
-	            <a id="RegBookMark" class="btn btn-light col-4" style=" box-shadow:none;" onclick="javascript:RegBookMark()">
-					<span id="RegBookMark"class="material-icons">bookmark_border</span>
-				</a>
-				<a id="follow_check" href="javascript:checkFollow('${photo.pwriter}')" class="btn btn-light btn-sm col-4" role="button" style=" box-shadow:none;">
-					<span id="follow_change" class="mt-3" style="font-size:17px">팔로우</span>
-				</a>		
+		            <div id="RegBookMark" class="col-6">
+						<button  type="button" class="btn btn-light w-100" onclick="toggleUpdate(${photo.pnumber}, '<%=application.getContextPath()%>/BK/CheckBookMark')">
+							<c:if test="${photo.bnumber == 0}">
+								<i id="itag${photo.pnumber}" class="material-icons align-middle" style = " font-size: 30px; color:#1bac91;">bookmark_border</i>
+								<span id = "bkcount" class = "align-middle">${photo.bookcount}</span>
+							</c:if>
+							<c:if test="${photo.bnumber != 0}">
+								<i id="itag${photo.pnumber}" class="material-icons align-middle" style = " font-size: 30px; color:#1bac91;">bookmark</i>
+								<span id = "bkcount" class = "align-middle">${photo.bookcount}</span>
+							</c:if>
+						</button>
+					</div>
+					<div id="likepush" class="col-6">
+						
+	              		<button  type="button" class="btn btn-light w-100" onclick="toggleUpdate(${photo.pnumber}, '<%=application.getContextPath()%>/like/likePushCheck')">
+		            		<c:if test="${photo.likenumber == 0}">
+								<i id="likeicon${photo.pnumber}" class="material-icons align-middle" style = "font-size: 30px; color:red;">favorite_border</i>
+								<span id = "lkcount" class = "align-middle">${photo.likecount}</span>
+							</c:if>
+							<c:if test="${photo.likenumber != 0}">
+								<i id="likeicon${photo.pnumber}" class="material-icons align-middle" style = "font-size: 30px; color:red;">favorite</i>
+								<span id = "lkcount" class = "align-middle">${photo.likecount}</span>
+							</c:if>
+	              		</button>
+	              	</div>
 				</div>
 				
-				<div class="row mx-auto">
-					<div class="card-detail-sidebar__content mx-auto">
+				<div class="row mx-auto mt-5 clearfix">
+					<a class="card-detail-writer__link float-left" href="#">
+		            	<img class="rounded-circle" style="width:50px; height:50px;" src="photodownload?fileName=${photo.mimage}" />
+		            	<span class="card-detail-writer__name">${photo.mnickname}</span>
+		            </a>
+					<a id="follow_check float-right" href="javascript:checkFollow('${photo.pwriter}')" class="btn btn-light btn-sm col-4" role="button" style=" box-shadow:none;">
+						<span id="follow_change" class="mt-3" style="font-size:17px">팔로우</span>
+					</a>	
+					<%-- <div class="card-detail-sidebar__content mx-auto">
 		              <div class="card-detail-writer">
 		                <div class="card-detail-writer__user mt-3">
 		                  <a class="card-detail-writer__link" href="#">
@@ -102,7 +124,7 @@
 		                </div>
 		              </div>
               
-            		</div>
+            		</div> --%>
 				</div>
 				<div id = "acontent"class="row mx-auto">
 					
@@ -231,120 +253,35 @@
 $(document).ready(function(){
 	var pnumber = ${photo.pnumber};
 	replyList(pnumber);
+	
+	//detail_followCheck(pwriter);
 });
+
+function detail_followCheck(pwriter){
+	console.log(pwriter);
+	$.ajax({
+		url:"<%=application.getContextPath()%>/follow/followCheck",
+		data:{pwriter:pwriter},
+		success:function(data) {
+			if(data.result=="success"){
+				$("#follow_check").attr("class","btn btn-info btn-sm col-4");
+				$("#follow_check").attr("href","javascript:cancelFollow('${photo.pwriter}')");
+				$("#follow_change").html("팔로잉");
+			}
+			if(data.result=="fail"){
+				$("#follow_check").attr("class","btn btn-light btn-sm col-4");
+				$("#follow_check").attr("href","javascript:checkFollow('${photo.pwriter}')");
+				$("#follow_change").html("팔로우");
+			}
+		}
+	});
+} 
+
+
 </script>
-  <script type="text/javascript">
+  <%-- 
 				
-				function likepushCheck(){
-					var pnumber = ${photo.pnumber}
-					
-						 $.ajax({
-							 
-							 		url:"<%=application.getContextPath()%>/like/likePushCheck",
-									method : "get",
-									data : {pnumber:pnumber},
-									success : function(data) {
-										
-								if (data.result == "success") {							
-									$("#likepush").attr("class", "btn btn-light");
-									$("#likepush").attr("onclick","likePush()");
 				
-								} else {									
-									$("#likepush").attr("class", "btn btn-danger");
-									$("#likepush").attr("onclick","likePushcancel()");
-								}
-				
-							}
-						}); 
-				
-					}
-				
-				function likePushcancel(){		
-							
-					var pnumber = ${photo.pnumber}
-							
-				             	$.ajax({
-									url:"<%=application.getContextPath()%>/like/likePushCancel",
-									method : "get",
-									data : {pnumber:pnumber},
-									success : function(data) {
-										if (data.result == "success") {
-											likepushCheck();												
-												}				
-											}
-										});
-									}
-				
-				function likePush() {				            								
-					var pnumber = ${photo.pnumber}	
-					$.ajax({
-						url:"<%=application.getContextPath()%>/like/likePush",
-						method : "get",
-						data : {pnumber:pnumber},
-						success : function(data) {
-							if (data.result == "success") {
-								likepushCheck();												
-									}				
-								}
-							});
-						} 
-										
-				</script>
-				 <script type="text/javascript">
-              	function CheckBookMark(){
-              		console.log("check로 넘어간 후");
-              		var pnumber = ${photo.pnumber}
-              		$.ajax({
-              			url: "<%=application.getContextPath()%>/BK/CheckBookMark",
-              			data : {pnumber:pnumber},
-              			method: "get",
-              			success: function(data){
-              				
-              				if(data.result== "success"){
-              					$("#RegBookMark").attr("class","btn btn-light");
-              					$("#RegBookMark").attr("onclick","RegBookMark()");
-              				}else{
-              					$("#RegBookMark").attr("class","btn btn-primary");
-              					$("#RegBookMark").attr("onclick","CancelBookMark()");
-              				}
-              			}
-              		});
-              	}
-              
-            	function RegBookMark(){
-            		console.log("실행");
-            		var pnumber = ${photo.pnumber}
-            		
-            		$.ajax({
-            			url : "<%=application.getContextPath()%>/BK/regBookMark",
-            			data: {pnumber: pnumber },
-                		method:"get",
-                		success:function(data){
-                			if(data.result=="success"){
-                				console.log("check 넘어가기 전");
-                				CheckBookMark();
-                			}
-                		}
-            		});		
-            	}
-            
-            	function CancelBookMark(){
-            		console.log("Cancel로 넘어옴");
-            		var pnumber = ${photo.pnumber}
-            		$.ajax({
-                		url:"<%=application.getContextPath()%>/BK/CancelBookMark",
-                		data :{pnumber:pnumber},
-                		method:"get",
-                		success:function(data){
-                			if(data.result == "success"){
-                				CheckBookMark();
-                			}
-                		}
-            		});	
-            	}
-            	
-            	
-            </script>
             <script type="text/javascript">
 
         	function checkFollow(pwriter){
@@ -400,7 +337,7 @@ $(document).ready(function(){
 					followCheck('${photo.pwriter}');
 	 			});
          	
-            </script>
+            </script> --%>
 				
 
 

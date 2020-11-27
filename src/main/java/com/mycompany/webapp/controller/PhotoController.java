@@ -68,6 +68,8 @@ public class PhotoController {
 		for(Register_photo photo: photolist) {
 			logger.info(String.valueOf(photo.getBnumber()));
 			logger.info(String.valueOf(photo.getLikenumber()));
+			logger.info(String.valueOf(photo.getFollowing()));
+			logger.info(photo.getPwriter());
 		}
 		model.addAttribute("list", photolist);
 		
@@ -79,15 +81,22 @@ public class PhotoController {
 	
 	
 	@GetMapping("/detail")
-	public String photoDetail(int pnumber, Model model) {
+	public String photoDetail(int pnumber, Model model, HttpSession session) {
+		Member member = (Member) session.getAttribute("member");
+		
 		logger.info(String.valueOf(pnumber));
-		Register_photo photo = photoService.selectPhoto(pnumber);
-		logger.info(photo.getPsize());
-		logger.info(photo.getPstyle());
-		logger.info(photo.getPtype());
-		logger.info(photo.getPwriter());
-		logger.info("대표이미지"+photo.getFirst_image());
+		Register_photo photo = new Register_photo();
+	
+		photo.setPnumber(pnumber);
+		
+		if(member != null) {
+			photo.setPwriter(member.getMemail());
+		}
+
+		photo = photoService.selectPhoto(photo);
+
 		model.addAttribute("photo", photo);
+
 		return "photo/photo-detail";
 	}
 	
