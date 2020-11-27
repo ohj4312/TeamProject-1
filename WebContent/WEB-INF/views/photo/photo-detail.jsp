@@ -87,8 +87,7 @@
 					<span id="RegBookMark"class="material-icons">bookmark_border</span>
 				</a>
 				<a id="follow_check" href="javascript:checkFollow('${photo.pwriter}')" class="btn btn-light btn-sm col-4" role="button" style=" box-shadow:none;">
-					팔로우
-					${photo.pwriter}
+					<span id="follow_change" class="mt-3" style="font-size:17px">팔로우</span>
 				</a>		
 				</div>
 				
@@ -124,31 +123,11 @@
           		<a href="javascript:photoChange('${photo.aimage}', '${photo.acontent}')"><img src="photodownload?fileName=${photo.aimage}" class= "w-25 h-25"></a>
 			</c:forEach>
 		 </div>
+	</div>
+	
 
-
-      <div class="col-md-8" style="width:100%">
-
-        <div class="input-group mb-3" style="width:100%; float:none; margin:0 auto">
-          <h4>댓글 </h4>
-          <h4 style="color:DodgerBlue">&nbsp;#개</h4>
-        </div>
-      </div>
-      <div class="col-md-8" style="width:100%">
-
-        <div class="input-group mb-3" style="width:100%; float:none; margin:0 auto">
-          <span class="material-icons" style="font-size:45px; color:#4169E1;">
-            face
-          </span>
-          <input type="text" id="rcontent" class="form-control" placeholder="칭찬과 격려는 큰 힘이됩니다!">
-          <div class="input-group-apeend">
-	           <c:if test="${member.memail != null}">
-	            <a class="btn btn-outline btn-primary" href="javascript:replyWrite(${photo.pnumber })">등록</a>
-	            </c:if>
-          </div>
-        </div>
-      </div>
-    </div>
-
+	
+	
 
     <div class="container">
       <div id="reply_result" style="margin-top:30px">
@@ -248,6 +227,12 @@
   <!-- Template Main JS File -->
   <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>
 
+<script>
+$(document).ready(function(){
+	var pnumber = ${photo.pnumber};
+	replyList(pnumber);
+});
+</script>
   <script type="text/javascript">
 				
 				function likepushCheck(){
@@ -361,8 +346,7 @@
             	
             </script>
             <script type="text/javascript">
-            var pwi
-			
+
         	function checkFollow(pwriter){
 				$.ajax({
 					url:"<%=application.getContextPath()%>/follow/checkFollow",
@@ -370,6 +354,7 @@
 					success:function(data) {
 						$("#follow_check").attr("class","btn btn-info btn-sm col-4");
 						$("#follow_check").attr("href","javascript:cancelFollow('${photo.pwriter}')");
+						$("#follow_change").html("팔로잉");
 					}
 				});
 			}
@@ -383,10 +368,12 @@
 						if(data.result=="success"){
 							$("#follow_check").attr("class","btn btn-info btn-sm col-4");
 							$("#follow_check").attr("href","javascript:cancelFollow('${photo.pwriter}')");
+							$("#follow_change").html("팔로잉");
 						}
 						if(data.result=="fail"){
 							$("#follow_check").attr("class","btn btn-light btn-sm col-4");
 							$("#follow_check").attr("href","javascript:checkFollow('${photo.pwriter}')");
+							$("#follow_change").html("팔로우");
 						}
 					}
 				});
@@ -402,6 +389,7 @@
 					success:function(data) {
 						$("#follow_check").attr("class","btn btn-light btn-sm col-4");
 						$("#follow_check").attr("href","javascript:checkFollow('${photo.pwriter}')");
+						$("#follow_change").html("팔로우");
 					}
 				});
         	}

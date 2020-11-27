@@ -45,6 +45,7 @@ public class PhotoService {
 
 	public Register_photo selectPhoto(int pnumber) {
 		List<A_photo> aphotos = photoDAO.selectAphotoList(pnumber);
+		
 		for(A_photo photo: aphotos) {
 			logger.info(photo.getAcontent());
 			logger.info(photo.getAimage());
@@ -55,6 +56,9 @@ public class PhotoService {
 		
 		}
 		Register_photo photo = photoDAO.selectRegPhoto(pnumber);
+		int hitcount = photo.getPhit_count();
+		photo.setPhit_count(hitcount+1);
+		photoDAO.updateHitCount(photo);
 		photo.setList(aphotos);
 		
 		return photo;
@@ -67,6 +71,11 @@ public class PhotoService {
 	public List<Register_photo> getPhotoList(Pager pager) {
 		
 		return photoDAO.selectByPage(pager);
+	}
+
+	public List<Register_photo> getPhotoList(Register_photo photo) {
+		// TODO Auto-generated method stub
+		return photoDAO.selectByPage(photo);
 	}
 
 

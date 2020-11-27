@@ -34,28 +34,7 @@ import com.mycompany.webapp.service.BookMarkService;
 @RequestMapping("/BK")
 public class BookMarkController {
 	private static final Logger logger = LoggerFactory.getLogger(BookMarkController.class);
-	
-	@Resource
-	private DataSource dataSource;
-	
-	@GetMapping("/connTest")
-	public String connTest() {
-		try {
-			//연결 객체 요청
-			Connection conn=dataSource.getConnection();		//connection tool에서 하나 가져와서 SQL에 전송 및 실행하겠다는것.
-			
-			//연결 객체 반납
-			conn.close();
-			
-			//로그 출력
-			logger.info("연결 객체를 성공적으로 대여후 반납");
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return "photo/photo-detail";
-	}
-	
+
 	//서비스 주입 받음.
 	@Resource
 	private BookMarkService service;
@@ -117,6 +96,7 @@ public class BookMarkController {
 	}
 	
 	
+	
 	@GetMapping("/CheckBookMark")
 	public void CheckBookMark(int pnumber, HttpSession session, HttpServletResponse response ) throws Exception {
 		
@@ -131,27 +111,28 @@ public class BookMarkController {
 		
 		int check = service.CheckBookMark(pb);
 		logger.info(String.valueOf(check));
+		
 		if(check ==0) {
-			jsonObject.put("result", "success");
-			String json = jsonObject.toString();
-			// 응답보내기
-			PrintWriter out = response.getWriter();
-			response.setContentType("application/json;charset=utf-8");
-			out.println(json);
-			out.flush();
-			out.close();
+			service.Register(pb);
+			jsonObject.put("result", "bookmarksuccess");
 		}else {
-			jsonObject.put("result", "failure");
-			String json = jsonObject.toString();
-			// 응답보내기
-			PrintWriter out = response.getWriter();
-			response.setContentType("application/json;charset=utf-8");
-			out.println(json);
-			out.flush();
-			out.close();
+			service.CancelBookMark(pb);
+			jsonObject.put("result", "bookmarkfailure");
 		}
+		
+		String json = jsonObject.toString();
+		// 응답보내기
+		PrintWriter out = response.getWriter();
+		response.setContentType("application/json;charset=utf-8");
+		out.println(json);
+		out.flush();
+		out.close();
 	}
 	
+	@GetMapping("/Return")
+	public void Return() {
+		
+	}
 	
 	
 	
@@ -162,15 +143,15 @@ public class BookMarkController {
 		//여기의 pnumber가  A_Photo의 register_number와  같다.
 		//pnumber == register_number
 		//Aphoto의 사진만 일단 먼저 출력해보자  
-
+		
 		Member member = (Member) session.getAttribute("member"); 
 		String memail =	member.getMemail();
-		
-		 
 		
 		
 		
 		List<Register_photo> list = service.getBookMarkList(memail);
+		
+		
 		
 		model.addAttribute("list",list);
 		
@@ -226,7 +207,10 @@ public class BookMarkController {
 
 	
 	
-	
+	@GetMapping("/returnmypage")
+	public String returnmypage() {
+		return "member/returnmypage";
+	}
 	
 	
 }

@@ -23,8 +23,36 @@ public class Post_reply {
 	private MultipartFile rimageAttach;
 	
 	private String mnickname;
+	private int startRowNo; 	//페이지의 시작 행 번호
+	private int endRowNo; 		//페이지의 끝 행 번호
+	
+	private int count;
 	
 
+	
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+
+	public int getStartRowNo() {
+		return startRowNo;
+	}
+
+	public void setStartRowNo(int startRowNo) {
+		this.startRowNo = startRowNo;
+	}
+
+	public int getEndRowNo() {
+		return endRowNo;
+	}
+
+	public void setEndRowNo(int endRowNo) {
+		this.endRowNo = endRowNo;
+	}
 
 	public String getMnickname() {
 		return mnickname;

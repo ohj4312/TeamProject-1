@@ -52,8 +52,9 @@
 
         </div>
 
-      
+      <div id = "12345" class="row portfolio-container abcd" data-aos="fade-up">
         <jsp:include page="/WEB-INF/views/include/photos.jsp"/>
+       </div>
         
 
       </div>
@@ -139,92 +140,43 @@
   <!-- Vendor JS Files -->
    <script src="<%=application.getContextPath() %>/resources/vendor/jquery/jquery.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="<%=application.getContextPath() %>/resources/vendor/jquery.easing/jquery.easing.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/php-email-form/validate.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/owl.carousel/owl.carousel.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/venobox/venobox.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/aos/aos.js"></script>
+  <script src="<%=application.getContextPath() %>/resources/vendor/jquery.easing/jquery.easing.min.js"></script>
 
   <!-- Template Main JS File -->
   <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>
-  
-  <script type="text/javascript">
 
-		 
-		function getList(page){
-			
-			$.ajax({
-				type : 'POST',
-				url:"list",
-				data: {"pageNo" : page},
-				success : function(data) {
-					$("#listappend").append(data);
-		       		},
-		       error:function(e){
-		           if(e.status==300){
-		               alert("데이터를 가져오는데 실패하였습니다.");
-		           };
-		       }
-			});
-		}
-</script>
 	<script type="text/javascript">
-				
-				function likepushCheckIcons(pnumber){														 
-					$.ajax({
-							 
-							 		url:"<%=application.getContextPath()%>/like/likePushCheck",
-									method : "get",
-									data : {pnumber:pnumber},
-									success : function(data) {
-										
-								if (data.result == "success") {									
-									
-									$("#likeicon"+pnumber).html("favorite_border");
-									$("#likeicon"+pnumber).attr("style","");
-									$("#likepush"+pnumber).attr("href","javascript:likePush("+pnumber+")");
-									
-				
-								} else {									
-									$("#likeicon"+pnumber).html("favorite");
-									$("#likeicon"+pnumber).attr("style","color: red");
-									
-									$("#likepush"+pnumber).attr("href","javascript:likePushcancel("+pnumber+")");
-								}
-				
-							}
-						}); 
-				
-					}				
-				function likePushcancel(pnumber){																					
-				             	$.ajax({
-									url:"<%=application.getContextPath()%>/like/likePushCancel",
-									method : "get",
-									data : {pnumber:pnumber},
-									success : function(data) {
-										if (data.result == "success") {
-											likepushCheckIcons(pnumber)												
-												}				
-											}
-										});
-									}				
-				function likePush(pnumber) {				            								
-					
-					$.ajax({
-						url:"<%=application.getContextPath()%>/like/likePush",
-				method : "get",
-				data : {pnumber : pnumber},
-				success : function(data) {
-					if (data.result == "success") {						
-						likepushCheckIcons(pnumber);
-					}
-				}
-			});
-		}
+			//리스트 페이징 처리
+			var page = 2;
+			  $(function(){
+			      $(window).scroll(function(){
+			          var $window = $(this);
+			          var scrollTop = $window.scrollTop();
+			          var windowHeight = $window.height();
+			          var documentHeight = $(document).height();
+			          
+			          //console.log("documentHeight:" + documentHeight + " | scrollTop:" + scrollTop + " | windowHeight: " + windowHeight );
+			          
+			          if( scrollTop + windowHeight + 1000 > documentHeight ){
+			        	  getList(page);
+			        	  
+				           page++; 
+							console.log(page);
+			
+			            }   
+			          
+			   });
+					    
+			});		
+		
 	</script>
 
-
+ 
 </body>
 
 </html>

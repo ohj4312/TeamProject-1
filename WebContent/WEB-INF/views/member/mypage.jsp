@@ -60,11 +60,34 @@
 
           <div class="col-lg-5 mr-3">
         		<div class="user-profile mt-5" style="border:1px solid #dadce0; ">
-        			<div class="user-profile__container">
+        			<div class="user-profile__container"> 
         				<div class="user-profile__profile-image" style="text-align: center;">
-                  <img class="rounded-circle mt-3" width="53%"; height="53%"; src="<%=application.getContextPath() %>/resources/img/person_1.jpg">
+                  <a href="javascript:Return()"><img class="rounded-circle mt-3" width="53%" height="53%" src="<%=application.getContextPath()%>/resources/img/person_1.jpg"></a>
         					<div class="profile-info__name mt-2">
         						<span>${member.mnickname}</span>
+        						<div>
+        						 <a class="btn btn-info btn-sm" href="javascript:getfollowList()">팔로워</a>
+        						 <a class="btn btn-info btn-sm" href="javascript:getfollowingList()">팔로잉</a>
+        						</div>
+        							<script>
+										function getfollowList(){
+											$.ajax({
+												url:"<%=application.getContextPath()%>/follow/followList", 
+												success:function(data) {
+													$("#photoList").html(data);
+												}
+											});
+										} 
+										
+										function getfollowingList(){
+											$.ajax({
+												url:"<%=application.getContextPath()%>/follow/followingList",
+												success:function(data) { 
+													$("#photoList").html(data);
+												}
+											});
+										} 
+        							</script>
         						<hr/>
         					</div>
         				</div>
@@ -76,7 +99,24 @@
 								<div><small>스크랩북</small></div>
        						</a>
         				</div>
+        				
         				<script type="text/javascript">
+        						
+        					  function Return(){
+        						
+        						$.ajax({  
+        						url : "<%=application.getContextPath()%>/BK/returnmypage",
+        				 						
+        						success : function(data){
+        							console.log("return 스크립트 넘어옴.");
+        							$("#photoList").html(data);
+        						}
+        						});
+        					}  
+        				
+        				
+        				
+        				        				
         					function GetBookMarkList(){
         						console.log("리스트 불러오기");
         						
@@ -87,7 +127,7 @@
         							success : function(data){
         								console.log("함수 안에부분 실행");
         								
-        								$("#BookMarkList").html(data);
+        								$("#photoList").html(data);
         							}
         						});
         					}
@@ -135,7 +175,7 @@
             <iframe style="border:0; width: 100%; height: 270px;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" allowfullscreen></iframe>
           </div> -->
 
-          <div class="col-lg-5">
+          <div class="col-lg-5 mr-3">
         		<div id="photoList" class="contents">
         			<section class="post post--cards">
         				<h5><strong>사진</strong></h5>
@@ -145,15 +185,14 @@
                           <a class="post__upload" href="#"> 첫 번째 사진을 올려보세요</a>
                     </div>
                 </div>  
-                <div id="BookMarkList"></div>
-        			</section>
-        		
-        		
+                	</section>
+        			
         		</div>
+        		
+        		
+        		
         	</div> 
-
-			
-
+        	
         </div>
 
       </div>

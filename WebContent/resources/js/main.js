@@ -44,7 +44,7 @@
   // Activate smooth scroll on page load with hash links in the url
   $(document).ready(function() {
 
-    // console.log("실행");
+    console.log("ready실행");
     // $cloneform = $("#cloneForm").clone();
 
     if (window.location.hash) {
@@ -196,9 +196,24 @@
 })(jQuery);
 
 //===========================노성규==============================
-var filterCon;
+var filterCon = '';
+var pstyle = '';
+var ptype = '';
+var psize = '';
 function addTag(btncon, btnid) {
-  var button = $('<button type = "button" onclick="removeTag(' + btnid + ');"'+
+	switch (btnid){
+    case 'type' :
+        ptype = '.'+btncon;
+        break;
+    case 'size' :
+        psize = '.'+btncon;
+        break;
+    case 'style' :
+        pstyle = '.'+btncon;
+        break;
+	}
+
+  var button = $('<button type = "button" onclick="removeTag(\''+ btnid +'\');"'+
 				'id = "' + btnid + '"class = "btn btn-outline-primary btn-sm mr-2">' 
 				+ btncon + '<i class="material-icons" style="font-size: x-small;">close</i></button>');
 				
@@ -209,13 +224,48 @@ function addTag(btncon, btnid) {
   } else {
     $("#addtag").append(button);
   }
-	filterCon += btncon;
+	filterCon = pstyle+ptype+psize;
 	console.log(filterCon);
+	
+
+	var portfolioIsotope = $('.portfolio-container').isotope({
+              itemSelector: '.portfolio-item',
+              layoutMode: 'fitRows'
+            });
+          
+         portfolioIsotope.isotope({
+              filter: filterCon
+            });
 }
 
 function removeTag(removeID) {
-  var removeID1 = '#' + removeID;
-  $(removeID1).remove();
+	switch (removeID){
+    case 'type' :
+        ptype = '';
+        break;
+    case 'size' :
+        psize = '';
+        break;
+    case 'style' :
+        pstyle = '';
+        break;
+	}
+	filterCon = pstyle+ptype+psize;
+	console.log(filterCon);
+  	var removeID1 = '#' + removeID;
+  	$(removeID1).remove();
+
+	
+
+	var portfolioIsotope = $('.portfolio-container').isotope({
+              itemSelector: '.portfolio-item',
+              layoutMode: 'fitRows'
+            });
+          
+         portfolioIsotope.isotope({
+              filter: filterCon
+            });
+	
 }
 
 $("input:file").on('change', function(e){
@@ -288,37 +338,9 @@ function removeform(idnum){
 	
 }
 
-  var page = 2;
-  $(function(){
-      $(window).scroll(function(){
-          var $window = $(this);
-          var scrollTop = $window.scrollTop();
-          var windowHeight = $window.height();
-          var documentHeight = $(document).height();
-          
-          //console.log("documentHeight:" + documentHeight + " | scrollTop:" + scrollTop + " | windowHeight: " + windowHeight );
-          
-          if( scrollTop + windowHeight + 1000 > documentHeight ){
-        	  getList(page);
-	           page++; 
-            }
-          
-          var portfolioIsotope = $('.portfolio-container').isotope({
-              itemSelector: '.portfolio-item',
-              layoutMode: 'fitRows'
-            });
-          
-          portfolioIsotope.isotope({
-              filter: '*'
-            }); 
-          
-          
-   })
-		    
-})
+  
 
-
-/*function photoChange(aimage, acontent){
+function photoChange(aimage, acontent){
 	
 	var imagepath = 'photodownload?fileName='+aimage;
 	console.log(imagepath);
@@ -327,51 +349,133 @@ function removeform(idnum){
 	$('#acontent').html(acontent);
 	
 }
-*/
+function writePhoto(){
+	var result = 0;
+			if($('#psize').val() == '평수'){
+						$('#psize').attr('style', 'border-color: red;');
+					}else{
+						$('#psize').attr('style', 'height: auto;');
+					}
+
+					if($('#ptype').val() == '주거형태'){
+						$('#ptype').attr('style', 'border-color: red;');
+					}else{
+						$('#ptype').attr('style', 'height: auto;');
+					}
+
+					if($('#pstyle').val() == '스타일'){
+						$('#pstyle').attr('style', 'border-color: red;');
+					}else{
+						$('#pstyle').attr('style', 'height: auto;');
+					}
 
 
-  // Porfolio isotope and filter
-  $(window).on('load', function() {
-    var portfolioIsotope = $('.portfolio-container').isotope({
-      itemSelector: '.portfolio-item',
-      layoutMode: 'fitRows'
-    });
-
-    /*$('#portfolio-flters li').on('click', function() {
-      $("#portfolio-flters li").removeClass('filter-active');
-      $(this).addClass('filter-active');
-
-      portfolioIsotope.isotope({
-        filter: '.30평대'
-      });
-      aos_init();
-    });*/
-
-		portfolioIsotope.isotope({
-        filter: '*'
-      });
-
-    // Initiate venobox (lightbox feature used in portofilo)
-    $(document).ready(function() {
-      $('.venobox').venobox();
-    });
-  });
+			if($('#psize').val() == '평수' || $('#ptype').val() == '주거형태' || $('#pstyle').val() == '스타일' ){
 
 
+					result++;
+				}
+
+
+            var list = $('#addDiv > div[style = ""]');
+			for(var i = 0; i < list.length; i++){
+				//아이디 값 받아오기
+				var idkey = '#' + $(list[i]).attr('id');
+				console.log(idkey);
+
+
+				//아이디 값을 이용하여 텍스트 에리어 값 가져오기
+				var textarea = $(idkey + ' textarea');
+				var checktxt = $(textarea[0]).val();
+				console.log(checktxt);
+
+
+				//아이디 값을 이용하여 이미지 소스 가져오기
+				var filevalue = $(idkey + ' input');
+				var checkfile = $(filevalue[0]).val();
+				console.log(checkfile);
+
+
+				//아이디 값을 이용하여 공간을 잘 선택했는지 가져오기
+				var selectvalue = $(idkey + ' select');
+				var checkselect = $(selectvalue[0]).val();
+				console.log(checkselect);
+
+
+				if(checktxt.trim() == ''){
+						$(textarea).attr('style', 'border-color: red;');
+					}else{
+						$(textarea).attr('style', '');
+					}
+
+					if(checkselect == '공간(필수)'){
+						$(selectvalue).attr('style', 'border-color: red;');
+					}else{
+						$(selectvalue).attr('style', 'height: auto;');
+					}
+
+
+				if(checktxt.trim() == '' || checkfile.trim() == '' || checkselect == '공간(필수)' ){
+
+					result++;
+				}
+			}
+
+			if(result > 0){
+					alert("값을 제대로 입력해주세요.");
+					return false;
+			}
+			return true;
+
+        }
+
+
+
+
+		  
+function getList(page){
+			$.ajax({
+				type : 'POST',
+				url:"list",
+				data: {"pageNo" : page},
+				success : function(data) {
+			
+			         
+					$("#12345").append(data);
+					var portfolioIsotope = $('.portfolio-container').isotope({
+			              itemSelector: '.portfolio-item',
+			              layoutMode: 'fitRows'
+			            });
+			          
+			         portfolioIsotope.isotope({
+			              filter: filterCon
+			            });
+					$('.portfolio-container').isotope('reloadItems');
+					
+					
+		       		},
+		       error:function(e){
+		           if(e.status==300){
+		               alert("데이터를 가져오는데 실패하였습니다.");
+		           };
+		       }
+			});
+			
+}
 
 
 //============서윤아=====================================
- $(document).ready(function(){
-	replyList();
-});
+
 	 
-function replyList(pageNo){
+function replyList(pnumber, pageNo){
 	if(!pageNo){
 		pageNo=1;
 	}
+	console.log("replyList:"+pnumber);
+	console.log("replyList:"+pageNo);
 	$.ajax({
 		url:"/teamproject/reply/replyList",
-		data:{pageNo:pageNo},
+		data:{pageNo:pageNo, pnumber:pnumber},
 		success:function(data){
 			$("#reply_result").html(data);
 		}
@@ -381,6 +485,8 @@ function replyList(pageNo){
 function replyWrite(pnumber){
 	var rcontent = $("#rcontent").val().trim();
 	
+	if(rcontent!=""){
+	
 	console.log(pnumber);
 	$.ajax({
 		url:"/teamproject/reply/replyWrite",
@@ -389,23 +495,66 @@ function replyWrite(pnumber){
 		success:function(data){
 			console.log("성공후 실행");
 			if(data.result=="success"){
-				
-				replyList();
+				replyList(pnumber);
 			}
 			$("#reply_result").html(data);
 		}
 	});
+	}
+	else{
+		
+	}
 }
 
-function replyDelete(rnumber){
+function replyDelete(rnumber, pnumber){
 	$.ajax({
 		url:"/teamproject/reply/replyDelete",
-		data:{rnumber:rnumber},
+		data:{rnumber:rnumber, pnumber:pnumber},
 		method:"post",
 		success:function(data){
 			if(data.result=="success"){
-				replyList();
+				console.log("여기는 삭제 창!");
+				replyList(pnumber);
 			}
 		}
+	});
+}
+
+
+//=====================토글 업데이트 및 체크
+//토글 체크 및 업데이트
+function toggleUpdate(pnumber, urlpath){
+	console.log(pnumber);
+	console.log(urlpath);
+	
+	$.ajax({
+		url: urlpath,
+		data: {pnumber: pnumber},
+		success:function(data){ 
+			
+			 if(data.result == "bookmarksuccess"){
+				 
+				console.log("bookmarksuccess");
+				$("#itag"+pnumber).html("bookmark");
+				
+			}else if(data.result == "bookmarkfailure"){
+				
+				console.log("bookmarkfailure");
+				$("#itag"+pnumber).html("bookmark_border");
+				
+			}else if(data.result == "likesuccess"){
+				
+				console.log("likesuccess");
+				$("#likeicon"+pnumber).html("favorite");
+		
+			}else if(data.result == "likefailure"){
+				
+				console.log("likefailure");
+				$("#likeicon"+pnumber).html("favorite_border");
+				
+			}
+			 
+		} 
+			
 	});
 }

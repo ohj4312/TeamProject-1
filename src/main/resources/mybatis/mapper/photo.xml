@@ -8,8 +8,8 @@
 			select SEQ_REGPHOTO_PNUMBER.nextval from dual
 		</selectKey>
 		
-		insert into register_photo (pnumber, REGISTER_PDATE, PHIT_COUNT, PWRITER, PTYPE,PSIZE,PSTYLE, FIRST_IMAGE) 
-		values (SEQ_REGPHOTO_PNUMBER.currval, sysdate, 0, #{pwriter},#{ptype},#{psize},#{pstyle}, #{first_image})
+		insert into register_photo (pnumber, REGISTER_PDATE, PHIT_COUNT, PWRITER, PTYPE,PSIZE,PSTYLE, FIRST_IMAGE, first_content) 
+		values (SEQ_REGPHOTO_PNUMBER.currval, sysdate, 0, #{pwriter},#{ptype},#{psize},#{pstyle}, #{first_image}, #{first_content})
 	</insert>
 	
 	
@@ -40,12 +40,30 @@
 	</select>
 	
 	<select id="selectByPage" resultType="registerPhoto" parameterType="pager">
-		select rnum, pnumber, first_image, PHIT_COUNT, PTYPE, PSIZE, PSTYLE
+		select rnum, pnumber, first_image, PHIT_COUNT, PTYPE, PSIZE, PSTYLE, mnickname, first_content, MIMAGE
 		from(
-		select rownum as rnum, pnumber, first_image, PHIT_COUNT, PTYPE, PSIZE, PSTYLE
-		from (select pnumber, first_image, PHIT_COUNT, PTYPE, PSIZE, PSTYLE from register_photo order by pnumber desc)
+		select rownum as rnum, pnumber, first_image, PHIT_COUNT, PTYPE, PSIZE, PSTYLE, mnickname, first_content, MIMAGE
+		from (
+		select pnumber, first_image, PHIT_COUNT, PTYPE, PSIZE, PSTYLE, mnickname, first_content,MIMAGE
+		from register_photo r, member m
+		where r.PWRITER = m.MEMAIL order by pnumber desc)
 		where rownum &lt;= #{endRowNo}
 		)
 		where rnum &gt;= #{startRowNo} 
 	</select>
+	
+	<select id="selectCheckByPageList" resultType="registerPhoto" parameterType="registerPhoto">
+		select rnum, pnumber , first_image, PHIT_COUNT, PTYPE, PSIZE, PSTYLE, mnickname, first_content,MIMAGE, bnumber, LIKENUMBER
+		from( select rownum as rnum, list.pnumber, first_image, PHIT_COUNT, PTYPE, PSIZE, PSTYLE,  mnickname, first_content, MIMAGE, bnumber, LIKENUMBER
+		from ( select pnumber, first_image, PHIT_COUNT, PTYPE, PSIZE, PSTYLE, mnickname, first_content,MIMAGE
+		from register_photo r, member m
+		where r.PWRITER = m.MEMAIL 
+		order by pnumber desc) list, (select * from post_bookmark where memail = #{pwriter}) pb, (select * from post_like where memail = #{pwriter}) pl 
+		where rownum &lt;= #{endRowNo} and list.pnumber = pb.pnumber(+) and list.pnumber = pl.pnumber(+)) 
+		where rnum &gt;= #{startRowNo} 
+	</select>
+	
+	<update id="updateHitCount" parameterType="registerPhoto">
+		UPDATE REGISTER_PHOTO SET PHIT_COUNT = #{phit_count} WHERE PNUMBER = #{pnumber}
+	</update>
 </mapper>
