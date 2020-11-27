@@ -34,7 +34,7 @@
             
 		
               
-               <a class=" col-md-2" href="">
+               <a class="col-md-2" href="">
                 <div class="jb-wrap">
 					<div class="jb-image"><img src="<%=application.getContextPath() %>/resources/img/all.png" alt=""></div>
 					<div class="jb-text">
