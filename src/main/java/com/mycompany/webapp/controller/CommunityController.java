@@ -4,19 +4,23 @@ import java.io.File;
 import java.util.Date;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.mycompany.webapp.dto.A_photo;
+import com.mycompany.webapp.dto.Community;
+import com.mycompany.webapp.dto.Member;
 import com.mycompany.webapp.service.CommunityService;
 
 @Controller
 @RequestMapping("/community")
 public class CommunityController {
-
+	private final Logger logger=LoggerFactory.getLogger(CommunityController.class);
 	@Resource
 	private CommunityService service;
 
@@ -33,34 +37,29 @@ public class CommunityController {
 	}
 
 	@PostMapping("/comm_write")
-	public String Comm_Write() {
-		
-		/*for(A_photo photo: rphoto.getList()) {
-			int savefirst = 0;
-			if(!photo.getAimageAttach().isEmpty()) {
-				//파일 오리지널 이름 aphot에 set
-				logger.info(photo.getAimageAttach().getOriginalFilename());
-				
+	public String Comm_Write(Community community,HttpSession session) {
+			
+			
+			Member member=(Member) session.getAttribute("member");
+			community.setC_mnickname((member.getMnickname()));
+			
+			//유저가 사진을 넣었을 경우
+			if(!community.getCimage().isEmpty()) {
+										
 				
 				//파일 이름 중복 방지를 위한 밀리세컨드 단위의 시간초를 파일 이름 앞에 붙여줌.
-				String saveFilename = new Date().getTime()+"_"+photo.getAimageAttach().getOriginalFilename();
-				photo.setAimage(saveFilename);
-				if(savefirst == 0) {
-					rphoto.setFirst_image(saveFilename);
-					rphoto.setFirst_content(photo.getAcontent());
-				}
-				
-				savefirst++;
-				
-				logger.info(saveFilename);
+				String saveFilename = new Date().getTime()+"_"+community.getCimage().getOriginalFilename();
+				community.setC_image(saveFilename);
+																				
 				try {
 					//실제 사용자의 요청에 파일을 서버에 저장
-					photo.getAimageAttach().transferTo(new File("C:/Temp/upload/"+saveFilename));
+					community.getCimage().transferTo(new File("C:/Temp/upload/community/"+saveFilename));
 				} catch (Exception e) {} 
-				}
+				
 			}
-		*/
-		return "re:community/comm_write";
+			service.comm_write(community);
+			
+		return "redirect:/community";
 	}
 
 }

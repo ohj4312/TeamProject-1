@@ -1,10 +1,13 @@
 package com.mycompany.webapp.dto;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.multipart.MultipartFile;
+
 public class Community {
 
 //Community_reply
 	private int cr_cnumber;	//Community넘버	 //커뮤니티 넘버 참조 
-	private int cr_rdate;	//리플시간
+	@DateTimeFormat(pattern="yyyy-MM-dd")private int cr_rdate;	//리플시간
 	private int cr_rnumber; // 리플 넘버
 	private String cr_rcontent; // 리플 내용
 	private String cr_mimage;// 리플 이미지 //멤버이미지 참조
@@ -14,13 +17,23 @@ public class Community {
 	private String c_mnickname; //작성자 // 멤버 닉네임 참조
 	private String c_content;// 커뮤니티 내용
 	private String c_title;// 커뮤니티 타이틀
-	private String c_image;// 커뮤니티 사진 
+	private String c_image;// 커뮤니티 사진  실질적으로 저장되는 파일 이름 
 	private int c_count;// 조회수 
 	private int c_number;//커뮤니티 넘버
-	private int c_date;// 커뮤니티 시간 
+	@DateTimeFormat(pattern="yyyy-MM-dd")private int c_date;// 커뮤니티 시간 
+	private MultipartFile cimage;//커뮤니티 사진 저장을위해 필요한 객체~ 
 	
 	
 	
+	
+	
+	
+	public MultipartFile getCimage() {
+		return cimage;
+	}
+	public void setCimage(MultipartFile cimage) {
+		this.cimage = cimage;
+	}
 	
 	public int getCr_cnumber() {
 		return cr_cnumber;

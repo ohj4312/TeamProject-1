@@ -146,34 +146,32 @@
 <main id="main">
 
     <div class="question-form container">
-      <form id="question-form" action="<%=application.getContextPath()%>/community/comm_write">
+      <form id="question-form" action="<%=application.getContextPath()%>/community/comm_write" enctype="multipart/form-data" onsubmit="return comm_write()" method="post">
+        
         <header class="question-form_header" style="padding-bottom:3%; padding-top:10%">
           <h2 style="color:black; font-size:20px; font-weight:bold">질문하기</h2>
           <div>
-            <input placeholder="제목을 적어주세요." class="form-control"  type="text" id="c_title" name="c_title">
+            <input placeholder="제목을 적어주세요." class="form-control"  type="text" id="c_title" name="c_title" >
           </div>
         </header>
 		
 			
          
         <div class="question-from__meta">
-            <textarea id="question_content" placeholder="내용을 적어주세요."></textarea>
+            <textarea id="question_content" placeholder="내용을 적어주세요." name="c_content"></textarea>
+			
 			<div class="question-photo">
-			<input type="file" id="c_image" name = "c_image" style="width:100%; height:100%;"> 
+			<input type="file" id="cimage" name = "cimage" style="width:100%; height:100%;"> 
 	         <label id = "srclabel" for="c_image">
 	         </label>   
 	        </div>
       	</div>
       	
       	<div class="floating-bar__Content">
-          <input id="c_content" name="c_content" type="submit" value="질문 저장하기" class="btn btn-lg btn-priority col-6 offset-3"></input>
+          <input type="submit"  class="btn btn-lg btn-priority col-6 offset-3"></input>
         </div>
-      </form>
-     
-    </div>
-
-
-    
+      </form>   
+    </div>      
   </main><!-- End #main -->
     
     <!-- Vendor JS Files -->
@@ -188,7 +186,25 @@
 
   <!-- Template Main JS File -->
   <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>
+	<script type="text/javascript">
+	function comm_write(){
+		var result = true;		
+		var c_title = $("#c_title").val().trim();
+		if(c_title==""){ 			
+			console.log("실행");
+			result = false;	
+		}
 		
+		var c_content= $("#question_content").val().trim();
+		if(c_content==""){					
+			
+			console.log("실행");
+			result = false;	
+		} 
+		
+		return result;
+	} 
+	</script>	
 		
 		
 	</body>
