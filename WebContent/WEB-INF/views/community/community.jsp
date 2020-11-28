@@ -49,59 +49,55 @@
     <!-- ======= Blog Section ======= -->
     <section id="blog" class="blog">
       <div class="container">
-
+      
         <div class="row">
-
           <div class="col-lg-12 entries">
-
             <div class="sidebar">
-
               <h3 class="sidebar-title">Search</h3>
               <div class="sidebar-item search-form">
                 <form action="">
                   <input type="text">
                   <button type="submit"><i class="icofont-search"></i></button>
                 </form>
-
               </div>
-
               <div class="read-more" >
+            
                 <a href="<%=application.getContextPath() %>/community/comm_writeFrom" class="btn btn-sm">
                   <h3 class="sidebar-title">Write</h3>
                 </a>
               </div>
               <hr>
               <br>
-
-            <article class="entry">
+            <article class="entry" style="height:200px">
+            
               <div  style="display:inline-block; padding-bottom: 3%; padding-right: 3%;">
-                <img src="<%=application.getContextPath() %>/resources/assets/img/blog-1.jpg"  style="border-radius:20px; width: 120px; height:120px">
-              </div>
+                <img src="<%=application.getContextPath() %>/resources/assets/img/blog-1.jpg"  style="border-radius:20px; width: 60px; height: 60px">
+              </div >
               
 
               <div style="display:inline-block; text-align:right;">
+              
               <h5>
-                <strong><a style="color: black; " href="#">첫 자취 저렴하게 꾸미기 도와주세요</a></strong>
+                <strong><a style="color: black; font-size: 16px" href="#">첫 자취 저렴하게 꾸미기 도와주세요</a></strong>
               </h5>
             </div>
-
-              <div class="entry-meta">
+              <div class="entry-content">
+                <p style="margin: 0px; font-size: 13px">
+                  		미리 보기 느낌으로 윤아야 이정도로 작아야 할꺼같은데..ㅋㅋㅋㅋㅋ괜찮??
+                </p>
+                <div class="read-more">
+                  <a href="blog-single.html">Read More</a>
+                </div>
+                <div class="entry-meta">
                 <ul>
                   <li class="d-flex align-items-center"><i class="icofont-user"></i> <a href="blog-single.html">John Doe</a></li>
                   <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <a href="blog-single.html"><time datetime="2020-01-01">Jan 1, 2020</time></a></li>
                   <li class="d-flex align-items-center"><i class="icofont-comment"></i> <a href="blog-single.html">12 Comments</a></li>
                 </ul>
               </div>
-
-              <div class="entry-content">
-                <p>
-                  Similique neque nam consequuntur ad non maxime aliquam quas. Quibusdam animi praesentium. Aliquam et laboriosam eius aut nostrum quidem aliquid dicta.
-                  Et eveniet enim. Qui velit est ea dolorem doloremque deleniti aperiam unde soluta. Est cum et quod quos aut ut et sit sunt. Voluptate porro consequatur assumenda perferendis dolore.
-                </p>
-                <div class="read-more">
-                  <a href="blog-single.html">Read More</a>
-                </div>
-              </div>
+             
+           </div>
+              
 
             </article><!-- End blog entry -->
 
@@ -214,7 +210,7 @@
           </div><!-- End blog entries list -->
 
         
-
+		</div>
         </div>
 
       </div>
