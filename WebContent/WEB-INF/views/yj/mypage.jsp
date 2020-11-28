@@ -1,13 +1,12 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html >
+<html>
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Self Guide </title>
+  <title>Maxim Bootstrap Template - Index</title>
   <meta content="" name="descriptison">
   <meta content="" name="keywords">
 
@@ -22,106 +21,145 @@
   <link href="<%=application.getContextPath() %>/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="<%=application.getContextPath() %>/resources/vendor/icofont/icofont.min.css" rel="stylesheet">
   <link href="<%=application.getContextPath() %>/resources/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-
-   <link href="<%=application.getContextPath() %>/resources/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
-  <link href="<%=application.getContextPath() %>/resources/vendor/venobox/venobox.css" rel="stylesheet">
-  <link href="<%=application.getContextPath() %>/resources/vendor/aos/aos.css" rel="stylesheet">
-  <link href="<%=application.getContextPath() %>/resources/vendor/animate.css/animate.min.css" rel="stylesheet">
-
   <link href="<%=application.getContextPath() %>/resources/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
   <link href="<%=application.getContextPath() %>/resources/vendor/venobox/venobox.css" rel="stylesheet">
-	<link href="<%=application.getContextPath() %>/resources/vendor/aos/aos.css" rel="stylesheet">
+  <link href="<%=application.getContextPath() %>/resources/vendor/aos/aos.css" rel="stylesheet">
 
- 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
   <!-- Template Main CSS File -->
   <link href="<%=application.getContextPath() %>/resources/css/style.css" rel="stylesheet">
 
   <!-- =======================================================
-  * Template Name: Eterna - v2.1.0
-  * Template URL: https://bootstrapmade.com/eterna-free-multipurpose-bootstrap-template/
+  * Template Name: Maxim - v2.2.0
+  * Template URL: https://bootstrapmade.com/maxim-free-onepage-bootstrap-theme/
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
 </head>
 
 <body>
-	
-	 <jsp:include page="/WEB-INF/views/include/Header.jsp"/>
 
-  
-  
-  <section id="portfolio" class="portfolio section-bg">
-      <div id = "listappend" class="container mt-5">
-      		<p><h2 style="font-size:2vw">셀프 인테리어 가이드북 </h2></p><br/>
-      		
-      		<img style="width:100%; height:200px;"src="https://image.ohou.se/i/bucketplace-v2-development/uploads/advices/guides/self_interior/pc_banner_image.v3.png?gif=1&w=1280&webp=1"/>
-      		<p></p>
-        <div id="addtag" style="width:100%;" class="row col-md-12 mb-4">
-			<jsp:include page="/WEB-INF/views/guide/selfguideFilter.jsp"/>
+  <jsp:include page="/WEB-INF/views/include/Header.jsp"/>
+
+   <main id="main">
+
+    
+
+    
+
+    <!-- ======= Team Section ======= -->
+    
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact mt-3">
+      <div class="container mt-5">
+
+        <div class="section-title" data-aos="fade-up">
+          <h2>My Page</h2>
+        <div class="row no-gutters justify-content-center" style="display: flex;" data-aos="fade-up">
+
+          <div class="col-lg-5 mr-3">
+        		<div class="user-profile mt-5" style="border:1px solid #dadce0; ">
+        			<div class="user-profile__container">
+        				<div class="user-profile__profile-image" style="text-align: center;">
+                  <img class="rounded-circle mt-3" width="53%"; height="53%"; src="<%=application.getContextPath() %>/resources/img/person_1.jpg">
+        					<div class="profile-info__name mt-2">
+        						<span>${member.mnickname}</span>
+        						<hr/>
+        					</div>
+        				</div>
+        			</div>
+        		<div class="row" style="text-align:center">
+        				<div class="col-4">
+       						<a onclick="javascript:GetBookMarkList()">
+								<div><span class="material-icons">bookmark_border</span></div>
+								<div><small>스크랩북</small></div>
+       						</a>
+        				</div>
+        				<script type="text/javascript">
+        					function GetBookMarkList(){
+        						console.log("리스트 불러오기");
+        						var pnumber = ${photo.pnumber}
+        						$.ajax({
+        							url : "<%=application.getContextPath()%>/BK/getBookMarkList",
+        							data : {pnumber:pnumber},
+        							method: "get",
+        							success : function(data){
+        								console.log("함수 안에부분 실행");
+        								$("#photoList").hide();
+        								$("#mypagephoto").hide();
+        								$("#BookMarkList").html(data);
+        							}
+        						});
+        					}
+        				</script>
+        				
+        				<div class="col-4">
+       						<a href="javascript:getLikephotolist()">
+								<div><span class="material-icons">favorite_border</span></div>
+								<div><small>좋아요</small></div>
+       						</a>
+        				</div>
+        				<script type="text/javascript">
+        				
+        				function getLikephotolist(){
+        					$.ajax({
+        						url:"<%=application.getContextPath() %>/like/getLikePhotolist",
+        						
+        						success:function(data){
+        							
+        							$("#photoList").html(data);
+        						
+        						}
+        					});
+							
+						}     				       				     				
+        				</script>
+        				
+        				
+        				<div class="col-4">
+       						<a href="#">
+       							<div><span class="material-icons">sentiment_satisfied_alt</span></div>
+       							<div><small>설정</small></div>
+       						</a>
+        				</div>
+        			
+        			</div>
+        			<br/>
+        			
+        		</div>
+          </div>
+          
+         
+
+          <!-- <div class="col-lg-5 d-flex align-items-stretch">
+            <iframe style="border:0; width: 100%; height: 270px;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" allowfullscreen></iframe>
+          </div> -->
+
+          <div class="col-lg-5">
+        		<div id="photoList" class="contents">
+        			<section class="post post--cards">
+        				<h5><strong>사진</strong></h5>
+                <div id="mypagephoto" style="border:1px dashed #dbdbdb; width:100%;  text-align: center; ">
+                    <div class="row justify-content-center " style="margin-top: 30%;">
+                          <span class="material-icons ">add </span>
+                          <a class="post__upload" href="#"> 첫 번째 사진을 올려보세요</a>
+                    </div>
+                </div>  
+                <div id="BookMarkList"></div>
+        			</section>
+        		
+        		
+        		</div>
+        	</div> 
+
+			
+
         </div>
 
-      <div id = "12345" class="row portfolio-container abcd" data-aos="fade-up">
-        <jsp:include page="/WEB-INF/views/guide/selfguide-photos.jsp"/>
-       </div>
-        
-
       </div>
-    </section>
-  <!-- ======= script ======= -->
-	
-	<script type="text/javascript">
-	var page = 2;
-	  $(function(){
-	      $(window).scroll(function(){
-	          var $window = $(this);
-	          var scrollTop = $window.scrollTop();
-	          var windowHeight = $window.height();
-	          var documentHeight = $(document).height();
-	          
-	          //console.log("documentHeight:" + documentHeight + " | scrollTop:" + scrollTop + " | windowHeight: " + windowHeight );
-	          
-	          if( scrollTop + windowHeight + 1000 > documentHeight ){
-	        	  getList(page);
-	        	  
-		           page++; 
-					console.log(page);
-	
-	            }   
-	          
-	   });
-			    
-	});
-	function pagingList(){
-	  $.ajax({
-			url : "<%=application.getContextPath()%>/selfguide/selflist",
-			method: "get",
-			success:function(data){
-				console.log("rows값 리턴까지 성공");
-			}
-		});
-	}
-	
-	</script>
-
-  <!-- ======= script ======= -->
- 
-
-  <main id="main">
-
-    <!-- ======= Breadcrumbs ======= -->
-    <section id="portfolio" class="portfolio section">
-    
-    
-    
-    
-    
-    </section><!-- End Portfolio Section -->
-
-
-
-
-    <!-- ======= Clients Section ======= -->
-  
+      </div>
+    </section><!-- End Contact Section -->
 
   </main><!-- End #main -->
 
@@ -190,35 +228,27 @@
         &copy; Copyright <strong><span>Maxim</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
-        All the links in the footer should remain intact.
-        You can delete the links only if you purchased the pro version.
-        Licensing information: https://bootstrapmade.com/license/
-        Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/maxim-free-onepage-bootstrap-theme/
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/maxim-free-onepage-bootstrap-theme/ -->
         Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
       </div>
     </div>
-  </footer> <!-- End Footer -->
+  </footer><!-- End Footer -->
 
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 
   <!-- Vendor JS Files -->
    <script src="<%=application.getContextPath() %>/resources/vendor/jquery/jquery.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="<%=application.getContextPath() %>/resources/vendor/jquery.easing/jquery.easing.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/php-email-form/validate.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/owl.carousel/owl.carousel.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/venobox/venobox.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/aos/aos.js"></script>
-  <script src="<%=application.getContextPath() %>/resources/vendor/jquery.easing/jquery.easing.min.js"></script>
 
-
-  
-  <!-- End Footer -->
-
- 
-
-  <!-- Vendor JS Files -->
- 
   <!-- Template Main JS File -->
   <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>
 

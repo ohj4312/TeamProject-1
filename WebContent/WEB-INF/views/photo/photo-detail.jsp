@@ -20,7 +20,7 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="<%=application.getContextPath() %>/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link href="<%=application.getContextPath() %>/resources/vendor/icofont/icofont.min.css" rel="stylesheet">
   <link href="<%=application.getContextPath() %>/resources/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="<%=application.getContextPath() %>/resources/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
@@ -72,7 +72,7 @@
 
       <div class="container">
         <div class="row">
-         <div class="col-md-8">
+         <div class="col-md-8 mb-3">
           	<img id = "thumbnail_image" src="photodownload?fileName=${photo.first_image}" class="img-fluid" alt="">
           </div>
 
@@ -106,27 +106,24 @@
 	              	</div>
 				</div>
 				
-				<div class="row mx-auto mt-5 clearfix">
-					<a class="card-detail-writer__link float-left" href="#">
+				<div class="row mx-auto mt-5">
+					<a class="col-6" href="#">
 		            	<img class="rounded-circle" style="width:50px; height:50px;" src="photodownload?fileName=${photo.mimage}" />
 		            	<span class="card-detail-writer__name">${photo.mnickname}</span>
 		            </a>
-					<a id="follow_check float-right" href="javascript:checkFollow('${photo.pwriter}')" class="btn btn-light btn-sm col-4" role="button" style=" box-shadow:none;">
-						<span id="follow_change" class="mt-3" style="font-size:17px">팔로우</span>
-					</a>	
-					<%-- <div class="card-detail-sidebar__content mx-auto">
-		              <div class="card-detail-writer">
-		                <div class="card-detail-writer__user mt-3">
-		                  <a class="card-detail-writer__link" href="#">
-		                    <img class="rounded-circle" style="width:60px; height:60px;" src="resources/images/photo7.jpg" />
-		                    <span class="card-detail-writer__name">${photo.mnickname}</span>
-		                  </a>
-		                </div>
-		              </div>
-              
-            		</div> --%>
+		            <div class = "col-3"></div>
+						<c:if test="${photo.follownumber == 0}">
+								<a id="follow_check" href="javascript:followCheck('${photo.pwriter}', '<%=application.getContextPath()%>/follow/followCheck')" style = "color: #1bac91;"  class="col-3 h-50 mt-2 font-weight-bolder btn btn-sm btn-outline-info" role="button">
+								팔로우
+								</a>
+						</c:if>
+						<c:if test="${photo.follownumber != 0}">
+								<a id="follow_check" href="javascript:followCheck('${photo.pwriter}', '<%=application.getContextPath()%>/follow/followCheck')" style = "background-color: #1bac91; color: white;" class="col-3 font-weight-bolder btn btn-sm h-50 mt-2" role="button">
+								팔로잉
+								</a>
+						</c:if>	
 				</div>
-				<div id = "acontent"class="row mx-auto">
+				<div id = "acontent"class="row mx-auto mt-5">
 					
 				</div>
 			</div>
@@ -237,15 +234,17 @@
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 
   <!-- Vendor JS Files -->
-   <script src="<%=application.getContextPath() %>/resources/vendor/jquery/jquery.min.js"></script>
-  <script src="<%=application.getContextPath() %>/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/php-email-form/validate.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/owl.carousel/owl.carousel.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/venobox/venobox.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/aos/aos.js"></script>
-
+  
   <!-- Template Main JS File -->
   <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>
 
@@ -253,94 +252,9 @@
 $(document).ready(function(){
 	var pnumber = ${photo.pnumber};
 	replyList(pnumber);
-	
-	//detail_followCheck(pwriter);
 });
-
-function detail_followCheck(pwriter){
-	console.log(pwriter);
-	$.ajax({
-		url:"<%=application.getContextPath()%>/follow/followCheck",
-		data:{pwriter:pwriter},
-		success:function(data) {
-			if(data.result=="success"){
-				$("#follow_check").attr("class","btn btn-info btn-sm col-4");
-				$("#follow_check").attr("href","javascript:cancelFollow('${photo.pwriter}')");
-				$("#follow_change").html("팔로잉");
-			}
-			if(data.result=="fail"){
-				$("#follow_check").attr("class","btn btn-light btn-sm col-4");
-				$("#follow_check").attr("href","javascript:checkFollow('${photo.pwriter}')");
-				$("#follow_change").html("팔로우");
-			}
-		}
-	});
-} 
-
-
 </script>
-  <%-- 
-				
-				
-            <script type="text/javascript">
-
-        	function checkFollow(pwriter){
-				$.ajax({
-					url:"<%=application.getContextPath()%>/follow/checkFollow",
-					data:{pwriter:pwriter},
-					success:function(data) {
-						$("#follow_check").attr("class","btn btn-info btn-sm col-4");
-						$("#follow_check").attr("href","javascript:cancelFollow('${photo.pwriter}')");
-						$("#follow_change").html("팔로잉");
-					}
-				});
-			}
-       	
-        	function followCheck(pwriter){
-        		console.log(pwriter);
-        		$.ajax({
-					url:"<%=application.getContextPath()%>/follow/followCheck",
-					data:{pwriter:pwriter},
-					success:function(data) {
-						if(data.result=="success"){
-							$("#follow_check").attr("class","btn btn-info btn-sm col-4");
-							$("#follow_check").attr("href","javascript:cancelFollow('${photo.pwriter}')");
-							$("#follow_change").html("팔로잉");
-						}
-						if(data.result=="fail"){
-							$("#follow_check").attr("class","btn btn-light btn-sm col-4");
-							$("#follow_check").attr("href","javascript:checkFollow('${photo.pwriter}')");
-							$("#follow_change").html("팔로우");
-						}
-					}
-				});
-			} 
-        	
-        	
-        	
-        	function cancelFollow(pwriter){
-        		console.log(pwriter);
-        		$.ajax({
-					url:"<%=application.getContextPath()%>/follow/cancelFollow",
-					data : {pwriter:pwriter},
-					success:function(data) {
-						$("#follow_check").attr("class","btn btn-light btn-sm col-4");
-						$("#follow_check").attr("href","javascript:checkFollow('${photo.pwriter}')");
-						$("#follow_change").html("팔로우");
-					}
-				});
-        	}
-			
-        	 $(function(){
-		 			likepushCheck();	
-					CheckBookMark();
-					followCheck('${photo.pwriter}');
-	 			});
-         	
-            </script> --%>
-				
-
-
+  
 </body>
 
 </html>

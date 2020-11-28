@@ -23,4 +23,9 @@ public class SelfGuideDAO {
 		return sst.selectList("mybatis.mapper.photo.selectSelfList" , snumber);
 		
 	}
+	
+	public int countAll() {
+		return sst.selectOne("mybatis.mapper.photo.countAll");
+	}
+	
 }

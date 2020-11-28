@@ -34,7 +34,7 @@
              <ul class="nav" >
 
               <li class="nav-item col-md-2 ">
-               <a  href="<%=application.getContextPath()%>/selfguide/selfdetail">
+               <a  href="javascript:pagingList()">
                 <div class="jb-wrap">
 					<div class="jb-image"><img src="<%=application.getContextPath() %>/resources/img/all.png" alt=""></div>
 					<div class="jb-text">
@@ -47,7 +47,7 @@
 
                               
                <li class="nav-item col-md-2 ">
-               <a href="">
+               <a href="<%=application.getContextPath()%>/selfguide/selfdetail">
                 <div class="jb-wrap">
 					<div class="jb-image"><img src="<%=application.getContextPath() %>/resources/img/cost.png" alt=""></div>
 					<div class="jb-text">
@@ -70,7 +70,7 @@
                 
               </li>
               
-               <li class="nav-item col-md-2 ">
+               <li class="nav-item col-md-2">
                <a href="">
                 <div class="jb-wrap">
 					<div class="jb-image"><img src="<%=application.getContextPath() %>/resources/img/plan.png" alt=""></div>
@@ -117,3 +117,5 @@
           </div>
         
         </div>
+
+     

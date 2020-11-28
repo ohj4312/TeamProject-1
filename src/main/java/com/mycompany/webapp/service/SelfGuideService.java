@@ -23,4 +23,8 @@ public class SelfGuideService {
 		List<SelfGuide> list=sgDAO.selectSelfList(snumber);
 		return (SelfGuide) list;
 	}
+	
+	public int getRows() {
+		return sgDAO.countAll();
+	}
 }

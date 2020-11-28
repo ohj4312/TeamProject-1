@@ -1,13 +1,13 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html >
+<html>
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Self Guide </title>
+  <title>Maxim Bootstrap Template - Index</title>
   <meta content="" name="descriptison">
   <meta content="" name="keywords">
 
@@ -22,109 +22,42 @@
   <link href="<%=application.getContextPath() %>/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="<%=application.getContextPath() %>/resources/vendor/icofont/icofont.min.css" rel="stylesheet">
   <link href="<%=application.getContextPath() %>/resources/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-
-   <link href="<%=application.getContextPath() %>/resources/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
-  <link href="<%=application.getContextPath() %>/resources/vendor/venobox/venobox.css" rel="stylesheet">
-  <link href="<%=application.getContextPath() %>/resources/vendor/aos/aos.css" rel="stylesheet">
-  <link href="<%=application.getContextPath() %>/resources/vendor/animate.css/animate.min.css" rel="stylesheet">
-
   <link href="<%=application.getContextPath() %>/resources/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
   <link href="<%=application.getContextPath() %>/resources/vendor/venobox/venobox.css" rel="stylesheet">
-	<link href="<%=application.getContextPath() %>/resources/vendor/aos/aos.css" rel="stylesheet">
+  <link href="<%=application.getContextPath() %>/resources/vendor/aos/aos.css" rel="stylesheet">
 
- 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
   <!-- Template Main CSS File -->
   <link href="<%=application.getContextPath() %>/resources/css/style.css" rel="stylesheet">
 
   <!-- =======================================================
-  * Template Name: Eterna - v2.1.0
-  * Template URL: https://bootstrapmade.com/eterna-free-multipurpose-bootstrap-template/
+  * Template Name: Maxim - v2.2.0
+  * Template URL: https://bootstrapmade.com/maxim-free-onepage-bootstrap-theme/
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
 </head>
 
 <body>
-	
-	 <jsp:include page="/WEB-INF/views/include/Header.jsp"/>
+
+  <jsp:include page="/WEB-INF/views/include/Header.jsp"/>
 
   
-  
-  <section id="portfolio" class="portfolio section-bg">
-      <div id = "listappend" class="container mt-5">
-      		<p><h2 style="font-size:2vw">셀프 인테리어 가이드북 </h2></p><br/>
-      		
-      		<img style="width:100%; height:200px;"src="https://image.ohou.se/i/bucketplace-v2-development/uploads/advices/guides/self_interior/pc_banner_image.v3.png?gif=1&w=1280&webp=1"/>
-      		<p></p>
-        <div id="addtag" style="width:100%;" class="row col-md-12 mb-4">
-			<jsp:include page="/WEB-INF/views/guide/selfguideFilter.jsp"/>
-        </div>
-
-      <div id = "12345" class="row portfolio-container abcd" data-aos="fade-up">
-        <jsp:include page="/WEB-INF/views/guide/selfguide-photos.jsp"/>
-       </div>
-        
-
-      </div>
-    </section>
-  <!-- ======= script ======= -->
-	
-	<script type="text/javascript">
-	var page = 2;
-	  $(function(){
-	      $(window).scroll(function(){
-	          var $window = $(this);
-	          var scrollTop = $window.scrollTop();
-	          var windowHeight = $window.height();
-	          var documentHeight = $(document).height();
-	          
-	          //console.log("documentHeight:" + documentHeight + " | scrollTop:" + scrollTop + " | windowHeight: " + windowHeight );
-	          
-	          if( scrollTop + windowHeight + 1000 > documentHeight ){
-	        	  getList(page);
-	        	  
-		           page++; 
-					console.log(page);
-	
-	            }   
-	          
-	   });
-			    
-	});
-	function pagingList(){
-	  $.ajax({
-			url : "<%=application.getContextPath()%>/selfguide/selflist",
-			method: "get",
-			success:function(data){
-				console.log("rows값 리턴까지 성공");
-			}
-		});
-	}
-	
-	</script>
-
-  <!-- ======= script ======= -->
- 
-
   <main id="main">
 
-    <!-- ======= Breadcrumbs ======= -->
-    <section id="portfolio" class="portfolio section">
     
-    
-    
-    
-    
-    </section><!-- End Portfolio Section -->
 
+    
 
-
-
-    <!-- ======= Clients Section ======= -->
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="section-bg mt-5">
+      	여기에 작성하면 되
+    </section>
+    </main>
   
 
-  </main><!-- End #main -->
-
+    
   <!-- ======= Footer ======= -->
   <footer id="footer">
     <div class="footer-top">
@@ -204,23 +137,16 @@
   <!-- Vendor JS Files -->
    <script src="<%=application.getContextPath() %>/resources/vendor/jquery/jquery.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="<%=application.getContextPath() %>/resources/vendor/jquery.easing/jquery.easing.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/php-email-form/validate.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/owl.carousel/owl.carousel.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/venobox/venobox.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/aos/aos.js"></script>
-  <script src="<%=application.getContextPath() %>/resources/vendor/jquery.easing/jquery.easing.min.js"></script>
 
-
-  
-  <!-- End Footer -->
-
- 
-
-  <!-- Vendor JS Files -->
- 
   <!-- Template Main JS File -->
   <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>
+  
 
 </body>
 

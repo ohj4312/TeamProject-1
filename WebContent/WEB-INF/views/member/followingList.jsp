@@ -13,8 +13,7 @@
 		  src="<%=application.getContextPath() %>/follow/photodownload?fileName=${following.mimage}"/>
 		  ${following.mnickname} 
 		</a>
-<%-- 		<a href="<%=application.getContextPath() %>/follow/cancelFollow?pwriter=${follows.following}"><span class="material-icons mr-2" style="float: right">clear</span></a> --%>
-		 <hr/>
+		<hr/>
 		
 	</c:forEach>
 	</div>

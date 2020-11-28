@@ -73,63 +73,39 @@ td a {
 	
 <%-- ########################################################################### --%>
 
-	<div>
-		<h3 style="text-align:center; margin-bottom:50px">Q&A</h3>
-
-		<div style="width: 1000px; margin-left: auto; margin-right: auto; text-align: right; margin-bottom: 10px; ">
-			<a type="button" class="btn btn-info" href="qnaWrite">글작성</a>
-		</div>
-		
-		<table
-			style="width: 1000px; margin-left: auto; margin-right: auto; background-color: #ffffff"
-			class="table table-lg table-bordered fade-up">
-			<thead class="thead-light ">
-				<tr>
-					<th style="width: 50px; font-weight: bold;">번호</th>
-					<th style="width: 50px; font-weight: bold;">제목</th>
-					<th style="width: 50px; font-weight: bold;">작성자</th>
-					<th style="width: 50px; font-weight: bold;">날짜</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="qna" items="${list}">
-					<tr>
-						<td>${qna.qnumber}</td>
-						<td><a href="javascript:qnaDetail(${qna.qnumber})">${qna.qtitle}</a></td>
-						<td>${qna.mnickname}</td>
-						<td><fmt:formatDate value="${qna.qdate}" pattern="yyyy-MM-dd"/></td>
-					</tr>
-				</c:forEach>
-
-				<!-- 컬럼 합침 -->
-				<tr>
-					<td colspan="4" style="text-align: center;"><a
-						class="btn btn-outline-primary btn-sm"
-						href="javascript:qnaList(1)">처음</a> <c:if
-							test="${pager.groupNo > 1}">
-							<a class="btn btn-outline-primary btn-sm"
-								href="javascript:qnaList(${pager.startPageNo-1})">이전</a>
-						</c:if> <c:forEach var="i" begin="${pager.startPageNo}"
-							end="${pager.endPageNo}">
-							<c:if test="${pager.pageNo == i }">
-								<a class="btn btn-danger btn-sm"
-									href="javascript:qnaList(${i})">${i}</a>
-							</c:if>
-							<c:if test="${pager.pageNo != i }">
-								<a class="btn btn-outline-success btn-sm"
-									href="javascript:qnaList(${i})">${i}</a>
-							</c:if>
-						</c:forEach> <c:if test="${pager.groupNo < pager.totalGroupNo}">
-							<a class="btn btn-outline-info btn-sm"
-								href="javascript:qnaList(${pager.endPageNo+1})">다음</a>
-						</c:if> <a class="btn btn-outline-primary btn-sm"
-						href="javascript:qnaList(${pager.totalPageNo})">맨끝</a></td>
-
-				</tr>
-			</tbody>
-		</table>
+	<div style="width: 1000px; margin-left: auto; margin-right: auto;" >
+		<h3 style="margin-bottom:50px">Q&A 질문 작성</h3>
+	
+		<form id="qnaWriteForm" method="post" action="qnaWrite">
+			<!-- <table style="width:auto" class="table table-sm table-bordered"> -->
+			<div class="input-group">
+				<div class="input-group-prepend"><span class="input-group-text">제목</span></div>
+				<input id="qtitle" type="text" name="qtitle" class="form-control">
+				<span id="qtitleError" class="error"></span>
+			</div>
+			
+			<div class="input-group">
+				<div class="input-group-prepend"><span class="input-group-text">내용</span></div>
+				<textarea id="qcontent" name="qcontent" class="form-control" rows="10"></textarea>
+				<span id="qcontentError" class="error"></span>
+			</div>
+			
+			<div class="input-group">
+				<div class="input-group-prepend"><span class="input-group-text">별명</span></div>
+				<input id="mnickname" type="text" name="mnickname" class="form-control" 
+					<c:if test="${member.mnickname!=null}">value="${member.mnickname}"</c:if>
+					<c:if test="${member.mnickname==null}">value="노성규!"</c:if>
+					readonly>
+				<span id="qtitleError" class="error"></span>
+			</div>
+			<!-- //로그인이 되면 로그인된 아이디가 들어간다.값이 없으면 필수, 값이  있으면 에러가 없어서 비워두겠다. -->	
+			<div style="text-align: center; margin-top: 10px;">
+				<input type="submit" class="btn btn-info" value="글쓰기"/>
+				<a class="btn btn-info" href="qnaindex">취소</a>	
+			</div>
+		</form>
 	</div>
-		
+	
 <%-- ########################################################################### --%>	
 	</section>
 	<!-- ======= Footer ======= -->
