@@ -1,6 +1,7 @@
 package com.mycompany.webapp.dto;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
@@ -15,8 +16,10 @@ public class Member {
 	private MultipartFile mimageAttach;
 	private boolean menabled;
 	private String mrole;
-	
+	private List<Register_photo> list; 
 	private int mgender;
+	private int followerCount;
+	private int followingCount;
 	
 	private boolean loginResult;
 	
@@ -24,6 +27,32 @@ public class Member {
 	
 	
 	
+	
+	
+	public int getFollowerCount() {
+		return followerCount;
+	}
+
+	public void setFollowerCount(int followerCount) {
+		this.followerCount = followerCount;
+	}
+
+	public int getFollowingCount() {
+		return followingCount;
+	}
+
+	public void setFollowingCount(int followingCount) {
+		this.followingCount = followingCount;
+	}
+
+	public List<Register_photo> getList() {
+		return list;
+	}
+
+	public void setList(List<Register_photo> list) {
+		this.list = list;
+	}
+
 	//Getter   ,   Setter,
 	public String getMemail() {
 		return memail;

@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.mycompany.webapp.dto.Member;
+import com.mycompany.webapp.dto.Register_photo;
 
 @Repository
 public class MemberDAO {
@@ -20,6 +21,11 @@ public class MemberDAO {
 	public Member selectMember(String name) {
 		// TODO Auto-generated method stub
 		return sst.selectOne("mybatis.mapper.member.selectMember", name);
+	}
+
+	public Member getProfilInfo(String pwriter) {
+		// TODO Auto-generated method stub
+		return sst.selectOne("mybatis.mapper.member.selectnicnameNmimage", pwriter);
 	}
 
 }
