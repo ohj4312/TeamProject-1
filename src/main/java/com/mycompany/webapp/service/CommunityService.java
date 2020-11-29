@@ -6,12 +6,23 @@ import org.springframework.stereotype.Service;
 
 import com.mycompany.webapp.dao.C_ReplyDao;
 import com.mycompany.webapp.dao.CommunityDao;
+import com.mycompany.webapp.dto.Community;
 
 @Service
 public class CommunityService {
 	@Resource
-	private CommunityDao boardDao;
-	private C_ReplyDao b_replyDao;
+	private CommunityDao communityDao;
+	@Resource
+	private C_ReplyDao c_replyDao;
+	
+	public void comm_write(Community community) {
+		
+		communityDao.communityInsert(community);
+		
+	}
+	
+	
+	
 	
 
 }

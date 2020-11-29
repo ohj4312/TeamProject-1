@@ -23,6 +23,7 @@ public class SelfGuideDAO {
 		return sst.selectList("mybatis.mapper.photo.selectSelfList" , snumber);
 		
 	}
+<<<<<<< HEAD
 
 
 	public int insertSelfGuide(SelfGuide sg) {
@@ -30,4 +31,11 @@ public class SelfGuideDAO {
 		logger.info("1이면 성공: "+row);
 		return row;
 	}
+=======
+	
+	public int countAll() {
+		return sst.selectOne("mybatis.mapper.photo.countAll");
+	}
+	
+>>>>>>> branch 'master' of https://github.com/mw7895la/TeamProject
 }

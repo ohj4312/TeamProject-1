@@ -1,6 +1,4 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 
@@ -20,7 +18,7 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link href="<%=application.getContextPath() %>/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="<%=application.getContextPath() %>/resources/vendor/icofont/icofont.min.css" rel="stylesheet">
   <link href="<%=application.getContextPath() %>/resources/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="<%=application.getContextPath() %>/resources/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
@@ -38,122 +36,130 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-  
-   <style media="screen">
-   .scroll{
-     
-     overflow-x: scroll;
-     white-space:nowrap
-   }
-   .scroll img{
-   }
- </style>
 </head>
 
 <body>
 
-  <!-- ======= Header ======= -->
   <jsp:include page="/WEB-INF/views/include/Header.jsp"/>
 
-  <main id="main">
+   <main id="main">
 
-    <!-- ======= Breadcrumbs Section ======= -->
-    <section class="section mt-3">
+    
+
+    
+
+    <!-- ======= Team Section ======= -->
+    
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact mt-3">
       <div class="container mt-5">
-        <div class="row">
-          <div class="col-md-8" data-aos="fade-up">
-            <h2>${photo.psize} | ${photo.ptype} | ${photo.pstyle}</h2>
-            
+
+        <div class="section-title" data-aos="fade-up">
+          <h2>My Page</h2>
+        <div class="row no-gutters justify-content-center" style="display: flex;" data-aos="fade-up">
+
+          <div class="col-lg-5 mr-3">
+        		<div class="user-profile mt-5" style="border:1px solid #dadce0; ">
+        			<div class="user-profile__container">
+        				<div class="user-profile__profile-image" style="text-align: center;">
+                  <img class="rounded-circle mt-3" width="53%"; height="53%"; src="<%=application.getContextPath() %>/resources/img/person_1.jpg">
+        					<div class="profile-info__name mt-2">
+        						<span>${member.mnickname}</span>
+        						<hr/>
+        					</div>
+        				</div>
+        			</div>
+        		<div class="row" style="text-align:center">
+        				<div class="col-4">
+       						<a onclick="javascript:GetBookMarkList()">
+								<div><span class="material-icons">bookmark_border</span></div>
+								<div><small>스크랩북</small></div>
+       						</a>
+        				</div>
+        				<script type="text/javascript">
+        					function GetBookMarkList(){
+        						console.log("리스트 불러오기");
+        						var pnumber = ${photo.pnumber}
+        						$.ajax({
+        							url : "<%=application.getContextPath()%>/BK/getBookMarkList",
+        							data : {pnumber:pnumber},
+        							method: "get",
+        							success : function(data){
+        								console.log("함수 안에부분 실행");
+        								$("#photoList").hide();
+        								$("#mypagephoto").hide();
+        								$("#BookMarkList").html(data);
+        							}
+        						});
+        					}
+        				</script>
+        				
+        				<div class="col-4">
+       						<a href="javascript:getLikephotolist()">
+								<div><span class="material-icons">favorite_border</span></div>
+								<div><small>좋아요</small></div>
+       						</a>
+        				</div>
+        				<script type="text/javascript">
+        				
+        				function getLikephotolist(){
+        					$.ajax({
+        						url:"<%=application.getContextPath() %>/like/getLikePhotolist",
+        						
+        						success:function(data){
+        							
+        							$("#photoList").html(data);
+        						
+        						}
+        					});
+							
+						}     				       				     				
+        				</script>
+        				
+        				
+        				<div class="col-4">
+       						<a href="#">
+       							<div><span class="material-icons">sentiment_satisfied_alt</span></div>
+       							<div><small>설정</small></div>
+       						</a>
+        				</div>
+        			
+        			</div>
+        			<br/>
+        			
+        		</div>
           </div>
+          
+         
+
+          <!-- <div class="col-lg-5 d-flex align-items-stretch">
+            <iframe style="border:0; width: 100%; height: 270px;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" allowfullscreen></iframe>
+          </div> -->
+
+          <div class="col-lg-5">
+        		<div id="photoList" class="contents">
+        			<section class="post post--cards">
+        				<h5><strong>사진</strong></h5>
+                <div id="mypagephoto" style="border:1px dashed #dbdbdb; width:100%;  text-align: center; ">
+                    <div class="row justify-content-center " style="margin-top: 30%;">
+                          <span class="material-icons ">add </span>
+                          <a class="post__upload" href="#"> 첫 번째 사진을 올려보세요</a>
+                    </div>
+                </div>  
+                <div id="BookMarkList"></div>
+        			</section>
+        		
+        		
+        		</div>
+        	</div> 
+
+			
+
         </div>
+
       </div>
-
-
-
-      <div class="container">
-        <div class="row">
-         <div class="col-md-8 mb-3">
-          	<img id = "thumbnail_image" src="photodownload?fileName=${photo.first_image}" class="img-fluid" alt="">
-          </div>
-
-          <div id="head" class="col-md-4">
-			<div class= "container" style="text-align: center;">
-				<div class="row mx-auto">
-		            <div id="RegBookMark" class="col-6">
-						<button  type="button" class="btn btn-light w-100" onclick="toggleUpdate(${photo.pnumber}, '<%=application.getContextPath()%>/BK/CheckBookMark')">
-							<c:if test="${photo.bnumber == 0}">
-								<i id="itag${photo.pnumber}" class="material-icons align-middle" style = " font-size: 30px; color:#1bac91;">bookmark_border</i>
-								<span id = "bkcount" class = "align-middle">${photo.bookcount}</span>
-							</c:if>
-							<c:if test="${photo.bnumber != 0}">
-								<i id="itag${photo.pnumber}" class="material-icons align-middle" style = " font-size: 30px; color:#1bac91;">bookmark</i>
-								<span id = "bkcount" class = "align-middle">${photo.bookcount}</span>
-							</c:if>
-						</button>
-					</div>
-					<div id="likepush" class="col-6">
-						
-	              		<button  type="button" class="btn btn-light w-100" onclick="toggleUpdate(${photo.pnumber}, '<%=application.getContextPath()%>/like/likePushCheck')">
-		            		<c:if test="${photo.likenumber == 0}">
-								<i id="likeicon${photo.pnumber}" class="material-icons align-middle" style = "font-size: 30px; color:red;">favorite_border</i>
-								<span id = "lkcount" class = "align-middle">${photo.likecount}</span>
-							</c:if>
-							<c:if test="${photo.likenumber != 0}">
-								<i id="likeicon${photo.pnumber}" class="material-icons align-middle" style = "font-size: 30px; color:red;">favorite</i>
-								<span id = "lkcount" class = "align-middle">${photo.likecount}</span>
-							</c:if>
-	              		</button>
-	              	</div>
-				</div>
-				
-				<div class="row mx-auto mt-5">
-					<a class="col-6" href="#">
-		            	<img class="rounded-circle" style="width:50px; height:50px;" src="photodownload?fileName=${photo.mimage}" />
-		            	<span class="card-detail-writer__name">${photo.mnickname}</span>
-		            </a>
-		            <div class = "col-3"></div>
-						<c:if test="${photo.follownumber == 0}">
-								<a id="follow_check" href="javascript:followCheck('${photo.pwriter}', '<%=application.getContextPath()%>/follow/followCheck')" style = "color: #1bac91;"  class="col-3 h-50 mt-2 font-weight-bolder btn btn-sm btn-outline-info" role="button">
-								팔로우
-								</a>
-						</c:if>
-						<c:if test="${photo.follownumber != 0}">
-								<a id="follow_check" href="javascript:followCheck('${photo.pwriter}', '<%=application.getContextPath()%>/follow/followCheck')" style = "background-color: #1bac91; color: white;" class="col-3 font-weight-bolder btn btn-sm h-50 mt-2" role="button">
-								팔로잉
-								</a>
-						</c:if>	
-				</div>
-				<div id = "acontent"class="row mx-auto mt-5">
-					
-				</div>
-			</div>
-
-          </div>
-        </div>
       </div>
-      
-      
-
-		</section>
-
-    <div class="container">
-		<div class="scroll col-md-8 h-25" style="width:100%">
-		 	<c:forEach var="photo" items="${photo.list}">
-          		<a href="javascript:photoChange('${photo.aimage}', '${photo.acontent}')"><img src="photodownload?fileName=${photo.aimage}" class= "w-25 h-25"></a>
-			</c:forEach>
-		 </div>
-	</div>
-	
-
-	
-	
-
-    <div class="container">
-      <div id="reply_result" style="margin-top:30px">
-     
-      </div>
-    </div>
-
+    </section><!-- End Contact Section -->
 
   </main><!-- End #main -->
 
@@ -234,27 +240,18 @@
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 
   <!-- Vendor JS Files -->
-  
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+   <script src="<%=application.getContextPath() %>/resources/vendor/jquery/jquery.min.js"></script>
+  <script src="<%=application.getContextPath() %>/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/jquery.easing/jquery.easing.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/php-email-form/validate.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/owl.carousel/owl.carousel.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/venobox/venobox.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/aos/aos.js"></script>
-  
+
   <!-- Template Main JS File -->
   <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>
 
-<script>
-$(document).ready(function(){
-	var pnumber = ${photo.pnumber};
-	replyList(pnumber);
-});
-</script>
-  
 </body>
 
 </html>

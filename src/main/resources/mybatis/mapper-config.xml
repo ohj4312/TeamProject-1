@@ -10,11 +10,12 @@
 		<typeAlias alias="declare" type="com.mycompany.webapp.dto.Post_declare" />
 		<typeAlias alias="like" type="com.mycompany.webapp.dto.Post_like" />
 		<typeAlias alias="reply" type="com.mycompany.webapp.dto.Post_reply" />
-		<typeAlias alias="registerPhoto" type="com.mycompany.webapp.dto.Register_photo"/>
+		<typeAlias alias="registerPhoto" type="com.mycompany.webapp.dto.Register_photo"/>	
 		<typeAlias alias="pager" type="com.mycompany.webapp.dto.Pager"/>	
 		<typeAlias alias="selfguide" type="com.mycompany.webapp.dto.SelfGuide"/>	
 		<typeAlias alias="selfreply" type="com.mycompany.webapp.dto.SelfGuide_reply"/>
-		<typeAlias alias="community" type="com.mycompany.webapp.dto.Community" />	
+		<typeAlias alias="community" type="com.mycompany.webapp.dto.Community" />
+		<typeAlias alias="qna" type="com.mycompany.webapp.dto.Qna"/>	
 	</typeAliases>
 </configuration>
-   
+  

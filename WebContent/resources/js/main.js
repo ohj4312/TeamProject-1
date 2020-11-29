@@ -570,12 +570,31 @@ function toggleUpdate(pnumber, urlpath){
 //팔로워 기능
 function followCheck(pwriter, urlpath, classname){
 	console.log("팔로워 체크 실행")
-	console.log(pwriter);
-	console.log(urlpath);
-	console.log(classname);
-	console.log($('.'+classname).length);
+	if(classname == null){
+		console.log("detail체크");
+		$.ajax({
+		url: urlpath,
+		data:{pwriter:pwriter},
+		success:function(data) {
+			if(data.result=="success"){
+				console.log("해제");
+				$('#follow_check').toggleClass('btn-outline-info');
+				$('#follow_check').attr('style', 'color: #1bac91');
+				$('#follow_check').html('팔로우');
+		
+			}
+			if(data.result=="fail"){
+				console.log("등록");
+				$('#follow_check').toggleClass('btn-outline-info');
+				$('#follow_check').attr('style', 'background-color: #1bac91; color: white;');
+				$('#follow_check').html('팔로잉');
+
+			}
+		}
+		});
 	
-	$.ajax({
+	}else{
+		$.ajax({
 		url: urlpath,
 		data:{pwriter:pwriter},
 		success:function(data) {
@@ -592,5 +611,8 @@ function followCheck(pwriter, urlpath, classname){
 
 			}
 		}
-	});
+		});
+		
+	}
+
 } 
