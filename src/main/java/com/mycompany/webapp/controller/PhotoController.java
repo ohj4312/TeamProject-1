@@ -29,7 +29,7 @@ import com.mycompany.webapp.dto.Pager;
 import com.mycompany.webapp.dto.Register_photo;
 import com.mycompany.webapp.service.PhotoService;
 
-@Controller
+@Controller 
 @RequestMapping("/photo")
 public class PhotoController {
 	private static final Logger logger = LoggerFactory.getLogger(PhotoController.class);
