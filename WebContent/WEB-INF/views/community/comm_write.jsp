@@ -131,13 +131,25 @@
 .question-photo{
   font-size:15px;
   line-height: 1.5;
-  margin-bottom: 10%;
+  margin:auto auto;
   border-radius:4px;
   border:solid 1px #dbdbdb;
   background-color:#ffffff;
   color:#424242;
   box-sizing:border-box;
   display: block;
+}
+
+/* 이미디드롭 */
+.content{
+    outline: 2px dashed #92b0b3 ;
+    outline-offset:-10px;  
+    margin: 0 auto 0 auto;
+    text-align: center;
+    transition: all .15s ease-in-out;
+    width: 300px;
+    height: 300px;
+    background-color: gray;
 }
 </style>
 	<body>
@@ -161,9 +173,13 @@
             <textarea id="question_content" placeholder="내용을 적어주세요." name="c_content"></textarea>
 			
 			<div class="question-photo">
-			<input type="file" id="cimage" name = "cimage" style="width:100%; height:100%;"> 
-	         <label id = "srclabel" for="c_image">
-	         </label>   
+			<input id="cimage" type="file" name="cimage" multiple="multiple" class="addFile"/>			
+	         <div class="content" >
+	         	<h2 style="color:black; font-size:20px; font-weight:bold">사진을 넣어주세요</h2>
+			</div> 
+	         <label id = "srclabel" for="c_image">	         
+	         </label> 
+	           
 	        </div>
       	</div>
       	
@@ -171,7 +187,8 @@
           <input type="submit"  class="btn btn-lg btn-priority col-6 offset-3"></input>
         </div>
       </form>   
-    </div>      
+    </div>
+         
   </main><!-- End #main -->
     
     <!-- Vendor JS Files -->
@@ -204,6 +221,66 @@
 		
 		return result;
 	} 
+	
+	/* 이미지 드롭 */
+	$('.content')
+	  .on("dragover", dragOver)
+	  .on("dragleave", dragOver)
+	  .on("drop", uploadFiles);
+
+	function dragOver(e){
+	  e.stopPropagation();
+	  e.preventDefault();
+	  if (e.type == "dragover") {
+	    $(e.target).css({
+	      "background-color": "black",
+	      "outline-offset": "-20px"
+	    });
+	  } else {
+	      $(e.target).css({
+	      "background-color": "gray",
+	      "outline-offset": "-10px"
+	    	 
+	    });
+	      $(e.target).html("");
+	    }
+	}
+
+	
+	function uploadFiles(e) {
+	    e.stopPropagation();
+	    e.preventDefault();
+	    dragOver(e);
+	  
+	    e.dataTransfer = e.originalEvent.dataTransfer;
+	    var files = e.target.files || e.dataTransfer.files;
+	    if (files.length > 1) {
+	        alert('하나만 올려라.');
+	        return;
+	    }
+	    if (files[0].type.match(/image.*/)) {
+	                $(e.target).css({
+	            "background-image": "url(" + window.URL.createObjectURL(files[0]) + ")",
+	            "outline": "none",
+	            "background-size": "100% 100%"
+	        });
+	    }
+	    addFileFromLastInput(files);
+	
+	}
+	
+	/* 인풋객체에 추가  */
+	function addFileFromLastInput(file){
+
+	    var a = $('input#cimage.addFile');
+	    a[a.length-1].files = file;
+
+	   
+
+	   
+	}
+	
+	
 	</script>	
 		
 		
