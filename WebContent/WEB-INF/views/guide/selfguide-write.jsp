@@ -94,8 +94,8 @@
 		<form action="<%=application.getContextPath()%>/photo/write" method="post" role="form" onsubmit="return writePhoto()" enctype="multipart/form-data">	
 			<div class="row">
 			<div class="col-12 mb-4 input-group-lg">
-			<input type="text" class="form-control align-center" placeholder="Title">
-			
+			<input id="stitle" naem="stitle" type="text" class="form-control align-center" placeholder="Title">
+			<div id="stitleError" class="error"></div>
 			</div>
 			</div>
 			
@@ -117,6 +117,7 @@
 								style="position: relative; height: 300px;">
 								<div style="background-color: lightslategray;">
 											<!-- <a href="javascript:addPhoto;"  -->
+									<input type="file" id="simage" name ="simage" style="display: none"> 
 									<a href="#" class="item-wrap "> <i
 										class="material-icons"
 										style="font-size: 7rem; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">photo_camera</i>
@@ -130,7 +131,8 @@
 
 								<div>
 									<div class="form-group">
-										<textarea class="form-control" rows="10" id="comment"
+										<span id="scontentError" class="error"></span>
+										<textarea class="form-control" rows="10" id="scontent"
 											name="text" placeholder="사진에 대한 설명을 작성해주세요."></textarea>
 									</div>
 								</div>
@@ -144,7 +146,36 @@
       <div class="container">
 
 			<div style="height: 50px;"></div>
-			<button method="post" type="button" class="btn btn-lg btn-light btn-block" href="<%=application.getContextPath()%>/selfguide/selfwrite">추가하기</button>
+			<button type="button" class="btn btn-lg btn-light btn-block" onclick="javascript:selfWrite()">추가하기</button>
+			<script type="text/javascript">
+				function selfWrite(){
+					console.log({stitle:stitle, scontent:scontent, stype:stype});
+					var stitle = $("#stitle").val().trim();
+					if(stitle == "") { $("#stitleError").text("필수"); }
+					else { $("#stitleError").text(""); }
+					
+					var scontent = $("#scontent").val().trim();
+					if(scontent == "") { $("#scontentError").text("필수"); }
+					else { $("#scontentError").text(""); }
+					
+					if(stitle == "" || scontent == "") {
+						return;	
+					} 
+					console.log("111111111");
+					$.ajax({
+						url:"<%=application.getContextPath()%>/selfguide/selfwrite",
+						method:"post",
+						data: {stitle:stitle, scontent:scontent, stype:stype},
+						success:function(data) {
+							if(data== 1) { 
+								location.href="<%=application.getContextPath()%>/selfguide/selfguidelist"; 
+							}
+							console.log(data);
+						}
+					});
+				}
+			</script>
+			
 
 		</div>
     </section>

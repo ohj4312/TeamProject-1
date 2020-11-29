@@ -17,4 +17,4 @@
 		<typeAlias alias="community" type="com.mycompany.webapp.dto.Community" />	
 	</typeAliases>
 </configuration>
-  
+   

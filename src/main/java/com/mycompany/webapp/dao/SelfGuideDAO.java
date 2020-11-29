@@ -23,4 +23,11 @@ public class SelfGuideDAO {
 		return sst.selectList("mybatis.mapper.photo.selectSelfList" , snumber);
 		
 	}
+
+
+	public int insertSelfGuide(SelfGuide sg) {
+		int row=sst.insert("mybatis.mapper.photo.insertSelfGuide" , sg);
+		logger.info("1이면 성공: "+row);
+		return row;
+	}
 }

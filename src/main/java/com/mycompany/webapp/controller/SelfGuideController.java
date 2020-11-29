@@ -2,8 +2,10 @@ package com.mycompany.webapp.controller;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.PrintWriter;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletContext;
@@ -42,28 +44,33 @@ public class SelfGuideController {
 	}
 	
 	//셀프 가이드에 사진 올리기
-		@RequestMapping("/selfguide-write")
-		public String selfwriteForm() {
-			return "guide/selfguide-write";
+	@RequestMapping("/selfguide-write")
+	public String selfwriteForm() {
+		return "guide/selfguide-write";
+	}
+	
+	
+	@PostMapping("/selfwrite")
+	public String selfwritePhoto(SelfGuide sg,HttpSession session,Model model,HttpServletResponse response) throws IOException {
+		logger.info(sg.getScontent());
+		logger.info(sg.getStitle());
+		logger.info(sg.getStype());
+		Member member = (Member) session.getAttribute("member");
+		String swriter = member.getMemail();
+		sg.setSwriter(swriter);
+		int row=service.setSelfWrite(sg);
+		if(row==1) {
+			PrintWriter out = response.getWriter();
+			response.setContentType("text/html;charset=utf-8");
+			out.println(row);
+			out.flush();
+			out.close();
 		}
-	
-	
-		@PostMapping("/selfwrite")
-		public String selfwritePhoto(SelfGuide sg,HttpSession session,Model model) {
-			logger.info(sg.getScontent());
-			logger.info(sg.getStitle());
-			logger.info(sg.getStype());
-			Member member = (Member) session.getAttribute("member");
-			String swriter = member.getMemail();
-			sg.setSwriter(swriter);
-			
-			
-			
-			return "redirect:/selfguide/selfguidelist";
-			
-			
-		}
-	
+		return "redirect:/selfguide/selfguidelist";
+
+
+	}
+
 	
 	//셀프 가이드 리스트 페이징 해서 보이도록
 	@RequestMapping("/selflist")
