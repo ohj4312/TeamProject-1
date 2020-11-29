@@ -55,8 +55,8 @@
             <div class="sidebar">
               <h3 class="sidebar-title">Search</h3>
               <div class="sidebar-item search-form">
-                <form action="">
-                  <input type="text">
+                <form action="javascript:communitylist(1)">
+                  <input type="text" id="search" name="search">
                   <button type="submit"><i class="icofont-search"></i></button>
                 </form>
               </div>
@@ -84,10 +84,12 @@
 
   </main><!-- End #main -->
   <script type="text/javascript">
-            function communitylist() {
+            function communitylist(check){            
+            	var search=$("#search").val(); 
             	$.ajax({
-    				url:"<%=application.getContextPath() %>/community/comm_list",				
-    				success:function(data){					
+    				url:"<%=application.getContextPath() %>/community/comm_list",
+    				data: {check:check,search:search},
+    				success:function(data){    					
     					$("#comm_list").html(data);
     				
     				}
@@ -188,11 +190,11 @@
   <script src="<%=application.getContextPath() %>/resources/vendor/jquery.easing/jquery.easing.min.js"></script>
 
   <!-- Template Main JS File -->
+  
   <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>
 	<script type="text/javascript">
 	$(function(){
-		communitylist();
-		
+		communitylist(0);		
 	});
 	</script>
   

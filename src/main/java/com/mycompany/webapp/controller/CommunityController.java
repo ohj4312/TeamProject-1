@@ -71,13 +71,25 @@ public class CommunityController {
 	}
 
 	@GetMapping("/comm_list")
-	public String Comm_list(Model model)
+	public String Comm_list(Model model,int check,String search)
 	{
+		//검색으로 컨트롤러를 호출한건지 확인!
+		if(check==1) {
+			
+			String temp ="%"; 
+			temp+=search+"%";
+			logger.info("temp");
+			List<Community> comm_list= service.Comm_search(temp);
+			model.addAttribute("comm_list", comm_list);			
+			return"community/communitylist";
+			}
+		
 		List<Community> comm_list =service.Comm_list();
 		model.addAttribute("comm_list", comm_list);
 		
 		return"community/communitylist";
-	}
+	
+	}		
 	@GetMapping("/comm_listphoto")
 	public void download(String fileName, HttpServletRequest request, HttpServletResponse response) throws Exception {
 	

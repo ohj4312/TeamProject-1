@@ -24,4 +24,10 @@ public class CommunityDao {
 		return comm_list;
 	}
 
+	public List<Community> communitySelctSearch(String temp) {
+		List<Community> comm_list=sst.selectList("mybatis.mapper.community.communityselctSerch",temp);
+		
+		return comm_list;
+	}
+
 }

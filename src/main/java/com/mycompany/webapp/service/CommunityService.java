@@ -28,6 +28,11 @@ public class CommunityService {
 		return comm_list;
 	}
 
+	public List<Community> Comm_search(String temp) {
+		List<Community> comm_list=communityDao.communitySelctSearch(temp);
+		return  comm_list;
+	}
+
 	
 	
 	
