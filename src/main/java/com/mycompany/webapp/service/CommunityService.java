@@ -1,5 +1,7 @@
 package com.mycompany.webapp.service;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -20,6 +22,13 @@ public class CommunityService {
 		communityDao.communityInsert(community);
 		
 	}
+
+	public List<Community> Comm_list() {
+		List<Community> comm_list=communityDao.communityselctAll();
+		return comm_list;
+	}
+
+	
 	
 	
 	

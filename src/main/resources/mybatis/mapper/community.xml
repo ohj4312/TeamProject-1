@@ -7,7 +7,9 @@ insert into community(c_mnickname,c_content,c_title,c_image,c_number,c_date)
 values(#{c_mnickname},#{c_content},#{c_title},#{c_image},SEQ_C_NUMBER.nextval,sysdate)
 
 </insert>
-
+<select id="communityselctAll" resultType="community">
+select * from community
+</select>
 
 
 
