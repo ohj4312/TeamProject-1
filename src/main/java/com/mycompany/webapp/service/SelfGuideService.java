@@ -23,15 +23,13 @@ public class SelfGuideService {
 		List<SelfGuide> list=sgDAO.selectSelfList(snumber);
 		return (SelfGuide) list;
 	}
-<<<<<<< HEAD
 
 	public int setSelfWrite(SelfGuide sg) {
 		int row=sgDAO.insertSelfGuide(sg);
 		return row;
-=======
+	}
 	
 	public int getRows() {
 		return sgDAO.countAll();
->>>>>>> branch 'master' of https://github.com/mw7895la/TeamProject
 	}
 }
