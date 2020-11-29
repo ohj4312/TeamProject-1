@@ -53,11 +53,11 @@
 	</select>
 	
 	<select id="selectByPage" resultType="registerPhoto" parameterType="pager">
-		select rnum, pnumber, first_image, PHIT_COUNT, PTYPE, PSIZE, PSTYLE, mnickname, first_content, MIMAGE
+		select rnum, pnumber, first_image, PHIT_COUNT, PTYPE, PSIZE, PSTYLE, mnickname, first_content, MIMAGE, PWRITER
 		from(
-		select rownum as rnum, pnumber, first_image, PHIT_COUNT, PTYPE, PSIZE, PSTYLE, mnickname, first_content, MIMAGE
+		select rownum as rnum, pnumber, first_image, PHIT_COUNT, PTYPE, PSIZE, PSTYLE, mnickname, first_content, MIMAGE, PWRITER
 		from (
-		select pnumber, first_image, PHIT_COUNT, PTYPE, PSIZE, PSTYLE, mnickname, first_content,MIMAGE
+		select pnumber, first_image, PHIT_COUNT, PTYPE, PSIZE, PSTYLE, mnickname, first_content,MIMAGE, PWRITER
 		from register_photo r, member m
 		where r.PWRITER = m.MEMAIL order by pnumber desc)
 		where rownum &lt;= #{endRowNo}
@@ -80,4 +80,8 @@
 	<update id="updateHitCount" parameterType="registerPhoto">
 		UPDATE REGISTER_PHOTO SET PHIT_COUNT = #{phit_count} WHERE PNUMBER = #{pnumber}
 	</update>
+	
+	<select id="selectMemberPhotoList" parameterType="String" resultType="registerPhoto">
+		select PNUMBER, FIRST_IMAGE from REGISTER_PHOTO where PWRITER = #{pwriter}
+	</select>
 </mapper>

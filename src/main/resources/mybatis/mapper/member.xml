@@ -9,4 +9,8 @@
 	<select id="selectMember" parameterType="String" resultType="member">
 		select * from member where memail = #{memail} 
 	</select>
+	
+	<select id="selectnicnameNmimage" parameterType="String" resultType="member">
+		select MNICKNAME, mimage from member where memail = #{pwriter}
+	</select>
 </mapper>

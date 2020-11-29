@@ -35,4 +35,11 @@
 		delete from follows where follower=#{follower} and following=#{following}
 
 	</delete>
+	
+	<select id="selectFollowerCount" parameterType="String" resultType="int">
+		select count(*) from FOLLOWS where follower = #{pwriter}
+	</select>
+	<select id="selectFollowingCount" parameterType="String" resultType="int">
+		select count(*) from FOLLOWS where following = #{pwriter}
+	</select>
 </mapper>
