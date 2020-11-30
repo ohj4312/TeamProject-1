@@ -53,6 +53,8 @@ public class PhotoController {
 			count = 12;
 			returnurl = "photo/photolist";
 		}
+		
+		
 		Pager pager = new Pager(count, 5, totalRows, pageNo);
 		
 		if(member == null) {
