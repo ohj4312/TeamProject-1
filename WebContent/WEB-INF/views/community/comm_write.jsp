@@ -234,6 +234,7 @@
 	  if (e.type == "dragover") {
 	    $(e.target).css({
 	      "background-color": "black",
+	      
 	      "outline-offset": "-20px"
 	    });
 	  } else {
