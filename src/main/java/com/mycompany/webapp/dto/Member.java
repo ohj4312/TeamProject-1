@@ -20,6 +20,7 @@ public class Member {
 	private int mgender;
 	private int followerCount;
 	private int followingCount;
+	private int followCheking;
 	
 	private boolean loginResult;
 	
@@ -29,6 +30,14 @@ public class Member {
 	
 	
 	
+	public int getFollowCheking() {
+		return followCheking;
+	}
+
+	public void setFollowCheking(int followCheking) {
+		this.followCheking = followCheking;
+	}
+
 	public int getFollowerCount() {
 		return followerCount;
 	}

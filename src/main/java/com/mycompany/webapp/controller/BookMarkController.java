@@ -207,10 +207,15 @@ public class BookMarkController {
 
 	
 	
-	@GetMapping("/returnmypage")
-	public String returnmypage() {
-		return "member/returnmypage";
-	}
+	/*	@GetMapping("/returnmypage")
+		public String returnmypage(Model model, HttpSession session) {
+			Member memail = (Member)session.getAttribute("member");
+			Member member;
+			member = memberService.getYourHomeSearch(memail.getMemail());
+			logger.info(String.valueOf(member.getFollowCheking()));
+			model.addAttribute("member", member);
+			return "member/returnmypage";
+		}*/
 	
 	
 }

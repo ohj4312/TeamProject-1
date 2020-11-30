@@ -58,19 +58,19 @@
           		<img class="rounded-circle mt-3 img-fluid" width="150" height="150" src="<%=application.getContextPath()%>/photo/photodownload?fileName=${member.mimage}">
           		<h3 class="font-weight-bold mt-4">${member.mnickname}</h3>
           		<p class="font-weight-normal mb-2"><strong>팔로워</strong> <small>${member.followerCount}</small> | <strong>팔로잉</strong> <small>${member.followingCount}</small></p>
-          		<a id="follow_check" href="javascript:followCheck('${photo.pwriter}', '<%=application.getContextPath()%>/follow/followCheck')" style = "color: #1bac91;"  class="col-3 h-50 mt-2 mb-2 col-5 font-weight-bolder btn btn-sm btn-outline-info" role="button">
-					팔로우
-				</a>
-          		<%-- <c:if test="${photo.follownumber == 0}">
-					<a id="follow_check" href="javascript:followCheck('${photo.pwriter}', '<%=application.getContextPath()%>/follow/followCheck')" style = "color: #1bac91;"  class="col-3 h-50 mt-2 font-weight-bolder btn btn-sm btn-outline-info" role="button">
+          		<%-- <a id="follow_check" href="javascript:followCheck('${photo.pwriter}', '<%=application.getContextPath()%>/follow/followCheck')" style = "color: #1bac91;"  class="col-3 h-50 mt-2 mb-2 col-5 font-weight-bolder btn btn-sm btn-outline-info" role="button">
+					팔로우 
+				</a> --%>
+          		<c:if test="${member.followCheking == 0}">
+					<a id="follow_check" href="javascript:followCheck('${member.memail}', '<%=application.getContextPath()%>/follow/followCheck')" style = "color: #1bac91;"  class="col-3 h-50 mt-2 mb-2 font-weight-bolder btn btn-sm btn-outline-info" role="button">
 					팔로우
 					</a>
 				</c:if>
-				<c:if test="${photo.follownumber != 0}">
-					<a id="follow_check" href="javascript:followCheck('${photo.pwriter}', '<%=application.getContextPath()%>/follow/followCheck')" style = "background-color: #1bac91; color: white;" class="col-3 font-weight-bolder btn btn-sm h-50 mt-2" role="button">
+				<c:if test="${member.followCheking != 0}">
+					<a id="follow_check" href="javascript:followCheck('${member.memail}', '<%=application.getContextPath()%>/follow/followCheck')" style = "background-color: #1bac91; color: white;" class="col-3 mb-2 font-weight-bolder btn btn-sm h-50 mt-2" role="button">
 					팔로잉
 					</a>
-				</c:if>	 --%>
+				</c:if>
           	</div>
           </div>
 
@@ -78,15 +78,15 @@
         		<div id="photoList" class="contents">
         			<section class="post post--cards">
         				<h5><strong>사진</strong></h5>
-			                <div id="mypagephoto" style="border:1px dashed #dbdbdb; width:100%;">
-			                    <div>
-			                       <c:forEach var="like" items="${member.list}">
-			                       <a href="<%=application.getContextPath()%>/photo/detail?pnumber=${like.pnumber}">
-			                       <img style="margin:5px" align="left" width="100px" height="100px" src="<%=application.getContextPath() %>/like/photodownload?fileName=${like.first_image}"/>
-			                       </a>
-			                       </c:forEach>
-			                    </div>
-			                </div>
+		                <div id="mypagephoto" style="border:1px dashed #dbdbdb; width:100%;">
+		                    <div>
+		                       <c:forEach var="like" items="${member.list}">
+		                       <a href="<%=application.getContextPath()%>/photo/detail?pnumber=${like.pnumber}">
+		                       <img style="margin:5px" align="left" width="100px" height="100px" src="<%=application.getContextPath() %>/like/photodownload?fileName=${like.first_image}"/>
+		                       </a>
+		                       </c:forEach>
+		                    </div>
+		                </div>
                 	</section>
         			
         		</div>
