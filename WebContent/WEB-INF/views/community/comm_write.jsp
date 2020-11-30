@@ -136,13 +136,12 @@
   border:solid 1px #dbdbdb;
   background-color:#ffffff;
   color:#424242;
-  box-sizing:border-box;
   display: block;
 }
 
 /* 이미디드롭 */
 .content{
-    outline: 2px dashed #92b0b3 ;
+    outline: 2px dashed #dbdbdb ;
     outline-offset:-10px;  
     margin: 0 auto 0 auto;
     text-align: center;
@@ -150,6 +149,19 @@
     width: 300px;
     height: 300px;
     background-color: gray;
+}
+.showcontent{
+	display:none;
+	text-align: center;
+	padding-top:2%;
+	padding-bottom:2%;
+}
+#deletebtn{
+ 	background-color:#35c5f0;
+ 	font-size:13px;
+ 	text-align:center;
+ 	width:15%;
+ 	height:15%;
 }
 </style>
 	<body>
@@ -169,22 +181,25 @@
 		
 			
          
-        <div class="question-from__meta">
+        <div class="question-from__meta" >
             <textarea id="question_content" placeholder="내용을 적어주세요." name="c_content"></textarea>
 			
-			<div class="question-photo">
-			<input id="cimage" type="file" name="cimage" multiple="multiple" class="addFile"/>			
-	         <div class="content" >
-	         	<h2 style="color:black; font-size:20px; font-weight:bold">사진을 넣어주세요</h2>
-			</div> 
-	         <label id = "srclabel" for="c_image">	         
-	         </label> 
-	           
+			<div class="question-photo" >
+		        <div class="all-content" id="all-content">
+			 		<input id="cimage" type="file" name="cimage" multiple="multiple" class="addFile"/>	
+			         <div class="content" id="content">
+			         	<h2 style="color:black; font-size:20px; font-weight:bold">마우스로 파일을 끌어오세요.</h2>
+					</div>
+					  <div class="showcontent" id="showcontent">
+			         	<input value="삭제" id="deletebtn" class="btn btn-sm btn-priority" onclick="javascript:reset()"></input>
+					</div>
+				</div>
 	        </div>
+      
       	</div>
       	
-      	<div class="floating-bar__Content">
-          <input type="submit"  class="btn btn-lg btn-priority col-6 offset-3"></input>
+      	<div class="floating-bar__Content" style="padding-top:5%;">
+          <input type="submit" value="등록" class="btn btn-lg btn-priority col-6 offset-3"></input>
         </div>
       </form>   
     </div>
@@ -265,6 +280,8 @@
 	            "outline": "none",
 	            "background-size": "100% 100%"
 	        });
+	         $('.content').attr("onclick","imgDelete()");      
+	                
 	    }
 	    addFileFromLastInput(files);
 	
@@ -272,18 +289,39 @@
 	
 	/* 인풋객체에 추가  */
 	function addFileFromLastInput(file){
-
 	    var a = $('input#cimage.addFile');
 	    a[a.length-1].files = file;
+	}
+	function imgDelete() {
+		console.log("시랭");
+		$('.showcontent').css({
+			"display" : "block",
+		});
+		$('.content').css({
+			"outline": "4px solid #35c5f0"
+		});
+	 }
+	
+	function reset(){
+		var rmvimg = $('#cimage').val('');
+		var rmv = $('.content');
+		$(rmv).attr('style', 'display:none;');
+		var imagetag = $('<i class="material-icons "'+
+                'style="font-size: 7rem; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">'+
+                'photo_camera'+
+                '</i>');
+		$(rmvimg).html(imagetag);
+		
+		$("input:file").on('change', function(e){
+	        let elem = e.target;
 
-	   
-
-	   
+	        var src1 = URL.createObjectURL(elem.files[0]);
+	        var $div = $('<img src="'+src1+'" width="100%" height="100%" />');
+	  
+	        $(elem).next().html($div);
+	      });
 	}
 	
-	
 	</script>	
-		
-		
 	</body>
 </html>

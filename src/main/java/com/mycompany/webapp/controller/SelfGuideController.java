@@ -2,8 +2,11 @@ package com.mycompany.webapp.controller;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -44,27 +47,46 @@ public class SelfGuideController {
 	}
 	
 	//셀프 가이드에 사진 올리기
-	@GetMapping("/selftwrite")
+	@RequestMapping("/selfguide-write")
 	public String selfwriteForm() {
 		return "guide/selfguide-write";
 	}
 	
 	
-	
-	@PostMapping("/selfwrite")
-	public String selfwritePhoto(SelfGuide sg,HttpSession session) {
-		
+	@RequestMapping("/selfwrite")
+	public String selfwritePhoto(SelfGuide sg,HttpSession session,Model model,HttpServletResponse response) throws IOException {
+		logger.info(sg.getScontent());
+		logger.info(sg.getStitle());
 		Member member = (Member) session.getAttribute("member");
 		String swriter = member.getMemail();
-		
+		logger.info(swriter);
 		sg.setSwriter(swriter);
-		
-		
-		
-		return "";
-		
-		
+		if(!sg.getSimageAttach().isEmpty()) {
+			String originalFileName=sg.getSimageAttach().getOriginalFilename();
+			logger.info(originalFileName);
+			String saveName=new Date().getTime()+"_"+sg.getSimageAttach().getOriginalFilename();
+			sg.setSimage(saveName);
+			logger.info(sg.getSimage());
+			File dest = new File("C:/Temp/upload/selfguide/"+saveName);
+			sg.getSimageAttach().transferTo(dest);
+			
+		}else {
+			return "redirect:/selfguide/selfguide-write";
+		}
+		int row=service.setSelfWrite(sg);
+		logger.info(""+row);
+		/*		if(row==1) {
+					PrintWriter out = response.getWriter();
+					response.setContentType("text/html;charset=utf-8");
+					out.println(row);
+					out.flush();
+					out.close();
+				}*/
+		return "redirect:/selfguide/selfguidelist";
+
+
 	}
+
 	
 	//  /selfguide/selflist
 	//셀프 가이드 리스트 페이징 해서 보이도록

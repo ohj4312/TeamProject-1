@@ -119,5 +119,11 @@ public class CommunityController {
 		is.close();
 
 	}
+	
+	@GetMapping("/comm_detail")
+	public String Comm_Detail() {
+
+		return "community/comm_detail";
+	}
 
 }

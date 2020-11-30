@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mybatis.mapper.selfguide">
+	<insert id="insertSelfGuide" parameterType="selfguide">
+		insert into self_guide(snumber,stitle,scontent,swriter,register_date,stype,hit_count,simage)
+		values(seq_self_guide.nextval,#{stitle},#{scontent},#{swriter},sysdate,#{stype},0,#{simage}) 	
+	</insert>
+
 
 	
 	
