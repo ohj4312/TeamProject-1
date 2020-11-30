@@ -2,8 +2,11 @@ package com.mycompany.webapp.controller;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -23,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mycompany.webapp.dto.Member;
+import com.mycompany.webapp.dto.Pager;
 import com.mycompany.webapp.dto.SelfGuide;
 import com.mycompany.webapp.service.SelfGuideService;
 
@@ -43,55 +47,128 @@ public class SelfGuideController {
 	}
 	
 	//셀프 가이드에 사진 올리기
-	@GetMapping("/selftwrite")
+	@RequestMapping("/selfguide-write")
 	public String selfwriteForm() {
 		return "guide/selfguide-write";
 	}
 	
 	
-	
-	@PostMapping("/selfwrite")
-	public String selfwritePhoto(SelfGuide sg,HttpSession session) {
-		
+	@RequestMapping("/selfwrite")
+	public String selfwritePhoto(SelfGuide sg,HttpSession session,Model model,HttpServletResponse response) throws IOException {
+		logger.info(sg.getScontent());
+		logger.info(sg.getStitle());
 		Member member = (Member) session.getAttribute("member");
 		String swriter = member.getMemail();
-		
+		logger.info(swriter);
 		sg.setSwriter(swriter);
-		
-		
-		
-		return "";
-		
-		
+		if(!sg.getSimageAttach().isEmpty()) {
+			String originalFileName=sg.getSimageAttach().getOriginalFilename();
+			logger.info(originalFileName);
+			String saveName=new Date().getTime()+"_"+sg.getSimageAttach().getOriginalFilename();
+			sg.setSimage(saveName);
+			logger.info(sg.getSimage());
+			File dest = new File("C:/Temp/upload/selfguide/"+saveName);
+			sg.getSimageAttach().transferTo(dest);
+			
+		}else {
+			return "redirect:/selfguide/selfguide-write";
+		}
+		int row=service.setSelfWrite(sg);
+		logger.info(""+row);
+		/*		if(row==1) {
+					PrintWriter out = response.getWriter();
+					response.setContentType("text/html;charset=utf-8");
+					out.println(row);
+					out.flush();
+					out.close();
+				}*/
+		return "redirect:/selfguide/selfguidelist";
+
+
 	}
+
 	
 	//  /selfguide/selflist
 	//셀프 가이드 리스트 페이징 해서 보이도록
 	@RequestMapping("/selflist")
 	public String selfphotoList(Model model,@RequestParam(defaultValue = "1") int pageNo, HttpSession session) {
 		Member member = (Member) session.getAttribute("member");
-		List<SelfGuide> list;
+		List<SelfGuide> guidelist;
 		
 		int rows = service.getRows();
 		logger.info(String.valueOf(rows));
-		String returnurl;
-		model.addAttribute("rows",rows);
-		return "guide/selfguidelist";
+		String url;
+		int count =0;
+		
+		if(pageNo >1) {
+			count = 12;
+			url ="guide/selfguide-photos";
+		}else {
+			count = 16;
+			url ="guide/selfguidelist";
+		}
+		
+		Pager pager = new Pager(count, 5, rows, pageNo);
+		
+		
+		if(member == null) {
+			guidelist = service.getselfguideList(pager);
+		}else {//로그인 한 상태
+			SelfGuide sg = new SelfGuide();
+			sg.setSwriter(member.getMemail());
+			sg.setEndRowNo(pager.getEndRowNo());
+			sg.setStartRowNo(pager.getStartRowNo());
+			//guidelist = service.getselfguidephotoList(sg);
+			logger.info(sg.getSwriter());
+			logger.info(String.valueOf(sg.getEndRowNo()));
+			logger.info(String.valueOf(sg.getStartRowNo()));
+			guidelist = service.getselfguideList(pager);
+		}
+		
+		
+		
+		
+		model.addAttribute("guidelist",guidelist);
+		
+		return url;
 		
 	}
 	
 	//셀프 가이드 리스트에서 한 게시물 선택시 상세 뷰.
 	@GetMapping("/selfdetail")
-	public String selfphotoDetail() {
-		//logger.info(String.valueOf(snumber));
-		//SelfGuide sg = service.selectSelfPhoto(snumber);
-		//logger.info(sg.getStype()); 
-		//logger.info(sg.getSwriter());
-		//logger.info("이미지"+sg.getSimage()); 
-		//model.addAttribute("sg",sg);
+	public String selfphotoDetail(int snumber,String swriter,Model model,HttpSession session) {
+		
+		Member member = (Member) session.getAttribute("member");
+		//logger.info("snumber:"+String.valueOf(snumber));
+
+		SelfGuide sg = new SelfGuide();
+		
+		List<SelfGuide> list;
+		sg.setSnumber(snumber);
+		sg.setSwriter(swriter);
+		logger.info("swriter:"+swriter);
+		logger.info("snumber:"+String.valueOf(snumber));
+		
+		list=service.selectSelfPhotoList(swriter);
+		
+		
+		sg =  service.selectSelfPhoto(snumber);
+		logger.info(sg.getSwriter());
+		logger.info(sg.getStitle());
+		logger.info(sg.getStype());
+		logger.info(sg.getScontent());
+		
+		
+		
+		
+		model.addAttribute("sg",sg);
+		model.addAttribute("list",list);
+		
 		 
 		return "guide/selfguide-detail";
 	}
+	
+	
 	
 	@GetMapping("/selfguide-write")
 	public String selfguideWrite() {
@@ -107,18 +184,18 @@ public class SelfGuideController {
 		logger.info(fileName);
 		
 		//파일 정보 얻기, 파일의 데이터를 읽기 위한 입력 스트림 얻기
-		String saveFilePath = "C:/Temp/upload/"+fileName;
+		String saveFilePath = "C:/Temp/upload/selfguide/"+fileName;
 		InputStream is = new FileInputStream(saveFilePath);
 		
-		
+		 
 		//응답 HTTP헤더 구성
 		//1) Content Type 헤더 구성 ->어떤 파일의 타입으로 응답을 보낼 것 인가?
 		ServletContext sc = request.getServletContext();
 		//sc.getMimeType(fileName) -> 파일 확장명을 추출
 		String fileType = sc.getMimeType(fileName);
 		//헤더에 setting
-		//추출한 파일 확장명을 통해 contentType 설정
-		response.setContentType(fileType);
+		//추출한 파일 확장명을 통해 contentType 설정 
+		response.setContentType(fileType); 
 		
 		//2)Content-Disposition 헤더 구성 -> 응답할 파일의 이름 설정, 다운 여부 설정
 		//파일에 붙어 있는 숫자를 분리하고 오리지널 이름을 추출
@@ -130,7 +207,7 @@ public class SelfGuideController {
 		//attachment가 들어가면 무조건 다운 안 붙을 경우 보여줄 수 있는 파일(이미지파일)은 보여주고 아닌 파일(실행 파일)은 다운
 		//filename은 응답할 파일의 이름 설정
 		response.setHeader("Content-Disposition", "attachment; filename=\""+originalFileName+"\"");
-		
+		 
 		//3)ContentLegth 헤더 구성 -> 응답할 파일의 크기 설정
 		//응답보낼 파일의 크기 추출
 		int size = (int)new File(saveFilePath).length();

@@ -1,10 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mybatis.mapper.selfguide">
+	<insert id="insertSelfGuide" parameterType="selfguide">
+		insert into self_guide(snumber,stitle,scontent,swriter,register_date,stype,hit_count,simage)
+		values(seq_self_guide.nextval,#{stitle},#{scontent},#{swriter},sysdate,#{stype},0,#{simage}) 	
+	</insert>
+
 
 	
 	
 	<select id="countAll" resultType="int">
 		select count(*) from self_guide 
 	</select>
+	
+	<select id="selectByPage" parameterType="pager" resultType="selfguide">
+		select rnum, snumber, hit_count, swriter, stitle, simage,stype
+		from ( select rownum as rnum, snumber, hit_count, swriter, stitle, simage,stype 
+			  from self_guide s, member m 
+			  where rownum &lt;=#{endRowNo} and s.swriter=m.memail order by snumber desc )
+			  where rnum &gt; =#{startRowNo}
+	</select>
+	 
+	
+	<select id="selectByPageLis" parameterType="SelfGuide" resultType="SelfGuide">
+		<!-- select rnum, snumber, hit_count, swriter, stitle, simage
+		from ( select rownum as rnum, snumber, hit_count, swriter, stitle, simage 
+			  from self_guide s, member m 
+			  where rownum &lt;=#{endRowNo} and s.swriter=m.memail order by snumber desc )
+			  where rnum &gt; =#{startRowNo} -->
+		
+	</select>
+	
+	<select id="selectSelfPhotoList" parameterType="int" resultType="selfguide">
+		select simage, swriter, stype ,stitle, scontent
+		from Self_Guide 
+		where  snumber = #{snumber}
+		
+	</select>
+	
+	<select id="selectSelfPhotoList2" parameterType="String" resultType="selfguide">
+		select * from Self_Guide where swriter = #{swriter}
+	</select>
+
+	<update id="updateHitCount" parameterType="selfguide">
+		update Self_Guide set hit_count = ${hit_count} where snumber = #{snumber}
+	</update>
 </mapper>

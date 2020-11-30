@@ -148,7 +148,7 @@
     }
   });
 
-  // Porfolio isotope and filter
+/*  // Porfolio isotope and filter
   $(window).on('load', function() {
     var portfolioIsotope = $('.portfolio-container').isotope({
       itemSelector: '.portfolio-item',
@@ -169,7 +169,7 @@
     $(document).ready(function() {
       $('.venobox').venobox();
     });
-  });
+  });*/
 
   // Portfolio details carousel
   $(".portfolio-details-carousel").owlCarousel({
@@ -209,6 +209,19 @@ function addTag(btncon, btnid) {
     case 'style' :
         pstyle = '.'+btncon;
         break;
+	case 1 :
+		switch(btncon){
+			case '최근 인기순':
+			break;
+			
+			case '역대 인기순':
+			$portfolioIsotope.isotope({ sortBy: 'number', sortAscending: false });
+			break;
+			
+			case '최신순':
+			break;
+		}
+		break;
 	}
 
   var button = $('<button type = "button" onclick="removeTag(\''+ btnid +'\');"'+
@@ -224,14 +237,8 @@ function addTag(btncon, btnid) {
   }
 	filterCon = pstyle+ptype+psize;
 	console.log(filterCon);
-	
-
-	var portfolioIsotope = $('.portfolio-container').isotope({
-              itemSelector: '.portfolio-item',
-              layoutMode: 'fitRows'
-            });
-          
-         portfolioIsotope.isotope({
+        
+         $portfolioIsotope.isotope({
               filter: filterCon
             });
 }
@@ -253,14 +260,7 @@ function removeTag(removeID) {
   	var removeID1 = '#' + removeID;
   	$(removeID1).remove();
 
-	
-
-	var portfolioIsotope = $('.portfolio-container').isotope({
-              itemSelector: '.portfolio-item',
-              layoutMode: 'fitRows'
-            });
-          
-         portfolioIsotope.isotope({
+         $portfolioIsotope.isotope({
               filter: filterCon
             });
 	
@@ -428,29 +428,105 @@ function writePhoto(){
         }
 
 
+var $portfolioIsotope;
 
-
+$(document).ready(function() {
+      $portfolioIsotope = $('.portfolio-container').isotope({
+			              itemSelector: '.portfolio-item',
+			              layoutMode: 'fitRows',
+						getSortData: {number: '.hitcount parseInt'}
+			            });
+	 $portfolioIsotope.isotope({
+              filter: filterCon
+            });
+});
 		  
 function getList(page){
 			$.ajax({
 				type : 'POST',
-				url:"list",
+				url:"listjson",
 				data: {"pageNo" : page},
-				success : function(data) {
-			
-			         
-					$("#12345").append(data);
-					var portfolioIsotope = $('.portfolio-container').isotope({
-			              itemSelector: '.portfolio-item',
-			              layoutMode: 'fitRows'
-			            });
-			          
-			         portfolioIsotope.isotope({
-			              filter: filterCon
-			            });
-					$('.portfolio-container').isotope('reloadItems');
-					
-					
+				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+				success : function(data) {	
+					var list = data;
+					for (var loop = 0; loop < list.length; loop++) {
+						console.log('psize : ' + list[loop].psize);
+						console.log('pstyle : ' + list[loop].pstyle);
+						console.log('ptype : ' + list[loop].ptype);
+						console.log('pwriter : ' + list[loop].pwriter);
+						console.log('mimage : ' + list[loop].mimage);
+						console.log('mnickname : ' + list[loop].mnickname);
+						console.log('pwritersubstring : ' + list[loop].pwritersubstring);
+						console.log('pnumber : ' + list[loop].pnumber);
+						console.log('first_image : ' + list[loop].first_image);
+						console.log('phit_count : ' + list[loop].phit_count);
+						console.log('bnumber : ' + list[loop].bnumber);
+						console.log('likenumber : ' + list[loop].likenumber);
+						console.log('first_content : ' + list[loop].first_content);
+						console.log('following : ' + list[loop].following);
+						var follow;
+						var bnumber;
+						var likenumber;
+						if(list[loop].following == null){
+							follow = '<a class = "pl-2 font-weight-bolder btn btn-sm btn-outline-info '+list[loop].pwritersubstring+'" style = "color: #1bac91;" href="javascript:followCheck(\''+list[loop].pwriter+'\', \'/teamproject/follow/followCheck\', \''+list[loop].pwritersubstring+'\')">'+
+												'팔로우'+
+												'</a>';
+						}else{
+							follow = '<a class = "pl-2 font-weight-bolder btn btn-sm '+list[loop].pwritersubstring+'" style = "background-color: #1bac91; color: white;" href="javascript:followCheck(\''+list[loop].pwriter+'\', \'/teamproject/follow/followCheck\', \''+list[loop].pwritersubstring+'\')">'+
+												'팔로잉'+
+												'</a>';
+						}
+						
+						if(list[loop].bnumber == 0){
+							bnumber = '<i id="itag'+list[loop].pnumber+'" class="material-icons pl-4" style = " font-size: 30px;">bookmark_border</i>';
+						}else{
+							bnumber = '<i id="itag'+list[loop].pnumber+'" class="material-icons pl-4" style = " font-size: 30px;">bookmark</i>';
+						}
+						
+						if(list[loop].likenumber == 0){
+							likenumber='<i id="likeicon'+list[loop].pnumber+'" class="material-icons pl-4" style = "font-size: 30px;">favorite_border</i>';
+						}else{
+							likenumber='<i id="likeicon'+list[loop].pnumber+'" class="material-icons pl-4" style = "font-size: 30px;">favorite</i>';
+						}
+						$items = $('<div class="mb-4 mt-5 col-lg-4 col-md-6 portfolio-item '+list[loop].ptype+' '+list[loop].psize+' '+list[loop].pstyle+'">'+
+									'<div class = "row pl-3 pr-2 mb-4">'+
+										'<a href="/teamproject/member/yourhomesearch?pwriter='+ list[loop].pwriter+ '" class = "pr-3 " style="color: black;">'+
+											'<img class="rounded-circle mr-2 "style="width:30px; height:30px;"  src="photodownload?fileName='+list[loop].mimage+'" />'+
+											list[loop].mnickname+
+										'</a>'+ follow +
+									'</div>'+
+									'<a href="/teamproject/photo/detail?pnumber='+list[loop].pnumber+'">'+
+									'<div class="portfolio-wrap">'+
+										'<img style=" height: 280px;"'+
+											'src="photodownload?fileName='+list[loop].first_image+'"'+
+											'class="img-fluid rounded" alt="">'+
+										'<div class="portfolio-info">'+
+												'<h4>조회수</h4>'+
+												'<p class = "hitcount">'+list[loop].phit_count+'</p>'+
+										'</div>'+
+									'</div>'+
+									'</a>'+
+									'<div div class = "row pl-3 pr-3 mt-2">'+
+										'<a id="App1BK'+list[loop].pnumber+'" class = "col-4 " href="javascript:toggleUpdate('+list[loop].pnumber+', \'/teamproject/BK/CheckBookMark\')">'+
+											bnumber+
+										'</a>'+
+										'<a href="/teamproject/photo/detail?pnumber='+list[loop].pnumber+'" class = "col-4" title="More Details">'+
+											'<i class="bx bx-link pl-4" style = "font-size: 30px;"></i>'+
+										'</a>'+
+										'<a id="likepush'+list[loop].pnumber+'"  class = "col-4" href="javascript:toggleUpdate('+list[loop].pnumber+', \'/teamproject/like/likePushCheck\')">'+
+											likenumber+
+										'</a>'+
+									'</div>'+
+									'<div div class = "row pl-3 pr-3 mt-2">'+
+												'<a>'+list[loop].first_content+'</a>'+
+									'</div>'+
+								'</div>');
+								
+								 $portfolioIsotope.append( $items )
+								    // add and lay out newly appended elements
+								    .isotope( 'appended', $items);
+
+					    }		
 		       		},
 		       error:function(e){
 		           if(e.status==300){

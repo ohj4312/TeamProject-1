@@ -32,7 +32,8 @@
 	<select id="selectRegPhoto" parameterType="int" resultType="registerPhoto">
 		select PNUMBER, REGISTER_PDATE, PHIT_COUNT, PWRITER, PTYPE, PSIZE, PSTYLE, mnickname, FIRST_IMAGE, mimage, 
 		(select count(*) from post_bookmark where pnumber = #{pnumber}) bookcount, 
-		(select count(*) from post_like where pnumber = #{pnumber}) likecount
+		(select count(*) from post_like where pnumber = #{pnumber}) likecount,
+		first_content
 		from REGISTER_PHOTO r, member m 
 		where r.pwriter = m.memail and pnumber = #{pnumber}
 	</select>
@@ -43,7 +44,8 @@
 		(select count(*) from post_like where pnumber = #{pnumber}) likecount,
 		(select count(*) from post_bookmark where memail = #{pwriter} and pnumber = #{pnumber}) bnumber, 
 		(select count(*) from post_like where memail = #{pwriter} and pnumber = #{pnumber}) likenumber,
-		(select count(*) from FOLLOWS where following=(select pwriter from register_photo where pnumber = #{pnumber}) and follower=#{pwriter}) follownumber
+		(select count(*) from FOLLOWS where following=(select pwriter from register_photo where pnumber = #{pnumber}) and follower=#{pwriter}) follownumber,
+		first_content
 		from REGISTER_PHOTO r, member m 
 		where r.pwriter = m.memail and pnumber = #{pnumber}
 	</select>
@@ -84,4 +86,12 @@
 	<select id="selectMemberPhotoList" parameterType="String" resultType="registerPhoto">
 		select PNUMBER, FIRST_IMAGE from REGISTER_PHOTO where PWRITER = #{pwriter}
 	</select>
+	
+	<select id = "selectPwriterCount" parameterType="registerPhoto" resultType="int">
+		select count(*) from REGISTER_PHOTO where PWRITER = #{pwriter} and pnumber = #{pnumber}
+	</select>
+	
+	<delete id="deletePhoto" parameterType="int">
+		delete from REGISTER_PHOTO where pnumber=#{pnumber}
+	</delete>
 </mapper>

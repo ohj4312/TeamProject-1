@@ -34,7 +34,7 @@
              <ul class="nav" >
 
               <li class="nav-item col-md-2 ">
-               <a  href="javascript:pagingList()">
+               <a  href="<%=application.getContextPath()%>/selfguide/selflist">
                 <div class="jb-wrap">
 					<div class="jb-image"><img src="<%=application.getContextPath() %>/resources/img/all.png" alt=""></div>
 					<div class="jb-text">
@@ -47,7 +47,7 @@
 
                               
                <li class="nav-item col-md-2 ">
-               <a href="<%=application.getContextPath()%>/selfguide/selfdetail">
+               <a href="#">
                 <div class="jb-wrap">
 					<div class="jb-image"><img src="<%=application.getContextPath() %>/resources/img/cost.png" alt=""></div>
 					<div class="jb-text">

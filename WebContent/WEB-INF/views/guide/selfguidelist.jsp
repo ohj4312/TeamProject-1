@@ -52,7 +52,11 @@
   
   <section id="portfolio" class="portfolio section-bg">
       <div id = "listappend" class="container mt-5">
-      		<p><h2 style="font-size:2vw">셀프 인테리어 가이드북 </h2></p><br/>
+      		<p class="mb-4">
+      		<h2 style="font-size:2vw; float:left">셀프 인테리어 가이드북 </h2>
+      		
+      		<span style="font-size:1vw; float:right" class="btn btn-info btn-lg" onClick="selfWrite()">글쓰기</span>
+      		</p><br/>
       		
       		<img style="width:100%; height:200px;"src="https://image.ohou.se/i/bucketplace-v2-development/uploads/advices/guides/self_interior/pc_banner_image.v3.png?gif=1&w=1280&webp=1"/>
       		<p></p>
@@ -70,7 +74,7 @@
   <!-- ======= script ======= -->
 	
 	<script type="text/javascript">
-	var page = 2;
+	/* var page = 2;
 	  $(function(){
 	      $(window).scroll(function(){
 	          var $window = $(this);
@@ -90,7 +94,7 @@
 	          
 	   });
 			    
-	});
+	});*/
 	function pagingList(){
 	  $.ajax({
 			url : "<%=application.getContextPath()%>/selfguide/selflist",
@@ -101,6 +105,12 @@
 		});
 	}
 	
+	</script>
+	
+	<script type="text/javascript">
+		function selfWrite(){
+			location.href="<%=application.getContextPath()%>/selfguide/selfguide-write";
+		}
 	</script>
 
   <!-- ======= script ======= -->

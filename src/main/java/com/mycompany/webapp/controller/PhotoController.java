@@ -2,8 +2,10 @@ package com.mycompany.webapp.controller;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.util.Date;
 import java.util.List;
 
@@ -13,6 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -53,6 +57,8 @@ public class PhotoController {
 			count = 12;
 			returnurl = "photo/photolist";
 		}
+		
+		
 		Pager pager = new Pager(count, 5, totalRows, pageNo);
 		
 		if(member == null) {
@@ -65,15 +71,84 @@ public class PhotoController {
 			photolist =  photoService.getPhotoList(photo);
 		}
 		
-		for(Register_photo photo: photolist) {
+		/*for(Register_photo photo: photolist) {
 			logger.info(String.valueOf(photo.getBnumber()));
 			logger.info(String.valueOf(photo.getLikenumber()));
 			logger.info(String.valueOf(photo.getFollowing()));
 			logger.info(photo.getPwriter());
-		}
+		}*/
 		model.addAttribute("list", photolist);
 		
 		return returnurl;
+		
+	}
+	
+	@RequestMapping("/listjson")
+	public void photoListjson(Model model, @RequestParam(defaultValue = "1") int pageNo, HttpSession session, HttpServletResponse response) throws IOException {
+		
+		Member member = (Member) session.getAttribute("member");
+		List<Register_photo> photolist;
+		int totalRows = photoService.getTotalRows();
+		int count = 0;
+		String returnurl;
+		
+		if(pageNo > 1) {
+			count = 9;
+			returnurl = "include/photos";
+		}else {
+			count = 12;
+			returnurl = "photo/photolist";
+		}
+		Pager pager = new Pager(count, 5, totalRows, pageNo);
+		
+		if(member == null) {
+			photolist =  photoService.getPhotoList(pager);
+		}else {
+			Register_photo photo = new Register_photo();
+			photo.setPwriter(member.getMemail());
+			photo.setEndRowNo(pager.getEndRowNo());
+			photo.setStartRowNo(pager.getStartRowNo());
+			photolist =  photoService.getPhotoList(photo);
+		}
+		
+		
+		JSONArray jarry = new JSONArray();
+		
+		for(Register_photo photo : photolist) {
+			JSONObject jsonObject = new JSONObject();
+			String pwritersubstring = photo.getPwriter().substring(0, photo.getPwriter().indexOf('@'));
+			logger.info(pwritersubstring);
+			jsonObject.put("ptype", photo.getPtype());
+			jsonObject.put("psize", photo.getPsize());
+			jsonObject.put("pstyle", photo.getPstyle());
+			jsonObject.put("pwriter", photo.getPwriter());
+			jsonObject.put("mimage", photo.getMimage());
+			jsonObject.put("mnickname", photo.getMnickname());
+			jsonObject.put("following", photo.getFollowing());
+			jsonObject.put("pwritersubstring", pwritersubstring);
+			jsonObject.put("pnumber", photo.getPnumber());
+			jsonObject.put("first_image", photo.getFirst_image());
+			jsonObject.put("phit_count", photo.getPhit_count());
+			jsonObject.put("bnumber", photo.getBnumber());
+			jsonObject.put("likenumber", photo.getLikecount());
+			jsonObject.put("first_content", photo.getFirst_content());
+			
+			jarry.put(jsonObject);
+		}
+		
+		response.setHeader("Content-Type", "application/xml"); 
+		response.setContentType("application/json;charset=UTF-8"); 
+		response.setCharacterEncoding("utf-8");
+
+		String json = jarry.toString();
+		// 응답보내기
+		PrintWriter out = response.getWriter();
+		//response.setContentType("application/json;charset=utf-8");
+		out.println(json);
+		out.flush();
+		out.close();
+		
+	
 		
 	}
 	
@@ -83,7 +158,7 @@ public class PhotoController {
 	@GetMapping("/detail")
 	public String photoDetail(int pnumber, Model model, HttpSession session) {
 		Member member = (Member) session.getAttribute("member");
-		
+		int check = 0;
 		logger.info(String.valueOf(pnumber));
 		Register_photo photo = new Register_photo();
 	
@@ -91,11 +166,14 @@ public class PhotoController {
 		
 		if(member != null) {
 			photo.setPwriter(member.getMemail());
+			check = photoService.checkPwriter(photo);
 		}
 
 		photo = photoService.selectPhoto(photo);
 
+
 		model.addAttribute("photo", photo);
+		model.addAttribute("updatecheck", check);
 
 		return "photo/photo-detail";
 	}
@@ -144,6 +222,10 @@ public class PhotoController {
 		
 		//두개의 테이블에 insert하기 위한 service 요청
 		
+		//테스트용 insert
+		/*for(int i = 0; i < 10; i++) {
+			photoService.writePhoto(rphoto);
+		}*/
 		photoService.writePhoto(rphoto);
 		
 		
@@ -199,6 +281,12 @@ public class PhotoController {
 		is.close();
 		
 		
+	}
+	
+	@GetMapping("/delete")
+	public String delete(int pnumber) {
+		photoService.deltePhoto(pnumber);
+		return "redirect:/photo/list";
 	}
 
 }
