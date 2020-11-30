@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.mycompany.webapp.dao.SelfGuideDAO;
+import com.mycompany.webapp.dto.Pager;
 import com.mycompany.webapp.dto.SelfGuide;
 
 @Service

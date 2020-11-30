@@ -114,14 +114,14 @@
 			</div>
 			<div class="row col-sm-12 align-self-center">
 				<div class="col-12 text-center mb-4 fancybox" style="position: relative; height: 300px;">
-					<div style="background-color: lightslategray;">
+					
 											<!-- <a href="javascript:addPhoto;"  -->
-						<input type="file" id="simage" name ="simage" style="display: none"> 
-						
-							<i class="material-icons" 
+						<input type="file" id="simageAttach" name ="simageAttach" style="display:none;"> 
+						 <label id = "srclabel" for="simageAttach" style="width: 100%; height: 100%;"> 
+	                	<i class="material-icons" 
 							 style="font-size: 7rem; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">photo_camera</i>
-						
-					</div>
+	                </label> 
+					
 				</div>
 			</div>
 			<div class="row col-sm-12 align-self-center">

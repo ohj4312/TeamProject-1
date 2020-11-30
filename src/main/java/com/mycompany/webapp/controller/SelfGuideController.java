@@ -57,18 +57,20 @@ public class SelfGuideController {
 	public String selfwritePhoto(SelfGuide sg,HttpSession session,Model model,HttpServletResponse response) throws IOException {
 		logger.info(sg.getScontent());
 		logger.info(sg.getStitle());
-		logger.info(sg.getStype());
 		Member member = (Member) session.getAttribute("member");
 		String swriter = member.getMemail();
 		logger.info(swriter);
 		sg.setSwriter(swriter);
-		if(!sg.getSimage().isEmpty()) {
-			String originalFileName=sg.getSimage().getOriginalFilename();
+		if(!sg.getSimageAttach().isEmpty()) {
+			String originalFileName=sg.getSimageAttach().getOriginalFilename();
 			logger.info(originalFileName);
-			String saveName=new Date().getTime()+"_"+sg.getSimage().getOriginalFilename();
-			File dest = new File("D:/Myworkspace/photo/"+saveName);
-			sg.getSimage().transferTo(dest);
+			String saveName=new Date().getTime()+"_"+sg.getSimageAttach().getOriginalFilename();
+			sg.setSimage(saveName);
+			File dest = new File("C:/Temp/upload/selfguide/"+saveName);
+			sg.getSimageAttach().transferTo(dest);
 			
+		}else {
+			return "redirect:/selfguide/selfguide-write";
 		}
 		int row=service.setSelfWrite(sg);
 		logger.info(""+row);
