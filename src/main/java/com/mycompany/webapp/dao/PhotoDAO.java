@@ -85,6 +85,11 @@ public class PhotoDAO {
 		return sst.selectOne("mybatis.mapper.photo.bookmarkCount", memail);
 	}
 
+	public List<Register_photo> selectMemberPhotoList(String pwriter) {
+		
+		return sst.selectList("mybatis.mapper.photo.selectMemberPhotoList", pwriter);
+	}
+
 	
 
 	

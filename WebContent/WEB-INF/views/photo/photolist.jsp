@@ -48,7 +48,7 @@
   <section id="portfolio" class="portfolio">
       <div id = "listappend" class="container mt-5">
       	<jsp:include page="/WEB-INF/views/include/photoFilter.jsp"/>
-        <div id="addtag" class="row col-md-12 col-lg-6 mb-4">
+        <div id="addtag" class="row col-md-12 col-lg-6 mb-4" >
 
         </div>
 
@@ -56,6 +56,8 @@
         <jsp:include page="/WEB-INF/views/include/photos.jsp"/>
        </div>
         
+        <div style="height: 100px;">
+        </div>
 
       </div>
     </section>

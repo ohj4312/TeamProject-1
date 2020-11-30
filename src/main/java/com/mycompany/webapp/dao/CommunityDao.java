@@ -1,5 +1,7 @@
 package com.mycompany.webapp.dao;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -15,6 +17,17 @@ public class CommunityDao {
 	public void communityInsert(Community community) {
 		sst.insert("mybatis.mapper.community.communityInsert",community);
 		
+	}
+
+	public List<Community> communityselctAll() {
+		List<Community> comm_list=sst.selectList("mybatis.mapper.community.communityselctAll");
+		return comm_list;
+	}
+
+	public List<Community> communitySelctSearch(String temp) {
+		List<Community> comm_list=sst.selectList("mybatis.mapper.community.communityselctSerch",temp);
+		
+		return comm_list;
 	}
 
 }

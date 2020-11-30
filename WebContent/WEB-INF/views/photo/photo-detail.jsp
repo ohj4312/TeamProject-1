@@ -107,7 +107,7 @@
 				</div>
 				
 				<div class="row mx-auto mt-5">
-					<a class="col-6" href="#">
+					<a class="col-6" href="<%=application.getContextPath()%>/member/yourhomesearch?pwriter=${photo.pwriter}">
 		            	<img class="rounded-circle" style="width:50px; height:50px;" src="photodownload?fileName=${photo.mimage}" />
 		            	<span class="card-detail-writer__name">${photo.mnickname}</span>
 		            </a>
