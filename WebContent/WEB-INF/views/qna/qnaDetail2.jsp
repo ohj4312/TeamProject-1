@@ -80,41 +80,21 @@ center{
 
 	<div>
 		<h3 style="text-align:center; margin-bottom:50px">Q&A</h3>
-		<div class="center" >
-			<table class="table table-md table-bordered fade-up" style="margin:auto" >
-				<div>
-					<thead class="thead-light ">
-						<tr>
-							<th style="width: 50px; font-weight: bold;">번호</th>
-							<th style="width: 50px; font-weight: bold;">제목</th>
-							<th style="width: 50px; font-weight: bold;">작성자</th>
-							<th style="width: 50px; font-weight: bold;">날짜</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-					<td>${qna.qnumber}</td><br/>
-					
-					<td>${qna.qtitle}</td><br/>
-					
-					<td>${qna.mnickname}</td><br/>
-					
-					<td><fmt:formatDate value="${qna.qdate}" pattern="yyyy-MM-dd HH.mm.ss"/></td><br/>
-						</tr>
-					</tbody>
-					<thead class="thead-light ">
-						<tr>
-							<th style="width: 50px; font-weight: bold;">내용</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td style="width:100px" readonly>${qna.qcontent}</td>
-							
-						</tr>
-					</tbody>
-				</div>
-			</table>
+		
+		<div class="container">
+		  
+		  <ul class="list-group">
+		    <li class="list-group-item">번호</li>
+		    <li class="list-group-item">제목</li>
+		    <li class="list-group-item">글쓴이</li>
+		    <li class="list-group-item">날짜</li>
+		    <li class="list-group-item">내용</li>
+		  </ul>
+		  
+		  <div>
+				<a class="btn btn-info btn-sm" href="qnaDelete">삭제</a><br/>
+				<a class="btn btn-info btn-sm" href="qnaUpdate">수정</a>
+			</div>
 		</div>
 	</div>
 		
