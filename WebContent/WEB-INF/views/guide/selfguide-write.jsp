@@ -91,12 +91,12 @@
 			<br/>
       </div>
       <div class="container">
-		<form action="<%=application.getContextPath()%>/photo/write" method="post" role="form" onsubmit="return writePhoto()" enctype="multipart/form-data">	
+		<form action="<%=application.getContextPath()%>/selfguide/selfwrite" method="post" role="form" onsubmit="return selfWriteForm()" enctype="multipart/form-data">	
 			<div class="row">
-			<div class="col-12 mb-4 input-group-lg">
-			<input id="stitle" naem="stitle" type="text" class="form-control align-center" placeholder="Title">
-			<div id="stitleError" class="error"></div>
-			</div>
+				<div class="col-12 mb-4 input-group-lg">
+					<input id="stitle" name="stitle" type="text" class="form-control align-center" placeholder="Title">
+					<div id="stitleError" class="error"></div>
+				</div>
 			</div>
 			
 			<div class="row">
@@ -112,43 +112,39 @@
 						</select>
 				</div>
 			</div>
-						<div class="row col-sm-12 align-self-center">
-							<div class="col-12 text-center mb-4 fancybox"
-								style="position: relative; height: 300px;">
-								<div style="background-color: lightslategray;">
+			<div class="row col-sm-12 align-self-center">
+				<div class="col-12 text-center mb-4 fancybox" style="position: relative; height: 300px;">
+					<div style="background-color: lightslategray;">
 											<!-- <a href="javascript:addPhoto;"  -->
-									<input type="file" id="simage" name ="simage" style="display: none"> 
-									<a href="#" class="item-wrap "> <i
-										class="material-icons"
-										style="font-size: 7rem; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">photo_camera</i>
-									</a>
-								</div>
-
-							</div>
+						<input type="file" id="simage" name ="simage" style="display: none"> 
+						
+							<i class="material-icons" 
+							 style="font-size: 7rem; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">photo_camera</i>
+						
+					</div>
+				</div>
+			</div>
+			<div class="row col-sm-12 align-self-center">
+				<div class="col-12">
+					<div>
+						<div class="form-group">
+							<span id="scontentError" class="error"></span>
+							<textarea class="form-control" rows="10" id="scontent"
+								name="scontent" placeholder="사진에 대한 설명을 작성해주세요."></textarea>
 						</div>
-						<div class="row col-sm-12 align-self-center">
-							<div class="col-12">
-
-								<div>
-									<div class="form-group">
-										<span id="scontentError" class="error"></span>
-										<textarea class="form-control" rows="10" id="scontent"
-											name="text" placeholder="사진에 대한 설명을 작성해주세요."></textarea>
-									</div>
-								</div>
-							</div>
-						</div>
-
-					
-				</form>
+					</div>
+				</div>
+			</div>
+			<div style="height: 50px;"></div>
+			<button type="submit" class="btn btn-lg btn-light btn-block" onclick="javascript:selfWriteForm(stitle,stype,scontent)">추가하기</button>
+		</form>
       </div>
       
       <div class="container">
 
-			<div style="height: 50px;"></div>
-			<button type="button" class="btn btn-lg btn-light btn-block" onclick="javascript:selfWrite()">추가하기</button>
+			
 			<script type="text/javascript">
-				function selfWrite(){
+				function selfWriteForm(stitle,stype,scontent){
 					console.log({stitle:stitle, scontent:scontent, stype:stype});
 					var stitle = $("#stitle").val().trim();
 					if(stitle == "") { $("#stitleError").text("필수"); }
@@ -168,7 +164,7 @@
 						data: {stitle:stitle, scontent:scontent, stype:stype},
 						success:function(data) {
 							if(data== 1) { 
-								location.href="<%=application.getContextPath()%>/selfguide/selfguidelist"; 
+								location.href="<%=application.getContextPath()%>/selfguide/selflist"; 
 							}
 							console.log(data);
 						}

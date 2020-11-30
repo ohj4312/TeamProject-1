@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -51,15 +52,25 @@ public class SelfGuideController {
 	}
 	
 	
-	@PostMapping("/selfwrite")
+	@RequestMapping("/selfwrite")
 	public String selfwritePhoto(SelfGuide sg,HttpSession session,Model model,HttpServletResponse response) throws IOException {
 		logger.info(sg.getScontent());
 		logger.info(sg.getStitle());
 		logger.info(sg.getStype());
 		Member member = (Member) session.getAttribute("member");
 		String swriter = member.getMemail();
+		logger.info(swriter);
 		sg.setSwriter(swriter);
+		if(!sg.getSimage().isEmpty()) {
+			String originalFileName=sg.getSimage().getOriginalFilename();
+			logger.info(originalFileName);
+			String saveName=new Date().getTime()+"_"+sg.getSimage().getOriginalFilename();
+			File dest = new File("D:/Myworkspace/photo/"+saveName);
+			sg.getSimage().transferTo(dest);
+			
+		}
 		int row=service.setSelfWrite(sg);
+		logger.info(""+row);
 		if(row==1) {
 			PrintWriter out = response.getWriter();
 			response.setContentType("text/html;charset=utf-8");
@@ -72,7 +83,7 @@ public class SelfGuideController {
 
 	}
 
-	\
+	
 	//  /selfguide/selflist
 	//셀프 가이드 리스트 페이징 해서 보이도록
 	@RequestMapping("/selflist")
