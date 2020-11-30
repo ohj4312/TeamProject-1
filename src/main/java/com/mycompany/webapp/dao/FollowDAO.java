@@ -57,5 +57,15 @@ public class FollowDAO {
 		Member member=sst.selectOne("mybatis.mapper.follows.selectFollowInfo",memail);
 		return member;
 	}
+
+	public int selectFollowerCount(String pwriter) {
+		// TODO Auto-generated method stub
+		return sst.selectOne("mybatis.mapper.follows.selectFollowerCount",pwriter);
+	}
+
+	public int selectFollowingCount(String pwriter) {
+		// TODO Auto-generated method stub
+		return sst.selectOne("mybatis.mapper.follows.selectFollowingCount",pwriter);
+	}
 	
 }

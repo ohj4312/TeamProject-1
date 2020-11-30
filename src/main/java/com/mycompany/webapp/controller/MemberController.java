@@ -60,4 +60,17 @@ public class MemberController {
 	public String mypage() {
 		return "member/mypage";
 	}
+	
+	@GetMapping("/yourhomesearch")
+	public String yourhomesearch(String pwriter, Model model) {
+		logger.info(pwriter);
+		Member member = memberService.getYourHomeSearch(pwriter);
+		model.addAttribute("member", member);
+		logger.info(member.getMnickname());
+		logger.info(member.getMimage());
+		logger.info(String.valueOf(member.getFollowerCount()));
+		logger.info(String.valueOf(member.getFollowingCount()));
+		
+		return "member/myHome";
+	}
 }

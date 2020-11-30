@@ -26,8 +26,8 @@
           	<li><a href="<%=application.getContextPath()%>/member/mypage">Mypage</a></li>
           	<li><a href="<%=application.getContextPath()%>/photo/write">Photo Write</a></li>
           	<li><a href="<%=application.getContextPath()%>/logout">LogOut</a></li>
-          </sec:authorize>
           	<li><a href="<%=application.getContextPath()%>/qna/qnaindex">Q&A</a></li>
+          </sec:authorize>
           	
           	
 

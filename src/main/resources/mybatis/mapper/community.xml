@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mybatis.mapper.community">
-	<select id="selectAll">
-	select c_mnickname, c_content, c_title from community
-	</select>
 
+<insert id="communityInsert" parameterType="community">
+insert into community(c_mnickname,c_content,c_title,c_image,c_number,c_date)
+values(#{c_mnickname},#{c_content},#{c_title},#{c_image},SEQ_C_NUMBER.nextval,sysdate)
 
+</insert>
+<select id="communityselctAll" resultType="community">
+select * from community
+</select>
+<select id="communityselctSerch" resultType="community" parameterType="String">
+select * from community where c_content like #{temp} or c_title like #{temp}
+</select>
 
 
 

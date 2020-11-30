@@ -49,42 +49,32 @@
     <!-- ======= Blog Section ======= -->
     <section id="blog" class="blog">
       <div class="container">
-
+      
         <div class="row">
-
           <div class="col-lg-12 entries">
-
             <div class="sidebar">
-
               <h3 class="sidebar-title">Search</h3>
               <div class="sidebar-item search-form">
-                <form action="">
-                  <input type="text">
+                <form action="javascript:communitylist(1)">
+                  <input type="text" id="search" name="search">
                   <button type="submit"><i class="icofont-search"></i></button>
                 </form>
-
               </div>
-
               <div class="read-more" >
+            
                 <a href="<%=application.getContextPath() %>/community/comm_writeFrom" class="btn btn-sm">
                   <h3 class="sidebar-title">Write</h3>
                 </a>
               </div>
               <hr>
               <br>
-
-            <article class="entry">
-              <div  style="display:inline-block; padding-bottom: 3%; padding-right: 3%;">
-                <img src="<%=application.getContextPath() %>/resources/assets/img/blog-1.jpg"  style="border-radius:20px; width: 120px; height:120px">
-              </div>
-              
-
-              <div style="display:inline-block; text-align:right;">
-              <h5>
-                <strong><a style="color: black; " href="#">첫 자취 저렴하게 꾸미기 도와주세요</a></strong>
-              </h5>
+            <div id="comm_list">
+            
+            
+            
             </div>
 
+<<<<<<< HEAD
               <div class="entry-meta">
                 <ul>
                   <li class="d-flex align-items-center"><i class="icofont-user"></i> <a href="blog-single.html">John Doe</a></li>
@@ -213,14 +203,33 @@
 
           </div><!-- End blog entries list -->
 
+=======
+            
+>>>>>>> branch 'master' of https://github.com/mw7895la/TeamProject
         
-
+		</div>
         </div>
-
+	</div>
       </div>
     </section><!-- End Blog Section -->
 
   </main><!-- End #main -->
+  <script type="text/javascript">
+            function communitylist(check){            
+            	var search=$("#search").val(); 
+            	$.ajax({
+    				url:"<%=application.getContextPath() %>/community/comm_list",
+    				data: {check:check,search:search},
+    				success:function(data){    					
+    					$("#comm_list").html(data);
+    				
+    				}
+    			});
+    			
+    		}     
+			</script>
+			
+			
 
 
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
@@ -312,8 +321,13 @@
   <script src="<%=application.getContextPath() %>/resources/vendor/jquery.easing/jquery.easing.min.js"></script>
 
   <!-- Template Main JS File -->
+  
   <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>
-
+	<script type="text/javascript">
+	$(function(){
+		communitylist(0);		
+	});
+	</script>
   
   
 		

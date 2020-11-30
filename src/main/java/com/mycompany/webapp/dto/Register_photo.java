@@ -30,12 +30,21 @@ public class Register_photo {
 	private String following;
 	private int bookcount;
 	private int likecount;
+	private int follownumber;
 	
 	List<A_photo> list;
 	
 	
 	
 	
+	public int getFollownumber() {
+		return follownumber;
+	}
+
+	public void setFollownumber(int follownumber) {
+		this.follownumber = follownumber;
+	}
+
 	public int getBookcount() {
 		return bookcount;
 	}
