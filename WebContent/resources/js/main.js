@@ -209,6 +209,19 @@ function addTag(btncon, btnid) {
     case 'style' :
         pstyle = '.'+btncon;
         break;
+	case 1 :
+		switch(btncon){
+			case '최근 인기순':
+			break;
+			
+			case '역대 인기순':
+			$portfolioIsotope.isotope({ sortBy: 'number', sortAscending: false });
+			break;
+			
+			case '최신순':
+			break;
+		}
+		break;
 	}
 
   var button = $('<button type = "button" onclick="removeTag(\''+ btnid +'\');"'+
@@ -420,7 +433,8 @@ var $portfolioIsotope;
 $(document).ready(function() {
       $portfolioIsotope = $('.portfolio-container').isotope({
 			              itemSelector: '.portfolio-item',
-			              layoutMode: 'fitRows'
+			              layoutMode: 'fitRows',
+						getSortData: {number: '.hitcount parseInt'}
 			            });
 	 $portfolioIsotope.isotope({
               filter: filterCon
