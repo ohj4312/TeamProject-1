@@ -65,5 +65,25 @@ public class QNAController {
 		model.addAttribute("qna", qna);
 		return "qna/qnaDetail";
 	}
+	
+	@PostMapping("/qnaDelete")
+	public String qnaDelete(int qnumber) {
+		service.qnaDelete(qnumber);
+		return "redirect:/qna/qnaindex";
+	}
+	
+	@GetMapping("/qnaUpdate")
+	public String qnaUpdateForm(int qnumber, Model model) {
+		Qna qna = service.getQna(qnumber);
+		model.addAttribute("qna", qna);
+		return "qna/qnaUpdateForm";
+	}
+	
+	@PostMapping("/qnaUpdate")
+	public String qnaUpdate(Qna qna) {
+		service.qnaUpdate(qna);
+		return "redirect:/qna/qnaindex";
+	}
+	
 }
 

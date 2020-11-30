@@ -113,7 +113,7 @@ td a {
 						</c:if> <c:forEach var="i" begin="${pager.startPageNo}"
 							end="${pager.endPageNo}">
 							<c:if test="${pager.pageNo == i }">
-								<a class="btn btn-danger btn-sm"
+								<a class="btn btn-info btn-sm"
 									href="javascript:qnaList(${i})">${i}</a>
 							</c:if>
 							<c:if test="${pager.pageNo != i }">

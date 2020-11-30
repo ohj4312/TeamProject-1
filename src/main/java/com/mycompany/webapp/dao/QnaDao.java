@@ -41,4 +41,14 @@ public class QnaDao {
 		return qna;
 	}
 
+	public int deleteByBno(int qnumber) {
+		int rows = sst.delete("mybatis.mapper.qna.deleteByBno", qnumber);
+		return rows;
+	}
+
+	public int updateQna(Qna qna) {
+		int rows = sst.update("mybatis.mapper.qna.update", qna);
+		return rows;
+	}
+
 }

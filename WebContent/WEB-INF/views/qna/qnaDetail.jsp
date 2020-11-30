@@ -68,7 +68,8 @@ table.type09 {
     border-collapse: collapse;
     text-align: left;
     line-height: 2.0;
-	border: 1px solid #ccc;
+    border: 1px solid #ccc;
+
 }
 table.type09 thead th {
     padding: 10px;
@@ -102,10 +103,10 @@ table.type09 td {
 <%-- ########################################################################### --%>
 <div>
 	<h3 style="text-align:center; margin-bottom:50px">Q&A</h3>
-
-		<table class="type09" style="width: 1000px; margin-left: auto; margin-right: auto;">
-		    
-		    <tbody>
+		<div>
+			<table class="type09" style="width: 1000px; margin-left: auto; margin-right: auto;">
+			    
+			    <tbody>
 			    <tr>
 			        <th scope="row">번호</th>
 			        <td>${qna.qnumber}</td>
@@ -120,22 +121,26 @@ table.type09 td {
 			    </tr>
 			    <tr>
 			        <th scope="row">날짜</th>
-			        <td><fmt:formatDate value="${qna.qdate}" pattern="yyyy-MM-dd "/></td>
+			        <td><fmt:formatDate value="${qna.qdate}" pattern="yyyy-MM-dd"/></td>
 			    </tr>
 			    <tr>
 			        <th scope="row">내용</th>
-			        <td style="width:100px"  readonly>${qna.qcontent}</td>
+			        <td style="width:100px" readonly>${qna.qcontent}</td>
 			    </tr>
-		    </tbody>
-		</table>
-		
-			<c:if test="${sessionMid == qna.mnickname}"></c:if>
+			    </tbody>
+			   
+			</table>
 			
-			<div style="text-align:center;">
-				<a class="btn btn-info btn-sm"  style="margin-top: 10px" href="qnaDelete">삭제</a>
-				<a class="btn btn-info btn-sm" style="margin-top: 10px" href="qnaUpdate">수정</a>
-			</div>
-</div>		
+			 	<div style="text-align: center; margin-top: 10px;">
+			    	
+			    	<form method="post" action="qnaDelete?qnumber=${qna.qnumber}">
+			    		<input type="submit" value="삭제" class="btn btn-info" style="margin-bottom:5px">
+			    	</form>
+			    		<a class="btn btn-info" href="qnaUpdate?qnumber=${qna.qnumber}">수정</a>
+			    </div>
+	    </div>
+</div>
+		
 <%-- ########################################################################### --%>	
 	</section>
 	<!-- ======= Footer ======= -->

@@ -63,11 +63,6 @@ td a {
 	text-decoration: none;
 	color: inherit;
 }
-
-center{
-	border: 2px solid gray;
-  border-radius: 5px;
-}
 </style>
 </head>
 
@@ -78,39 +73,42 @@ center{
 	
 <%-- ########################################################################### --%>
 
-	<div>
-		<h3 style="text-align:center; margin-bottom:50px">Q&A</h3>
-		<div class="center">
-		<table style="width: 1000px; margin-left: auto; margin-right: auto; background-color: #ffffff"
-			class="table table-lg table-bordered fade-up">
-			<div>
-				<span>번호</span>
-				<span>${qna.qnumber}</span><br/>
-				
-				<span>제목</span>
-				<span>${qna.qtitle}</span><br/>
-				
-				<span>글쓴이</span>
-				<span>${qna.mnickname}</span><br/>
-				
-				<span class="title">날짜</span>
-				<span><fmt:formatDate value="${qna.qdate}" pattern="yyyy-MM-dd HH.mm.ss"/></span><br/>
+	<div style="width: 1000px; margin-left: auto; margin-right: auto;" >
+		<h3 style="margin-bottom:50px">Q&A 질문 작성</h3>
+	
+		<form id="qnaUpdateForm" method="post" action="qnaUpdate">
+			<!-- <table style="width:auto" class="table table-sm table-bordered"> -->
+			<input type="hidden" id="qnumber" name="qnumber" value="${qna.qnumber}">
+			
+			<div class="input-group">
+				<div class="input-group-prepend"><span class="input-group-text">제목</span></div>
+				<input id="qtitle" type="text" name="qtitle" class="form-control" value="${qna.qtitle}">
+			
+				<span id="qtitleError" class="error"></span>
 			</div>
 			
-			<div>
-				<span class="title">내용</span><br/>
-				<textarea style="width:100px" readonly>${qna.qcontent}</textarea>
+			<div class="input-group">
+				<div class="input-group-prepend"><span class="input-group-text">내용</span></div>
+				<textarea id="qcontent" name="qcontent" class="form-control" rows="10">${qna.qcontent}</textarea>
+				<span id="qcontentError" class="error"></span>
 			</div>
 			
-			<c:if test="${sessionMid == qna.mnickname}"></c:if>
-			<div>
-				<a class="btn btn-info btn-sm" href="qnaDelete">삭제</a><br/>
-				<a class="btn btn-info btn-sm" href="qnaUpdate">수정</a>
+			<div class="input-group">
+				<div class="input-group-prepend"><span class="input-group-text">별명</span></div>
+				<input id="mnickname" type="text" name="mnickname" class="form-control" 
+					<c:if test="${member.mnickname!=null}">value="${member.mnickname}"</c:if>
+					<c:if test="${member.mnickname==null}">value="노성규!"</c:if>
+					readonly>
+				<span id="qtitleError" class="error"></span>
 			</div>
-			</table>
-		</div>
+			<!-- //로그인이 되면 로그인된 아이디가 들어간다.값이 없으면 필수, 값이  있으면 에러가 없어서 비워두겠다. -->	
+			<div style="text-align: center; margin-top: 10px;">
+				<input type="submit" class="btn btn-info" value="글수정"/>
+				<a class="btn btn-info" href="qnaindex">취소</a>	
+			</div>
+		</form>
 	</div>
-		
+	
 <%-- ########################################################################### --%>	
 	</section>
 	<!-- ======= Footer ======= -->

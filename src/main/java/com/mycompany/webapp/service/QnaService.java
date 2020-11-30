@@ -41,6 +41,16 @@ public class QnaService {
 		return qna;
 	}
 
+	public void qnaDelete(int qnumber) {
+		int rows = qnaDao.deleteByBno(qnumber);
+		
+	}
+
+	public void qnaUpdate(Qna qna) {
+		int rows = qnaDao.updateQna(qna);
+		
+	}
+
 	
 
 }
