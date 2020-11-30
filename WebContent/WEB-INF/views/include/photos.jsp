@@ -53,7 +53,7 @@
 							</c:if>
 						</a>
 					</div>
-					<div div class = "row pl-3 pr-3 mt-2">
+					<div class = "row pl-3 pr-3 mt-2">
 								<a>${photo.first_content}</a>
 					</div>
 				</div>
