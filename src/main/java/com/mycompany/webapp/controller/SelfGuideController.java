@@ -69,19 +69,12 @@ public class SelfGuideController {
 			logger.info(sg.getSimage());
 			File dest = new File("C:/Temp/upload/selfguide/"+saveName);
 			sg.getSimageAttach().transferTo(dest);
-			
+			int row=service.setSelfWrite(sg);
+			logger.info(""+row);
 		}else {
-			return "redirect:/selfguide/selfguide-write";
+			return "selfguide/selfwrite";
 		}
-		int row=service.setSelfWrite(sg);
-		logger.info(""+row);
-		/*		if(row==1) {
-					PrintWriter out = response.getWriter();
-					response.setContentType("text/html;charset=utf-8");
-					out.println(row);
-					out.flush();
-					out.close();
-				}*/
+		
 		return "redirect:/selfguide/selfguidelist";
 
 
