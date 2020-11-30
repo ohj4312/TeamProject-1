@@ -158,17 +158,7 @@
 						return;	
 					} 
 					console.log("111111111");
-					$.ajax({
-						url:"<%=application.getContextPath()%>/selfguide/selfwrite",
-						method:"post",
-						data: {stitle:stitle, scontent:scontent, stype:stype},
-						success:function(data) {
-							if(data== 1) { 
-								location.href="<%=application.getContextPath()%>/selfguide/selflist"; 
-							}
-							console.log(data);
-						}
-					});
+		
 				}
 			</script>
 			

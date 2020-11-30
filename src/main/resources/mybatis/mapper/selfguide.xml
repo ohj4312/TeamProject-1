@@ -3,7 +3,7 @@
 <mapper namespace="mybatis.mapper.selfguide">
 	<insert id="insertSelfGuide" parameterType="selfguide">
 		insert into self_guide(snumber,stitle,scontent,swriter,register_date,stype,hit_count,simage)
-		value(seq_self_guide.nextval,#{stitle},#{scontet},#{swriter},sysdate,#{stype},0,#{simage}) 	
+		values(seq_self_guide.nextval,#{stitle},#{scontent},#{swriter},sysdate,#{stype},0,#{simage}) 	
 	</insert>
 
 

@@ -21,13 +21,14 @@ public class SelfGuideDAO {
 
 	
 	public List<SelfGuide> selectSelfList(int snumber){
-		return sst.selectList("mybatis.mapper.photo.selectSelfList" , snumber);
+		return sst.selectList("mybatis.mapper.selfguide.selectSelfList" , snumber);
 		
 	}
 
 
 	public int insertSelfGuide(SelfGuide sg) {
-		int row=sst.insert("mybatis.mapper.photo.insertSelfGuide" , sg);
+		logger.info("잘들어갈까요안들어갈까요~?");
+		int row=sst.insert("mybatis.mapper.selfguide.insertSelfGuide" , sg);
 		logger.info("1이면 성공: "+row);
 		return row;
 	}
