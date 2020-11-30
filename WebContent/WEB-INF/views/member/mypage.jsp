@@ -95,21 +95,11 @@
 
           <div class="col-lg-5 mr-3">
         		<div id="photoList" class="contents">
-        			<section class="post post--cards">
-        				<h5><strong>사진</strong></h5>
-                <div id="mypagephoto" style="border:1px dashed #dbdbdb; width:100%;  text-align: center; ">
-                    <div class="row justify-content-center " style="margin-top: 30%;">
-                          <span class="material-icons ">add </span>
-                          <a class="post__upload" href="<%=application.getContextPath()%>/photo/write"> 첫 번째 사진을 올려보세요</a>
-                    </div>
-                </div>  
+        			<section id="formchange" class="post post--cards">
+        				<jsp:include page="/WEB-INF/views/member/returnmypage.jsp"/>
                 	</section>
-        			
         		</div>
-        		
-        		
-        		
-        	</div> 
+        </div> 
         	
         </div>
 
@@ -139,7 +129,7 @@
 		$.ajax({
 			url:"<%=application.getContextPath()%>/follow/followList", 
 			success:function(data) {
-				$("#photoList").html(data);
+				$("#formchange").html(data);
 			}
 		});
 	} 
@@ -148,7 +138,7 @@
 		$.ajax({
 			url:"<%=application.getContextPath()%>/follow/followingList",
 			success:function(data) { 
-				$("#photoList").html(data);
+				$("#formchange").html(data);
 			}
 		});
 	} 
@@ -156,11 +146,11 @@
 	  function Return(){
 			
 			$.ajax({  
-			url : "<%=application.getContextPath()%>/BK/returnmypage",
+			url : "<%=application.getContextPath()%>/member/returnMypage",
 	 						
 			success : function(data){
 				console.log("return 스크립트 넘어옴.");
-				$("#photoList").html(data);
+				$("#formchange").html(data);
 			}
 			});
 		}  
@@ -178,7 +168,7 @@
 				success : function(data){
 					console.log("함수 안에부분 실행");
 					
-					$("#photoList").html(data);
+					$("#formchange").html(data);
 				}
 			});
 		}
@@ -189,7 +179,7 @@
 				
 				success:function(data){
 					
-					$("#photoList").html(data);
+					$("#formchange").html(data);
 				
 				}
 			});

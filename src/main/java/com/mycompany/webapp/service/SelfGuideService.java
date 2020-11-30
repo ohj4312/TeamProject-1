@@ -19,10 +19,10 @@ public class SelfGuideService {
 	@Resource
 	SelfGuideDAO sgDAO;
 	
-	public SelfGuide selectSelfPhoto(int snumber) {
-		List<SelfGuide> list=sgDAO.selectSelfList(snumber);
-		return (SelfGuide) list;
-	}
+	/*
+	 * public SelfGuide selectSelfPhoto(int snumber) { List<SelfGuide>
+	 * list=sgDAO.selectSelfList(snumber); return (SelfGuide) list; }
+	 */
 
 	public int setSelfWrite(SelfGuide sg) {
 		int row=sgDAO.insertSelfGuide(sg);
@@ -32,4 +32,28 @@ public class SelfGuideService {
 	public int getRows() {
 		return sgDAO.countAll();
 	}
+
+	public List<SelfGuide> getselfguideList(Pager pager) {
+		
+		return sgDAO.selectByPage(pager);
+	}
+
+	public List<SelfGuide> getselfguidephotoList(SelfGuide sg) {
+		
+		return sgDAO.selectByPage(sg);
+	}
+ 
+	public SelfGuide selectSelfPhoto(int snumber) {
+		SelfGuide sg = sgDAO.selectSelfPhoto(snumber);
+		
+		
+		
+		return sg;
+		
+		
+		 
+	}
+
+
+	
 }

@@ -65,9 +65,16 @@
       <div class="container mt-5">
         <div class="row">
           <div class="col-lg-10" data-aos="fade-up">
-            <h2>${selfguide.stype} 셀프가이드 사진의 타입 값 <br/></h2>
-            	<img style="width:100%; height:400px;" src="<%=application.getContextPath() %>/resources/img/about-img.jpg"/>
-          </div>
+           <pre><h3>${sg.stitle}</h3></pre>
+          	<h2>${sg.stype} </h2>
+          	
+            	<img id="self_image" style="width:100%; height:400px;" src="<%=application.getContextPath() %>/selfguide/photodownload?fileName=${sg.simage}"/>
+          		<div><h2>${sg.swriter } 
+          		<a href="#"><i id="itag" class="material-icons align-middle" style = " font-size: 30px; color:#1bac91;">bookmark_border</i></a>
+          		<a href="#"><i id="likeicon" class="material-icons align-middle" style = "font-size: 30px; color:red;">favorite_border</i></a></h2>
+          			
+          		</div>
+          </div> 
         </div>
       </div>
       </section>
@@ -86,7 +93,7 @@
               </div> --%>
 
               <h2 class="entry-title">
-                <a href="blog-single.html">여기 클릭하면 뭐가 되야할까?</a>
+                <a href="blog-single.html">소제목</a>
               </h2>
 
               <div class="entry-meta">
@@ -119,12 +126,12 @@
                   
                 </p>
 
-                <h3>너무 빡센거 같아 현지야.</h3>
+                <h3>aaaaaaaaaaaaaaaaaaaaaaaaaa</h3>
                 <p>
                   
                 </p>
                 
-                <h3>그렇지 않아? </h3>
+                <h3><div id="scontent"></div></h3>
                 
 				
               </div>
@@ -134,11 +141,25 @@
             </article><!-- End blog entry -->
 
             <div class="blog-author clearfix">
-              <img src="assets/img/blog-author.jpg" class="rounded-circle float-left" alt="">
-              <h4>작성자의 또 다른 셀프가이드 게시물.</h4>
-              <div class>
-                
-              </div>
+             <%--  <div class="container">
+				<div class="scroll col-md-8 h-25" style="width:100%">
+		 			<c:forEach var="selfguide" items="${sg.list}">
+          				<a href="javascript:otherselfguidephoto('${selfguide.simage}', '${selfguide.scontent}')"><img src="photodownload?fileName=${selfguide.simage}" class= "w-25 h-25"></a>
+					</c:forEach>
+				 </div>
+			</div> --%>
+           </div>
+           <script type="text/javascript">
+          	/* 	function otherselfguidephoto(simage, scontent){
+        		
+        		var imagepath = 'photodownload?fileName='+simage;
+        		console.log(imagepath);
+        		console.log(scontent);
+        		$('#self_image').attr('src', imagepath);
+        		$('#scontent').html(scontent);
+        		
+        	} */
+           </script>
              
             </div><!-- End blog author bio -->
 

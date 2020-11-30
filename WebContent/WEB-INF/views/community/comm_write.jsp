@@ -41,7 +41,7 @@
 	<style type="text/css">
 #question_title{
   width:100%;
-  font-size:15px;
+  font-size:15px; 
   margin-bottom: 2px;
   border-radius:4px;
   border:solid 1px #dbdbdb;
@@ -234,6 +234,7 @@
 	  if (e.type == "dragover") {
 	    $(e.target).css({
 	      "background-color": "black",
+	      
 	      "outline-offset": "-20px"
 	    });
 	  } else {

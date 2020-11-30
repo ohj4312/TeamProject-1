@@ -16,8 +16,10 @@ public class SelfGuide {
 	private String stitle;
 	private String scontent;
 	private String stype;
-	private MultipartFile simage;
-	
+	private String simage;
+	private int startRowNo;
+	private int endRowNo;
+	private MultipartFile simageAttach;
 	List<SelfGuide> list;
 	
 	
@@ -70,11 +72,29 @@ public class SelfGuide {
 	public void setStype(String stype) {
 		this.stype = stype;
 	}
-	public MultipartFile getSimage() {
+	public String getSimage() {
 		return simage;
 	}
-	public void setSimage(MultipartFile simage) {
+	public void setSimage(String simage) {
 		this.simage = simage;
+	}
+	public int getStartRowNo() {
+		return startRowNo;
+	}
+	public void setStartRowNo(int startRowNo) {
+		this.startRowNo = startRowNo;
+	}
+	public int getEndRowNo() {
+		return endRowNo;
+	}
+	public void setEndRowNo(int endRowNo) {
+		this.endRowNo = endRowNo;
+	}
+	public MultipartFile getSimageAttach() {
+		return simageAttach;
+	}
+	public void setSimageAttach(MultipartFile simageAttach) {
+		this.simageAttach = simageAttach;
 	}
 	
 	
