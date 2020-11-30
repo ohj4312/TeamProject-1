@@ -76,6 +76,16 @@ public class PhotoService {
 		return photoDAO.selectByPage(photo);
 	}
 
+	public int checkPwriter(Register_photo photo) {
+		int check = photoDAO.selectPwriterCount(photo);
+		return check;
+	}
+
+	public void deltePhoto(int pnumber) {
+		photoDAO.deletePhoto(pnumber);
+		
+	}
+
 	
 
 

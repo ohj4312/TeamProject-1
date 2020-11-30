@@ -19,6 +19,8 @@ public class SelfGuide {
 	private String simage;
 	private int startRowNo;
 	private int endRowNo;
+
+	
 	private MultipartFile simageAttach;
 	List<SelfGuide> list;
 	

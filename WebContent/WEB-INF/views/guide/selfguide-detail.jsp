@@ -65,14 +65,41 @@
       <div class="container mt-5">
         <div class="row">
           <div class="col-lg-10" data-aos="fade-up">
-           <pre><h3>${sg.stitle}</h3></pre>
-          	<h2>${sg.stype} </h2>
+           <pre> <h3 id="title">${sg.stitle}</h3></pre>
+          	<h2 id="type">${sg.stype} </h2>
           	
             	<img id="self_image" style="width:100%; height:400px;" src="<%=application.getContextPath() %>/selfguide/photodownload?fileName=${sg.simage}"/>
-          		<div><h2>${sg.swriter } 
-          		<a href="#"><i id="itag" class="material-icons align-middle" style = " font-size: 30px; color:#1bac91;">bookmark_border</i></a>
-          		<a href="#"><i id="likeicon" class="material-icons align-middle" style = "font-size: 30px; color:red;">favorite_border</i></a></h2>
-          			
+          		<div><h2>${sg.swriter } </h2>
+          		<!-- <a href="#"><i id="itag" class="material-icons align-middle" style = "float:right; font-size: 30px; color:#1bac91;">bookmark_border</i></a>
+          		<a href="#"><i id="likeicon" class="material-icons align-middle" style = "float:right; font-size: 30px; color:red;">favorite_border</i></a></h2>
+          		 -->	
+          		 <div id="RegBookMark" class="col-6">
+						<button  type="button" class="btn btn-light w-100" onclick="toggleUpdate(${photo.pnumber}, '<%=application.getContextPath()%>/BK/CheckBookMark()">
+							<c:if test="${photo.bnumber == 0}">
+								<i id="itag${photo.pnumber}" class="material-icons align-middle" style = " font-size: 30px; color:#1bac91;">bookmark_border</i>
+								<span id = "bkcount" class = "align-middle">${photo.bookcount}</span>
+							</c:if>
+							<c:if test="${photo.bnumber != 0}">
+								<i id="itag${photo.pnumber}" class="material-icons align-middle" style = " font-size: 30px; color:#1bac91;">bookmark</i>
+								<span id = "bkcount" class = "align-middle">${photo.bookcount}</span>
+							</c:if>
+						</button>
+				</div>
+				
+				<div id="likepush" class="col-6">
+						
+	              		<button  type="button" class="btn btn-light w-100" onclick="toggleUpdate(${photo.pnumber}, '<%=application.getContextPath()%>/like/likePushCheck')">
+		            		<c:if test="${photo.likenumber == 0}">
+								<i id="likeicon${photo.pnumber}" class="material-icons align-middle" style = "font-size: 30px; color:red;">favorite_border</i>
+								<span id = "lkcount" class = "align-middle">${photo.likecount}</span>
+							</c:if>
+							<c:if test="${photo.likenumber != 0}">
+								<i id="likeicon${photo.pnumber}" class="material-icons align-middle" style = "font-size: 30px; color:red;">favorite</i>
+								<span id = "lkcount" class = "align-middle">${photo.likecount}</span>
+							</c:if>
+	              		</button>
+	              	</div>
+				
           		</div>
           </div> 
         </div>
@@ -113,7 +140,7 @@
                  
                 </p>
 
-               <!--  <blockquote>
+                <!-- <blockquote>
                   <i class="icofont-quote-left quote-left"></i>
                   <p>
                   	여기는 무슨 내용?
@@ -126,7 +153,7 @@
                   
                 </p>
 
-                <h3>aaaaaaaaaaaaaaaaaaaaaaaaaa</h3>
+                
                 <p>
                   
                 </p>
@@ -141,24 +168,26 @@
             </article><!-- End blog entry -->
 
             <div class="blog-author clearfix">
-             <%--  <div class="container">
+              <div class="container">
 				<div class="scroll col-md-8 h-25" style="width:100%">
-		 			<c:forEach var="selfguide" items="${sg.list}">
-          				<a href="javascript:otherselfguidephoto('${selfguide.simage}', '${selfguide.scontent}')"><img src="photodownload?fileName=${selfguide.simage}" class= "w-25 h-25"></a>
+		 			<c:forEach var="selfguide" items="${list}">
+          				<a href="javascript:otherselfguidephoto('${selfguide.simage}', '${selfguide.scontent}','${selfguide.stitle }','${selfguide.stype }')"><img src="<%=application.getContextPath() %>/selfguide/photodownload?fileName=${selfguide.simage}" class= "w-25 h-25"></a>
 					</c:forEach>
 				 </div>
-			</div> --%>
+			</div>
            </div>
            <script type="text/javascript">
-          	/* 	function otherselfguidephoto(simage, scontent){
+          	 	function otherselfguidephoto(simage, scontent,stitle,stype){
         		
-        		var imagepath = 'photodownload?fileName='+simage;
+        		var imagepath = '<%=application.getContextPath() %>/selfguide/photodownload?fileName='+simage;
         		console.log(imagepath);
         		console.log(scontent);
-        		$('#self_image').attr('src', imagepath);
-        		$('#scontent').html(scontent);
+        		$("#self_image").attr("src", imagepath);
+        		$("#scontent").html(scontent);
+        		$("#title").html(stitle);
+        		$("#type").html(stype);
         		
-        	} */
+        	} 
            </script>
              
             </div><!-- End blog author bio -->
@@ -168,7 +197,7 @@
               <h4 class="comments-count">8 Comments</h4>
 
               <div id="comment-1" class="comment clearfix">
-                <img src="assets/img/comments-1.jpg" class="comment-img  float-left" alt="">
+                <img src="" class="comment-img  float-left" alt="">
                 <h5><a href="">Georgia Reader</a> <a href="#" class="reply"><i class="icofont-reply"></i> Reply</a></h5>
                 <time datetime="2020-01-01">01 Jan, 2020</time>
                 <p>
@@ -178,7 +207,7 @@
               </div><!-- End comment #1 -->
 
               <div id="comment-2" class="comment clearfix">
-                <img src="assets/img/comments-2.jpg" class="comment-img  float-left" alt="">
+                <img src="" class="comment-img  float-left" alt="">
                 <h5><a href="">Aron Alvarado</a> <a href="#" class="reply"><i class="icofont-reply"></i> Reply</a></h5>
                 <time datetime="2020-01-01">01 Jan, 2020</time>
                 <p>
@@ -186,7 +215,7 @@
                 </p>
 
                 <div id="comment-reply-1" class="comment comment-reply clearfix">
-                  <img src="<%=application.getContextPath() %>/resources/img/comments-3.jpg" class="comment-img  float-left" alt="">
+                  <img src="" class="comment-img  float-left" alt="">
                   <h5><a href="">Lynda Small</a> <a href="#" class="reply"><i class="icofont-reply"></i> Reply</a></h5>
                   <time datetime="2020-01-01">01 Jan, 2020</time>
                   <p>
@@ -194,7 +223,7 @@
                   </p>
 
                   <div id="comment-reply-2" class="comment comment-reply clearfix">
-                    <img src="<%=application.getContextPath() %>/resources/img/comments-4.jpg" class="comment-img  float-left" alt="">
+                    <img src="" class="comment-img  float-left" alt="">
                     <h5><a href="">Sianna Ramsay</a> <a href="#" class="reply"><i class="icofont-reply"></i> Reply</a></h5>
                     <time datetime="2020-01-01">01 Jan, 2020</time>
                     <p>
@@ -208,7 +237,7 @@
               </div><!-- End comment #2-->
 
               <div id="comment-3" class="comment clearfix">
-                <img src="assets/img/comments-5.jpg" class="comment-img  float-left" alt="">
+                <img src="" class="comment-img  float-left" alt="">
                 <h5><a href="">Nolan Davidson</a> <a href="#" class="reply"><i class="icofont-reply"></i> Reply</a></h5>
                 <time datetime="2020-01-01">01 Jan, 2020</time>
                 <p>
@@ -261,7 +290,7 @@
 
         </div>
 
-      </div>
+     
     </section><!-- End Blog Section -->
 
   </main><!-- End #main -->

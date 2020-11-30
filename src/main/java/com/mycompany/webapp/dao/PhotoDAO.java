@@ -90,6 +90,16 @@ public class PhotoDAO {
 		return sst.selectList("mybatis.mapper.photo.selectMemberPhotoList", pwriter);
 	}
 
+	public int selectPwriterCount(Register_photo photo) {
+		// TODO Auto-generated method stub
+		return sst.selectOne("mybatis.mapper.photo.selectPwriterCount", photo);
+	}
+
+	public void deletePhoto(int pnumber) {
+		sst.delete("mybatis.mapper.photo.deletePhoto", pnumber);
+		
+	}
+
 	
 
 	
