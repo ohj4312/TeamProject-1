@@ -33,5 +33,11 @@ public class CommunityController {
 
 		return "community/comm_write";
 	}
+	
+	@GetMapping("/comm_detail")
+	public String Comm_Detail() {
+
+		return "community/comm_detail";
+	}
 
 }
