@@ -1,5 +1,7 @@
 package com.mycompany.webapp.dto;
 
+import java.util.Date;
+
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -7,7 +9,7 @@ public class Community {
 
 //Community_reply
 	private int cr_cnumber;	//Community넘버	 //커뮤니티 넘버 참조 
-	@DateTimeFormat(pattern="yyyy-MM-dd")private int cr_rdate;	//리플시간
+	@DateTimeFormat(pattern="yyyy-MM-dd")private Date cr_rdate;	//리플시간
 	private int cr_rnumber; // 리플 넘버
 	private String cr_rcontent; // 리플 내용
 	private String cr_mimage;// 리플 이미지 //멤버이미지 참조
@@ -20,7 +22,7 @@ public class Community {
 	private String c_image;// 커뮤니티 사진  실질적으로 저장되는 파일 이름 
 	private int c_count;// 조회수 
 	private int c_number;//커뮤니티 넘버
-	@DateTimeFormat(pattern="yyyy-MM-dd")private int c_date;// 커뮤니티 시간 
+	@DateTimeFormat(pattern="yyyy-MM-dd")private Date c_date;// 커뮤니티 시간 
 	private MultipartFile cimage;//커뮤니티 사진 저장을위해 필요한 객체~ 
 	
 	
@@ -41,12 +43,7 @@ public class Community {
 	public void setCr_cnumber(int cr_cnumber) {
 		this.cr_cnumber = cr_cnumber;
 	}
-	public int getCr_rdate() {
-		return cr_rdate;
-	}
-	public void setCr_rdate(int cr_rdate) {
-		this.cr_rdate = cr_rdate;
-	}
+	
 	public int getCr_rnumber() {
 		return cr_rnumber;
 	}
@@ -107,12 +104,19 @@ public class Community {
 	public void setC_number(int c_number) {
 		this.c_number = c_number;
 	}
-	public int getC_date() {
+	public Date getCr_rdate() {
+		return cr_rdate;
+	}
+	public void setCr_rdate(Date cr_rdate) {
+		this.cr_rdate = cr_rdate;
+	}
+	public Date getC_date() {
 		return c_date;
 	}
-	public void setC_date(int c_date) {
+	public void setC_date(Date c_date) {
 		this.c_date = c_date;
 	}
+	
 	
 
 	
