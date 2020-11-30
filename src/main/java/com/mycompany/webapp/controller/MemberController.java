@@ -57,14 +57,41 @@ public class MemberController {
 	}
 	
 	@GetMapping("/mypage")
-	public String mypage() {
+	public String mypage(Model model, HttpSession session) {
+		Member memail = (Member)session.getAttribute("member");
+		Member member;
+		member = memberService.getYourHomeSearch(memail.getMemail());
+		logger.info(String.valueOf(member.getFollowCheking()));
+		model.addAttribute("member", member);
+
 		return "member/mypage";
 	}
 	
+	@GetMapping("/returnMypage")
+	public String returnMypage(Model model, HttpSession session) {
+		Member memail = (Member)session.getAttribute("member");
+		Member member;
+		member = memberService.getYourHomeSearch(memail.getMemail());
+		logger.info(String.valueOf(member.getFollowCheking()));
+		model.addAttribute("member", member);
+
+		return "member/returnmypage";
+	}
+	
 	@GetMapping("/yourhomesearch")
-	public String yourhomesearch(String pwriter, Model model) {
+	public String yourhomesearch(String pwriter, Model model, HttpSession session) {
 		logger.info(pwriter);
-		Member member = memberService.getYourHomeSearch(pwriter);
+		Member memail = (Member)session.getAttribute("member");
+		Member member;
+		if(memail != null) {
+			member = memberService.getYourHomeSearch(pwriter, memail.getMemail());
+		}else {
+			member = memberService.getYourHomeSearch(pwriter);
+		}
+		
+		member.setMemail(pwriter);
+		
+		logger.info(String.valueOf(member.getFollowCheking()));
 		model.addAttribute("member", member);
 		logger.info(member.getMnickname());
 		logger.info(member.getMimage());
