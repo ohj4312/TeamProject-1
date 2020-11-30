@@ -79,7 +79,7 @@
           <div id="head" class="col-md-4">
 			<div class= "container" style="text-align: center;">
 				<div class="row mx-auto">
-		            <div id="RegBookMark" class="col-6">
+		            <div id="RegBookMark" class="col-5">
 						<button  type="button" class="btn btn-light w-100" onclick="toggleUpdate(${photo.pnumber}, '<%=application.getContextPath()%>/BK/CheckBookMark')">
 							<c:if test="${photo.bnumber == 0}">
 								<i id="itag${photo.pnumber}" class="material-icons align-middle" style = " font-size: 30px; color:#1bac91;">bookmark_border</i>
@@ -91,7 +91,7 @@
 							</c:if>
 						</button>
 					</div>
-					<div id="likepush" class="col-6">
+					<div id="likepush" class="col-5">
 						
 	              		<button  type="button" class="btn btn-light w-100" onclick="toggleUpdate(${photo.pnumber}, '<%=application.getContextPath()%>/like/likePushCheck')">
 		            		<c:if test="${photo.likenumber == 0}">
@@ -104,6 +104,20 @@
 							</c:if>
 	              		</button>
 	              	</div>
+	              	
+	              	<c:if test="${updatecheck != 0}">
+	              		<div class="dropdown col-2">
+						  <a type="button" class="dropdown-toggle" data-toggle="dropdown">
+						    <i class="material-icons mt-2">
+								more_vert
+							</i>
+						  </a>
+						  <div class="dropdown-menu">
+						    <a class="dropdown-item" href="#">수정</a>
+						    <a class="dropdown-item" href="<%=application.getContextPath()%>/photo/delete?pnumber=${photo.pnumber}">삭제</a>
+						  </div>
+						</div>
+	              	</c:if>
 				</div>
 				
 				<div class="row mx-auto mt-5">
@@ -124,7 +138,7 @@
 						</c:if>	
 				</div>
 				<div id = "acontent"class="row mx-auto mt-5">
-					
+					${photo.first_content}
 				</div>
 			</div>
 
@@ -236,15 +250,15 @@
   <!-- Vendor JS Files -->
   
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/jquery.easing/jquery.easing.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/php-email-form/validate.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/owl.carousel/owl.carousel.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/venobox/venobox.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/aos/aos.js"></script>
-  
+
   <!-- Template Main JS File -->
   <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>
 

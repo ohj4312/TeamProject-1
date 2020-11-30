@@ -41,13 +41,12 @@ public class SelfGuideService {
  
 	public SelfGuide selectSelfPhoto(int snumber) {
 		SelfGuide sg = sgDAO.selectSelfPhoto(snumber);
-		
-		
-		
 		return sg;
-		
-		
-		 
+	}
+
+	public List<SelfGuide> selectSelfPhotoList(String swriter) {
+		List<SelfGuide> list= sgDAO.selectSelfPhotoList(swriter);
+		return list;
 	}
 
 
