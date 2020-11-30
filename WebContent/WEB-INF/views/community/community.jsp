@@ -74,7 +74,6 @@
             
             </div>
 
-<<<<<<< HEAD
               <div class="entry-meta">
                 <ul>
                   <li class="d-flex align-items-center"><i class="icofont-user"></i> <a href="blog-single.html">John Doe</a></li>
@@ -203,9 +202,6 @@
 
           </div><!-- End blog entries list -->
 
-=======
-            
->>>>>>> branch 'master' of https://github.com/mw7895la/TeamProject
         
 		</div>
         </div>
