@@ -80,21 +80,34 @@ center{
 
 	<div>
 		<h3 style="text-align:center; margin-bottom:50px">Q&A</h3>
-		
-		<div class="container">
-		  
-		  <ul class="list-group">
-		    <li class="list-group-item">번호</li>
-		    <li class="list-group-item">제목</li>
-		    <li class="list-group-item">글쓴이</li>
-		    <li class="list-group-item">날짜</li>
-		    <li class="list-group-item">내용</li>
-		  </ul>
-		  
-		  <div>
+		<div class="center">
+		<table style="width: 1000px; margin-left: auto; margin-right: auto; background-color: #ffffff"
+			class="table table-lg table-bordered fade-up">
+			<div>
+				<span>번호</span>
+				<span>${qna.qnumber}</span><br/>
+				
+				<span>제목</span>
+				<span>${qna.qtitle}</span><br/>
+				
+				<span>글쓴이</span>
+				<span>${qna.mnickname}</span><br/>
+				
+				<span class="title">날짜</span>
+				<span><fmt:formatDate value="${qna.qdate}" pattern="yyyy-MM-dd HH.mm.ss"/></span><br/>
+			</div>
+			
+			<div>
+				<span class="title">내용</span><br/>
+				<textarea style="width:100px" readonly>${qna.qcontent}</textarea>
+			</div>
+			
+			<c:if test="${sessionMid == qna.mnickname}"></c:if>
+			<div>
 				<a class="btn btn-info btn-sm" href="qnaDelete">삭제</a><br/>
 				<a class="btn btn-info btn-sm" href="qnaUpdate">수정</a>
 			</div>
+			</table>
 		</div>
 	</div>
 		

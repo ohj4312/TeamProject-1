@@ -64,9 +64,32 @@ td a {
 	color: inherit;
 }
 
-center{
-	border: 2px solid gray;
-  border-radius: 5px;
+table.type09 {
+    border-collapse: collapse;
+    text-align: left;
+    line-height: 2.0;
+	border: 1px solid #ccc;
+}
+table.type09 thead th {
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    color: #369;
+    border-bottom: 3px solid #036;
+}
+table.type09 tbody th {
+    width: 150px;
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
+    background: #f3f6f7;
+}
+table.type09 td {
+    width: 350px;
+    padding: 10px;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
 }
 </style>
 </head>
@@ -77,40 +100,42 @@ center{
 	<section id="services" class="section-bg mt-5" style="background-color: #ffffff;">
 	
 <%-- ########################################################################### --%>
+<div>
+	<h3 style="text-align:center; margin-bottom:50px">Q&A</h3>
 
-	<div>
-		<h3 style="text-align:center; margin-bottom:50px">Q&A</h3>
-		<div class="center">
-		<table style="width: 1000px; margin-left: auto; margin-right: auto; background-color: #ffffff"
-			class="table table-lg table-bordered fade-up">
-			<div>
-				<span>번호</span>
-				<span>${qna.qnumber}</span><br/>
-				
-				<span>제목</span>
-				<span>${qna.qtitle}</span><br/>
-				
-				<span>글쓴이</span>
-				<span>${qna.mnickname}</span><br/>
-				
-				<span class="title">날짜</span>
-				<span><fmt:formatDate value="${qna.qdate}" pattern="yyyy-MM-dd HH.mm.ss"/></span><br/>
-			</div>
-			
-			<div>
-				<span class="title">내용</span><br/>
-				<textarea style="width:100px" readonly>${qna.qcontent}</textarea>
-			</div>
-			
-			<c:if test="${sessionMid == qna.mnickname}"></c:if>
-			<div>
-				<a class="btn btn-info btn-sm" href="qnaDelete">삭제</a><br/>
-				<a class="btn btn-info btn-sm" href="qnaUpdate">수정</a>
-			</div>
-			</table>
-		</div>
-	</div>
+		<table class="type09" style="width: 1000px; margin-left: auto; margin-right: auto;">
+		    
+		    <tbody>
+			    <tr>
+			        <th scope="row">번호</th>
+			        <td>${qna.qnumber}</td>
+			    </tr>
+			    <tr>
+			        <th scope="row">제목</th>
+			        <td>${qna.qtitle}</td>
+			    </tr>
+			    <tr>
+			        <th scope="row">글쓴이</th>
+			        <td>${qna.mnickname}</td>
+			    </tr>
+			    <tr>
+			        <th scope="row">날짜</th>
+			        <td><fmt:formatDate value="${qna.qdate}" pattern="yyyy-MM-dd "/></td>
+			    </tr>
+			    <tr>
+			        <th scope="row">내용</th>
+			        <td style="width:100px"  readonly>${qna.qcontent}</td>
+			    </tr>
+		    </tbody>
+		</table>
 		
+			<c:if test="${sessionMid == qna.mnickname}"></c:if>
+			
+			<div style="text-align:center;">
+				<a class="btn btn-info btn-sm"  style="margin-top: 10px" href="qnaDelete">삭제</a>
+				<a class="btn btn-info btn-sm" style="margin-top: 10px" href="qnaUpdate">수정</a>
+			</div>
+</div>		
 <%-- ########################################################################### --%>	
 	</section>
 	<!-- ======= Footer ======= -->

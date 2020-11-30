@@ -63,7 +63,7 @@ public class QNAController {
 		
 		Qna qna = service.getQna(qnumber);
 		model.addAttribute("qna", qna);
-		return "qna/qnaDetail2";
+		return "qna/qnaDetail";
 	}
 }
 
