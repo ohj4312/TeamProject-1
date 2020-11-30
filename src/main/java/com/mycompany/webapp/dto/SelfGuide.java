@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.multipart.MultipartFile;
 
 public class SelfGuide {
 	
@@ -16,7 +17,9 @@ public class SelfGuide {
 	private String scontent;
 	private String stype;
 	private String simage;
-	
+	private int startRowNo;
+	private int endRowNo;
+	private MultipartFile simageAttach;
 	List<SelfGuide> list;
 	
 	
@@ -74,6 +77,24 @@ public class SelfGuide {
 	}
 	public void setSimage(String simage) {
 		this.simage = simage;
+	}
+	public int getStartRowNo() {
+		return startRowNo;
+	}
+	public void setStartRowNo(int startRowNo) {
+		this.startRowNo = startRowNo;
+	}
+	public int getEndRowNo() {
+		return endRowNo;
+	}
+	public void setEndRowNo(int endRowNo) {
+		this.endRowNo = endRowNo;
+	}
+	public MultipartFile getSimageAttach() {
+		return simageAttach;
+	}
+	public void setSimageAttach(MultipartFile simageAttach) {
+		this.simageAttach = simageAttach;
 	}
 	
 	
