@@ -1,7 +1,18 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
+
+<jsp:useBean id="nowtime" class="java.util.Date" />
+<fmt:formatDate value="${now}" pattern="yyyyMMddHHmmss" var="today" />
+<fmt:parseNumber var="nowtime" value="${now.time /(1000)}" integerOnly="true" />
+
+
+
 <c:forEach var="list" items="${comm_list}">
+<fmt:parseNumber var="cdate" value="${list.c_date.time /(1000)}" integerOnly="true" /> 
+
+	
 	<article class="entry" style="height: 200px">
 		<div
 			style="display: inline-block; padding-bottom: 3%; padding-right: 3%;">
@@ -25,7 +36,8 @@
 						<a href="blog-single.html">${list.c_mnickname}</a></li>
 					<li class="d-flex align-items-center"><i
 						class="icofont-wall-clock"></i> <a href="blog-single.html"><time
-								datetime="2020-01-01">${list.c_date}</time></a></li>
+								>${nowtime-cdate}초전;																	
+								</time></a></li>
 					<li class="d-flex align-items-center"><i
 						class="icofont-comment"></i> <a href="blog-single.html">12
 							Comments</a></li>
