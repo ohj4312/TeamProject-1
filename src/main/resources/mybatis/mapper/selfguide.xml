@@ -27,11 +27,15 @@
 	</select>
 	
 	<select id="selectSelfPhotoList" parameterType="int" resultType="selfguide">
-		select simage, swriter, stype 
+		select simage, swriter, stype ,stitle, scontent
 		from Self_Guide 
 		where  snumber = #{snumber}
+		
 	</select>
 	
+	<select id="selectSelfPhotoList2" parameterType="String" resultType="selfguide">
+		select * from Self_Guide where swriter = #{swriter}
+	</select>
 
 	<update id="updateHitCount" parameterType="selfguide">
 		update Self_Guide set hit_count = ${hit_count} where snumber = #{snumber}

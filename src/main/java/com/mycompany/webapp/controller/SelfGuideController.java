@@ -114,18 +114,22 @@ public class SelfGuideController {
 	
 	//셀프 가이드 리스트에서 한 게시물 선택시 상세 뷰.
 	@GetMapping("/selfdetail")
-	public String selfphotoDetail(int snumber,Model model,HttpSession session) {
+	public String selfphotoDetail(int snumber,String swriter,Model model,HttpSession session) {
 		
 		Member member = (Member) session.getAttribute("member");
 		//logger.info("snumber:"+String.valueOf(snumber));
 
 		SelfGuide sg = new SelfGuide();
 		
-		
+		List<SelfGuide> list;
 		sg.setSnumber(snumber);
+		sg.setSwriter(swriter);
+		logger.info("swriter:"+swriter);
 		logger.info("snumber:"+String.valueOf(snumber));
 		
-	
+		list=service.selectSelfPhotoList(swriter);
+		
+		
 		sg =  service.selectSelfPhoto(snumber);
 		logger.info(sg.getSwriter());
 		logger.info(sg.getStitle());
@@ -134,8 +138,9 @@ public class SelfGuideController {
 		
 		
 		
-		model.addAttribute("sg",sg);
 		
+		model.addAttribute("sg",sg);
+		model.addAttribute("list",list);
 		
 		 
 		return "guide/selfguide-detail";
@@ -157,7 +162,7 @@ public class SelfGuideController {
 		logger.info(fileName);
 		
 		//파일 정보 얻기, 파일의 데이터를 읽기 위한 입력 스트림 얻기
-		String saveFilePath = "C:/Temp/upload/"+fileName;
+		String saveFilePath = "C:/Temp/upload/selfguide/"+fileName;
 		InputStream is = new FileInputStream(saveFilePath);
 		
 		 

@@ -158,7 +158,7 @@ public class PhotoController {
 	@GetMapping("/detail")
 	public String photoDetail(int pnumber, Model model, HttpSession session) {
 		Member member = (Member) session.getAttribute("member");
-		
+		int check = 0;
 		logger.info(String.valueOf(pnumber));
 		Register_photo photo = new Register_photo();
 	
@@ -166,11 +166,14 @@ public class PhotoController {
 		
 		if(member != null) {
 			photo.setPwriter(member.getMemail());
+			check = photoService.checkPwriter(photo);
 		}
 
 		photo = photoService.selectPhoto(photo);
 
+
 		model.addAttribute("photo", photo);
+		model.addAttribute("updatecheck", check);
 
 		return "photo/photo-detail";
 	}
@@ -220,10 +223,10 @@ public class PhotoController {
 		//두개의 테이블에 insert하기 위한 service 요청
 		
 		//테스트용 insert
-		for(int i = 0; i < 10; i++) {
+		/*for(int i = 0; i < 10; i++) {
 			photoService.writePhoto(rphoto);
-		}
-		//photoService.writePhoto(rphoto);
+		}*/
+		photoService.writePhoto(rphoto);
 		
 		
 		
@@ -278,6 +281,12 @@ public class PhotoController {
 		is.close();
 		
 		
+	}
+	
+	@GetMapping("/delete")
+	public String delete(int pnumber) {
+		photoService.deltePhoto(pnumber);
+		return "redirect:/photo/list";
 	}
 
 }
