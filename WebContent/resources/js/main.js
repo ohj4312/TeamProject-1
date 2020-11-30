@@ -224,13 +224,7 @@ function addTag(btncon, btnid) {
   }
 	filterCon = pstyle+ptype+psize;
 	console.log(filterCon);
-	
-
-/*	var portfolioIsotope = $('.portfolio-container').isotope({
-              itemSelector: '.portfolio-item',
-              layoutMode: 'fitRows'
-            });*/
-          
+        
          $portfolioIsotope.isotope({
               filter: filterCon
             });
@@ -253,13 +247,6 @@ function removeTag(removeID) {
   	var removeID1 = '#' + removeID;
   	$(removeID1).remove();
 
-	
-
-/*	var portfolioIsotope = $('.portfolio-container').isotope({
-              itemSelector: '.portfolio-item',
-              layoutMode: 'fitRows'
-            });*/
-          
          $portfolioIsotope.isotope({
               filter: filterCon
             });
@@ -430,39 +417,6 @@ function writePhoto(){
 
 var $portfolioIsotope;
 
-/*var $grid = $('.grid').isotope({
-  itemSelector: '.element-item',
-  layoutMode: 'fitRows'
-});
-// filter functions
-var filterFns = {
-  // show if number is greater than 50
-  numberGreaterThan50: function() {
-    var number = $(this).find('.number').text();
-    return parseInt( number, 10 ) > 50;
-  },
-  // show if name ends with -ium
-  ium: function() {
-    var name = $(this).find('.name').text();
-    return name.match( /ium$/ );
-  }
-};
-// bind filter button click
-$('.filters-button-group').on( 'click', 'button', function() {
-  var filterValue = $( this ).attr('data-filter');
-  // use filterFn if matches value
-  filterValue = filterFns[ filterValue ] || filterValue;
-  $grid.isotope({ filter: filterValue });
-});
-// change is-checked class on buttons
-$('.button-group').each( function( i, buttonGroup ) {
-  var $buttonGroup = $( buttonGroup );
-  $buttonGroup.on( 'click', 'button', function() {
-    $buttonGroup.find('.is-checked').removeClass('is-checked');
-    $( this ).addClass('is-checked');
-  });
-});*/
-
 $(document).ready(function() {
       $portfolioIsotope = $('.portfolio-container').isotope({
 			              itemSelector: '.portfolio-item',
@@ -479,37 +433,7 @@ function getList(page){
 				url:"listjson",
 				data: {"pageNo" : page},
 				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-				success : function(data) {
-			
-			         
-					/*$("#12345").append(data);
-					var portfolioIsotope = $('.portfolio-container').isotope({
-			              itemSelector: '.portfolio-item',
-			              layoutMode: 'fitRows'
-			            });
-			          
-			         portfolioIsotope.isotope({
-			              filter: filterCon
-			            });
-					$('.portfolio-container').isotope('reloadItems');*/
-					
-					
-					
-					/*$("#12345").append(data);
-					$portfolioIsotope = $('.portfolio-container').isotope({
-			              itemSelector: '.portfolio-item',
-			              layoutMode: 'fitRows'
-			            });
-			          
-			         
-					$('.portfolio-container').isotope('reloadItems');*/
-					
-					// JSON 형식의 문자열 => 객체
-					//var obj = JSON.parse(strObject);
-					//console.log(typeof obj, obj); // object { name: 'Lee', gender: 'male' }
-					
-					// 문자열 => 배열 객체
-					
+				success : function(data) {	
 					var list = data;
 					for (var loop = 0; loop < list.length; loop++) {
 						console.log('psize : ' + list[loop].psize);
@@ -588,46 +512,7 @@ function getList(page){
 								    // add and lay out newly appended elements
 								    .isotope( 'appended', $items);
 
-					    }
-
-
-					
-					/*$item = $('<div class="mb-4 mt-5 col-lg-4 col-md-6 portfolio-item 빌라 20평대 빈티지" style="position: absolute; left: 380px; top: 5313px;">'+
-					'<div class="row pl-3 pr-2 mb-4">'+
-						'<a href="/teamproject/member/yourhomesearch?pwriter=test1@naver.com" class="pr-3 " style="color: black;">'+
-							'<img class="rounded-circle mr-2 " style="width:30px; height:30px;" src="photodownload?fileName=1231546_unnamed.jpg">'+
-							'노성규!'+
-						'</a>'+
-								'<a class="pl-2 font-weight-bolder btn btn-sm btn-outline-info test1" style="color: #1bac91;" href="#">'+
-								'팔로우'+
-								'</a>'+
-					'</div>'+
-					'<a href="/teamproject/photo/detail?pnumber=281">'+
-					'<div class="portfolio-wrap">'+
-						'<img style=" height: 280px;" src="photodownload?fileName=1606699626837_photo10.jpg" class="img-fluid rounded" alt="">'+
-						'<div class="portfolio-info">'+
-								'<h4>조회수</h4>'+
-								'<p class="hitcount">0</p>'+
-						'</div>'+
-					'</div>'+
-					'</a>'+
-					'<div div="" class="row pl-3 pr-3 mt-2">'+
-						'<a id="App1BK281" class="col-4 " href="#">'+
-								'<i id="itag281" class="material-icons pl-4" style=" font-size: 30px;">bookmark_border</i>'+
-						'</a>'+
-						'<a href="/teamproject/photo/detail?pnumber=281" class="col-4" title="More Details">'+
-							'<i class="bx bx-link pl-4" style="font-size: 30px;"></i>'+
-						'</a>'+
-						'<a id="likepush281" class="col-4" href="#">'+
-								'<i id="likeicon281" class="material-icons pl-4" style="font-size: 30px;">favorite_border</i>'+
-						'</a>'+
-					'</div>'+
-					'<div div="" class="row pl-3 pr-3 mt-2">'+
-								'<a>test1</a>'+
-					'</div>'+
-				'</div>');*/
-				
-				
+					    }		
 		       		},
 		       error:function(e){
 		           if(e.status==300){
