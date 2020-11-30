@@ -30,7 +30,7 @@
 			<div class="entry-meta">
 				<ul>
 					<li class="d-flex align-items-center"><i class="icofont-user"></i>
-						<a href="blog-single.html">${list.c_mnickname}</a></li>
+						<a href="<%=application.getContextPath()%>/community/comm_detail?c_number=${list.c_number}">${list.c_mnickname}</a></li>
 					<li class="d-flex align-items-center"><i
 						class="icofont-wall-clock"></i> <a href="blog-single.html"><time
 								>
@@ -80,6 +80,3 @@
 		</div>
 	</article>
 </c:forEach>
-
-<!-- End blog entry -->
-
