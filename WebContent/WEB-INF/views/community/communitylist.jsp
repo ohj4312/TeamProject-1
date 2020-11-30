@@ -4,14 +4,11 @@
 
 
 <jsp:useBean id="nowtime" class="java.util.Date" />
-<fmt:formatDate value="${now}" pattern="yyyyMMddHHmmss" var="today" />
-<fmt:parseNumber var="nowtime" value="${now.time /(1000)}" integerOnly="true" />
-
+<fmt:parseNumber var="nowtimeD" value="${nowtime.time /(1000*60*60*24)}" integerOnly="true" />
 
 
 <c:forEach var="list" items="${comm_list}">
-<fmt:parseNumber var="cdate" value="${list.c_date.time /(1000)}" integerOnly="true" /> 
-
+<fmt:parseNumber var="cdateD" value="${list.c_date.time /(1000*60*60*24)}" integerOnly="true" />
 	
 	<article class="entry" style="height: 200px">
 		<div
@@ -36,7 +33,35 @@
 						<a href="blog-single.html">${list.c_mnickname}</a></li>
 					<li class="d-flex align-items-center"><i
 						class="icofont-wall-clock"></i> <a href="blog-single.html"><time
-								>${nowtime-cdate}초전;																	
+								>
+								<c:choose>
+								
+    							
+    							<c:when test="${(nowtimeD)-(cdateD)<1}">
+        						<fmt:parseNumber var="startTime_N" value="${nowtime.time}" integerOnly="true" />
+        						<fmt:parseNumber var="endTime_N" value="${list.c_date.time}" integerOnly="true"/>
+									<fmt:formatNumber type="number"  pattern="0" value="${(startTime_N/(1000*60))-(endTime_N/(1000*60))}"/> 						    				      						    						          						       						       					   							
+    							${number}분전   						    							 							
+    							</c:when>
+    							
+    							
+    							<c:when test="${(nowtimeD)-(cdateD)<7}">
+        						${(nowtimeD)-(cdateD)}일전
+   								 </c:when>
+   								 <c:when test="${((nowtimeD/7)-(cdateD/7))-((nowtimeD%7)-(cdateD%7))<4}">
+        						 <fmt:formatNumber type="number"  pattern="0" value="${(nowtimeD/7)-(cdateD/7)} "/>       					
+        						${number}주일전
+   								 </c:when> 								   								 
+   								 <c:when test="${(nowtimeD/30)-(cdateD/30)<12}">
+        						<fmt:formatNumber type="number"  pattern="0" value="${(nowtimeD/30)-(cdateD/30)} " />
+        						${number}달전
+   								 </c:when>  															
+   								<c:otherwise>
+   									<fmt:formatNumber type="number"  pattern="0" value="${(nowtimeD/(30*12))-(cdateD/(30*12))} " />
+        							${number}년전
+    							</c:otherwise>
+								</c:choose>
+								
 								</time></a></li>
 					<li class="d-flex align-items-center"><i
 						class="icofont-comment"></i> <a href="blog-single.html">12
