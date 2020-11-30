@@ -63,6 +63,11 @@ td a {
 	text-decoration: none;
 	color: inherit;
 }
+
+center{
+	border: 2px solid gray;
+  border-radius: 5px;
+}
 </style>
 </head>
 
@@ -75,59 +80,42 @@ td a {
 
 	<div>
 		<h3 style="text-align:center; margin-bottom:50px">Q&A</h3>
-
-		<div style="width: 1000px; margin-left: auto; margin-right: auto; text-align: right; margin-bottom: 10px; ">
-			<a type="button" class="btn btn-info" href="qnaWrite">글작성</a>
+		<div class="center" >
+			<table class="table table-md table-bordered fade-up" style="margin:auto" >
+				<div>
+					<thead class="thead-light ">
+						<tr>
+							<th style="width: 50px; font-weight: bold;">번호</th>
+							<th style="width: 50px; font-weight: bold;">제목</th>
+							<th style="width: 50px; font-weight: bold;">작성자</th>
+							<th style="width: 50px; font-weight: bold;">날짜</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+					<td>${qna.qnumber}</td><br/>
+					
+					<td>${qna.qtitle}</td><br/>
+					
+					<td>${qna.mnickname}</td><br/>
+					
+					<td><fmt:formatDate value="${qna.qdate}" pattern="yyyy-MM-dd HH.mm.ss"/></td><br/>
+						</tr>
+					</tbody>
+					<thead class="thead-light ">
+						<tr>
+							<th style="width: 50px; font-weight: bold;">내용</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td style="width:100px" readonly>${qna.qcontent}</td>
+							
+						</tr>
+					</tbody>
+				</div>
+			</table>
 		</div>
-		
-		<table
-			style="width: 1000px; margin-left: auto; margin-right: auto; background-color: #ffffff"
-			class="table table-lg table-bordered fade-up">
-			<thead class="thead-light ">
-				<tr>
-					<th style="width: 50px; font-weight: bold;">번호</th>
-					<th style="width: 50px; font-weight: bold;">제목</th>
-					<th style="width: 50px; font-weight: bold;">작성자</th>
-					<th style="width: 50px; font-weight: bold;">날짜</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="qna" items="${list}">
-					<tr>
-						<td>${qna.qnumber}</td>
-						<td><a href="qnaDetail?qnumber=${qna.qnumber}">${qna.qtitle}</a></td>
-						<td>${qna.mnickname}</td>
-						<td><fmt:formatDate value="${qna.qdate}" pattern="yyyy-MM-dd"/></td>
-					</tr>
-				</c:forEach>
-
-				<!-- 컬럼 합침 -->
-				<tr>
-					<td colspan="4" style="text-align: center;"><a
-						class="btn btn-outline-primary btn-sm"
-						href="javascript:qnaList(1)">처음</a> <c:if
-							test="${pager.groupNo > 1}">
-							<a class="btn btn-outline-primary btn-sm"
-								href="javascript:qnaList(${pager.startPageNo-1})">이전</a>
-						</c:if> <c:forEach var="i" begin="${pager.startPageNo}"
-							end="${pager.endPageNo}">
-							<c:if test="${pager.pageNo == i }">
-								<a class="btn btn-danger btn-sm"
-									href="javascript:qnaList(${i})">${i}</a>
-							</c:if>
-							<c:if test="${pager.pageNo != i }">
-								<a class="btn btn-outline-success btn-sm"
-									href="javascript:qnaList(${i})">${i}</a>
-							</c:if>
-						</c:forEach> <c:if test="${pager.groupNo < pager.totalGroupNo}">
-							<a class="btn btn-outline-info btn-sm"
-								href="javascript:qnaList(${pager.endPageNo+1})">다음</a>
-						</c:if> <a class="btn btn-outline-primary btn-sm"
-						href="javascript:qnaList(${pager.totalPageNo})">맨끝</a></td>
-
-				</tr>
-			</tbody>
-		</table>
 	</div>
 		
 <%-- ########################################################################### --%>	

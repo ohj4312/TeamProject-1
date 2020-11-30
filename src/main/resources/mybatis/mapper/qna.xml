@@ -25,6 +25,12 @@
 		select count(*) from qna
 	</select>
 	
+	<select id="selectByBno" parameterType="int" resultType="qna">
+		select qnumber, qtitle, qdate, qcontent, qna.mnickname, answer
+		from qna , member
+		where qna.mnickname = member.mnickname and qna.qnumber=#{qnumber}
+	</select>
+	
 	<insert id="insert" parameterType="qna">
 		insert into qna (qnumber, qtitle, qdate, qcontent, mnickname)
 		values (seq_qnumber.nextval, #{qtitle}, sysdate, #{qcontent}, #{mnickname})

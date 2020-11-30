@@ -35,6 +35,11 @@ public class QnaService {
 		
 	}
 
+	public Qna getQna(int qnumber) {
+		Qna qna = qnaDao.selectByBno(qnumber);
+		return qna;
+	}
+
 	
 
 }

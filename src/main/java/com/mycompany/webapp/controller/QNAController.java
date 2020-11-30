@@ -56,4 +56,12 @@ public class QNAController {
 		service.qnaWrite(qna);//클라이언트가 전송한 내용을 넣어준다.내용을 받기 위해서Ch14Board board써주고 (board)써준다.
 		return "redirect:/qna/qnaindex";
 	}
+	
+	@GetMapping("/qnaDetail")
+	public String qnaDetail(int qnumber, Model model) {
+		
+		Qna qna = service.getQna(qnumber);
+		model.addAttribute("qna", qna);
+		return "qna/qnaDetail2";
+	}
 }

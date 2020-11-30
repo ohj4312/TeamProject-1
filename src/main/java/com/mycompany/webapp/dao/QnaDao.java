@@ -35,4 +35,9 @@ public class QnaDao {
 		return rows;
 	}
 
+	public Qna selectByBno(int qnumber) {
+		Qna qna = sst.selectOne("mybatis.mapper.qna.selectByBno", qnumber);
+		return qna;
+	}
+
 }
