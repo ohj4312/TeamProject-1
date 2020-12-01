@@ -1,5 +1,7 @@
 package com.mycompany.webapp.service;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -10,6 +12,7 @@ import com.mycompany.webapp.dao.PhotoDAO;
 import com.mycompany.webapp.dto.Follows;
 import com.mycompany.webapp.dto.Member;
 import com.mycompany.webapp.dto.Register_photo;
+import com.mycompany.webapp.dto.SelfGuide;
 
 @Service
 public class MemberService {
@@ -62,6 +65,11 @@ public class MemberService {
 		member.setFollowerCount(followDAO.selectFollowerCount(pwriter));
 		member.setFollowingCount(followDAO.selectFollowingCount(pwriter));
 		return member;
+	}
+
+	public List<SelfGuide> getSelfGuideList(String memail) {
+		List<SelfGuide> list=memberDAO.selectSelfGuideList(memail);
+		return list;
 	}
 
 }

@@ -7,7 +7,7 @@
 				<div class="mb-4 mt-5 col-lg-4 col-md-6 portfolio-item ${photo.ptype} ${photo.psize} ${photo.pstyle}">
 					<div class = "row pl-3 pr-2 mb-4">
 						<a href="<%=application.getContextPath()%>/member/yourhomesearch?pwriter=${photo.pwriter}" class = "pr-3 " style="color: black;">
-							<img class="rounded-circle mr-2 "style="width:30px; height:30px;"  src="photodownload?fileName=${photo.mimage}" />
+							<img class="rounded-circle mr-2 "style="width:30px; height:30px;"  src="<%=application.getContextPath()%>/file/photo?fileName=${photo.mimage}" />
 							${photo.mnickname}
 						</a>
 						<sec:authorize access="isAnonymous()">
@@ -28,10 +28,11 @@
 							</c:if> 
 						</sec:authorize>
 					</div>
+					
 					<a href="<%=application.getContextPath()%>/photo/detail?pnumber=${photo.pnumber}">
 					<div class="portfolio-wrap">
 						<img style=" height: 280px;"
-							src="photodownload?fileName=${photo.first_image}"
+							src="<%=application.getContextPath()%>/file/photo?fileName=${photo.first_image}"
 							class="img-fluid rounded" alt="">
 						<div class="portfolio-info">
 								<h4>조회수</h4>
@@ -39,6 +40,7 @@
 						</div>
 					</div>
 					</a>
+					
 					<div div class = "row pl-3 pr-3 mt-2">
 						<sec:authorize access="isAnonymous()">
 							<a id="App1BK${photo.pnumber}" class = "col-4 " href="<%=application.getContextPath()%>/member/login">

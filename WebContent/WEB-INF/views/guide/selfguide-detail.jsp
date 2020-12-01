@@ -87,9 +87,7 @@
 
             <article class="entry entry-single">
 
-              <%-- <div class="entry-img">
-                <img style="width:100%; height:120px;"src="<%=application.getContextPath() %>/resources/img/apple-touch-icon.png" alt="" class="img-fluid">
-              </div> --%>
+              
 
               <h2 class="entry-title">
                 <a href="blog-single.html">소제목</a>
@@ -106,9 +104,9 @@
               <div class="entry-content">
               
                
-               
-                
-                <h3><div id="scontent"></div></h3>
+               		<div id="sg">${sg.scontent }</div>
+                	
+                	<div id="rcontent"></div>
                 
 				</div>
 				</article>
@@ -134,32 +132,35 @@
         		console.log(imagepath);
         		console.log(scontent);
         		$("#self_image").attr("src", imagepath);
-        		$("#scontent").html(scontent);
+        		$("#sg").hide();
+        		$("#rcontent").html(scontent);
         		$("#title").html(stitle);
         		$("#type").html(stype);
         		
         	} 
           	 	
-          	function selfreplyWrite(snumber){
-          	 	var rcontent = $("#rcontent").val().trim();
-          	 		
+          	function selfreplyWrite(snumber) {
+          	 	var rcontent = $("#rcontent2").val().trim();
+          	 	console.log("rcontent:", rcontent); 
+          	 	
           	 	if(rcontent!=""){
-          	 		
-          	 	console.log(snumber);
-          	 	$.ajax({
-          	 		url:"/teamproject/selfguide/replyWrite",
-          	 		method:"post",
-          	 		data : {rcontent:rcontent, snumber:snumber},
-          	 		success:function(data){
-          	 			console.log("성공후 실행");
-          	 			if(data.result=="success"){
-          	 				selfreplyList(snumber);
-          	 			}
-          	 			$("#reply_result").html(data);
-          	 		}
-          	 	});
-          	}
-          	}
+	          	 	console.log(snumber);
+	          	 	$.ajax({
+	          	 		url:"<%=application.getContextPath()%>/selfguide/replyWrite",
+	          	 		method:"post",
+	          	 		data : {rcontent:rcontent, snumber:snumber},
+	          	 		success:function(data){
+	          	 			console.log("성공후 실행");
+	          	 			if(data.result=="success"){
+	          	 				
+	          	 				selfreplyList(snumber);
+	          	 				
+	          	 			}
+	          	 			$("#reply_result").html(data);
+	          	 		}
+	          	 	});
+          		}
+          	} 
           	
           	function selfreplyList(snumber, pageNo){
           		if(!pageNo){
@@ -315,7 +316,7 @@
 $(document).ready(function(){
 	 
 	selfreplyList(${sg.snumber}); 
-});
+}); 
 </script>
 </body>
 

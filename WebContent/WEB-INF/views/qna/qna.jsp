@@ -64,6 +64,12 @@ td a {
 	text-decoration: none;
 	color: inherit;
 }
+	dropdownMenuButton{
+	 margin-left: auto; 
+	 margin-right: auto; 
+	 text-align: left; 
+	 margin-bottom: 10px; 
+}
 </style>
 </head>
 
@@ -77,17 +83,20 @@ td a {
 	<div>
 		<h3 style="text-align:center; margin-bottom:50px">Q&A</h3>
 
+		
+		
 		<div style="width: 1000px; margin-left: auto; margin-right: auto; text-align: right; margin-bottom: 10px; ">
 			<a type="button" class="btn btn-info" href="qnaWrite">글작성</a>
 		</div>
 		
 		<table
 			style="width: 1000px; margin-left: auto; margin-right: auto; background-color: #ffffff"
-			class="table table-lg table-bordered fade-up">
+			class=" table table-lg table-bordered fade-up">
 			<thead class="thead-light ">
 				<tr>
 					<th style="width: 50px; font-weight: bold;">번호</th>
 					<th style="width: 50px; font-weight: bold;">제목</th>
+					<th style="width: 50px; font-weight: bold;">사진</th>
 					<th style="width: 50px; font-weight: bold;">작성자</th>
 					<th style="width: 50px; font-weight: bold;">날짜</th>
 				</tr>
@@ -97,6 +106,7 @@ td a {
 					<tr>
 						<td>${qna.qnumber}</td>
 						<td><a href="qnaDetail?qnumber=${qna.qnumber}">${qna.qtitle}</a></td>
+						<td><img class="rounded-circle" width="50px" height="50px" src="photodownload?fileName=${qna.qphoto}"/></td>
 						<td>${qna.mnickname}</td>
 						<td><fmt:formatDate value="${qna.qdate}" pattern="yyyy-MM-dd"/></td>
 					</tr>
@@ -104,7 +114,7 @@ td a {
 
 				<!-- 컬럼 합침 -->
 				<tr>
-					<td colspan="4" style="text-align: center;"><a
+					<td colspan="5" style="text-align: center;"><a
 						class="btn btn-outline-primary btn-sm"
 						href="qnaindex?pageNo(1)">처음</a> <c:if
 							test="${pager.groupNo > 1}">
