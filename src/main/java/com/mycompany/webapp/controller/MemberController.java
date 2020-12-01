@@ -66,7 +66,9 @@ public class MemberController {
 		member = memberService.getYourHomeSearch(memail.getMemail());
 		logger.info(String.valueOf(member.getFollowCheking()));
 		model.addAttribute("member", member);
-		List<SelfGuide> sg=memberService.getSelfGuidList(memail.getMemail());
+		List<SelfGuide> list=memberService.getSelfGuideList(memail.getMemail());
+		model.addAttribute("selfguide",list);
+
 		return "member/mypage";
 	}
 	
@@ -77,6 +79,8 @@ public class MemberController {
 		member = memberService.getYourHomeSearch(memail.getMemail());
 		logger.info(String.valueOf(member.getFollowCheking()));
 		model.addAttribute("member", member);
+		List<SelfGuide> list=memberService.getSelfGuideList(memail.getMemail());
+		model.addAttribute("selfguide",list);
 
 		return "member/returnmypage";
 	}

@@ -67,9 +67,9 @@ public class MemberService {
 		return member;
 	}
 
-	public List<SelfGuide> getSelfGuidList(String memail) {
-		//List<SelfGuide> list;
-		return null;
+	public List<SelfGuide> getSelfGuideList(String memail) {
+		List<SelfGuide> list=memberDAO.selectSelfGuideList(memail);
+		return list;
 	}
 
 }

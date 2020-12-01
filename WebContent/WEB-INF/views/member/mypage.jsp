@@ -101,9 +101,6 @@
         		<div id="photoList" class="contents">
         			<section id="formchange" class="post post--cards pd">
         				<jsp:include page="/WEB-INF/views/member/returnmypage.jsp"/>
-        			</section>
-        			<section id="formchange2" class="post post--cards pd">	
-        				<jsp:include page="/WEB-INF/views/member/returnselfguide.jsp"/>
                 	</section>
         		</div>
         </div> 
