@@ -53,7 +53,7 @@
 
     <section id="contact" class="contact mt-3">
       <div class="container" id="firstForm">
-        <form action="<%=application.getContextPath()%>/photo/update" method="post" role="form" onsubmit="return writePhoto()" enctype="multipart/form-data">
+        <form action="<%=application.getContextPath()%>/photo/update" method="post" role="form" onsubmit="return updatePhoto()" enctype="multipart/form-data">
 				<input type="hidden" id="gameToken" name="pnumber" value="${photo.pnumber}">
 				<div class="row mt-5 mb-3">
 					<div class="col">
