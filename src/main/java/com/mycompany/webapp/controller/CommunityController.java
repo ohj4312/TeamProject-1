@@ -2,8 +2,10 @@ package com.mycompany.webapp.controller;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.util.Date;
 import java.util.List;
 
@@ -13,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -21,9 +24,11 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mycompany.webapp.dto.Community;
 import com.mycompany.webapp.dto.Member;
+import com.mycompany.webapp.dto.Pager;
 import com.mycompany.webapp.dto.Post_reply;
 import com.mycompany.webapp.service.CommunityService;
 
@@ -132,9 +137,7 @@ public class CommunityController {
 	}
 	
 	@GetMapping("/comm_detail")
-	public String Comm_Detail(int cnumber, String cmnickname, Model model, HttpSession session) {
-		Member member = (Member) session.getAttribute("member");				
-		
+	public String Comm_Detail(int cnumber, String cmnickname, Model model, HttpSession session) {	
 		service.Comm_hits(cnumber);	//조회수		
 		
 		Community comm_list = new Community();
@@ -145,5 +148,33 @@ public class CommunityController {
 		model.addAttribute("list", comm_list);
 		return "community/comm_detail";
 	}
+	
+	@PostMapping("/comm_replyWrite")
+	public void comm_replyWrite(Community comm_list, String rcontent,int c_number,HttpServletResponse response, HttpSession session, Model model) throws IOException {
+		logger.info("실행");
+		
+		Member member = (Member) session.getAttribute("member");
+		String mnickname = member.getMnickname();
+		
+		comm_list.setCr_rmnickname(mnickname);
+		comm_list.setCr_cnumber(c_number);
+		comm_list.setCr_rcontent(rcontent);
+		service.comm_replyWrite(comm_list);
+		
+		response.setContentType("application/json; charset=utf-8");
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("result", "success");
+		String json = jsonObject.toString();
+		PrintWriter out = response.getWriter();
+		out.println(json);
+		out.flush();
+		out.close();
+	}
+	
+	/*@GetMapping("/comm_replyList")
+	public String comm_replyList(@RequestParam(defaultValue="1")int pageNo, Model model, int pnumber) {
+		
+		return "community/comm_detail";
+	}*/
 
 }

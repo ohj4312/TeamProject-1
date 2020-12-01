@@ -7,6 +7,11 @@
 		values(#{c_mnickname},#{c_content},#{c_title},#{c_image},SEQ_C_NUMBER.nextval,sysdate)
 	</insert>
 	
+	<insert id="communityReplyInsert" parameterType="community">
+		insert into c_reply(cr_rmnickname, cr_cnumber, cr_rdate, cr_rcontent, cr_rnumber)
+		values(#{cr_rmnickname}, #{cr_cnumber}, sysdate, #{cr_rcontent}, SEQ_COM_REPLY.nextval)
+	</insert>
+	
 	<select id="communityselctAll" resultType="community">
 		select * from community order by c_date desc
 	</select>
@@ -20,13 +25,14 @@
 	</select>
 	
 	<update id="communityUpdatehits" parameterType="int">
-	update community set c_count = c_count + 1 where c_number=#{cnumber}
+		update community set c_count = c_count + 1 where c_number=#{cnumber}
 	</update>
+	
 	<select id="communityHitsselctAll" resultType="community">	
-	SELECT *FROM 
- (SELECT * FROM community ORDER BY c_count DESC) WHERE ROWNUM &lt;= 5
+		SELECT *FROM 
+	 	(SELECT * FROM community ORDER BY c_count DESC) WHERE ROWNUM &lt;= 5
 	</select>
-
+	
 
 
 </mapper>
