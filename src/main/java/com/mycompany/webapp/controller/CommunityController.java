@@ -125,8 +125,9 @@ public class CommunityController {
 	public String Comm_Detail(int cnumber, Model model, HttpSession session) {
 		
 		Member member = (Member) session.getAttribute("member");				
-		logger.info(""+cnumber);
-		service.Comm_hits(cnumber);	//조회수
+		
+		service.Comm_hits(cnumber);	//조회수		
+		
 		
 		
 		Community comm_list =service.Comm_one(cnumber);		
