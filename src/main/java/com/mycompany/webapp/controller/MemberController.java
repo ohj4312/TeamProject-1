@@ -1,5 +1,7 @@
 package com.mycompany.webapp.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mycompany.webapp.dto.Member;
+import com.mycompany.webapp.dto.SelfGuide;
 import com.mycompany.webapp.service.MemberService;
 
 @Controller
@@ -63,7 +66,7 @@ public class MemberController {
 		member = memberService.getYourHomeSearch(memail.getMemail());
 		logger.info(String.valueOf(member.getFollowCheking()));
 		model.addAttribute("member", member);
-
+		List<SelfGuide> sg=memberService.getSelfGuidList(memail.getMemail());
 		return "member/mypage";
 	}
 	

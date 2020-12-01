@@ -2,8 +2,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html; charset=UTF-8"%>
 
-<h5><strong>사진</strong></h5>
-<div id="mypagephoto" style="border:1px dashed #dbdbdb;width:100%;height: 320px;">
+<h5><strong>Self Guide</strong></h5>
+<div id="mypagephoto2" style="border:1px dashed #dbdbdb;width:100%;height: 320px;">
     <div>
     	<c:if test="${member.list == null}">
 	    	<span class="material-icons ">add </span>
@@ -19,6 +19,5 @@
     	</c:if>
     </div>
 </div>
-
         	
      
