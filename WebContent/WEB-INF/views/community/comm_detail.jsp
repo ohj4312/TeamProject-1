@@ -205,6 +205,8 @@
 							<a class="btn btn-outline" style="display:inline-block; background-color:#1bac91; color:white" href="javascript:commreplyWrite(${list.c_number})">등록</a>
 							
 							<div id="reply_result">
+							
+							
 							</div>
 							
 						</div>
@@ -348,7 +350,7 @@
 					success:function(data){
 						console.log("댓글 진짜 성공이야");
 						if(data.result=="success"){
-							/* commreplyList(cnumber); */
+							/* commreplyList(c_number); */
 						}
 						$("#reply_result").html(data);
 					}
