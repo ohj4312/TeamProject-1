@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mycompany.webapp.dto.Community;
 import com.mycompany.webapp.dto.Member;
+import com.mycompany.webapp.dto.Post_reply;
 import com.mycompany.webapp.service.CommunityService;
 
 @Controller
@@ -83,8 +84,18 @@ public class CommunityController {
 			model.addAttribute("comm_list", comm_list);			
 			return"community/communitylist";
 			}
+			/*조회수 리스트*/
+		if(check==2) {
+			List<Community> comm_listHits=service.Comm_listHits();//조회수리스트		
+			
+					
+			model.addAttribute("comm_list", comm_listHits);			
+			return"community/communitylistHits";
+			}
 		
-		List<Community> comm_list =service.Comm_list();
+		
+		
+		List<Community> comm_list =service.Comm_list();//전체리스트
 		model.addAttribute("comm_list", comm_list);
 		
 		return"community/communitylist";
@@ -121,8 +132,17 @@ public class CommunityController {
 	}
 	
 	@GetMapping("/comm_detail")
-	public String Comm_Detail() {
-
+	public String Comm_Detail(int cnumber, String cmnickname, Model model, HttpSession session) {
+		Member member = (Member) session.getAttribute("member");				
+		
+		service.Comm_hits(cnumber);	//조회수		
+		
+		Community comm_list = new Community();
+		comm_list.setC_number(cnumber);
+		comm_list.setC_mnickname(cmnickname);
+		comm_list=service.Comm_one(comm_list);
+		logger.info("이미지출력해보자"+comm_list.getMimage());
+		model.addAttribute("list", comm_list);
 		return "community/comm_detail";
 	}
 

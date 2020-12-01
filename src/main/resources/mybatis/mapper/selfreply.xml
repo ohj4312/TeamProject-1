@@ -2,7 +2,33 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mybatis.mapper.selfreply">
 
-
-
-
+	<insert id="insert" parameterType="selfreply">
+		insert into Self_Guide_reply(rnumber, rcontent, register_date,snumber , rwriter)
+		values(seq_selfguide_rnum.nextval, #{rcontent}, sysdate, #{snumber},  #{rwriter}  )
+	</insert>
+ 
+ 
+ 	<select id="selectOne" parameterType="selfreply" resultType="int">
+ 		select count(*) from self_guide_reply where snumber = #{snumber}	
+ 	</select>
+	
+	
+	<select id="selectList" parameterType="selfreply" resultType="selfreply">
+		select rnum,rwriter, rcontent,rnumber,mimage,mnickname
+		from 
+		( select rownum as rnum, rnumber, rcontent, rwriter, mnickname, mimage 
+		from 
+		( select rnumber, rcontent, rwriter, mnickname, mimage
+		from self_guide_reply r, member m
+		where r.rwriter = m.memail and snumber = #{snumber}
+		order by rnumber desc )
+		where rownum &lt; = #{endRowNo}
+		)
+		where rnum &gt; =#{startRowNo}
+	
+	</select>
+	
+	<delete id="delete" parameterType="int">
+		delete from self_guide_reply where rnumber = #{rnumber}
+	</delete>
 </mapper>

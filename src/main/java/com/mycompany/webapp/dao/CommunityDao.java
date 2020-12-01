@@ -30,4 +30,18 @@ public class CommunityDao {
 		return comm_list;
 	}
 
+	public Community communitySelectOne(Community community){
+		Community comm_list = sst.selectOne("mybatis.mapper.community.communityselectOne", community);
+		return comm_list;
+	}
+
+	public void communityUpdatehits(int cnumber) {
+			sst.update("mybatis.mapper.community.communityUpdatehits", cnumber);
+		
+	}
+
+	public List<Community> communityHitsSelectAll() {
+		List<Community> comm_listHit=sst.selectList("mybatis.mapper.community.communityHitsselctAll");
+		return comm_listHit;
+	}
 }

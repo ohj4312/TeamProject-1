@@ -115,7 +115,7 @@ public class ReplyController {
 		for(Post_reply r : list) {
 			logger.info(r.getMnickname());
 			logger.info(r.getRcontent());
-			logger.info(r.getRimage());
+			logger.info(r.getMimage());
 		}
 		model.addAttribute("list", list);
 		model.addAttribute("pager", pager);

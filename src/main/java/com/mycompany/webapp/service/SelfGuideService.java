@@ -20,11 +20,8 @@ public class SelfGuideService {
 	@Resource
 	SelfGuideDAO sgDAO;
 	
-	/*
-	 * public SelfGuide selectSelfPhoto(int snumber) { List<SelfGuide>
-	 * list=sgDAO.selectSelfList(snumber); return (SelfGuide) list; }
-	 */
-
+	
+	
 	public int setSelfWrite(SelfGuide sg) {
 		int row=sgDAO.insertSelfGuide(sg);
 		return row;
@@ -53,6 +50,12 @@ public class SelfGuideService {
 		List<SelfGuide> list= sgDAO.selectSelfPhotoList(swriter);
 		return list;
 	}
+
+	public List<SelfGuide> getselfFilter(String filter) {
+		List<SelfGuide> filterlist=sgDAO.selectFilter(filter);
+		return filterlist;
+	}
+
 
 
 	
