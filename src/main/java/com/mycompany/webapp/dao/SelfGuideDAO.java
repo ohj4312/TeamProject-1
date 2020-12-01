@@ -20,6 +20,18 @@ public class SelfGuideDAO {
 	private static final Logger logger = LoggerFactory.getLogger(SelfGuideDAO.class);
 
 	
+	public List<SelfGuide> selectSelfList(int snumber){
+		return sst.selectList("mybatis.mapper.selfguide.selectSelfList" , snumber);
+		
+	}
+
+
+	public int insertSelfGuide(SelfGuide sg) {
+		logger.info("잘들어갈까요안들어갈까요~?");
+		int row=sst.insert("mybatis.mapper.selfguide.insertSelfGuide" , sg);
+		logger.info("1이면 성공: "+row);
+		return row;
+	}
 	
 	
 	public int countAll() {
@@ -44,6 +56,7 @@ public class SelfGuideDAO {
 		sst.update("mybatis.mapper.selfguide.updateHitCount",sg);
 		
 	}
+
 
 	public List<SelfGuide> selectSelfPhotoList(String swriter) {
 		return sst.selectList("mybatis.mapper.selfguide.selectSelfPhotoList2",swriter);

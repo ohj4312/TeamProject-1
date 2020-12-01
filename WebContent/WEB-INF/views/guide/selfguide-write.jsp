@@ -91,12 +91,12 @@
 			<br/>
       </div>
       <div class="container">
-		<form action="<%=application.getContextPath()%>/photo/write" method="post" role="form" onsubmit="return writePhoto()" enctype="multipart/form-data">	
+		<form action="<%=application.getContextPath()%>/selfguide/selfwrite" method="post" role="form" onsubmit="return selfWriteForm()" enctype="multipart/form-data">	
 			<div class="row">
-			<div class="col-12 mb-4 input-group-lg">
-			<input type="text" class="form-control align-center" placeholder="Title">
-			
-			</div>
+				<div class="col-12 mb-4 input-group-lg">
+					<input id="stitle" name="stitle" type="text" class="form-control align-center" placeholder="Title">
+					<div id="stitleError" class="error"></div>
+				</div>
 			</div>
 			
 			<div class="row">
@@ -110,41 +110,86 @@
 							<option value="페인트도배">페인트 도배</option>
 							<option value="바닥깔기">바닥깔기</option>
 						</select>
+						<span id="stypeError" class="error"></span>
 				</div>
 			</div>
-						<div class="row col-sm-12 align-self-center">
-							<div class="col-12 text-center mb-4 fancybox"
-								style="position: relative; height: 300px;">
-								<div style="background-color: lightslategray;">
-
-									<a href="javascript:addPhoto;" class="item-wrap "> <i
-										class="material-icons"
-										style="font-size: 7rem; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">photo_camera</i>
-									</a>
-								</div>
-
-							</div>
+			<div class="row col-sm-12 align-self-center">
+				<div class="col-12 text-center mb-4 fancybox" style="position: relative; height: 300px;" style="border:1px solid gold">		
+					<input type="file" id="simageAttach" name ="simageAttach" style="display:none;"> 
+					<label id = "srclabel" for="simageAttach" style="width: 100%; height: 100%;"> 
+	                	<i class="material-icons" 
+							 style="font-size: 7rem; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">photo_camera</i>
+	               		<span id="simageError" class="error"></span>
+	                </label> 
+						
+				</div>
+				
+			</div>
+			<div class="row col-sm-12 align-self-center">
+				<div class="col-12">
+					<div>
+						<div class="form-group">
+							<textarea class="form-control" rows="10" id="scontent"
+								name="scontent" placeholder="사진에 대한 설명을 작성해주세요."></textarea>
+							<span id="scontentError" class="error"></span>
 						</div>
-						<div class="row col-sm-12 align-self-center">
-							<div class="col-12">
-
-								<div>
-									<div class="form-group">
-										<textarea class="form-control" rows="10" id="comment"
-											name="text" placeholder="사진에 대한 설명을 작성해주세요."></textarea>
-									</div>
-								</div>
-							</div>
-						</div>
-
-					
-				</form>
+					</div>
+				</div>
+			</div>
+			<div style="height: 50px;"></div>
+			<button type="submit" class="btn btn-lg btn-light btn-block" onClick="javascript:selfWriteForm()">등록하기</button>
+		</form>
       </div>
       
       <div class="container">
 
-			<div style="height: 50px;"></div>
-			<button type="button" class="btn btn-lg btn-light btn-block" onClick="">추가하기</button>
+			
+			<script type="text/javascript">
+				function selfWriteForm(){
+					var stitle = $("#stitle").val().trim();
+					if(stitle == "") { 
+						$("#stitleError").text("*제목을 반드시 입력해야 합니다.");
+						$("#stitleError").css('color','red');
+					}else { 
+						$("#stitleError").text("");
+					}
+					console.log("111111111");
+					var scontent = $("#scontent").val().trim();
+					if(scontent == "") {
+						$("#scontentError").text("*내용을 반드시 입력해야 합니다."); 
+						$("#scontentError").css('color','red');
+					}else {
+						$("#scontentError").text(""); 
+					}
+				 	var stype = $("#stype").val().trim();
+					if(stype == "category") {
+						$("#stypeError").text("*카테고리를 반드시 선택해야 합니다."); 
+						$("#stypeError").css('color','red');
+					}else {
+						$("#stypeError").text(""); 
+					}
+					
+					var simageAttach = $("#simageAttach").val();
+					if(!simageAttach) {
+						$("#simageError").text("*대표사진을 반드시 첨부해야 합니다."); 
+						$("#simageError").css('color','red');
+					}else {
+						$("#simageError").text(""); 
+					}
+					
+					var result;
+					if(stitle == "" || scontent == "" || stype=="category" || !simageAttach ) {
+						result=false;
+						return result;	
+					}else{
+						result=true;
+						return result;
+					} 
+				}
+				
+				 
+			</script>
+			
 
 		</div>
     </section>
@@ -156,26 +201,7 @@
 
     </section><!-- End Portfolio Section -->
 
-    <!-- ======= Clients Section ======= -->
-    <section id="clients" class="clients">
-      <div class="container">
-
-       
-
-        <div class="owl-carousel clients-carousel">
-          <img src="assets/img/clients/client-1.png" alt="">
-          <img src="assets/img/clients/client-2.png" alt="">
-          <img src="assets/img/clients/client-3.png" alt="">
-          <img src="assets/img/clients/client-4.png" alt="">
-          <img src="assets/img/clients/client-5.png" alt="">
-          <img src="assets/img/clients/client-6.png" alt="">
-          <img src="assets/img/clients/client-7.png" alt="">
-          <img src="assets/img/clients/client-8.png" alt="">
-        </div>
-
-      </div>
-    </section><!-- End Clients Section -->
-
+   
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->

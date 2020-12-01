@@ -1,3 +1,4 @@
+
 package com.mycompany.webapp.controller;
 
 import java.io.PrintWriter;
@@ -56,4 +57,33 @@ public class QNAController {
 		service.qnaWrite(qna);//클라이언트가 전송한 내용을 넣어준다.내용을 받기 위해서Ch14Board board써주고 (board)써준다.
 		return "redirect:/qna/qnaindex";
 	}
+	
+	@GetMapping("/qnaDetail")
+	public String qnaDetail(int qnumber, Model model) {
+		
+		Qna qna = service.getQna(qnumber);
+		model.addAttribute("qna", qna);
+		return "qna/qnaDetail";
+	}
+	
+	@PostMapping("/qnaDelete")
+	public String qnaDelete(int qnumber) {
+		service.qnaDelete(qnumber);
+		return "redirect:/qna/qnaindex";
+	}
+	
+	@GetMapping("/qnaUpdate")
+	public String qnaUpdateForm(int qnumber, Model model) {
+		Qna qna = service.getQna(qnumber);
+		model.addAttribute("qna", qna);
+		return "qna/qnaUpdateForm";
+	}
+	
+	@PostMapping("/qnaUpdate")
+	public String qnaUpdate(Qna qna) {
+		service.qnaUpdate(qna);
+		return "redirect:/qna/qnaindex";
+	}
+	
 }
+

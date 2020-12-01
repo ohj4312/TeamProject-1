@@ -1,3 +1,4 @@
+
 package com.mycompany.webapp.service;
 
 import java.util.List;
@@ -35,6 +36,22 @@ public class QnaService {
 		
 	}
 
+	public Qna getQna(int qnumber) {
+		Qna qna = qnaDao.selectByBno(qnumber);
+		return qna;
+	}
+
+	public void qnaDelete(int qnumber) {
+		int rows = qnaDao.deleteByBno(qnumber);
+		
+	}
+
+	public void qnaUpdate(Qna qna) {
+		int rows = qnaDao.updateQna(qna);
+		
+	}
+
 	
 
 }
+

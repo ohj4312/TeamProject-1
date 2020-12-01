@@ -24,6 +24,11 @@ public class SelfGuideService {
 	 * public SelfGuide selectSelfPhoto(int snumber) { List<SelfGuide>
 	 * list=sgDAO.selectSelfList(snumber); return (SelfGuide) list; }
 	 */
+
+	public int setSelfWrite(SelfGuide sg) {
+		int row=sgDAO.insertSelfGuide(sg);
+		return row;
+	}
 	
 	public int getRows() {
 		return sgDAO.countAll();

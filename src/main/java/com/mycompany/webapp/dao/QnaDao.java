@@ -1,3 +1,4 @@
+
 package com.mycompany.webapp.dao;
 
 import java.util.List;
@@ -32,6 +33,21 @@ public class QnaDao {
 
 	public int insert(Qna qna) {
 		int rows = sst.insert("mybatis.mapper.qna.insert", qna); 
+		return rows;
+	}
+
+	public Qna selectByBno(int qnumber) {
+		Qna qna = sst.selectOne("mybatis.mapper.qna.selectByBno", qnumber);
+		return qna;
+	}
+
+	public int deleteByBno(int qnumber) {
+		int rows = sst.delete("mybatis.mapper.qna.deleteByBno", qnumber);
+		return rows;
+	}
+
+	public int updateQna(Qna qna) {
+		int rows = sst.update("mybatis.mapper.qna.update", qna);
 		return rows;
 	}
 
