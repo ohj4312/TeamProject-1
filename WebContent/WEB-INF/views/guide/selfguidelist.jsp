@@ -74,7 +74,7 @@
   <!-- ======= script ======= -->
 	
 	<script type="text/javascript">
-	/* var page = 2;
+	 var page = 2;
 	  $(function(){
 	      $(window).scroll(function(){
 	          var $window = $(this);
@@ -94,7 +94,7 @@
 	          
 	   });
 			    
-	});*/
+	});
 	function pagingList(){
 	  $.ajax({
 			url : "<%=application.getContextPath()%>/selfguide/selflist",

@@ -32,7 +32,7 @@
 	</select>
 	
 	<select id="selectSelfPhotoList" parameterType="int" resultType="selfguide">
-		select simage, swriter, stype ,stitle, scontent
+		select simage, swriter, stype ,stitle, scontent,snumber
 		from Self_Guide 
 		where  snumber = #{snumber}
 		

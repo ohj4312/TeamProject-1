@@ -140,12 +140,13 @@ public class SelfGuideController {
 		sg.setSnumber(snumber);
 		sg.setSwriter(swriter);
 		logger.info("swriter:"+swriter);
-		logger.info("snumber:"+String.valueOf(snumber));
+		
 		
 		list=service.selectSelfPhotoList(swriter);
 		
 		
 		sg =  service.selectSelfPhoto(snumber);
+		logger.info("snumber:"+String.valueOf(sg.getSnumber()));
 		logger.info(sg.getSwriter());
 		logger.info(sg.getStitle());
 		logger.info(sg.getStype());
