@@ -79,6 +79,31 @@
 		where rnum &gt;= #{startRowNo}
 	</select>
 	
+	<select id="selectByPageHitCount" resultType="registerPhoto" parameterType="pager">
+		select rnum, pnumber, first_image, PHIT_COUNT, PTYPE, PSIZE, PSTYLE, mnickname, first_content, MIMAGE, PWRITER
+		from(
+		select rownum as rnum, pnumber, first_image, PHIT_COUNT, PTYPE, PSIZE, PSTYLE, mnickname, first_content, MIMAGE, PWRITER
+		from (
+		select pnumber, first_image, PHIT_COUNT, PTYPE, PSIZE, PSTYLE, mnickname, first_content,MIMAGE, PWRITER
+		from register_photo r, member m
+		where r.PWRITER = m.MEMAIL order by PHIT_COUNT desc)
+		where rownum &lt;= #{endRowNo}
+		)
+		where rnum &gt;= #{startRowNo} 
+	</select>
+	
+	<select id="selectCheckByPageListHitCount" resultType="registerPhoto" parameterType="registerPhoto">
+		select rnum, pnumber , first_image, PHIT_COUNT, PTYPE, PSIZE, PSTYLE, mnickname, first_content,MIMAGE, bnumber, LIKENUMBER,FOLLOWING, pwriter
+		from( select rownum as rnum, list.pnumber, first_image, PHIT_COUNT, PTYPE, PSIZE, PSTYLE, mnickname, first_content, MIMAGE, bnumber, LIKENUMBER ,FOLLOWING, pwriter
+		from 
+		( select pnumber, first_image, PHIT_COUNT, PTYPE, PSIZE, PSTYLE, mnickname, first_content,MIMAGE, PWRITER from register_photo r, member m where r.PWRITER = m.MEMAIL order by PHIT_COUNT desc) list, 
+		(select * from post_bookmark where memail = #{pwriter}) pb, 
+		(select * from post_like where memail = #{pwriter}) pl,
+		(select FOLLOWING from FOLLOWS where FOLLOWER = #{pwriter}) fl
+		where rownum &lt;= #{endRowNo} and list.pnumber = pb.pnumber(+) and list.pnumber = pl.pnumber(+) and list.pwriter = fl.FOLLOWING(+)) 
+		where rnum &gt;= #{startRowNo}
+	</select>
+	
 	<update id="updateHitCount" parameterType="registerPhoto">
 		UPDATE REGISTER_PHOTO SET PHIT_COUNT = #{phit_count} WHERE PNUMBER = #{pnumber}
 	</update>
