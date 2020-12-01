@@ -50,7 +50,7 @@
 
   
   
-  <section id="portfolio" class="portfolio section-bg">
+  <section id="portfolio" class="portfolio">
       <div id = "listappend" class="container mt-5">
       		<p class="mb-4">
       		<h2 style="font-size:2vw; float:left">셀프 인테리어 가이드북 </h2>
@@ -60,7 +60,7 @@
       		
       		<img style="width:100%; height:200px;"src="https://image.ohou.se/i/bucketplace-v2-development/uploads/advices/guides/self_interior/pc_banner_image.v3.png?gif=1&w=1280&webp=1"/>
       		<p></p>
-        <div id="addtag" style="width:100%;" class="row col-md-12 mb-4">
+        <div id="addtag" style="width:100%; padding:0; margin:0" class="row col-md-12 mb-4">
 			<jsp:include page="/WEB-INF/views/guide/selfguideFilter.jsp"/>
         </div>
 
@@ -74,7 +74,7 @@
   <!-- ======= script ======= -->
 	
 	<script type="text/javascript">
-	/* var page = 2;
+	 var page = 2;
 	  $(function(){
 	      $(window).scroll(function(){
 	          var $window = $(this);
@@ -94,15 +94,30 @@
 	          
 	   });
 			    
-	});*/
+	});
 	function pagingList(){
 	  $.ajax({
 			url : "<%=application.getContextPath()%>/selfguide/selflist",
 			method: "get",
 			success:function(data){
-				console.log("rows값 리턴까지 성공");
+				location.href="<%=application.getContextPath()%>/selfguide/selflist";
 			}
 		});
+	}
+	
+	function checkSelfGuidFilter(filterString){
+		console.log(filterString); 
+		<%-- location.href="<%=application.getContextPath()%>/selfguide/selfguideFilter?filterString=${filterString}";
+		 --%>
+		$.ajax({
+				url : "<%=application.getContextPath()%>/selfguide/selfguideFilter",
+				data:{filterString:filterString},
+				success:function(data){
+					$("#12345").html(data);
+					
+				}
+			});
+		
 	}
 	
 	</script>

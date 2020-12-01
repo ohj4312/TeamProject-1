@@ -19,8 +19,10 @@ public class SelfGuide {
 	private String simage;
 	private int startRowNo;
 	private int endRowNo;
-
-	
+	private int bnumber;
+	private int likenumber;
+	private int bookcount;
+	private int likecount;
 	private MultipartFile simageAttach;
 	List<SelfGuide> list;
 	
@@ -97,6 +99,30 @@ public class SelfGuide {
 	}
 	public void setSimageAttach(MultipartFile simageAttach) {
 		this.simageAttach = simageAttach;
+	}
+	public int getBnumber() {
+		return bnumber;
+	}
+	public void setBnumber(int bnumber) {
+		this.bnumber = bnumber;
+	}
+	public int getLikenumber() {
+		return likenumber;
+	}
+	public void setLikenumber(int likenumber) {
+		this.likenumber = likenumber;
+	}
+	public int getBookcount() {
+		return bookcount;
+	}
+	public void setBookcount(int bookcount) {
+		this.bookcount = bookcount;
+	}
+	public int getLikecount() {
+		return likecount;
+	}
+	public void setLikecount(int likecount) {
+		this.likecount = likecount;
 	}
 	
 	

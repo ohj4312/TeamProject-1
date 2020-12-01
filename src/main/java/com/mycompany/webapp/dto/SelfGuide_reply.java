@@ -3,6 +3,7 @@ package com.mycompany.webapp.dto;
 import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.multipart.MultipartFile;
 
 public class SelfGuide_reply {
 	private int rnumber;
@@ -12,6 +13,77 @@ public class SelfGuide_reply {
 	@DateTimeFormat(pattern="yyyy-MM-dd")private Date register_date;
 	
 	private int snumber;
+	
+	private String rwriter;	//댓글쓴이
+	
+	private String rimage;
+	private MultipartFile rimageAttach;
+	
+	private String mnickname;
+	private int startRowNo;
+	private int endRowNo;
+	private int count;
+	
+	
+	public String getRwriter() {
+		return rwriter;
+	}
+
+	public void setRwriter(String rwriter) {
+		this.rwriter = rwriter;
+	}
+
+	public String getRimage() {
+		return rimage;
+	}
+
+	public void setRimage(String rimage) {
+		this.rimage = rimage;
+	}
+
+	public MultipartFile getRimageAttach() {
+		return rimageAttach;
+	}
+
+	public void setRimageAttach(MultipartFile rimageAttach) {
+		this.rimageAttach = rimageAttach;
+	}
+
+	public String getMnickname() {
+		return mnickname;
+	}
+
+	public void setMnickname(String mnickname) {
+		this.mnickname = mnickname;
+	}
+
+	public int getStartRowNo() {
+		return startRowNo;
+	}
+
+	public void setStartRowNo(int startRowNo) {
+		this.startRowNo = startRowNo;
+	}
+
+	public int getEndRowNo() {
+		return endRowNo;
+	}
+
+	public void setEndRowNo(int endRowNo) {
+		this.endRowNo = endRowNo;
+	}
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+
+	
+	
+	
 
 	public Date getRegister_date() {
 		return register_date;
