@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.mycompany.webapp.dto.Pager;
 import com.mycompany.webapp.dto.Qna;
@@ -57,7 +58,7 @@ public class QNAController {
 		return "qna/qnaWriteForm";
 	}
 	
-	//글작성 데이터 전송
+	//글작성 , 파일 데이터 전송
 	@PostMapping("/qnaWrite")
 	public String qnaWrite(Qna qna) {//json응답을 직접 여기서 만들어서 void라고 줌
 		//받은 파일을 저장하고 저장된 이름을 Qna 객체에 저장
@@ -102,6 +103,16 @@ public class QNAController {
 	//게시글 수정 전송
 	@PostMapping("/qnaUpdate")
 	public String qnaUpdate(Qna qna) {
+		//받은 파일을 저장하고 저장된 이름을 Qna 객체에 저장
+		if(!qna.getAttach().isEmpty()) {
+			String saveFileName = qna.getAttach().getOriginalFilename();
+			try {
+				qna.getAttach().transferTo(new File("D:/MyWorkspace/photo/qna/" + saveFileName));
+			} catch (Exception e) {}
+			qna.setQphoto("");
+		} else {
+			qna.setQphoto("saveFileName");
+		}
 		service.qnaUpdate(qna);
 		return "redirect:/qna/qnaindex";
 	}

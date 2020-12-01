@@ -76,7 +76,7 @@ td a {
 	<div style="width: 1000px; margin-left: auto; margin-right: auto;" >
 		<h3 style="margin-bottom:50px">Q&A 질문 작성</h3>
 	
-		<form id="qnaUpdateForm" method="post" action="qnaUpdate">
+		<form id="qnaUpdateForm" method="post" action="qnaUpdate" enctype="multipart/form-data"><!-- input type="file사용할때 enctype="multipart/form-data" 사용하기  -->
 			<!-- <table style="width:auto" class="table table-sm table-bordered"> -->
 			<input type="hidden" id="qnumber" name="qnumber" value="${qna.qnumber}">
 			
@@ -95,7 +95,7 @@ td a {
 			
 			<div class="input-group">
 				<div class="input-group-prepend"><span class="input-group-text">사진</span></div>
-				<input type="file" name="attach" class="form-control" >
+				<input type="file" name="attach" class="form-control">
 			</div> 
 			
 			<div class="input-group">
