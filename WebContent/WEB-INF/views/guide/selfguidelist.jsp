@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html >
 
@@ -54,8 +55,9 @@
       <div id = "listappend" class="container mt-5">
       		<p class="mb-4">
       		<h2 style="font-size:2vw; float:left">셀프 인테리어 가이드북 </h2>
-      		
+      		<sec:authorize access="isAuthenticated()">
       		<span style="font-size:1vw; float:right" class="btn btn-info btn-lg" onClick="selfWrite()">글쓰기</span>
+      		</sec:authorize>
       		</p><br/>
       		
       		<img style="width:100%; height:200px;"src="https://image.ohou.se/i/bucketplace-v2-development/uploads/advices/guides/self_interior/pc_banner_image.v3.png?gif=1&w=1280&webp=1"/>
@@ -106,9 +108,7 @@
 	}
 	
 	function checkSelfGuidFilter(filterString){
-		console.log(filterString); 
-		<%-- location.href="<%=application.getContextPath()%>/selfguide/selfguideFilter?filterString=${filterString}";
-		 --%>
+
 		$.ajax({
 				url : "<%=application.getContextPath()%>/selfguide/selfguideFilter",
 				data:{filterString:filterString},
