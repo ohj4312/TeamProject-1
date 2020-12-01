@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.mycompany.webapp.dto.Community;
+import com.mycompany.webapp.dto.Pager;
 
 @Repository
 public class CommunityDao {
@@ -19,13 +20,14 @@ public class CommunityDao {
 		
 	}
 
-	public List<Community> communityselctAll() {
-		List<Community> comm_list=sst.selectList("mybatis.mapper.community.communityselctAll");
+	public List<Community> communityselctAll(Pager pager) {
+		
+		List<Community> comm_list=sst.selectList("mybatis.mapper.community.communityselctAll",pager);
 		return comm_list;
 	}
 
-	public List<Community> communitySelctSearch(String temp) {
-		List<Community> comm_list=sst.selectList("mybatis.mapper.community.communityselctSerch",temp);
+	public List<Community> communitySelctSearch(Pager pager) {
+		List<Community> comm_list=sst.selectList("mybatis.mapper.community.communityselctSerch",pager);
 		
 		return comm_list;
 	}
@@ -43,5 +45,14 @@ public class CommunityDao {
 	public List<Community> communityHitsSelectAll() {
 		List<Community> comm_listHit=sst.selectList("mybatis.mapper.community.communityHitsselctAll");
 		return comm_listHit;
+	}
+
+	public int communityCountSelectAll() {
+		int rows = sst.selectOne("mybatis.mapper.community.communityselectAllcount");		
+		return rows;
+	}
+	public int communityCountSelectAll(String temp) {
+		int rows = sst.selectOne("mybatis.mapper.community.communityselectAllSearchcount",temp);		
+		return rows;
 	}
 }

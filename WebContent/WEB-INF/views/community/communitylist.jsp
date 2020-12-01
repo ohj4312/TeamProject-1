@@ -84,3 +84,32 @@
 		</div>
 	</article>
 </c:forEach>
+ <!-- 패이징 -->
+ 
+ 				<div class="row text-center" style="width:100%">
+			
+	        <div class="input-group mb-3" style="width:50%; float:none; margin:0 auto">
+			
+	          <ul class="pagination" style="text-align:left">
+	          	<c:if test="${pager.groupNo>1}">
+	            	<li class="page-item"><a class="page-link" href="javascript:communitylist(${pager.startPageNo-1})">Previous</a></li>
+	            </c:if>
+	            
+	            <c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
+					<c:if test="${pager.pageNo==i}">
+	           	 		<li class="page-item"><a class="page-link" href="javascript:communitylist(0,${i})">${i}</a></li>
+	            	</c:if>
+	            	<c:if test="${pager.pageNo!=i}">
+	            		<li class="page-item"><a class="page-link" href="javascript:communitylist(0,${i})">${i}</a></li>
+	            	</c:if>
+	             </c:forEach>
+	             <c:if test="${pager.groupNo<pager.totalGroupNo}">
+	            	<li class="page-item"><a class="page-link" href="javascript:communitylist(${pager.endPageNo+1})">Next</a></li>
+	          	</c:if>
+	          </ul>
+	        </div>
+	        
+	      </div>
+
+
+
