@@ -21,6 +21,7 @@
 						</c:if> 
 		
 					</div>
+					
 					<a href="<%=application.getContextPath()%>/photo/detail?pnumber=${photo.pnumber}">
 					<div class="portfolio-wrap">
 						<img style=" height: 280px;"
@@ -32,6 +33,7 @@
 						</div>
 					</div>
 					</a>
+					
 					<div div class = "row pl-3 pr-3 mt-2">
 						<a id="App1BK${photo.pnumber}" class = "col-4 " href="javascript:toggleUpdate(${photo.pnumber}, '<%=application.getContextPath()%>/BK/CheckBookMark')">
 							<c:if test="${photo.bnumber == 0}">

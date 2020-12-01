@@ -106,9 +106,9 @@
               <div class="entry-content">
               
                
-               
-                
-                <h3><div id="scontent"></div></h3>
+               		<div id="sg">${sg.scontent }</div>
+                	
+                	<div id="rcontent"></div>
                 
 				</div>
 				</article>
@@ -134,7 +134,8 @@
         		console.log(imagepath);
         		console.log(scontent);
         		$("#self_image").attr("src", imagepath);
-        		$("#scontent").html(scontent);
+        		$("#sg").hide();
+        		$("#rcontent").html(scontent);
         		$("#title").html(stitle);
         		$("#type").html(stype);
         		

@@ -43,6 +43,10 @@ public class SelfGuideService {
  
 	public SelfGuide selectSelfPhoto(int snumber) {
 		SelfGuide sg = sgDAO.selectSelfPhoto(snumber);
+		
+		int hitcount = sg.getHit_count();
+		sg.setHit_count(hitcount+1);
+		sgDAO.updateHitCount(sg);
 		return sg;
 	}
 
