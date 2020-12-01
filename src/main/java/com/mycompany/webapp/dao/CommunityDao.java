@@ -39,4 +39,9 @@ public class CommunityDao {
 			sst.update("mybatis.mapper.community.communityUpdatehits", cnumber);
 		
 	}
+
+	public List<Community> communityHitsSelectAll() {
+		List<Community> comm_listHit=sst.selectList("mybatis.mapper.community.communityHitsselctAll");
+		return comm_listHit;
+	}
 }

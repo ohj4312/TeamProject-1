@@ -42,6 +42,11 @@ public class CommunityService {
 		communityDao.communityUpdatehits(cnumber);
 		
 	}
+
+	public List<Community> Comm_listHits() {
+		List<Community> comm_listhits= communityDao.communityHitsSelectAll();
+		return comm_listhits;
+	}
 	
 	
 	

@@ -84,8 +84,18 @@ public class CommunityController {
 			model.addAttribute("comm_list", comm_list);			
 			return"community/communitylist";
 			}
+			/*조회수 리스트*/
+		if(check==2) {
+			List<Community> comm_listHits=service.Comm_listHits();//조회수리스트		
+			
+					
+			model.addAttribute("comm_list", comm_listHits);			
+			return"community/communitylistHits";
+			}
 		
-		List<Community> comm_list =service.Comm_list();
+		
+		
+		List<Community> comm_list =service.Comm_list();//전체리스트
 		model.addAttribute("comm_list", comm_list);
 		
 		return"community/communitylist";

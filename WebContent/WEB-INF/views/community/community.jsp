@@ -68,25 +68,27 @@
               </div>
               <hr>
               <br>
-            <div id="comm_list">
-            
-            
-            
+            <div id="comm_list">           
+                  
             </div>
 		</div>
         </div>
-        
-        <div class="col-lg-4">
-        	<div class="sidebar"></div>
-        </div>
+       <!-- 조회수 상위 10개? 5개? --> 
+      <div class="col-lg-4">
+            <div id="comm_hitsList" class="sidebar">                          
+                
+            </div>
+          </div>
+          <!-- 사이드 바 조회수 순  -->
 	</div>
       </div>
     </section><!-- End Blog Section -->
 
   </main><!-- End #main -->
   <script type="text/javascript">
+      	/* 검색 or 전체리스트 or 상위 조회수 리스트  */
             function communitylist(check){            
-            	var search=$("#search").val(); 
+            	var search=$("#search").val();             	
             	$.ajax({
     				url:"<%=application.getContextPath() %>/community/comm_list",
     				data: {check:check,search:search},
@@ -95,8 +97,18 @@
     				
     				}
     			});
+            	$.ajax({
+    				url:"<%=application.getContextPath() %>/community/comm_list",
+    				data: {check:2,search:search},
+    				success:function(data){    					
+    					$("#comm_hitsList").html(data);
+    					console.log("실행");
+    				
+    				}
+    			});
     			
-    		}     
+    		
+      	}     
 			</script>
 			
 			
@@ -195,8 +207,10 @@
   <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>
 	<script type="text/javascript">
 	$(function(){
-		communitylist(0);		
+		communitylist(0);
+		  
 	});
+	
 	</script>
   
   

@@ -22,6 +22,10 @@
 	<update id="communityUpdatehits" parameterType="int">
 	update community set c_count = c_count + 1 where c_number=#{cnumber}
 	</update>
+	<select id="communityHitsselctAll" resultType="community">	
+	SELECT *FROM 
+ (SELECT * FROM community ORDER BY c_count DESC) WHERE ROWNUM &lt;= 5
+	</select>
 
 
 </mapper>
