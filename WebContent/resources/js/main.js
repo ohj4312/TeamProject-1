@@ -194,10 +194,25 @@
 })(jQuery);
 
 //===========================노성규==============================
+
+var $portfolioIsotope;
+
+$(document).ready(function() {
+      $portfolioIsotope = $('.portfolio-container').isotope({
+			              itemSelector: '.portfolio-item',
+			              layoutMode: 'fitRows',
+						getSortData: {number: '.hitcount parseInt'}
+			            });
+	 $portfolioIsotope.isotope({
+              filter: filterCon
+            });
+});
 var filterCon = '';
 var pstyle = '';
 var ptype = '';
 var psize = '';
+var filter;
+var page;
 function addTag(btncon, btnid) {
 	switch (btnid){
     case 'type' :
@@ -211,16 +226,36 @@ function addTag(btncon, btnid) {
         break;
 	case 1 :
 		switch(btncon){
-			case '최근 인기순':
-			break;
-			
 			case '역대 인기순':
-			$portfolioIsotope.isotope({ sortBy: 'number', sortAscending: false });
+			page = 2;
+			filter = 'hit';
+	
+			
 			break;
 			
 			case '최신순':
+			page = 2;
+			filter = 'recent';
+	
+		
 			break;
 		}
+		$.ajax({
+				type : 'POST',
+				url:"list",
+				data: {"filter":filter},
+				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+				success : function(data) {
+						$('#12345').html(data);
+						$portfolioIsotope.isotope('reloadItems');
+						$portfolioIsotope.isotope({ sortBy: 'number', sortAscending: false });
+		       		},
+		       error:function(e){
+		           if(e.status==300){
+		               alert("데이터를 가져오는데 실패하였습니다.");
+		           };
+		       }
+			});
 		break;
 	}
 
@@ -245,15 +280,34 @@ function addTag(btncon, btnid) {
 
 function removeTag(removeID) {
 	switch (removeID){
-    case 'type' :
-        ptype = '';
-        break;
-    case 'size' :
-        psize = '';
-        break;
-    case 'style' :
-        pstyle = '';
-        break;
+	    case 'type' :
+	        ptype = '';
+	        break;
+	    case 'size' :
+	        psize = '';
+	        break;
+	    case 'style' :
+	        pstyle = '';
+	        break;
+		case '1' :
+		page=2;
+			$.ajax({
+				type : 'POST',
+				url:"list",
+				data: {"filter":'recent'},
+				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+				success : function(data) {
+						$('#12345').html(data);
+						$portfolioIsotope.isotope('reloadItems');
+						$portfolioIsotope.isotope({ sortBy: 'number', sortAscending: false });
+		       		},
+		       error:function(e){
+		           if(e.status==300){
+		               alert("데이터를 가져오는데 실패하였습니다.");
+		           };
+		       }
+			});
+			break;
 	}
 	filterCon = pstyle+ptype+psize;
 	console.log(filterCon);
@@ -347,6 +401,89 @@ function photoChange(aimage, acontent){
 	$('#acontent').html(acontent);
 	
 }
+function updatePhoto(){
+	var result = 0;
+			if($('#psize').val() == '평수'){
+						$('#psize').attr('style', 'border-color: red;');
+					}else{
+						$('#psize').attr('style', 'height: auto;');
+					}
+
+					if($('#ptype').val() == '주거형태'){
+						$('#ptype').attr('style', 'border-color: red;');
+					}else{
+						$('#ptype').attr('style', 'height: auto;');
+					}
+
+					if($('#pstyle').val() == '스타일'){
+						$('#pstyle').attr('style', 'border-color: red;');
+					}else{
+						$('#pstyle').attr('style', 'height: auto;');
+					}
+
+
+			if($('#psize').val() == '평수' || $('#ptype').val() == '주거형태' || $('#pstyle').val() == '스타일' ){
+
+
+					result++;
+				}
+
+
+            var list = $('#addDiv > div[style = ""]');
+			for(var i = 0; i < list.length; i++){
+				//아이디 값 받아오기
+				var idkey = '#' + $(list[i]).attr('id');
+				console.log(idkey);
+
+
+				//아이디 값을 이용하여 텍스트 에리어 값 가져오기
+				var textarea = $(idkey + ' textarea');
+				var checktxt = $(textarea[0]).val();
+				console.log(checktxt);
+
+
+				//아이디 값을 이용하여 이미지 소스 가져오기
+				
+				var filevalue = $(idkey + ' img');
+				var checkfile = $(idkey + ' img').attr('src');
+				console.log(checkfile);
+
+
+				//아이디 값을 이용하여 공간을 잘 선택했는지 가져오기
+				var selectvalue = $(idkey + ' select');
+				var checkselect = $(selectvalue[0]).val();
+				console.log(checkselect);
+
+
+				if(checktxt.trim() == ''){
+						$(textarea).attr('style', 'border-color: red;');
+					}else{
+						$(textarea).attr('style', '');
+					}
+
+					if(checkselect == '공간(필수)'){
+						$(selectvalue).attr('style', 'border-color: red;');
+					}else{
+						$(selectvalue).attr('style', 'height: auto;');
+					}
+
+
+				if(checktxt.trim() == '' || !checkfile || checkselect == '공간(필수)'){
+					console.log(checktxt.trim());
+					console.log(checkselect);
+					console.log(checkfile);
+					result++;
+				}
+			}
+			
+			if(result > 0){
+				alert("값을 제대로 입력해주세요.");
+				return false;
+			}
+			return true;
+
+        }
+
 function writePhoto(){
 	var result = 0;
 			if($('#psize').val() == '평수'){
@@ -389,10 +526,9 @@ function writePhoto(){
 
 
 				//아이디 값을 이용하여 이미지 소스 가져오기
-				var filevalue = $(idkey + ' img');
-				var checkfile1 = $(idkey + ' img').attr('src');
-				var checkfile = $(idkey + ' img').attr('src');
-				console.log(checkfile1);
+				var filevalue = $(idkey + ' input');
+				var checkfile = $(filevalue[0]).val();
+				console.log(checkfile);
 
 
 				//아이디 값을 이용하여 공간을 잘 선택했는지 가져오기
@@ -414,65 +550,41 @@ function writePhoto(){
 					}
 
 
-				if(checktxt.trim() == '' || checkfile.trim() == null || checkselect == '공간(필수)' ){
+				if(checktxt.trim() == '' || checkfile.trim() == '' || checkselect == '공간(필수)' ){
+
 					result++;
 				}
 			}
-			console.log(result);
+
 			if(result > 0){
-				alert("값을 제대로 입력해주세요.");
-				return false;
+					alert("값을 제대로 입력해주세요.");
+					return false;
 			}
 			return true;
 
         }
 
 
-var $portfolioIsotope;
-
-$(document).ready(function() {
-      $portfolioIsotope = $('.portfolio-container').isotope({
-			              itemSelector: '.portfolio-item',
-			              layoutMode: 'fitRows',
-						getSortData: {number: '.hitcount parseInt'}
-			            });
-	 $portfolioIsotope.isotope({
-              filter: filterCon
-            });
-});
 		  
 function getList(page){
+			console.log("페이징 실행");
 			$.ajax({
 				type : 'POST',
 				url:"listjson",
-				data: {"pageNo" : page},
+				data: {"pageNo" : page, "filter":filter},
 				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 				success : function(data) {	
 					var list = data;
 					for (var loop = 0; loop < list.length; loop++) {
-						console.log('psize : ' + list[loop].psize);
-						console.log('pstyle : ' + list[loop].pstyle);
-						console.log('ptype : ' + list[loop].ptype);
-						console.log('pwriter : ' + list[loop].pwriter);
-						console.log('mimage : ' + list[loop].mimage);
-						console.log('mnickname : ' + list[loop].mnickname);
-						console.log('pwritersubstring : ' + list[loop].pwritersubstring);
-						console.log('pnumber : ' + list[loop].pnumber);
-						console.log('first_image : ' + list[loop].first_image);
-						console.log('phit_count : ' + list[loop].phit_count);
-						console.log('bnumber : ' + list[loop].bnumber);
-						console.log('likenumber : ' + list[loop].likenumber);
-						console.log('first_content : ' + list[loop].first_content);
-						console.log('following : ' + list[loop].following);
 						var follow;
 						var bnumber;
 						var likenumber;
 						if(list[loop].following == null){
-							follow = '<a class = "pl-2 font-weight-bolder btn btn-sm btn-outline-info '+list[loop].pwritersubstring+'" style = "color: #1bac91;" href="javascript:followCheck(\''+list[loop].pwriter+'\', \'/teamproject/follow/followCheck\', \''+list[loop].pwritersubstring+'\')">'+
+							follow = '<a class = "pl-2 follow font-weight-bolder btn btn-sm btn-outline-info '+list[loop].pwritersubstring+'" style = "color: #1bac91;" href="javascript:followCheck(\''+list[loop].pwriter+'\', \'/teamproject/follow/followCheck\', \''+list[loop].pwritersubstring+'\')">'+
 												'팔로우'+
 												'</a>';
 						}else{
-							follow = '<a class = "pl-2 font-weight-bolder btn btn-sm '+list[loop].pwritersubstring+'" style = "background-color: #1bac91; color: white;" href="javascript:followCheck(\''+list[loop].pwriter+'\', \'/teamproject/follow/followCheck\', \''+list[loop].pwritersubstring+'\')">'+
+							follow = '<a class = "pl-2 follow font-weight-bolder btn btn-sm '+list[loop].pwritersubstring+'" style = "background-color: #1bac91; color: white;" href="javascript:followCheck(\''+list[loop].pwriter+'\', \'/teamproject/follow/followCheck\', \''+list[loop].pwritersubstring+'\')">'+
 												'팔로잉'+
 												'</a>';
 						}
@@ -493,7 +605,8 @@ function getList(page){
 										'<a href="/teamproject/member/yourhomesearch?pwriter='+ list[loop].pwriter+ '" class = "pr-3 " style="color: black;">'+
 											'<img class="rounded-circle mr-2 "style="width:30px; height:30px;"  src="photodownload?fileName='+list[loop].mimage+'" />'+
 											list[loop].mnickname+
-										'</a>'+ follow +
+										'</a>'+ 
+										follow +
 									'</div>'+
 									'<a href="/teamproject/photo/detail?pnumber='+list[loop].pnumber+'">'+
 									'<div class="portfolio-wrap">'+
@@ -506,7 +619,7 @@ function getList(page){
 										'</div>'+
 									'</div>'+
 									'</a>'+
-									'<div div class = "row pl-3 pr-3 mt-2">'+
+									'<div div class = "login row pl-3 pr-3 mt-2">'+
 										'<a id="App1BK'+list[loop].pnumber+'" class = "col-4 " href="javascript:toggleUpdate('+list[loop].pnumber+', \'/teamproject/BK/CheckBookMark\')">'+
 											bnumber+
 										'</a>'+
@@ -525,8 +638,7 @@ function getList(page){
 								 $portfolioIsotope.append( $items )
 								    // add and lay out newly appended elements
 								    .isotope( 'appended', $items);
-
-					    }		
+					    }
 		       		},
 		       error:function(e){
 		           if(e.status==300){
@@ -534,6 +646,7 @@ function getList(page){
 		           };
 		       }
 			});
+
 			
 }
 

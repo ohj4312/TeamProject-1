@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 
 <jsp:useBean id="nowtime" class="java.util.Date" />
@@ -19,18 +20,20 @@
 		</div>
 		<div style="display: inline-block; text-align: right;">
 			<h5>
-				<strong><a style="color: black; font-size: 16px" href="<%=application.getContextPath()%>/community/comm_detail?cnumber=${list.c_number}">${list.c_title}</a></strong>
+				<strong><a style="color: black; font-size: 16px" href="<%=application.getContextPath()%>/community/comm_detail?cnumber=${list.c_number}&cmnickname=${list.c_mnickname}">${list.c_title}</a></strong>
 			</h5>
-		</div>
+		</div>	
 		<div class="entry-content">
-			<p style="margin: 0px; font-size: 13px">${list.c_content}</p>
+			<p style="margin: 0px; font-size: 13px">						
+			${fn:substring(list.c_content,0,43)}
+			</p>			
 			<div class="read-more">
-				<a href="<%=application.getContextPath()%>/community/comm_detail?cnumber=${list.c_number}">Read More</a>
+				<a href="<%=application.getContextPath()%>/community/comm_detail?cnumber=${list.c_number}&cmnickname=${list.c_mnickname}">Read More</a>
 			</div>
 			<div class="entry-meta">
 				<ul>
 					<li class="d-flex align-items-center"><i class="icofont-user"></i>
-						<a href="<%=application.getContextPath()%>/community/comm_detail?cnumber=${list.c_number}">${list.c_mnickname}</a></li>
+						<a href="<%=application.getContextPath()%>/community/comm_detail?cnumber=${list.c_number}&cmnickname=${list.c_mnickname}">${list.c_mnickname}</a></li>
 					<li class="d-flex align-items-center"><i
 						class="icofont-wall-clock"></i> <a href="blog-single.html"><time
 								>
@@ -69,12 +72,13 @@
    										<fmt:formatNumber type="number"  pattern="0" value="${(nowtimeD/(30*12))-(cdateD/(30*12))} " />
         									${number}년전
     								</c:otherwise>
-								</c:choose>
-								
+								</c:choose>								
 								</time></a></li>
-					<li class="d-flex align-items-center"><i
-						class="icofont-comment"></i> <a href="<%=application.getContextPath()%>/community/comm_detail?cnumber=${list.c_number}">12
-							Comments</a></li>
+					<li class="d-flex align-items-center">
+					<i	class="icofont-comment"></i> 
+						<a href="<%=application.getContextPath()%>/community/comm_detail?cnumber=${list.c_number}">12Comments</a></li>
+						<li >조회수 ${list.c_count}</li>
+						
 				</ul>
 			</div>
 		</div>

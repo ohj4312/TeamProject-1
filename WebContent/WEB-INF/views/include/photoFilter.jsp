@@ -20,7 +20,6 @@
 
                   </button>
                   <div class="dropdown-menu">
-                    <a class="dropdown-item" href="javascript:addTag('최근 인기순',1);">최근 인기순</a>
                     <a class="dropdown-item" href="javascript:addTag('역대 인기순',1);">역대 인기순</a>
                     <a class="dropdown-item" href="javascript:addTag('최신순',1);">최신순</a>
                   </div>

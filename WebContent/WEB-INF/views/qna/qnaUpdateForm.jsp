@@ -92,7 +92,10 @@ td a {
 				<textarea id="qcontent" name="qcontent" class="form-control" rows="10">${qna.qcontent}</textarea>
 				<span id="qcontentError" class="error"></span>
 			</div>
-			
+			<div class="input-group">
+				<div class="input-group-prepend"><span class="input-group-text">사진</span></div>
+				<input type="file" name="qphoto" class="form-control">
+			</div>
 			<div class="input-group">
 				<div class="input-group-prepend"><span class="input-group-text">별명</span></div>
 				<input id="mnickname" type="text" name="mnickname" class="form-control" 
