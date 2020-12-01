@@ -40,11 +40,7 @@ public class SelfGuideController {
 	private SelfGuideService service;
 	
 	
-	//셀프 가이드 리스트 화면 뷰
-	@GetMapping("selfguidelist")
-	public String selfguidelist() {
-		return "guide/selfguidelist";
-	}
+
 	
 
 	//셀프 가이드에 사진 올리기
