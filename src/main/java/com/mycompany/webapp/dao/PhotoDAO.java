@@ -100,6 +100,23 @@ public class PhotoDAO {
 		
 	}
 
+	public void updateRegPhoto(Register_photo rphoto) {
+		sst.update("mybatis.mapper.photo.updateRegPhoto", rphoto);
+		
+	}
+
+	public void deleteAphoto(A_photo photo) {
+		sst.delete("mybatis.mapper.photo.deleteAphoto", photo);
+		
+	}
+
+	public void deleteAllAphoto(Register_photo rphoto) {
+		sst.delete("mybatis.mapper.photo.deleteAllAphoto", rphoto);
+		
+	}
+
+
+
 	
 
 	
