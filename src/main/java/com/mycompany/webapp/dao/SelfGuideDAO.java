@@ -62,6 +62,11 @@ public class SelfGuideDAO {
 		return sst.selectList("mybatis.mapper.selfguide.selectSelfPhotoList2",swriter);
 	}
 
+
+	public List<SelfGuide> selectFilter(String filter) {
+		return sst.selectList("mybatis.mapper.selfguide.selectSelfListFilter",filter);
+	}
+
 	
 	
 }
