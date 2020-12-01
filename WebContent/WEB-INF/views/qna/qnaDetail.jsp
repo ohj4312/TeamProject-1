@@ -134,7 +134,7 @@ table.type09 td {
 			    </tbody>
 			  
 			</table>
-				<c:if test="${sessionMnickname == qna.mnickname}">
+				<c:if test="${member.mnickname == qna.mnickname}">
 				 	<div style="text-align: center; margin-top: 10px;">
 				    	 
 				    	<form method="post" action="qnaDelete?qnumber=${qna.qnumber}">
@@ -145,7 +145,7 @@ table.type09 td {
 				    </div>
 			   </c:if>	
 			   
-			   <c:if test="${sessionMnickname != qna.mnickname}"> 
+			   <c:if test="${member.mnickname != qna.mnickname}"> 
 				   <div style="text-align: center; margin-top: 10px;">
 				   		<a class="btn btn-info" href="qnaindex">목록</a>
 				   </div>
