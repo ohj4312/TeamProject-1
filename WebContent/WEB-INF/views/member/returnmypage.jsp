@@ -13,7 +13,7 @@
     	<c:if test="${member.list != null}">
 			<c:forEach var="like" items="${member.list}">
 			<a href="<%=application.getContextPath()%>/photo/detail?pnumber=${like.pnumber}">
-			<img style="margin:5px" align="left" width="100px" height="100px" src="<%=application.getContextPath()%>/like/photodownload?fileName=${like.first_image}"/>
+			<img style="margin:5px" align="left" width="100px" height="100px" src="<%=application.getContextPath()%>/file/photo?fileName=${like.first_image}"/>
 			</a>
 			</c:forEach>
     	</c:if>

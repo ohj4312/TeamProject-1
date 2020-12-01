@@ -55,7 +55,7 @@
 
           <div class="col-lg-3 mr-5">
           	<div class="user-profile mt-5 mr-3" style="border:1px solid #dadce0; ">
-          		<img class="rounded-circle mt-3 img-fluid" width="150" height="150" src="<%=application.getContextPath()%>/photo/photodownload?fileName=${member.mimage}">
+          		<img class="rounded-circle mt-3 img-fluid" width="150" height="150" src="<%=application.getContextPath()%>/file/photo?fileName=${member.mimage}">
           		<h3 class="font-weight-bold mt-4">${member.mnickname}</h3>
           		<p class="font-weight-normal mb-2"><strong>팔로워</strong> <small>${member.followerCount}</small> | <strong>팔로잉</strong> <small>${member.followingCount}</small></p>
           		<%-- <a id="follow_check" href="javascript:followCheck('${photo.pwriter}', '<%=application.getContextPath()%>/follow/followCheck')" style = "color: #1bac91;"  class="col-3 h-50 mt-2 mb-2 col-5 font-weight-bolder btn btn-sm btn-outline-info" role="button">
@@ -82,7 +82,7 @@
 		                    <div>
 		                       <c:forEach var="like" items="${member.list}">
 		                       <a href="<%=application.getContextPath()%>/photo/detail?pnumber=${like.pnumber}">
-		                       <img style="margin:5px" align="left" width="100px" height="100px" src="<%=application.getContextPath() %>/like/photodownload?fileName=${like.first_image}"/>
+		                       <img style="margin:5px" align="left" width="100px" height="100px" src="<%=application.getContextPath() %>/file/photo?fileName=${like.first_image}"/>
 		                       </a>
 		                       </c:forEach>
 		                    </div>

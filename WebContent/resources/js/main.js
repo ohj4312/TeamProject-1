@@ -394,7 +394,7 @@ function removeform(idnum){
 
 function photoChange(aimage, acontent){
 	
-	var imagepath = 'photodownload?fileName='+aimage;
+	var imagepath = '/teamproject/file/photo?fileName='+aimage;
 	console.log(imagepath);
 	console.log(acontent);
 	$('#thumbnail_image').attr('src', imagepath);
@@ -603,7 +603,7 @@ function getList(page){
 						$items = $('<div class="mb-4 mt-5 col-lg-4 col-md-6 portfolio-item '+list[loop].ptype+' '+list[loop].psize+' '+list[loop].pstyle+'">'+
 									'<div class = "row pl-3 pr-2 mb-4">'+
 										'<a href="/teamproject/member/yourhomesearch?pwriter='+ list[loop].pwriter+ '" class = "pr-3 " style="color: black;">'+
-											'<img class="rounded-circle mr-2 "style="width:30px; height:30px;"  src="photodownload?fileName='+list[loop].mimage+'" />'+
+											'<img class="rounded-circle mr-2 "style="width:30px; height:30px;"  src="/teamproject/file/photo?fileName='+list[loop].mimage+'" />'+
 											list[loop].mnickname+
 										'</a>'+ 
 										follow +
@@ -611,7 +611,7 @@ function getList(page){
 									'<a href="/teamproject/photo/detail?pnumber='+list[loop].pnumber+'">'+
 									'<div class="portfolio-wrap">'+
 										'<img style=" height: 280px;"'+
-											'src="photodownload?fileName='+list[loop].first_image+'"'+
+											'src="/teamproject/file/photo?fileName='+list[loop].first_image+'"'+
 											'class="img-fluid rounded" alt="">'+
 										'<div class="portfolio-info">'+
 												'<h4>조회수</h4>'+

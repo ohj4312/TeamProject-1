@@ -73,7 +73,7 @@
       <div class="container">
         <div class="row">
          <div class="col-md-8 mb-3">
-          	<img id = "thumbnail_image" src="photodownload?fileName=${photo.first_image}" class="img-fluid" alt="">
+          	<img id = "thumbnail_image" src="/teamproject/file/photo?fileName=${photo.first_image}" class="img-fluid" alt="">
           </div>
 
           <div id="head" class="col-md-4">
@@ -122,7 +122,7 @@
 				
 				<div class="row mx-auto mt-5">
 					<a class="col-6" href="<%=application.getContextPath()%>/member/yourhomesearch?pwriter=${photo.pwriter}">
-		            	<img class="rounded-circle" style="width:50px; height:50px;" src="photodownload?fileName=${photo.mimage}" />
+		            	<img class="rounded-circle" style="width:50px; height:50px;" src="/teamproject/file/photo?fileName=${photo.mimage}" />
 		            	<span class="card-detail-writer__name">${photo.mnickname}</span>
 		            </a>
 		            <div class = "col-3"></div>
@@ -153,7 +153,7 @@
     <div class="container">
 		<div class="scroll col-md-8 h-25" style="width:100%">
 		 	<c:forEach var="photo" items="${photo.list}">
-          		<a href="javascript:photoChange('${photo.aimage}', '${photo.acontent}')"><img src="photodownload?fileName=${photo.aimage}" class= "w-25 h-25"></a>
+          		<a href="javascript:photoChange('${photo.aimage}', '${photo.acontent}')"><img src="/teamproject/file/photo?fileName=${photo.aimage}" class= "w-25 h-25"></a>
 			</c:forEach>
 		 </div>
 	</div>

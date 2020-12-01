@@ -55,7 +55,7 @@
         		<div class="user-profile mt-5" style="border:1px solid #dadce0; ">
         			<div class="user-profile__container"> 
         				<div class="user-profile__profile-image" style="text-align: center;">
-                  <a href="javascript:Return()"><img class="rounded-circle mt-3" width="53%" height="53%" src="<%=application.getContextPath()%>/resources/img/person_1.jpg"></a>
+                  <a href="javascript:Return()"><img class="rounded-circle mt-3" width="53%" height="53%" src="<%=application.getContextPath() %>/file/photo?fileName=${member.mimage}"></a>
         					<div class="profile-info__name mt-2">
         						<span>${member.mnickname}</span>
         						<div>
