@@ -75,7 +75,7 @@
 
 					<div class="col-lg-8 entries">
 
-						<article class="entry entry-single">
+						<article class="entry entry-single" >
 
 
 							<h3 class="entry-title" style="text-align:left">${list.c_title}</h3>
@@ -83,7 +83,7 @@
 							<div class="entry-meta">
 								<ul>
 									<li class="d-flex align-items-center"><i
-										class="icofont-user"></i> <a href="blog-single.html">
+										class="icofont-user"></i> <a href="<%=application.getContextPath()%>/member/yourhomesearch?pwriter=${list.c_mnickname}">
 											${list.c_mnickname}</a></li>
 									<li class="d-flex align-items-center"><i
 										class="icofont-wall-clock"></i> <a href="blog-single.html"><time
@@ -121,27 +121,26 @@
 									<a href="" title="Share on Instagram"><i
 										class="icofont-instagram"></i></a>
 								</div>
-
 							</div>
-
 						</article>
-						<!-- End blog entry -->
-
-						<div class="blog-author clearfix">
-							<img src="<%=application.getContextPath()%>/resources/img/person_1.jpg"
-								class="rounded-circle float-left" alt="">
-							<h4>Jane Smith</h4>
-							<div class="social-links">
-								<a href="https://twitters.com/#"><i class="icofont-twitter"></i></a>
-								<a href="https://facebook.com/#"><i class="icofont-facebook"></i></a>
-								<a href="https://instagram.com/#"><i
-									class="icofont-instagram"></i></a>
+					</div>
+					<!-- End blog entry -->
+						
+						<div class="col-lg-4">
+							<div class="sidebar">
+								<div class="detail_container_sidebar_content">
+									<ul>
+										<li class="d-flex align-items-center">
+											<img src="photodownload?fileName=${list.c_image}">
+										</li>
+										<li class="d-flex align-items-center">
+											<a href="<%=application.getContextPath()%>/member/yourhomesearch?pwriter=${list.c_mnickname}">${list.c_mnickname}</a>
+										</li>
+									</ul>
+								</div>
 							</div>
-							<p>Itaque quidem optio quia voluptatibus dolorem dolor. Modi
-								eum sed possimus accusantium. Quas repellat voluptatem officia
-								numquam sint aspernatur voluptas. Esse et accusantium ut unde
-								voluptas.</p>
 						</div>
+						
 						<!-- End blog author bio -->
 
 						<div class="blog-comments">
@@ -295,9 +294,9 @@
 					</div>
 					<!-- End blog entries list -->
 
-				</div>
 
 			</div>
+			
 		</section>
 		<!-- End Blog Section -->
 	</main>
