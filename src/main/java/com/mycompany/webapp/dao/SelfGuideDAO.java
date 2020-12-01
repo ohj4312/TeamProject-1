@@ -27,9 +27,7 @@ public class SelfGuideDAO {
 
 
 	public int insertSelfGuide(SelfGuide sg) {
-		logger.info("잘들어갈까요안들어갈까요~?");
 		int row=sst.insert("mybatis.mapper.selfguide.insertSelfGuide" , sg);
-		logger.info("1이면 성공: "+row);
 		return row;
 	}
 	
