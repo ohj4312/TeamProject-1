@@ -14,19 +14,19 @@
 	
 	
 	<select id="selectList" parameterType="selfreply" resultType="selfreply">
-		select rnum,rwriter, rcontent,rnumber,mimage,mnickname
-		from 
-		( select rownum as rnum, rnumber, rcontent, rwriter, mnickname, mimage 
-		from 
-		( select rnumber, rcontent, rwriter, mnickname, mimage
-		from self_guide_reply r, member m
-		where r.rwriter = m.memail and snumber = #{snumber}
-		order by rnumber desc )
-		where rownum &lt; = #{endRowNo}
-		)
-		where rnum &gt; =#{startRowNo}
-	
-	</select>
+      select rnum,rwriter, rcontent,rnumber,mimage,mnickname
+      from 
+      ( select rownum as rnum, rnumber, rcontent, rwriter, mnickname, mimage 
+      from 
+      ( select rnumber, rcontent, rwriter, mnickname, mimage
+      from self_guide_reply r, member m
+      where r.rwriter = m.memail and snumber = #{snumber}
+      order by rnumber desc )
+      where rownum &lt; = #{endRowNo} 
+      )
+      where rnum &gt; =#{startRowNo}
+   
+   </select>
 	
 	<delete id="delete" parameterType="int">
 		delete from self_guide_reply where rnumber = #{rnumber}

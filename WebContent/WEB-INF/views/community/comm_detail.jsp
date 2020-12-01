@@ -95,7 +95,7 @@
 							<div class="entry-content">
 								<p>${list.c_content}</p>
 
-								<img src="<%=application.getContextPath() %>/community/comm_listphoto?fileName=${list.c_image}"
+								<img src="<%=application.getContextPath() %>/file/community?fileName=${list.c_image}"
 									style="height:100%; width:100%">
 
 							</div>
@@ -132,7 +132,7 @@
 								<div class="detail_container_sidebar_content">
 									<ul>
 										<li class="d-flex align-items-center">
-											<img src="<%=application.getContextPath()%>/photo/photodownload?fileName=${list.mimage}" style="width:100%; height:100%">
+											<img src="<%=application.getContextPath()%>/file/photo?fileName=${list.mimage}" style="width:100%; height:100%">
 										</li>
 										<li class="d-flex align-items-center">
 											<a href="<%=application.getContextPath()%>/member/yourhomesearch?pwriter=${list.memail}">${list.c_mnickname}</a>

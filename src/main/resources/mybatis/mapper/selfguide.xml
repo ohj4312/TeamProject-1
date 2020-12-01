@@ -53,7 +53,7 @@
 		where stype=#{stype}
 	</select>
 
-	<update id="updateHitCount" parameterType="selfguide">
+	<update id="updatehitcount" parameterType="int" >
 		update Self_Guide set hit_count = ${hit_count} where snumber = #{snumber}
 	</update>
 </mapper>

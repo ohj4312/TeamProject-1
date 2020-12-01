@@ -21,10 +21,11 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mycompany.webapp.dto.Community;
 import com.mycompany.webapp.dto.Member;
-import com.mycompany.webapp.dto.Post_reply;
+import com.mycompany.webapp.dto.Pager;
 import com.mycompany.webapp.service.CommunityService;
 
 @Controller
@@ -72,76 +73,49 @@ public class CommunityController {
 	}
 
 	@GetMapping("/comm_list")
-	public String Comm_list(Model model,int check,String search)
-	{
-		//검색으로 컨트롤러를 호출한건지 확인!
-		if(check==1) {
+	public String Comm_list(Model model, int check, String search,@RequestParam(defaultValue="1")int pageNo) {
+
+		// 검색으로 컨트롤러를 호출한건지 확인!
+		if (check == 1) {
 			
-			String temp ="%"; 
-			temp+=search+"%";
-			logger.info("temp");
-			List<Community> comm_list= service.Comm_search(temp);
-			model.addAttribute("comm_list", comm_list);			
-			return"community/communitylist";
-			}
-			/*조회수 리스트*/
-		if(check==2) {
-			List<Community> comm_listHits=service.Comm_listHits();//조회수리스트		
-			
-					
-			model.addAttribute("comm_list", comm_listHits);			
-			return"community/communitylistHits";
-			}
-		
-		
-		
-		List<Community> comm_list =service.Comm_list();//전체리스트
+			String temp = "%";
+			temp += search + "%";
+			int rows = service.Comm_listLow(temp);
+			Pager pager = new Pager(5, 5,rows, pageNo);
+			pager.setTemp(temp);
+			List<Community> comm_list = service.Comm_search(pager);
+			model.addAttribute("pager",pager);
+			model.addAttribute("comm_list", comm_list);
+			return "community/communitylist";
+		}
+		/*조회수 리스트*/
+		if (check == 2) {
+			List<Community> comm_listHits = service.Comm_listHits();// 조회수리스트
+			model.addAttribute("comm_list", comm_listHits);
+			return "community/communitylistHits";
+		}
+		int rows = service.Comm_listLow();
+		Pager pager = new Pager(5, 5,rows, pageNo);
+		List<Community> comm_list = service.Comm_list(pager);// 전체리스트		
+		model.addAttribute("pager",pager);
 		model.addAttribute("comm_list", comm_list);
-		
-		return"community/communitylist";
-	
-	}		
-	@GetMapping("/comm_listphoto")
-	public void download(String fileName, HttpServletRequest request, HttpServletResponse response) throws Exception {
-	
-		// 파일의 데이터를 읽기 위한 입력 스트림 얻기
-		String saveFilePath = "C:/Temp/upload/community/"+fileName;
-		InputStream is = new FileInputStream(saveFilePath);
-		// 응답 HTTP 헤더 구성
-		// Content-Type 헤더 구성
-		// 파일의 종류
-		ServletContext application = request.getServletContext();
-		String fileType = application.getMimeType(fileName);
-		response.setContentType(fileName);
-		// 2) Content-Disposition 헤더 구성
-		// 다운로드할 파일의 이름지정 // 한글이 불가능
-		response.setHeader("Content-Disposition", " filename=\"" + fileName + "\"");
-		// 3) Content-Length 헤더구성
-		// 다운로드할 파일의 크기를 지정
-		// 파일 크기 없어도 괜찮지만 유저한태 크기를 알려주기 위해서 사용
-		int fileSize = (int) new File(saveFilePath).length();// 파일사이즈 얻기
-		response.setContentLength(fileSize);
-		// 응답 HTTP의 바디(본문) 구성
-		// 항상 바이트 스트림 으로 출력스트림 사용!!!!!
-		OutputStream os = response.getOutputStream();
-		FileCopyUtils.copy(is, os);
-		os.flush();
-		os.close();
-		is.close();
+		return "community/communitylist";
 
 	}
+
 	
+
 	@GetMapping("/comm_detail")
 	public String Comm_Detail(int cnumber, String cmnickname, Model model, HttpSession session) {
-		Member member = (Member) session.getAttribute("member");				
-		
-		service.Comm_hits(cnumber);	//조회수		
-		
+		Member member = (Member) session.getAttribute("member");
+
+		service.Comm_hits(cnumber); // 조회수
+
 		Community comm_list = new Community();
 		comm_list.setC_number(cnumber);
 		comm_list.setC_mnickname(cmnickname);
-		comm_list=service.Comm_one(comm_list);
-		logger.info("이미지출력해보자"+comm_list.getMimage());
+		comm_list = service.Comm_one(comm_list);
+		logger.info("이미지출력해보자" + comm_list.getMimage());
 		model.addAttribute("list", comm_list);
 		return "community/comm_detail";
 	}
