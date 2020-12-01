@@ -25,7 +25,7 @@
 	</select>
 	
 	<select id="selectAphotoList" parameterType="int" resultType="aPhoto">
-		select * from A_PHOTO where REGISTER_NUMBER = #{pnumber}
+		select * from A_PHOTO where REGISTER_NUMBER = #{pnumber} order by anumber asc
 		
 	</select>
 	
@@ -93,5 +93,27 @@
 	
 	<delete id="deletePhoto" parameterType="int">
 		delete from REGISTER_PHOTO where pnumber=#{pnumber}
+	</delete>
+	
+	<update id="updateRegPhoto" parameterType="registerPhoto">
+		UPDATE register_photo
+		SET
+		PTYPE = #{ptype},
+		PSIZE = #{psize},
+		PSTYLE = #{pstyle},
+		FIRST_IMAGE = #{first_image},
+		first_content = #{first_content}
+		WHERE
+		pnumber=#{pnumber}
+	</update>
+	
+	<delete id="deleteAphoto" parameterType="aPhoto">
+		DELETE FROM A_PHOTO
+		WHERE AIMAGE = #{aimage}
+	</delete>
+
+	<delete id="deleteAllAphoto" parameterType="registerPhoto">
+		DELETE FROM A_PHOTO
+		WHERE REGISTER_NUMBER = #{pnumber}
 	</delete>
 </mapper>

@@ -2,17 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mybatis.mapper.community">
 
-<insert id="communityInsert" parameterType="community">
-insert into community(c_mnickname,c_content,c_title,c_image,c_number,c_date)
-values(#{c_mnickname},#{c_content},#{c_title},#{c_image},SEQ_C_NUMBER.nextval,sysdate)
-
-</insert>
-<select id="communityselctAll" resultType="community">
-select * from community order by c_date desc
-</select>
-<select id="communityselctSerch" resultType="community" parameterType="String">
-select * from community where c_content like #{temp} or c_title like #{temp} order by c_date desc
-</select>
+	<insert id="communityInsert" parameterType="community">
+		insert into community(c_mnickname,c_content,c_title,c_image,c_number,c_date)
+		values(#{c_mnickname},#{c_content},#{c_title},#{c_image},SEQ_C_NUMBER.nextval,sysdate)
+	</insert>
+	
+	<select id="communityselctAll" resultType="community">
+		select * from community order by c_date desc
+	</select>
+	
+	<select id="communityselctSerch" resultType="community" parameterType="String">
+		select * from community where c_content like #{temp} or c_title like #{temp} order by c_date desc
+	</select>
+	
+	<select id="communityselectOne" resultType="community" parameterType="int">
+		select c_mnickname, c_content, c_title, c_number, c_date, c_image from community where c_number = #{cnumber}
+	</select>
 
 
 

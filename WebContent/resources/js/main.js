@@ -389,9 +389,10 @@ function writePhoto(){
 
 
 				//아이디 값을 이용하여 이미지 소스 가져오기
-				var filevalue = $(idkey + ' input');
-				var checkfile = $(filevalue[0]).val();
-				console.log(checkfile);
+				var filevalue = $(idkey + ' img');
+				var checkfile1 = $(idkey + ' img').attr('src');
+				var checkfile = $(idkey + ' img').attr('src');
+				console.log(checkfile1);
 
 
 				//아이디 값을 이용하여 공간을 잘 선택했는지 가져오기
@@ -413,15 +414,14 @@ function writePhoto(){
 					}
 
 
-				if(checktxt.trim() == '' || checkfile.trim() == '' || checkselect == '공간(필수)' ){
-
+				if(checktxt.trim() == '' || checkfile.trim() == null || checkselect == '공간(필수)' ){
 					result++;
 				}
 			}
-
+			console.log(result);
 			if(result > 0){
-					alert("값을 제대로 입력해주세요.");
-					return false;
+				alert("값을 제대로 입력해주세요.");
+				return false;
 			}
 			return true;
 

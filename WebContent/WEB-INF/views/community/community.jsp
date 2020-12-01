@@ -51,7 +51,7 @@
       <div class="container">
       
         <div class="row">
-          <div class="col-lg-12 entries">
+          <div class="col-lg-8 entries">
             <div class="sidebar">
               <h3 class="sidebar-title">Search</h3>
               <div class="sidebar-item search-form">
@@ -73,10 +73,11 @@
             
             
             </div>
-
-            
-        
 		</div>
+        </div>
+        
+        <div class="col-lg-4">
+        	<div class="sidebar"></div>
         </div>
 	</div>
       </div>

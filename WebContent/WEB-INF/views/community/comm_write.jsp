@@ -1,327 +1,376 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Maxim Bootstrap Template - Index</title>
-  <meta content="" name="descriptison">
-  <meta content="" name="keywords">
+<title>Maxim Bootstrap Template - Index</title>
+<meta content="" name="descriptison">
+<meta content="" name="keywords">
 
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+<!-- Favicons -->
+<link href="assets/img/favicon.png" rel="icon">
+<link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+<!-- Google Fonts -->
+<link
+	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+	rel="stylesheet">
 
-  <!-- Vendor CSS Files -->
-  <link href="<%=application.getContextPath() %>/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="<%=application.getContextPath() %>/resources/vendor/icofont/icofont.min.css" rel="stylesheet">
-  <link href="<%=application.getContextPath() %>/resources/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="<%=application.getContextPath() %>/resources/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
-  <link href="<%=application.getContextPath() %>/resources/vendor/venobox/venobox.css" rel="stylesheet">
-  <link href="<%=application.getContextPath() %>/resources/vendor/aos/aos.css" rel="stylesheet">
+<!-- Vendor CSS Files -->
+<link
+	href="<%=application.getContextPath()%>/resources/vendor/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
+<link
+	href="<%=application.getContextPath()%>/resources/vendor/icofont/icofont.min.css"
+	rel="stylesheet">
+<link
+	href="<%=application.getContextPath()%>/resources/vendor/boxicons/css/boxicons.min.css"
+	rel="stylesheet">
+<link
+	href="<%=application.getContextPath()%>/resources/vendor/owl.carousel/assets/owl.carousel.min.css"
+	rel="stylesheet">
+<link
+	href="<%=application.getContextPath()%>/resources/vendor/venobox/venobox.css"
+	rel="stylesheet">
+<link
+	href="<%=application.getContextPath()%>/resources/vendor/aos/aos.css"
+	rel="stylesheet">
 
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
 
-  <!-- Template Main CSS File -->
-  <link href="<%=application.getContextPath() %>/resources/css/style.css" rel="stylesheet">
+<!-- Template Main CSS File -->
+<link href="<%=application.getContextPath()%>/resources/css/style.css"
+	rel="stylesheet">
 
-  <!-- =======================================================
+<!-- =======================================================
   * Template Name: Maxim - v2.2.0
   * Template URL: https://bootstrapmade.com/maxim-free-onepage-bootstrap-theme/
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-	</head>
-	<style type="text/css">
-#question_title{
-  width:100%;
-  font-size:15px; 
-  margin-bottom: 2px;
-  border-radius:4px;
-  border:solid 1px #dbdbdb;
-  background-color:#ffffff;
-  color:#424242;
-  box-sizing:border-box;
-  display: block;
+</head>
+<style type="text/css">
+#question_title {
+	width: 100%;
+	font-size: 15px;
+	margin-bottom: 2px;
+	border-radius: 4px;
+	border: solid 1px #dbdbdb;
+	background-color: #ffffff;
+	color: #424242;
+	box-sizing: border-box;
+	display: block;
 }
-#question_content{
-  padding-left:2%;
-  padding-top:1%;
-  margin-bottom:3%;
-  font-size:15px;
-  line-height: 1.5;
-  border-radius:4px;
-  border:solid 1px #dbdbdb;
-  background-color:#ffffff;
-  color:#424242;
-  box-sizing:border-box;
-  display: block;
-  width:100%; 
-  height:300px;
+
+#question_content {
+	padding-left: 2%;
+	padding-top: 1%;
+	margin-bottom: 3%;
+	font-size: 15px;
+	line-height: 1.5;
+	border-radius: 4px;
+	border: solid 1px #dbdbdb;
+	background-color: #ffffff;
+	color: #424242;
+	box-sizing: border-box;
+	display: block;
+	width: 100%;
+	height: 300px;
 }
-#question-form{
-  margin: 0;
-  padding: 0;
+
+#question-form {
+	margin: 0;
+	padding: 0;
 }
-.container{
-  box-sizing: border-box;
-  min-height: 1px;
+
+.container {
+	box-sizing: border-box;
+	min-height: 1px;
 }
-.question-form{
-  width:100%;
-  max-width: 720px;
-  padding: 0 15px;
-  margin:60px auto;
+
+.question-form {
+	width: 100%;
+	max-width: 720px;
+	padding: 0 15px;
+	margin: 60px auto;
 }
-.container{
-  box-sizing:border-box;
-  min-height: 1px;
+
+.container {
+	box-sizing: border-box;
+	min-height: 1px;
 }
-.question-from__body__content__wrap{
-  position: relative;
-  width: 100%;
-  box-sizing: border-box;
-  border: 1px solid darkgray;
-  
+
+.question-from__body__content__wrap {
+	position: relative;
+	width: 100%;
+	box-sizing: border-box;
+	border: 1px solid darkgray;
 }
-.question-form__body__content_form-group{
-  display: block;
-  width: 100%;
-  color:#bdbdbd;
-  min-height: 300px;
-  box-sizing: border-box;
-  font-size: 15px;
-  line-height: 1.87;
+
+.question-form__body__content_form-group {
+	display: block;
+	width: 100%;
+	color: #bdbdbd;
+	min-height: 300px;
+	box-sizing: border-box;
+	font-size: 15px;
+	line-height: 1.87;
 }
-.question-from__meta{
-  margin: 0;
-  padding: 0;
+
+.question-from__meta {
+	margin: 0;
+	padding: 0;
 }
-.btn-priority{
-  background-color: #17a2b8;
-  border-color: #17a2b8;
-  color:#ffffff;
+
+.btn-priority {
+	background-color: #17a2b8;
+	border-color: #17a2b8;
+	color: #ffffff;
 }
-.btn-lg{
-  line-height: 1;
-  height: 70px;
-  padding:26px 0;
-  font-size:18px;
+
+.btn-lg {
+	line-height: 1;
+	height: 70px;
+	padding: 26px 0;
+	font-size: 18px;
 }
-.btn{
-  display:inline-block;
-  border-width: 1px;
-  border-style: solid;
-  text-align: center;
-  border-radius:4px;
-  font-weight:bold;
+
+.btn {
+	display: inline-block;
+	border-width: 1px;
+	border-style: solid;
+	text-align: center;
+	border-radius: 4px;
+	font-weight: bold;
 }
-.photo-add{
- 	position: absolute;
+
+.photo-add {
+	position: absolute;
 	left: 35%;
 	transform: translate(-35%, -35%);
-	font-size:13px;
+	font-size: 13px;
 }
-.question-photo{
-  font-size:15px;
-  line-height: 1.5;
-  margin:auto auto;
-  border-radius:4px;
-  border:solid 1px #dbdbdb;
-  background-color:#ffffff;
-  color:#424242;
-  display: block;
+
+.question-photo {
+	font-size: 15px;
+	line-height: 1.5;
+	margin: auto auto;
+	border-radius: 4px;
+	border: solid 1px #dbdbdb;
+	background-color: #ffffff;
+	color: #424242;
+	display: block;
 }
 
 /* 이미디드롭 */
-.content{
-    outline: 2px dashed #dbdbdb ;
-    outline-offset:-10px;  
-    margin: 0 auto 0 auto;
-    text-align: center;
-    transition: all .15s ease-in-out;
-    width: 300px;
-    height: 300px;
-    background-color: gray;
+.content {
+	outline: 2px dashed #dbdbdb;
+	outline-offset: -10px;
+	margin: 0 auto 0 auto;
+	text-align: center;
+	transition: all .15s ease-in-out;
+	width: 300px;
+	height: 300px;
+	background-color: gray;
 }
-.showcontent{
+
+.showcontent {
 	display:none;
 	text-align: center;
-	padding-top:2%;
-	padding-bottom:2%;
+	padding-top: 2%;
+	padding-bottom: 2%;
+
 }
-#deletebtn{
- 	background-color:#35c5f0;
- 	font-size:13px;
- 	text-align:center;
- 	width:15%;
- 	height:15%;
+
+#deletebtn {
+	background-color: #35c5f0;
+	font-size: 13px;
+	text-align: center;
+	width: 15%;
+	height: 15%;
 }
 </style>
-	<body>
-		<jsp:include page="/WEB-INF/views/include/Header.jsp"/>
-		 
-<main id="main">
+<body>
+	<jsp:include page="/WEB-INF/views/include/Header.jsp" />
 
-    <div class="question-form container">
-      <form id="question-form" action="<%=application.getContextPath()%>/community/comm_write" enctype="multipart/form-data" onsubmit="return comm_write()" method="post">
-        
-        <header class="question-form_header" style="padding-bottom:3%; padding-top:10%">
-          <h2 style="color:black; font-size:20px; font-weight:bold">질문하기</h2>
-          <div>
-            <input placeholder="제목을 적어주세요." class="form-control"  type="text" id="c_title" name="c_title" >
-          </div>
-        </header>
-		
-			
-         
-        <div class="question-from__meta" >
-            <textarea id="question_content" placeholder="내용을 적어주세요." name="c_content"></textarea>
-			
-			<div class="question-photo" >
-		        <div class="all-content" id="all-content">
-			 		<input id="cimage" type="file" name="cimage" multiple="multiple" class="addFile"/>	
-			         <div class="content" id="content">
-			         	<h2 style="color:black; font-size:20px; font-weight:bold">마우스로 파일을 끌어오세요.</h2>
+	<main id="main">
+
+		<div class="question-form container">
+			<form id="question-form"
+				action="<%=application.getContextPath()%>/community/comm_write"
+				enctype="multipart/form-data" onsubmit="return comm_write()"
+				method="post">
+
+				<header class="question-form_header"
+					style="padding-bottom: 3%; padding-top: 10%">
+					<h2 style="color: black; font-size: 20px; font-weight: bold">질문하기</h2>
+					<div>
+						<input placeholder="제목을 적어주세요." class="form-control" type="text"
+							id="c_title" name="c_title">
 					</div>
-					  <div class="showcontent" id="showcontent">
-			         	<input value="삭제" id="deletebtn" class="btn btn-sm btn-priority" onclick="javascript:reset()"></input>
+				</header>
+
+
+
+				<div class="question-from__meta">
+					<textarea id="question_content" placeholder="내용을 적어주세요."
+						name="c_content"></textarea>
+
+					<div class="question-photo">
+						<div class="all-content" id="all-content">
+							<input id="cimage" type="file" name="cimage" multiple="multiple"
+								class="addFile" />
+							<div class="content" id="content">
+								<h2 style="color: black; font-size: 20px; font-weight: bold">마우스로
+									파일을 끌어오세요.</h2>
+							</div>
+							
+						</div>
 					</div>
+
 				</div>
-	        </div>
-      
-      	</div>
-      	
-      	<div class="floating-bar__Content" style="padding-top:5%;">
-          <input type="submit" value="등록" class="btn btn-lg btn-priority col-6 offset-3"></input>
-        </div>
-      </form>   
-    </div>
-         
-  </main><!-- End #main -->
-    
-    <!-- Vendor JS Files -->
-   <script src="<%=application.getContextPath() %>/resources/vendor/jquery/jquery.min.js"></script>
-  <script src="<%=application.getContextPath() %>/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="<%=application.getContextPath() %>/resources/vendor/php-email-form/validate.js"></script>
-  <script src="<%=application.getContextPath() %>/resources/vendor/owl.carousel/owl.carousel.min.js"></script>
-  <script src="<%=application.getContextPath() %>/resources/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="<%=application.getContextPath() %>/resources/vendor/venobox/venobox.min.js"></script>
-  <script src="<%=application.getContextPath() %>/resources/vendor/aos/aos.js"></script>
-  <script src="<%=application.getContextPath() %>/resources/vendor/jquery.easing/jquery.easing.min.js"></script>
 
-  <!-- Template Main JS File -->
-  <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>
+				<div class="floating-bar__Content" style="padding-top: 5%;">
+					<input type="submit" value="등록"
+						class="btn btn-lg btn-priority col-6 offset-3"></input>
+				</div>
+			</form>
+			<div class="showcontent" id="showcontent">
+				<input value="삭제" id="deletebtn" class="btn btn-sm btn-priority"
+				onclick="reset();">
+			</div>
+		</div>
+
+	</main>
+	<!-- End #main -->
+
+	<!-- Vendor JS Files -->
+	<script
+		src="<%=application.getContextPath()%>/resources/vendor/jquery/jquery.min.js"></script>
+	<script
+		src="<%=application.getContextPath()%>/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script
+		src="<%=application.getContextPath()%>/resources/vendor/php-email-form/validate.js"></script>
+	<script
+		src="<%=application.getContextPath()%>/resources/vendor/owl.carousel/owl.carousel.min.js"></script>
+	<script
+		src="<%=application.getContextPath()%>/resources/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+	<script
+		src="<%=application.getContextPath()%>/resources/vendor/venobox/venobox.min.js"></script>
+	<script
+		src="<%=application.getContextPath()%>/resources/vendor/aos/aos.js"></script>
+	<script
+		src="<%=application.getContextPath()%>/resources/vendor/jquery.easing/jquery.easing.min.js"></script>
+
+	<!-- Template Main JS File -->
+	<script src="<%=application.getContextPath()%>/resources/js/main.js"></script>
 	<script type="text/javascript">
-	function comm_write(){
-		var result = true;		
-		var c_title = $("#c_title").val().trim();
-		if(c_title==""){ 			
-			console.log("실행");
-			result = false;	
+		function comm_write() {
+			var result = true;
+			var c_title = $("#c_title").val().trim();
+			if (c_title == "") {
+				
+				result = false;
+			}
+
+			var c_content = $("#question_content").val().trim();
+			if (c_content == "") {
+
+				
+				result = false;
+			}
+
+			return result;
 		}
-		
-		var c_content= $("#question_content").val().trim();
-		if(c_content==""){					
+
+		/* 이미지 드롭 */
+		$('.content').on("dragover", dragOver).on("dragleave", dragOver).on(
+				"drop", uploadFiles);
+
+		function dragOver(e) {
+			e.stopPropagation();
+			e.preventDefault();
+			if (e.type == "dragover") {
+				$(e.target).css({
+					"background-color" : "black",
+
+					"outline-offset" : "-20px"
+				});
+			} else {
+				$(e.target).css({
+					"background-color" : "gray",
+					"outline-offset" : "-10px"
+
+				});
+				$(e.target).html("");
+			}
+		}
+
+		function uploadFiles(e) {
+			e.stopPropagation();
+			e.preventDefault();
+			dragOver(e);
+
+			e.dataTransfer = e.originalEvent.dataTransfer;
+			var files = e.target.files || e.dataTransfer.files;
+			if (files.length > 1) {
+				alert('하나만 올려라.');
+				return;
+			}
+			if (files[0].type.match(/image.*/)) {
+				$(e.target).css(
+						{
+							"background-image" : "url("
+									+ window.URL.createObjectURL(files[0])
+									+ ")",
+							"outline" : "none",
+							"background-size" : "100% 100%"
+						});
+				$('.content').attr("onclick", "imgDelete()");
+
+			}
+			addFileFromLastInput(files);
+
+		}
+
+		/* 인풋객체에 추가  */
+		function addFileFromLastInput(file) {
+			var a = $('input#cimage.addFile');
+			a[a.length - 1].files = file;
+		}
+		function imgDelete() {
+			console.log("시랭");
+			$('.showcontent').css({
+				"display":"block"
+			});
+			$('.content').css({
+				"outline" : "4px solid #35c5f0"
+			});
+				
 			
+
+		}
+
+		function reset(){
 			console.log("실행");
-			result = false;	
-		} 
-		
-		return result;
-	} 
-	
-	/* 이미지 드롭 */
-	$('.content')
-	  .on("dragover", dragOver)
-	  .on("dragleave", dragOver)
-	  .on("drop", uploadFiles);
-
-	function dragOver(e){
-	  e.stopPropagation();
-	  e.preventDefault();
-	  if (e.type == "dragover") {
-	    $(e.target).css({
-	      "background-color": "black",
-	      
-	      "outline-offset": "-20px"
-	    });
-	  } else {
-	      $(e.target).css({
-	      "background-color": "gray",
-	      "outline-offset": "-10px"
-	    	 
-	    });
-	      $(e.target).html("");
-	    }
-	}
-
-	
-	function uploadFiles(e) {
-	    e.stopPropagation();
-	    e.preventDefault();
-	    dragOver(e);
-	  
-	    e.dataTransfer = e.originalEvent.dataTransfer;
-	    var files = e.target.files || e.dataTransfer.files;
-	    if (files.length > 1) {
-	        alert('하나만 올려라.');
-	        return;
-	    }
-	    if (files[0].type.match(/image.*/)) {
-	                $(e.target).css({
-	            "background-image": "url(" + window.URL.createObjectURL(files[0]) + ")",
-	            "outline": "none",
-	            "background-size": "100% 100%"
-	        });
-	         $('.content').attr("onclick","imgDelete()");      
-	                
-	    }
-	    addFileFromLastInput(files);
-	
-	}
-	
-	/* 인풋객체에 추가  */
-	function addFileFromLastInput(file){
-	    var a = $('input#cimage.addFile');
-	    a[a.length-1].files = file;
-	}
-	function imgDelete() {
-		console.log("시랭");
-		$('.showcontent').css({
-			"display" : "block",
-		});
-		$('.content').css({
-			"outline": "4px solid #35c5f0"
-		});
-	 }
-	
-	function reset(){
-		var rmvimg = $('#cimage').val('');
-		var rmv = $('.content');
-		$(rmv).attr('style', 'display:none;');
-		var imagetag = $('<i class="material-icons "'+
-                'style="font-size: 7rem; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">'+
-                'photo_camera'+
-                '</i>');
-		$(rmvimg).html(imagetag);
-		
-		$("input:file").on('change', function(e){
-	        let elem = e.target;
-
-	        var src1 = URL.createObjectURL(elem.files[0]);
-	        var $div = $('<img src="'+src1+'" width="100%" height="100%" />');
-	  
-	        $(elem).next().html($div);
-	      });
-	}
-	
-	</script>	
-	</body>
+			$('#cimage').val('null');
+			$("#content").css("background-image", "");							
+			$("#content").html("이미지를 올려주세요");
+			
+			$('.showcontent').css({
+				"display":"none"
+			});
+			$('.content').css({
+				"outline" : ""
+			});
+			
+			
+		}
+	</script>
+</body>
 </html>

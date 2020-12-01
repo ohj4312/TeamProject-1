@@ -134,9 +134,10 @@ table.type09 td {
 			 	<div style="text-align: center; margin-top: 10px;">
 			    	
 			    	<form method="post" action="qnaDelete?qnumber=${qna.qnumber}">
-			    		<input type="submit" value="삭제" class="btn btn-info" style="margin-bottom:5px">
-			    	</form>
+			    		<input type="submit" value="삭제" class="btn btn-info" >
 			    		<a class="btn btn-info" href="qnaUpdate?qnumber=${qna.qnumber}">수정</a>
+			    	</form>
+			    		
 			    </div>
 	    </div>
 </div>
