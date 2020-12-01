@@ -39,10 +39,6 @@ public class SelfGuideController {
 	@Resource
 	private SelfGuideService service;
 	
-	
-
-	
-
 	//셀프 가이드에 사진 올리기
 	@RequestMapping("/selfguide-write")
 	public String selfwriteForm() {
