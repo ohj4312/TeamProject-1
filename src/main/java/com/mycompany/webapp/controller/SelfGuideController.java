@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -27,6 +29,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mycompany.webapp.dto.Member;
 import com.mycompany.webapp.dto.Pager;
+import com.mycompany.webapp.dto.Register_photo;
 import com.mycompany.webapp.dto.SelfGuide;
 import com.mycompany.webapp.service.SelfGuideService;
 
@@ -120,9 +123,10 @@ public class SelfGuideController {
 		
 	}
 	
+
 	//셀프 가이드 리스트에서 한 게시물 선택시 상세 뷰.
 	@GetMapping("/selfdetail")
-	public String selfphotoDetail(int snumber,String swriter,Model model,HttpSession session) {
+	public String selfphotoDetail(int snumber,String swriter,int hit_count,String scontent,Model model,HttpSession session) {
 		
 		Member member = (Member) session.getAttribute("member");
 		//logger.info("snumber:"+String.valueOf(snumber));
@@ -130,12 +134,19 @@ public class SelfGuideController {
 		SelfGuide sg = new SelfGuide();
 		
 		List<SelfGuide> list;
+		
 		sg.setSnumber(snumber);
 		sg.setSwriter(swriter);
+		sg.setScontent(scontent);
 		logger.info("swriter:"+swriter);
+		sg.setHit_count(hit_count);
+		
+		
+		logger.info(String.valueOf(sg.getHit_count()));
 		
 		
 		list=service.selectSelfPhotoList(swriter);
+		
 		
 		
 		sg =  service.selectSelfPhoto(snumber);

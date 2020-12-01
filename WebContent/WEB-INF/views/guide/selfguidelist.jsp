@@ -87,7 +87,7 @@
 	          //console.log("documentHeight:" + documentHeight + " | scrollTop:" + scrollTop + " | windowHeight: " + windowHeight );
 	          
 	          if( scrollTop + windowHeight + 1000 > documentHeight ){
-	        	  getList(page);
+	        	  getselfList(page);
 	        	  
 		           page++; 
 					console.log(page);

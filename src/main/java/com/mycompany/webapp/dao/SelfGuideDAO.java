@@ -65,6 +65,11 @@ public class SelfGuideDAO {
 		return sst.selectList("mybatis.mapper.selfguide.selectSelfListFilter",filter);
 	}
 
+
+	public int updatehitcount(int hit_count) {
+		return sst.update("mybatis.mapper.selfguide.updatehitcount",hit_count);
+	}
+
 	
 	
 }
