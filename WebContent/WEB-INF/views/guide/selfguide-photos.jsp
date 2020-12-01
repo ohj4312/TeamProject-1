@@ -27,7 +27,7 @@
 </c:forEach> --%>
 <c:forEach var="selfguide" items="${guidelist }">
 		<div class="mb-4 mt-5 col-lg-4 col-md-6 portfolio-item  ${selfguide.snumber } ${selfguide.swriter } ${selfguide.scontent}">
-			<a href="<%=application.getContextPath()%>/selfguide/selfdetail?snumber=${selfguide.snumber}&swriter=${selfguide.swriter}&scontent=${selfguide.scontent}">
+			<a href="<%=application.getContextPath()%>/selfguide/selfdetail?snumber=${selfguide.snumber}&swriter=${selfguide.swriter}&scontent=${selfguide.scontent}&hit_count=${selfguide.hit_count}">
 			
 			<div class="row pl-3 pr-2 mb-4">
 				<img class="rounded mr-2 "style="width:350px; height:200px;"  src="<%=application.getContextPath() %>/selfguide/photodownload?fileName=${selfguide.simage}" />

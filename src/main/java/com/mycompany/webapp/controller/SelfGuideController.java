@@ -75,7 +75,7 @@ public class SelfGuideController {
 			return "selfguide/selfwrite";
 		}
 		
-		return "redirect:/selfguide/selfguidelist";
+		return "redirect:/selfguide/selflist";
 
 
 	}
@@ -130,7 +130,7 @@ public class SelfGuideController {
 
 	//셀프 가이드 리스트에서 한 게시물 선택시 상세 뷰.
 	@GetMapping("/selfdetail")
-	public String selfphotoDetail(int snumber,String swriter,String scontent,Model model,HttpSession session) {
+	public String selfphotoDetail(int snumber,String swriter,int hit_count,String scontent,Model model,HttpSession session) {
 		
 		Member member = (Member) session.getAttribute("member");
 		//logger.info("snumber:"+String.valueOf(snumber));
@@ -143,9 +143,14 @@ public class SelfGuideController {
 		sg.setSwriter(swriter);
 		sg.setScontent(scontent);
 		logger.info("swriter:"+swriter);
+		sg.setHit_count(hit_count);
+		
+		
+		logger.info(String.valueOf(sg.getHit_count()));
 		
 		
 		list=service.selectSelfPhotoList(swriter);
+		
 		
 		
 		sg =  service.selectSelfPhoto(snumber);
@@ -154,7 +159,7 @@ public class SelfGuideController {
 		logger.info(sg.getStitle());
 		logger.info(sg.getStype());
 		logger.info(sg.getScontent());
-		logger.info(String.valueOf(sg.getHit_count()));
+		
 		
 		
 		
