@@ -194,10 +194,25 @@
 })(jQuery);
 
 //===========================노성규==============================
+
+var $portfolioIsotope;
+
+$(document).ready(function() {
+      $portfolioIsotope = $('.portfolio-container').isotope({
+			              itemSelector: '.portfolio-item',
+			              layoutMode: 'fitRows',
+						getSortData: {number: '.hitcount parseInt'}
+			            });
+	 $portfolioIsotope.isotope({
+              filter: filterCon
+            });
+});
 var filterCon = '';
 var pstyle = '';
 var ptype = '';
 var psize = '';
+var filter;
+var page;
 function addTag(btncon, btnid) {
 	switch (btnid){
     case 'type' :
@@ -211,16 +226,36 @@ function addTag(btncon, btnid) {
         break;
 	case 1 :
 		switch(btncon){
-			case '최근 인기순':
-			break;
-			
 			case '역대 인기순':
-			$portfolioIsotope.isotope({ sortBy: 'number', sortAscending: false });
+			page = 2;
+			filter = 'hit';
+	
+			
 			break;
 			
 			case '최신순':
+			page = 2;
+			filter = 'recent';
+	
+		
 			break;
 		}
+		$.ajax({
+				type : 'POST',
+				url:"list",
+				data: {"filter":filter},
+				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+				success : function(data) {
+						$('#12345').html(data);
+						$portfolioIsotope.isotope('reloadItems');
+						$portfolioIsotope.isotope({ sortBy: 'number', sortAscending: false });
+		       		},
+		       error:function(e){
+		           if(e.status==300){
+		               alert("데이터를 가져오는데 실패하였습니다.");
+		           };
+		       }
+			});
 		break;
 	}
 
@@ -245,15 +280,34 @@ function addTag(btncon, btnid) {
 
 function removeTag(removeID) {
 	switch (removeID){
-    case 'type' :
-        ptype = '';
-        break;
-    case 'size' :
-        psize = '';
-        break;
-    case 'style' :
-        pstyle = '';
-        break;
+	    case 'type' :
+	        ptype = '';
+	        break;
+	    case 'size' :
+	        psize = '';
+	        break;
+	    case 'style' :
+	        pstyle = '';
+	        break;
+		case '1' :
+		page=2;
+			$.ajax({
+				type : 'POST',
+				url:"list",
+				data: {"filter":'recent'},
+				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+				success : function(data) {
+						$('#12345').html(data);
+						$portfolioIsotope.isotope('reloadItems');
+						$portfolioIsotope.isotope({ sortBy: 'number', sortAscending: false });
+		       		},
+		       error:function(e){
+		           if(e.status==300){
+		               alert("데이터를 가져오는데 실패하였습니다.");
+		           };
+		       }
+			});
+			break;
 	}
 	filterCon = pstyle+ptype+psize;
 	console.log(filterCon);
@@ -427,52 +481,26 @@ function writePhoto(){
 
         }
 
-
-var $portfolioIsotope;
-
-$(document).ready(function() {
-      $portfolioIsotope = $('.portfolio-container').isotope({
-			              itemSelector: '.portfolio-item',
-			              layoutMode: 'fitRows',
-						getSortData: {number: '.hitcount parseInt'}
-			            });
-	 $portfolioIsotope.isotope({
-              filter: filterCon
-            });
-});
 		  
 function getList(page){
+			console.log("페이징 실행");
 			$.ajax({
 				type : 'POST',
 				url:"listjson",
-				data: {"pageNo" : page},
+				data: {"pageNo" : page, "filter":filter},
 				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 				success : function(data) {	
 					var list = data;
 					for (var loop = 0; loop < list.length; loop++) {
-						console.log('psize : ' + list[loop].psize);
-						console.log('pstyle : ' + list[loop].pstyle);
-						console.log('ptype : ' + list[loop].ptype);
-						console.log('pwriter : ' + list[loop].pwriter);
-						console.log('mimage : ' + list[loop].mimage);
-						console.log('mnickname : ' + list[loop].mnickname);
-						console.log('pwritersubstring : ' + list[loop].pwritersubstring);
-						console.log('pnumber : ' + list[loop].pnumber);
-						console.log('first_image : ' + list[loop].first_image);
-						console.log('phit_count : ' + list[loop].phit_count);
-						console.log('bnumber : ' + list[loop].bnumber);
-						console.log('likenumber : ' + list[loop].likenumber);
-						console.log('first_content : ' + list[loop].first_content);
-						console.log('following : ' + list[loop].following);
 						var follow;
 						var bnumber;
 						var likenumber;
 						if(list[loop].following == null){
-							follow = '<a class = "pl-2 font-weight-bolder btn btn-sm btn-outline-info '+list[loop].pwritersubstring+'" style = "color: #1bac91;" href="javascript:followCheck(\''+list[loop].pwriter+'\', \'/teamproject/follow/followCheck\', \''+list[loop].pwritersubstring+'\')">'+
+							follow = '<a class = "pl-2 follow font-weight-bolder btn btn-sm btn-outline-info '+list[loop].pwritersubstring+'" style = "color: #1bac91;" href="javascript:followCheck(\''+list[loop].pwriter+'\', \'/teamproject/follow/followCheck\', \''+list[loop].pwritersubstring+'\')">'+
 												'팔로우'+
 												'</a>';
 						}else{
-							follow = '<a class = "pl-2 font-weight-bolder btn btn-sm '+list[loop].pwritersubstring+'" style = "background-color: #1bac91; color: white;" href="javascript:followCheck(\''+list[loop].pwriter+'\', \'/teamproject/follow/followCheck\', \''+list[loop].pwritersubstring+'\')">'+
+							follow = '<a class = "pl-2 follow font-weight-bolder btn btn-sm '+list[loop].pwritersubstring+'" style = "background-color: #1bac91; color: white;" href="javascript:followCheck(\''+list[loop].pwriter+'\', \'/teamproject/follow/followCheck\', \''+list[loop].pwritersubstring+'\')">'+
 												'팔로잉'+
 												'</a>';
 						}
@@ -493,7 +521,8 @@ function getList(page){
 										'<a href="/teamproject/member/yourhomesearch?pwriter='+ list[loop].pwriter+ '" class = "pr-3 " style="color: black;">'+
 											'<img class="rounded-circle mr-2 "style="width:30px; height:30px;"  src="photodownload?fileName='+list[loop].mimage+'" />'+
 											list[loop].mnickname+
-										'</a>'+ follow +
+										'</a>'+ 
+										follow +
 									'</div>'+
 									'<a href="/teamproject/photo/detail?pnumber='+list[loop].pnumber+'">'+
 									'<div class="portfolio-wrap">'+
@@ -506,7 +535,7 @@ function getList(page){
 										'</div>'+
 									'</div>'+
 									'</a>'+
-									'<div div class = "row pl-3 pr-3 mt-2">'+
+									'<div div class = "login row pl-3 pr-3 mt-2">'+
 										'<a id="App1BK'+list[loop].pnumber+'" class = "col-4 " href="javascript:toggleUpdate('+list[loop].pnumber+', \'/teamproject/BK/CheckBookMark\')">'+
 											bnumber+
 										'</a>'+
@@ -525,8 +554,7 @@ function getList(page){
 								 $portfolioIsotope.append( $items )
 								    // add and lay out newly appended elements
 								    .isotope( 'appended', $items);
-
-					    }		
+					    }
 		       		},
 		       error:function(e){
 		           if(e.status==300){
@@ -534,6 +562,7 @@ function getList(page){
 		           };
 		       }
 			});
+
 			
 }
 
@@ -600,10 +629,10 @@ function replyDelete(rnumber, pnumber){
 function toggleUpdate(pnumber, urlpath){
 	console.log(pnumber);
 	console.log(urlpath);
-	console.log($("#bkcount").html());
+/*	console.log($("#bkcount").html());
 	console.log($("#lkcount").html());
 	var bkcount = $("#bkcount").html();
-	var lkcount = $("#lkcount").html();
+	var lkcount = $("#lkcount").html();*/
 	$.ajax({
 		url: urlpath,
 		data: {pnumber: pnumber},
@@ -613,28 +642,28 @@ function toggleUpdate(pnumber, urlpath){
 				 
 				console.log("bookmarksuccess");
 				$("#itag"+pnumber).html("bookmark");
-				++bkcount;
-				$("#bkcount").html(bkcount);
+				/*++bkcount;
+				$("#bkcount").html(bkcount);*/
 			}else if(data.result == "bookmarkfailure"){
 				
 				console.log("bookmarkfailure");
 				$("#itag"+pnumber).html("bookmark_border");
-				--bkcount;
-				$("#bkcount").html(bkcount);
+			/*	--bkcount;
+				$("#bkcount").html(bkcount);*/
 				
 			}else if(data.result == "likesuccess"){
 				
 				console.log("likesuccess");
 				$("#likeicon"+pnumber).html("favorite");
-				++lkcount;
-				$("#lkcount").html(lkcount);
+			/*	++lkcount;
+				$("#lkcount").html(lkcount);*/
 		
 			}else if(data.result == "likefailure"){
 				
 				console.log("likefailure");
 				$("#likeicon"+pnumber).html("favorite_border");
-				--lkcount;
-				$("#lkcount").html(lkcount);
+	/*			--lkcount;
+				$("#lkcount").html(lkcount);*/
 				
 			}
 			 

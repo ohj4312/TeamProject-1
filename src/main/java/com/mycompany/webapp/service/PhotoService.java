@@ -66,14 +66,28 @@ public class PhotoService {
 		return photoDAO.countAll();
 	}
 
-	public List<Register_photo> getPhotoList(Pager pager) {
+	public List<Register_photo> getPhotoList(Pager pager, String filter) {
 		
-		return photoDAO.selectByPage(pager);
+		if(filter.equals("default1")) {
+			return photoDAO.selectByPage(pager);
+		}else if(filter.equals("recent")) {
+			return photoDAO.selectByPage(pager);
+		}
+		else {
+			return photoDAO.selectByPageHitCount(pager);
+		}
 	}
 
-	public List<Register_photo> getPhotoList(Register_photo photo) {
+	public List<Register_photo> getPhotoList(Register_photo photo, String filter) {
 		// TODO Auto-generated method stub
-		return photoDAO.selectByPage(photo);
+		if(filter.equals("default1")) {
+			return photoDAO.selectByPage(photo);
+		}else if(filter.equals("recent")) {
+			return photoDAO.selectByPage(photo);
+		}else {
+			return photoDAO.selectByPageHitCount(photo);
+		}
+	
 	}
 
 	public int checkPwriter(Register_photo photo) {
