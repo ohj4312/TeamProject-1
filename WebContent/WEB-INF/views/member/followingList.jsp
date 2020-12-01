@@ -8,7 +8,7 @@
 	<c:forEach var="following" items="${follows}">
 		<a href="<%=application.getContextPath()%>/member/yourhomesearch?pwriter=${following.memail}">
 		   <img class="rounded-circle" style="margin:5px" width="30px" height="30px" 
-		  src="<%=application.getContextPath() %>/follow/photodownload?fileName=${following.mimage}"/>
+		  src="<%=application.getContextPath() %>/file/photo?fileName=${following.mimage}"/>
 		  ${following.mnickname} 
 		</a>
 		<hr/>
