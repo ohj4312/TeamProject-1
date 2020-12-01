@@ -69,12 +69,12 @@
    										<fmt:formatNumber type="number"  pattern="0" value="${(nowtimeD/(30*12))-(cdateD/(30*12))} " />
         									${number}년전
     								</c:otherwise>
-								</c:choose>
-								
+								</c:choose>								
 								</time></a></li>
-					<li class="d-flex align-items-center"><i
-						class="icofont-comment"></i> <a href="<%=application.getContextPath()%>/community/comm_detail?cnumber=${list.c_number}">12
-							Comments</a></li>
+					<li class="d-flex align-items-center">
+					<i	class="icofont-comment"></i> 
+						<a href="<%=application.getContextPath()%>/community/comm_detail?cnumber=${list.c_number}">12Comments</a>조회수 ${list.c_count}</li>
+						
 				</ul>
 			</div>
 		</div>

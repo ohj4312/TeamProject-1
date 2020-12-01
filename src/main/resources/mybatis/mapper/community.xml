@@ -16,9 +16,12 @@
 	</select>
 	
 	<select id="communityselectOne" resultType="community" parameterType="int">
-		select c_mnickname, c_content, c_title, c_number, c_date, c_image from community where c_number = #{cnumber}
+		select c_mnickname, c_content, c_title, c_number, c_date, c_image ,c_count from community where c_number = #{cnumber}
 	</select>
-
+	
+	<update id="communityUpdatehits" parameterType="int">
+	update community set c_count = c_count + 1 where c_number=#{cnumber}
+	</update>
 
 
 </mapper>

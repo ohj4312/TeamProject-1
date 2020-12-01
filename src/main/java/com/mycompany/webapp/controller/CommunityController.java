@@ -124,9 +124,12 @@ public class CommunityController {
 	@GetMapping("/comm_detail")
 	public String Comm_Detail(int cnumber, Model model, HttpSession session) {
 		
-		Member member = (Member) session.getAttribute("member");		
-		Community comm_list =service.Comm_one(cnumber);
+		Member member = (Member) session.getAttribute("member");				
+		logger.info(""+cnumber);
+		service.Comm_hits(cnumber);	//조회수
 		
+		
+		Community comm_list =service.Comm_one(cnumber);		
 		model.addAttribute("list", comm_list);
 		logger.info("실행"+comm_list);
 		return "community/comm_detail";

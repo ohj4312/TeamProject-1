@@ -37,6 +37,11 @@ public class CommunityService {
 		Community comm_list = communityDao.communitySelectOne(cnumber);
 		return comm_list;
 	}
+
+	public void Comm_hits(int cnumber){
+		communityDao.communityUpdatehits(cnumber);
+		
+	}
 	
 	
 	
