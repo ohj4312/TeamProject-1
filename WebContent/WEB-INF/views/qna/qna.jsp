@@ -82,16 +82,7 @@ td a {
 
 	<div>
 		<h3 style="text-align:center; margin-bottom:50px">Q&A</h3>
-		
-		<div class="container" >
-		  <h2>고객센터</h2>
-		  <p></p>
-		  <div class="btn-group-vertical" >
-		    <button type="button" class="btn btn-wwhite">공지사항</button>
-		    <button type="button" class="btn btn-white">문의하기</button>
-		    <button type="button" class="btn btn-white">의견제시하기</button>
-		  </div>
-		</div>
+
 		
 		
 		<div style="width: 1000px; margin-left: auto; margin-right: auto; text-align: right; margin-bottom: 10px; ">
@@ -146,7 +137,6 @@ td a {
 				</tr>
 			</tbody>
 		</table>
-		
 	</div>
 		
 <%-- ########################################################################### --%>	
