@@ -65,7 +65,8 @@
       <div class="container mt-5">
         <div class="row">
           <div class="col-lg-10" data-aos="fade-up">
-           <pre> <h3 id="title">${sg.stitle}</h3></pre>
+           <pre> <h3 id="title">${sg.stitle}<a id="delete" href="<%=application.getContextPath() %>/selfguide/deleteSelfguide?snumber=${sg.snumber}" class="btn btn-danger" style="float:right">삭제하기</a>
+            	</h3></pre>
           	<h2 id="type">${sg.stype} </h2>
           	
             	<img id="self_image" style="width:100%; height:400px;" src="<%=application.getContextPath() %>/selfguide/photodownload?fileName=${sg.simage}"/>
@@ -90,7 +91,7 @@
               
 
               <h2 class="entry-title">
-                <a href="blog-single.html">소제목</a>
+                <a href="blog-single.html">${sg.stitle}</a>
               </h2>
 
               <div class="entry-meta">
@@ -191,7 +192,16 @@
           			}
           		});
           	}
-
+        	
+          	
+          	function chechId(swriter,memail){
+          		if(swriter!=memail){
+          			 console.log("삭제");
+          				$("#delete").css('display','none');
+          		} 
+          	}
+          	
+  
            </script>
              
             </div><!-- End blog author bio -->
@@ -313,9 +323,10 @@
   <!-- Template Main JS File -->
   <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>
 <script type="text/javascript">
-$(document).ready(function(){
-	 
-	selfreplyList(${sg.snumber}); 
+$(function(){
+	selfreplyList(${sg.snumber});
+	console.log("되냐?");
+	chechId(${sg.swriter},${member.memail});
 }); 
 </script>
 </body>

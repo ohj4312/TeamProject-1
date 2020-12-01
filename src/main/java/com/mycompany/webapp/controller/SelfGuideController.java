@@ -130,7 +130,8 @@ public class SelfGuideController {
 		
 		Member member = (Member) session.getAttribute("member");
 		//logger.info("snumber:"+String.valueOf(snumber));
-
+		
+	
 		SelfGuide sg = new SelfGuide();
 		
 		List<SelfGuide> list;
@@ -161,7 +162,7 @@ public class SelfGuideController {
 		
 		model.addAttribute("sg",sg);
 		model.addAttribute("list",list);
-		
+	
 		 
 		return "guide/selfguide-detail";
 	}
@@ -183,6 +184,13 @@ public class SelfGuideController {
 		return "guide/selfguide-photos";
 	}
 	
+	@GetMapping("/deleteSelfguide")
+	public String deleteSelfguide(int snumber) {
+		logger.info(""+snumber);
+		logger.info("delete실행된다!!!!!!!!!!!!!!!!!!!!!!!!!");
+		service.deleteSelfguide(snumber);
+		return "redirect:/selfguide/selflist";
+	}
 	
 	//사진 다운로드
 	@GetMapping("/photodownload")

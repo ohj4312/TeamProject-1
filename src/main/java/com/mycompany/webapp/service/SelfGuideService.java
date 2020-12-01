@@ -65,6 +65,10 @@ public class SelfGuideService {
 		return sgDAO.updatehitcount(hit_count);
 	}
 
+	public void deleteSelfguide(int snumber) {
+		sgDAO.deleteSelf(snumber);
+	}
+
 
 
 	

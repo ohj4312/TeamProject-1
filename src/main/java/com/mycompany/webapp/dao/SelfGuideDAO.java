@@ -70,6 +70,13 @@ public class SelfGuideDAO {
 		return sst.update("mybatis.mapper.selfguide.updatehitcount",hit_count);
 	}
 
+
+	public void deleteSelf(int snumber) {
+		logger.info("deleteDAO도!!!!!!실행된다!!!!!!!!!!!!!!!!!!!!!!!!!");
+		int row=sst.delete("mybatis.mapper.selfguide.deleteSelf", snumber);
+		logger.info("잘삭제되면 1이다: "+row);
+	}
+
 	
 	
 }

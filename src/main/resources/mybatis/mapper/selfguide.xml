@@ -56,4 +56,8 @@
 	<update id="updatehitcount" parameterType="int" >
 		update Self_Guide set hit_count = ${hit_count} where snumber = #{snumber}
 	</update>
+	
+	<delete id="deleteSelf" parameterType="int">
+		delete from Self_Guide where snumber=#{snumber}
+	</delete>
 </mapper>
