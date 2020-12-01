@@ -116,6 +116,10 @@ table.type09 td {
 			        <td>${qna.qtitle}</td>
 			    </tr>
 			    <tr>
+			        <th scope="row">사진</th>
+			        <td><img class="rounded-circle" width="70px" height="70px" src="photodownload?fileName=${qna.qphoto}"/></td>
+			    </tr>
+			    <tr>
 			        <th scope="row">글쓴이</th>
 			        <td>${qna.mnickname}</td>
 			    </tr>
@@ -128,17 +132,24 @@ table.type09 td {
 			        <td style="width:100px" readonly>${qna.qcontent}</td>
 			    </tr>
 			    </tbody>
-			   
+			  
 			</table>
-			
-			 	<div style="text-align: center; margin-top: 10px;">
-			    	
-			    	<form method="post" action="qnaDelete?qnumber=${qna.qnumber}">
-			    		<input type="submit" value="삭제" class="btn btn-info" >
-			    		<a class="btn btn-info" href="qnaUpdate?qnumber=${qna.qnumber}">수정</a>
-			    	</form>
-			    		
-			    </div>
+				<c:if test="${member.mnickname == qna.mnickname}">
+				 	<div style="text-align: center; margin-top: 10px;">
+				    	 
+				    	<form method="post" action="qnaDelete?qnumber=${qna.qnumber}">
+				    		<input type="submit" value="삭제" class="btn btn-info" >
+				    		<a class="btn btn-info" href="qnaUpdate?qnumber=${qna.qnumber}">수정</a>
+				    	</form>
+				    	
+				    </div>
+			   </c:if>	
+			   
+			   <c:if test="${member.mnickname != qna.mnickname}"> 
+				   <div style="text-align: center; margin-top: 10px;">
+				   		<a class="btn btn-info" href="qnaindex">목록</a>
+				   </div>
+			   </c:if>
 	    </div>
 </div>
 		

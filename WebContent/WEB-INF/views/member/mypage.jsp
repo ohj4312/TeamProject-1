@@ -45,14 +45,16 @@
    <main id="main">
 
     <section id="contact" class="contact mt-3">
-      <div class="container mt-5">
+      <div class="container-fluid mt-5">
 
         <div class="section-title" data-aos="fade-up">
           <h2>My Page</h2>
         <div class="row no-gutters justify-content-center" style="display: flex;" data-aos="fade-up">
-
-          <div class="col-lg-5 mr-3">
-        		<div class="user-profile mt-5" style="border:1px solid #dadce0; ">
+		
+          <div class="col-md-2 mr-4">
+        		<section>
+        		<div class="user-profile mt-4" style="border:1px solid #dadce0; ">
+        		
         			<div class="user-profile__container"> 
         				<div class="user-profile__profile-image" style="text-align: center;">
                   <a href="javascript:Return()"><img class="rounded-circle mt-3" width="53%" height="53%" src="<%=application.getContextPath() %>/file/photo?fileName=${member.mimage}"></a>
@@ -66,6 +68,7 @@
         					</div>
         				</div>
         			</div>
+        			
         		<div class="row" style="text-align:center">
         				<div class="col-4">
        						<a href="javascript:GetBookMarkList()">
@@ -91,11 +94,12 @@
         			<br/>
         			
         		</div>
+        		</section>
           </div>
 
-          <div class="col-lg-5 mr-3">
+          <div class="col-md-7 ml-4">
         		<div id="photoList" class="contents">
-        			<section id="formchange" class="post post--cards">
+        			<section id="formchange" class="post post--cards pd">
         				<jsp:include page="/WEB-INF/views/member/returnmypage.jsp"/>
                 	</section>
         		</div>

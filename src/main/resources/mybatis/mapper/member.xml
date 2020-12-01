@@ -13,4 +13,5 @@
 	<select id="selectnicnameNmimage" parameterType="String" resultType="member">
 		select MNICKNAME, mimage from member where memail = #{pwriter}
 	</select>
+	
 </mapper>

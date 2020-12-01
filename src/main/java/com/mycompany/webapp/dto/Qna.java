@@ -9,7 +9,14 @@ public class Qna {
 	private String qcontent;
 	private String mnickname;
 	private String answer;
+	private String qphoto;
 	
+	public String getQphoto() {
+		return qphoto;
+	}
+	public void setQphoto(String qphoto) {
+		this.qphoto = qphoto;
+	}
 	public int getQnumber() {
 		return qnumber;
 	}
