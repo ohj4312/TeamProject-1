@@ -19,18 +19,18 @@
 		</div>
 		<div style="display: inline-block; text-align: right;">
 			<h5>
-				<strong><a style="color: black; font-size: 16px" href="<%=application.getContextPath()%>/community/comm_detail?cnumber=${list.c_number}">${list.c_title}</a></strong>
+				<strong><a style="color: black; font-size: 16px" href="<%=application.getContextPath()%>/community/comm_detail?cnumber=${list.c_number}&cmnickname=${list.c_mnickname}">${list.c_title}</a></strong>
 			</h5>
 		</div>
 		<div class="entry-content">
 			<p style="margin: 0px; font-size: 13px">${list.c_content}</p>
 			<div class="read-more">
-				<a href="<%=application.getContextPath()%>/community/comm_detail?cnumber=${list.c_number}">Read More</a>
+				<a href="<%=application.getContextPath()%>/community/comm_detail?cnumber=${list.c_number}&cmnickname=${list.c_mnickname}">Read More</a>
 			</div>
 			<div class="entry-meta">
 				<ul>
 					<li class="d-flex align-items-center"><i class="icofont-user"></i>
-						<a href="<%=application.getContextPath()%>/community/comm_detail?cnumber=${list.c_number}">${list.c_mnickname}</a></li>
+						<a href="<%=application.getContextPath()%>/community/comm_detail?cnumber=${list.c_number}&cmnickname=${list.c_mnickname}">${list.c_mnickname}</a></li>
 					<li class="d-flex align-items-center"><i
 						class="icofont-wall-clock"></i> <a href="blog-single.html"><time
 								>

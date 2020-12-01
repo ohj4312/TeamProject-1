@@ -122,14 +122,14 @@ public class CommunityController {
 	}
 	
 	@GetMapping("/comm_detail")
-	public String Comm_Detail(int cnumber, Model model, HttpSession session) {
-		
+	public String Comm_Detail(int cnumber, String cmnickname, Model model, HttpSession session) {
 		Member member = (Member) session.getAttribute("member");
-		
-		Community comm_list =service.Comm_one(cnumber);
-		
+		Community comm_list = new Community();
+		comm_list.setC_number(cnumber);
+		comm_list.setC_mnickname(cmnickname);
+		comm_list=service.Comm_one(comm_list);
+		logger.info("이미지출력해보자"+comm_list.getMimage());
 		model.addAttribute("list", comm_list);
-		logger.info("실행"+comm_list);
 		return "community/comm_detail";
 	}
 

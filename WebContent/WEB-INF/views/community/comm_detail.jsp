@@ -82,10 +82,11 @@
 
 							<div class="entry-meta">
 								<ul>
-									<li class="d-flex align-items-center"><i
-										class="icofont-user"></i> <a href="<%=application.getContextPath()%>/member/yourhomesearch?pwriter=${list.c_mnickname}">
+									<li class="d-flex align-items-center">
+									<i class="icofont-user"></i> 
+										<a href="<%=application.getContextPath()%>/member/yourhomesearch?pwriter=${list.memail}">
 											${list.c_mnickname}</a></li>
-									<li class="d-flex align-items-center"><i
+									<li class="d-flex align-items-center" ><i
 										class="icofont-wall-clock"></i> <a href="blog-single.html"><time
 												>  ${list.c_date}</time></a></li>
 								</ul>
@@ -131,10 +132,10 @@
 								<div class="detail_container_sidebar_content">
 									<ul>
 										<li class="d-flex align-items-center">
-											<img src="photodownload?fileName=${list.c_image}">
+											<img src="<%=application.getContextPath()%>/photo/photodownload?fileName=${list.mimage}" style="width:100%; height:100%">
 										</li>
 										<li class="d-flex align-items-center">
-											<a href="<%=application.getContextPath()%>/member/yourhomesearch?pwriter=${list.c_mnickname}">${list.c_mnickname}</a>
+											<a href="<%=application.getContextPath()%>/member/yourhomesearch?pwriter=${list.memail}">${list.c_mnickname}</a>
 										</li>
 									</ul>
 								</div>

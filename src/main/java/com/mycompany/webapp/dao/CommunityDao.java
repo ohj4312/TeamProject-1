@@ -30,8 +30,8 @@ public class CommunityDao {
 		return comm_list;
 	}
 
-	public Community communitySelectOne(int cnumber){
-		Community comm_list = sst.selectOne("mybatis.mapper.community.communityselectOne", cnumber);
+	public Community communitySelectOne(Community community){
+		Community comm_list = sst.selectOne("mybatis.mapper.community.communityselectOne", community);
 		return comm_list;
 	}
 }

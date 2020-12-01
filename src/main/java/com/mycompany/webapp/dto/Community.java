@@ -24,12 +24,22 @@ public class Community {
 	private int c_number;//커뮤니티 넘버
 	@DateTimeFormat(pattern="yyyy-MM-dd")private Date c_date;// 커뮤니티 시간 
 	private MultipartFile cimage;//커뮤니티 사진 저장을위해 필요한 객체~ 
+	private String mimage;
+	private String memail;
 	
 	
-	
-	
-	
-	
+	public String getMemail() {
+		return memail;
+	}
+	public void setMemail(String memail) {
+		this.memail = memail;
+	}
+	public String getMimage() {
+		return mimage;
+	}
+	public void setMimage(String mimage) {
+		this.mimage = mimage;
+	}
 	public MultipartFile getCimage() {
 		return cimage;
 	}

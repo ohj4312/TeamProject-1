@@ -15,8 +15,8 @@
 		select * from community where c_content like #{temp} or c_title like #{temp} order by c_date desc
 	</select>
 	
-	<select id="communityselectOne" resultType="community" parameterType="int">
-		select c_mnickname, c_content, c_title, c_number, c_date, c_image from community where c_number = #{cnumber}
+	<select id="communityselectOne" resultType="community" parameterType="community">
+		select c_mnickname, c_content, c_title, c_number, c_date, c_image, mimage, memail from community, member where c_number = #{c_number} and member.mnickname=#{c_mnickname}
 	</select>
 
 
