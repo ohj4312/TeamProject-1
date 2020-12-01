@@ -32,7 +32,7 @@
 	</select>
 	
 	<select id="selectSelfPhotoList" parameterType="int" resultType="selfguide">
-		select simage, swriter, stype ,stitle, scontent
+		select simage, swriter, stype ,stitle, scontent,snumber
 		from Self_Guide 
 		where  snumber = #{snumber}
 		
@@ -40,6 +40,12 @@
 	
 	<select id="selectSelfPhotoList2" parameterType="String" resultType="selfguide">
 		select * from Self_Guide where swriter = #{swriter}
+	</select>
+	
+	<select id="selectSelfListFilter" parameterType="String" resultType="selfguide">
+		select simage, swriter, stype ,stitle, scontent
+		from Self_Guide 
+		where stype=#{stype}
 	</select>
 
 	<update id="updateHitCount" parameterType="selfguide">

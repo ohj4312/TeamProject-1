@@ -58,7 +58,7 @@
         	<li class="active"><a href="<%=application.getContextPath()%>/">Home</a></li>
           	<li><a href="#services">Services</a></li>
           	<li><a href="#portfolio">Photo List</a></li>
-        	<li><a href="<%=application.getContextPath()%>/selfguide/selfguidelist">Self Guide</a></li>
+        	<li><a href="<%=application.getContextPath()%>/selfguide/selflist">Self Guide</a></li>
 
         	<li><a href="<%=application.getContextPath()%>/community">Community</a></li>
 

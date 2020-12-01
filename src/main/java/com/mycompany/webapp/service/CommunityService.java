@@ -33,7 +33,10 @@ public class CommunityService {
 		return  comm_list;
 	}
 
-	
+	public Community Comm_one(int cnumber){
+		Community comm_list = communityDao.communitySelectOne(cnumber);
+		return comm_list;
+	}
 	
 	
 	

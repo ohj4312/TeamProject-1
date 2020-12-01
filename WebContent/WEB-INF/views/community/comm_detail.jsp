@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 
@@ -61,108 +62,40 @@
 	<main id="main">
 		<!-- ======= Breadcrumbs ======= -->
 		<section id="breadcrumbs" class="breadcrumbs">
-			<div class="container">
-				<h3>Dolorum optio tempore voluptas dignissimos cumque fuga qui
-					quibusdam quia</h3>
-			</div>
+			
 		</section>
 		<!-- End Breadcrumbs -->
 
 		<!-- ======= Blog Section ======= -->
 		<section id="blog" class="blog">
+			
 			<div class="container">
 
 				<div class="row">
 
 					<div class="col-lg-8 entries">
 
-						<article class="entry entry-single">
+						<article class="entry entry-single" >
 
-							<div class="entry-img">
-								<img
-									src="<%=application.getContextPath()%>/resources/img/person_1.jpg"
-									style="width: 100%; height: 100%">
-							</div>
 
-							<h2 class="entry-title">Dolorum optio tempore voluptas
-								dignissimos cumque fuga qui quibusdam quia</h2>
+							<h3 class="entry-title" style="text-align:left">${list.c_title}</h3>
 
 							<div class="entry-meta">
 								<ul>
 									<li class="d-flex align-items-center"><i
-										class="icofont-user"></i> <a href="blog-single.html">John
-											Doe</a></li>
+										class="icofont-user"></i> <a href="<%=application.getContextPath()%>/member/yourhomesearch?pwriter=${list.c_mnickname}">
+											${list.c_mnickname}</a></li>
 									<li class="d-flex align-items-center"><i
 										class="icofont-wall-clock"></i> <a href="blog-single.html"><time
-												datetime="2020-01-01">Jan 1, 2020</time></a></li>
-									<li class="d-flex align-items-center"><i
-										class="icofont-comment"></i> <a href="blog-single.html">12
-											Comments</a></li>
+												>  ${list.c_date}</time></a></li>
 								</ul>
 							</div>
 
 							<div class="entry-content">
-								<p>Similique neque nam consequuntur ad non maxime aliquam
-									quas. Quibusdam animi praesentium. Aliquam et laboriosam eius
-									aut nostrum quidem aliquid dicta. Et eveniet enim. Qui velit
-									est ea dolorem doloremque deleniti aperiam unde soluta. Est cum
-									et quod quos aut ut et sit sunt. Voluptate porro consequatur
-									assumenda perferendis dolore.</p>
+								<p>${list.c_content}</p>
 
-								<p>Sit repellat hic cupiditate hic ut nemo. Quis nihil sunt
-									non reiciendis. Sequi in accusamus harum vel aspernatur.
-									Excepturi numquam nihil cumque odio. Et voluptate cupiditate.</p>
-
-								<blockquote>
-									<i class="icofont-quote-left quote-left"></i>
-									<p>Et vero doloremque tempore voluptatem ratione vel aut.
-										Deleniti sunt animi aut. Aut eos aliquam doloribus minus autem
-										quos.</p>
-									<i class="las la-quote-right quote-right"></i> <i
-										class="icofont-quote-right quote-right"></i>
-								</blockquote>
-
-								<p>Sed quo laboriosam qui architecto. Occaecati repellendus
-									omnis dicta inventore tempore provident voluptas mollitia
-									aliquid. Id repellendus quia. Asperiores nihil magni dicta est
-									suscipit perspiciatis. Voluptate ex rerum assumenda dolores
-									nihil quaerat. Dolor porro tempora et quibusdam voluptas.
-									Beatae aut at ad qui tempore corrupti velit quisquam rerum.
-									Omnis dolorum exercitationem harum qui qui blanditiis neque.
-									Iusto autem itaque. Repudiandae hic quae aspernatur ea neque
-									qui. Architecto voluptatem magni. Vel magnam quod et tempora
-									deleniti error rerum nihil tempora.</p>
-
-								<h3>Et quae iure vel ut odit alias.</h3>
-								<p>Officiis animi maxime nulla quo et harum eum quis a. Sit
-									hic in qui quos fugit ut rerum atque. Optio provident dolores
-									atque voluptatem rem excepturi molestiae qui. Voluptatem
-									laborum omnis ullam quibusdam perspiciatis nulla nostrum.
-									Voluptatum est libero eum nesciunt aliquid qui. Quia et
-									suscipit non sequi. Maxime sed odit. Beatae nesciunt nesciunt
-									accusamus quia aut ratione aspernatur dolor. Sint harum eveniet
-									dicta exercitationem minima. Exercitationem omnis asperiores
-									natus aperiam dolor consequatur id ex sed. Quibusdam rerum
-									dolores sint consequatur quidem ea. Beatae minima sunt libero
-									soluta sapiente in rem assumenda. Et qui odit voluptatem. Cum
-									quibusdam voluptatem voluptatem accusamus mollitia aut atque
-									aut.</p>
-								<img src="<%=application.getContextPath()%>/resources/img/person_1.jpg" class="img-fluid"
-									alt="">
-
-								<h3>Ut repellat blanditiis est dolore sunt dolorum quae.</h3>
-								<p>Rerum ea est assumenda pariatur quasi et quam. Facilis
-									nam porro amet nostrum. In assumenda quia quae a id
-									praesentium. Quos deleniti libero sed occaecati aut porro
-									autem. Consectetur sed excepturi sint non placeat quia repellat
-									incidunt labore. Autem facilis hic dolorum dolores vel.
-									Consectetur quasi id et optio praesentium aut asperiores eaque
-									aut. Explicabo omnis quibusdam esse. Ex libero illum iusto
-									totam et ut aut blanditiis. Veritatis numquam ut illum ut a
-									quam vitae.</p>
-								<p>Alias quia non aliquid. Eos et ea velit. Voluptatem
-									maxime enim omnis ipsa voluptas incidunt. Nulla sit eaque
-									mollitia nisi asperiores est veniam.</p>
+								<img src="<%=application.getContextPath() %>/community/comm_listphoto?fileName=${list.c_image}"
+									style="height:100%; width:100%">
 
 							</div>
 
@@ -188,27 +121,26 @@
 									<a href="" title="Share on Instagram"><i
 										class="icofont-instagram"></i></a>
 								</div>
-
 							</div>
-
 						</article>
-						<!-- End blog entry -->
-
-						<div class="blog-author clearfix">
-							<img src="<%=application.getContextPath()%>/resources/img/person_1.jpg"
-								class="rounded-circle float-left" alt="">
-							<h4>Jane Smith</h4>
-							<div class="social-links">
-								<a href="https://twitters.com/#"><i class="icofont-twitter"></i></a>
-								<a href="https://facebook.com/#"><i class="icofont-facebook"></i></a>
-								<a href="https://instagram.com/#"><i
-									class="icofont-instagram"></i></a>
+					</div>
+					<!-- End blog entry -->
+						
+						<div class="col-lg-4">
+							<div class="sidebar">
+								<div class="detail_container_sidebar_content">
+									<ul>
+										<li class="d-flex align-items-center">
+											<img src="photodownload?fileName=${list.c_image}">
+										</li>
+										<li class="d-flex align-items-center">
+											<a href="<%=application.getContextPath()%>/member/yourhomesearch?pwriter=${list.c_mnickname}">${list.c_mnickname}</a>
+										</li>
+									</ul>
+								</div>
 							</div>
-							<p>Itaque quidem optio quia voluptatibus dolorem dolor. Modi
-								eum sed possimus accusantium. Quas repellat voluptatem officia
-								numquam sint aspernatur voluptas. Esse et accusantium ut unde
-								voluptas.</p>
 						</div>
+						
 						<!-- End blog author bio -->
 
 						<div class="blog-comments">
@@ -362,9 +294,9 @@
 					</div>
 					<!-- End blog entries list -->
 
-				</div>
 
 			</div>
+			
 		</section>
 		<!-- End Blog Section -->
 	</main>
