@@ -1,10 +1,16 @@
 
 package com.mycompany.webapp.controller;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONObject;
@@ -12,6 +18,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -91,6 +98,36 @@ public class QNAController {
 		return "redirect:/qna/qnaindex";
 	}
 	
+	@GetMapping("/photodownload")
+	public void photodownload(String fileName, 
+			HttpServletRequest request, 
+			HttpServletResponse response) throws Exception {
+		logger.info("fileName: " + fileName);
+		
+		//파일의 데이터를 읽기 위한 입력 스트림 얻기
+		String saveFilePath = "C:/Temp/upload/qna/" + fileName;
+		InputStream is = new FileInputStream(saveFilePath);
+		
+		//응답 HTTP 헤더 구성
+		//1) Content-Type 헤더 구성(파일의 종류 지정)
+		ServletContext application = request.getServletContext();
+		String fileType = application.getMimeType(fileName);
+		response.setContentType(fileType);
+		//2) Content-Disposition 헤더 구성(다운로드할 파일의 이름 지정)
+		
+		
+		response.setHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\"");
+		//3) Content-Length 헤더 구성(다운로드할 파일의 크기를 지정)
+		int fileSize = (int)new File(saveFilePath).length();
+		response.setContentLength(fileSize);
+		
+		//응답 HTTP의 바디(본문) 구성
+		OutputStream os = response.getOutputStream();
+		FileCopyUtils.copy(is, os);
+		os.flush();
+		os.close();
+		is.close();
+	}
 	
 
 	

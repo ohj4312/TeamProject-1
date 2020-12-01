@@ -91,6 +91,17 @@ td a {
 			</div>
 			
 			<div class="input-group">
+				<div class="input-group-prepend"><span class="input-group-text">사진</span></div>
+				<input type="file" name="qphoto" class="form-control">
+				<c:if test="${qna.qphoto == null}">
+					  <img class="rounded-circle" width="70px" height="70px" src="photodownload?fileName=unnamed.png"/>
+				</c:if>
+				<c:if test="${qna.qphoto != null}">
+					  <img class="rounded-circle" width="70px" height="70px" src="photodownload?fileName=${qna.qphoto}"/>
+				</c:if>
+			</div>
+			
+			<div class="input-group">
 				<div class="input-group-prepend"><span class="input-group-text">별명</span></div>
 				<input id="mnickname" type="text" name="mnickname" class="form-control" 
 					<c:if test="${member.mnickname!=null}">value="${member.mnickname}"</c:if>
