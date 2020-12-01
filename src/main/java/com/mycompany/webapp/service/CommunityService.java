@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.mycompany.webapp.dao.C_ReplyDao;
 import com.mycompany.webapp.dao.CommunityDao;
 import com.mycompany.webapp.dto.Community;
+import com.mycompany.webapp.dto.Pager;
 
 @Service
 public class CommunityService {
@@ -27,13 +28,13 @@ public class CommunityService {
 		return communityDao.comm_replyInsert(community);
 	}
 
-	public List<Community> Comm_list() {
-		List<Community> comm_list=communityDao.communityselctAll();
+	public List<Community> Comm_list(Pager pager) {
+		List<Community> comm_list=communityDao.communityselctAll(pager);
 		return comm_list;
 	}
 
-	public List<Community> Comm_search(String temp) {
-		List<Community> comm_list=communityDao.communitySelctSearch(temp);
+	public List<Community> Comm_search(Pager pager) {
+		List<Community> comm_list=communityDao.communitySelctSearch(pager);
 		return  comm_list;
 	}
 
@@ -51,6 +52,16 @@ public class CommunityService {
 		List<Community> comm_listhits= communityDao.communityHitsSelectAll();
 		return comm_listhits;
 	}
+
+	public int Comm_listLow() {
+		int rows = communityDao.communityCountSelectAll();
+		return rows;
+	}
+	public int Comm_listLow(String temp) {
+		int rows = communityDao.communityCountSelectAll(temp);
+		return rows;
+	}
+	
 	
 	
 	

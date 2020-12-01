@@ -2,7 +2,6 @@ package com.mycompany.webapp.controller;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
@@ -29,7 +28,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.mycompany.webapp.dto.Community;
 import com.mycompany.webapp.dto.Member;
 import com.mycompany.webapp.dto.Pager;
-import com.mycompany.webapp.dto.Post_reply;
 import com.mycompany.webapp.service.CommunityService;
 
 @Controller
@@ -77,40 +75,41 @@ public class CommunityController {
 	}
 
 	@GetMapping("/comm_list")
-	public String Comm_list(Model model,int check,String search)
-	{
-		//검색으로 컨트롤러를 호출한건지 확인!
-		if(check==1) {
+	public String Comm_list(Model model, int check, String search,@RequestParam(defaultValue="1")int pageNo) {
+
+		// 검색으로 컨트롤러를 호출한건지 확인!
+		if (check == 1) {
 			
-			String temp ="%"; 
-			temp+=search+"%";
-			logger.info("temp");
-			List<Community> comm_list= service.Comm_search(temp);
-			model.addAttribute("comm_list", comm_list);			
-			return"community/communitylist";
-			}
-			/*조회수 리스트*/
-		if(check==2) {
-			List<Community> comm_listHits=service.Comm_listHits();//조회수리스트		
-			
-					
-			model.addAttribute("comm_list", comm_listHits);			
-			return"community/communitylistHits";
-			}
-		
-		
-		
-		List<Community> comm_list =service.Comm_list();//전체리스트
+			String temp = "%";
+			temp += search + "%";
+			int rows = service.Comm_listLow(temp);
+			Pager pager = new Pager(5, 5,rows, pageNo);
+			pager.setTemp(temp);
+			List<Community> comm_list = service.Comm_search(pager);
+			model.addAttribute("pager",pager);
+			model.addAttribute("comm_list", comm_list);
+			return "community/communitylist";
+		}
+		/*조회수 리스트*/
+		if (check == 2) {
+			List<Community> comm_listHits = service.Comm_listHits();// 조회수리스트
+			model.addAttribute("comm_list", comm_listHits);
+			return "community/communitylistHits";
+		}
+		int rows = service.Comm_listLow();
+		Pager pager = new Pager(5, 5,rows, pageNo);
+		List<Community> comm_list = service.Comm_list(pager);// 전체리스트		
+		model.addAttribute("pager",pager);
 		model.addAttribute("comm_list", comm_list);
-		
-		return"community/communitylist";
-	
-	}		
+		return "community/communitylist";
+
+	}
+
 	@GetMapping("/comm_listphoto")
 	public void download(String fileName, HttpServletRequest request, HttpServletResponse response) throws Exception {
 	
 		// 파일의 데이터를 읽기 위한 입력 스트림 얻기
-		String saveFilePath = "C:/Temp/upload/community/"+fileName;
+		String saveFilePath = "C:/Temp/upload/community/" + fileName;
 		InputStream is = new FileInputStream(saveFilePath);
 		// 응답 HTTP 헤더 구성
 		// Content-Type 헤더 구성
