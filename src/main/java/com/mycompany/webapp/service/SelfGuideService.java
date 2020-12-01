@@ -54,6 +54,12 @@ public class SelfGuideService {
 		return list;
 	}
 
+	public List<SelfGuide> getselfFilter(String filter) {
+		List<SelfGuide> filterlist=sgDAO.selectFilter(filter);
+		return filterlist;
+	}
+
+
 
 	
 }

@@ -46,6 +46,7 @@ public class SelfGuideController {
 		return "guide/selfguidelist";
 	}
 	
+
 	//셀프 가이드에 사진 올리기
 	@RequestMapping("/selfguide-write")
 	public String selfwriteForm() {
@@ -162,13 +163,21 @@ public class SelfGuideController {
 	}
 	
 	
-	
-	@GetMapping("/selfguide-write")
-	public String selfguideWrite() {
-		return "guide/selfguide-write";
+	@GetMapping("/selfguideFilter")
+	public String selfguideFilter(String filterString,Model model) {
+		logger.info(filterString);
+		
+		List<SelfGuide> filterlist=service.getselfFilter(filterString);
+		SelfGuide sg = new SelfGuide();
+		for(SelfGuide self:filterlist) {
+			logger.info(self.getScontent());
+			logger.info(self.getStitle());
+		}
+		
+		model.addAttribute("guidelist",filterlist);
+		
+		return "guide/selfguide-photos";
 	}
-	
-
 	
 	
 	//사진 다운로드
