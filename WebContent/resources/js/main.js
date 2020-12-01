@@ -401,6 +401,89 @@ function photoChange(aimage, acontent){
 	$('#acontent').html(acontent);
 	
 }
+function updatePhoto(){
+	var result = 0;
+			if($('#psize').val() == '평수'){
+						$('#psize').attr('style', 'border-color: red;');
+					}else{
+						$('#psize').attr('style', 'height: auto;');
+					}
+
+					if($('#ptype').val() == '주거형태'){
+						$('#ptype').attr('style', 'border-color: red;');
+					}else{
+						$('#ptype').attr('style', 'height: auto;');
+					}
+
+					if($('#pstyle').val() == '스타일'){
+						$('#pstyle').attr('style', 'border-color: red;');
+					}else{
+						$('#pstyle').attr('style', 'height: auto;');
+					}
+
+
+			if($('#psize').val() == '평수' || $('#ptype').val() == '주거형태' || $('#pstyle').val() == '스타일' ){
+
+
+					result++;
+				}
+
+
+            var list = $('#addDiv > div[style = ""]');
+			for(var i = 0; i < list.length; i++){
+				//아이디 값 받아오기
+				var idkey = '#' + $(list[i]).attr('id');
+				console.log(idkey);
+
+
+				//아이디 값을 이용하여 텍스트 에리어 값 가져오기
+				var textarea = $(idkey + ' textarea');
+				var checktxt = $(textarea[0]).val();
+				console.log(checktxt);
+
+
+				//아이디 값을 이용하여 이미지 소스 가져오기
+				
+				var filevalue = $(idkey + ' img');
+				var checkfile = $(idkey + ' img').attr('src');
+				console.log(checkfile);
+
+
+				//아이디 값을 이용하여 공간을 잘 선택했는지 가져오기
+				var selectvalue = $(idkey + ' select');
+				var checkselect = $(selectvalue[0]).val();
+				console.log(checkselect);
+
+
+				if(checktxt.trim() == ''){
+						$(textarea).attr('style', 'border-color: red;');
+					}else{
+						$(textarea).attr('style', '');
+					}
+
+					if(checkselect == '공간(필수)'){
+						$(selectvalue).attr('style', 'border-color: red;');
+					}else{
+						$(selectvalue).attr('style', 'height: auto;');
+					}
+
+
+				if(checktxt.trim() == '' || !checkfile || checkselect == '공간(필수)'){
+					console.log(checktxt.trim());
+					console.log(checkselect);
+					console.log(checkfile);
+					result++;
+				}
+			}
+			
+			if(result > 0){
+				alert("값을 제대로 입력해주세요.");
+				return false;
+			}
+			return true;
+
+        }
+
 function writePhoto(){
 	var result = 0;
 			if($('#psize').val() == '평수'){
@@ -443,10 +526,9 @@ function writePhoto(){
 
 
 				//아이디 값을 이용하여 이미지 소스 가져오기
-				var filevalue = $(idkey + ' img');
-				var checkfile1 = $(idkey + ' img').attr('src');
-				var checkfile = $(idkey + ' img').attr('src');
-				console.log(checkfile1);
+				var filevalue = $(idkey + ' input');
+				var checkfile = $(filevalue[0]).val();
+				console.log(checkfile);
 
 
 				//아이디 값을 이용하여 공간을 잘 선택했는지 가져오기
@@ -468,18 +550,20 @@ function writePhoto(){
 					}
 
 
-				if(checktxt.trim() == '' || checkfile.trim() == null || checkselect == '공간(필수)' ){
+				if(checktxt.trim() == '' || checkfile.trim() == '' || checkselect == '공간(필수)' ){
+
 					result++;
 				}
 			}
-			console.log(result);
+
 			if(result > 0){
-				alert("값을 제대로 입력해주세요.");
-				return false;
+					alert("값을 제대로 입력해주세요.");
+					return false;
 			}
 			return true;
 
         }
+
 
 		  
 function getList(page){
@@ -629,10 +713,10 @@ function replyDelete(rnumber, pnumber){
 function toggleUpdate(pnumber, urlpath){
 	console.log(pnumber);
 	console.log(urlpath);
-/*	console.log($("#bkcount").html());
+	console.log($("#bkcount").html());
 	console.log($("#lkcount").html());
 	var bkcount = $("#bkcount").html();
-	var lkcount = $("#lkcount").html();*/
+	var lkcount = $("#lkcount").html();
 	$.ajax({
 		url: urlpath,
 		data: {pnumber: pnumber},
@@ -642,28 +726,28 @@ function toggleUpdate(pnumber, urlpath){
 				 
 				console.log("bookmarksuccess");
 				$("#itag"+pnumber).html("bookmark");
-				/*++bkcount;
-				$("#bkcount").html(bkcount);*/
+				++bkcount;
+				$("#bkcount").html(bkcount);
 			}else if(data.result == "bookmarkfailure"){
 				
 				console.log("bookmarkfailure");
 				$("#itag"+pnumber).html("bookmark_border");
-			/*	--bkcount;
-				$("#bkcount").html(bkcount);*/
+				--bkcount;
+				$("#bkcount").html(bkcount);
 				
 			}else if(data.result == "likesuccess"){
 				
 				console.log("likesuccess");
 				$("#likeicon"+pnumber).html("favorite");
-			/*	++lkcount;
-				$("#lkcount").html(lkcount);*/
+				++lkcount;
+				$("#lkcount").html(lkcount);
 		
 			}else if(data.result == "likefailure"){
 				
 				console.log("likefailure");
 				$("#likeicon"+pnumber).html("favorite_border");
-	/*			--lkcount;
-				$("#lkcount").html(lkcount);*/
+				--lkcount;
+				$("#lkcount").html(lkcount);
 				
 			}
 			 
