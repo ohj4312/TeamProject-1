@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mycompany.webapp.dto.Community;
 import com.mycompany.webapp.dto.Member;
+import com.mycompany.webapp.dto.Post_reply;
 import com.mycompany.webapp.service.CommunityService;
 
 @Controller
@@ -121,8 +122,13 @@ public class CommunityController {
 	}
 	
 	@GetMapping("/comm_detail")
-	public String Comm_Detail() {
-
+	public String Comm_Detail(int cnumber, Model model, HttpSession session) {
+		
+		Member member = (Member) session.getAttribute("member");		
+		Community comm_list =service.Comm_one(cnumber);
+		
+		model.addAttribute("list", comm_list);
+		logger.info("실행"+comm_list);
 		return "community/comm_detail";
 	}
 
