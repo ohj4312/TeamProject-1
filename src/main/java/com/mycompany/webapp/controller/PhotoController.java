@@ -42,76 +42,52 @@ public class PhotoController {
 	PhotoService photoService;
 	
 	@RequestMapping("/list")
-	public String photoList(Model model, @RequestParam(defaultValue = "1") int pageNo, HttpSession session) {
+	public String photoList(Model model, @RequestParam(defaultValue = "1") int pageNo, @RequestParam(defaultValue = "default1") String filter, HttpSession session) {
 		
 		Member member = (Member) session.getAttribute("member");
 		List<Register_photo> photolist;
 		int totalRows = photoService.getTotalRows();
-		int count = 0;
-		String returnurl;
-		
-		if(pageNo > 1) {
-			count = 9;
-			returnurl = "include/photos";
-		}else {
-			count = 12;
-			returnurl = "photo/photolist";
-		}
-		
-		
-		Pager pager = new Pager(count, 5, totalRows, pageNo);
-		
+		Pager pager = new Pager(12, 5, totalRows, pageNo);
+		logger.info(filter);
 		if(member == null) {
-			photolist =  photoService.getPhotoList(pager);
+			photolist =  photoService.getPhotoList(pager, filter);
 		}else {
 			Register_photo photo = new Register_photo();
 			photo.setPwriter(member.getMemail());
 			photo.setEndRowNo(pager.getEndRowNo());
 			photo.setStartRowNo(pager.getStartRowNo());
-			photolist =  photoService.getPhotoList(photo);
+			photolist =  photoService.getPhotoList(photo, filter);
 		}
-		
-		/*for(Register_photo photo: photolist) {
-			logger.info(String.valueOf(photo.getBnumber()));
-			logger.info(String.valueOf(photo.getLikenumber()));
-			logger.info(String.valueOf(photo.getFollowing()));
-			logger.info(photo.getPwriter());
-		}*/
+
 		model.addAttribute("list", photolist);
-		
-		return returnurl;
+		model.addAttribute("initcount", 2);
+		if(filter.equals("default1")) {
+			return "photo/photolist";
+		}else {
+			return "include/photos";
+		}
+	
 		
 	}
 	
 	@RequestMapping("/listjson")
-	public void photoListjson(Model model, @RequestParam(defaultValue = "1") int pageNo, HttpSession session, HttpServletResponse response) throws IOException {
+	public void photoListjson(Model model, @RequestParam(defaultValue = "1") int pageNo, @RequestParam(defaultValue = "default1") String filter,HttpSession session, HttpServletResponse response) throws IOException {
 		
 		Member member = (Member) session.getAttribute("member");
 		List<Register_photo> photolist;
 		int totalRows = photoService.getTotalRows();
-		int count = 0;
-		String returnurl;
-		
-		if(pageNo > 1) {
-			count = 9;
-			returnurl = "include/photos";
-		}else {
-			count = 12;
-			returnurl = "photo/photolist";
-		}
-		Pager pager = new Pager(count, 5, totalRows, pageNo);
-		
+		Pager pager = new Pager(9, 5, totalRows, pageNo);
+		logger.info(filter);
 		if(member == null) {
-			photolist =  photoService.getPhotoList(pager);
+			photolist =  photoService.getPhotoList(pager, filter);
 		}else {
 			Register_photo photo = new Register_photo();
 			photo.setPwriter(member.getMemail());
 			photo.setEndRowNo(pager.getEndRowNo());
 			photo.setStartRowNo(pager.getStartRowNo());
-			photolist =  photoService.getPhotoList(photo);
+			photolist =  photoService.getPhotoList(photo, filter);
 		}
-		
-		
+
 		JSONArray jarry = new JSONArray();
 		
 		for(Register_photo photo : photolist) {
@@ -130,16 +106,15 @@ public class PhotoController {
 			jsonObject.put("first_image", photo.getFirst_image());
 			jsonObject.put("phit_count", photo.getPhit_count());
 			jsonObject.put("bnumber", photo.getBnumber());
-			jsonObject.put("likenumber", photo.getLikecount());
+			jsonObject.put("likenumber", photo.getLikenumber());
 			jsonObject.put("first_content", photo.getFirst_content());
-			
+			logger.info(String.valueOf(photo.getLikenumber()));
 			jarry.put(jsonObject);
 		}
 		
 		response.setHeader("Content-Type", "application/xml"); 
 		response.setContentType("application/json;charset=UTF-8"); 
 		response.setCharacterEncoding("utf-8");
-
 		String json = jarry.toString();
 		// 응답보내기
 		PrintWriter out = response.getWriter();
