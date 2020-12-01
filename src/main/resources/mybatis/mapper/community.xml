@@ -18,6 +18,14 @@
 	<select id="communityselectOne" resultType="community" parameterType="community">
 		select c_mnickname, c_content, c_title, c_number, c_date, c_image, mimage, memail from community, member where c_number = #{c_number} and member.mnickname=#{c_mnickname}
 	</select>
+	
+	<update id="communityUpdatehits" parameterType="int">
+	update community set c_count = c_count + 1 where c_number=#{cnumber}
+	</update>
+	<select id="communityHitsselctAll" resultType="community">	
+	SELECT *FROM 
+ (SELECT * FROM community ORDER BY c_count DESC) WHERE ROWNUM &lt;= 5
+	</select>
 
 
 

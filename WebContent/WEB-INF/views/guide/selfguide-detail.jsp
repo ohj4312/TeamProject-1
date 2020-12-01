@@ -69,45 +69,17 @@
           	<h2 id="type">${sg.stype} </h2>
           	
             	<img id="self_image" style="width:100%; height:400px;" src="<%=application.getContextPath() %>/selfguide/photodownload?fileName=${sg.simage}"/>
-          		<div><h2>${sg.swriter } </h2>
-          		<!-- <a href="#"><i id="itag" class="material-icons align-middle" style = "float:right; font-size: 30px; color:#1bac91;">bookmark_border</i></a>
-          		<a href="#"><i id="likeicon" class="material-icons align-middle" style = "float:right; font-size: 30px; color:red;">favorite_border</i></a></h2>
-          		 -->	
-          		 <div id="RegBookMark" class="col-6">
-						<button  type="button" class="btn btn-light w-100" onclick="toggleUpdate(${photo.pnumber}, '<%=application.getContextPath()%>/BK/CheckBookMark()">
-							<c:if test="${photo.bnumber == 0}">
-								<i id="itag${photo.pnumber}" class="material-icons align-middle" style = " font-size: 30px; color:#1bac91;">bookmark_border</i>
-								<span id = "bkcount" class = "align-middle">${photo.bookcount}</span>
-							</c:if>
-							<c:if test="${photo.bnumber != 0}">
-								<i id="itag${photo.pnumber}" class="material-icons align-middle" style = " font-size: 30px; color:#1bac91;">bookmark</i>
-								<span id = "bkcount" class = "align-middle">${photo.bookcount}</span>
-							</c:if>
-						</button>
-				</div>
-				
-				<div id="likepush" class="col-6">
-						
-	              		<button  type="button" class="btn btn-light w-100" onclick="toggleUpdate(${photo.pnumber}, '<%=application.getContextPath()%>/like/likePushCheck')">
-		            		<c:if test="${photo.likenumber == 0}">
-								<i id="likeicon${photo.pnumber}" class="material-icons align-middle" style = "font-size: 30px; color:red;">favorite_border</i>
-								<span id = "lkcount" class = "align-middle">${photo.likecount}</span>
-							</c:if>
-							<c:if test="${photo.likenumber != 0}">
-								<i id="likeicon${photo.pnumber}" class="material-icons align-middle" style = "font-size: 30px; color:red;">favorite</i>
-								<span id = "lkcount" class = "align-middle">${photo.likecount}</span>
-							</c:if>
-	              		</button>
-	              	</div>
-				
-          		</div>
+          		 <div><h2>${sg.swriter } </h2>
+          		 <a href="#"><i id="itag" class="material-icons align-middle" style = "float:right; font-size: 30px; color:#1bac91;">bookmark_border</i></a>
+          		<a href="#"><i id="likeicon" class="material-icons align-middle" style = "float:right; font-size: 30px; color:red;">favorite_border</i></a>
+          		</div> 
           </div> 
         </div>
       </div>
       </section>
-      <!-- ======= Blog Section ======= -->
+      <!-- ======= Blog Section ======= --> 
     <section id="blog" class="blog">
-      <div class="container">
+      <div class="container">  
 
         <div class="row">
 
@@ -132,49 +104,28 @@
               </div>
 
               <div class="entry-content">
-                <p>
-                
-                </p>
-
-                <p>
-                 
-                </p>
-
-                <!-- <blockquote>
-                  <i class="icofont-quote-left quote-left"></i>
-                  <p>
-                  	여기는 무슨 내용?
-                  </p>
-                  <i class="las la-quote-right quote-right"></i>
-                  <i class="icofont-quote-right quote-right"></i>
-                </blockquote> -->
-
-                <p>
-                  
-                </p>
-
-                
-                <p>
-                  
-                </p>
+              
+               
+               
                 
                 <h3><div id="scontent"></div></h3>
                 
-				
+				</div>
+				</article>
               </div>
 
              
 
-            </article><!-- End blog entry -->
+            <!-- End blog entry -->
 
             <div class="blog-author clearfix">
-              <div class="container">
-				<div class="scroll col-md-8 h-25" style="width:100%">
+              <article>
+				<div class="scroll col-lg-8 h-25" style="width:100%">
 		 			<c:forEach var="selfguide" items="${list}">
           				<a href="javascript:otherselfguidephoto('${selfguide.simage}', '${selfguide.scontent}','${selfguide.stitle }','${selfguide.stype }')"><img src="<%=application.getContextPath() %>/selfguide/photodownload?fileName=${selfguide.simage}" class= "w-25 h-25"></a>
 					</c:forEach>
 				 </div>
-			</div>
+			</article>
            </div>
            <script type="text/javascript">
           	 	function otherselfguidephoto(simage, scontent,stitle,stype){
@@ -188,113 +139,90 @@
         		$("#type").html(stype);
         		
         	} 
+          	 	
+          	function selfreplyWrite(snumber){
+          	 	var rcontent = $("#rcontent").val().trim();
+          	 		
+          	 	if(rcontent!=""){
+          	 		
+          	 	console.log(snumber);
+          	 	$.ajax({
+          	 		url:"/teamproject/selfguide/replyWrite",
+          	 		method:"post",
+          	 		data : {rcontent:rcontent, snumber:snumber},
+          	 		success:function(data){
+          	 			console.log("성공후 실행");
+          	 			if(data.result=="success"){
+          	 				selfreplyList(snumber);
+          	 			}
+          	 			$("#reply_result").html(data);
+          	 		}
+          	 	});
+          	}
+          	}
+          	
+          	function selfreplyList(snumber, pageNo){
+          		if(!pageNo){
+          			pageNo=1;
+          		}
+          		console.log("selfreplyList snum:"+snumber);
+          		console.log("selfreplyList pageno:"+pageNo);
+          		$.ajax({
+          			url:"/teamproject/selfguide/replyList",
+          			data:{ snumber:snumber,pageNo:pageNo},
+          			success:function(data){
+          				$("#reply_result2").html(data);
+          			}
+          		});
+          	}
+          	
+
+          	function selfreplyDelete(rnumber, snumber){
+          		$.ajax({
+          			url:"/teamproject/selfguide/replyDelete",
+          			data:{rnumber:rnumber, snumber:snumber},
+          			method:"post",
+          			success:function(data){
+          				if(data.result=="success"){
+          					console.log("여기는 삭제 창!");
+          					selfreplyList(snumber);
+          				}
+          			}
+          		});
+          	}
+
            </script>
              
             </div><!-- End blog author bio -->
 
-            <div class="blog-comments">
-
-              <h4 class="comments-count">8 Comments</h4>
-
-              <div id="comment-1" class="comment clearfix">
-                <img src="" class="comment-img  float-left" alt="">
-                <h5><a href="">Georgia Reader</a> <a href="#" class="reply"><i class="icofont-reply"></i> Reply</a></h5>
-                <time datetime="2020-01-01">01 Jan, 2020</time>
-                <p>
-                 
-                </p>
-
-              </div><!-- End comment #1 -->
-
-              <div id="comment-2" class="comment clearfix">
-                <img src="" class="comment-img  float-left" alt="">
-                <h5><a href="">Aron Alvarado</a> <a href="#" class="reply"><i class="icofont-reply"></i> Reply</a></h5>
-                <time datetime="2020-01-01">01 Jan, 2020</time>
-                <p>
-                 
-                </p>
-
-                <div id="comment-reply-1" class="comment comment-reply clearfix">
-                  <img src="" class="comment-img  float-left" alt="">
-                  <h5><a href="">Lynda Small</a> <a href="#" class="reply"><i class="icofont-reply"></i> Reply</a></h5>
-                  <time datetime="2020-01-01">01 Jan, 2020</time>
-                  <p>
-                  
-                  </p>
-
-                  <div id="comment-reply-2" class="comment comment-reply clearfix">
-                    <img src="" class="comment-img  float-left" alt="">
-                    <h5><a href="">Sianna Ramsay</a> <a href="#" class="reply"><i class="icofont-reply"></i> Reply</a></h5>
-                    <time datetime="2020-01-01">01 Jan, 2020</time>
-                    <p>
-                  
-                    </p>
-
-                  </div><!-- End comment reply #2-->
-
-                </div><!-- End comment reply #1-->
-
-              </div><!-- End comment #2-->
-
-              <div id="comment-3" class="comment clearfix">
-                <img src="" class="comment-img  float-left" alt="">
-                <h5><a href="">Nolan Davidson</a> <a href="#" class="reply"><i class="icofont-reply"></i> Reply</a></h5>
-                <time datetime="2020-01-01">01 Jan, 2020</time>
-                <p>
-              
-                </p>
-
-              </div><!-- End comment #3 -->
-
-              <div id="comment-4" class="comment clearfix">
-                <img src="" class="comment-img  float-left" alt="">
-                <h5><a href="">Kay Duggan</a> <a href="#" class="reply"><i class="icofont-reply"></i> Reply</a></h5>
-                <time datetime="2020-01-01">01 Jan, 2020</time>
-                <p>
-                
-                </p>
-
-              </div><!-- End comment #4 -->
-				<!-- 댓글 남기기          -----------      ------------ -->
-              <div class="reply-form">
-                <h4>댓글을 남겨주세요 !</h4>
-                <p>댓글 등록시 사용자의 이메일은 공개되지 않습니다.</p>
-                <form action="">
-                  <div class="row">
-                    <div class="col-md-6 form-group">
-                      <input name="name" type="text" class="form-control" placeholder="Your Name*">
-                    </div>
-                    <div class="col-md-6 form-group">
-                      <input name="email" type="text" class="form-control" placeholder="Your Email*">
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col form-group">
-                      <input name="website" type="text" class="form-control" placeholder="Your Website">
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col form-group">
-                      <textarea name="comment" class="form-control" placeholder="Your Comment*"></textarea>
-                    </div>
-                  </div>
-                  <button type="submit" class="btn btn-primary">Post Comment</button>
-
-                </form>
-
-              </div>
-
-            </div><!-- End blog comments -->
-
-          </div><!-- End blog entries list -->
-
+		<div class="container">
+     	 	<div id="reply_result2" style="margin-top:30px">
+     	 	</div>
+    	</div>
+		
+		
+<div>
+	
+	</div>
+		
+		
         </div>
 
      
-    </section><!-- End Blog Section -->
+
+       
+
+        
+
+     
+    </section>
 
   </main><!-- End #main -->
-
+	
+  
+	
+	
+	
   <!-- ======= Footer 수  정 ======= -->
   <footer id="footer">
     <div class="footer-top">
@@ -383,7 +311,12 @@
 
   <!-- Template Main JS File -->
   <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>
-
+<script type="text/javascript">
+$(document).ready(function(){
+	 
+	selfreplyList(${sg.snumber}); 
+});
+</script>
 </body>
 
 </html>
