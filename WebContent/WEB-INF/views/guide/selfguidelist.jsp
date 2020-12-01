@@ -107,11 +107,13 @@
 	
 	function checkSelfGuidFilter(filterString){
 		console.log(filterString); 
+		<%-- location.href="<%=application.getContextPath()%>/selfguide/selfguideFilter?filterString=${filterString}";
+		 --%>
 		$.ajax({
 				url : "<%=application.getContextPath()%>/selfguide/selfguideFilter",
 				data:{filterString:filterString},
 				success:function(data){
-					console.log("rows값 리턴까지 성공");
+					$("#12345").html(data);
 					
 				}
 			});

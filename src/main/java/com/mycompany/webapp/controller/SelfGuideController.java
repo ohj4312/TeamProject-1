@@ -168,7 +168,7 @@ public class SelfGuideController {
 		logger.info(filterString);
 		
 		List<SelfGuide> filterlist=service.getselfFilter(filterString);
-		SelfGuide sg = new SelfGuide();
+		//SelfGuide sg = new SelfGuide();
 		for(SelfGuide self:filterlist) {
 			logger.info(self.getScontent());
 			logger.info(self.getStitle());
