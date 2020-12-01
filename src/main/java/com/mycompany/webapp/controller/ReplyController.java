@@ -50,13 +50,17 @@ public class ReplyController {
 		Member member = (Member) session.getAttribute("member");
 		String rwriter = member.getMemail();
 		String mnickname = member.getMnickname();
+		String rimage = member.getMimage();
 		logger.info("mnickname:"+mnickname);
 		logger.info("pnumber:"+pnumber);
 		reply.setRwriter(rwriter);
 		reply.setPnumber(pnumber);
 		reply.setRcontent(rcontent);
 		reply.setMnickname(mnickname);
+		reply.setRimage(rimage);
 		service.replyWrite(reply);
+		
+		logger.info("image:"+reply.getRimage());
 		response.setContentType("application/json; charset=utf-8");
 		
 		JSONObject jsonObject = new JSONObject();
