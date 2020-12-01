@@ -113,7 +113,7 @@
 							</i>
 						  </a>
 						  <div class="dropdown-menu">
-						    <a class="dropdown-item" href="#">수정</a>
+						    <a class="dropdown-item" href="<%=application.getContextPath()%>/photo/update?pnumber=${photo.pnumber}">수정</a>
 						    <a class="dropdown-item" href="<%=application.getContextPath()%>/photo/delete?pnumber=${photo.pnumber}">삭제</a>
 						  </div>
 						</div>

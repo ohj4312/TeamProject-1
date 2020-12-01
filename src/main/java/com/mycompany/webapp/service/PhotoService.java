@@ -86,6 +86,38 @@ public class PhotoService {
 		
 	}
 
+	/*	public void updatePhoto(Register_photo rphoto) {
+			logger.info("updateRegPhoto 실행");
+			photoDAO.updateRegPhoto(rphoto);
+			
+			for(A_photo photo: rphoto.getList()) {
+				logger.info("insertAPhoto 실행");
+				if(!photo.getAimageAttach().isEmpty()) {
+					photo.setRegister_number(rphoto.getPnumber());
+					logger.info("Aphoto에 들어있는 regnumber:"+String.valueOf(photo.getRegister_number()));
+					photoDAO.insertAphoto(photo);
+					photoDAO.deleteAphoto(photo);
+				}
+			}	
+			
+		}*/
+	//다 삭제하고 다시 입력하는 방법
+	public void updatePhoto(Register_photo rphoto) {
+		logger.info("updateRegPhoto 실행");
+		photoDAO.updateRegPhoto(rphoto);
+		photoDAO.deleteAllAphoto(rphoto);
+		
+		for(A_photo photo: rphoto.getList()) {
+			logger.info("insertAPhoto 실행");
+			if(!photo.getAimage().isEmpty()) {
+				photo.setRegister_number(rphoto.getPnumber());
+				logger.info("Aphoto에 들어있는 regnumber:"+String.valueOf(photo.getRegister_number()));
+				photoDAO.insertAphoto(photo);
+			}
+		}	
+		
+	}
+
 	
 
 

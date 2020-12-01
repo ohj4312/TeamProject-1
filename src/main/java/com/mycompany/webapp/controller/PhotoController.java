@@ -288,5 +288,73 @@ public class PhotoController {
 		photoService.deltePhoto(pnumber);
 		return "redirect:/photo/list";
 	}
+	
+	@GetMapping("/update")
+	public String updateForm(int pnumber, HttpSession session, Model model) {
+		Member member = (Member) session.getAttribute("member");
+		logger.info(String.valueOf(pnumber));
+		Register_photo photo = new Register_photo();
+	
+		photo.setPnumber(pnumber);
+		
+		if(member != null) {
+			photo.setPwriter(member.getMemail());
+		}
+
+		photo = photoService.selectPhoto(photo);
+
+
+		model.addAttribute("photo", photo);
+
+		return "photo/updatePhoto";
+	}
+	
+	@PostMapping("/update")
+	public String update(Register_photo rphoto, HttpSession session) {
+		//현재 로그인 이메일 가져오기
+		Member member = (Member) session.getAttribute("member");
+		
+		//이메일 정보 set
+		rphoto.setPwriter(member.getMemail());
+		logger.info(String.valueOf(rphoto.getPnumber()));
+		
+
+		//리스트로 받아온 aphoto에 이미지 업로드 -> 새로 들어온 파일들은 업로드 
+		for(A_photo photo: rphoto.getList()) {
+			if(!photo.getAimage().isEmpty()) {
+				logger.info(photo.getAimage());
+			}
+			if(!photo.getAimageAttach().isEmpty()) {
+				//파일 오리지널 이름 aphot에 set
+				logger.info(photo.getAimageAttach().getOriginalFilename());
+				
+				//파일 이름 중복 방지를 위한 밀리세컨드 단위의 시간초를 파일 이름 앞에 붙여줌.
+				String saveFilename = new Date().getTime()+"_"+photo.getAimageAttach().getOriginalFilename();
+				photo.setAimage(saveFilename);
+				logger.info(saveFilename);
+				try {
+					//실제 사용자의 요청에 파일을 서버에 저장
+					photo.getAimageAttach().transferTo(new File("C:/Temp/upload/"+saveFilename));
+				} catch (Exception e) {}
+				}
+			}
+		
+		//첫번째값 가져오기
+		rphoto.setFirst_content(rphoto.getList().get(0).getAcontent());
+		rphoto.setFirst_image(rphoto.getList().get(0).getAimage());
+		logger.info(rphoto.getFirst_content());
+		logger.info(rphoto.getFirst_image());
+		//두개의 테이블에 insert하기 위한 service 요청
+		
+		//테스트용 insert
+		/*for(int i = 0; i < 10; i++) {
+			photoService.writePhoto(rphoto);
+		}*/
+		photoService.updatePhoto(rphoto);
+		
+		
+				
+		return "redirect:/photo/list";
+	}
 
 }
