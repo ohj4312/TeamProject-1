@@ -72,7 +72,7 @@ public class SelfGuideController {
 			return "selfguide/selfwrite";
 		}
 		
-		return "redirect:/selfguide/selfguidelist";
+		return "redirect:/selfguide/selflist";
 
 
 	}

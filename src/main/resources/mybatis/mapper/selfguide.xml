@@ -6,7 +6,12 @@
 		values(seq_self_guide.nextval,#{stitle},#{scontent},#{swriter},sysdate,#{stype},0,#{simage}) 	
 	</insert>
 
-
+	
+	<select id="selectSelfGuide" parameterType="String" resultType="selfguide">
+		select simage, swriter, stype ,stitle, scontent,snumber
+		from Self_Guide 
+		where  swriter = #{memail} 
+	</select>
 	
 	
 	<select id="countAll" resultType="int">
