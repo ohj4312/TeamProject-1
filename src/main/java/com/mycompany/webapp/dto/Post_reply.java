@@ -19,7 +19,7 @@ public class Post_reply {
 	
 	private String rwriter;
 	
-	private String rimage;
+	private String mimage;
 	private MultipartFile rimageAttach;
 	
 	private String mnickname;
@@ -102,12 +102,13 @@ public class Post_reply {
 		this.rwriter = rwriter;
 	}
 
-	public String getRimage() {
-		return rimage;
+	
+	public String getMimage() {
+		return mimage;
 	}
 
-	public void setRimage(String rimage) {
-		this.rimage = rimage;
+	public void setMimage(String mimage) {
+		this.mimage = mimage;
 	}
 
 	public MultipartFile getRimageAttach() {
