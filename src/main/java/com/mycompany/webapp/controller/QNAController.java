@@ -6,6 +6,7 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -59,9 +60,16 @@ public class QNAController {
 	//글작성 데이터 전송
 	@PostMapping("/qnaWrite")
 	public String qnaWrite(Qna qna) {//json응답을 직접 여기서 만들어서 void라고 줌
-		/*logger.info(qna.getQtitle());
-		logger.info(qna.getQcontent());
-		logger.info(qna.getMnickname());*/
+		//받은 파일을 저장하고 저장된 이름을 Qna 객체에 저장
+		if(!qna.getAttach().isEmpty()) {
+			String saveFileName = new Date().getTime() + "_" + qna.getAttach().getOriginalFilename();//같은 그림이어도 시간함수여서 사진이 저장될때 중복이 안된다.
+			try {
+				qna.getAttach().transferTo(new File("D:/MyWorkspace/photo/qna/" + saveFileName));
+			} catch (Exception e) {}
+			qna.setQphoto(saveFileName);
+		} else {
+			qna.setQphoto("noimage.png");
+		}
 		//서비스를 이용해서 게시물 쓰기
 		service.qnaWrite(qna);//클라이언트가 전송한 내용을 넣어준다.내용을 받기 위해서Ch14Board board써주고 (board)써준다.
 		return "redirect:/qna/qnaindex";
@@ -105,7 +113,7 @@ public class QNAController {
 		logger.info("fileName: " + fileName);
 		
 		//파일의 데이터를 읽기 위한 입력 스트림 얻기
-		String saveFilePath = "C:/Temp/upload/qna/" + fileName;
+		String saveFilePath = "D:/MyWorkspace/photo/qna/" + fileName;
 		InputStream is = new FileInputStream(saveFilePath);
 		
 		//응답 HTTP 헤더 구성

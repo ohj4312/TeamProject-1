@@ -92,16 +92,15 @@ td a {
 				<textarea id="qcontent" name="qcontent" class="form-control" rows="10">${qna.qcontent}</textarea>
 				<span id="qcontentError" class="error"></span>
 			</div>
+			
 			<div class="input-group">
 				<div class="input-group-prepend"><span class="input-group-text">사진</span></div>
-				<input type="file" name="qphoto" class="form-control">
-			</div>
+				<input type="file" name="attach" class="form-control" >
+			</div> 
+			
 			<div class="input-group">
 				<div class="input-group-prepend"><span class="input-group-text">별명</span></div>
-				<input id="mnickname" type="text" name="mnickname" class="form-control" 
-					<c:if test="${member.mnickname!=null}">value="${member.mnickname}"</c:if>
-					<c:if test="${member.mnickname==null}">value="노성규!"</c:if>
-					readonly>
+				<input id="mnickname" type="text" name="mnickname" class="form-control" value="${member.mnickname}" readonly>
 				<span id="qtitleError" class="error"></span>
 			</div>
 			<!-- //로그인이 되면 로그인된 아이디가 들어간다.값이 없으면 필수, 값이  있으면 에러가 없어서 비워두겠다. -->	
