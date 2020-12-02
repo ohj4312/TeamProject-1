@@ -62,4 +62,11 @@ public class CommunityDao {
 		int rows = sst.selectOne("mybatis.mapper.community.communityselectAllSearchcount",temp);		
 		return rows;
 	}
+
+	public void communityDelete(int c_number) {
+		sst.delete("mybatis.mapper.community.communityDelete",c_number);
+		
+	}
+
+	
 }

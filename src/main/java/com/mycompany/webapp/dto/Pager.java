@@ -14,7 +14,16 @@ public class Pager {
 	private int startRowNo; 	//페이지의 시작 행 번호
 	private int endRowNo; 		//페이지의 끝 행 번호
 	private String temp;
+	private int c_number;
 	
+	public int getC_number() {
+		return c_number;
+	}
+
+	public void setC_number(int c_number) {
+		this.c_number = c_number;
+	}
+
 	public String getTemp() {
 		return temp;
 	}

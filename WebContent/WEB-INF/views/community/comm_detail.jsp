@@ -94,9 +94,14 @@
 
 						<article class="entry entry-single" >
 
+							<div class="container">
+								<div class="row">
+									<h3 class="entry-title col-lg-8" style="text-align:left">${list.c_title}</h3>
+									<a onclick="return confirm('정말로 삭제하시겠습니까?')" href="<%=application.getContextPath()%>/community/comm_delete?c_number=${list.c_number}" class="btn btn-primary btn-md col-lg-2">삭제</a>
 
-							<h3 class="entry-title" style="text-align:left">${list.c_title}</h3>
-
+									
+								</div>
+							</div>
 							<div class="entry-meta">
 								<ul>
 									<li class="d-flex align-items-center">
@@ -112,7 +117,7 @@
 							<div class="entry-content">
 								<p>${fn:replace(list.c_content, cn, br)}</p>
 
-								<img src="<%=application.getContextPath() %>/community/comm_listphoto?fileName=${list.c_image}"
+								<img src="<%=application.getContextPath() %>/file/community?fileName=${list.c_image}"
 									style="height:100%; width:100%">
 
 							</div>
@@ -161,19 +166,7 @@
 									<a class="follow-btn">팔로우</a>
 									</div>
 									<div id="comm_hitsList">
-									<script>
-										function communitylist(check){            
-								            	$.ajax({
-								    				url:"<%=application.getContextPath() %>/community/comm_list",
-								    				data: {check:check, search:search},
-								    				success:function(data){    					
-								    					$("#comm_hitsList").html(data);
-								    					console.log("실행");
-								    				
-								    				}
-								    			});	
-								      		}     
-										</script>
+									
 									</div>
 								</div>
 							</div>
@@ -181,35 +174,17 @@
 						
 						<!-- End blog author bio -->
 					
-						<div class="blog-comments col-lg-8">
-
-							<h4 class="comments-count">1 Comments</h4>
-
-							<div id="comment-1" class="comment clearfix">
-								<img src="<%=application.getContextPath()%>/resources/img/person_1.jpg"
-									class="comment-img  float-left" alt="">
-								<h5>
-									<a href="">Georgia Reader</a> <a href="#" class="reply"><i
-										class="icofont-reply"></i> Reply</a>
-								</h5>
-								<time datetime="2020-01-01">01 Jan, 2020</time>
-								<p>Et rerum totam nisi. Molestiae vel quam dolorum vel
-									voluptatem et et. Est ad aut sapiente quis molestiae est qui
-									cum soluta. Vero aut rerum vel. Rerum quos laboriosam placeat
-									ex qui. Sint qui facilis et.</p>
-
-							</div>
+						
 							
-					
+							<div id="reply_result" class="blog-comments col-lg-8">						
+							
+							</div>
 							<input type="text" id="rcontent" class="form-control" placeholder="댓글을 남겨보세요!" style="display:inline-block; width:91%;">
 							<a class="btn btn-outline" style="display:inline-block; background-color:#1bac91; color:white" href="javascript:commreplyWrite(${list.c_number})">등록</a>
 							
-							<div id="reply_result">
 							
 							
-							</div>
-							
-						</div>
+						
 						<!-- End blog comments -->
 
 					</div>
@@ -334,42 +309,47 @@
 	<script src="<%=application.getContextPath()%>/resources/js/main.js"></script>
 
 	<script>
-		$(function(){
-			communitylist(2);  
-		});
-		
+	
 		function commreplyWrite(c_number){
-			var rcontent = $("#rcontent").val().trim();
-			
+			var rcontent = $("#rcontent").val().trim();	
 			if(rcontent!=""){
 				console.log("댓글 실행");
 				$.ajax({
 					url : "/teamproject/community/comm_replyWrite",
 					method : "post",
 					data : {rcontent:rcontent, c_number: c_number},
-					success:function(data){
-						console.log("댓글 진짜 성공이야");
-						if(data.result=="success"){
-							/* commreplyList(c_number); */
-						}
-						$("#reply_result").html(data);
+					success:function(data){						
+						commreplyList();
+						
 					}
 				});
 			}
-		}
-		
-		/* function commreplyList(cnumber, pageNo){
-			if(!pageNo){
-				pageNo=1;
-			}
+		}					
+		function commreplyList(pageNo){
+			
+			var c_number=${list.c_number};
 			$.ajax({
 				url:"/teamproject/community/comm_replyList",
-				data:{pageNo:pageNo, cnumber:cnumber},
+				data:{pageNo:pageNo, c_number:c_number},
 				success:function(data){
 					$("#reply_result").html(data);
 				}
 			});
-		} */
+			$.ajax({
+				url:"<%=application.getContextPath() %>/community/comm_list",
+				data: {check:2, search:""},
+				success:function(data){    					
+					$("#comm_hitsList").html(data);
+					console.log("실행");
+				
+				}
+			});
+		} 
+		$(function () {
+			commreplyList();
+			
+			
+		});
 	</script>
 
 

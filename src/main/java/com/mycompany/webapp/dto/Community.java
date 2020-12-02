@@ -28,18 +28,6 @@ public class Community {
 	private String mimage;
 	private String memail;
 	
-	public String getRmimage() {
-		return rmimage;
-	}
-	public void setRmimage(String rmimage) {
-		this.rmimage = rmimage;
-	}
-	public String getRmemail() {
-		return rmemail;
-	}
-	public void setRmemail(String rmemail) {
-		this.rmemail = rmemail;
-	}
 	public String getMemail() {
 		return memail;
 	}

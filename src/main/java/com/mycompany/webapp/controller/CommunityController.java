@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.mycompany.webapp.dao.C_ReplyDao;
 import com.mycompany.webapp.dto.Community;
 import com.mycompany.webapp.dto.Member;
 import com.mycompany.webapp.dto.Pager;
@@ -64,7 +65,7 @@ public class CommunityController {
 
 			try {
 				// 실제 사용자의 요청에 파일을 서버에 저장
-				community.getCimage().transferTo(new File("C:/Temp/upload/community/" + saveFilename));
+				community.getCimage().transferTo(new File("D:/MyWorkspace/photo/community/" + saveFilename));
 			} catch (Exception e) {
 			}
 
@@ -103,39 +104,7 @@ public class CommunityController {
 		model.addAttribute("comm_list", comm_list);
 		return "community/communitylist";
 
-	}
-
-	@GetMapping("/comm_listphoto")
-	public void download(String fileName, HttpServletRequest request, HttpServletResponse response) throws Exception {
-	
-		// 파일의 데이터를 읽기 위한 입력 스트림 얻기
-		String saveFilePath = "C:/Temp/upload/community/" + fileName;
-		InputStream is = new FileInputStream(saveFilePath);
-		// 응답 HTTP 헤더 구성
-		// Content-Type 헤더 구성
-		// 파일의 종류
-		ServletContext application = request.getServletContext();
-		String fileType = application.getMimeType(fileName);
-		response.setContentType(fileName);
-		// 2) Content-Disposition 헤더 구성
-		// 다운로드할 파일의 이름지정 // 한글이 불가능
-		response.setHeader("Content-Disposition", " filename=\"" + fileName + "\"");
-		// 3) Content-Length 헤더구성
-		// 다운로드할 파일의 크기를 지정
-		// 파일 크기 없어도 괜찮지만 유저한태 크기를 알려주기 위해서 사용
-		int fileSize = (int) new File(saveFilePath).length();// 파일사이즈 얻기
-		response.setContentLength(fileSize);
-		// 응답 HTTP의 바디(본문) 구성
-		// 항상 바이트 스트림 으로 출력스트림 사용!!!!!
-		OutputStream os = response.getOutputStream();
-		FileCopyUtils.copy(is, os);
-		os.flush();
-		os.close();
-		is.close();
-
-	}
-	
-	
+	}		
 	@GetMapping("/comm_detail")
 	public String Comm_Detail(int cnumber, String cmnickname, Model model, HttpSession session) {	
 		service.Comm_hits(cnumber);	//조회수		
@@ -147,6 +116,14 @@ public class CommunityController {
 		logger.info("이미지출력해보자"+comm_list.getMimage());
 		model.addAttribute("list", comm_list);
 		return "community/comm_detail";
+	}
+	
+	@GetMapping("/comm_delete")
+	public String comm_delete(int c_number){
+		service.comm_delete(c_number);
+		
+		return "redirect:/community";
+		
 	}
 	
 	@PostMapping("/comm_replyWrite")
@@ -172,12 +149,17 @@ public class CommunityController {
 	}
 	
 	@GetMapping("/comm_replyList")
-	public String comm_replyList(@RequestParam(defaultValue="1")int pageNo, Model model, int pnumber) {
+	public String comm_replyList(@RequestParam(defaultValue="1")int pageNo, Model model, int c_number) {
 		logger.info("실행");
-		Community comm_list = new Community();
 		
+		int rows = service.Comm_replyrows(c_number);
+		Pager pager = new Pager(5, 5, rows, pageNo);
+		pager.setC_number(c_number);
+		List<Community> comm_replylist =service.Comm_replylist(pager);
+		model.addAttribute("comm_replylist",comm_replylist);
+		model.addAttribute("pager",pager);				
 		
-		return "community/comm_detail";
+		return "community/communityreplylist";
 	}
 
 }

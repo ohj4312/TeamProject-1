@@ -61,6 +61,21 @@ public class CommunityService {
 		int rows = communityDao.communityCountSelectAll(temp);
 		return rows;
 	}
+
+	public void comm_delete(int c_number) {
+		communityDao.communityDelete(c_number);
+		
+	}
+
+	public int Comm_replyrows(int c_number) {
+		int rows = c_replyDao.comm_replyselectRows(c_number);
+		return rows;
+	}
+
+	public List<Community> Comm_replylist(Pager pager) {
+		List<Community> list = c_replyDao.comm_rlplylistAll(pager);
+		return list;
+	}
 	
 	
 	
