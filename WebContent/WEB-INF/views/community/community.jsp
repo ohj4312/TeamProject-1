@@ -63,7 +63,7 @@
               <div class="read-more" >
             
                 <a href="<%=application.getContextPath() %>/community/comm_writeFrom" class="btn btn-sm">
-                  <h3 class="sidebar-title">Write</h3>
+                  <h3 class="sidebar-title">Community Write</h3>
                 </a>
               </div>
               <hr>
@@ -87,11 +87,11 @@
   </main><!-- End #main -->
   <script type="text/javascript">
       	/* 검색 or 전체리스트 or 상위 조회수 리스트  */
-            function communitylist(check){            
+            function communitylist(check,pageNo){            
             	var search=$("#search").val();             	
             	$.ajax({
     				url:"<%=application.getContextPath() %>/community/comm_list",
-    				data: {check:check,search:search},
+    				data: {check:check,search:search,pageNo:pageNo},
     				success:function(data){    					
     					$("#comm_list").html(data);
     				
@@ -99,7 +99,7 @@
     			});
             	$.ajax({
     				url:"<%=application.getContextPath() %>/community/comm_list",
-    				data: {check:2,search:search},
+    				data: {check:2,search:search,pageNo:pageNo},
     				success:function(data){    					
     					$("#comm_hitsList").html(data);
     					console.log("실행");

@@ -176,7 +176,6 @@
 	transition: all .15s ease-in-out;
 	width: 300px;
 	height: 300px;
-	background-color: gray;
 }
 
 .showcontent {
@@ -225,9 +224,10 @@
 						<div class="all-content" id="all-content">
 							<input id="cimage" type="file" name="cimage" multiple="multiple"
 								class="addFile" />
-							<div class="content" id="content">
-								<h2 style="color: black; font-size: 20px; font-weight: bold">마우스로
-									파일을 끌어오세요.</h2>
+							<div class="content" id="content" style="width:100%; height:400px;">
+								<span class="material-icons" style="padding-top:25%;">add</span>
+								<h4 style="color: black; font-size: 20px; font-weight: bold;">
+								마우스로 파일을 끌어오세요.</h4>
 							</div>
 							
 						</div>
@@ -297,13 +297,13 @@
 			e.preventDefault();
 			if (e.type == "dragover") {
 				$(e.target).css({
-					"background-color" : "black",
+					"background-color" : "gray",
 
 					"outline-offset" : "-20px"
 				});
 			} else {
 				$(e.target).css({
-					"background-color" : "gray",
+					"background-color" : "white",
 					"outline-offset" : "-10px"
 
 				});
@@ -358,8 +358,7 @@
 
 		function reset(){
 			console.log("실행");
-			$('#cimage').val('null');
-			$("#content").css("background-image", "");							
+			$("#content").css("background-image","");							
 			$("#content").html("이미지를 올려주세요");
 			
 			$('.showcontent').css({

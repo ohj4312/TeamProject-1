@@ -323,10 +323,17 @@
   <!-- Template Main JS File -->
   <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>
 <script type="text/javascript">
+<<<<<<< HEAD
 $(function(){
 	selfreplyList(${sg.snumber});
 	console.log("되냐?");
 	chechId(${sg.swriter},${member.memail});
+=======
+$(document).ready(function(){
+	 
+	selfreplyList(${sg.snumber}); 
+	
+>>>>>>> branch 'master' of https://github.com/mw7895la/TeamProject
 }); 
 </script>
 </body>

@@ -2,6 +2,8 @@ package com.mycompany.webapp.dto;
 
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class Qna {
 	private int qnumber;
 	private String qtitle;
@@ -10,7 +12,14 @@ public class Qna {
 	private String mnickname;
 	private String answer;
 	private String qphoto;
+	private MultipartFile attach;
 	
+	public MultipartFile getAttach() {
+		return attach;
+	}
+	public void setAttach(MultipartFile attach) {
+		this.attach = attach;
+	}
 	public String getQphoto() {
 		return qphoto;
 	}

@@ -14,8 +14,9 @@ public class Community {
 	private String cr_rcontent; // 리플 내용
 	private String cr_mimage;// 리플 이미지 //멤버이미지 참조
 	private String cr_rmnickname;// 리플 작성자 //멤머닉네임 참조
-
-//Community	
+	private String rmimage;
+	private String rmemail;
+	//Community	
 	private String c_mnickname; //작성자 // 멤버 닉네임 참조
 	private String c_content;// 커뮤니티 내용
 	private String c_title;// 커뮤니티 타이틀
@@ -27,7 +28,18 @@ public class Community {
 	private String mimage;
 	private String memail;
 	
-	
+	public String getRmimage() {
+		return rmimage;
+	}
+	public void setRmimage(String rmimage) {
+		this.rmimage = rmimage;
+	}
+	public String getRmemail() {
+		return rmemail;
+	}
+	public void setRmemail(String rmemail) {
+		this.rmemail = rmemail;
+	}
 	public String getMemail() {
 		return memail;
 	}
