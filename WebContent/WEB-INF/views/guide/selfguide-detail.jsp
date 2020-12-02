@@ -65,20 +65,60 @@
       <div class="container mt-5">
         <div class="row">
           <div class="col-lg-10" data-aos="fade-up">
-           <pre> <h3 id="title">${sg.stitle}<a id="delete" href="<%=application.getContextPath() %>/selfguide/deleteSelfguide?snumber=${sg.snumber}" class="btn btn-danger" style="float:right">삭제하기</a>
-            	</h3></pre>
-          	<h2 id="type">${sg.stype} </h2>
+           <pre> <h3 id="title">${sg.stitle}</h3></pre>
+          	<h4 id="type">${sg.stype} 
+          		<a id="deleteSelfGuideDetail" href="<%=application.getContextPath() %>/selfguide/deleteSelfguide?snumber=${sg.snumber}" class="btn btn-danger" style="float:right">삭제하기</a>
+          		<a id="updateSelfGuideDetail" href="<%=application.getContextPath() %>/selfguide/updateSelfguide?snumber=${sg.snumber}" class="btn btn-info" style="float:right">수정하기</a>
+          	</h4>
           	
-            	<img id="self_image" style="width:100%; height:400px;" src="<%=application.getContextPath() %>/selfguide/photodownload?fileName=${sg.simage}"/>
+            	<img id="self_image" style="width:100%; height:400px;" src="<%=application.getContextPath()%>/file/selfguide?fileName=${sg.simage}"/>
           		 <div><h2>${sg.swriter } </h2>
-          		 <a href="#"><i id="itag" class="material-icons align-middle" style = "float:right; font-size: 30px; color:#1bac91;">bookmark_border</i></a>
-          		<a href="#"><i id="likeicon" class="material-icons align-middle" style = "float:right; font-size: 30px; color:red;">favorite_border</i></a>
+          		
           		</div> 
           </div> 
         </div>
       </div>
       </section>
-      <!-- ======= Blog Section ======= --> 
+
+		<%-- <div class="container" style="text-align: center;">
+			<div class="row mx-auto">
+				<div id="RegBookMark" class="col-5">
+					<button type="button" class="btn btn-light w-100"
+						onclick="toggleUpdate(${photo.pnumber}, '<%=application.getContextPath()%>/BK/CheckBookMark')">
+						<c:if test="${photo.bnumber == 0}">
+							<i id="itag${photo.pnumber}" class="material-icons align-middle"
+								style="font-size: 30px; color: #1bac91;">bookmark_border</i>
+							<span id="bkcount" class="align-middle">${photo.bookcount}</span>
+						</c:if>
+						<c:if test="${photo.bnumber != 0}">
+							<i id="itag${photo.pnumber}" class="material-icons align-middle"
+								style="font-size: 30px; color: #1bac91;">bookmark</i>
+							<span id="bkcount" class="align-middle">${photo.bookcount}</span>
+						</c:if>
+					</button>
+				</div>
+
+				<div id="likepush" class="col-5">
+
+					<button type="button" class="btn btn-light w-100"
+						onclick="toggleUpdate(${photo.pnumber}, '<%=application.getContextPath()%>/like/likePushCheck')">
+						<c:if test="${photo.likenumber == 0}">
+							<i id="likeicon${photo.pnumber}"
+								class="material-icons align-middle"
+								style="font-size: 30px; color: red;">favorite_border</i>
+							<span id="lkcount" class="align-middle">${photo.likecount}</span>
+						</c:if>
+						<c:if test="${photo.likenumber != 0}">
+							<i id="likeicon${photo.pnumber}"
+								class="material-icons align-middle"
+								style="font-size: 30px; color: red;">favorite</i>
+							<span id="lkcount" class="align-middle">${photo.likecount}</span>
+						</c:if>
+					</button>
+				</div>
+			</div>
+		</div> --%>
+		<!-- ======= Blog Section ======= --> 
     <section id="blog" class="blog">
       <div class="container">  
 
@@ -196,12 +236,13 @@
           	
           	function chechId(swriter,memail){
           		if(swriter!=memail){
-          			 console.log("삭제");
-          				$("#delete").css('display','none');
+          				$("#deleteSelfGuideDetail").css('display','none');
+          				$("#updateSelfGuideDetail").css('display','none');
           		} 
           	}
           	
-  
+          	
+          
            </script>
              
             </div><!-- End blog author bio -->
@@ -323,18 +364,16 @@
   <!-- Template Main JS File -->
   <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>
 <script type="text/javascript">
-<<<<<<< HEAD
-$(function(){
-	selfreplyList(${sg.snumber});
-	console.log("되냐?");
-	chechId(${sg.swriter},${member.memail});
-=======
-$(document).ready(function(){
+
+
 	 
+
+$(function(){
+	chechId('${sg.swriter}','${member.memail}'); 
 	selfreplyList(${sg.snumber}); 
-	
->>>>>>> branch 'master' of https://github.com/mw7895la/TeamProject
-}); 
+});
+	 
+
 </script>
 </body>
 

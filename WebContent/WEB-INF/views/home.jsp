@@ -9,7 +9,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Ohouse</title>
+  <title>O-house</title>
   <meta content="" name="descriptison">
   <meta content="" name="keywords">
 
@@ -40,7 +40,9 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
 </head>
+<style>
 
+</style>
 <body>
 
   <!-- ======= Header ======= -->
@@ -48,7 +50,7 @@
     <div class="container d-flex">
 
       <div class="logo mr-auto">
-        <h1 class="text-light"><a href="<%=application.getContextPath()%>/">Ohouse</a></h1>
+        <h1 class="text-light"><a href="<%=application.getContextPath()%>/">O-house</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
@@ -57,7 +59,7 @@
         <ul>
         	<li class="active"><a href="<%=application.getContextPath()%>/">Home</a></li>
           	<li><a href="#services">Services</a></li>
-          	<li><a href="#portfolio">Photo List</a></li>
+          	<li><a href="<%=application.getContextPath()%>/photo/list">Photo List</a></li>
         	<li><a href="<%=application.getContextPath()%>/selfguide/selflist">Self Guide</a></li>
 
         	<li><a href="<%=application.getContextPath()%>/community">Community</a></li>
@@ -83,8 +85,8 @@
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
     <div class="container text-center text-md-left" data-aos="fade-up">
-      <h1>Welcome to Ohouse</h1>
-      <h2>김우진, 안형모, 노성규, 문윤정, 오현지, 서윤아</h2>
+      <h1>Welcome to O-house</h1>
+      <h2>Kim Woo Jin, Ahn Hyung Mo, Noh Sung Gyu, Moon Yoon Jung, Oh Hyun Ji, Seo yoon-Ah</h2>
       <a href="#services" class="btn-get-started scrollto">Get Started</a>
     </div>
   </section><!-- End Hero -->
@@ -165,7 +167,7 @@
               Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
               <i class="bx bxs-quote-alt-right quote-icon-right"></i>
             </p>
-            <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
+            <img src="<%=application.getContextPath() %>/resources/img/yoonah.jpg" class="testimonial-img" alt="" style="width: 100px; height: 100px;">
             <h3>Saul Goodman</h3>
             <h4>Ceo &amp; Founder</h4>
           </div>
@@ -176,7 +178,7 @@
               Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
               <i class="bx bxs-quote-alt-right quote-icon-right"></i>
             </p>
-            <img src="<%=application.getContextPath() %>/resources/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
+            <img src="<%=application.getContextPath() %>/resources/img/sungkyu.jpg" class="testimonial-img" alt="" style="width: 100px; height: 100px;">
             <h3>Sara Wilsson</h3>
             <h4>Designer</h4>
           </div>
@@ -187,7 +189,7 @@
               Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
               <i class="bx bxs-quote-alt-right quote-icon-right"></i>
             </p>
-            <img src="<%=application.getContextPath() %>/resources/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
+            <img src="<%=application.getContextPath() %>/resources/img/yoonjung.jpg" class="testimonial-img" alt="">
             <h3>Jena Karlis</h3>
             <h4>Store Owner</h4>
           </div>
@@ -198,7 +200,7 @@
               Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
               <i class="bx bxs-quote-alt-right quote-icon-right"></i>
             </p>
-            <img src="<%=application.getContextPath() %>/resources/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
+            <img src="<%=application.getContextPath() %>/resources/img/hina.jpg" class="testimonial-img" alt="">
             <h3>Matt Brandon</h3>
             <h4>Freelancer</h4>
           </div>
@@ -209,7 +211,7 @@
               Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
               <i class="bx bxs-quote-alt-right quote-icon-right"></i>
             </p>
-            <img src="<%=application.getContextPath() %>/resources/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
+            <img src="<%=application.getContextPath() %>/resources/img/baby.jpg" class="testimonial-img">
             <h3>John Larson</h3>
             <h4>Entrepreneur</h4>
           </div>
@@ -219,51 +221,7 @@
       </div>
     </section><!-- End Testimonials Section -->
 
-    <!-- ======= Portfolio Section ======= -->
-    <section id="portfolio" class="portfolio section-bg">
-      <div class="container">
-
-        <div class="section-title" data-aos="fade-up">
-          <h2>Portfolio</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-        </div>
-
-        <div class="row" data-aos="fade-up">
-          <div class="col-lg-12 d-flex justify-content-center">
-            <div class="text-center"><a href="<%=application.getContextPath()%>/photo/list" type="button" class="btn btn-primary mb-3">더 많은 사진 보러가기</a></div>
-          </div>
-        </div>
-
-        <div class="row portfolio-container" data-aos="fade-up">
-
-          <c:forEach var="i" begin="1" end="6">
-				<div class="col-lg-4 col-md-6 portfolio-item filter-app">
-					<div class="portfolio-wrap">
-						<img
-							src="<%=application.getContextPath()%>/resources/img/portfolio/portfolio-${i}.jpg"
-							class="img-fluid" alt="">
-						<div class="portfolio-info">
-							<h4>App 1</h4>
-							<p>App</p>
-							<div class="portfolio-links">
-								<a
-									href="<%=application.getContextPath()%>/resources/img/portfolio/portfolio-${i}.jpg"
-									data-gall="portfolioGallery" class="venobox" title="App 1">
-									<i class="bx bx-plus"></i>
-								</a>
-								<a href="<%=application.getContextPath()%>/photo/detail" title="More Details">
-									<i class="bx bx-link"></i>
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</c:forEach>
-
-        </div>
-
-      </div>
-    </section><!-- End Portfolio Section -->
+   
 
 
   </main><!-- End #main -->

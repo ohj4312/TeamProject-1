@@ -53,7 +53,7 @@
 
   <!-- ======= script ======= -->
 	
-	<script type="text/javascript">
+<!-- 	<script type="text/javascript">
 	var page = 2;
 	  $(function(){
 	      $(window).scroll(function(){
@@ -76,7 +76,7 @@
 			    
 	});
 	</script>
-
+ -->
   <!-- ======= script ======= -->
  
 
@@ -91,7 +91,7 @@
 			<br/>
       </div>
       <div class="container">
-		<form action="<%=application.getContextPath()%>/selfguide/selfwrite" method="post" role="form" onsubmit="return selfWriteForm()" enctype="multipart/form-data">	
+		<form action="<%=application.getContextPath()%>/selfguide/selfupdate?snumber=${sg.snumber}" method="post" role="form" onsubmit="return selfUpdateForm()" enctype="multipart/form-data">	
 			<div class="row">
 				<div class="col-12 mb-4 input-group-lg">
 					<input id="stitle" name="stitle" type="text" class="form-control align-center" placeholder="Title">
@@ -117,10 +117,9 @@
 				<div class="col-12 text-center mb-4 fancybox" style="position: relative; height: 300px;" style="border:1px solid gold">		
 					<input type="file" id="simageAttach" name ="simageAttach" style="display:none;"> 
 					<label id = "srclabel" for="simageAttach" style="width: 100%; height: 100%;"> 
-	                	<i class="material-icons" 
-							 style="font-size: 7rem; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">photo_camera</i>
-	               		<span id="simageError" class="error"></span>
+	                	<img src="<%=application.getContextPath()%>/file/selfguide?fileName=${sg.simage}" width="100%" height="100%">
 	                </label> 
+	                <input type = "hidden" name = "simage" value = "${sg.simage}"/>
 						
 				</div>
 				
@@ -129,79 +128,21 @@
 				<div class="col-12">
 					<div>
 						<div class="form-group">
-							<textarea class="form-control" rows="10" id="scontent"
-								name="scontent" placeholder="사진에 대한 설명을 작성해주세요."></textarea>
+							<textarea class="form-control" rows="10" id="scontent" 
+								name="scontent"></textarea>
 							<span id="scontentError" class="error"></span>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div style="height: 50px;"></div>
-			<button type="submit" class="btn btn-lg btn-light btn-block" onClick="javascript:selfWriteForm()">등록하기</button>
+			<button type="submit" class="btn btn-lg btn-light btn-block" onClick="javascript:selfUpdateForm()">수정하기</button>
 		</form>
       </div>
       
       <div class="container">
-
-			
-			<script type="text/javascript">
-				function selfWriteForm(){
-					var stitle = $("#stitle").val().trim();
-					if(stitle == "") { 
-						$("#stitleError").text("*제목을 반드시 입력해야 합니다.");
-						$("#stitleError").css('color','red');
-					}else { 
-						$("#stitleError").text("");
-					}
-					console.log("111111111");
-					var scontent = $("#scontent").val().trim();
-					if(scontent == "") {
-						$("#scontentError").text("*내용을 반드시 입력해야 합니다."); 
-						$("#scontentError").css('color','red');
-					}else {
-						$("#scontentError").text(""); 
-					}
-				 	var stype = $("#stype").val().trim();
-					if(stype == "category") {
-						$("#stypeError").text("*카테고리를 반드시 선택해야 합니다."); 
-						$("#stypeError").css('color','red');
-					}else {
-						$("#stypeError").text(""); 
-					}
-					
-					var simageAttach = $("#simageAttach").val();
-					if(!simageAttach) {
-						$("#simageError").text("*대표사진을 반드시 첨부해야 합니다."); 
-						$("#simageError").css('color','red');
-					}else {
-						$("#simageError").text(""); 
-					}
-					
-					var result;
-					if(stitle == "" || scontent == "" || stype=="category" || !simageAttach ) {
-						result=false;
-						return result;	
-					}else{
-						result=true;
-						return result;
-					} 
-				}
-				
-				 
-			</script>
-			
-
-		</div>
-    </section>
-
-
-    <!-- ======= Portfolio Section ======= -->
-    <section id="portfolio" class="portfolio">
-      
-
-    </section><!-- End Portfolio Section -->
-
-   
+	</div>
+    </section>   
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
@@ -301,7 +242,77 @@
  
   <!-- Template Main JS File -->
   <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>
+  
+  <script>
+  $(document).ready(function(){
+	  console.log('${sg.stitle}');
+	  $('#stitle').val('${sg.stitle}');
+	  var stype = '${sg.stype}';
+	  $('#stype').val(stype).prop("selected",true);
+	  $('#scontent').val('${sg.scontent}');
+
+	}); 
+  </script>
+			
+		<!-- <script type="text/javascript">
+			function selfUpdateForm(){
+				var stitle = $("#stitle").val().trim();
+				var stitleLen=$("#stitle").val().length;
+				console.log(stitleLen);
+				if(stitle == "") { 
+					$("#stitleError").text("*제목을 반드시 입력해야 합니다.");
+					$("#stitleError").css('color','red');
+				}else if(stitleLen>30){
+					$("#stitleError").text("*제목은 30글자까지 입력 가능합니다.");
+					$("#stitleError").css('color','red');
+				}else { 
+					$("#stitleError").text("");
+				}
+				console.log("111111111");
+				var scontent = $("#scontent").val().trim();
+				if(scontent == "") {
+					$("#scontentError").text("*내용을 반드시 입력해야 합니다."); 
+					$("#scontentError").css('color','red');
+				}else {
+					$("#scontentError").text(""); 
+				}
+			 	var stype = $("#stype").val().trim();
+				if(stype == "category") {
+					$("#stypeError").text("*카테고리를 반드시 선택해야 합니다."); 
+					$("#stypeError").css('color','red');
+				}else {
+					$("#stypeError").text(""); 
+				}
+				
+				var simageAttach = $("#simageAttach").val();
+				if(!simageAttach) {
+					$("#simageError").text("*대표사진을 반드시 첨부해야 합니다."); 
+					$("#simageError").css('color','red');
+				}else {
+					$("#simageError").text(""); 
+				}
+				
+				var result;
+				if(stitle == "" || scontent == "" || stype=="category" || !simageAttach || stitleLen>30 ) {
+					result=false;
+					return result;	
+				}else{
+					result=true;
+					return result;
+				} 
+			}
+			
+				 
+		</script>
+		<script type="text/javascript">
+			$(function () {
+				console.log('${sg.stitle}');
+				$("#stitle").val('${sg.stitle}');
+			});	
+</script> -->
+  
 
 </body>
+
 
 </html>
