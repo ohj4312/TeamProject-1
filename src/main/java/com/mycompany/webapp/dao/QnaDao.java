@@ -53,7 +53,14 @@ public class QnaDao {
 		} else {
 			rows = sst.update("mybatis.mapper.qna.updateNoImage", qna);
 		}
+			
 		return rows;
 	}
+
+	public int updateAnswer(Qna qna) {
+		int rows = sst.update("mybatis.mapper.qna.updateAnswer", qna);
+		return rows;
+	}
+	
 
 }

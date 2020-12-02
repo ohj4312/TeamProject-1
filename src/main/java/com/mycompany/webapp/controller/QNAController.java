@@ -148,7 +148,19 @@ public class QNAController {
 		is.close();
 	}
 	
-
+	@GetMapping("/qnaAnswer")
+	public String qnaAnswer(int qnumber, Model model) {
+		Qna qna = service.getQna(qnumber);
+		model.addAttribute("qna", qna);
+		return "qna/qnaAnswerForm";
+	}
+	
+	@PostMapping("/qnaAnswer")
+	public String qnaAnswer(Qna qna) {
+		//서비스를 이용해서 게시물 쓰기
+		service.qnaUpdateAnswer(qna);
+		return "redirect:/qna/qnaindex";
+	}
 	
 }
 

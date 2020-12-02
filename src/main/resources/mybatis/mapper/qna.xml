@@ -51,6 +51,8 @@
 	<update id="updateAnswer" parameterType="qna">
 		update qna set answer=#{answer} where qnumber=#{qnumber}
 	</update>		
+	
+		
 </mapper>
 
 

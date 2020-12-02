@@ -1,6 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
 <!DOCTYPE html>
 <html>
 
@@ -42,7 +44,7 @@
 	rel="stylesheet">
 <!-- Template Main CSS File -->
 <link href="<%=application.getContextPath()%>/resources/css/style.css"
-	rel="stylesheet">
+	rel="stylesheet">	
 
 <!-- =======================================================
   * Template Name: Maxim - v2.2.0
@@ -79,7 +81,6 @@ table.type09 thead th {
     border-bottom: 3px solid #036;
 }
 table.type09 tbody th {
-    width: 150px;
     padding: 10px;
     font-weight: bold;
     vertical-align: top;
@@ -87,12 +88,34 @@ table.type09 tbody th {
     background: #f3f6f7;
 }
 table.type09 td {
-    width: 350px;
     padding: 10px;
     vertical-align: top;
     border-bottom: 1px solid #ccc;
 }
 </style>
+
+	<style type="text/css">
+		@media screen and (max-width: 1000px) {
+			th {
+				width: 30px;
+			}
+			
+			td {
+				width: 70%;
+			}
+		}
+		
+		@media screen and (min-width: 1000px) {
+			th {
+				width: 200px;
+			}
+			
+			td {
+				width: 800px;
+			}
+		}	
+	</style>
+
 </head>
 
 <body>
@@ -104,7 +127,7 @@ table.type09 td {
 <div>
 	<h3 style="text-align:center; margin-bottom:50px">Q&A</h3>
 		<div>
-			<table class="type09" style="width: 1000px; margin-left: auto; margin-right: auto;">
+			<table class="type09" style="margin-left: auto; margin-right: auto;">
 			    
 			    <tbody>
 			    <tr>
@@ -129,11 +152,24 @@ table.type09 td {
 			    </tr>
 			    <tr>
 			        <th scope="row">내용</th>
-			        <td style="width:100px" readonly>${qna.qcontent}</td>
+			        <td style="width:100px">${qna.qcontent}</td>
 			    </tr>
+			    <c:if test="${qna.answer == null}">
+				    <tr>			        
+				    	<th scope="row">답변내용</th>
+				        <td style="width:100px; color:red;">아직 답변이 없습니다.</td>
+				    </tr>
+			    </c:if>
+			    <c:if test="${qna.answer != null}">
+				    <tr>			        
+				    	<th scope="row">답변내용</th>
+				        <td style="width:100px">${qna.answer}</td>
+				    </tr>
+				</c:if>
 			    </tbody>
 			  
 			</table>
+			
 				<c:if test="${member.mnickname == qna.mnickname}">
 				 	<div style="text-align: center; margin-top: 10px;">
 				    	 
@@ -143,19 +179,15 @@ table.type09 td {
 				    	</form>
 				    	
 				    </div>
-			   </c:if>	
-			   
-			   <c:if test="${member.mnickname != qna.mnickname}"> 
-				   <div style="text-align: center; margin-top: 10px;">
-				   		<a class="btn btn-info" href="qnaindex">목록</a>
-				   </div>
 			   </c:if>
-			   
-			   <c:if test="${qna.mnickname == mrole.role_admin}"> 
-				   <div style="text-align: center; margin-top: 10px;">
-				   		<a class="btn btn-info" href="qnaindex">답변</a>
-				   </div>
-			   </c:if>
+			   	
+			   	<div style="text-align: center; margin-top: 10px;">
+						<a class="btn btn-info" href="qnaindex">목록</a>				   
+				   	<sec:authorize access="hasRole('ROLE_ADMIN')"><!-- admin이여야만 볼 수 있다. -->
+						<a class="btn btn-info" href="qnaAnswer?qnumber=${qna.qnumber}">답변</a>
+					</sec:authorize>
+			   </div>
+			  
 	    </div>
 </div>
 		

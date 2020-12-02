@@ -51,18 +51,7 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
 <style type="text/css">
-#a {
-	background-position: left;
-}
 
-#menu {
-	margin-left: 250px;
-}
-
-td a {
-	text-decoration: none;
-	color: inherit;
-}
 </style>
 </head>
 
@@ -73,7 +62,7 @@ td a {
 	
 <%-- ########################################################################### --%>
 
-	<div style="width: 1000px; margin-left: auto; margin-right: auto;" >
+	<div class="container" style="width: 1000px; margin-left: auto; margin-right: auto;" >
 		<h3 style="margin-bottom:50px">Q&A 질문 작성</h3>
 	
 		<form id="qnaWriteForm" method="post" action="qnaWrite" enctype="multipart/form-data">
