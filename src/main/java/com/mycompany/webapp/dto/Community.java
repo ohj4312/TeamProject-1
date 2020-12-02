@@ -28,6 +28,34 @@ public class Community {
 	private String mimage;
 	private String memail;
 	
+	//페이징
+	private int startRowNo; 	//페이지의 시작 행 번호
+	private int endRowNo; 		//페이지의 끝 행 번호
+	
+	public int getStartRowNo() {
+		return startRowNo;
+	}
+	public void setStartRowNo(int startRowNo) {
+		this.startRowNo = startRowNo;
+	}
+	public int getEndRowNo() {
+		return endRowNo;
+	}
+	public void setEndRowNo(int endRowNo) {
+		this.endRowNo = endRowNo;
+	}
+	public String getRmimage() {
+		return rmimage;
+	}
+	public void setRmimage(String rmimage) {
+		this.rmimage = rmimage;
+	}
+	public String getRmemail() {
+		return rmemail;
+	}
+	public void setRmemail(String rmemail) {
+		this.rmemail = rmemail;
+	}
 	public String getMemail() {
 		return memail;
 	}

@@ -82,6 +82,12 @@ public class SelfGuideDAO {
 		logger.info("잘삭제되면 1이다: "+row);
 	}
 
+
+	public void updateSelfPhoto(SelfGuide sg) {
+		logger.info("여기는 DAO updateSelfPhoto() 메에에에에ㅔ에ㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔ소드");
+		sst.update("mybatis.mapper.selfguide.updateSelfPhoto", sg);
+	}
+
 	
 	
 }

@@ -94,4 +94,9 @@ public class MemberService {
 		
 	}
 
+	public void delteMember(Member member) {
+		memberDAO.deleteMember(member);
+		
+	}
+
 }

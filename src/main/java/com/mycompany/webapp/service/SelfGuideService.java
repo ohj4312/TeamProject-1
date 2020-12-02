@@ -44,6 +44,7 @@ public class SelfGuideService {
 		
 		return sg;
 	}
+	
 
 	public List<SelfGuide> selectSelfPhotoList(String swriter) {
 		List<SelfGuide> list= sgDAO.selectSelfPhotoList(swriter);
@@ -68,6 +69,11 @@ public class SelfGuideService {
 	public void updatehitcount(SelfGuide sg) {
 		
 		sgDAO.updatehitcount(sg);;
+	}
+
+	public void changeSelfPhoto(SelfGuide sg) {
+		sgDAO.updateSelfPhoto(sg);
+		
 	} 
 
 	

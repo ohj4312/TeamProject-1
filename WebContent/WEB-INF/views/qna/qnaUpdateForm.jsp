@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 
@@ -92,6 +93,7 @@ td a {
 				<textarea id="qcontent" name="qcontent" class="form-control" rows="10">${qna.qcontent}</textarea>
 				<span id="qcontentError" class="error"></span>
 			</div>
+			
 			
 			<div class="input-group">
 				<div class="input-group-prepend"><span class="input-group-text">사진</span></div>

@@ -62,6 +62,7 @@
 			<a type="button" class="btn btn-info" href="qnaWrite">글작성</a>
 		</div>
 		
+		
 		<table
 			style="width: 1000px; margin-left: auto; margin-right: auto; background-color: #ffffff"
 			class="table table-lg table-bordered fade-up">
@@ -112,6 +113,7 @@
 				</tr>
 			</tbody>
 		</table>
+		
 	</div>
 		
 <%-- ########################################################################### --%>	
