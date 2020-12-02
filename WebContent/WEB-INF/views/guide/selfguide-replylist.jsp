@@ -48,7 +48,7 @@
                <span>${reply.rcontent}</span>
             </p>
          <c:if test="${member.memail==reply.rwriter}">
-            <div style="display:inline-block; width:10%">
+            <div style="display:inline-block;float:right;">
                <a style="font-size:13px;" href="javascript:selfreplyDelete(${reply.rnumber},${snumber})">삭제</a>
             </div>
          </c:if>
@@ -75,7 +75,7 @@
                      <li class="page-item"><a class="page-link" href="javascript:selfreplyList(${snumber},${i})">${i}</a></li>
                   </c:if>
                 </c:forEach>
-                <c:if test="${pager.groupNo<pager.totalGroupNo}">
+                <c:if test="${pager.groupNo < pager.totalGroupNo}">
                   <li class="page-item"><a class="page-link" href="javascript:selfreplyList(${pager.endPageNo+1})">Next</a></li>
                 </c:if>
              </ul>

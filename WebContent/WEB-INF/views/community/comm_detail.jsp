@@ -161,19 +161,7 @@
 									<a class="follow-btn">팔로우</a>
 									</div>
 									<div id="comm_hitsList">
-									<script>
-										function communitylist(check){            
-								            	$.ajax({
-								    				url:"<%=application.getContextPath() %>/community/comm_list",
-								    				data: {check:check, search:search},
-								    				success:function(data){    					
-								    					$("#comm_hitsList").html(data);
-								    					console.log("실행");
-								    				
-								    				}
-								    			});	
-								      		}     
-										</script>
+									
 									</div>
 								</div>
 							</div>
@@ -204,7 +192,7 @@
 							<input type="text" id="rcontent" class="form-control" placeholder="댓글을 남겨보세요!" style="display:inline-block; width:91%;">
 							<a class="btn btn-outline" style="display:inline-block; background-color:#1bac91; color:white" href="javascript:commreplyWrite(${list.c_number})">등록</a>
 							
-							<div id="reply_result">
+							<div id="reply_result3">
 							
 							
 							</div>
@@ -223,7 +211,6 @@
 		<!-- End Blog Section -->
 	</main>
 	<!-- End #main -->
-	
 	<a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 
 	<!-- ======= Footer ======= -->
@@ -326,7 +313,8 @@
 	<script
 		src="<%=application.getContextPath()%>/resources/vendor/venobox/venobox.min.js"></script>
 	<script 
-		src="<%=application.getContextPath()%>/resources/vendor/aos/aos.js"></script>
+		src="<%=application.getContextPath()%>/resources/vendor/aos/aos.js">
+		</script>
 	<script
 		src="<%=application.getContextPath()%>/resources/vendor/jquery.easing/jquery.easing.min.js"></script>
 
@@ -334,13 +322,9 @@
 	<script src="<%=application.getContextPath()%>/resources/js/main.js"></script>
 
 	<script>
-		$(function(){
-			communitylist(2);  
-		});
 		
 		function commreplyWrite(c_number){
 			var rcontent = $("#rcontent").val().trim();
-			
 			if(rcontent!=""){
 				console.log("댓글 실행");
 				$.ajax({
@@ -352,24 +336,32 @@
 						if(data.result=="success"){
 							/* commreplyList(c_number); */
 						}
-						$("#reply_result").html(data);
+						$("#reply_result3").html(data);
 					}
 				});
 			}
 		}
 		
-		/* function commreplyList(cnumber, pageNo){
+		function commreplyList(cnumber, pageNo){
 			if(!pageNo){
 				pageNo=1;
 			}
 			$.ajax({
 				url:"/teamproject/community/comm_replyList",
-				data:{pageNo:pageNo, cnumber:cnumber},
-				success:function(data){
-					$("#reply_result").html(data);
-				}
+				data : {pageNo:pageNo, cnumber:cnumber},
+				
+				/* success:function(data){
+					 $("#reply_result3").html(data);
+				}  */
 			});
-		} */
+		} 
+		
+		 $(function(){
+			console.log("commreplyList 실행");
+			var cnumber = ${cnumber};
+			commreplyList(cnumber);
+		});
+		
 	</script>
 
 

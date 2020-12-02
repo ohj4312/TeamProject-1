@@ -94,7 +94,7 @@
 		<form action="<%=application.getContextPath()%>/selfguide/selfwrite" method="post" role="form" onsubmit="return selfWriteForm()" enctype="multipart/form-data">	
 			<div class="row">
 				<div class="col-12 mb-4 input-group-lg">
-					<input id="stitle" name="stitle" type="text" class="form-control align-center" placeholder="Title">
+					<input id="stitle" name="stitle" type="text" class="form-control align-center" placeholder="제목은 30글자까지 입력가능합니다.">
 					<div id="stitleError" class="error"></div>
 				</div>
 			</div>
@@ -147,8 +147,13 @@
 			<script type="text/javascript">
 				function selfWriteForm(){
 					var stitle = $("#stitle").val().trim();
+					var stitleLen=$("#stitle").val().length;
+					console.log(stitleLen);
 					if(stitle == "") { 
 						$("#stitleError").text("*제목을 반드시 입력해야 합니다.");
+						$("#stitleError").css('color','red');
+					}else if(stitleLen>30){
+						$("#stitleError").text("*제목은 30글자까지 입력 가능합니다.");
 						$("#stitleError").css('color','red');
 					}else { 
 						$("#stitleError").text("");
@@ -178,7 +183,7 @@
 					}
 					
 					var result;
-					if(stitle == "" || scontent == "" || stype=="category" || !simageAttach ) {
+					if(stitle == "" || scontent == "" || stype=="category" || !simageAttach || stitleLen>30 ) {
 						result=false;
 						return result;	
 					}else{
