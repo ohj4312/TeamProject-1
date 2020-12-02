@@ -149,7 +149,7 @@ public class CommunityController {
 	}
 	
 	@PostMapping("/comm_replyWrite")
-	public void comm_replyWrite(Community comm_list, String rcontent,int c_number,HttpServletResponse response, HttpSession session, Model model) throws IOException {
+	public void comm_replyWrite(Community comm_list, String rcontent,int c_number,HttpServletResponse response, HttpSession session, Model model) throws Exception {
 		logger.info("실행");
 		
 		Member member = (Member) session.getAttribute("member");
@@ -170,10 +170,13 @@ public class CommunityController {
 		out.close();
 	}
 	
-	/*@GetMapping("/comm_replyList")
+	@GetMapping("/comm_replyList")
 	public String comm_replyList(@RequestParam(defaultValue="1")int pageNo, Model model, int pnumber) {
+		logger.info("실행");
+		Community comm_list = new Community();
+		
 		
 		return "community/comm_detail";
-	}*/
+	}
 
 }
