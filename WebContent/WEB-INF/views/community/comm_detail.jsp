@@ -192,7 +192,7 @@
 							<input type="text" id="rcontent" class="form-control" placeholder="댓글을 남겨보세요!" style="display:inline-block; width:91%;">
 							<a class="btn btn-outline" style="display:inline-block; background-color:#1bac91; color:white" href="javascript:commreplyWrite(${list.c_number})">등록</a>
 							
-							<div id="reply_result">
+							<div id="reply_result3">
 							
 							
 							</div>
@@ -336,29 +336,32 @@
 						if(data.result=="success"){
 							/* commreplyList(c_number); */
 						}
-						$("#reply_result").html(data);
+						$("#reply_result3").html(data);
 					}
 				});
 			}
 		}
 		
-		/* function commreplyList(cnumber, pageNo){
+		function commreplyList(cnumber, pageNo){
 			if(!pageNo){
 				pageNo=1;
 			}
 			$.ajax({
 				url:"/teamproject/community/comm_replyList",
-				data:{pageNo:pageNo, cnumber:cnumber},
-				success:function(data){
-					$("#reply_result").html(data);
-				}
+				data : {pageNo:pageNo, cnumber:cnumber},
+				
+				/* success:function(data){
+					 $("#reply_result3").html(data);
+				}  */
 			});
 		} 
 		
 		 $(function(){
+			console.log("commreplyList 실행");
 			var cnumber = ${cnumber};
 			commreplyList(cnumber);
-		}); */
+		});
+		
 	</script>
 
 
