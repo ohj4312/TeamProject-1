@@ -572,6 +572,23 @@ function checkPassword(){
 		return false;
 	}
 }
+
+function checkDeleteMember(){
+	if($('#necessary').is(":checked")){
+		if($("input:checkbox:checked").length > 1){
+			console.log('이제 회원탈퇴 가능');
+			return true;
+		}else{
+			alert("필수 사항을 체크해주세요.");
+		}
+		
+	}else{
+		alert("필수 사항을 체크해주세요.");
+		return false;
+	}
+
+	return false;
+}
 		  
 function getList(page){
 			console.log("페이징 실행");

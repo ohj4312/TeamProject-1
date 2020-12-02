@@ -33,4 +33,9 @@
 		memail=#{memail}
 	</update>
 	
+	<delete id="deleteMember" parameterType="member">
+		DELETE FROM member
+		WHERE memail = #{memail}
+	</delete>
+	
 </mapper>

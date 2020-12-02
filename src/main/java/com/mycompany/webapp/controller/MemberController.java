@@ -173,4 +173,11 @@ public class MemberController {
 	public String deleteMemberForm() {
 		return "member/deleteMember";
 	}
+	
+	@PostMapping("/deleteMember")
+	public String deleteMember(HttpSession session) {
+		Member member = (Member) session.getAttribute("member");
+		memberService.delteMember(member);
+		return "home";
+	}
 }
