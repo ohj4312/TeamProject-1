@@ -80,22 +80,27 @@ public class SelfGuideController {
 	//  /selfguide/selflist
 	//셀프 가이드 리스트 페이징 해서 보이도록
 	@RequestMapping("/selflist")
-	public String selfphotoList(Model model,@RequestParam(defaultValue = "1") int pageNo, HttpSession session) {
+	public String selfphotoList(Model model,@RequestParam(defaultValue = "0") int firstcount,@RequestParam(defaultValue = "1") int pageNo, HttpSession session) {
 		Member member = (Member) session.getAttribute("member");
 		List<SelfGuide> guidelist;
 		
 		int rows = service.getRows();
 		logger.info(String.valueOf(rows));
 		
-		
-		
-		Pager pager = new Pager(5, 5, rows, pageNo);
-		guidelist = service.getselfguideList(pager);
-		
-		
+		String url;
+
+
+
+		if(firstcount>=1) { 
+			url ="guide/selfguide-photos"; 
+		}else { 
+			url ="guide/selfguidelist";
+		}
+		Pager pager = new Pager(3, 5, rows, pageNo); 		
 		
 		SelfGuide sg = new SelfGuide();
-		
+		sg.setEndRowNo(pager.getEndRowNo());
+		sg.setStartRowNo(pager.getStartRowNo());
 		
 		guidelist = service.getselfguidephotoList(sg);
 		for(SelfGuide sge : guidelist) {
@@ -111,9 +116,11 @@ public class SelfGuideController {
 		
 		model.addAttribute("guidelist",guidelist);
 		model.addAttribute("pager",pager);
-		return "guide/selfguidelist";
+		return url;
 		
 	}
+	
+	
 	
 
 	//셀프 가이드 리스트에서 한 게시물 선택시 상세 뷰.
