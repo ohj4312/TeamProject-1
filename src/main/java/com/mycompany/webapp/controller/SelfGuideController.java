@@ -144,11 +144,8 @@ public class SelfGuideController {
 		
 		
 		logger.info(String.valueOf(sg.getHit_count()));
-		
-		
+
 		list=service.selectSelfPhotoList(swriter);
-		
-		
 		
 		sg =  service.selectSelfPhoto(snumber);
 		logger.info("snumber:"+String.valueOf(sg.getSnumber()));

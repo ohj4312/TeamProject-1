@@ -48,7 +48,7 @@
 	</select>
 	
 	<select id="selectSelfListFilter" parameterType="String" resultType="selfguide">
-		select simage, swriter, stype ,stitle, scontent
+		select snumber,simage, swriter, stype ,stitle, scontent
 		from Self_Guide 
 		where stype=#{stype}
 	</select>
