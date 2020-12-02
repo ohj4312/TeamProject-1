@@ -111,10 +111,10 @@
 		}
 		
 		function selfguidephotolist(pageNo){
-<<<<<<< HEAD
+
 			console.log("페이징 실행");
-=======
-			console.log("페이징 실행 되나여");
+
+			
 			$.ajax({
 				url :"<%=application.getContextPath()%>/selfguide/selflist",
 				data: {pageNo:pageNo},
@@ -122,7 +122,7 @@
 					
 				}
 			})
->>>>>>> branch 'master' of https://github.com/mw7895la/TeamProject.git
+
 			
 			$.ajax({
 				url : "<%=application.getContextPath()%>/selfguide/selflist",
