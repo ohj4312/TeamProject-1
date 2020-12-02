@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 
@@ -55,8 +56,24 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
 </head>
+<style>
+.follow-btn{
+	padding:4px 10px;
+	font-size:13px;
+	line-height:20px;
+	font-weight:700;
+	background-color:#f5f5f5;
+	border-color:#f5f5f5;
+	color:#757575;
+	margin:0;
+	box-sizing:border-box;
+	border:1px solid transparent;
+	border-radius:4px;
+}
+</style>
 <body>
-
+	<% pageContext.setAttribute("br", "<br/>");
+	   pageContext.setAttribute("cn", "\n"); %>
 	<jsp:include page="/WEB-INF/views/include/Header.jsp" />
 
 	<main id="main">
@@ -93,9 +110,9 @@
 							</div>
 
 							<div class="entry-content">
-								<p>${list.c_content}</p>
+								<p>${fn:replace(list.c_content, cn, br)}</p>
 
-								<img src="<%=application.getContextPath() %>/file/community?fileName=${list.c_image}"
+								<img src="<%=application.getContextPath() %>/community/comm_listphoto?fileName=${list.c_image}"
 									style="height:100%; width:100%">
 
 							</div>
@@ -130,23 +147,43 @@
 						<div class="col-lg-4">
 							<div class="sidebar">
 								<div class="detail_container_sidebar_content">
+									<div class="detail-left" style="display:inline-block;">
 									<ul>
 										<li class="d-flex align-items-center">
-											<img src="<%=application.getContextPath()%>/file/photo?fileName=${list.mimage}" style="width:100%; height:100%">
+											<img src="<%=application.getContextPath()%>/file/photo?fileName=${list.mimage}" style="width:100%; height:100%; border-radius: 100%;">
 										</li>
 										<li class="d-flex align-items-center">
 											<a href="<%=application.getContextPath()%>/member/yourhomesearch?pwriter=${list.memail}">${list.c_mnickname}</a>
 										</li>
 									</ul>
+									</div>
+									<div class="detail-right" style="display:inline-block; padding-left:5%;">
+									<a class="follow-btn">팔로우</a>
+									</div>
+									<div id="comm_hitsList">
+									<script>
+										function communitylist(check){            
+								            	$.ajax({
+								    				url:"<%=application.getContextPath() %>/community/comm_list",
+								    				data: {check:check, search:search},
+								    				success:function(data){    					
+								    					$("#comm_hitsList").html(data);
+								    					console.log("실행");
+								    				
+								    				}
+								    			});	
+								      		}     
+										</script>
+									</div>
 								</div>
 							</div>
 						</div>
 						
 						<!-- End blog author bio -->
+					
+						<div class="blog-comments col-lg-8">
 
-						<div class="blog-comments">
-
-							<h4 class="comments-count">8 Comments</h4>
+							<h4 class="comments-count">1 Comments</h4>
 
 							<div id="comment-1" class="comment clearfix">
 								<img src="<%=application.getContextPath()%>/resources/img/person_1.jpg"
@@ -162,133 +199,16 @@
 									ex qui. Sint qui facilis et.</p>
 
 							</div>
-							<!-- End comment #1 -->
-
-							<div id="comment-2" class="comment clearfix">
-								<img src="<%=application.getContextPath()%>/resources/img/person_1.jpg"
-									class="comment-img  float-left" alt="">
-								<h5>
-									<a href="">Aron Alvarado</a> <a href="#" class="reply"><i
-										class="icofont-reply"></i> Reply</a>
-								</h5>
-								<time datetime="2020-01-01">01 Jan, 2020</time>
-								<p>Ipsam tempora sequi voluptatem quis sapiente non. Autem
-									itaque eveniet saepe. Officiis illo ut beatae.</p>
-
-								<div id="comment-reply-1" class="comment comment-reply clearfix">
-									<img src="<%=application.getContextPath()%>/resources/img/person_1.jpg"
-										class="comment-img  float-left" alt="">
-									<h5>
-										<a href="">Lynda Small</a> <a href="#" class="reply"><i
-											class="icofont-reply"></i> Reply</a>
-									</h5>
-									<time datetime="2020-01-01">01 Jan, 2020</time>
-									<p>Enim ipsa eum fugiat fuga repellat. Commodi quo quo
-										dicta. Est ullam aspernatur ut vitae quia mollitia id non. Qui
-										ad quas nostrum rerum sed necessitatibus aut est. Eum officiis
-										sed repellat maxime vero nisi natus. Amet nesciunt nesciunt
-										qui illum omnis est et dolor recusandae. Recusandae sit ad aut
-										impedit et. Ipsa labore dolor impedit et natus in porro aut.
-										Magnam qui cum. Illo similique occaecati nihil modi eligendi.
-										Pariatur distinctio labore omnis incidunt et illum. Expedita
-										et dignissimos distinctio laborum minima fugiat. Libero
-										corporis qui. Nam illo odio beatae enim ducimus. Harum
-										reiciendis error dolorum non autem quisquam vero rerum neque.
-									</p>
-
-									<div id="comment-reply-2"
-										class="comment comment-reply clearfix">
-										<img src="<%=application.getContextPath()%>/resources/img/person_1.jpg"
-											class="comment-img  float-left" alt="">
-										<h5>
-											<a href="">Sianna Ramsay</a> <a href="#" class="reply"><i
-												class="icofont-reply"></i> Reply</a>
-										</h5>
-										<time datetime="2020-01-01">01 Jan, 2020</time>
-										<p>Et dignissimos impedit nulla et quo distinctio ex nemo.
-											Omnis quia dolores cupiditate et. Ut unde qui eligendi
-											sapiente omnis ullam. Placeat porro est commodi est officiis
-											voluptas repellat quisquam possimus. Perferendis id
-											consectetur necessitatibus.</p>
-
-									</div>
-									<!-- End comment reply #2-->
-
-								</div>
-								<!-- End comment reply #1-->
-
+							
+					
+							<input type="text" id="rcontent" class="form-control" placeholder="댓글을 남겨보세요!" style="display:inline-block; width:91%;">
+							<a class="btn btn-outline" style="display:inline-block; background-color:#1bac91; color:white" href="javascript:commreplyWrite(${list.c_number})">등록</a>
+							
+							<div id="reply_result">
+							
+							
 							</div>
-							<!-- End comment #2-->
-
-							<div id="comment-3" class="comment clearfix">
-								<img src="<%=application.getContextPath()%>/resources/img/person_1.jpg"
-									class="comment-img  float-left" alt="">
-								<h5>
-									<a href="">Nolan Davidson</a> <a href="#" class="reply"><i
-										class="icofont-reply"></i> Reply</a>
-								</h5>
-								<time datetime="2020-01-01">01 Jan, 2020</time>
-								<p>Distinctio nesciunt rerum reprehenderit sed. Iste omnis
-									eius repellendus quia nihil ut accusantium tempore. Nesciunt
-									expedita id dolor exercitationem aspernatur aut quam ut.
-									Voluptatem est accusamus iste at. Non aut et et esse qui sit
-									modi neque. Exercitationem et eos aspernatur. Ea est
-									consequuntur officia beatae ea aut eos soluta. Non qui dolorum
-									voluptatibus et optio veniam. Quam officia sit nostrum dolorem.
-								</p>
-
-							</div>
-							<!-- End comment #3 -->
-
-							<div id="comment-4" class="comment clearfix">
-								<img src="<%=application.getContextPath()%>/resources/img/person_1.jpg"
-									class="comment-img  float-left" alt="">
-								<h5>
-									<a href="">Kay Duggan</a> <a href="#" class="reply"><i
-										class="icofont-reply"></i> Reply</a>
-								</h5>
-								<time datetime="2020-01-01">01 Jan, 2020</time>
-								<p>Dolorem atque aut. Omnis doloremque blanditiis quia eum
-									porro quis ut velit tempore. Cumque sed quia ut maxime. Est ad
-									aut cum. Ut exercitationem non in fugiat.</p>
-
-							</div>
-							<!-- End comment #4 -->
-
-							<div class="reply-form">
-								<h4>Leave a Reply</h4>
-								<p>Your email address will not be published. Required fields
-									are marked *</p>
-								<form action="">
-									<div class="row">
-										<div class="col-md-6 form-group">
-											<input name="name" type="text" class="form-control"
-												placeholder="Your Name*">
-										</div>
-										<div class="col-md-6 form-group">
-											<input name="email" type="text" class="form-control"
-												placeholder="Your Email*">
-										</div>
-									</div>
-									<div class="row">
-										<div class="col form-group">
-											<input name="website" type="text" class="form-control"
-												placeholder="Your Website">
-										</div>
-									</div>
-									<div class="row">
-										<div class="col form-group">
-											<textarea name="comment" class="form-control"
-												placeholder="Your Comment*"></textarea>
-										</div>
-									</div>
-									<button type="submit" class="btn btn-primary">Post
-										Comment</button>
-
-								</form>
-
-							</div>
-
+							
 						</div>
 						<!-- End blog comments -->
 
@@ -297,13 +217,13 @@
 
 
 			</div>
+			<!-- End Container -->
 			
 		</section>
 		<!-- End Blog Section -->
 	</main>
 	<!-- End #main -->
-
-
+	
 	<a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 
 	<!-- ======= Footer ======= -->
@@ -405,7 +325,7 @@
 		src="<%=application.getContextPath()%>/resources/vendor/isotope-layout/isotope.pkgd.min.js"></script>
 	<script
 		src="<%=application.getContextPath()%>/resources/vendor/venobox/venobox.min.js"></script>
-	<script
+	<script 
 		src="<%=application.getContextPath()%>/resources/vendor/aos/aos.js"></script>
 	<script
 		src="<%=application.getContextPath()%>/resources/vendor/jquery.easing/jquery.easing.min.js"></script>
@@ -413,6 +333,44 @@
 	<!-- Template Main JS File -->
 	<script src="<%=application.getContextPath()%>/resources/js/main.js"></script>
 
+	<script>
+		$(function(){
+			communitylist(2);  
+		});
+		
+		function commreplyWrite(c_number){
+			var rcontent = $("#rcontent").val().trim();
+			
+			if(rcontent!=""){
+				console.log("댓글 실행");
+				$.ajax({
+					url : "/teamproject/community/comm_replyWrite",
+					method : "post",
+					data : {rcontent:rcontent, c_number: c_number},
+					success:function(data){
+						console.log("댓글 진짜 성공이야");
+						if(data.result=="success"){
+							/* commreplyList(c_number); */
+						}
+						$("#reply_result").html(data);
+					}
+				});
+			}
+		}
+		
+		/* function commreplyList(cnumber, pageNo){
+			if(!pageNo){
+				pageNo=1;
+			}
+			$.ajax({
+				url:"/teamproject/community/comm_replyList",
+				data:{pageNo:pageNo, cnumber:cnumber},
+				success:function(data){
+					$("#reply_result").html(data);
+				}
+			});
+		} */
+	</script>
 
 
 

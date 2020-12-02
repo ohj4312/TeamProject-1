@@ -23,6 +23,10 @@ public class CommunityService {
 		communityDao.communityInsert(community);
 		
 	}
+	
+	public int comm_replyWrite(Community community) {
+		return communityDao.comm_replyInsert(community);
+	}
 
 	public List<Community> Comm_list(Pager pager) {
 		List<Community> comm_list=communityDao.communityselctAll(pager);

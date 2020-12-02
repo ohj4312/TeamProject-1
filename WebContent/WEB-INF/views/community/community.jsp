@@ -63,7 +63,7 @@
               <div class="read-more" >
             
                 <a href="<%=application.getContextPath() %>/community/comm_writeFrom" class="btn btn-sm">
-                  <h3 class="sidebar-title">Write</h3>
+                  <h3 class="sidebar-title">Community Write</h3>
                 </a>
               </div>
               <hr>
