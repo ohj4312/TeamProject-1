@@ -29,13 +29,15 @@
 
   <!-- Template Main CSS File -->
   <link href="<%=application.getContextPath() %>/resources/css/style.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: Maxim - v2.2.0
-  * Template URL: https://bootstrapmade.com/maxim-free-onepage-bootstrap-theme/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+<style media="screen">
+   .scroll{
+     
+     overflow-y: scroll;
+     white-space:nowrap;
+   }
+   .scroll img{
+   }
+ </style>
 </head>
 
 <body>
@@ -57,7 +59,13 @@
         		
         			<div class="user-profile__container"> 
         				<div class="user-profile__profile-image" style="text-align: center;">
-                  <a href="javascript:Return()"><img class="rounded-circle mt-3" width="53%" height="53%" src="<%=application.getContextPath() %>/file/photo?fileName=${member.mimage}"></a>
+        					<form action="updateImage" method="post" role="form" enctype="multipart/form-data">
+		                  	<input type="file" id="aimage" name = "aimageAttach" style="display: none"> 
+			                <label id = "srclabel" for="aimage" style="width: 100%; height: 100%;"> 
+			                  <img class="rounded-circle mt-3" width="100px" height="100px" src="<%=application.getContextPath() %>/file/member?fileName=${member.mimage}">
+			                </label>
+			                <button id="update" class = "btn btn-sm btn-link" disabled>사진 수정</button>
+			                </form>
         					<div class="profile-info__name mt-2">
         						<span>${member.mnickname}</span>
         						<div>
@@ -84,9 +92,9 @@
        						</a>
         				</div>
         				<div class="col-4">
-       						<a href="#">
+       						<a href="javascript:Return()">
        							<div><span class="material-icons">sentiment_satisfied_alt</span></div>
-       							<div><small>설정</small></div>
+       							<div><small>사진</small></div>
        						</a>
         				</div>
         			
@@ -94,7 +102,12 @@
         			<br/>
         			
         		</div>
+        		<div class ="row" style="padding: 16px;">
+        		<a href = "updatePassword" class = "btn btn-sm btn-light">비밀번호 변경</a>
+        		<a href = "deleteMember" class = "btn btn-sm btn-light">회원탈퇴</a>
+        		</div>
         		</section>
+        		
           </div>
 
           <div class="col-md-7 ml-4">
@@ -129,66 +142,16 @@
   <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>
 
 <script>
-	function getfollowList(){
-		$.ajax({
-			url:"<%=application.getContextPath()%>/follow/followList", 
-			success:function(data) {
-				$("#formchange").html(data);
-			}
-		});
-	} 
-	
-	function getfollowingList(){
-		$.ajax({
-			url:"<%=application.getContextPath()%>/follow/followingList",
-			success:function(data) { 
-				$("#formchange").html(data);
-			}
-		});
-	} 
-	
-	  function Return(){
-			
-			$.ajax({  
-			url : "<%=application.getContextPath()%>/member/returnMypage",
-	 						
-			success : function(data){
-				console.log("return 스크립트 넘어옴.");
-				$("#formchange").html(data);
-			}
-			});
-		}  
-	
-	
-	
-	        				
-		function GetBookMarkList(){
-			console.log("리스트 불러오기");
-			
-			$.ajax({
-				url : "<%=application.getContextPath()%>/BK/getBookMarkList",
-				
-				method: "get",
-				success : function(data){
-					console.log("함수 안에부분 실행");
-					
-					$("#formchange").html(data);
-				}
-			});
-		}
-		
-		function getLikephotolist(){
-			$.ajax({
-				url:"<%=application.getContextPath() %>/like/getLikePhotolist",
-				
-				success:function(data){
-					
-					$("#formchange").html(data);
-				
-				}
-			});
-			
-		}     			
+	$("input:file").on('change', function(e){
+        let elem = e.target;
+
+        var src1 = URL.createObjectURL(elem.files[0]);
+        var $div = $('<img class="rounded-circle mt-3" width="100px" height="100px" src="'+src1+'">');
+        //$('<img src="'+src1+'" width="100%" height="100%" />');
+        // $("#srclabel").html($div);
+        $(elem).next().html($div);
+        $('#update').prop("disabled", false);
+      });
  </script>
 </body>
 

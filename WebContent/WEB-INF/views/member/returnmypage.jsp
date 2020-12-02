@@ -4,7 +4,7 @@
 
 <section id="formchange" class="post post--cards pd">	
 <h5><strong>사진</strong></h5>
-<div id="mypagephoto" style="border:1px dashed #dbdbdb;width:100%;height: 320px;">
+<div id="mypagephoto" class = "scroll" style="border:1px dashed #dbdbdb;width:100%;height: 320px;">
     <div>
     	<c:if test="${member.list == null}">
 	    	<span class="material-icons ">add </span>

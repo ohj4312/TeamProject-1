@@ -39,4 +39,19 @@ public class MemberDAO {
 		return list;
 	}
 
+	public void updateMimage(Member member) {
+		sst.update("mybatis.mapper.member.updateMimage",member);
+		
+	}
+
+	public String selectPassword(Member member) {
+		
+		return sst.selectOne("mybatis.mapper.member.selectPassword",member);
+	}
+
+	public void updatePassword(Member member) {
+		sst.update("mybatis.mapper.member.updatePassword",member);
+		
+	}
+
 }

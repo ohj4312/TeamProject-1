@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.mycompany.webapp.dao.FollowDAO;
@@ -70,6 +72,26 @@ public class MemberService {
 	public List<SelfGuide> getSelfGuideList(String memail) {
 		List<SelfGuide> list=memberDAO.selectSelfGuideList(memail);
 		return list;
+	}
+
+	public void updateMimage(Member member) {
+		memberDAO.updateMimage(member);
+		
+	}
+
+	public boolean updatePassword(Member member, String update_password) {
+		PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+		String matchpassword = memberDAO.selectPassword(member);
+		if(passwordEncoder.matches(member.getMpassword(), matchpassword)) {
+			String encodedPassword = passwordEncoder.encode(update_password);
+			member.setMpassword(encodedPassword);
+			memberDAO.updatePassword(member);
+			return true;
+		}else {
+			return false;
+		}
+		
+		
 	}
 
 }

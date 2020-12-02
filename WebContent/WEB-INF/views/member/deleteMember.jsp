@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
@@ -25,10 +26,13 @@
   <link href="<%=application.getContextPath() %>/resources/vendor/venobox/venobox.css" rel="stylesheet">
   <link href="<%=application.getContextPath() %>/resources/vendor/aos/aos.css" rel="stylesheet">
 
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
 
   <!-- Template Main CSS File -->
   <link href="<%=application.getContextPath() %>/resources/css/style.css" rel="stylesheet">
+ 
+  
+  
 
   <!-- =======================================================
   * Template Name: Maxim - v2.2.0
@@ -42,60 +46,49 @@
 
   <jsp:include page="/WEB-INF/views/include/Header.jsp"/>
 
+
  
 
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact mt-5">
-      <div class="container mt-6">
+  <main id="main">
 
-        <div class="section-title" data-aos="fade-up">
-          <h2>회원가입에 실패하셨습니다.. 다시 시도하시겠습니까? </h2>
-          
-        </div>
+    <section id="contact" class="contact mt-3">
+      <div class="container" id="firstForm">
+        <form action="<%=application.getContextPath()%>/photo/write" method="post" role="form" onsubmit="return writePhoto()" enctype="multipart/form-data">
+				<div class="row mt-5 mb-3">
+					<div class="col">
+						<h2>회원탈퇴</h2>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group form-inline">
+							
+				</div>
+				</div>
+				<div id = "addDiv">
+				<div id = "cloneForm" class="row align-self-center border pt-3" style = "">
+        		</div> 
 
-        
-
-        <div class="row mt-5 justify-content-center" data-aos="fade-up">
-          <div class="col-lg-5 col-md-7">
-            <form action="<%=application.getContextPath()%>/member/join" method="post" role="form" class="php-email-form">
-              <div class="form-group">
-                <label>이메일 주소</label> 
-                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="이메일을 입력하지 않았습니다." />
-                  <div class="validate"></div>
-              </div>
-              <div class="form-group">
-                <label>비밀번호</label> 
-                <input type="password" class="form-control" name="password" id="password" placeholder="Your Password" data-rule="minlen:8" data-msg="최소 8자 이상 입력해주세요." />
-                  <div class="validate"></div>
-              </div>
-              <div class="form-group">
-                <label>비밀번호 확인</label> 
-                <input type="password" class="form-control" name="password" id="password" placeholder="Your Password" data-rule="minlen:8" data-msg="최소 8자 이상 입력해주세요." />
-                  <div class="validate"></div>
-              </div>
-              <div class="form-group">
-                <label>별명</label> 
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Your NickName" data-rule="minlen:4" data-msg="별명은 최소 3자 이상 입력해주세요." />
-                <div class="validate"></div>
-              </div>
-              <div class="mb-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
-            </form>
-          </div>
-
-        </div>
-
+		
       </div>
-    </section><!-- End Contact Section -->
-
+      
+		<div class ="row mb-3 clearfix">
+			<div class = "mx-auto">
+				<button type="button" class="btn" style = "color: white; background-color: #1bac91;" onClick="addform()">회원탈퇴</button>
+				<button type="submit" class="btn ml-2 btn-info">취소하기</button>
+			</div>
+		</div>
+      
+      </form>
+			</div>
+			</div>
+			</div>
+	</section><!-- End Contact Section -->
   </main><!-- End #main -->
 
-  <jsp:include page="/WEB-INF/views/include/footer.jsp"/>
-   <script src="<%=application.getContextPath() %>/resources/vendor/jquery/jquery.min.js"></script>
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+  <!-- Vendor JS Files -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/jquery.easing/jquery.easing.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/php-email-form/validate.js"></script>
@@ -103,7 +96,7 @@
   <script src="<%=application.getContextPath() %>/resources/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/venobox/venobox.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/aos/aos.js"></script>
-
+	
   <!-- Template Main JS File -->
   <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>
 
