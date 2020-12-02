@@ -113,10 +113,3 @@ public class Pager {
 	
 	
 }
-
-
-
-
-
-
-

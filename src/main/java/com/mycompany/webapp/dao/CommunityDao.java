@@ -20,6 +20,11 @@ public class CommunityDao {
 		
 	}
 	
+	public int comm_replyInsert(Community community) {
+		int rows = sst.insert("mybatis.mapper.community.communityReplyInsert", community);
+		return rows;
+	}
+	
 	public List<Community> communityselctAll(Pager pager) {
 		
 		List<Community> comm_list=sst.selectList("mybatis.mapper.community.communityselctAll",pager);
@@ -32,6 +37,10 @@ public class CommunityDao {
 		return comm_list;
 	}
 
+	public Community communitySelectOne(Community community){
+		Community comm_list = sst.selectOne("mybatis.mapper.community.communityselectOne", community);
+		return comm_list;
+	}
 
 	public void communityUpdatehits(int cnumber) {
 			sst.update("mybatis.mapper.community.communityUpdatehits", cnumber);
@@ -43,12 +52,12 @@ public class CommunityDao {
 		return comm_listHit;
 	}
 	
+	
 
 	public int communityCountSelectAll() {
 		int rows = sst.selectOne("mybatis.mapper.community.communityselectAllcount");		
 		return rows;
 	}
-	
 	public int communityCountSelectAll(String temp) {
 		int rows = sst.selectOne("mybatis.mapper.community.communityselectAllSearchcount",temp);		
 		return rows;
