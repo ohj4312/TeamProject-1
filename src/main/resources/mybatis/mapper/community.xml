@@ -49,7 +49,7 @@
       select*
       from(
       select rownum as rnum, * from (select * from community where c_content like #{temp} or c_title like #{temp} order by c_date desc)
-      where rownum &lt;= #{endRowNo}
+      	here rownum &lt;= #{endRowNo}
       )
       where rnum &gt;= #{startRowNo}
       
