@@ -36,36 +36,6 @@ public class FollowController {
 	private FollowService followService;
 	
 	
-	@GetMapping("/photodownload")
-	public void download(String fileName, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		logger.info("fileName:" + fileName);
-
-		// 파일의 데이터를 읽기 위한 입력 스트림 얻기
-		String saveFilePath = "C:/Temp/upload/" + fileName;
-		InputStream is = new FileInputStream(saveFilePath);
-		// 응답 HTTP 헤더 구성
-		// Content-Type 헤더 구성
-		// 파일의 종류
-		ServletContext application = request.getServletContext();
-		String fileType = application.getMimeType(fileName);
-		response.setContentType(fileName);
-		// 2) Content-Disposition 헤더 구성
-		// 다운로드할 파일의 이름지정 // 한글이 불가능
-		response.setHeader("Content-Disposition", " filename=\"" + fileName + "\"");
-		// 3) Content-Length 헤더구성
-		// 다운로드할 파일의 크기를 지정
-		// 파일 크기 없어도 괜찮지만 유저한태 크기를 알려주기 위해서 사용
-		int fileSize = (int) new File(saveFilePath).length();// 파일사이즈 얻기
-		response.setContentLength(fileSize);
-		// 응답 HTTP의 바디(본문) 구성
-		// 항상 바이트 스트림 으로 출력스트림 사용!!!!!
-		OutputStream os = response.getOutputStream();
-		FileCopyUtils.copy(is, os);
-		os.flush();
-		os.close();
-		is.close();
-
-	}
 	
 	//followList 조회
 	@GetMapping("/followList")

@@ -190,7 +190,7 @@ public class PhotoController {
 				logger.info(saveFilename);
 				try {
 					//실제 사용자의 요청에 파일을 서버에 저장
-					photo.getAimageAttach().transferTo(new File("C:/Temp/upload/"+saveFilename));
+					photo.getAimageAttach().transferTo(new File("D:/MyWorkSpace/photo/photo/"+saveFilename));
 				} catch (Exception e) {} 
 				}
 			}
@@ -272,12 +272,7 @@ public class PhotoController {
 		rphoto.setFirst_image(rphoto.getList().get(0).getAimage());
 		logger.info(rphoto.getFirst_content());
 		logger.info(rphoto.getFirst_image());
-		//두개의 테이블에 insert하기 위한 service 요청
-		
-		//테스트용 insert
-		/*for(int i = 0; i < 10; i++) {
-			photoService.writePhoto(rphoto);
-		}*/
+
 		photoService.updatePhoto(rphoto);
 		
 		

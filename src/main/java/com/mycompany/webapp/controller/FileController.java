@@ -61,5 +61,17 @@ public class FileController {
 
 	}
 	
+	@RequestMapping("/member")
+	public String memberdownload(String fileName, HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
+		logger.info(fileName);
+		
+		//파일 정보 얻기, 파일의 데이터를 읽기 위한 입력 스트림 얻기
+		String saveFilePath = "D:/MyWorkSpace/photo/member/"+fileName;
+		model.addAttribute("saveFilePath", saveFilePath);
+		model.addAttribute("fileName", fileName);
+		return "fileDownloadView";
+
+	}
+	
 
 }

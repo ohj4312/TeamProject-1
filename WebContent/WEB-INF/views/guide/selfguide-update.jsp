@@ -1,6 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html >
 
@@ -34,6 +33,7 @@
 	<link href="<%=application.getContextPath() %>/resources/vendor/aos/aos.css" rel="stylesheet">
 
  	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+ 	
   <!-- Template Main CSS File -->
   <link href="<%=application.getContextPath() %>/resources/css/style.css" rel="stylesheet">
 
@@ -50,35 +50,11 @@
 	 <jsp:include page="/WEB-INF/views/include/Header.jsp"/>
 
   
-  
-  <section id="portfolio" class="portfolio">
-      <div id = "listappend" class="container mt-5">
-      		<p class="mb-4">
-      		<h2 style="font-size:2vw; float:left">셀프 인테리어 가이드북 </h2>
-      		<sec:authorize access="isAuthenticated()">
-      		<span style="font-size:1vw; float:right" class="btn btn-info btn-lg" onClick="selfWrite()">글쓰기</span>
-      		</sec:authorize>
-      		</p><br/>
-      		
-      		<img style="width:100%; height:200px;"src="https://image.ohou.se/i/bucketplace-v2-development/uploads/advices/guides/self_interior/pc_banner_image.v3.png?gif=1&w=1280&webp=1"/>
-      		<p></p>
-        <div id="addtag" style="width:100%; padding:0; margin:0" class="row col-md-12 mb-4">
-			<jsp:include page="/WEB-INF/views/guide/selfguideFilter.jsp"/>
-        </div>
 
-      <div id = "12345" class="row portfolio-container abcd" data-aos="fade-up">
-        <jsp:include page="/WEB-INF/views/guide/selfguide-photos.jsp"/>
-       </div>
-        
-
-      </div>
-      
-      <div id="paging"></div>
-    </section>
   <!-- ======= script ======= -->
 	
 	<script type="text/javascript">
-	 var page = 2;
+	var page = 2;
 	  $(function(){
 	      $(window).scroll(function(){
 	          var $window = $(this);
@@ -89,7 +65,7 @@
 	          //console.log("documentHeight:" + documentHeight + " | scrollTop:" + scrollTop + " | windowHeight: " + windowHeight );
 	          
 	          if( scrollTop + windowHeight + 1000 > documentHeight ){
-	        	  getselfList(page);
+	        	  getList(page);
 	        	  
 		           page++; 
 					console.log(page);
@@ -99,74 +75,137 @@
 	   });
 			    
 	});
-	function pagingList(){
-	  $.ajax({
-			url : "<%=application.getContextPath()%>/selfguide/selflist",
-			method: "get",
-			success:function(data){
-				location.href="<%=application.getContextPath()%>/selfguide/selflist";
-			}
-		});
-	}
-	
-	function checkSelfGuidFilter(filterString){
-
-		$.ajax({
-				url : "<%=application.getContextPath()%>/selfguide/selfguideFilter",
-				data:{filterString:filterString},
-				success:function(data){
-					$("#12345").html(data);
-					
-				}
-			});
-		
-	}
-	
-	</script>
-	
-	<script type="text/javascript">
-		function selfWrite(){
-			location.href="<%=application.getContextPath()%>/selfguide/selfguide-write";
-		}
-		
-		
-		
-		function selfguidephotolist(pageNo){
-			console.log("페이징 실행 되나여");
-			$.ajax({
-				url :"<%=application.getContextPath()%>/selfguide/selflist",
-				data: {pageNo:pageNo},
-				function : success(data){
-					$("#paging").html(data);
-				}
-			})
-			
-		}
 	</script>
 
   <!-- ======= script ======= -->
  
 
   <main id="main">
-
+	<div class="mt-5 mb-5 row">    </div>
     <!-- ======= Breadcrumbs ======= -->
+    <section id="portfolio" class="portfolio_section">
+    	<div id = "listappend" class="container">
+      		<p><h2 style="font-size:3vw">셀프 인테리어 가이드북 </h2></p>
+			<h5>나만의 노하우 올리기 </h5>
+			<hr/>
+			<br/>
+      </div>
+      <div class="container">
+		<form action="<%=application.getContextPath()%>/selfguide/selfwrite" method="post" role="form" onsubmit="return selfWriteForm()" enctype="multipart/form-data">	
+			<div class="row">
+				<div class="col-12 mb-4 input-group-lg">
+					<input id="stitle" name="stitle" type="text" class="form-control align-center" placeholder="Title">
+					<div id="stitleError" class="error"></div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="form-group col-12">
+						<select id="stype" name="stype" class="form-control"
+							style="height: auto;">
+							<option selected>category</option>
+							<option value="비용정리">비용정리</option>
+							<option value="공간배치">공간배치</option>
+							<option value="계획하기">계획하기</option>
+							<option value="페인트도배">페인트 도배</option>
+							<option value="바닥깔기">바닥깔기</option>
+						</select>
+						<span id="stypeError" class="error"></span>
+				</div>
+			</div>
+			<div class="row col-sm-12 align-self-center">
+				<div class="col-12 text-center mb-4 fancybox" style="position: relative; height: 300px;" style="border:1px solid gold">		
+					<input type="file" id="simageAttach" name ="simageAttach" style="display:none;"> 
+					<label id = "srclabel" for="simageAttach" style="width: 100%; height: 100%;"> 
+	                	<i class="material-icons" 
+							 style="font-size: 7rem; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">photo_camera</i>
+	               		<span id="simageError" class="error"></span>
+	                </label> 
+						
+				</div>
+				
+			</div>
+			<div class="row col-sm-12 align-self-center">
+				<div class="col-12">
+					<div>
+						<div class="form-group">
+							<textarea class="form-control" rows="10" id="scontent"
+								name="scontent" placeholder="사진에 대한 설명을 작성해주세요."></textarea>
+							<span id="scontentError" class="error"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div style="height: 50px;"></div>
+			<button type="submit" class="btn btn-lg btn-light btn-block" onClick="javascript:selfWriteForm()">등록하기</button>
+		</form>
+      </div>
+      
+      <div class="container">
+
+			
+			<script type="text/javascript">
+				function selfWriteForm(){
+					var stitle = $("#stitle").val().trim();
+					if(stitle == "") { 
+						$("#stitleError").text("*제목을 반드시 입력해야 합니다.");
+						$("#stitleError").css('color','red');
+					}else { 
+						$("#stitleError").text("");
+					}
+					console.log("111111111");
+					var scontent = $("#scontent").val().trim();
+					if(scontent == "") {
+						$("#scontentError").text("*내용을 반드시 입력해야 합니다."); 
+						$("#scontentError").css('color','red');
+					}else {
+						$("#scontentError").text(""); 
+					}
+				 	var stype = $("#stype").val().trim();
+					if(stype == "category") {
+						$("#stypeError").text("*카테고리를 반드시 선택해야 합니다."); 
+						$("#stypeError").css('color','red');
+					}else {
+						$("#stypeError").text(""); 
+					}
+					
+					var simageAttach = $("#simageAttach").val();
+					if(!simageAttach) {
+						$("#simageError").text("*대표사진을 반드시 첨부해야 합니다."); 
+						$("#simageError").css('color','red');
+					}else {
+						$("#simageError").text(""); 
+					}
+					
+					var result;
+					if(stitle == "" || scontent == "" || stype=="category" || !simageAttach ) {
+						result=false;
+						return result;	
+					}else{
+						result=true;
+						return result;
+					} 
+				}
+				
+				 
+			</script>
+			
+
+		</div>
+    </section>
+
+
+    <!-- ======= Portfolio Section ======= -->
+    <section id="portfolio" class="portfolio">
+      
+
+    </section><!-- End Portfolio Section -->
+
    
-    
-    
-    
-    
-    
-   
-
-
-
-
-    <!-- ======= Clients Section ======= -->
-  
-
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
+   <!-- ======= Footer ======= -->
   <footer id="footer">
     <div class="footer-top">
       <div class="container">
