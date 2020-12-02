@@ -2,7 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-
 <!DOCTYPE html>
 <html>
 
@@ -44,7 +43,7 @@
 	rel="stylesheet">
 <!-- Template Main CSS File -->
 <link href="<%=application.getContextPath()%>/resources/css/style.css"
-	rel="stylesheet">	
+	rel="stylesheet">
 
 <!-- =======================================================
   * Template Name: Maxim - v2.2.0
@@ -65,57 +64,7 @@ td a {
 	text-decoration: none;
 	color: inherit;
 }
-
-table.type09 {
-    border-collapse: collapse;
-    text-align: left;
-    line-height: 2.0;
-    border: 1px solid #ccc;
-
-}
-table.type09 thead th {
-    padding: 10px;
-    font-weight: bold;
-    vertical-align: top;
-    color: #369;
-    border-bottom: 3px solid #036;
-}
-table.type09 tbody th {
-    padding: 10px;
-    font-weight: bold;
-    vertical-align: top;
-    border-bottom: 1px solid #ccc;
-    background: #f3f6f7;
-}
-table.type09 td {
-    padding: 10px;
-    vertical-align: top;
-    border-bottom: 1px solid #ccc;
-}
 </style>
-
-	<style type="text/css">
-		@media screen and (max-width: 1000px) {
-			th {
-				width: 30px;
-			}
-			
-			td {
-				width: 70%;
-			}
-		}
-		
-		@media screen and (min-width: 1000px) {
-			th {
-				width: 200px;
-			}
-			
-			td {
-				width: 800px;
-			}
-		}	
-	</style>
-
 </head>
 
 <body>
@@ -124,73 +73,38 @@ table.type09 td {
 	<section id="services" class="section-bg mt-5" style="background-color: #ffffff;">
 	
 <%-- ########################################################################### --%>
-<div>
-	<h3 style="text-align:center; margin-bottom:50px">Q&A</h3>
-		<div>
-			<table class="type09" style="margin-left: auto; margin-right: auto;">
-			    
-			    <tbody>
-			    <tr>
-			        <th scope="row">번호</th>
-			        <td>${qna.qnumber}</td>
-			    </tr>
-			    <tr>
-			        <th scope="row">제목</th>
-			        <td>${qna.qtitle}</td>
-			    </tr>
-			    <tr>
-			        <th scope="row">사진</th>
-			        <td><img class="rounded" width="70px" height="50px" src="photodownload?fileName=${qna.qphoto}"/></td>
-			    </tr>
-			    <tr>
-			        <th scope="row">글쓴이</th>
-			        <td>${qna.mnickname}</td>
-			    </tr>
-			    <tr>
-			        <th scope="row">날짜</th>
-			        <td><fmt:formatDate value="${qna.qdate}" pattern="yyyy-MM-dd"/></td>
-			    </tr>
-			    <tr>
-			        <th scope="row">내용</th>
-			        <td style="width:100px">${qna.qcontent}</td>
-			    </tr>
-			    <c:if test="${qna.answer == null}">
-				    <tr>			        
-				    	<th scope="row">답변내용</th>
-				        <td style="width:100px; color:red;">아직 답변이 없습니다.</td>
-				    </tr>
-			    </c:if>
-			    <c:if test="${qna.answer != null}">
-				    <tr>			        
-				    	<th scope="row">답변내용</th>
-				        <td style="width:100px">${qna.answer}</td>
-				    </tr>
-				</c:if>
-			    </tbody>
-			  
-			</table>
+<div class="container">
+<div class="row">
+	<div style="width: 1000px; margin-left: auto; margin-right: auto;" >
+		<h3 style="margin-bottom:50px">Q&A 답변작성</h3>
+	<div class="col-sm">
+		<form id="qnaAnswerForm" method="post" action="qnaAnswer" >
+			<!-- <table style="width:auto" class="table table-sm table-bordered"> -->
+			<input type="hidden" id="qnumber" name="qnumber" value="${qna.qnumber}">
 			
-				<c:if test="${member.mnickname == qna.mnickname}">
-				 	<div style="text-align: center; margin-top: 10px;">
-				    	 
-				    	<form method="post" action="qnaDelete?qnumber=${qna.qnumber}">
-				    		<input type="submit" value="삭제" class="btn btn-info" >
-				    		<a class="btn btn-info" href="qnaUpdate?qnumber=${qna.qnumber}">수정</a>
-				    	</form>
-				    	
-				    </div>
-			   </c:if>
-			   	
-			   	<div style="text-align: center; margin-top: 10px;">
-						<a class="btn btn-info" href="qnaindex">목록</a>				   
-				   	<sec:authorize access="hasRole('ROLE_ADMIN')"><!-- admin이여야만 볼 수 있다. -->
-						<a class="btn btn-info" href="qnaAnswer?qnumber=${qna.qnumber}">답변</a>
-					</sec:authorize>
-			   </div>
-			  
-	    </div>
-</div>
-		
+			<div class="input-group">
+				<div class="input-group-prepend"><span class="input-group-text">제목</span></div>
+				<input id="qtitle" type="text" name="qtitle" class="form-control" value="${qna.qtitle}">
+			
+				<span id="qtitleError" class="error"></span>
+			</div>
+			
+			<div class="input-group">
+				<div class="input-group-prepend"><span class="input-group-text">답변 내용</span></div>
+				<textarea id="answer" name="answer" class="form-control" rows="10">${qna.answer}</textarea>
+				<span id="answerError" class="error"></span>
+			</div>
+			
+			<!-- //로그인이 되면 로그인된 아이디가 들어간다.값이 없으면 필수, 값이  있으면 에러가 없어서 비워두겠다. -->	
+			<div style="text-align: center; margin-top: 10px;">
+				<input type="submit" class="btn btn-info" value="답변 작성"/>
+				<a class="btn btn-info" href="qnaindex">취소</a>	
+			</div>
+		</form>
+		</div>
+	</div>
+	</div>
+</div>	
 <%-- ########################################################################### --%>	
 	</section>
 	<!-- ======= Footer ======= -->

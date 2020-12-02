@@ -5,8 +5,8 @@
 <c:forEach var="list" items="${comm_list}">		
               <div class="sidebar-item recent-posts">
                 <div class="post-item clearfix">
-                  <img src="<%=application.getContextPath() %>/community/comm_listphoto?fileName=${list.c_image}" alt="">
-                  <h4><a href="blog-single.html">${list.c_title}</a></h4>
+                  <img src="<%=application.getContextPath() %>/file/community?fileName=${list.c_image}" alt="">
+                  <h4><a href="<%=application.getContextPath() %>/community/comm_detail?cnumber=${list.c_number}&cmnickname=${list.c_mnickname}">${list.c_title}</a></h4>
                   <time >${list.c_date}</time>
                 </div>                
               </div> 

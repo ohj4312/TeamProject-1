@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 
@@ -72,10 +73,11 @@ td a {
 	<section id="services" class="section-bg mt-5" style="background-color: #ffffff;">
 	
 <%-- ########################################################################### --%>
-
+<div class="container">
+<div class="row">
 	<div style="width: 1000px; margin-left: auto; margin-right: auto;" >
 		<h3 style="margin-bottom:50px">Q&A 질문 작성</h3>
-	
+		<div class="col-sm">
 		<form id="qnaUpdateForm" method="post" action="qnaUpdate" enctype="multipart/form-data"><!-- input type="file사용할때 enctype="multipart/form-data" 사용하기  -->
 			<!-- <table style="width:auto" class="table table-sm table-bordered"> -->
 			<input type="hidden" id="qnumber" name="qnumber" value="${qna.qnumber}">
@@ -93,6 +95,7 @@ td a {
 				<span id="qcontentError" class="error"></span>
 			</div>
 			
+			
 			<div class="input-group">
 				<div class="input-group-prepend"><span class="input-group-text">사진</span></div>
 				<input type="file" name="attach" class="form-control">
@@ -109,8 +112,10 @@ td a {
 				<a class="btn btn-info" href="qnaindex">취소</a>	
 			</div>
 		</form>
+		</div>
 	</div>
-	
+	</div>
+</div>	
 <%-- ########################################################################### --%>	
 	</section>
 	<!-- ======= Footer ======= -->

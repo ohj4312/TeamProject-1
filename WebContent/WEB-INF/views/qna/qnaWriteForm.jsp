@@ -51,18 +51,7 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
 <style type="text/css">
-#a {
-	background-position: left;
-}
 
-#menu {
-	margin-left: 250px;
-}
-
-td a {
-	text-decoration: none;
-	color: inherit;
-}
 </style>
 </head>
 
@@ -72,42 +61,45 @@ td a {
 	<section id="services" class="section-bg mt-5" style="background-color: #ffffff;">
 	
 <%-- ########################################################################### --%>
-
-	<div style="width: 1000px; margin-left: auto; margin-right: auto;" >
-		<h3 style="margin-bottom:50px">Q&A 질문 작성</h3>
-	
-		<form id="qnaWriteForm" method="post" action="qnaWrite" enctype="multipart/form-data">
-			<!-- <table style="width:auto" class="table table-sm table-bordered"> -->
-			<div class="input-group">
-				<div class="input-group-prepend"><span class="input-group-text">제목</span></div>
-				<input id="qtitle" type="text" name="qtitle" class="form-control" >
-				<span id="qtitleError" class="error"></span>
+<div class="container">
+	<div class="row">
+		<div  style="width: 1000px; margin-left: auto; margin-right: auto;" >
+			<h3 style="margin-bottom:50px">Q&A 질문 작성</h3>
+			<div class="col-md">
+			<form id="qnaWriteForm" method="post" action="qnaWrite" enctype="multipart/form-data">
+				<!-- <table style="width:auto" class="table table-sm table-bordered"> -->
+				<div class="input-group">
+					<div class="input-group-prepend"><span class="input-group-text">제목</span></div>
+					<input id="qtitle" type="text" name="qtitle" class="form-control" >
+					<span id="qtitleError" class="error"></span>
+				</div>
+				
+				<div class="input-group">
+					<div class="input-group-prepend"><span class="input-group-text">내용</span></div>
+					<textarea id="qcontent" name="qcontent" class="form-control" rows="10"></textarea>
+					<span id="qcontentError" class="error"></span>
+				</div>
+				
+				<div class="input-group">
+					<div class="input-group-prepend"><span class="input-group-text">사진</span></div>
+					<input type="file" name="attach" class="form-control">
+				</div>
+				
+				<div class="input-group">
+					<div class="input-group-prepend"><span class="input-group-text">별명</span></div>
+					<input id="mnickname" type="text" name="mnickname" class="form-control" value="${member.mnickname}" readonly>
+					<span id="qtitleError" class="error"></span>
+				</div>
+				<!-- //로그인이 되면 로그인된 아이디가 들어간다.값이 없으면 필수, 값이  있으면 에러가 없어서 비워두겠다. -->	
+				<div style="text-align: center; margin-top: 10px;">
+					<input type="submit" class="btn btn-info" value="글쓰기"/>
+					<a class="btn btn-info" href="qnaindex">취소</a>	
+				</div>
+			</form>
 			</div>
-			
-			<div class="input-group">
-				<div class="input-group-prepend"><span class="input-group-text">내용</span></div>
-				<textarea id="qcontent" name="qcontent" class="form-control" rows="10"></textarea>
-				<span id="qcontentError" class="error"></span>
-			</div>
-			
-			<div class="input-group">
-				<div class="input-group-prepend"><span class="input-group-text">사진</span></div>
-				<input type="file" name="attach" class="form-control">
-			</div>
-			
-			<div class="input-group">
-				<div class="input-group-prepend"><span class="input-group-text">별명</span></div>
-				<input id="mnickname" type="text" name="mnickname" class="form-control" value="${member.mnickname}" readonly>
-				<span id="qtitleError" class="error"></span>
-			</div>
-			<!-- //로그인이 되면 로그인된 아이디가 들어간다.값이 없으면 필수, 값이  있으면 에러가 없어서 비워두겠다. -->	
-			<div style="text-align: center; margin-top: 10px;">
-				<input type="submit" class="btn btn-info" value="글쓰기"/>
-				<a class="btn btn-info" href="qnaindex">취소</a>	
-			</div>
-		</form>
+		</div>
 	</div>
-	
+</div>	
 <%-- ########################################################################### --%>	
 	</section>
 	<!-- ======= Footer ======= -->
