@@ -65,11 +65,13 @@
       <div class="container mt-5">
         <div class="row">
           <div class="col-lg-10" data-aos="fade-up">
-           <pre> <h3 id="title">${sg.stitle}<a id="delete" href="<%=application.getContextPath() %>/selfguide/deleteSelfguide?snumber=${sg.snumber}" class="btn btn-danger" style="float:right">삭제하기</a>
-            	</h3></pre>
-          	<h2 id="type">${sg.stype} </h2>
+           <pre> <h3 id="title">${sg.stitle}</h3></pre>
+          	<h4 id="type">${sg.stype} 
+          		<a id="deleteSelfGuideDetail" href="<%=application.getContextPath() %>/selfguide/deleteSelfguide?snumber=${sg.snumber}" class="btn btn-danger" style="float:right">삭제하기</a>
+          		<a id="updateSelfGuideDetail" href="<%=application.getContextPath() %>/selfguide/updateSelfguide?snumber=${sg.snumber}" class="btn btn-info" style="float:right">수정하기</a>
+          	</h4>
           	
-            	<img id="self_image" style="width:100%; height:400px;" src="<%=application.getContextPath() %>/selfguide/photodownload?fileName=${sg.simage}"/>
+            	<img id="self_image" style="width:100%; height:400px;" src="<%=application.getContextPath()%>/file/selfguide?fileName=${sg.simage}"/>
           		 <div><h2>${sg.swriter } </h2>
           		 <a href="#"><i id="itag" class="material-icons align-middle" style = "float:right; font-size: 30px; color:#1bac91;">bookmark_border</i></a>
           		<a href="#"><i id="likeicon" class="material-icons align-middle" style = "float:right; font-size: 30px; color:red;">favorite_border</i></a>
@@ -196,7 +198,8 @@
           	
           	function chechId(swriter,memail){
           		if(swriter!=memail){
-          				$("#delete").css('display','none');
+          				$("#deleteSelfGuideDetail").css('display','none');
+          				$("#updateSelfGuideDetail").css('display','none');
           		} 
           	}
           	
