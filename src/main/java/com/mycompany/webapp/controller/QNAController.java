@@ -100,7 +100,7 @@ public class QNAController {
 		return "qna/qnaUpdateForm";
 	}
 	
-	//게시글 수정 전송
+	//게시글 수정 전송//update는 write와 다르게 저장을 안해도 기존내용이 저장되게끔 하기 위해 else를 사용안한다.qhpto에 기본값이 null이 들어가는지 확인하기 위해서 dao에서 확인함
 	@PostMapping("/qnaUpdate")
 	public String qnaUpdate(Qna qna) {
 		//받은 파일을 저장하고 저장된 이름을 Qna 객체에 저장

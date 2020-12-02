@@ -150,6 +150,12 @@ table.type09 td {
 				   		<a class="btn btn-info" href="qnaindex">목록</a>
 				   </div>
 			   </c:if>
+			   
+			   <c:if test="${qna.mnickname == mrole.role_admin}"> 
+				   <div style="text-align: center; margin-top: 10px;">
+				   		<a class="btn btn-info" href="qnaindex">답변</a>
+				   </div>
+			   </c:if>
 	    </div>
 </div>
 		

@@ -47,6 +47,10 @@
 	<update id="updateNoImage" parameterType="qna">
 		update qna set qtitle=#{qtitle}, qcontent=#{qcontent} where qnumber=#{qnumber}
 	</update>	
+	
+	<update id="updateAnswer" parameterType="qna">
+		update qna set answer=#{answer} where qnumber=#{qnumber}
+	</update>		
 </mapper>
 
 
