@@ -53,35 +53,97 @@
 
     <section id="contact" class="contact mt-3">
       <div class="container" id="firstForm">
-        <form action="<%=application.getContextPath()%>/photo/write" method="post" role="form" onsubmit="return writePhoto()" enctype="multipart/form-data">
-				<div class="row mt-5 mb-3">
+        <form action="deleteMember" method="post" role="form" onsubmit="return checkDeleteMember()" enctype="multipart/form-data">
+				<div class=" mt-5 mb-5">
 					<div class="col">
 						<h2>회원탈퇴</h2>
 					</div>
 				</div>
-				<div class="row">
-					<div class="form-group form-inline">
-							
+				<div class=" col mb-3">
+					<h5><strong>회원 탈퇴 신청에 앞서 아래 내용을 반드시 확인해 주세요.</strong></h5>
 				</div>
+				<div class=" col">
+					<div class = "border" style = "width: -webkit-fill-available;">
+						<div style="margin: 2%;">
+							<dl style = "width: -webkit-fill-available;">
+							    <dt>회원탈퇴 시 게시물 관리</dt>
+							    <dd class = "mr-1 ml-1"> 회원탈퇴 후 Ohouse 서비스에 입력한 게시물 및 댓글은 삭제되지 않으며, 회원정보 삭제로 인해 작성자 본인을 확인할 수 없으므로 게시물 편집 및 삭제 처리가 원천적으로 불가능 합니다. 게시물 삭제를 원하시는 경우에는 먼저 해당 게시물을 삭제 하신 후, 탈퇴를 신청하시기 바랍니다.
+								</dd>
+						    </dl>
+					    </div>
+				    </div>
 				</div>
-				<div id = "addDiv">
-				<div id = "cloneForm" class="row align-self-center border pt-3" style = "">
-        		</div> 
-
-		
-      </div>
-      
-		<div class ="row mb-3 clearfix">
-			<div class = "mx-auto">
-				<button type="button" class="btn" style = "color: white; background-color: #1bac91;" onClick="addform()">회원탈퇴</button>
-				<button type="submit" class="btn ml-2 btn-info">취소하기</button>
-			</div>
+				
+				<div class="form-check mt-3 mb-5">
+				  <label class="form-check-label">
+				    <input id = "necessary" type="checkbox" class="" value=""><strong>위 내용을 모두 확인하였습니다.<label class="text-danger"> 필수</label></strong>
+				  </label>
+				</div>
+				
+				<div class=" col mb-3">
+					<h5><strong>Ohouse 회원에서 탈퇴하려는 이유가 무엇인가요? (복수선택 가능) <label class="text-danger"> 필수</label></strong></h5>
+				</div>
+				<div class=" col">
+					<div class = "border" style = "width: -webkit-fill-available;">
+						<div style="margin: 2%;">
+							<div class = "mt-2 mb-2" style = "width: -webkit-fill-available;">
+								<div class="form-check-inline col-4">
+								  <label class="form-check-label">
+								    <input type="checkbox" class="form-check-input" value="">이용빈도 낮음
+								  </label>
+								</div>
+								<div class="form-check-inline col-4">
+								  <label class="form-check-label">
+								    <input type="checkbox" class="form-check-input" value="">재가입
+								  </label>
+								</div>
+								<div class="form-check-inline col-3">
+								  <label class="form-check-label">
+								    <input type="checkbox" class="form-check-input" value="">콘텐츠/제품정보/상품 부족
+								  </label>
+								</div>
+							</div>
+	
+							<div class = "mb-2" style = "width: -webkit-fill-available;">
+								<div class="form-check-inline col-4">
+								  <label class="form-check-label">
+								    <input type="checkbox" class="form-check-input" value="">개인정보보호
+								  </label>
+								</div>
+								<div class="form-check-inline col-4">
+								  <label class="form-check-label">
+								    <input type="checkbox" class="form-check-input" value="">회원특혜/쇼핑혜택 부족
+								  </label>
+								</div>
+								<div class="form-check-inline col-3">
+								  <label class="form-check-label">
+								    <input type="checkbox" class="form-check-input" value="">기타
+								  </label>
+								</div>
+						    </div>
+					    </div>
+				    </div>
+				</div>
+				
+				<div class="col mt-5">
+					<div class = "border" style="width: -webkit-fill-available;">
+						<div style="margin: 2%;">
+							<h5><strong>개인정보보호에 대한 안내</strong></h5>
+							<p>고객님께 개인정보보호에 대한 안내드립니다.</p>
+							<p>오늘의집에서는 고객 여러분의 개인 정보를 개인정보보호 방침에 따라 안전하게 관리하고 있습니다.</p>
+							<p>또한 최근 언론을 통해 보도된 개인정보유출 사고는 오늘의집과 관련이 없음을 안내해 드리며, 고객님께서 안전하게 이용하실 수 있도록 보안에 더욱 힘쓰겠습니다. 감사합니다.</p>
+						</div>
+					</div>
+				</div>
+				
+				<div class ="col mt-3 mb-3">
+					<div class = "mx-auto">
+						<button type="submit" class="btn" style = "color: white; background-color: #1bac91;">회원탈퇴</button>
+						<a href = "mypage" class="btn ml-2 btn-info" style = "color: white;">취소하기</a>
+					</div>
+				</div>
+      		</form>
 		</div>
-      
-      </form>
-			</div>
-			</div>
-			</div>
 	</section><!-- End Contact Section -->
   </main><!-- End #main -->
 

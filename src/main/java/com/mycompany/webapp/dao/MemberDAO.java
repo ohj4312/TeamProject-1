@@ -54,4 +54,9 @@ public class MemberDAO {
 		
 	}
 
+	public void deleteMember(Member member) {
+		sst.delete("mybatis.mapper.member.deleteMember",member);
+		
+	}
+
 }
