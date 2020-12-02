@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
@@ -43,47 +44,37 @@
   <jsp:include page="/WEB-INF/views/include/Header.jsp"/>
 
  
-
+	<main>
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact mt-5">
       <div class="container mt-6">
 
         <div class="section-title" data-aos="fade-up">
-          <h2>회원가입에 실패하셨습니다.. 다시 시도하시겠습니까? </h2>
-          
+          <h2>비밀번호 변경</h2>
         </div>
 
         
 
         <div class="row mt-5 justify-content-center" data-aos="fade-up">
-          <div class="col-lg-5 col-md-7">
-            <form action="<%=application.getContextPath()%>/member/join" method="post" role="form" class="php-email-form">
+          <div class="col-lg-5 col-md-5">
+            <form action="updatePassword" method="post" class="php-email-form" onsubmit="return checkPassword()">
               <div class="form-group">
-                <label>이메일 주소</label> 
-                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="이메일을 입력하지 않았습니다." />
+                <input type="password" class="form-control" name="mpassword" id="mpassword" placeholder="현재 비밀번호" data-rule="minlen:8" data-msg="최소 8자 이상 입력해주세요." />
                   <div class="validate"></div>
               </div>
               <div class="form-group">
-                <label>비밀번호</label> 
-                <input type="password" class="form-control" name="password" id="password" placeholder="Your Password" data-rule="minlen:8" data-msg="최소 8자 이상 입력해주세요." />
+                <input type="password" class="form-control" name="mpassword1" id="mpassword1" placeholder="변경할 비밀번호" data-rule="minlen:8" data-msg="최소 8자 이상 입력해주세요." />
                   <div class="validate"></div>
               </div>
               <div class="form-group">
-                <label>비밀번호 확인</label> 
-                <input type="password" class="form-control" name="password" id="password" placeholder="Your Password" data-rule="minlen:8" data-msg="최소 8자 이상 입력해주세요." />
+                <input type="password" class="form-control" name="mpassword2" id="mpassword2" placeholder="비밀번호 확인" data-rule="minlen:8" data-msg="최소 8자 이상 입력해주세요." />
                   <div class="validate"></div>
               </div>
-              <div class="form-group">
-                <label>별명</label> 
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Your NickName" data-rule="minlen:4" data-msg="별명은 최소 3자 이상 입력해주세요." />
-                <div class="validate"></div>
-              </div>
-              <div class="mb-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
+              <div id = "alertd"class="alert alert-danger" style= "display: none">
+				    비밀번호가 동일하지 않습니다.
+				</div>
+              <div class="text-center"><button type="submit">변경</button></div>
+              
             </form>
           </div>
 
@@ -91,10 +82,14 @@
 
       </div>
     </section><!-- End Contact Section -->
+    <section></section>
+    <section></section>
 
   </main><!-- End #main -->
 
   <jsp:include page="/WEB-INF/views/include/footer.jsp"/>
+
+  <!-- Vendor JS Files -->
    <script src="<%=application.getContextPath() %>/resources/vendor/jquery/jquery.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/jquery.easing/jquery.easing.min.js"></script>

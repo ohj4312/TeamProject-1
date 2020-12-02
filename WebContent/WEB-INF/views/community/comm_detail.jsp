@@ -161,19 +161,7 @@
 									<a class="follow-btn">팔로우</a>
 									</div>
 									<div id="comm_hitsList">
-									<script>
-										function communitylist(check){            
-								            	$.ajax({
-								    				url:"<%=application.getContextPath() %>/community/comm_list",
-								    				data: {check:check, search:search},
-								    				success:function(data){    					
-								    					$("#comm_hitsList").html(data);
-								    					console.log("실행");
-								    				
-								    				}
-								    			});	
-								      		}     
-										</script>
+									
 									</div>
 								</div>
 							</div>
@@ -223,7 +211,6 @@
 		<!-- End Blog Section -->
 	</main>
 	<!-- End #main -->
-	
 	<a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 
 	<!-- ======= Footer ======= -->
@@ -326,7 +313,8 @@
 	<script
 		src="<%=application.getContextPath()%>/resources/vendor/venobox/venobox.min.js"></script>
 	<script 
-		src="<%=application.getContextPath()%>/resources/vendor/aos/aos.js"></script>
+		src="<%=application.getContextPath()%>/resources/vendor/aos/aos.js">
+		</script>
 	<script
 		src="<%=application.getContextPath()%>/resources/vendor/jquery.easing/jquery.easing.min.js"></script>
 
@@ -334,13 +322,9 @@
 	<script src="<%=application.getContextPath()%>/resources/js/main.js"></script>
 
 	<script>
-		$(function(){
-			communitylist(2);  
-		});
 		
 		function commreplyWrite(c_number){
 			var rcontent = $("#rcontent").val().trim();
-			
 			if(rcontent!=""){
 				console.log("댓글 실행");
 				$.ajax({
@@ -369,7 +353,12 @@
 					$("#reply_result").html(data);
 				}
 			});
-		} */
+		} 
+		
+		 $(function(){
+			var cnumber = ${cnumber};
+			commreplyList(cnumber);
+		}); */
 	</script>
 
 
