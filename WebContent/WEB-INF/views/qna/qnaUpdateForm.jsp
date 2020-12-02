@@ -76,7 +76,7 @@ td a {
 <div class="container">
 <div class="row">
 	<div style="width: 1000px; margin-left: auto; margin-right: auto;" >
-		<h3 style="margin-bottom:50px">Q&A 질문 작성</h3>
+		<h3 style="margin-bottom:50px; padding-left: 15px;">Q&A 질문 작성</h3>
 		<div class="col-sm">
 		<form id="qnaUpdateForm" method="post" action="qnaUpdate" enctype="multipart/form-data"><!-- input type="file사용할때 enctype="multipart/form-data" 사용하기  -->
 			<!-- <table style="width:auto" class="table table-sm table-bordered"> -->
@@ -224,7 +224,7 @@ td a {
 		src="<%=application.getContextPath()%>/resources/vendor/aos/aos.js"></script>
 
 	<!-- Template Main JS File -->
-	<%-- <script src="<%=application.getContextPath()%>/resources/js/main.js"></script> --%>
+	<script src="<%=application.getContextPath()%>/resources/js/main.js"></script>
 
 
 </body>

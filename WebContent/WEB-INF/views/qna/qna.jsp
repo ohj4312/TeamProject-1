@@ -38,6 +38,7 @@
 			width: 100%;
 			margin-left: auto; 
 			margin-right: auto;
+			
 		}
 		
 		.mobile {
@@ -81,7 +82,7 @@
 				<thead class="thead-light ">
 					<tr>
 						<th id="th1" class="mobile" style="width: 70px; font-weight: bold;">번호</th>
-						<th id="th2" style="font-weight: bold;">제목</th>
+						<th id="th2" style="font-weight: bold; ">제목</th>
 						<th id="th3" class="mobile" style="width: 100px; font-weight: bold;">사진</th>
 						<th id="th4" class="mobile" style="width: 100px; font-weight: bold;">작성자</th>
 						<th id="th5" class="mobile" style="width: 120px; font-weight: bold;">날짜</th>
@@ -90,8 +91,8 @@
 				<tbody>
 					<c:forEach var="qna" items="${list}">
 						<tr>
-							<td class="mobile">${qna.qnumber}</td>
-							<td><a href="qnaDetail?qnumber=${qna.qnumber}">${qna.qtitle}</a></td>
+							<td class="mobile" style="text-align:center;">${qna.qnumber}</td>
+							<td ><a style="color:black;" href="qnaDetail?qnumber=${qna.qnumber}">${qna.qtitle}</a></td>
 							<td class="mobile"><img class="rounded" width="70px" height="50px" src="photodownload?fileName=${qna.qphoto}"/></td>
 							<td class="mobile">${qna.mnickname}</td>
 							<td class="mobile"><fmt:formatDate value="${qna.qdate}" pattern="yyyy-MM-dd"/></td>
