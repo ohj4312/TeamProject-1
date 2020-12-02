@@ -47,7 +47,7 @@
 	</select>
 	
 	<select id="selectSelfListFilter" parameterType="String" resultType="selfguide">
-		select simage, swriter, stype ,stitle, scontent
+		select snumber,simage, swriter, stype ,stitle, scontent
 		from Self_Guide 
 		where stype=#{stype}
 	</select>
@@ -55,4 +55,8 @@
 	<update id="updatehitcount" parameterType="selfguide" >
 		update Self_Guide set hit_count = (select hit_count from Self_Guide where snumber = #{snumber}) +1  where snumber = #{snumber}
 	</update>
+	
+	<delete id="deleteSelf" parameterType="int">
+		delete from Self_Guide where snumber=#{snumber}
+	</delete>
 </mapper>

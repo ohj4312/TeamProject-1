@@ -61,6 +61,10 @@ public class SelfGuideService {
 		return sgDAO.getselfguidephotoList(sg);
 	}
 
+	public void deleteSelfguide(int snumber) {
+		sgDAO.deleteSelf(snumber);
+	}
+
 	public void updatehitcount(SelfGuide sg) {
 		
 		sgDAO.updatehitcount(sg);;
