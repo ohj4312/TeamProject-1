@@ -25,7 +25,7 @@ public class CommunityService {
 	}
 	
 	public int comm_replyWrite(Community community) {
-		return communityDao.comm_replyInsert(community);
+		return c_replyDao.comm_replyInsert(community);
 	}
 
 	public List<Community> Comm_list(Pager pager) {
@@ -39,7 +39,7 @@ public class CommunityService {
 	}
 
 	public Community Comm_one(Community community){
-		Community comm_list = communityDao.communitySelectOne(community);
+		Community comm_list = c_replyDao.communitySelectOne(community);
 		return comm_list;
 	}
 
