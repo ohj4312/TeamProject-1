@@ -61,6 +61,10 @@
 		update Self_Guide set hit_count = (select hit_count from Self_Guide where snumber = #{snumber}) +1  where snumber = #{snumber}
 	</update>
 	
+	<update id="updateSelfPhoto" parameterType="selfguide">
+		update Self_Guide set simage=#{simage}, stype=#{stype} ,stitle=#{stitle}, scontent=#{scontent} where snumber = #{snumber}
+	</update>
+	
 	<delete id="deleteSelf" parameterType="int">
 		delete from Self_Guide where snumber=#{snumber}
 	</delete>

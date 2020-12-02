@@ -63,7 +63,7 @@ public class SelfGuideController {
 			String saveName=new Date().getTime()+"_"+sg.getSimageAttach().getOriginalFilename();
 			sg.setSimage(saveName);
 			logger.info(sg.getSimage());
-			File dest = new File("C:/Temp/upload/selfguide/"+saveName);
+			File dest = new File("D:/Myworkspace/photo/selfguide/"+saveName);
 			sg.getSimageAttach().transferTo(dest);
 			int row=service.setSelfWrite(sg);
 			logger.info(""+row);
@@ -186,59 +186,44 @@ public class SelfGuideController {
 	
 	@GetMapping("/deleteSelfguide")
 	public String deleteSelfguide(int snumber) {
-		logger.info(""+snumber);
-		logger.info("delete실행된다!!!!!!!!!!!!!!!!!!!!!!!!!");
 		service.deleteSelfguide(snumber);
 		return "redirect:/selfguide/selflist";
 	}
 	
-	//사진 다운로드
-	@GetMapping("/photodownload")
-	public void photodownload(String fileName, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		logger.info(fileName);
-		
-		//파일 정보 얻기, 파일의 데이터를 읽기 위한 입력 스트림 얻기
-		String saveFilePath = "C:/Temp/upload/selfguide/"+fileName;
-		InputStream is = new FileInputStream(saveFilePath);
-		
-		 
-		//응답 HTTP헤더 구성
-		//1) Content Type 헤더 구성 ->어떤 파일의 타입으로 응답을 보낼 것 인가?
-		ServletContext sc = request.getServletContext();
-		//sc.getMimeType(fileName) -> 파일 확장명을 추출
-		String fileType = sc.getMimeType(fileName);
-		//헤더에 setting
-		//추출한 파일 확장명을 통해 contentType 설정 
-		response.setContentType(fileType); 
-		
-		//2)Content-Disposition 헤더 구성 -> 응답할 파일의 이름 설정, 다운 여부 설정
-		//파일에 붙어 있는 숫자를 분리하고 오리지널 이름을 추출
-		String originalFileName = fileName.split("_")[1];
-		//파일 이름이 한글일 경우를 대비해 한글 변환
-		originalFileName = new String(originalFileName.getBytes("UTF-8"), "ISO-8859-1");
-		
-		//헤더에 setting
-		//attachment가 들어가면 무조건 다운 안 붙을 경우 보여줄 수 있는 파일(이미지파일)은 보여주고 아닌 파일(실행 파일)은 다운
-		//filename은 응답할 파일의 이름 설정
-		response.setHeader("Content-Disposition", "attachment; filename=\""+originalFileName+"\"");
-		 
-		//3)ContentLegth 헤더 구성 -> 응답할 파일의 크기 설정
-		//응답보낼 파일의 크기 추출
-		int size = (int)new File(saveFilePath).length();
-		//헤더에 크기 setting
-		response.setContentLength(size);
-		
-		//4)응답HTTP바디(본문) 구성
-		//실제 파일을 응답하는 과정
-		OutputStream os = response.getOutputStream();
-		//알아서 파일을 읽어서 보냄.
-		FileCopyUtils.copy(is, os);
-		os.flush();
-		os.close();
-		is.close();
-		
-		
+	@GetMapping("/updateSelfguide")
+	public String updateSelfguide(int snumber,Model model) {
+		logger.info(""+snumber);
+		logger.info("update실행된다!!!!!!!!!!!!!!!!!!!!!!!!!");
+		SelfGuide sg = new SelfGuide();
+		sg.setSnumber(snumber);
+		sg=service.selectSelfPhoto(sg);
+		logger.info(sg.getStitle());
+		logger.info(sg.getScontent());
+		logger.info(sg.getSimage());
+		logger.info(sg.getStype());
+		model.addAttribute("sg",sg);
+		return "guide/selfguide-update";
 	}
 	
-
+	@PostMapping("/selfupdate")
+	public String selfupdate(SelfGuide sg) throws IllegalStateException, IOException {
+		logger.info(""+sg.getSnumber());
+		logger.info(""+sg.getSimage());
+		logger.info("update바뀐다???????????????????????????");
+		if(!sg.getSimageAttach().isEmpty()) {
+			String originalFileName=sg.getSimageAttach().getOriginalFilename();
+			logger.info(originalFileName);
+			String saveName=new Date().getTime()+"_"+sg.getSimageAttach().getOriginalFilename();
+			sg.setSimage(saveName);
+			logger.info(sg.getSimage());
+			File dest = new File("D:/Myworkspace/photo/selfguide/"+saveName);
+			sg.getSimageAttach().transferTo(dest);
+			
+		}
+		
+		service.changeSelfPhoto(sg);
+		
+		
+		return "redirect:/selfguide/selflist";
+	}
 }

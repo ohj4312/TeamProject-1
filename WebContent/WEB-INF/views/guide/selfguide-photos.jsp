@@ -8,7 +8,7 @@
 			<a href="<%=application.getContextPath()%>/selfguide/selfdetail?snumber=${selfguide.snumber}&swriter=${selfguide.swriter}&scontent=${selfguide.scontent}">
 			
 			<div class="row pl-3 pr-2 mb-4">
-				<img class="rounded mr-2 "style="width:350px; height:200px;"  src="<%=application.getContextPath() %>/selfguide/photodownload?fileName=${selfguide.simage}" />
+				<img class="rounded mr-2 "style="width:350px; height:200px;"  src="<%=application.getContextPath()%>/file/selfguide?fileName=${selfguide.simage}" />
 			</div>
 			<div>${selfguide.stitle } <div><h5>${selfguide.swriter }</h5></div></div>
 			
