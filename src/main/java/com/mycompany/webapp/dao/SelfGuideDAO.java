@@ -68,8 +68,13 @@ public class SelfGuideDAO {
 	}
 
 
-	public int updatehitcount(int hit_count) {
-		return sst.update("mybatis.mapper.selfguide.updatehitcount",hit_count);
+	public void updatehitcount(SelfGuide sg) {
+		sst.update("mybatis.mapper.selfguide.updatehitcount",sg);
+	}
+
+
+	public List<SelfGuide> getselfguidephotoList(SelfGuide sg) {
+		return sst.selectList("mybatis.mapper.selfguide.getselfguidephotoList",sg);
 	}
 
 	

@@ -70,6 +70,8 @@
         
 
       </div>
+      
+      <div id="paging"></div>
     </section>
   <!-- ======= script ======= -->
 	
@@ -126,6 +128,20 @@
 		function selfWrite(){
 			location.href="<%=application.getContextPath()%>/selfguide/selfguide-write";
 		}
+		
+		
+		
+		function selfguidephotolist(pageNo){
+			console.log("페이징 실행 되나여");
+			$.ajax({
+				url :"<%=application.getContextPath()%>/selfguide/selflist",
+				data: {pageNo:pageNo},
+				function : success(data){
+					$("#paging").html(data);
+				}
+			})
+			
+		}
 	</script>
 
   <!-- ======= script ======= -->
@@ -134,13 +150,37 @@
   <main id="main">
 
     <!-- ======= Breadcrumbs ======= -->
-    <section id="portfolio" class="portfolio section">
+   
+    
+    	<div class="row text-center" style="width:100%">
+			
+	        <div class="input-group mb-3" style="width:50%; float:none; margin:0 auto">
+			
+	          <ul class="pagination" style="text-align:left">
+	          	<c:if test="${pager.groupNo>1}">
+	            	<li class="page-item"><a class="page-link" href="javascript:selfguidephotolist(${pager.startPageNo-1})">Pre</a></li>
+	            </c:if>
+	            
+	            <c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
+					<c:if test="${pager.pageNo==i}">
+	           	 		<li class="page-item"><a class="page-link" href="javascript:selfguidephotolist(${i})">${i}</a></li>
+	            	</c:if>
+	            	<c:if test="${pager.pageNo!=i}">
+	            		<li class="page-item"><a class="page-link" href="javascript:selfguidephotolist(${i})">${i}</a></li>
+	            	</c:if>
+	             </c:forEach>
+	             <c:if test="${pager.groupNo<pager.totalGroupNo}">
+	            	<li class="page-item"><a class="page-link" href="javascript:selfguidephotolist(${pager.endPageNo+1})">Next</a></li>
+	          	</c:if>
+	          </ul>
+	        </div>
+	        
+	      </div>
     
     
     
     
-    
-    </section><!-- End Portfolio Section -->
+   
 
 
 

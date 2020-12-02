@@ -316,6 +316,7 @@
 $(document).ready(function(){
 	 
 	selfreplyList(${sg.snumber}); 
+	
 }); 
 </script>
 </body>
