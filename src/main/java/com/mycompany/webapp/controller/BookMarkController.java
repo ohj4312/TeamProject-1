@@ -129,14 +129,6 @@ public class BookMarkController {
 		out.close();
 	}
 	
-	@GetMapping("/Return")
-	public void Return() {
-		
-	}
-	
-	
-	
-	
 	//조회를 위한 리스트.
 	@GetMapping("/getBookMarkList")
 	public String getBookMarkList(Model model,HttpSession session) throws Exception {
@@ -161,63 +153,6 @@ public class BookMarkController {
 		
 		
 	}
-	 
-	@GetMapping("/photodownload")
-	public void download(String fileName,HttpServletRequest request,HttpServletResponse response) throws Exception {		//리턴 타입이 void이니까  jsp를 안 거친다.
-		logger.info("fileName: "+fileName);
-		
-		
-		//파일의 데이터를 읽기 위한 입력 스트림 얻기.
-		String saveFilePath = "C:/Temp/upload/"+fileName;
-		logger.info(saveFilePath);
-		InputStream is = new FileInputStream(saveFilePath);
-		
-		
-		 
-		//응답 HTTP 헤더 구성				//여기 우리 프로젝트 할때 복사 하고 카피 !
-		
-		//1) Content - Type 헤더 구성	-	응답으로 보내는 파일의 종류가 뭐냐  어떤 종류의 파일이 다운로드 되고 있다. 이런 정보는 브라우저가 실행할 파일(워드? 그림판?)을 결정하기 위함임.
-		ServletContext application = request.getServletContext();
-		//String fileType= application.getMimeType(fileName);// 이 파일 네임의 확장명.
-		response.setContentType(fileName);
-		
-		
-		//2) Content-Disposition 헤더 구성. - 다운로드할 파일의 이름 지정.			//
-		//String originalFileName = fileName.split("_")[1];							
-		//originalFileName = new String(originalFileName.getBytes("UTF-8"),"ISO-8859-1"); 			//한글을 영어로 바꾸겠다. 한글1자를 3바이트로 표현
-		response.setHeader("Content-Disposition", " filename=\""+fileName+"\"");		//  \" 여길 데이터로 보겠다.  \"
-		//파일을 다운로드할때 파일이름을 헤더에다가 집어 넣는데 그때 이름이 Content-Disposition , 2번째는 값.
-		//2번째는 originalFileName이 들어가면 되는데.								/ fileName= 숫자_파일.jpg  //split하게되면  {"숫자 ", "파일.jpg"}  
-																													//0번	  1번index	
-		//3) Content-Length 헤더 구성 	- 다운로드할 파일의 크기를 지정.
-		int fileSize = (int)new File(saveFilePath).length();
-		response.setContentLength(fileSize);
-		
-		//응답 HTTP의 바디(본문) 구성
-		//문자가 아닌 파일이니 바이트스트림으로 해야한다.
-		OutputStream os = response.getOutputStream();		//javaProject ch14 exam02_inputSTream copy와 같은 스프링 표현
-		FileCopyUtils.copy(is, os);	//is에서 읽어서 os로 보낸다
-		os.flush();
-		os.close();
-		is.close();
-		
-		//썸네일을 눌러서 그림을 다운로드 하고 싶다.  한부분문 고치면 되는데.. getFileList.jsp에서  ${fileName}
-			
-	}														
-
-	
-	
-	/*	@GetMapping("/returnmypage")
-		public String returnmypage(Model model, HttpSession session) {
-			Member memail = (Member)session.getAttribute("member");
-			Member member;
-			member = memberService.getYourHomeSearch(memail.getMemail());
-			logger.info(String.valueOf(member.getFollowCheking()));
-			model.addAttribute("member", member);
-			return "member/returnmypage";
-		}*/
-	
-	
 }
 
 

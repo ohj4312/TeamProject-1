@@ -1,23 +1,31 @@
 package com.mycompany.webapp.controller;
 
+import java.io.File;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.mycompany.webapp.dto.Member;
 import com.mycompany.webapp.dto.SelfGuide;
+import com.mycompany.webapp.service.FollowService;
 import com.mycompany.webapp.service.MemberService;
 
 @Controller
@@ -25,7 +33,10 @@ import com.mycompany.webapp.service.MemberService;
 public class MemberController {
 	
 	@Resource
-	MemberService memberService;
+	private MemberService memberService;
+	
+	@Resource
+	private FollowService followService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	@RequestMapping("/login")
@@ -106,5 +117,67 @@ public class MemberController {
 		logger.info(String.valueOf(member.getFollowingCount()));
 		
 		return "member/myHome";
+	}
+	
+	@GetMapping("/memberUpdate")
+	public String memberUpdate() {
+		logger.info("실행");
+		return "member/mypageUpdate";
+	}
+	
+	@PostMapping("/updateImage")
+	public String updateImage(MultipartFile aimageAttach, HttpSession session) {
+		logger.info(aimageAttach.getOriginalFilename());
+
+		Member member = (Member) session.getAttribute("member");
+		
+		//파일 이름 중복 방지를 위한 밀리세컨드 단위의 시간초를 파일 이름 앞에 붙여줌.
+		String saveFilename = new Date().getTime()+"_"+aimageAttach.getOriginalFilename();
+		member.setMimage(saveFilename);
+
+		logger.info(saveFilename);
+		try {
+			//실제 사용자의 요청에 파일을 서버에 저장
+			aimageAttach.transferTo(new File("D:/MyWorkSpace/photo/member/"+saveFilename));
+		} catch (Exception e) {} 
+		
+		memberService.updateMimage(member);
+		return "member/mypage";
+	}
+	
+	@GetMapping("/updatePassword")
+	public String updatePasswordForm() {
+		return "member/updatePassword";
+	}
+	
+	@PostMapping("/updatePassword")
+	public String updatePassword(String mpassword, String mpassword1, HttpSession session, HttpServletRequest request, HttpServletResponse response, Model model) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		Member member = (Member) session.getAttribute("member");
+		
+		member.setMpassword(mpassword);
+		logger.info(mpassword);
+		logger.info(mpassword1);
+		
+		if(memberService.updatePassword(member, mpassword1)) {
+			session.invalidate();
+			new SecurityContextLogoutHandler().logout(request, response, auth);
+			return "member/login";
+		}else {
+			model.addAttribute("fail", "fail");
+			return "member/updatePassword";
+		}
+	}
+	
+	@GetMapping("/deleteMember")
+	public String deleteMemberForm() {
+		return "member/deleteMember";
+	}
+	
+	@PostMapping("/deleteMember")
+	public String deleteMember(HttpSession session) {
+		Member member = (Member) session.getAttribute("member");
+		memberService.delteMember(member);
+		return "home";
 	}
 }

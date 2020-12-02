@@ -33,20 +33,15 @@ public class SelfGuideService {
 
 	public List<SelfGuide> getselfguideList(Pager pager) {
 		
-		return sgDAO.selectByPage(pager);
+		return sgDAO.selectByPage(pager); 
 	}
 
-	public List<SelfGuide> getselfguidephotoList(SelfGuide sg) {
-		
-		return sgDAO.selectByPage(sg);
-	}
+	
  
-	public SelfGuide selectSelfPhoto(int snumber) {
-		SelfGuide sg = sgDAO.selectSelfPhoto(snumber);
+	public SelfGuide selectSelfPhoto(SelfGuide sg) {
+		sg = sgDAO.selectSelfPhoto(sg.getSnumber());
 		
 		
-		
-		 
 		return sg;
 	}
 
@@ -60,10 +55,23 @@ public class SelfGuideService {
 		return filterlist;
 	}
 
-	public int updatehitcount(int hit_count) {
-		hit_count = hit_count +1;
-		return sgDAO.updatehitcount(hit_count);
+	public List<SelfGuide> getselfguidephotoList(SelfGuide sg) {
+		
+		
+		return sgDAO.getselfguidephotoList(sg);
 	}
+
+	public void deleteSelfguide(int snumber) {
+		sgDAO.deleteSelf(snumber);
+	}
+
+	public void updatehitcount(SelfGuide sg) {
+		
+		sgDAO.updatehitcount(sg);;
+	} 
+
+	
+	
 
 
 

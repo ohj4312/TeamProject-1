@@ -22,17 +22,16 @@
 		select rnum, snumber, hit_count, swriter, stitle, simage,stype
 		from ( select rownum as rnum, snumber, hit_count, swriter, stitle, simage,stype 
 			  from self_guide s, member m 
-			  where rownum &lt;=#{endRowNo} and s.swriter=m.memail order by snumber desc )
+			  where rownum &lt;=#{endRowNo} and s.swriter=m.memail  order by snumber desc )
 			  where rnum &gt; =#{startRowNo}
 	</select>
 	 
 	
-	<select id="selectByPageLis" parameterType="SelfGuide" resultType="SelfGuide">
-		<!-- select rnum, snumber, hit_count, swriter, stitle, simage
-		from ( select rownum as rnum, snumber, hit_count, swriter, stitle, simage 
-			  from self_guide s, member m 
-			  where rownum &lt;=#{endRowNo} and s.swriter=m.memail order by snumber desc )
-			  where rnum &gt; =#{startRowNo} -->
+	<select id="getselfguidephotoList" parameterType="SelfGuide" resultType="SelfGuide">
+		select rownum as rnum, snumber, swriter, stitle, simage, stype,hit_count
+		from self_guide s, member m where s.swriter=m.memail order by snumber desc
+			  
+		
 		
 	</select>
 	
@@ -48,12 +47,16 @@
 	</select>
 	
 	<select id="selectSelfListFilter" parameterType="String" resultType="selfguide">
-		select simage, swriter, stype ,stitle, scontent
+		select snumber,simage, swriter, stype ,stitle, scontent
 		from Self_Guide 
 		where stype=#{stype}
 	</select>
 
-	<update id="updatehitcount" parameterType="int" >
-		update Self_Guide set hit_count = ${hit_count} where snumber = #{snumber}
+	<update id="updatehitcount" parameterType="selfguide" >
+		update Self_Guide set hit_count = (select hit_count from Self_Guide where snumber = #{snumber}) +1  where snumber = #{snumber}
 	</update>
+	
+	<delete id="deleteSelf" parameterType="int">
+		delete from Self_Guide where snumber=#{snumber}
+	</delete>
 </mapper>

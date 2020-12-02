@@ -4,7 +4,7 @@
 
 <section id="formchange" class="post post--cards pd">	
 <h5><strong>사진</strong></h5>
-<div id="mypagephoto" style="border:1px dashed #dbdbdb;width:100%;height: 320px;">
+<div id="mypagephoto" class = "scroll" style="border:1px dashed #dbdbdb;width:100%;height: 320px;">
     <div>
     	<c:if test="${member.list == null}">
 	    	<span class="material-icons ">add </span>
@@ -33,10 +33,26 @@
     	<c:if test="${selfguide != null}">
 			<div class="scroll col-lg-8 h-25" style="width:100%">
 		 			<c:forEach var="selfguide" items="${selfguide}">
-          				<a href="javascript:otherselfguidephoto('${selfguide.simage}', '${selfguide.scontent}','${selfguide.stitle }','${selfguide.stype }')"><img src="<%=application.getContextPath() %>/selfguide/photodownload?fileName=${selfguide.simage}" class= "w-25 h-25"></a>
+          				<a href="<%=application.getContextPath()%>/selfguide/selfdetail?snumber=${selfguide.snumber}&swriter=${selfguide.swriter}">
+          					<img src="<%=application.getContextPath() %>/selfguide/photodownload?fileName=${selfguide.simage}" class= "w-25 h-25">
+          				</a>
 					</c:forEach>
 			</div>
     	</c:if>
+    	
+    	<%-- <c:if test="${selfguide != null}">
+			<div class="scroll col-lg-8 h-25" style="width:100%">
+		 			<c:forEach var="selfguide" items="${selfguide}">
+          				<h5>${selfguide.stitle}</h5>
+          				<a href="<%=application.getContextPath()%>/selfguide/selfdetail?snumber=${selfguide.snumber}&swriter=${selfguide.swriter}">
+          					<img style="align-left" src="<%=application.getContextPath() %>/selfguide/photodownload?fileName=${selfguide.simage}" class= "w-25 h-25">
+          				
+          				</a>
+          				<hr/>
+					</c:forEach>
+			</div>
+    	</c:if>
+    	 --%>
     </div>
 </div>
 </section>
