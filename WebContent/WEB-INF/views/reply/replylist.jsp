@@ -8,7 +8,7 @@
 		<h4>댓글 </h4>
 		<h4 style="color:DodgerBlue; padding-left:10px">${count}</h4>
 	</div>
-	<div class="col-8 p-0">
+	<div class="col-lg-8 col-md-12 p-0">
 		<div class="input-group mb-3">
 			<c:if test="${member.memail != null}">
   				<input type="text" id="rcontent" class="form-control" placeholder="칭찬과 격려는 큰 힘이됩니다!" >
@@ -48,7 +48,7 @@
 	    
 <div class="col-sm-12">
 	<c:if test="${count>0}">
-		<div class="input-group mb-3 col-8 p-0">
+		<div class="input-group mb-3 col-lg-8 col-md-12 p-0">
 			<ul class="pagination mx-auto">
 				<c:if test="${pager.groupNo>1}">
 					<li class="page-item">
