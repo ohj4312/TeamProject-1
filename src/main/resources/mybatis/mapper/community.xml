@@ -14,20 +14,27 @@
       values(#{cr_rmnickname}, #{cr_cnumber}, sysdate, #{cr_rcontent}, SEQ_COM_REPLY.nextval)
    </insert>
    
-   <!-- Community 댓글 List -->
-   <select id="communityReplyList" parameterType="int" resultType="community">
-   		select cr_rcontent, mimage, cr_rmnickname
-		from c_reply cr, community c, member m
-		where cr.cr_cnumber = #{c_number} and cr.cr_cnumber = c.c_number and cr.cr_rmnickname = m.mnickname;
+   <!-- Community Detail로 넘어가기  -->
+   <select id="communityselectOne" resultType="community" parameterType="community">
+      select c_mnickname, c_content, c_title, c_number, c_date, c_image, mimage, memail
+      from community, member
+      where c_number = #{c_number} and member.mnickname=#{c_mnickname}
    </select>
    
+   <!-- Community 댓글 List -->
+   <select id="communityReplyList" parameterType="int" resultType="community">
+   		select cr_rcontent, mimage, cr_rmnickname, memail
+		from c_reply cr, community c, member m
+		where cr.cr_cnumber = #{c_number} and cr.cr_cnumber = c.c_number and cr.cr_rmnickname = m.mnickname;
+   </select> 
+   
    <!-- Community 댓글 Count -->
-   <select id="communityreplyCount" parameterType="community" resultType="int">
+    <select id="communityreplyCount" parameterType="community" resultType="int">
 		select count(*) from c_reply c where c.cr_cnumber = #{c_number}
 	</select>
    
    <!-- 댓글 페이지 별로 분리하기 -->
-   <select id="communityReplyByPage" parameterType="community" resultType="community">
+    <select id="communityReplyByPage" parameterType="community" resultType="community">
    		select rnum, cr_rmnickname, cr_cnumber, cr_rcontent,  rmimage, rmemail
 		from(
 		select rownum as rnum, cr_cnumber, cr_rcontent,  rmimage, cr_rmnickname, rmemail
@@ -65,13 +72,6 @@
       where rownum &lt;= #{endRowNo}
       )
       where rnum &gt;= #{startRowNo}
-   </select>
-   
-   <!-- Community Detail로 넘어가기  -->
-   <select id="communityselectOne" resultType="community" parameterType="community">
-      select c_mnickname, c_content, c_title, c_number, c_date, c_image, mimage, memail
-      from community, member
-      where c_number = #{c_number} and member.mnickname=#{c_mnickname}
    </select>
    
    <!-- Community 조회수   -->
