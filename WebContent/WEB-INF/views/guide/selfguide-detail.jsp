@@ -196,7 +196,6 @@
           	
           	function chechId(swriter,memail){
           		if(swriter!=memail){
-          			 console.log("삭제");
           				$("#delete").css('display','none');
           		} 
           	}
@@ -323,18 +322,16 @@
   <!-- Template Main JS File -->
   <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>
 <script type="text/javascript">
-<<<<<<< HEAD
+
 $(function(){
-	selfreplyList(${sg.snumber});
-	console.log("되냐?");
-	chechId(${sg.swriter},${member.memail});
-=======
-$(document).ready(function(){
-	 
+	chechId('${sg.swriter}','${member.memail}'); 
 	selfreplyList(${sg.snumber}); 
+});
+	 
+	 
 	
->>>>>>> branch 'master' of https://github.com/mw7895la/TeamProject
-}); 
+
+
 </script>
 </body>
 

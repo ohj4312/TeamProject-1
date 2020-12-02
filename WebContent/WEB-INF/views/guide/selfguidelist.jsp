@@ -136,8 +136,8 @@
 			$.ajax({
 				url :"<%=application.getContextPath()%>/selfguide/selflist",
 				data: {pageNo:pageNo},
-				function : success(data){
-					$("#paging").html(data);
+				success:function(data){
+					
 				}
 			})
 			
