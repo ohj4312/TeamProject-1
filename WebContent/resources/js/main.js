@@ -564,7 +564,14 @@ function writePhoto(){
 
         }
 
-
+function checkPassword(){
+	if($('#mpassword1').val() == $('#mpassword2').val()){
+		return true;
+	}else{
+		$('#alertd').attr('style', ' ');
+		return false;
+	}
+}
 		  
 function getList(page){
 			console.log("페이징 실행");
@@ -805,3 +812,64 @@ function followCheck(pwriter, urlpath, classname){
 	}
 
 } 
+
+function getfollowList(){
+		$.ajax({
+			url:"/teamproject/follow/followList", 
+			success:function(data) {
+				$("#formchange").html(data);
+			}
+		});
+	} 
+	
+	function getfollowingList(){
+		$.ajax({
+			url:"/teamproject/follow/followingList",
+			success:function(data) { 
+				$("#formchange").html(data);
+			}
+		});
+	} 
+	
+	  function Return(){
+			
+			$.ajax({  
+			url : "/teamproject/member/returnMypage",
+	 						
+			success : function(data){
+				console.log("return 스크립트 넘어옴.");
+				$("#formchange").html(data);
+			}
+			});
+		}  
+	
+	
+	
+	        				
+		function GetBookMarkList(){
+			console.log("리스트 불러오기");
+			
+			$.ajax({
+				url : "/teamproject/BK/getBookMarkList",
+				
+				method: "get",
+				success : function(data){
+					console.log("함수 안에부분 실행");
+					
+					$("#formchange").html(data);
+				}
+			});
+		}
+		
+		function getLikephotolist(){
+			$.ajax({
+				url:"/teamproject/like/getLikePhotolist",
+				
+				success:function(data){
+					
+					$("#formchange").html(data);
+				
+				}
+			});
+			
+		}     	

@@ -13,5 +13,24 @@
 	<select id="selectnicnameNmimage" parameterType="String" resultType="member">
 		select MNICKNAME, mimage from member where memail = #{pwriter}
 	</select>
+	<update id="updateMimage" parameterType="member">
+		UPDATE member
+		SET
+		mimage = #{mimage}
+		WHERE
+		memail=#{memail}
+	</update>
+	
+	<select id="selectPassword" parameterType="member" resultType="String">
+		select mpassword from member where memail=#{memail}
+	</select>
+	
+	<update id="updatePassword" parameterType="member">
+		UPDATE member
+		SET
+		mpassword = #{mpassword}
+		WHERE
+		memail=#{memail}
+	</update>
 	
 </mapper>
