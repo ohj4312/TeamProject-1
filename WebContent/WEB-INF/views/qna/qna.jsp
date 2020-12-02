@@ -44,33 +44,6 @@
 <!-- Template Main CSS File -->
 <link href="<%=application.getContextPath()%>/resources/css/style.css"
 	rel="stylesheet">
-
-<!-- =======================================================
-  * Template Name: Maxim - v2.2.0
-  * Template URL: https://bootstrapmade.com/maxim-free-onepage-bootstrap-theme/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-<style type="text/css">
-#a {
-	background-position: left;
-}
-
-#menu {
-	margin-left: 250px;
-}
-
-td a {
-	text-decoration: none;
-	color: inherit;
-}
-	dropdownMenuButton{
-	 margin-left: auto; 
-	 margin-right: auto; 
-	 text-align: left; 
-	 margin-bottom: 10px; 
-}
-</style>
 </head>
 
 <body>
@@ -91,14 +64,14 @@ td a {
 		
 		<table
 			style="width: 1000px; margin-left: auto; margin-right: auto; background-color: #ffffff"
-			class=" table table-lg table-bordered fade-up">
+			class="table table-lg table-bordered fade-up">
 			<thead class="thead-light ">
 				<tr>
-					<th style="width: 50px; font-weight: bold;">번호</th>
-					<th style="width: 50px; font-weight: bold;">제목</th>
-					<th style="width: 50px; font-weight: bold;">사진</th>
-					<th style="width: 50px; font-weight: bold;">작성자</th>
-					<th style="width: 50px; font-weight: bold;">날짜</th>
+					<th style="width: 70px; font-weight: bold;">번호</th>
+					<th style="font-weight: bold;">제목</th>
+					<th style="width: 100px; font-weight: bold;">사진</th>
+					<th style="width: 100px; font-weight: bold;">작성자</th>
+					<th style="width: 100px; font-weight: bold;">날짜</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -106,7 +79,7 @@ td a {
 					<tr>
 						<td>${qna.qnumber}</td>
 						<td><a href="qnaDetail?qnumber=${qna.qnumber}">${qna.qtitle}</a></td>
-						<td><img class="rounded-circle" width="50px" height="50px" src="photodownload?fileName=${qna.qphoto}"/></td>
+						<td><img class="rounded" width="70px" height="50px" src="photodownload?fileName=${qna.qphoto}"/></td>
 						<td>${qna.mnickname}</td>
 						<td><fmt:formatDate value="${qna.qdate}" pattern="yyyy-MM-dd"/></td>
 					</tr>

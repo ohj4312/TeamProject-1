@@ -65,7 +65,8 @@
       <div class="container mt-5">
         <div class="row">
           <div class="col-lg-10" data-aos="fade-up">
-           <pre> <h3 id="title">${sg.stitle}</h3></pre>
+           <pre> <h3 id="title">${sg.stitle}<a id="delete" href="<%=application.getContextPath() %>/selfguide/deleteSelfguide?snumber=${sg.snumber}" class="btn btn-danger" style="float:right">삭제하기</a>
+            	</h3></pre>
           	<h2 id="type">${sg.stype} </h2>
           	
             	<img id="self_image" style="width:100%; height:400px;" src="<%=application.getContextPath() %>/selfguide/photodownload?fileName=${sg.simage}"/>
@@ -87,12 +88,10 @@
 
             <article class="entry entry-single">
 
-              <%-- <div class="entry-img">
-                <img style="width:100%; height:120px;"src="<%=application.getContextPath() %>/resources/img/apple-touch-icon.png" alt="" class="img-fluid">
-              </div> --%>
+              
 
               <h2 class="entry-title">
-                <a href="blog-single.html">소제목</a>
+                <a href="blog-single.html">${sg.stitle}</a>
               </h2>
 
               <div class="entry-meta">
@@ -106,9 +105,9 @@
               <div class="entry-content">
               
                
-               
-                
-                <h3><div id="scontent"></div></h3>
+               		<div id="sg">${sg.scontent }</div>
+                	
+                	<div id="rcontent"></div>
                 
 				</div>
 				</article>
@@ -134,32 +133,35 @@
         		console.log(imagepath);
         		console.log(scontent);
         		$("#self_image").attr("src", imagepath);
-        		$("#scontent").html(scontent);
+        		$("#sg").hide();
+        		$("#rcontent").html(scontent);
         		$("#title").html(stitle);
         		$("#type").html(stype);
         		
         	} 
           	 	
-          	function selfreplyWrite(snumber){
-          	 	var rcontent = $("#rcontent").val().trim();
-          	 		
+          	function selfreplyWrite(snumber) {
+          	 	var rcontent = $("#rcontent2").val().trim();
+          	 	console.log("rcontent:", rcontent); 
+          	 	
           	 	if(rcontent!=""){
-          	 		
-          	 	console.log(snumber);
-          	 	$.ajax({
-          	 		url:"/teamproject/selfguide/replyWrite",
-          	 		method:"post",
-          	 		data : {rcontent:rcontent, snumber:snumber},
-          	 		success:function(data){
-          	 			console.log("성공후 실행");
-          	 			if(data.result=="success"){
-          	 				selfreplyList(snumber);
-          	 			}
-          	 			$("#reply_result").html(data);
-          	 		}
-          	 	});
-          	}
-          	}
+	          	 	console.log(snumber);
+	          	 	$.ajax({
+	          	 		url:"<%=application.getContextPath()%>/selfguide/replyWrite",
+	          	 		method:"post",
+	          	 		data : {rcontent:rcontent, snumber:snumber},
+	          	 		success:function(data){
+	          	 			console.log("성공후 실행");
+	          	 			if(data.result=="success"){
+	          	 				
+	          	 				selfreplyList(snumber);
+	          	 				
+	          	 			}
+	          	 			$("#reply_result").html(data);
+	          	 		}
+	          	 	});
+          		}
+          	} 
           	
           	function selfreplyList(snumber, pageNo){
           		if(!pageNo){
@@ -190,7 +192,16 @@
           			}
           		});
           	}
-
+        	
+          	
+          	function chechId(swriter,memail){
+          		if(swriter!=memail){
+          			 console.log("삭제");
+          				$("#delete").css('display','none');
+          		} 
+          	}
+          	
+  
            </script>
              
             </div><!-- End blog author bio -->
@@ -312,10 +323,18 @@
   <!-- Template Main JS File -->
   <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>
 <script type="text/javascript">
+<<<<<<< HEAD
+$(function(){
+	selfreplyList(${sg.snumber});
+	console.log("되냐?");
+	chechId(${sg.swriter},${member.memail});
+=======
 $(document).ready(function(){
 	 
 	selfreplyList(${sg.snumber}); 
-});
+	
+>>>>>>> branch 'master' of https://github.com/mw7895la/TeamProject
+}); 
 </script>
 </body>
 

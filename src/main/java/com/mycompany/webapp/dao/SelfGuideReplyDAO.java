@@ -30,7 +30,15 @@ public class SelfGuideReplyDAO {
 	}
 
 	public List<SelfGuide_reply> getReplyList(SelfGuide_reply sg_reply) {
-		return sst.selectList("mybatis.mapper.selfreply.selectList",sg_reply);
+		logger.info("sd");
+		
+		List<SelfGuide_reply> list= sst.selectList("mybatis.mapper.selfreply.selectList",sg_reply);
+		for(SelfGuide_reply sg: list) {
+			logger.info(sg.getMnickname());
+			logger.info(sg.getRcontent());
+			logger.info(sg.getRimage());
+		}
+		return list;
 	}
 
 	public void replyDelete(int snumber) {

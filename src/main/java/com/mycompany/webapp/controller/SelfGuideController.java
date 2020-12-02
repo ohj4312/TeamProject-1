@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -27,6 +29,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mycompany.webapp.dto.Member;
 import com.mycompany.webapp.dto.Pager;
+import com.mycompany.webapp.dto.Register_photo;
 import com.mycompany.webapp.dto.SelfGuide;
 import com.mycompany.webapp.service.SelfGuideService;
 
@@ -39,10 +42,6 @@ public class SelfGuideController {
 	@Resource
 	private SelfGuideService service;
 	
-	
-
-	
-
 	//셀프 가이드에 사진 올리기
 	@RequestMapping("/selfguide-write")
 	public String selfwriteForm() {
@@ -87,46 +86,39 @@ public class SelfGuideController {
 		
 		int rows = service.getRows();
 		logger.info(String.valueOf(rows));
-		String url;
-		int count =0;
-		
-		if(pageNo >1) {
-			count = 12;
-			url ="guide/selfguide-photos";
-		}else {
-			count = 16;
-			url ="guide/selfguidelist";
-		}
-		
-		Pager pager = new Pager(count, 5, rows, pageNo);
 		
 		
-		if(member == null) {
-			guidelist = service.getselfguideList(pager);
-		}else {//로그인 한 상태
-			SelfGuide sg = new SelfGuide();
-			sg.setSwriter(member.getMemail());
-			sg.setEndRowNo(pager.getEndRowNo());
-			sg.setStartRowNo(pager.getStartRowNo());
-			//guidelist = service.getselfguidephotoList(sg);
-			logger.info(sg.getSwriter());
-			logger.info(String.valueOf(sg.getEndRowNo()));
-			logger.info(String.valueOf(sg.getStartRowNo()));
-			guidelist = service.getselfguideList(pager);
+		
+		Pager pager = new Pager(5, 5, rows, pageNo);
+		guidelist = service.getselfguideList(pager);
+		
+		
+		
+		SelfGuide sg = new SelfGuide();
+		
+		
+		guidelist = service.getselfguidephotoList(sg);
+		for(SelfGuide sge : guidelist) {
+			logger.info(sge.getSwriter());
+			logger.info(sge.getStype());
+			logger.info(String.valueOf(sge.getSnumber()));
+			//logger.info(String.valueOf(sge.getHit_count()));
+			logger.info(sge.getStitle());
 		}
 		
 		
 		
 		
 		model.addAttribute("guidelist",guidelist);
-		
-		return url;
+		model.addAttribute("pager",pager);
+		return "guide/selfguidelist";
 		
 	}
 	
+
 	//셀프 가이드 리스트에서 한 게시물 선택시 상세 뷰.
 	@GetMapping("/selfdetail")
-	public String selfphotoDetail(int snumber,String swriter,Model model,HttpSession session) {
+	public String selfphotoDetail(int snumber,String swriter,String scontent,Model model,HttpSession session) {
 		
 		Member member = (Member) session.getAttribute("member");
 		//logger.info("snumber:"+String.valueOf(snumber));
@@ -134,27 +126,36 @@ public class SelfGuideController {
 		SelfGuide sg = new SelfGuide();
 		
 		List<SelfGuide> list;
+		
 		sg.setSnumber(snumber);
 		sg.setSwriter(swriter);
+		sg.setScontent(scontent);
+		//sg.setHit_count(hit_count);
 		logger.info("swriter:"+swriter);
+				
+		//logger.info(String.valueOf(sg.getHit_count()));
+		 
 		
-		
+		logger.info(String.valueOf(sg.getHit_count()));
+
 		list=service.selectSelfPhotoList(swriter);
 		
+		sg = service.selectSelfPhoto(sg);
+		service.updatehitcount(sg);
 		
-		sg =  service.selectSelfPhoto(snumber);
 		logger.info("snumber:"+String.valueOf(sg.getSnumber()));
 		logger.info(sg.getSwriter());
 		logger.info(sg.getStitle());
 		logger.info(sg.getStype());
 		logger.info(sg.getScontent());
+		//logger.info(String.valueOf(sg.getHit_count()));
 		
 		
 		
 		
 		model.addAttribute("sg",sg);
 		model.addAttribute("list",list);
-		
+	
 		 
 		return "guide/selfguide-detail";
 	}
@@ -176,6 +177,13 @@ public class SelfGuideController {
 		return "guide/selfguide-photos";
 	}
 	
+	@GetMapping("/deleteSelfguide")
+	public String deleteSelfguide(int snumber) {
+		logger.info(""+snumber);
+		logger.info("delete실행된다!!!!!!!!!!!!!!!!!!!!!!!!!");
+		service.deleteSelfguide(snumber);
+		return "redirect:/selfguide/selflist";
+	}
 	
 	//사진 다운로드
 	@GetMapping("/photodownload")

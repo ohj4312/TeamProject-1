@@ -27,9 +27,7 @@ public class SelfGuideDAO {
 
 
 	public int insertSelfGuide(SelfGuide sg) {
-		logger.info("잘들어갈까요안들어갈까요~?");
 		int row=sst.insert("mybatis.mapper.selfguide.insertSelfGuide" , sg);
-		logger.info("1이면 성공: "+row);
 		return row;
 	}
 	
@@ -65,6 +63,23 @@ public class SelfGuideDAO {
 
 	public List<SelfGuide> selectFilter(String filter) {
 		return sst.selectList("mybatis.mapper.selfguide.selectSelfListFilter",filter);
+	}
+
+
+	public void updatehitcount(SelfGuide sg) {
+		sst.update("mybatis.mapper.selfguide.updatehitcount",sg);
+	}
+
+
+	public List<SelfGuide> getselfguidephotoList(SelfGuide sg) {
+		return sst.selectList("mybatis.mapper.selfguide.getselfguidephotoList",sg);
+	}
+
+
+	public void deleteSelf(int snumber) {
+		logger.info("deleteDAO도!!!!!!실행된다!!!!!!!!!!!!!!!!!!!!!!!!!");
+		int row=sst.delete("mybatis.mapper.selfguide.deleteSelf", snumber);
+		logger.info("잘삭제되면 1이다: "+row);
 	}
 
 	

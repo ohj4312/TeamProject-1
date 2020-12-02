@@ -47,7 +47,12 @@ public class QnaDao {
 	}
 
 	public int updateQna(Qna qna) {
-		int rows = sst.update("mybatis.mapper.qna.update", qna);
+		int rows = 0;
+		if(qna.getQphoto() != null) {
+			rows = sst.update("mybatis.mapper.qna.update", qna);
+		} else {
+			rows = sst.update("mybatis.mapper.qna.updateNoImage", qna);
+		}
 		return rows;
 	}
 
