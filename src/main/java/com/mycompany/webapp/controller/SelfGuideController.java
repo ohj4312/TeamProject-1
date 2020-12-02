@@ -97,22 +97,7 @@ public class SelfGuideController {
 		guidelist = service.getselfguideList(pager);
 		
 		
-		/* if(member == null) { 
-			 guidelist = service.getselfguideList(pager); 
-		 	}else{//로그인 한 상태 
-			  SelfGuide sg = new SelfGuide();
-			  sg.setSwriter(member.getMemail()); 
-			  sg.setEndRowNo(pager.getEndRowNo());
-			  sg.setStartRowNo(pager.getStartRowNo()); 
-			  //guidelist =  service.getselfguidephotoList(sg); 
-			  //sg = service.getselfguidephotoList(sg);
-			  logger.info(sg.getSwriter());
-			  logger.info(String.valueOf(sg.getEndRowNo()));
-			  logger.info(String.valueOf(sg.getStartRowNo())); 
-			  guidelist =  service.getselfguideList(pager); for(SelfGuide sg2 : guidelist) {
-				  logger.info(String.valueOf(sg2.getHit_count())); 
-		  } 
-		  }*/
+		
 		SelfGuide sg = new SelfGuide();
 		
 		
