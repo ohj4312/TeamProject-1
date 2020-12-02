@@ -117,7 +117,7 @@ table.type09 td {
 			    </tr>
 			    <tr>
 			        <th scope="row">사진</th>
-			        <td><img class="rounded-circle" width="70px" height="70px" src="photodownload?fileName=${qna.qphoto}"/></td>
+			        <td><img class="rounded" width="70px" height="50px" src="photodownload?fileName=${qna.qphoto}"/></td>
 			    </tr>
 			    <tr>
 			        <th scope="row">글쓴이</th>

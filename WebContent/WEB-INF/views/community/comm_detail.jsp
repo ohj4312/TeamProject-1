@@ -150,7 +150,7 @@
 									<div class="detail-left" style="display:inline-block;">
 									<ul>
 										<li class="d-flex align-items-center">
-											<img src="<%=application.getContextPath()%>/photo/photodownload?fileName=${list.mimage}" style="width:60px; height:60px; border-radius: 100%;">
+											<img src="<%=application.getContextPath()%>/file/photo?fileName=${list.mimage}" style="width:100%; height:100%; border-radius: 100%;">
 										</li>
 										<li class="d-flex align-items-center">
 											<a href="<%=application.getContextPath()%>/member/yourhomesearch?pwriter=${list.memail}">${list.c_mnickname}</a>

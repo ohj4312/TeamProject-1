@@ -32,8 +32,8 @@
 	</select>
 	
 	<insert id="insert" parameterType="qna">
-		insert into qna (qnumber, qtitle, qdate, qcontent, mnickname,qphoto)
-		values (seq_qnumber.nextval, #{qtitle}, sysdate, #{qcontent}, #{mnickname},#{qphoto})
+		insert into qna (qnumber, qtitle, qdate, qcontent, mnickname, qphoto)
+		values (seq_qnumber.nextval, #{qtitle}, sysdate, #{qcontent}, #{mnickname}, #{qphoto})
 	</insert>
 	
 	<delete id="deleteByBno" parameterType="int">
@@ -41,6 +41,16 @@
 	</delete>
 	
 	<update id="update" parameterType="qna">
-		update qna set qtitle=#{qtitle}, qcontent=#{qcontent} where qnumber=#{qnumber}
+		update qna set qtitle=#{qtitle}, qcontent=#{qcontent}, qphoto=#{qphoto} where qnumber=#{qnumber}
 	</update>
+	
+	<update id="updateNoImage" parameterType="qna">
+		update qna set qtitle=#{qtitle}, qcontent=#{qcontent} where qnumber=#{qnumber}
+	</update>	
 </mapper>
+
+
+
+
+
+

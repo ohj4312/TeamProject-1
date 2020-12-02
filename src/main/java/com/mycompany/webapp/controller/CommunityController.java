@@ -135,6 +135,7 @@ public class CommunityController {
 
 	}
 	
+	
 	@GetMapping("/comm_detail")
 	public String Comm_Detail(int cnumber, String cmnickname, Model model, HttpSession session) {	
 		service.Comm_hits(cnumber);	//조회수		

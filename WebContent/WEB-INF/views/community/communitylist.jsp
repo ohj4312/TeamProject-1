@@ -15,7 +15,7 @@
 		<div
 			style="display: inline-block; padding-bottom: 3%; padding-right: 3%;">
 			<img
-				src="<%=application.getContextPath() %>/community/comm_listphoto?fileName=${list.c_image}"
+				src="<%=application.getContextPath() %>/file/community?fileName=${list.c_image}"
 				style="border-radius: 20px; width: 60px; height: 60px">
 		</div>
 		<div style="display: inline-block; text-align: right;">

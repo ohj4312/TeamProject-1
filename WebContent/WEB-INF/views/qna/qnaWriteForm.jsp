@@ -76,11 +76,11 @@ td a {
 	<div style="width: 1000px; margin-left: auto; margin-right: auto;" >
 		<h3 style="margin-bottom:50px">Q&A 질문 작성</h3>
 	
-		<form id="qnaWriteForm" method="post" action="qnaWrite">
+		<form id="qnaWriteForm" method="post" action="qnaWrite" enctype="multipart/form-data">
 			<!-- <table style="width:auto" class="table table-sm table-bordered"> -->
 			<div class="input-group">
 				<div class="input-group-prepend"><span class="input-group-text">제목</span></div>
-				<input id="qtitle" type="text" name="qtitle" class="form-control">
+				<input id="qtitle" type="text" name="qtitle" class="form-control" >
 				<span id="qtitleError" class="error"></span>
 			</div>
 			
@@ -92,21 +92,12 @@ td a {
 			
 			<div class="input-group">
 				<div class="input-group-prepend"><span class="input-group-text">사진</span></div>
-				<input type="file" name="qphoto" class="form-control">
-				<c:if test="${qna.qphoto == null}">
-					  <img class="rounded-circle" width="70px" height="70px" src="photodownload?fileName=unnamed.png"/>
-				</c:if>
-				<c:if test="${qna.qphoto != null}">
-					  <img class="rounded-circle" width="70px" height="70px" src="photodownload?fileName=${qna.qphoto}"/>
-				</c:if>
+				<input type="file" name="attach" class="form-control">
 			</div>
 			
 			<div class="input-group">
 				<div class="input-group-prepend"><span class="input-group-text">별명</span></div>
-				<input id="mnickname" type="text" name="mnickname" class="form-control" 
-					<c:if test="${member.mnickname!=null}">value="${member.mnickname}"</c:if>
-					<c:if test="${member.mnickname==null}">value="노성규!"</c:if>
-					readonly>
+				<input id="mnickname" type="text" name="mnickname" class="form-control" value="${member.mnickname}" readonly>
 				<span id="qtitleError" class="error"></span>
 			</div>
 			<!-- //로그인이 되면 로그인된 아이디가 들어간다.값이 없으면 필수, 값이  있으면 에러가 없어서 비워두겠다. -->	
