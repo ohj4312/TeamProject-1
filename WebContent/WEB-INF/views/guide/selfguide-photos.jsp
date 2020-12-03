@@ -55,6 +55,7 @@
 					</div>
 				</sec:authorize>
 			</div>
+			
 	</div>
 </c:forEach>
 

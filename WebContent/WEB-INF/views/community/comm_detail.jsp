@@ -70,35 +70,58 @@
 	border:1px solid transparent;
 	border-radius:4px;
 }
+.dropdown-menu{
+	display:none;
+}
+/* .comm-detail-list{
+	width:150px;
+	margin:0 -1px;
+	padding:10px;
+	box-sizing:border-box;
+	background-color:#fff;
+	border:1px solid #dbdbdb;
+	border-radius:4px;
+	overflow:hidden;
+} */
+.comm-detail-list-item{
+	list-style:none;
+}
 </style>
 <body>
+ 
 	<% pageContext.setAttribute("br", "<br/>");
 	   pageContext.setAttribute("cn", "\n"); %>
 	<jsp:include page="/WEB-INF/views/include/Header.jsp" />
 
 	<main id="main">
-		<!-- ======= Breadcrumbs ======= -->
-		<section id="breadcrumbs" class="breadcrumbs">
-			
-		</section>
-		<!-- End Breadcrumbs -->
 
 		<!-- ======= Blog Section ======= -->
-		<section id="blog" class="blog">
+		<section id="blog" class="blog" style="padding-top:7%;">
 			
 			<div class="container">
 
 				<div class="row">
 
 					<div class="col-lg-8 entries">
-
 						<article class="entry entry-single" >
 
 							<div class="container">
 								<div class="row">
-									<h3 class="entry-title col-lg-8" style="text-align:left">${list.c_title}</h3>
-									<a onclick="return confirm('정말로 삭제하시겠습니까?')" href="<%=application.getContextPath()%>/community/comm_delete?c_number=${list.c_number}" class="btn btn-primary btn-md col-lg-2">삭제</a>
-
+									<h3 class="entry-title col-sm-8" style="text-align:left; display:inline-block;">${list.c_title}</h3>
+									
+									<div class="dropdown col-sm-4" style="display:inline-block; text-align:right">
+									<a type="button" class="dropdown-toggle" data-toggle="dropdown">
+									<i class="material-icons">
+										more_vert
+									</i>
+									</a>
+									
+									<div class="dropdown-menu" id="myDropdown">
+										<a class="dropdown-item" >수정</a>
+										<a class="dropdown-item" onclick="return confirm('정말로 삭제하시겠습니까?')" href="<%=application.getContextPath()%>/community/comm_delete?c_number=${list.c_number}" >삭제</a>
+									</div>
+									
+									</div>
 									
 								</div>
 							</div>
@@ -155,7 +178,7 @@
 									<div class="detail-left" style="display:inline-block;">
 									<ul>
 										<li class="d-flex align-items-center">
-											<img src="<%=application.getContextPath()%>/file/photo?fileName=${list.mimage}" style="width:100%; height:100%; border-radius: 100%;">
+											<img src="<%=application.getContextPath()%>/file/member?fileName=${list.mimage}" style="width:60px; height:60px; border-radius: 100%;">
 										</li>
 										<li class="d-flex align-items-center">
 											<a href="<%=application.getContextPath()%>/member/yourhomesearch?pwriter=${list.memail}">${list.c_mnickname}</a>
@@ -165,7 +188,8 @@
 									<div class="detail-right" style="display:inline-block; padding-left:5%;">
 									<a class="follow-btn">팔로우</a>
 									</div>
-									<div id="comm_hitsList">
+									<hr>
+									<div id="comm_hitsList" style="padding-top:10%;">
 									
 									</div>
 								</div>
@@ -326,9 +350,11 @@
 		function commreplyList(pageNo){
 			
 			var c_number=${list.c_number};
+			var c_mnickname='${list.c_mnickname}';
+			
 			$.ajax({
 				url:"/teamproject/community/comm_replyList",
-				data:{pageNo:pageNo, c_number:c_number},
+				data:{pageNo:pageNo, c_number:c_number,c_mnickname:c_mnickname},
 				success:function(data){
 					$("#reply_result").html(data);
 				}

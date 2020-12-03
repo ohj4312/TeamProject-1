@@ -76,6 +76,17 @@ public class CommunityService {
 		List<Community> list = c_replyDao.comm_rlplylistAll(pager);
 		return list;
 	}
+
+	public List<Community> Comm_replylistre(int cr_rnumber) {
+		List<Community> list = c_replyDao.comm_rlplylistReAll(cr_rnumber);
+		return list;
+	}
+
+	public void comm_replyWriteRe(Community community) {
+		c_replyDao.comm_replyWriteRe(community);
+		
+		
+	}
 	
 	
 	
