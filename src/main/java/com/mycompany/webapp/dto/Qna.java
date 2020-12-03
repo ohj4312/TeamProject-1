@@ -13,7 +13,14 @@ public class Qna {
 	private String answer;
 	private String qphoto;
 	private MultipartFile attach;
+	private String qtype;
 	
+	public String getQnatype() {
+		return qtype;
+	}
+	public void setQnatype(String qnatype) {
+		this.qtype = qnatype;
+	}
 	public MultipartFile getAttach() {
 		return attach;
 	}

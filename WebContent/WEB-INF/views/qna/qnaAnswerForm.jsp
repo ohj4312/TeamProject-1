@@ -76,7 +76,7 @@ td a {
 <div class="container">
 <div class="row">
 	<div style="width: 1000px; margin-left: auto; margin-right: auto;" >
-		<h3 style="margin-bottom:50px">Q&A 답변작성</h3>
+		<h3 style="margin-bottom:50px; padding-left: 15px;">Q&A 답변작성</h3>
 	<div class="col-sm">
 		<form id="qnaAnswerForm" method="post" action="qnaAnswer" >
 			<!-- <table style="width:auto" class="table table-sm table-bordered"> -->
@@ -213,7 +213,7 @@ td a {
 		src="<%=application.getContextPath()%>/resources/vendor/aos/aos.js"></script>
 
 	<!-- Template Main JS File -->
-	<%-- <script src="<%=application.getContextPath()%>/resources/js/main.js"></script> --%>
+	<script src="<%=application.getContextPath()%>/resources/js/main.js"></script> 
 
 
 </body>
