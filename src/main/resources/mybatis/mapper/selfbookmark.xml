@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.mapper.selfbookmark">
+	
+	<!-- 등 록 -->
+	<insert id="insertselfBookMark" parameterType="selfbookmark">
+		insert into POST_BOOKMARK (snumber , bnumber, memail)
+		values ( #{snumber},seq_bnum.nextval, #{memail})
+	</insert>
+	
+	<!-- 삭 제 -->
+	<delete id="deleteselfBookMark" parameterType="selfbookmark">
+		delete from POST_BOOKMARK where memail = #{memail} and snumber = #{snumber} 
+	</delete>
+	
+	<!-- 북마크 개수 -->
+	<select id="checkselfBookMark" parameterType="selfbookmark" resultType="int">
+		select count(*) from POST_BOOKMARK 
+		where memail = #{memail} and snumber = #{snumber}
+	</select>
+	
+	<!-- 리스트 조회 -->
+	<select id="selectselfBookMark" parameterType="String" resultType="selfguide">
+		select s.simage , s.snumber from self_guide s
+		where s.snumber in 
+		( select p.snumber
+		 from Post_bookmark p 
+		 where p.memail = #{memail}	)
+	</select>
+	
+</mapper>

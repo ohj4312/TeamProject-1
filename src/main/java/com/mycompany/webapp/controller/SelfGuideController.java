@@ -76,7 +76,8 @@ public class SelfGuideController {
 
 	}
 
-
+	
+	//  /selfguide/selflist
 	//셀프 가이드 리스트 페이징 해서 보이도록
 	@RequestMapping("/selflist")
 	public String selfphotoList(Model model,@RequestParam(defaultValue = "0") int firstcount,@RequestParam(defaultValue = "1") int pageNo, HttpSession session) {
@@ -87,8 +88,8 @@ public class SelfGuideController {
 		logger.info(String.valueOf(rows));
 		
 		String url;
-
-
+		
+		
 
 		if(firstcount>=1) { 
 			url ="guide/selfguide-photos"; 
@@ -97,7 +98,10 @@ public class SelfGuideController {
 		}
 		Pager pager = new Pager(3, 5, rows, pageNo); 		
 		
+		
+		
 		SelfGuide sg = new SelfGuide();
+		sg.setSwriter(member.getMemail());
 		sg.setEndRowNo(pager.getEndRowNo());
 		sg.setStartRowNo(pager.getStartRowNo());
 		
