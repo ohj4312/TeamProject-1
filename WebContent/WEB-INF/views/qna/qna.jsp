@@ -100,32 +100,53 @@
 					</c:forEach>
 	
 					<!-- 컬럼 합침 -->
-					<tr>
-						<td colspan="5" style="text-align: center;"><a
+					<tr class="row text-center" style="width:1000%" >
+						<%-- <td colspan="5" style="text-align: center; "><!-- <a
 							class="btn btn-outline-none btn-sm"
-							href="qnaindex?pageNo(1)" style=" border: 2px solid #e7e7e7;">&lt;</a> <c:if
+							href="qnaindex?pageNo(1)" style=" border: 2px solid #e7e7e7;">&lt;</a> --> <c:if
 								test="${pager.groupNo > 1}">
-								<a class="btn btn-outline-none btn-sm"
-									href="qnaindex?pageNo=${pager.startPageNo-1}">이전</a>
+								 <a class="btn btn-outline-none btn-sm"
+									href="qnaindex?pageNo=${pager.startPageNo-1}">이전</a> 
 							</c:if> <c:forEach var="i" begin="${pager.startPageNo}"
 								end="${pager.endPageNo}">
 								<c:if test="${pager.pageNo == i }">
-									<a class="btn btn-info btn-sm"
+									<a class="btn  btn-sm" 
 										href="qnaindex?pageNo=${i}">${i}</a>
 								</c:if>
 								<c:if test="${pager.pageNo != i }">
-									<a class="btn btn-outline-none btn-sm"
+									<a class="btn  btn-sm" 
 										href="qnaindex?pageNo=${i}">${i}</a>
 								</c:if>
 							</c:forEach> <c:if test="${pager.groupNo < pager.totalGroupNo}">
-								<a class="btn btn-outline-none btn-sm"
-									href="qnaindex?pageNo=${pager.endPageNo+1}">다음</a>
-							</c:if> <a class="btn btn-outline-none btn-sm"
-							 href="qnaindex?pageNo=${pager.totalPageNo}" style=" border: 2px solid #e7e7e7;">&gt;</a></td>
+								 <a class="btn btn-outline-none btn-sm"
+									href="qnaindex?pageNo=${pager.endPageNo+1}">다음</a> 
+							</c:if>  <a class="btn btn-outline-none btn-sm"
+							 href="qnaindex?pageNo=${pager.totalPageNo}" style=" border: 2px solid #e7e7e7;">&gt;</a></td> --%>
 	
 					</tr>
 				</tbody>
 			</table>
+			
+			<div class="input-group mb-3" style="width:10%; float:none; margin:0 auto">
+								
+	          <ul class="pagination" style="text-align:left">
+	          	<c:if test="${pager.groupNo>1}">
+	            	<li class="page-item"><a class="page-link" href="qnaindex?pageNo=${pager.startPageNo-1}">Previous</a></li>
+	            </c:if>
+	            
+	            <c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
+					<c:if test="${pager.pageNo==i}">
+	           	 		<li class="page-item"><a class="page-link"  href="qnaindex?pageNo=${i}">${i}</a></li>
+	            	</c:if>
+	            	<c:if test="${pager.pageNo!=i}">
+	            		<li class="page-item"><a class="page-link" href="qnaindex?pageNo=${i}">${i}</a></li>
+	            	</c:if>
+	             </c:forEach>
+	             <c:if test="${pager.groupNo<pager.totalGroupNo}">
+	            	<li class="page-item"><a class="page-link" href="qnaindex?pageNo=${pager.endPageNo+1}">Next</a></li>
+	          	</c:if>
+	          </ul>
+	        </div>
 		</div>
 	</div>
 </section>		
