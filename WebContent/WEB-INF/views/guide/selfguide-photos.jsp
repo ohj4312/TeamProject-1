@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-
+<div class="row portfolio-container abcd" data-aos="fade-up">
 <c:forEach var="selfguide" items="${guidelist }">
 	<div class="mb-4 mt-5 col-lg-4 col-md-6 portfolio-item  ${selfguide.snumber } ${selfguide.swriter } ${selfguide.scontent}">
 		<div class="portfolio-wrap" OnClick="location.href ='<%=application.getContextPath()%>/selfguide/selfdetail?snumber=${selfguide.snumber}'" style="border:none; cursor:pointer;">
@@ -58,5 +58,23 @@
 			
 	</div>
 </c:forEach>
-
-
+</div>
+<div class="row text-center">
+	<ul class="pagination mx-auto ">
+		<c:if test="${pager.groupNo>1}">
+			<li class="page-item"><a class="page-link" href="javascript:checkSelfGuidFilter('${stype}', 1, ${pager.startPageNo-1})">Pre</a></li>
+		</c:if>
+	
+	<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
+		<c:if test="${pager.pageNo==i}">
+			<li class="page-item"><a class="page-link" href="javascript:checkSelfGuidFilter('${stype}', 1, ${i})">${i}</a></li>
+		</c:if>
+		<c:if test="${pager.pageNo!=i}">
+			<li class="page-item"><a class="page-link" href="javascript:checkSelfGuidFilter('${stype}', 1, ${i})">${i}</a></li>
+		</c:if>
+	</c:forEach>
+	<c:if test="${pager.groupNo<pager.totalGroupNo}">
+		<li class="page-item"><a class="page-link" href="javascript:checkSelfGuidFilter('${stype}', 1, ${pager.endPageNo+1})">Next</a></li>
+	</c:if>
+	</ul>
+</div> 
