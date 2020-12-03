@@ -31,7 +31,7 @@
     	</c:if>
     	
     	<c:if test="${selfguide != null}">
-			<div class="scroll col-lg-8 h-25" style="width:100%">
+			<div class="col-lg-8 h-25" style="width:100%">
 		 			<c:forEach var="selfguide" items="${selfguide}">
           				<a href="<%=application.getContextPath()%>/selfguide/selfdetail?snumber=${selfguide.snumber}&swriter=${selfguide.swriter}">
           					<img src="<%=application.getContextPath()%>/file/selfguide?fileName=${selfguide.simage}" class= "w-25 h-25">

@@ -30,9 +30,6 @@
 	<select id="getselfguidephotoList" parameterType="SelfGuide" resultType="SelfGuide">
 		select rownum as rnum, snumber, swriter, stitle, simage, stype,hit_count
 		from self_guide s, member m where s.swriter=m.memail order by snumber desc
-			  
-		
-		
 	</select>
 	
 	<select id="selectSelfPhotoList" parameterType="int" resultType="selfguide">
@@ -50,6 +47,10 @@
 		select snumber,simage, swriter, stype ,stitle, scontent
 		from Self_Guide 
 		where stype=#{stype}
+	</select>
+	
+	<select id="selectOrder" resultType="selfguide">
+		select * from (select * from Self_Guide order by hit_count desc) where rownum&lt;=3
 	</select>
 
 	<update id="updatehitcount" parameterType="selfguide" >

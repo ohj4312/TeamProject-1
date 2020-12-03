@@ -32,7 +32,7 @@
 <div class="col-md-12 pd">
 	<div style="width:100%;">
     	<ul class="nav" >
-			<li class="nav-item col-md-2 ">
+			<li class="nav-item col-2 ">
             	<a  href="<%=application.getContextPath()%>/selfguide/selflist">
                 	<div class="jb-wrap">
 						<div class="jb-image">
@@ -47,7 +47,7 @@
               
 
                               
-              <li class="nav-item col-md-2 ">
+              <li class="nav-item col-2 ">
               	<a href="javascript:checkSelfGuidFilter('비용정리')">
               		<div class="jb-wrap">
 						<div class="jb-image">
@@ -62,7 +62,7 @@
               
         
 
-              <li class="nav-item col-md-2">
+              <li class="nav-item col-2">
                <a href="javascript:checkSelfGuidFilter('공간배치')">
                 <div class="jb-wrap">
 					<div class="jb-image"><img src="<%=application.getContextPath() %>/resources/img/space.png" alt="공간배치"></div>
@@ -74,7 +74,7 @@
                 
               </li>
               
-               <li class="nav-item col-md-2">
+               <li class="nav-item col-2">
                <a href="javascript:checkSelfGuidFilter('계획하기')">
                 <div class="jb-wrap">
 					<div class="jb-image"><img src="<%=application.getContextPath() %>/resources/img/plan.png" alt="계획하기"></div>
@@ -86,7 +86,7 @@
                 
               </li>
               
-               <li class="nav-item col-md-2">
+               <li class="nav-item col-2">
                <a href="javascript:checkSelfGuidFilter('페인트도배')">
                 <div class="jb-wrap">
 					<div class="jb-image"><img src="<%=application.getContextPath() %>/resources/img/drawing.png" alt="페인트도배"></div>
@@ -98,7 +98,7 @@
                 
               </li>
               
-               <li class="nav-item col-md-2">
+               <li class="nav-item col-2">
                <a href="javascript:checkSelfGuidFilter('바닥깔기')">
                 <div class="jb-wrap">
 					<div class="jb-image"><img src="<%=application.getContextPath() %>/resources/img/tile.png" alt="바닥깔기"></div>

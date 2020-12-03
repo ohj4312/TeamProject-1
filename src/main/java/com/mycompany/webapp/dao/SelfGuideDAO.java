@@ -88,6 +88,12 @@ public class SelfGuideDAO {
 		sst.update("mybatis.mapper.selfguide.updateSelfPhoto", sg);
 	}
 
+
+	public List<SelfGuide> selectOrder() {
+		List<SelfGuide> topThree=sst.selectList("mybatis.mapper.selfguide.selectOrder");
+		return topThree;
+	}
+
 	
 	
 }

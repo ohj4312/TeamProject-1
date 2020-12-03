@@ -76,8 +76,7 @@ public class SelfGuideController {
 
 	}
 
-	
-	//  /selfguide/selflist
+
 	//셀프 가이드 리스트 페이징 해서 보이도록
 	@RequestMapping("/selflist")
 	public String selfphotoList(Model model,@RequestParam(defaultValue = "1") int pageNo, HttpSession session) {
@@ -86,29 +85,24 @@ public class SelfGuideController {
 		
 		int rows = service.getRows();
 		logger.info(String.valueOf(rows));
-		
-		
-		
+	
 		Pager pager = new Pager(5, 5, rows, pageNo);
 		guidelist = service.getselfguideList(pager);
-		
-		
-		
+
 		SelfGuide sg = new SelfGuide();
 		
-		
 		guidelist = service.getselfguidephotoList(sg);
-		for(SelfGuide sge : guidelist) {
-			logger.info(sge.getSwriter());
-			logger.info(sge.getStype());
+		
+		//3위까지 가져오기위한 것이올시다.
+		List<SelfGuide> selforder=service.getOrder();
+		for(SelfGuide sge : selforder) {
+			logger.info(sge.getSimage());
+			logger.info(sge.getStitle());
 			logger.info(String.valueOf(sge.getSnumber()));
 			//logger.info(String.valueOf(sge.getHit_count()));
-			logger.info(sge.getStitle());
+			logger.info(String.valueOf(sge.getHit_count()));
 		}
-		
-		
-		
-		
+		model.addAttribute("order",selforder);
 		model.addAttribute("guidelist",guidelist);
 		model.addAttribute("pager",pager);
 		return "guide/selfguidelist";
