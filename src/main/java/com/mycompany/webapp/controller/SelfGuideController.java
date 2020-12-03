@@ -70,66 +70,56 @@ public class SelfGuideController {
 		}else {
 			return "selfguide/selfwrite";
 		}
-		
 		return "redirect:/selfguide/selflist";
-
-
 	}
 
-
+	
+	//  /selfguide/selflist
 	//셀프 가이드 리스트 페이징 해서 보이도록
 	@RequestMapping("/selflist")
-	public String selfphotoList(Model model,@RequestParam(defaultValue = "0") int firstcount,@RequestParam(defaultValue = "1") int pageNo, HttpSession session) {
+	public String selfphotoList(Model model,@RequestParam(defaultValue = "All")String filterString, @RequestParam(defaultValue = "0") int firstcount,@RequestParam(defaultValue = "1") int pageNo, HttpSession session) {
 		Member member = (Member) session.getAttribute("member");
 		List<SelfGuide> guidelist;
-		
-		int rows = service.getRows();
-		logger.info(String.valueOf(rows));
-		
-		String url;
+		logger.info(filterString);
+		int rows = service.getRows(filterString);
 
-
-
-		if(firstcount>=1) { 
-			url ="guide/selfguide-photos"; 
-		}else { 
-			url ="guide/selfguidelist";
-		}
 		Pager pager = new Pager(3, 5, rows, pageNo); 		
-		
 		SelfGuide sg = new SelfGuide();
+		sg.setStype(filterString);
 		sg.setEndRowNo(pager.getEndRowNo());
 		sg.setStartRowNo(pager.getStartRowNo());
 		
-		guidelist = service.getselfguidephotoList(sg);
-		for(SelfGuide sge : guidelist) {
-			logger.info(sge.getSwriter());
-			logger.info(sge.getStype());
-			logger.info(String.valueOf(sge.getSnumber()));
-			//logger.info(String.valueOf(sge.getHit_count()));
-			logger.info(sge.getStitle());
+		if(member == null) {
+			guidelist = service.getselfguidephotoListFilter(sg);
+		} else {
+			
+			sg.setSwriter(member.getMemail());
+			sg.setEndRowNo(pager.getEndRowNo());
+			sg.setStartRowNo(pager.getStartRowNo());
+			
+			guidelist = service.getselfguidephotoListFilter(sg);
 		}
+		
+		model.addAttribute("guidelist",guidelist);
+		model.addAttribute("pager",pager);
+		model.addAttribute("stype",filterString);
 		
 		//3위까지 가져오기위한 것이올시다.
 		List<SelfGuide> selforder=service.getOrder();
-		for(SelfGuide sge : selforder) {
-			logger.info(sge.getSimage());
-			logger.info(sge.getStitle());
-			logger.info(String.valueOf(sge.getSnumber()));
-			//logger.info(String.valueOf(sge.getHit_count()));
-			logger.info(String.valueOf(sge.getHit_count()));
-		}
 		model.addAttribute("order",selforder);
-		model.addAttribute("guidelist",guidelist);
-		model.addAttribute("pager",pager);
-		return url;
+		if(firstcount == 0) {
+			return "guide/selfguidelist";
+		}else {
+			return "guide/selfguide-photos";
+		}
+		
 		
 	}
 	
 
 	//셀프 가이드 리스트에서 한 게시물 선택시 상세 뷰.
 	@GetMapping("/selfdetail")
-	public String selfphotoDetail(int snumber,String swriter,String scontent,Model model,HttpSession session) {
+	public String selfphotoDetail(int snumber,Model model,HttpSession session) {
 		
 		Member member = (Member) session.getAttribute("member");
 		//logger.info("snumber:"+String.valueOf(snumber));
@@ -139,18 +129,8 @@ public class SelfGuideController {
 		List<SelfGuide> list;
 		
 		sg.setSnumber(snumber);
-		sg.setSwriter(swriter);
-		sg.setScontent(scontent);
-		//sg.setHit_count(hit_count);
-		logger.info("swriter:"+swriter);
-				
-		//logger.info(String.valueOf(sg.getHit_count()));
-		 
-		
-		logger.info(String.valueOf(sg.getHit_count()));
 
-		list=service.selectSelfPhotoList(swriter);
-		
+		logger.info(String.valueOf(sg.getHit_count()));	
 		sg = service.selectSelfPhoto(sg);
 		service.updatehitcount(sg);
 		
@@ -160,34 +140,11 @@ public class SelfGuideController {
 		logger.info(sg.getStype());
 		logger.info(sg.getScontent());
 		//logger.info(String.valueOf(sg.getHit_count()));
-		
-		
-		
-		
 		model.addAttribute("sg",sg);
-		model.addAttribute("list",list);
-	
-		 
+
 		return "guide/selfguide-detail";
 	}
-	
-	
-	@GetMapping("/selfguideFilter")
-	public String selfguideFilter(String filterString,Model model) {
-		logger.info(filterString);
-		
-		List<SelfGuide> filterlist=service.getselfFilter(filterString);
-		//SelfGuide sg = new SelfGuide();
-		for(SelfGuide self:filterlist) {
-			logger.info(self.getScontent());
-			logger.info(self.getStitle());
-		}
-		
-		model.addAttribute("guidelist",filterlist);
-		
-		return "guide/selfguide-photos";
-	}
-	
+
 	@GetMapping("/deleteSelfguide")
 	public String deleteSelfguide(int snumber) {
 		service.deleteSelfguide(snumber);

@@ -14,6 +14,7 @@ public class Community {
 	private String cr_rcontent; // 리플 내용
 	private String cr_mimage;// 리플 이미지 //멤버이미지 참조
 	private String cr_rmnickname;// 리플 작성자 //멤머닉네임 참조
+	private int CR_REPLYRNUMBER;
 	private String rmimage;
 	private String rmemail;
 	//Community	
@@ -27,8 +28,15 @@ public class Community {
 	private MultipartFile cimage;//커뮤니티 사진 저장을위해 필요한 객체~ 
 	private String mimage;
 	private String memail;
-	private int replyCount; 
+	private int replyCount;	
 	
+	
+	public int getCR_REPLYRNUMBER() {
+		return CR_REPLYRNUMBER;
+	}
+	public void setCR_REPLYRNUMBER(int cR_REPLYRNUMBER) {
+		CR_REPLYRNUMBER = cR_REPLYRNUMBER;
+	}
 	public int getReplyCount() {
 		return replyCount;
 	}

@@ -41,7 +41,7 @@
 					</div>
 					</a>
 					
-					<div div class = "row pl-3 pr-3 mt-2">
+					<div class = "row pl-3 pr-3 mt-2">
 						<sec:authorize access="isAnonymous()">
 							<a id="App1BK${photo.pnumber}" class = "col-4 " href="<%=application.getContextPath()%>/member/login">
 								<i id="itag${photo.pnumber}" class="material-icons pl-4" style = " font-size: 30px;">bookmark_border</i>
@@ -53,6 +53,7 @@
 								<i id="likeicon${photo.pnumber}" class="material-icons pl-4" style = "font-size: 30px;">favorite_border</i>
 							</a>
 						</sec:authorize>
+						
 						<sec:authorize access="isAuthenticated()">
 							<a id="App1BK${photo.pnumber}" class = "col-4 " href="javascript:toggleUpdate(${photo.pnumber}, '<%=application.getContextPath()%>/BK/CheckBookMark')">
 								<c:if test="${photo.bnumber == 0}">

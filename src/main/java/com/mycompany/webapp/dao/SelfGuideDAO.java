@@ -35,12 +35,16 @@ public class SelfGuideDAO {
 	public int countAll() {
 		return sst.selectOne("mybatis.mapper.selfguide.countAll");
 	}
-
-	public List<SelfGuide> selectByPage(Pager pager) {
-		return sst.selectList("mybatis.mapper.selfguide.selectByPage", pager);
+	
+	public int countFilter(String filter) {
+		return sst.selectOne("mybatis.mapper.selfguide.countFilter", filter);
 	}
 
 	public List<SelfGuide> selectByPage(SelfGuide sg) {
+		return sst.selectList("mybatis.mapper.selfguide.selectByPage", sg);
+	}
+
+	public List<SelfGuide> selectByPageMember(SelfGuide sg) {
 		
 		return sst.selectList("mybatis.mapper.selfguide.selectByPageList",sg);
 	}
@@ -74,6 +78,19 @@ public class SelfGuideDAO {
 	public List<SelfGuide> getselfguidephotoList(SelfGuide sg) {
 		return sst.selectList("mybatis.mapper.selfguide.getselfguidephotoList",sg);
 	}
+	
+	public List<SelfGuide> getselfguidephotoList(Pager pager) {
+		// TODO Auto-generated method stub
+		return sst.selectList("mybatis.mapper.selfguide.selectByPage",pager);
+	}
+	
+	public List<SelfGuide> getselfguidephotoListFilter(SelfGuide sg) {
+		return sst.selectList("mybatis.mapper.selfguide.getselfguidephotoListFilter",sg);
+	}
+	
+	public List<SelfGuide> selectByPageFilter(SelfGuide sg) {
+		return sst.selectList("mybatis.mapper.selfguide.selectByPageFilter",sg);
+	}
 
 
 	public void deleteSelf(int snumber) {
@@ -94,6 +111,9 @@ public class SelfGuideDAO {
 		return topThree;
 	}
 
-	
-	
+
+	public List<SelfGuide> selectByMemberFilter(SelfGuide sg) {
+		return sst.selectList("mybatis.mapper.selfguide.getselfguidephotoListFilter",sg);
+		
+	}	
 }

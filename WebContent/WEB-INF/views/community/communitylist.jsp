@@ -11,7 +11,7 @@
 <c:forEach var="list" items="${comm_list}">
 <fmt:parseNumber var="cdateD" value="${list.c_date.time /(1000*60*60*24)}" integerOnly="true" />
 	
-	<article class="entry" style="height: 200px">
+	<article class="entry">
 		<div
 			style="display: inline-block; padding-bottom: 3%; padding-right: 3%;">
 			<img
@@ -26,9 +26,9 @@
 		<div class="entry-content">
 			<p style="margin: 0px; font-size: 13px">						
 			${fn:substring(list.c_content,0,43)}
-			</p>			
-			<div class="read-more">
-				<a href="<%=application.getContextPath()%>/community/comm_detail?cnumber=${list.c_number}&cmnickname=${list.c_mnickname}">Read More</a>
+			</p>
+			<div class="read-more col-xs-12">
+				<a href="<%=application.getContextPath()%>/community/comm_detail?cnumber=${list.c_number}&cmnickname=${list.c_mnickname}" style="background-color:#F08282">Read More</a>
 			</div>
 			<div class="entry-meta">
 				<ul>

@@ -37,26 +37,21 @@
   <!-- Template Main CSS File -->
   <link href="<%=application.getContextPath() %>/resources/css/style.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: Eterna - v2.1.0
-  * Template URL: https://bootstrapmade.com/eterna-free-multipurpose-bootstrap-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+
 </head>
 
 <body>
 	
-	 <jsp:include page="/WEB-INF/views/include/Header.jsp"/>
+<jsp:include page="/WEB-INF/views/include/Header.jsp"/>
   <main id="main">
-  <section id="portfolio" class="portfolio">
+  <section id="portfolio" class="portfolio pb-1">
       <div id = "listappend" class="container mt-5">
       		
       		<h2 style="float:left">셀프 인테리어 가이드북 </h2>
       		<sec:authorize access="isAuthenticated()">
       			<span style="float:right" class="btn btn-info btn-lg" onClick="selfWrite()">글쓰기</span>
       		</sec:authorize>
-      		<div class="mb-4" style="clear:both;"><br/></div>
+      		<div class="mb-4" style="clear:both;"></div>
       		<jsp:include page="/WEB-INF/views/guide/selfguide-order.jsp"/>
       		<!-- <img style="width:100%; height:200px;"src="https://image.ohou.se/i/bucketplace-v2-development/uploads/advices/guides/self_interior/pc_banner_image.v3.png?gif=1&w=1280&webp=1"/> -->
       		
@@ -64,36 +59,14 @@
 			<jsp:include page="/WEB-INF/views/guide/selfguideFilter.jsp"/>
         </div>
 		<div style="clear:both"></div>
-      <div id = "12345" class="row portfolio-container abcd" data-aos="fade-up">
+      <div id = "12345" >
         <jsp:include page="/WEB-INF/views/guide/selfguide-photos.jsp"/>
        </div>
         
 
       </div>
-      
-
     </section>
    
-   <div class="row text-center">
-
-   	<ul class="pagination mx-auto ">
-	          	<c:if test="${pager.groupNo>1}">
-	            	<li class="page-item"><a class="page-link" href="javascript:selfguidephotolist(${pager.startPageNo-1})">Pre</a></li>
-	            </c:if>
-	            
-	            <c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
-					<c:if test="${pager.pageNo==i}">
-	           	 		<li class="page-item"><a class="page-link" href="javascript:selfguidephotolist(${i})">${i}</a></li>
-	            	</c:if>
-	            	<c:if test="${pager.pageNo!=i}">
-	            		<li class="page-item"><a class="page-link" href="javascript:selfguidephotolist(${i})">${i}</a></li>
-	            	</c:if>
-	             </c:forEach>
-	             <c:if test="${pager.groupNo<pager.totalGroupNo}">
-	            	<li class="page-item"><a class="page-link" href="javascript:selfguidephotolist(${pager.endPageNo+1})">Next</a></li>
-	          	</c:if>
-	          </ul>
-	</div> 
   </main><!-- End #main -->
 
  <jsp:include page="/WEB-INF/views/include/footer.jsp"/>
@@ -112,13 +85,9 @@
  
   <!-- Template Main JS File -->
   <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>
+	
 	<script type="text/javascript">
-	$(function(){
-		//selfguidephotolist(0);
-		  
-	});
-	
-	
+
 	function pagingList(){
 	  $.ajax({
 			url : "<%=application.getContextPath()%>/selfguide/selflist",
@@ -129,44 +98,24 @@
 		});
 	}
 	
-	function checkSelfGuidFilter(filterString){
+	
+	function selfWrite(){
+		location.href="<%=application.getContextPath()%>/selfguide/selfguide-write";
+	}
+	
+	function checkSelfGuidFilter(filterString, firstcount, pageNo){
+		console.log("check실행");
 
 		$.ajax({
-				url : "<%=application.getContextPath()%>/selfguide/selfguideFilter",
-				data:{filterString:filterString},
+				url : "<%=application.getContextPath()%>/selfguide/selflist",
+				data:{filterString:filterString, firstcount:firstcount, pageNo:pageNo},
 				success:function(data){
 					 $("#12345").html(data);
 					
 				}
 			});
 		
-	}
-	
-	function selfWrite(){
-		location.href="<%=application.getContextPath()%>/selfguide/selfguide-write";
-	}
-	
-	function selfguidephotolist(pageNo){
-		console.log("페이징 실행");
-		$.ajax({
-			url :"<%=application.getContextPath()%>/selfguide/selflist",
-			data: {pageNo:pageNo},
-			success:function(data){
-				
-			}
-		})
-		
-		$.ajax({
-			url : "<%=application.getContextPath()%>/selfguide/selflist",
-			data : {pageNo : pageNo , firstcount:1},
-			success : function (data){
-				$("#12345").html(data);
-			}
-		});
-
 	}	
-	
-	
 	</script>
 </body>
 

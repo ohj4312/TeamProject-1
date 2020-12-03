@@ -38,6 +38,18 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
 </head>
+<style>
+#write-btn{
+	font-size:20px;
+	font-weight:700;
+	color:white;
+	position:relative;
+	height:40px;
+	background-color: #d2d2d2;
+	width:100px;
+}
+
+</style>
 	<body> 
 	 
 	 <jsp:include page="/WEB-INF/views/include/Header.jsp"/>
@@ -47,7 +59,7 @@
   
  	 
     <!-- ======= Blog Section ======= -->
-    <section id="blog" class="blog">
+    <section id="blog" class="blog" style="padding-top:7%;">
       <div class="container">
       
         <div class="row">
@@ -60,11 +72,10 @@
                   <button type="submit"><i class="icofont-search"></i></button>
                 </form>
               </div>
-              <div class="read-more" >
-            
-                <a href="<%=application.getContextPath() %>/community/comm_writeFrom" class="btn btn-sm">
-                  <h3 class="sidebar-title">Community Write</h3>
-                </a>
+              <div style="width:100%; height:45px; text-align:right;">
+              <a href="<%=application.getContextPath() %>/community/comm_writeFrom" class="btn btn-sm" id="write-btn">
+						Write
+              </a>
               </div>
               <hr>
               <br>

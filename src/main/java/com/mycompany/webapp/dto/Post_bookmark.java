@@ -12,6 +12,7 @@ public class Post_bookmark {
 	
 	private int pnumber;  //register photo
 	
+	private int snumber;
 	
 	public int getBnumber() {
 		return bnumber;
@@ -35,6 +36,14 @@ public class Post_bookmark {
 
 	public void setMemail(String memail) {
 		this.memail = memail;
+	}
+
+	public int getSnumber() {
+		return snumber;
+	}
+
+	public void setSnumber(int snumber) {
+		this.snumber = snumber;
 	}
 	
 	
