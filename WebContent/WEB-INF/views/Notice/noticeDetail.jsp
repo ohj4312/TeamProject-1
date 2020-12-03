@@ -137,6 +137,11 @@ table.type09 td {
 							<td>${notice.nnumber}</td>
 						</tr>
 						<tr>
+							<th scope="row">제목</th>
+							<td >${notice.ntitle}</td>
+							
+						</tr>
+						<tr>
 							<th scope="row">내용</th>
 							<td >${notice.ncontent}</td>
 							
