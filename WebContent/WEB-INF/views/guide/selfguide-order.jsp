@@ -30,9 +30,9 @@
 		<c:if test="${!status.first}">
 			<div class="carousel-item bg-warning">
 				<div class = "row">
-     	 			<img class = "col-5" src="<%=application.getContextPath()%>/file/selfguide?fileName=${selforder.simage}" alt="${selforder.stitle}" width="auto" height="300">
+     	 			<img class = "col-md-5" src="<%=application.getContextPath()%>/file/selfguide?fileName=${selforder.simage}" alt="${selforder.stitle}" width="auto" height="300">
     				
-    				<div class = "col-7 ">
+    				<div class = "col-md-7">
     					<div class=" col-12 text-center">
     						<p class="card-text p-0"><h2>${selforder.stitle}</h2></p>
 	    					<p class="card-text p-0">${fn:substring(selforder.scontent,0,300)}</p>

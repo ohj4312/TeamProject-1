@@ -102,10 +102,10 @@
 					<!-- 컬럼 합침 -->
 					<tr>
 						<td colspan="5" style="text-align: center;"><a
-							class="btn btn-outline-primary btn-sm"
-							href="qnaindex?pageNo(1)">처음</a> <c:if
+							class="btn btn-outline-none btn-sm"
+							href="qnaindex?pageNo(1)" style=" border: 2px solid #e7e7e7;">&lt;</a> <c:if
 								test="${pager.groupNo > 1}">
-								<a class="btn btn-outline-primary btn-sm"
+								<a class="btn btn-outline-none btn-sm"
 									href="qnaindex?pageNo=${pager.startPageNo-1}">이전</a>
 							</c:if> <c:forEach var="i" begin="${pager.startPageNo}"
 								end="${pager.endPageNo}">
@@ -114,14 +114,14 @@
 										href="qnaindex?pageNo=${i}">${i}</a>
 								</c:if>
 								<c:if test="${pager.pageNo != i }">
-									<a class="btn btn-outline-success btn-sm"
+									<a class="btn btn-outline-none btn-sm"
 										href="qnaindex?pageNo=${i}">${i}</a>
 								</c:if>
 							</c:forEach> <c:if test="${pager.groupNo < pager.totalGroupNo}">
-								<a class="btn btn-outline-info btn-sm"
+								<a class="btn btn-outline-none btn-sm"
 									href="qnaindex?pageNo=${pager.endPageNo+1}">다음</a>
-							</c:if> <a class="btn btn-outline-primary btn-sm"
-							href="qnaindex?pageNo=${pager.totalPageNo}">맨끝</a></td>
+							</c:if> <a class="btn btn-outline-none btn-sm"
+							 href="qnaindex?pageNo=${pager.totalPageNo}" style=" border: 2px solid #e7e7e7;">&gt;</a></td>
 	
 					</tr>
 				</tbody>
