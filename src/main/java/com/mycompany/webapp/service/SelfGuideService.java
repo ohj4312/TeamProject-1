@@ -79,6 +79,10 @@ public class SelfGuideService {
 	public List<SelfGuide> getOrder() {
 		List<SelfGuide> selforder=sgDAO.selectOrder();
 		return selforder;
+	}
+
+	public int getFilterRows(String stype) {
+		return sgDAO.getFilterRows(stype);
 	} 
 
 	

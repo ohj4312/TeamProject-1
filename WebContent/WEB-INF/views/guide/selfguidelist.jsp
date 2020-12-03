@@ -140,6 +140,15 @@
 				}
 			});
 		
+		<%-- $.ajax({
+			url : "<%="application.getContextPath()%>/selfguide/selflist",
+			data : {filterString:filterString, pageNo:pageNo},
+			success:function(data) {
+				$("#12345").html(data);
+			}
+		
+		}); --%>
+						
 	}
 	
 	function selfWrite(){
@@ -163,6 +172,8 @@
 				$("#12345").html(data);
 			}
 		});
+		
+		
 
 	}	
 	

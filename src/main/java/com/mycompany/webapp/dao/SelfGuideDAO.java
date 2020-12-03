@@ -94,6 +94,12 @@ public class SelfGuideDAO {
 		return topThree;
 	}
 
+
+	public int getFilterRows(String stype) {
+		// TODO Auto-generated method stub
+		return sst.selectOne("mybatis.mapper.selfguide.countFilterAll",stype);
+	}
+
 	
 	
 }

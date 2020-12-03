@@ -114,7 +114,7 @@ public class SelfGuideController {
 			logger.info(sge.getStitle());
 		}
 		
-		//3위까지 가져오기위한 것이올시다.
+		
 		List<SelfGuide> selforder=service.getOrder();
 		for(SelfGuide sge : selforder) {
 			logger.info(sge.getSimage());
@@ -179,9 +179,15 @@ public class SelfGuideController {
 	@GetMapping("/selfguideFilter")
 	public String selfguideFilter(String filterString,Model model) {
 		logger.info(filterString);
+		SelfGuide sg = new SelfGuide();
 		
+		sg.setStype(filterString);
+		int rows = service.getFilterRows(sg.getStype());
+		logger.info(String.valueOf(rows));
+		
+		//Pager pager = new Pager(3, 5, rows, pageNo);
 		List<SelfGuide> filterlist=service.getselfFilter(filterString);
-		//SelfGuide sg = new SelfGuide();
+		
 		for(SelfGuide self:filterlist) {
 			logger.info(self.getScontent());
 			logger.info(self.getStitle());

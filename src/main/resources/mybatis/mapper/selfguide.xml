@@ -26,6 +26,19 @@
 			  where rnum &gt; =#{startRowNo}
 	</select>
 	 
+	 
+	 <select id="countFilterAll" parameterType="String" resultType="int">
+	 	select count(*) from self_guide where stype = #{stype}
+	 </select>
+	 
+	 
+	 
+	
+	
+	
+	
+	
+	 
 	
 	<select id="getselfguidephotoList" parameterType="SelfGuide" resultType="SelfGuide">
 		
