@@ -175,12 +175,10 @@
 						<!-- End blog author bio -->
 					
 						
-							
 							<div id="reply_result" class="blog-comments col-lg-8">						
 							
 							</div>
-							<input type="text" id="rcontent" class="form-control" placeholder="댓글을 남겨보세요!" style="display:inline-block; width:91%;">
-							<a class="btn btn-outline" style="display:inline-block; background-color:#1bac91; color:white" href="javascript:commreplyWrite(${list.c_number})">등록</a>
+							
 							
 							
 							
@@ -344,11 +342,11 @@
 				
 				}
 			});
+			
 		} 
+		
 		$(function () {
 			commreplyList();
-			
-			
 		});
 	</script>
 

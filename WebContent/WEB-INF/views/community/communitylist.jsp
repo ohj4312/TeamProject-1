@@ -76,7 +76,7 @@
 								</time></a></li>
 					<li class="d-flex align-items-center">
 					<i	class="icofont-comment"></i> 
-						<a href="<%=application.getContextPath()%>/community/comm_detail?cnumber=${list.c_number}">12Comments</a></li>
+						<a href="<%=application.getContextPath()%>/community/comm_detail?cnumber=${list.c_number}&cmnickname=${list.c_mnickname}">${list.replyCount}</a></li>
 						<li >조회수 ${list.c_count}</li>
 						
 				</ul>
@@ -86,9 +86,9 @@
 </c:forEach>
  <!-- 패이징 -->
  
- 				<div class="row text-center" style="width:100%">
+ 			<div class="row text-center" style="width:100%">
 			
-	        <div class="input-group mb-3" style="width:50%; float:none; margin:0 auto">
+	        <div class="input-group mb-3" style="width:10%; float:none; margin:0 auto">
 			
 	          <ul class="pagination" style="text-align:left">
 	          	<c:if test="${pager.groupNo>1}">
@@ -97,7 +97,7 @@
 	            
 	            <c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
 					<c:if test="${pager.pageNo==i}">
-	           	 		<li class="page-item"><a class="page-link" href="javascript:communitylist(0,${i})">${i}</a></li>
+	           	 		<li class="page-item"><a class="page-link"  href="javascript:communitylist(0,${i})">${i}</a></li>
 	            	</c:if>
 	            	<c:if test="${pager.pageNo!=i}">
 	            		<li class="page-item"><a class="page-link" href="javascript:communitylist(0,${i})">${i}</a></li>

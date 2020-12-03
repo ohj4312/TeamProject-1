@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 
@@ -63,8 +64,8 @@
 <%-- ########################################################################### --%>
 <div class="container">
 	<div class="row">
-		<div  style="width: 1000px; margin-left: auto; margin-right: auto;" >
-			<h3 style="margin-bottom:50px">Q&A 질문 작성</h3>
+		<div  style="width: 1000px; margin-left: auto; margin-right: auto; " >
+			<h3 style="margin-bottom:50px; padding-left: 15px;">Q&A 질문 작성</h3>
 			<div class="col-md">
 			<form id="qnaWriteForm" method="post" action="qnaWrite" enctype="multipart/form-data">
 				<!-- <table style="width:auto" class="table table-sm table-bordered"> -->
@@ -190,25 +191,19 @@
 	<a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 
 	<!-- Vendor JS Files -->
-	<script
-		src="<%=application.getContextPath()%>/resources/vendor/jquery/jquery.min.js"></script>
-	<script
-		src="<%=application.getContextPath()%>/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<script
-		src="<%=application.getContextPath()%>/resources/vendor/jquery.easing/jquery.easing.min.js"></script>
-	<script
-		src="<%=application.getContextPath()%>/resources/vendor/php-email-form/validate.js"></script>
-	<script
-		src="<%=application.getContextPath()%>/resources/vendor/owl.carousel/owl.carousel.min.js"></script>
-	<script
-		src="<%=application.getContextPath()%>/resources/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-	<script
-		src="<%=application.getContextPath()%>/resources/vendor/venobox/venobox.min.js"></script>
-	<script
-		src="<%=application.getContextPath()%>/resources/vendor/aos/aos.js"></script>
+  <script src="<%=application.getContextPath() %>/resources/vendor/jquery/jquery.min.js"></script>
+  <script src="<%=application.getContextPath() %>/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="<%=application.getContextPath() %>/resources/vendor/php-email-form/validate.js"></script>
+  <script src="<%=application.getContextPath() %>/resources/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="<%=application.getContextPath() %>/resources/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="<%=application.getContextPath() %>/resources/vendor/venobox/venobox.min.js"></script>
+  <script src="<%=application.getContextPath() %>/resources/vendor/aos/aos.js"></script>
+  <script src="<%=application.getContextPath() %>/resources/vendor/jquery.easing/jquery.easing.min.js"></script>
+  
 
-	<!-- Template Main JS File -->
-	<%-- <script src="<%=application.getContextPath()%>/resources/js/main.js"></script> --%>
+  <!-- Template Main JS File -->
+  <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>
+
 
 
 </body>

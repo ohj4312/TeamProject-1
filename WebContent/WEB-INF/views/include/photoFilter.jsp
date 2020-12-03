@@ -4,21 +4,16 @@
 
 
 
-          <div>
+          <div class="bar">
             <ul class="nav">
 
               <li class="nav-item mr-3">
                 <div class="dropdown">
-                  <button id="btn111" class="btn btn-light" type="button" data-toggle="dropdown" aria-haspopup="true">
-
-                    <span class="row">
-                      	정렬
-                      <i class="material-icons">
+                  <button id="btn111" class="btn" type="button" data-toggle="dropdown" aria-haspopup="true">정렬
+                      <i class="material-icons" style="margin-left:4px; vertical-align: -6px;">
                         keyboard_arrow_down
-                      </i>
-                    </span>
-
-                  </button>
+                      </i>			
+					</button>
                   <div class="dropdown-menu">
                     <a class="dropdown-item" href="javascript:addTag('역대 인기순',1);">역대 인기순</a>
                     <a class="dropdown-item" href="javascript:addTag('최신순',1);">최신순</a>
@@ -28,13 +23,10 @@
 
               <li class="nav-item mr-3">
                 <div class="dropdown">
-                  <button class="btn btn-light" type="button" data-toggle="dropdown" aria-haspopup="true" >
-                    <span class="row">
-                      	주거형태
-                      <i class="material-icons">
+                  <button id="btn111" class="btn" type="button" data-toggle="dropdown" aria-haspopup="true" >주거형태
+                      <i class="material-icons" style="margin-left:4px; vertical-align: -6px;">
                         keyboard_arrow_down
                       </i>
-                    </span>
                   </button>
                   <div class="dropdown-menu">
                     <a class="dropdown-item" href="javascript:addTag('원룸','type');">원룸</a>
@@ -50,13 +42,10 @@
 
               <li class="nav-item mr-3">
                 <div class="dropdown">
-                  <button class="btn btn-light" type="button" data-toggle="dropdown" aria-haspopup="true">
-                    <span class="row">
-                      	평수
-                      <i class="material-icons">
+                  <button id="btn111" class="btn" type="button" data-toggle="dropdown" aria-haspopup="true">평수
+                      <i class="material-icons"  style="margin-left:4px; vertical-align: -6px;">
                         keyboard_arrow_down
                       </i>
-                    </span>
                   </button>
                   <div class="dropdown-menu">
                     <a class="dropdown-item" href="javascript:addTag('10평 미만','size');">10평 미만</a>
@@ -71,13 +60,10 @@
 
               <li class="nav-item mr-3">
                 <div class="dropdown">
-                  <button class="btn btn-light" type="button" data-toggle="dropdown" aria-haspopup="true">
-                    <span class="row">
-                      	스타일
-                      <i class="material-icons">
+                  <button id="btn111" class="btn btn-light" type="button" data-toggle="dropdown" aria-haspopup="true">스타일
+                      <i class="material-icons"  style="margin-left:4px; vertical-align: -6px;">
                         keyboard_arrow_down
                       </i>
-                    </span>
                   </button>
                   <div class="dropdown-menu">
                     <a class="dropdown-item" href="javascript:addTag('모던','style');">모던</a>

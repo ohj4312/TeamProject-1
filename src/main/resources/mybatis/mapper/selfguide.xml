@@ -56,6 +56,10 @@
 		from Self_Guide 
 		where stype=#{stype}
 	</select>
+	
+	<select id="selectOrder" resultType="selfguide">
+		select * from (select * from Self_Guide order by hit_count desc) where rownum&lt;=3
+	</select>
 
 	<update id="updatehitcount" parameterType="selfguide" >
 		update Self_Guide set hit_count = (select hit_count from Self_Guide where snumber = #{snumber}) +1  where snumber = #{snumber}

@@ -4,16 +4,19 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 
-	<h4 class="comments-count">1 Comments</h4>
+	<h4 class="comments-count">${pager.totalRows} <strong style="vertical-align: -3px;">Comments</strong></h4>
+	<input type="text" id="rcontent" class="form-control" placeholder="댓글을 남겨보세요!" style="display:inline-block; width:91%;">
+	<a class="btn btn-outline" style="display:inline-block; background-color:#1bac91; color:white" href="javascript:commreplyWrite(${pager.c_number})">등록</a>
 	<c:forEach var="list" items="${comm_replylist}">
 	<div  class="comment clearfix">
 	<img src="<%=application.getContextPath()%>/file/member?fileName=${list.mimage}" class="comment-img  float-left" alt="">
 	<h5><a href="">${list.cr_rmnickname}</a> 
 	<a href="#" class="reply"><i class="icofont-reply"></i>답글</a></h5>	
 	<time >${list.cr_rdate}</time>	
-	<p>${list.cr_rcontent}</p>
-	
+	<p>${list.cr_rcontent}</p>	
 	</div>
+	<div id="comment-re" class="comment clearfix">	
+	</div>	
 </c:forEach>
 
 <div class="row text-center" style="width:100%">
