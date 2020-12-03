@@ -67,7 +67,7 @@ public class QNAController {
 			} catch (Exception e) {}
 			qna.setQphoto(saveFileName);
 		} else {
-			qna.setQphoto("noimage.png");
+			qna.setQphoto("1_noimage.png");
 		}
 		//서비스를 이용해서 게시물 쓰기
 		service.qnaWrite(qna);//클라이언트가 전송한 내용을 넣어준다.내용을 받기 위해서Ch14Board board써주고 (board)써준다.

@@ -76,7 +76,7 @@
 								</time></a></li>
 					<li class="d-flex align-items-center">
 					<i	class="icofont-comment"></i> 
-						<a href="<%=application.getContextPath()%>/community/comm_detail?cnumber=${list.c_number}">12Comments</a></li>
+						<a href="<%=application.getContextPath()%>/community/comm_detail?cnumber=${list.c_number}&cmnickname=${list.c_mnickname}">${list.replyCount}</a></li>
 						<li >조회수 ${list.c_count}</li>
 						
 				</ul>

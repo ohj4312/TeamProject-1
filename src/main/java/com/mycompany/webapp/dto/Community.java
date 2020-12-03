@@ -27,7 +27,14 @@ public class Community {
 	private MultipartFile cimage;//커뮤니티 사진 저장을위해 필요한 객체~ 
 	private String mimage;
 	private String memail;
+	private int replyCount; 
 	
+	public int getReplyCount() {
+		return replyCount;
+	}
+	public void setReplyCount(int replyCount) {
+		this.replyCount = replyCount;
+	}
 	public String getMemail() {
 		return memail;
 	}
