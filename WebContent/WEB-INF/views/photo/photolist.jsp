@@ -38,6 +38,29 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
 </head>
+<style>
+.nav{
+	display:flex;
+	text-align:center;
+}
+.bar{
+	width:100%;
+	text-align:center;
+}
+#btn111{
+	font-size:15px;
+	border-radius:4px;
+	background-color:#f5f5f5;
+	border-color:#f5f5f5;
+	color:#757575;
+	display:inline-block;
+	margin:0;
+	box-sizing:border-box;
+	border:1px solid transparent;
+	text-align:center;
+	height:50%;
+}
+</style>
 
 <body>
 

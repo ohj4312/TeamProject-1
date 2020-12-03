@@ -2,10 +2,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html; charset=UTF-8"%>
 
-<section id="formchange" class="post post--cards pd">	
+
 <h5><strong>사진</strong></h5>
-<div id="mypagephoto" class = "scroll" style="border:1px dashed #dbdbdb;width:100%;height: 320px;">
-    <div>
+<div id="mypagephoto" class = "mb-4 scroll" style="border:1px dashed #dbdbdb;width:100%;height: 320px;">
+    <div class = "row">
     	<c:if test="${member.list == null}">
 	    	<span class="material-icons ">add </span>
 			<a class="post__upload" href="<%=application.getContextPath()%>/photo/write"> 첫 번째 사진을 올려보세요</a>
@@ -13,48 +13,39 @@
     	
     	<c:if test="${member.list != null}">
 			<c:forEach var="like" items="${member.list}">
-			<a href="<%=application.getContextPath()%>/photo/detail?pnumber=${like.pnumber}">
-			<img style="margin:5px" align="left" width="100px" height="100px" src="<%=application.getContextPath()%>/file/photo?fileName=${like.first_image}"/>
-			</a>
+				<a class = "col-4 mb-2" href="<%=application.getContextPath()%>/photo/detail?pnumber=${like.pnumber}">
+					<img class="img-fluid" style="height: 180px;" src="<%=application.getContextPath()%>/file/photo?fileName=${like.first_image}"/>
+				</a>
 			</c:forEach>
     	</c:if>
     </div>
 </div>
-</section>
-<section id="formchange2" class="post post--cards pd">	
+
 <h5><strong>Self Guide</strong></h5>
-<div id="mypagephoto2" style="border:1px dashed #dbdbdb;width:100%;height: 320px;">
-    <div>
+<div id="mypagephoto2" class = "scroll" style="border:1px dashed #dbdbdb;width:100%;height: 320px;">
     	<c:if test="${selfguide == null}">
 	    	<span class="material-icons ">add </span>
 			<a class="post__upload" href="<%=application.getContextPath()%>/selfguide/selfguide-write"> 첫 번째 가이드를 올려보세요</a>
     	</c:if>
     	
     	<c:if test="${selfguide != null}">
-			<div class="scroll col-lg-8 h-25" style="width:100%">
+<<<<<<< HEAD
+			<div class="col-lg-8 h-25" style="width:100%">
 		 			<c:forEach var="selfguide" items="${selfguide}">
           				<a href="<%=application.getContextPath()%>/selfguide/selfdetail?snumber=${selfguide.snumber}&swriter=${selfguide.swriter}">
           					<img src="<%=application.getContextPath()%>/file/selfguide?fileName=${selfguide.simage}" class= "w-25 h-25">
           				</a>
 					</c:forEach>
 			</div>
+=======
+			<c:forEach var="selfguide" items="${selfguide}">
+   				<a class = "col-4 mb-2" href="<%=application.getContextPath()%>/selfguide/selfdetail?snumber=${selfguide.snumber}&swriter=${selfguide.swriter}">
+   					<img class="img-fluid" style="height: 200px;" src="<%=application.getContextPath()%>/file/selfguide?fileName=${selfguide.simage}">
+   				</a>
+			</c:forEach>
+>>>>>>> branch 'master' of https://github.com/mw7895la/TeamProject
     	</c:if>
-    	
-    	<%-- <c:if test="${selfguide != null}">
-			<div class="scroll col-lg-8 h-25" style="width:100%">
-		 			<c:forEach var="selfguide" items="${selfguide}">
-          				<h5>${selfguide.stitle}</h5>
-          				<a href="<%=application.getContextPath()%>/selfguide/selfdetail?snumber=${selfguide.snumber}&swriter=${selfguide.swriter}">
-          					<img style="align-left" src="<%=application.getContextPath() %>/selfguide/photodownload?fileName=${selfguide.simage}" class= "w-25 h-25">
-          				
-          				</a>
-          				<hr/>
-					</c:forEach>
-			</div>
-    	</c:if>
-    	 --%>
-    </div>
 </div>
-</section>
+
         	
      

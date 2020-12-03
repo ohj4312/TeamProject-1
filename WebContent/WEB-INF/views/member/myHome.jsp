@@ -35,11 +35,11 @@
 <style media="screen">
    .scroll{
      
-     overflow-y: scroll;
-     white-space:nowrap;
+     height:800px;
+	 overflow-x:hidden; 
+	 overflow-y:auto; 
    }
-   .scroll img{
-   }
+   
  </style>
 </head>
 
@@ -56,9 +56,9 @@
           <h2>My Home</h2>
         <div class="row no-gutters justify-content-center" style="display: flex;" data-aos="fade-up">
 
-          <div class="col-lg-3 mr-5">
-          	<div class="user-profile mt-5 mr-3" style="border:1px solid #dadce0; ">
-          		<img class="rounded-circle mt-3 img-fluid" width="150" height="150" src="<%=application.getContextPath()%>/file/photo?fileName=${member.mimage}">
+          <div class="col-lg-3 mr-lg-5">
+          	<div class="user-profile mt-5 mr-lg-3" style="border:1px solid #dadce0; ">
+          		<img class="rounded-circle mt-3 img-fluid" width="150" height="150" src="<%=application.getContextPath()%>/file/member?fileName=${member.mimage}">
           		<h3 class="font-weight-bold mt-4">${member.mnickname}</h3>
           		<p class="font-weight-normal mb-2"><strong>팔로워</strong> <small>${member.followerCount}</small> | <strong>팔로잉</strong> <small>${member.followingCount}</small></p>
           		<c:if test="${member.followCheking == 0}">
@@ -74,19 +74,19 @@
           	</div>
           </div>
 
-          <div class="col-lg-6 mr-3 ml-5">
+          <div class="col-lg-6 mr-lg-3 ml-lg-5">
         		<div id="photoList" class="contents">
         			<section class="post post--cards">
-        				<h5><strong>사진</strong></h5>
-		                <div id="mypagephoto" class = "scroll" style="border:1px dashed #dbdbdb; width:100%;">
-		                 
-		                       <c:forEach var="like" items="${member.list}">
-		                       <a href="<%=application.getContextPath()%>/photo/detail?pnumber=${like.pnumber}">
-		                       <img style="margin:5px" align="left" width="100px" height="100px" src="<%=application.getContextPath() %>/file/photo?fileName=${like.first_image}"/>
-		                       </a>
-		                       </c:forEach>
-		                   
-		                </div>
+		                <h5><strong>사진</strong></h5>
+						<div id="mypagephoto" class = "mb-4 scroll" style="border:1px dashed #dbdbdb;width:100%;height: 320px;">
+						    <div class = "row">
+						    	<c:forEach var="like" items="${member.list}">
+									<a class = "col-4 mb-2" href="<%=application.getContextPath()%>/photo/detail?pnumber=${like.pnumber}">
+										<img class="img-fluid" style="height: 180px;" src="<%=application.getContextPath()%>/file/photo?fileName=${like.first_image}"/>
+									</a>
+								</c:forEach>
+						    </div>
+						</div>
                 	</section>
         			
         		</div>

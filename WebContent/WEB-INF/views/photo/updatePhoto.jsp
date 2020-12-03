@@ -240,7 +240,7 @@
 	  
 	  $('#cloneForm'+count+ ' select').val(alocation).prop("selected", true);
 	  $('#cloneForm'+count+ ' textarea').val('${photo.acontent}');
-	  var $imgsrc = $('<img src="photodownload?fileName='+'${photo.aimage}'+'" width="100%" height="100%">'); 
+	  var $imgsrc = $('<img src="/teamproject/file/photo?fileName='+'${photo.aimage}'+'" width="100%" height="100%">'); 
 	  $('#cloneForm'+count+ ' label').html($imgsrc);
 	  //'<input type="hidden" name="#list['+count+'].aimage" value='+'${photo.aimage}'+'>'
 	  count++;

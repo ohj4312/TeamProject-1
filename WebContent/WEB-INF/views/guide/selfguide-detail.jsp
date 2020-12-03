@@ -49,7 +49,23 @@
    }
    .scroll img{
    }
- </style>
+  
+  .cut { 
+  /* 한 줄 자르기 */ 
+  display: inline-block; 
+  width: 200px; 
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+  /* 여러 줄 자르기 추가 스타일 */ 
+  white-space: normal; 
+  line-height: 1.2; 
+  height: 2.4em; 
+  }
+
+  
+  </style>
+
 </head>
 
 <body>
@@ -161,7 +177,7 @@
               <article>
 				<div class="scroll col-lg-8 h-25" style="width:100%">
 		 			<c:forEach var="selfguide" items="${list}">
-          				<a href="javascript:otherselfguidephoto('${selfguide.simage}', '${selfguide.scontent}','${selfguide.stitle }','${selfguide.stype }')"><img src="<%=application.getContextPath() %>/selfguide/photodownload?fileName=${selfguide.simage}" class= "w-25 h-25"></a>
+          				<a href="javascript:otherselfguidephoto('${selfguide.simage}', '${selfguide.scontent}','${selfguide.stitle }','${selfguide.stype }')"><img src="<%=application.getContextPath()%>/file/selfguide?fileName=${selfguide.simage}" class= "w-25 h-25"></a>
 					</c:forEach>
 				 </div>
 			</article>

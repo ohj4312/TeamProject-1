@@ -32,11 +32,11 @@
 <style media="screen">
    .scroll{
      
-     overflow-y: scroll;
-     white-space:nowrap;
+     height:800px;
+	 overflow-x:hidden; 
+	 overflow-y:auto; 
    }
-   .scroll img{
-   }
+   
  </style>
 </head>
 
@@ -53,7 +53,7 @@
           <h2>My Page</h2>
         <div class="row no-gutters justify-content-center" style="display: flex;" data-aos="fade-up">
 		
-          <div class="col-md-2 mr-4">
+          <div class="col-md-2 mr-lg-4">
         		<section>
         		<div class="user-profile mt-4" style="border:1px solid #dadce0; ">
         		
@@ -67,10 +67,17 @@
 			                <button id="update" class = "btn btn-sm btn-link" disabled>사진 수정</button>
 			                </form>
         					<div class="profile-info__name mt-2">
-        						<span>${member.mnickname}</span>
+        					<h4 class="font-weight-bold mt-4">${member.mnickname}</h4>
         						<div>
-        						 <a class="btn btn-info btn-sm" href="javascript:getfollowList()">팔로워</a>
-        						 <a class="btn btn-info btn-sm" href="javascript:getfollowingList()">팔로잉</a>
+	        						<p class="font-weight-normal mb-2">
+	        							<strong>
+	        								<a class = "text-secondary" href="javascript:getfollowList()">팔로워</a>
+	        							</strong> 
+	        							<small>${member.followingCount }</small> | <strong>
+	        							<a class = "text-secondary"  href="javascript:getfollowingList()">팔로잉</a>
+	        							</strong> 
+	        							<small>${member.followerCount }</small>
+	        						</p>
         						</div>
         						<hr/>
         					</div>
@@ -103,19 +110,19 @@
         			
         		</div>
         		<div class ="row" style="padding: 16px;">
-        		<a href = "updatePassword" class = "btn btn-sm btn-light">비밀번호 변경</a>
+        		<a href = "updatePassword" class = "btn btn-sm btn-light mr-1 ">비밀번호 변경</a>
         		<a href = "deleteMember" class = "btn btn-sm btn-light">회원탈퇴</a>
         		</div>
         		</section>
         		
           </div>
 
-          <div class="col-md-7 ml-4">
-        		<div id="photoList" class="contents">
-        			<section id="formchange" class="post post--cards pd">
+          <div class="col-md-7 ml-lg-4">
+        		<section id="photoList" class="contents">
+        			<div id="formchange" class="post post--cards pd">
         				<jsp:include page="/WEB-INF/views/member/returnmypage.jsp"/>
-                	</section>
-        		</div>
+                	</div>
+        		</section>
         </div> 
         	
         </div>

@@ -101,6 +101,7 @@ public class SelfGuideController {
 		
 		
 		SelfGuide sg = new SelfGuide();
+		sg.setSwriter(member.getMemail());
 		sg.setEndRowNo(pager.getEndRowNo());
 		sg.setStartRowNo(pager.getStartRowNo());
 		
@@ -113,27 +114,21 @@ public class SelfGuideController {
 			logger.info(sge.getStitle());
 		}
 		
-		
-		
-		
+		//3위까지 가져오기위한 것이올시다.
+		List<SelfGuide> selforder=service.getOrder();
+		for(SelfGuide sge : selforder) {
+			logger.info(sge.getSimage());
+			logger.info(sge.getStitle());
+			logger.info(String.valueOf(sge.getSnumber()));
+			//logger.info(String.valueOf(sge.getHit_count()));
+			logger.info(String.valueOf(sge.getHit_count()));
+		}
+		model.addAttribute("order",selforder);
 		model.addAttribute("guidelist",guidelist);
 		model.addAttribute("pager",pager);
 		return url;
 		
 	}
-	
-	/*
-	 * @RequestMapping("/selflistjson") public void selfphotoListjson(Model
-	 * model,@RequestParam(defaultValue = "1") int
-	 * pageNo, @RequestParam(defaultValue = "default1") String filter,HttpSession
-	 * session, HttpServletResponse response ) { Member member = (Member)
-	 * session.getAttribute("member"); List<SelfGuide> selflist;
-	 * 
-	 * int rows = service.getRows();
-	 * 
-	 * Pager pager = new Pager(3 , 5,rows, pageNo); logger.info(filter); if(member
-	 * ==null) { selflist = service.getselfList(pager, filter); } }
-	 */
 	
 
 	//셀프 가이드 리스트에서 한 게시물 선택시 상세 뷰.

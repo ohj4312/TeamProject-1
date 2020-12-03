@@ -27,34 +27,13 @@ public class Community {
 	private MultipartFile cimage;//커뮤니티 사진 저장을위해 필요한 객체~ 
 	private String mimage;
 	private String memail;
+	private int replyCount; 
 	
-	//페이징
-	private int startRowNo; 	//페이지의 시작 행 번호
-	private int endRowNo; 		//페이지의 끝 행 번호
-	
-	public int getStartRowNo() {
-		return startRowNo;
+	public int getReplyCount() {
+		return replyCount;
 	}
-	public void setStartRowNo(int startRowNo) {
-		this.startRowNo = startRowNo;
-	}
-	public int getEndRowNo() {
-		return endRowNo;
-	}
-	public void setEndRowNo(int endRowNo) {
-		this.endRowNo = endRowNo;
-	}
-	public String getRmimage() {
-		return rmimage;
-	}
-	public void setRmimage(String rmimage) {
-		this.rmimage = rmimage;
-	}
-	public String getRmemail() {
-		return rmemail;
-	}
-	public void setRmemail(String rmemail) {
-		this.rmemail = rmemail;
+	public void setReplyCount(int replyCount) {
+		this.replyCount = replyCount;
 	}
 	public String getMemail() {
 		return memail;

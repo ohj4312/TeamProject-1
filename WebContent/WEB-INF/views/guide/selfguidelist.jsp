@@ -53,20 +53,19 @@
   
   <section id="portfolio" class="portfolio">
       <div id = "listappend" class="container mt-5">
-      		<p class="mb-4">
-      		<h2 style="font-size:2vw; float:left">셀프 인테리어 가이드북 </h2>
-      		<sec:authorize access="isAuthenticated()">
-      		<span style="font-size:1vw; float:right" class="btn btn-info btn-lg" onClick="selfWrite()">글쓰기</span>
-      		</sec:authorize>
-      		</p><br/>
       		
-      		<img style="width:100%; height:200px;"src="https://image.ohou.se/i/bucketplace-v2-development/uploads/advices/guides/self_interior/pc_banner_image.v3.png?gif=1&w=1280&webp=1"/>
-      		<p></p>
-      	
-        <div id="addtag" style="width:100%; padding:0; margin:0" class="row col-md-12 mb-4">
+      		<h2 style="float:left">셀프 인테리어 가이드북 </h2>
+      		<sec:authorize access="isAuthenticated()">
+      			<span style="float:right" class="btn btn-info btn-lg" onClick="selfWrite()">글쓰기</span>
+      		</sec:authorize>
+      		<div class="mb-4" style="clear:both;"><br/></div>
+      		<jsp:include page="/WEB-INF/views/guide/selfguide-order.jsp"/>
+      		<!-- <img style="width:100%; height:200px;"src="https://image.ohou.se/i/bucketplace-v2-development/uploads/advices/guides/self_interior/pc_banner_image.v3.png?gif=1&w=1280&webp=1"/> -->
+      		
+        <div id="addtag" style="width:100%; padding:0; margin:0" class="row col-md-12 mb-4 mt-4">
 			<jsp:include page="/WEB-INF/views/guide/selfguideFilter.jsp"/>
         </div>
-
+		<div style="clear:both"></div>
       <div id = "12345" class="row portfolio-container abcd" data-aos="fade-up">
         <jsp:include page="/WEB-INF/views/guide/selfguide-photos.jsp"/>
        </div>
@@ -74,7 +73,7 @@
 
       </div>
       
-      
+      <div id="paging"></div>
     </section>
   <!-- ======= script ======= -->
 	
@@ -111,10 +110,7 @@
 		}
 		
 		function selfguidephotolist(pageNo){
-
 			console.log("페이징 실행");
-
-			
 			$.ajax({
 				url :"<%=application.getContextPath()%>/selfguide/selflist",
 				data: {pageNo:pageNo},
@@ -122,7 +118,6 @@
 					
 				}
 			})
-
 			
 			$.ajax({
 				url : "<%=application.getContextPath()%>/selfguide/selflist",

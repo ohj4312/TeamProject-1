@@ -70,10 +70,9 @@
           	<img id = "thumbnail_image" src="/teamproject/file/photo?fileName=${photo.first_image}" class="img-fluid" alt="">
           </div>
 
-          <div id="head" class="col-md-4">
-			<div class= "container" style="text-align: center;">
-				<div class="row mx-auto">
-		            <div id="RegBookMark" class="col-5">
+          <div id="head" class="col-md-4 container">
+				<div class = "row col-9 mx-auto" style="align-content: center; text-align: center;">
+		            <div id="RegBookMark" class="pl-5 mr-2 p-0">
 						<button  type="button" class="btn btn-light w-100" onclick="toggleUpdate(${photo.pnumber}, '<%=application.getContextPath()%>/BK/CheckBookMark')">
 							<c:if test="${photo.bnumber == 0}">
 								<i id="itag${photo.pnumber}" class="material-icons align-middle" style = " font-size: 30px; color:#1bac91;">bookmark_border</i>
@@ -85,7 +84,7 @@
 							</c:if>
 						</button>
 					</div>
-					<div id="likepush" class="col-5">
+					<div id="likepush" class="col-4 p-0">
 						
 	              		<button  type="button" class="btn btn-light w-100" onclick="toggleUpdate(${photo.pnumber}, '<%=application.getContextPath()%>/like/likePushCheck')">
 		            		<c:if test="${photo.likenumber == 0}">
@@ -100,7 +99,7 @@
 	              	</div>
 	              	
 	              	<c:if test="${updatecheck != 0}">
-	              		<div class="dropdown col-2">
+	              		<div class="dropdown col-1 p-0">
 						  <a type="button" class="dropdown-toggle" data-toggle="dropdown">
 						    <i class="material-icons mt-2">
 								more_vert
@@ -116,7 +115,7 @@
 				
 				<div class="row mx-auto mt-5">
 					<a class="col-6" href="<%=application.getContextPath()%>/member/yourhomesearch?pwriter=${photo.pwriter}">
-		            	<img class="rounded-circle" style="width:50px; height:50px;" src="/teamproject/file/photo?fileName=${photo.mimage}" />
+		            	<img class="rounded-circle" style="width:50px; height:50px;" src="/teamproject/file/member?fileName=${photo.mimage}" />
 		            	<span class="card-detail-writer__name">${photo.mnickname}</span>
 		            </a>
 		            <div class = "col-3"></div>
@@ -134,8 +133,6 @@
 				<div id = "acontent"class="row mx-auto mt-5">
 					${photo.first_content}
 				</div>
-			</div>
-
           </div>
         </div>
       </div>
@@ -150,6 +147,9 @@
           		<a href="javascript:photoChange('${photo.aimage}', '${photo.acontent}')"><img src="/teamproject/file/photo?fileName=${photo.aimage}" class= "w-25 h-25"></a>
 			</c:forEach>
 		 </div>
+		 <div id="reply_result" style="margin-top:30px">
+     
+      	</div>
 	</div>
 	
 
