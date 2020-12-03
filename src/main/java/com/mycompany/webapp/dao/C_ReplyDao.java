@@ -27,6 +27,16 @@ public class C_ReplyDao {
 		return list;
 	}
 
+	public List<Community> comm_rlplylistReAll(int cr_rnumber) {
+		List<Community> list = sst.selectList("mybatis.mapper.community.comm_rlplylistReSelectAll", cr_rnumber);
+		return list;
+	}
+
+	public void comm_replyWriteRe(Community community) {
+		sst.insert("mybatis.mapper.community.comm_rlplylistReInsert",community);
+		
+	}
+
 
 	
 	

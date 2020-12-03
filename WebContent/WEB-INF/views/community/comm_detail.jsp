@@ -72,6 +72,7 @@
 }
 </style>
 <body>
+ 
 	<% pageContext.setAttribute("br", "<br/>");
 	   pageContext.setAttribute("cn", "\n"); %>
 	<jsp:include page="/WEB-INF/views/include/Header.jsp" />
@@ -326,9 +327,11 @@
 		function commreplyList(pageNo){
 			
 			var c_number=${list.c_number};
+			var c_mnickname='${list.c_mnickname}';
+			
 			$.ajax({
 				url:"/teamproject/community/comm_replyList",
-				data:{pageNo:pageNo, c_number:c_number},
+				data:{pageNo:pageNo, c_number:c_number,c_mnickname:c_mnickname},
 				success:function(data){
 					$("#reply_result").html(data);
 				}
