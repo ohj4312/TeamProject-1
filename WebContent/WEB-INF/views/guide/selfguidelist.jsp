@@ -44,22 +44,7 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
   
-  <style>
-  .cut { 
-  /* 한 줄 자르기 */ 
-  display: inline-block; 
-  width: 200px; 
-  white-space: nowrap; 
-  overflow: hidden; 
-  text-overflow: ellipsis; 
-  /* 여러 줄 자르기 추가 스타일 */ 
-  white-space: normal; 
-  line-height: 1.2; 
-  height: 2.4em; 
-  }
-
-  
-  </style>
+ 
 </head>
 
 <body>
