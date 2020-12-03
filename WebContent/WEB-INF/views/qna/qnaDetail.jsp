@@ -173,7 +173,7 @@ table.type09 td {
 			</table>
 			
 				<c:if test="${member.mnickname == qna.mnickname}">
-				 	<div style="text-align: center; margin-top: 10px;">
+				 	<div style="text-align: center; margin-top: 10px; margin-right:880px">
 				    	 
 				    	<form method="post" action="qnaDelete?qnumber=${qna.qnumber}">
 				    		<input type="submit" value="삭제" class="btn btn-info" >
