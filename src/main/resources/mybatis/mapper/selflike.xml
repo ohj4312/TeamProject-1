@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.mapper.selflike">
+
+	<insert id="selflikeInsert" parameterType="selflike">
+		insert into post_like(likenumber , memail, snumber)
+		values (seq_likenumber.nextval, #{memail}, #{snumber})
+	</insert>
+	
+	<delete id="selflikeDelete" parameterType="selflike">
+		delete from post_like where memail=#{memail} and snumber =#{snumber}
+	</delete>
+	
+	<select id="selflikeCheck" parameterType="selflike" resultType="int">
+		select count(*) from post_like where memail=#{memail} and snumber = #{snumber}
+	</select>
+	
+	<select id="selflikeAll" parameterType="String" resultType="selfguide">
+		select s.simage , s.snumber from self_guide s
+		where s.snumber in 
+		(select p.snumber from Post_like p
+		where p.memail = #{memail} )
+	</select>
+	
+</mapper>

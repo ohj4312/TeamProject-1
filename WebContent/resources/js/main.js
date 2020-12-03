@@ -148,7 +148,7 @@
     }
   });
 
-/*  // Porfolio isotope and filter
+  /*// Porfolio isotope and filter
   $(window).on('load', function() {
     var portfolioIsotope = $('.portfolio-container').isotope({
       itemSelector: '.portfolio-item',
@@ -169,8 +169,8 @@
     $(document).ready(function() {
       $('.venobox').venobox();
     });
-  });*/
-
+  });
+*/
   // Portfolio details carousel
   $(".portfolio-details-carousel").owlCarousel({
     autoplay: true,
@@ -627,7 +627,7 @@ function getList(page){
 						$items = $('<div class="mb-4 mt-5 col-lg-4 col-md-6 portfolio-item '+list[loop].ptype+' '+list[loop].psize+' '+list[loop].pstyle+'">'+
 									'<div class = "row pl-3 pr-2 mb-4">'+
 										'<a href="/teamproject/member/yourhomesearch?pwriter='+ list[loop].pwriter+ '" class = "pr-3 " style="color: black;">'+
-											'<img class="rounded-circle mr-2 "style="width:30px; height:30px;"  src="/teamproject/file/photo?fileName='+list[loop].mimage+'" />'+
+											'<img class="rounded-circle mr-2 "style="width:30px; height:30px;"  src="/teamproject/file/member?fileName='+list[loop].mimage+'" />'+
 											list[loop].mnickname+
 										'</a>'+ 
 										follow +
@@ -772,6 +772,54 @@ function toggleUpdate(pnumber, urlpath){
 				$("#likeicon"+pnumber).html("favorite_border");
 				--lkcount;
 				$("#lkcount").html(lkcount);
+				
+			}
+			 
+		} 
+			
+	});
+}
+
+
+//우진 self book mark  toggle
+function selftoggleUpdate(snumber, urlpath){
+	console.log(snumber);
+	console.log(urlpath);
+	console.log($("#selfbkcount").html());
+	console.log($("#selflkcount").html());
+	var selfbkcount = $("#selfbkcount").html();
+	var selflkcount = $("#selflkcount").html();
+	$.ajax({
+		url: urlpath,
+		data: {snumber: snumber},
+		success:function(data){ 
+			
+			 if(data.result == "bookmarksuccess"){
+				 
+				console.log("bookmarksuccess");
+				$("#selfitag"+snumber).html("bookmark");
+				++selfbkcount;
+				$("#selfbkcount").html(selfbkcount);
+			}else if(data.result == "bookmarkfailure"){
+				
+				console.log("bookmarkfailure");
+				$("#selfitag"+snumber).html("bookmark_border");
+				--selfbkcount;
+				$("#selfbkcount").html(selfbkcount);
+				
+			}else if(data.result == "likesuccess"){
+				
+				console.log("likesuccess");
+				$("#selflikeicon"+snumber).html("favorite");
+				++selflkcount;
+				$("#selflkcount").html(selflkcount);
+		
+			}else if(data.result == "likefailure"){
+				
+				console.log("likefailure");
+				$("#selflikeicon"+snumber).html("favorite_border");
+				--selflkcount;
+				$("#selflkcount").html(selflkcount);
 				
 			}
 			 

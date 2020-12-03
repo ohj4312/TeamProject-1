@@ -99,7 +99,7 @@
 	              	</div>
 	              	
 	              	<c:if test="${updatecheck != 0}">
-	              		<div class="dropdown col-2">
+	              		<div class="dropdown col-1 p-0">
 						  <a type="button" class="dropdown-toggle" data-toggle="dropdown">
 						    <i class="material-icons mt-2">
 								more_vert
@@ -115,7 +115,7 @@
 				
 				<div class="row mx-auto mt-5">
 					<a class="col-6" href="<%=application.getContextPath()%>/member/yourhomesearch?pwriter=${photo.pwriter}">
-		            	<img class="rounded-circle" style="width:50px; height:50px;" src="/teamproject/file/photo?fileName=${photo.mimage}" />
+		            	<img class="rounded-circle" style="width:50px; height:50px;" src="/teamproject/file/member?fileName=${photo.mimage}" />
 		            	<span class="card-detail-writer__name">${photo.mnickname}</span>
 		            </a>
 		            <div class = "col-3"></div>

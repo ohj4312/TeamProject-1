@@ -53,8 +53,7 @@
 </head>
 
 <body>
-	
-   <jsp:include page="/WEB-INF/views/include/Header.jsp"/>
+    <jsp:include page="/WEB-INF/views/include/Header.jsp"/>
   <!-- ======= Header ======= -->
   	
   	
@@ -66,6 +65,45 @@
       
       
       <!-- ======= Blog Section ======= --> 
+		<div class="container" style="text-align: center;">
+			<div class="row mx-auto">
+				<div id="RegBookMark" class="col-5">
+					<button type="button" class="btn btn-light w-100"
+						onclick="selftoggleUpdate(${sg.snumber}, '<%=application.getContextPath()%>/selfbookmark/selfcheckBookMark')">
+						<c:if test="${sg.bnumber == 0}">
+							<i id="selfitag${sg.snumber}" class="material-icons align-middle"
+								style="font-size: 30px; color: #1bac91;">bookmark_border</i>
+							<span id="selfbkcount" class="align-middle">${sg.bookcount}</span>
+						</c:if>
+						<c:if test="${sg.bnumber != 0}">
+							<i id="selfitag${sg.snumber}" class="material-icons align-middle"
+								style="font-size: 30px; color: #1bac91;">bookmark</i>
+							<span id="selfbkcount" class="align-middle">${sg.bookcount}</span>
+						</c:if>
+					</button>
+				</div>
+
+				<div id="likepush" class="col-5">
+
+					<button type="button" class="btn btn-light w-100"
+						onclick="selftoggleUpdate(${sg.snumber}, '<%=application.getContextPath()%>/selflike/selflikePushCheck')">
+						<c:if test="${sg.likenumber == 0}">
+							<i id="selflikeicon${sg.snumber}"
+								class="material-icons align-middle"
+								style="font-size: 30px; color: red;">favorite_border</i>
+							<span id="selflkcount" class="align-middle">${sg.likecount}</span>
+						</c:if>
+						<c:if test="${sg.likenumber != 0}">
+							<i id="selflikeicon${sg.snumber}"
+								class="material-icons align-middle"
+								style="font-size: 30px; color: red;">favorite</i>
+							<span id="selflkcount" class="align-middle">${sg.likecount}</span>
+						</c:if>
+					</button>
+				</div>
+			</div>
+		</div>
+		<!-- ======= Blog Section ======= --> 
     <section id="blog" class="blog">
       <div class="container">  
 
@@ -209,7 +247,6 @@
           		} 
           	}
           	
-  
            </script>
              
             </div><!-- End blog author bio -->
@@ -331,15 +368,12 @@
   <!-- Template Main JS File -->
   <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>
 <script type="text/javascript">
-
 $(function(){
 	chechId('${sg.swriter}','${member.memail}'); 
 	selfreplyList(${sg.snumber}); 
+	var snumber = ${sg.snumber};
 });
 	 
-	 
-	
-
 
 </script>
 </body>

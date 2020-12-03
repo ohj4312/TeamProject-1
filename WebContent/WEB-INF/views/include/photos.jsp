@@ -7,7 +7,7 @@
 				<div class="mb-4 mt-5 col-lg-4 col-md-6 portfolio-item ${photo.ptype} ${photo.psize} ${photo.pstyle}">
 					<div class = "row pl-3 pr-2 mb-4">
 						<a href="<%=application.getContextPath()%>/member/yourhomesearch?pwriter=${photo.pwriter}" class = "pr-3 " style="color: black;">
-							<img class="rounded-circle mr-2 "style="width:30px; height:30px;"  src="<%=application.getContextPath()%>/file/photo?fileName=${photo.mimage}" />
+							<img class="rounded-circle mr-2 "style="width:30px; height:30px;"  src="<%=application.getContextPath()%>/file/member?fileName=${photo.mimage}" />
 							${photo.mnickname}
 						</a>
 						<sec:authorize access="isAnonymous()">
@@ -22,9 +22,9 @@
 								</a>
 							</c:if>
 							<c:if test="${photo.following != null}">
-									<a class = "pl-2 font-weight-bolder btn btn-sm ${fn:substring(photo.pwriter,0,fn:indexOf(photo.pwriter,'@'))}" style = "background-color: #1bac91; color: white;" href="javascript:followCheck('${photo.following}', '<%=application.getContextPath()%>/follow/followCheck','${fn:substring(photo.pwriter,0,fn:indexOf(photo.pwriter,'@'))}')">
-									팔로잉
-									</a>
+								<a class = "pl-2 font-weight-bolder btn btn-sm ${fn:substring(photo.pwriter,0,fn:indexOf(photo.pwriter,'@'))}" style = "background-color: #1bac91; color: white;" href="javascript:followCheck('${photo.following}', '<%=application.getContextPath()%>/follow/followCheck','${fn:substring(photo.pwriter,0,fn:indexOf(photo.pwriter,'@'))}')">
+								팔로잉
+								</a>
 							</c:if> 
 						</sec:authorize>
 					</div>
@@ -41,7 +41,7 @@
 					</div>
 					</a>
 					
-					<div div class = "row pl-3 pr-3 mt-2">
+					<div class = "row pl-3 pr-3 mt-2">
 						<sec:authorize access="isAnonymous()">
 							<a id="App1BK${photo.pnumber}" class = "col-4 " href="<%=application.getContextPath()%>/member/login">
 								<i id="itag${photo.pnumber}" class="material-icons pl-4" style = " font-size: 30px;">bookmark_border</i>
@@ -53,6 +53,7 @@
 								<i id="likeicon${photo.pnumber}" class="material-icons pl-4" style = "font-size: 30px;">favorite_border</i>
 							</a>
 						</sec:authorize>
+						
 						<sec:authorize access="isAuthenticated()">
 							<a id="App1BK${photo.pnumber}" class = "col-4 " href="javascript:toggleUpdate(${photo.pnumber}, '<%=application.getContextPath()%>/BK/CheckBookMark')">
 								<c:if test="${photo.bnumber == 0}">
@@ -76,7 +77,14 @@
 						</sec:authorize>
 					</div>
 					<div class = "row pl-3 pr-3 mt-2">
-								<a>${photo.first_content}</a>
+								
+									${fn:substring(photo.first_content,0,50)}
+									<c:if test="${fn:length(photo.first_content) > 50}">
+										<div>
+											<a href="<%=application.getContextPath()%>/photo/detail?pnumber=${photo.pnumber}">더보기</a>
+										</div>
+									</c:if>
+								
 					</div>
 				</div>
 </c:forEach>
