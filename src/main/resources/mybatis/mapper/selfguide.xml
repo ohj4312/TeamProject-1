@@ -46,7 +46,7 @@
 		select rnum , snumber , hit_count, swriter , stitle, simage, stype,bnumber,likenumber	
 		from ( select rownum as rnum, list.snumber, hit_count, swriter, stitle, simage, stype, bnumber, likenumber
 			from ( select snumber, hit_count, swriter, stitle, simage ,stype  
-				   from Self_Guide s, member m where s.swriter=m.memail order by snumber desc) list,
+				  from Self_Guide s, member m where s.swriter=m.memail order by snumber desc) list,
 				 (select * from post_bookmark where memail = #{swriter}) pb,
 				 (select * from post_like where memail = #{swriter}) pl
 				 where rownum &lt; = #{endRowNo} and list.snumber = pb.snumber(+) and list.snumber = pl.snumber(+) )
@@ -55,12 +55,30 @@
 		
 	</select>
 	
-	<select id="selectSelfPhotoList" parameterType="int" resultType="selfguide">
-		select simage, swriter, stype ,stitle, scontent,snumber
+	<!-- self detail 부분 -->
+	<select id="selectSelfPhotoList" parameterType="SelfGuide" resultType="SelfGuide">
+		<!-- select simage, swriter, stype ,stitle, scontent,snumber
 		from Self_Guide 
-		where  snumber = #{snumber}
+		where  snumber = #{snumber} -->
+		select rnum,snumber , hit_count, swriter , stitle, simage, stype,bnumber,likenumber
+		from ( select  rownum as rnum,list.snumber, hit_count, swriter, stitle, simage, stype, bnumber, likenumber
+			from ( select snumber, hit_count, swriter, stitle, simage ,stype  
+				 from Self_Guide s, member m where s.swriter=m.memail order by snumber desc) list,
+				 (select * from post_bookmark where memail = #{swriter}) pb,
+				 (select * from post_like where memail = #{swriter}) pl
+				 where list.snumber = pb.snumber and list.snumber = pl.snumber )
+		where snumber = #{snumber}	 
+			
+		
+		
 		
 	</select>
+	
+	
+		
+	
+	
+	
 	
 	<select id="selectSelfPhotoList2" parameterType="String" resultType="selfguide">
 		select * from Self_Guide where swriter = #{swriter}
@@ -76,7 +94,7 @@
 		select * from (select * from Self_Guide order by hit_count desc) where rownum&lt;=3
 	</select>
 
-	<update id="updatehitcount" parameterType="selfguide" >
+	<update id="updateselfhitcount" parameterType="selfguide" >
 		update Self_Guide set hit_count = (select hit_count from Self_Guide where snumber = #{snumber}) +1  where snumber = #{snumber}
 	</update>
 	

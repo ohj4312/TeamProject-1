@@ -79,24 +79,5 @@
 	</ul>
 </div>
 
-<div class="row text-center">
 
-   	<ul class="pagination mx-auto ">
-	          	<c:if test="${pager.groupNo>1}">
-	            	<li class="page-item"><a class="page-link" href="javascript:selfguidephotolist(${pager.startPageNo-1})">Pre</a></li>
-	            </c:if>
-	            
-	            <c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
-					<c:if test="${pager.pageNo==i}">
-	           	 		<li class="page-item"><a class="page-link" href="javascript:selfguidephotolist(${i})">${i}</a></li>
-	            	</c:if>
-	            	<c:if test="${pager.pageNo!=i}">
-	            		<li class="page-item"><a class="page-link" href="javascript:selfguidephotolist(${i})">${i}</a></li>
-	            	</c:if>
-	             </c:forEach>
-	             <c:if test="${pager.groupNo<pager.totalGroupNo}">
-	            	<li class="page-item"><a class="page-link" href="javascript:selfguidephotolist(${pager.endPageNo+1})">Next</a></li>
-	          	</c:if>
-	          </ul>
-	</div> 
 

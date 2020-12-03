@@ -24,30 +24,31 @@ public class SelfGuideDAO {
 		return sst.selectList("mybatis.mapper.selfguide.selectSelfList" , snumber);
 		
 	}
-
+	
 
 	public int insertSelfGuide(SelfGuide sg) {
 		int row=sst.insert("mybatis.mapper.selfguide.insertSelfGuide" , sg);
 		return row;
 	}
-	
-	
+		
+		
 	public int countAll() {
 		return sst.selectOne("mybatis.mapper.selfguide.countAll");
 	}
-
+	
 	public List<SelfGuide> selectByPage(Pager pager) {
 		return sst.selectList("mybatis.mapper.selfguide.selectByPage", pager);
 	}
-
+	
 	public List<SelfGuide> selectByPage(SelfGuide sg) {
-		
+			
 		return sst.selectList("mybatis.mapper.selfguide.selectByPageList",sg);
 	}
-
-	public SelfGuide selectSelfPhoto(int snumber) {
+	
+	//self detail 부분
+	public SelfGuide selectSelfPhoto(SelfGuide sg) {
 		
-		return sst.selectOne("mybatis.mapper.selfguide.selectSelfPhotoList",snumber );
+		return sst.selectOne("mybatis.mapper.selfguide.selectSelfPhotoList",sg);
 	}
 
 	public void updateHitCount(SelfGuide sg) {
@@ -67,7 +68,7 @@ public class SelfGuideDAO {
 
 
 	public void updatehitcount(SelfGuide sg) {
-		sst.update("mybatis.mapper.selfguide.updatehitcount",sg);
+		sst.update("mybatis.mapper.selfguide.updateselfhitcount",sg);
 	}
 
 

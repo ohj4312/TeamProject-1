@@ -794,7 +794,7 @@ function selftoggleUpdate(snumber, urlpath){
 		data: {snumber: snumber},
 		success:function(data){ 
 			
-			 if(data.result == "bookmarksuccess"){
+			if(data.result == "bookmarksuccess"){
 				 
 				console.log("bookmarksuccess");
 				$("#selfitag"+snumber).html("bookmark");

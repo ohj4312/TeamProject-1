@@ -37,9 +37,9 @@ public class SelfGuideService {
 	}
 
 	
- 
+	//self detail 부분
 	public SelfGuide selectSelfPhoto(SelfGuide sg) {
-		sg = sgDAO.selectSelfPhoto(sg.getSnumber());
+		sg = sgDAO.selectSelfPhoto(sg);
 		
 		
 		return sg;
@@ -73,7 +73,7 @@ public class SelfGuideService {
 
 	public void updatehitcount(SelfGuide sg) {
 		
-		sgDAO.updatehitcount(sg);;
+		sgDAO.updatehitcount(sg);
 	}
 
 	public void changeSelfPhoto(SelfGuide sg) {

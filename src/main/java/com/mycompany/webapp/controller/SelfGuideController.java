@@ -146,11 +146,16 @@ public class SelfGuideController {
 		SelfGuide sg = new SelfGuide();
 		
 		List<SelfGuide> list;
-		
+		if(member ==null) {
+			return "member/login";
+		}
 		sg.setSnumber(snumber);
-
+		sg.setSwriter(member.getMemail());
 		logger.info(String.valueOf(sg.getHit_count()));	
-		sg = service.selectSelfPhoto(sg);
+		
+		sg = service.selectSelfPhoto(sg);//self detail 부분
+		
+		
 		service.updatehitcount(sg);
 		
 		logger.info("snumber:"+String.valueOf(sg.getSnumber()));
@@ -160,7 +165,7 @@ public class SelfGuideController {
 		logger.info(sg.getScontent());
 		//logger.info(String.valueOf(sg.getHit_count()));
 		model.addAttribute("sg",sg);
-
+		
 		return "guide/selfguide-detail";
 	}
 	
@@ -171,8 +176,8 @@ public class SelfGuideController {
 		SelfGuide sg = new SelfGuide();
 		
 		sg.setStype(filterString);
-		int rows = service.getFilterRows(sg.getStype());
-		logger.info(String.valueOf(rows));
+		//int rows = service.getFilterRows(sg.getStype());
+		//logger.info(String.valueOf(rows));
 		
 		//Pager pager = new Pager(3, 5, rows, pageNo);
 		List<SelfGuide> filterlist=service.getselfFilter(filterString);
