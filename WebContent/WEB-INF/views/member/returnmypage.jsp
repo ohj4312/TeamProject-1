@@ -14,7 +14,7 @@
     	<c:if test="${member.list != null}">
 			<c:forEach var="like" items="${member.list}">
 				<a class = "col-4 mb-2" href="<%=application.getContextPath()%>/photo/detail?pnumber=${like.pnumber}">
-					<img class="img-fluid" height="150px;" src="<%=application.getContextPath()%>/file/photo?fileName=${like.first_image}"/>
+					<img class="img-fluid" style="height: 180px;" src="<%=application.getContextPath()%>/file/photo?fileName=${like.first_image}"/>
 				</a>
 			</c:forEach>
     	</c:if>
@@ -31,7 +31,7 @@
     	<c:if test="${selfguide != null}">
 			<c:forEach var="selfguide" items="${selfguide}">
    				<a class = "col-4 mb-2" href="<%=application.getContextPath()%>/selfguide/selfdetail?snumber=${selfguide.snumber}&swriter=${selfguide.swriter}">
-   					<img class="img-fluid" height="150px;" src="<%=application.getContextPath()%>/file/selfguide?fileName=${selfguide.simage}">
+   					<img class="img-fluid" style="height: 200px;" src="<%=application.getContextPath()%>/file/selfguide?fileName=${selfguide.simage}">
    				</a>
 			</c:forEach>
     	</c:if>
