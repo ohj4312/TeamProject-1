@@ -79,7 +79,7 @@ public class SelfGuideController {
 
 	//셀프 가이드 리스트 페이징 해서 보이도록
 	@RequestMapping("/selflist")
-	public String selfphotoList(Model model,@RequestParam(defaultValue = "1") int pageNo, HttpSession session) {
+	public String selfphotoList(Model model,@RequestParam(defaultValue = "0") int firstcount,@RequestParam(defaultValue = "1") int pageNo, HttpSession session) {
 		Member member = (Member) session.getAttribute("member");
 		List<SelfGuide> guidelist;
 		
