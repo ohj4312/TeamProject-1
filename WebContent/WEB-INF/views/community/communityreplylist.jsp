@@ -13,9 +13,10 @@
 	<h5><a href="">${list.cr_rmnickname}</a> 
 	<a href="#" class="reply"><i class="icofont-reply"></i>답글</a></h5>	
 	<time >${list.cr_rdate}</time>	
-	<p>${list.cr_rcontent}</p>
-	
+	<p>${list.cr_rcontent}</p>	
 	</div>
+	<div id="comment-re" class="comment clearfix">	
+	</div>	
 </c:forEach>
 
 <div class="row text-center" style="width:100%">
