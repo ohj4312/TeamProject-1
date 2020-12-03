@@ -74,6 +74,11 @@ public class SelfGuideService {
 	public void changeSelfPhoto(SelfGuide sg) {
 		sgDAO.updateSelfPhoto(sg);
 		
+	}
+
+	public List<SelfGuide> getOrder() {
+		List<SelfGuide> selforder=sgDAO.selectOrder();
+		return selforder;
 	} 
 
 	

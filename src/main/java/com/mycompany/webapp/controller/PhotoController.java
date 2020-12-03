@@ -262,7 +262,7 @@ public class PhotoController {
 				logger.info(saveFilename);
 				try {
 					//실제 사용자의 요청에 파일을 서버에 저장
-					photo.getAimageAttach().transferTo(new File("C:/Temp/upload/"+saveFilename));
+					photo.getAimageAttach().transferTo(new File("D:/MyWorkSpace/photo/photo/"+saveFilename));
 				} catch (Exception e) {}
 				}
 			}

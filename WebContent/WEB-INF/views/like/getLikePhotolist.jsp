@@ -7,7 +7,7 @@
     <div class = "row">
     	<c:forEach var="like" items="${likelist}">
 			<a class = "col-4 mb-2" href="<%=application.getContextPath()%>/photo/detail?pnumber=${like.pnumber}">
-			<img class="img-fluid" height="150px;" src="<%=application.getContextPath()%>/file/photo?fileName=${like.first_image}"/>
+			<img class="img-fluid" style="height: 180px;" src="<%=application.getContextPath()%>/file/photo?fileName=${like.first_image}"/>
 			</a>
 		</c:forEach>
     </div>

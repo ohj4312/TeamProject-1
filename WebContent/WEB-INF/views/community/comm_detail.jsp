@@ -342,11 +342,11 @@
 				
 				}
 			});
+			
 		} 
+		
 		$(function () {
 			commreplyList();
-			
-			
 		});
 	</script>
 

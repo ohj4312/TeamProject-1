@@ -8,7 +8,7 @@
     <div class = "row">
     	<c:forEach var="bookmark" items="${list }">
 			<a class = "col-4 mb-2" href="<%=application.getContextPath()%>/photo/detail?pnumber=${bookmark.pnumber}">
-			<img class="img-fluid" height="150px;" src="<%=application.getContextPath()%>/file/photo?fileName=${bookmark.first_image}"/>
+			<img class="img-fluid" style="height: 180px;" src="<%=application.getContextPath()%>/file/photo?fileName=${bookmark.first_image}"/>
 			</a>
 		</c:forEach>
     </div>

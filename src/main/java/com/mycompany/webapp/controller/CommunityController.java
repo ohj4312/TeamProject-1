@@ -77,7 +77,8 @@ public class CommunityController {
 
 	@GetMapping("/comm_list")
 	public String Comm_list(Model model, int check, String search,@RequestParam(defaultValue="1")int pageNo) {
-
+		
+		
 		// 검색으로 컨트롤러를 호출한건지 확인!
 		if (check == 1) {
 			
@@ -94,12 +95,24 @@ public class CommunityController {
 		/*조회수 리스트*/
 		if (check == 2) {
 			List<Community> comm_listHits = service.Comm_listHits();// 조회수리스트
+			
+			
 			model.addAttribute("comm_list", comm_listHits);
 			return "community/communitylistHits";
 		}
+		
+		
 		int rows = service.Comm_listLow();
 		Pager pager = new Pager(5, 5,rows, pageNo);
 		List<Community> comm_list = service.Comm_list(pager);// 전체리스트		
+		for(Community r : comm_list) {
+		
+			int replyCount= service.Comm_replyrows(r.getC_number());
+			
+			r.setReplyCount(replyCount);
+			
+		}
+		
 		model.addAttribute("pager",pager);
 		model.addAttribute("comm_list", comm_list);
 		return "community/communitylist";
