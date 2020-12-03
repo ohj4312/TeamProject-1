@@ -2,6 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <!DOCTYPE html>
 <html>
 
@@ -43,7 +45,7 @@
 	rel="stylesheet">
 <!-- Template Main CSS File -->
 <link href="<%=application.getContextPath()%>/resources/css/style.css"
-	rel="stylesheet">
+	rel="stylesheet">	
 
 <!-- =======================================================
   * Template Name: Maxim - v2.2.0
@@ -64,7 +66,57 @@ td a {
 	text-decoration: none;
 	color: inherit;
 }
+
+table.type09 {
+    border-collapse: collapse;
+    text-align: left;
+    line-height: 2.0;
+    border: 1px solid #ccc;
+
+}
+table.type09 thead th {
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    color: #369;
+    border-bottom: 3px solid #036;
+}
+table.type09 tbody th {
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
+    background: #f3f6f7;
+}
+table.type09 td {
+    padding: 10px;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
+}
 </style>
+
+	<style type="text/css">
+		@media screen and (max-width: 1000px) {
+			th {
+				width: 30px;
+			}
+			
+			td {
+				width: 70%;
+			}
+		}
+		
+		@media screen and (min-width: 1000px) {
+			th {
+				width: 200px;
+			}
+			
+			td {
+				width: 800px;
+			}
+		}	
+	</style>
+
 </head>
 
 <body>
@@ -73,43 +125,46 @@ td a {
 	<section id="services" class="section-bg mt-5" style="background-color: #ffffff;">
 	
 <%-- ########################################################################### --%>
-<div class="container">
-<div class="row">
-	<div style="width: 1000px; margin-left: auto; margin-right: auto;" >
-		<h3 style="margin-bottom:50px; padding-left: 15px;">Q&A 답변작성</h3>
-	<div class="col-sm">
-		<form id="qnaAnswerForm" method="post" action="qnaAnswer" >
-			<!-- <table style="width:auto" class="table table-sm table-bordered"> -->
-			<input type="hidden" id="qnumber" name="qnumber" value="${qna.qnumber}">
-			
-			<div class="input-group">
-				<div class="input-group-prepend"><span class="input-group-text">제목</span></div>
-				<input id="qtitle" type="text" name="qtitle" class="form-control" value="${qna.qtitle}">
-			
-				<span id="qtitleError" class="error"></span>
+
+	<div>
+		<h3 style="text-align:center; margin-bottom: 50px;">Notice</h3>
+			<div>
+				<table class="type09" style="margin-left:auto; margin-right:auto;">
+					
+					<tbody>
+						<tr>
+							<th scope="row">번호</th>
+							<td>${notice.nnumber}</td>
+						</tr>
+						<tr>
+							<th scope="row">내용</th>
+							<td>${notice.ncontent}</td>
+							
+						</tr>
+					</tbody>
+				</table>
+				<div style="text-align: center; margin-top:10px">
+				<sec:authorize access="hasRole('ROLE_ADMIN')">
+					<form  method="post" action="noticeDelete?nnumber=${notice.nnumber}">
+						<input type="submit" value="삭제" class="btn btn" style="color: #007bff; border: 1px solid #dee2e6;">
+						<a class="btn btn btn" href="noticeUpdate?nnumber=${notice.nnumber}" style="color: #007bff; border: 1px solid #dee2e6;">수정</a>
+					</form>
+				</sec:authorize>
+				<a class="btn btn btn" href="list" style="color:#007bff; border: 1px solid #dee2e6;">목록</a>
+				</div>
 			</div>
-			
-			
-			<div class="input-group">
-				<div class="input-group-prepend"><span class="input-group-text">답변 내용</span></div>
-				<textarea id="answer" name="answer" class="form-control" rows="10">${qna.answer}</textarea>
-				<span id="answerError" class="error"></span>
-			</div>
-			
-			<!-- //로그인이 되면 로그인된 아이디가 들어간다.값이 없으면 필수, 값이  있으면 에러가 없어서 비워두겠다. -->	
-			<div style="text-align: center; margin-top: 10px;">
-				<input type="submit" class="btn btn" value="답변 작성" style="color: #007bff; border: 1px solid #dee2e6;"/>
-				<a class="btn btn" href="qnaindex" style="color: #007bff; border: 1px solid #dee2e6;">취소</a>	
-			</div>
-		</form>
-		</div>
 	</div>
-	</div>
-</div>	
-</section>
+
+
+
+
+		
 <%-- ########################################################################### --%>	
-	 <jsp:include page="/WEB-INF/views/include/footer.jsp"/>
+	</section>
 	
+	<!-- ======= Footer ======= -->
+	 <jsp:include page="/WEB-INF/views/include/footer.jsp"/>
+	<!-- End Footer -->
 
 	<!-- Vendor JS Files -->
 	<script
@@ -130,7 +185,7 @@ td a {
 		src="<%=application.getContextPath()%>/resources/vendor/aos/aos.js"></script>
 
 	<!-- Template Main JS File -->
-	<script src="<%=application.getContextPath()%>/resources/js/main.js"></script> 
+	<script src="<%=application.getContextPath()%>/resources/js/main.js"></script>
 
 
 </body>
