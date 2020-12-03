@@ -47,16 +47,16 @@
 
 <body>
 	
-	 <jsp:include page="/WEB-INF/views/include/Header.jsp"/>
+<jsp:include page="/WEB-INF/views/include/Header.jsp"/>
   <main id="main">
-  <section id="portfolio" class="portfolio">
+  <section id="portfolio" class="portfolio pb-1">
       <div id = "listappend" class="container mt-5">
       		
       		<h2 style="float:left">셀프 인테리어 가이드북 </h2>
       		<sec:authorize access="isAuthenticated()">
       			<span style="float:right" class="btn btn-info btn-lg" onClick="selfWrite()">글쓰기</span>
       		</sec:authorize>
-      		<div class="mb-4" style="clear:both;"><br/></div>
+      		<div class="mb-4" style="clear:both;"></div>
       		<jsp:include page="/WEB-INF/views/guide/selfguide-order.jsp"/>
       		<!-- <img style="width:100%; height:200px;"src="https://image.ohou.se/i/bucketplace-v2-development/uploads/advices/guides/self_interior/pc_banner_image.v3.png?gif=1&w=1280&webp=1"/> -->
       		
@@ -71,9 +71,6 @@
 
       </div>
       
-
-    </section>
-   
    <div class="row text-center">
 
    	<ul class="pagination mx-auto ">
@@ -94,6 +91,9 @@
 	          	</c:if>
 	          </ul>
 	</div> 
+
+    </section>
+   
   </main><!-- End #main -->
 
  <jsp:include page="/WEB-INF/views/include/footer.jsp"/>
