@@ -115,36 +115,6 @@ public class QNAController {
 		return "redirect:/qna/qnaindex";
 	}
 	
-	@GetMapping("/photodownload")
-	public void photodownload(String fileName, 
-			HttpServletRequest request, 
-			HttpServletResponse response) throws Exception {
-		logger.info("fileName: " + fileName);
-		
-		//파일의 데이터를 읽기 위한 입력 스트림 얻기
-		String saveFilePath = "D:/MyWorkspace/photo/qna/" + fileName;
-		InputStream is = new FileInputStream(saveFilePath);
-		
-		//응답 HTTP 헤더 구성
-		//1) Content-Type 헤더 구성(파일의 종류 지정)
-		ServletContext application = request.getServletContext();
-		String fileType = application.getMimeType(fileName);
-		response.setContentType(fileType);
-		//2) Content-Disposition 헤더 구성(다운로드할 파일의 이름 지정)
-		
-		
-		response.setHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\"");
-		//3) Content-Length 헤더 구성(다운로드할 파일의 크기를 지정)
-		int fileSize = (int)new File(saveFilePath).length();
-		response.setContentLength(fileSize);
-		
-		//응답 HTTP의 바디(본문) 구성
-		OutputStream os = response.getOutputStream();
-		FileCopyUtils.copy(is, os);
-		os.flush();
-		os.close();
-		is.close();
-	}
 	
 	@GetMapping("/qnaAnswer")
 	public String qnaAnswer(int qnumber, Model model) {

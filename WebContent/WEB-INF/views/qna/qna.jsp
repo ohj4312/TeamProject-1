@@ -93,7 +93,7 @@
 						<tr>
 							<td class="mobile" style="text-align:center;">${qna.qnumber}</td>
 							<td ><a style="color:black;" href="qnaDetail?qnumber=${qna.qnumber}">${qna.qtitle}</a></td>
-							<td class="mobile"><img class="rounded" width="70px" height="50px" src="photodownload?fileName=${qna.qphoto}"/></td>
+							<td class="mobile"><img class="rounded" width="70px" height="50px" src="<%=application.getContextPath()%>/file/qna?fileName=${qna.qphoto}"/></td>
 							<td class="mobile">${qna.mnickname}</td>
 							<td class="mobile"><fmt:formatDate value="${qna.qdate}" pattern="yyyy-MM-dd"/></td>
 						</tr>
