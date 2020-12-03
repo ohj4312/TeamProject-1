@@ -5,7 +5,7 @@
     <div class="container d-flex">
 
       <div class="logo mr-auto">
-        <h1 class="text-light"><a href="<%=application.getContextPath()%>/">Ohouse</a></h1>
+        <h1 class="text-light"><a href="<%=application.getContextPath()%>/">O-house</a></h1>
       </div>
 
       <nav class="nav-menu d-none d-lg-block">

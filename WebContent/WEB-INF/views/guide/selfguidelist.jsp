@@ -43,8 +43,6 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-  
- 
 </head>
 
 <body>
@@ -80,27 +78,7 @@
   <!-- ======= script ======= -->
 	
 	<script type="text/javascript">
-	 var page = 2;
-	  $(function(){
-	      $(window).scroll(function(){
-	          var $window = $(this);
-	          var scrollTop = $window.scrollTop();
-	          var windowHeight = $window.height();
-	          var documentHeight = $(document).height();
-	          
-	          //console.log("documentHeight:" + documentHeight + " | scrollTop:" + scrollTop + " | windowHeight: " + windowHeight );
-	          
-	          if( scrollTop + windowHeight + 1000 > documentHeight ){
-	        	  getselfList(page);
-	        	  
-		           page++; 
-					console.log(page);
 	
-	            }   
-	          
-	   });
-			    
-	});
 	function pagingList(){
 	  $.ajax({
 			url : "<%=application.getContextPath()%>/selfguide/selflist",
@@ -117,7 +95,7 @@
 				url : "<%=application.getContextPath()%>/selfguide/selfguideFilter",
 				data:{filterString:filterString},
 				success:function(data){
-					$("#12345").html(data);
+					 $("#12345").html(data);
 					
 				}
 			});
@@ -131,10 +109,8 @@
 			location.href="<%=application.getContextPath()%>/selfguide/selfguide-write";
 		}
 		
-		
-		
 		function selfguidephotolist(pageNo){
-			console.log("페이징 실행 되나여");
+			console.log("페이징 실행");
 			$.ajax({
 				url :"<%=application.getContextPath()%>/selfguide/selflist",
 				data: {pageNo:pageNo},
@@ -143,7 +119,17 @@
 				}
 			})
 			
-		}
+			$.ajax({
+				url : "<%=application.getContextPath()%>/selfguide/selflist",
+				data : {pageNo : pageNo , firstcount:1},
+				success : function (data){
+					$("#12345").html(data);
+				}
+			});
+	
+		}	
+		
+		
 	</script>
 
   <!-- ======= script ======= -->
@@ -153,8 +139,32 @@
 
     <!-- ======= Breadcrumbs ======= -->
    
-    
-    
+   <div class="row text-center" style="width:100%">
+			
+	        <div class="input-group mb-3" style="width:50%; float:none; margin:0 auto">
+			
+	          <ul class="pagination" style="text-align:left">
+	          	<c:if test="${pager.groupNo>1}">
+	            	<li class="page-item"><a class="page-link" href="javascript:selfguidephotolist(${pager.startPageNo-1})">Pre</a></li>
+	            </c:if>
+	            
+	            <c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
+					<c:if test="${pager.pageNo==i}">
+	           	 		<li class="page-item"><a class="page-link" href="javascript:selfguidephotolist(${i})">${i}</a></li>
+	            	</c:if>
+	            	<c:if test="${pager.pageNo!=i}">
+	            		<li class="page-item"><a class="page-link" href="javascript:selfguidephotolist(${i})">${i}</a></li>
+	            	</c:if>
+	             </c:forEach>
+	             <c:if test="${pager.groupNo<pager.totalGroupNo}">
+	            	<li class="page-item"><a class="page-link" href="javascript:selfguidephotolist(${pager.endPageNo+1})">Next</a></li>
+	          	</c:if>
+	          </ul>
+	  		</div>
+	        
+	</div> 
+    	
+  <div id="paging"></div>
     
     
     
@@ -264,6 +274,14 @@
  
   <!-- Template Main JS File -->
   <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>
+	<script type="text/javascript">
+	$(function(){
+		//selfguidephotolist(0);
+		  
+	});
+	
+	</script>
+
 
 </body>
 

@@ -28,8 +28,16 @@
 	 
 	
 	<select id="getselfguidephotoList" parameterType="SelfGuide" resultType="SelfGuide">
-		select rownum as rnum, snumber, swriter, stitle, simage, stype,hit_count
-		from self_guide s, member m where s.swriter=m.memail order by snumber desc
+		<!-- select rownum as rnum, snumber, swriter, stitle, simage, stype,hit_count
+		from self_guide s, member m where s.swriter=m.memail order by snumber desc -->
+		select rnum, snumber ,swriter, stitle, simage, stype, hit_count
+		from ( select rownum as rnum, snumber, swriter, stitle, simage, stype, hit_count
+			   from self_guide s,member m 
+			   where rownum &lt;=#{endRowNo} and s.swriter=m.memail 
+			   order by snumber desc )
+			   where rnum &gt; =#{startRowNo}
+		
+		
 	</select>
 	
 	<select id="selectSelfPhotoList" parameterType="int" resultType="selfguide">

@@ -1,6 +1,9 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <!DOCTYPE html>
 <html>
 
@@ -42,7 +45,7 @@
 	rel="stylesheet">
 <!-- Template Main CSS File -->
 <link href="<%=application.getContextPath()%>/resources/css/style.css"
-	rel="stylesheet">
+	rel="stylesheet">	
 
 <!-- =======================================================
   * Template Name: Maxim - v2.2.0
@@ -79,7 +82,6 @@ table.type09 thead th {
     border-bottom: 3px solid #036;
 }
 table.type09 tbody th {
-    width: 150px;
     padding: 10px;
     font-weight: bold;
     vertical-align: top;
@@ -87,12 +89,34 @@ table.type09 tbody th {
     background: #f3f6f7;
 }
 table.type09 td {
-    width: 350px;
     padding: 10px;
     vertical-align: top;
     border-bottom: 1px solid #ccc;
 }
 </style>
+
+	<style type="text/css">
+		@media screen and (max-width: 1000px) {
+			th {
+				width: 30px;
+			}
+			
+			td {
+				width: 70%;
+			}
+		}
+		
+		@media screen and (min-width: 1000px) {
+			th {
+				width: 200px;
+			}
+			
+			td {
+				width: 800px;
+			}
+		}	
+	</style>
+
 </head>
 
 <body>
@@ -104,13 +128,14 @@ table.type09 td {
 <div>
 	<h3 style="text-align:center; margin-bottom:50px">Q&A</h3>
 		<div>
-			<table class="type09" style="width: 1000px; margin-left: auto; margin-right: auto;">
+			<table class="type09" style="margin-left: auto; margin-right: auto;">
 			    
 			    <tbody>
 			    <tr>
 			        <th scope="row">번호</th>
 			        <td>${qna.qnumber}</td>
 			    </tr>
+			
 			    <tr>
 			        <th scope="row">제목</th>
 			        <td>${qna.qtitle}</td>
@@ -129,118 +154,52 @@ table.type09 td {
 			    </tr>
 			    <tr>
 			        <th scope="row">내용</th>
-			        <td style="width:100px" readonly>${qna.qcontent}</td>
+			        <td style="width:100px">${qna.qcontent}</td>
 			    </tr>
+			    <c:if test="${qna.answer == null}">
+				    <tr>			        
+				    	<th scope="row">답변내용</th>
+				        <td style="width:100px; color:red;">아직 답변이 없습니다.</td>
+				    </tr>
+			    </c:if>
+			    <c:if test="${qna.answer != null}">
+				    <tr>			        
+				    	<th scope="row">답변내용</th>
+				        <td style="width:100px">${qna.answer}</td>
+				    </tr>
+				</c:if>
 			    </tbody>
 			  
 			</table>
+			
 				<c:if test="${member.mnickname == qna.mnickname}">
 				 	<div style="text-align: center; margin-top: 10px;">
 				    	 
 				    	<form method="post" action="qnaDelete?qnumber=${qna.qnumber}">
 				    		<input type="submit" value="삭제" class="btn btn-info" >
 				    		<a class="btn btn-info" href="qnaUpdate?qnumber=${qna.qnumber}">수정</a>
+				    		
 				    	</form>
 				    	
 				    </div>
-			   </c:if>	
-			   
-			   <c:if test="${member.mnickname != qna.mnickname}"> 
-				   <div style="text-align: center; margin-top: 10px;">
-				   		<a class="btn btn-info" href="qnaindex">목록</a>
-				   </div>
 			   </c:if>
+			   	
+			   	<div style="text-align: center; margin-top: 10px;">
+						<a class="btn btn-info" href="qnaindex">목록</a>				   
+				   	<sec:authorize access="hasRole('ROLE_ADMIN')"><!-- admin이여야만 볼 수 있다. -->
+						<a class="btn btn-info" href="qnaAnswer?qnumber=${qna.qnumber}">답변</a>
+					</sec:authorize>
+			   </div>
+			  
 	    </div>
 </div>
 		
 <%-- ########################################################################### --%>	
 	</section>
+	
 	<!-- ======= Footer ======= -->
-	<footer id="footer">
-		<div class="footer-top">
-			<div class="container">
-				<div class="row">
-
-					<div class="col-lg-3 col-md-6">
-						<div class="footer-info">
-							<h3>Maxim</h3>
-							<p>
-								A108 Adam Street <br> NY 535022, USA<br> <br> <strong>Phone:</strong>
-								+1 5589 55488 55<br> <strong>Email:</strong>
-								info@example.com<br>
-							</p>
-							<div class="social-links mt-3">
-								<a href="#" class="twitter"><i class="bx bxl-twitter"></i></a> <a
-									href="#" class="facebook"><i class="bx bxl-facebook"></i></a> <a
-									href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-								<a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-								<a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-lg-2 col-md-6 footer-links">
-						<h4>Useful Links</h4>
-						<ul>
-							<li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-							<li><i class="bx bx-chevron-right"></i> <a href="#">About
-									us</a></li>
-							<li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-							<li><i class="bx bx-chevron-right"></i> <a href="#">Terms
-									of service</a></li>
-							<li><i class="bx bx-chevron-right"></i> <a href="#">Privacy
-									policy</a></li>
-						</ul>
-					</div>
-
-					<div class="col-lg-3 col-md-6 footer-links">
-						<h4>Our Services</h4>
-						<ul>
-							<li><i class="bx bx-chevron-right"></i> <a href="#">Web
-									Design</a></li>
-							<li><i class="bx bx-chevron-right"></i> <a href="#">Web
-									Development</a></li>
-							<li><i class="bx bx-chevron-right"></i> <a href="#">Product
-									Management</a></li>
-							<li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-							<li><i class="bx bx-chevron-right"></i> <a href="#">Graphic
-									Design</a></li>
-						</ul>
-					</div>
-
-					<div class="col-lg-4 col-md-6 footer-newsletter">
-						<h4>Our Newsletter</h4>
-						<p>Tamen quem nulla quae legam multos aute sint culpa legam
-							noster magna</p>
-						<form action="" method="post">
-							<input type="email" name="email"><input type="submit"
-								value="Subscribe">
-						</form>
-
-					</div>
-
-				</div>
-			</div>
-		</div>
-
-		<div class="container">
-			<div class="copyright">
-				&copy; Copyright <strong><span>Maxim</span></strong>. All Rights
-				Reserved
-			</div>
-			<div class="credits">
-				All the links in the footer should remain intact. You can delete the
-				links only if you purchased the pro version. Licensing information:
-				https://bootstrapmade.com/license/ Purchase the pro version with
-				working PHP/AJAX contact form:
-				https://bootstrapmade.com/maxim-free-onepage-bootstrap-theme/
-				Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-			</div>
-		</div>
-	</footer>
+	 <jsp:include page="/WEB-INF/views/include/footer.jsp"/>
 	<!-- End Footer -->
-
-	<a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 
 	<!-- Vendor JS Files -->
 	<script
@@ -261,7 +220,7 @@ table.type09 td {
 		src="<%=application.getContextPath()%>/resources/vendor/aos/aos.js"></script>
 
 	<!-- Template Main JS File -->
-	<%-- <script src="<%=application.getContextPath()%>/resources/js/main.js"></script> --%>
+	<script src="<%=application.getContextPath()%>/resources/js/main.js"></script>
 
 
 </body>

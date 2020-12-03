@@ -5,7 +5,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.PrintWriter;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -14,7 +14,6 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -24,7 +23,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.mycompany.webapp.dto.Pager;
 import com.mycompany.webapp.dto.Qna;
@@ -100,7 +98,7 @@ public class QNAController {
 		return "qna/qnaUpdateForm";
 	}
 	
-	//게시글 수정 전송
+	//게시글 수정 전송//update는 write와 다르게 저장을 안해도 기존내용이 저장되게끔 하기 위해 else를 사용안한다.qhpto에 기본값이 null이 들어가는지 확인하기 위해서 dao에서 확인함
 	@PostMapping("/qnaUpdate")
 	public String qnaUpdate(Qna qna) {
 		//받은 파일을 저장하고 저장된 이름을 Qna 객체에 저장
@@ -117,38 +115,20 @@ public class QNAController {
 		return "redirect:/qna/qnaindex";
 	}
 	
-	@GetMapping("/photodownload")
-	public void photodownload(String fileName, 
-			HttpServletRequest request, 
-			HttpServletResponse response) throws Exception {
-		logger.info("fileName: " + fileName);
-		
-		//파일의 데이터를 읽기 위한 입력 스트림 얻기
-		String saveFilePath = "D:/MyWorkspace/photo/qna/" + fileName;
-		InputStream is = new FileInputStream(saveFilePath);
-		
-		//응답 HTTP 헤더 구성
-		//1) Content-Type 헤더 구성(파일의 종류 지정)
-		ServletContext application = request.getServletContext();
-		String fileType = application.getMimeType(fileName);
-		response.setContentType(fileType);
-		//2) Content-Disposition 헤더 구성(다운로드할 파일의 이름 지정)
-		
-		
-		response.setHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\"");
-		//3) Content-Length 헤더 구성(다운로드할 파일의 크기를 지정)
-		int fileSize = (int)new File(saveFilePath).length();
-		response.setContentLength(fileSize);
-		
-		//응답 HTTP의 바디(본문) 구성
-		OutputStream os = response.getOutputStream();
-		FileCopyUtils.copy(is, os);
-		os.flush();
-		os.close();
-		is.close();
+	
+	@GetMapping("/qnaAnswer")
+	public String qnaAnswer(int qnumber, Model model) {
+		Qna qna = service.getQna(qnumber);
+		model.addAttribute("qna", qna);
+		return "qna/qnaAnswerForm";
 	}
 	
-
+	@PostMapping("/qnaAnswer")
+	public String qnaAnswer(Qna qna) {
+		//서비스를 이용해서 게시물 쓰기
+		service.qnaUpdateAnswer(qna);
+		return "redirect:/qna/qnaindex";
+	}
 	
 }
 

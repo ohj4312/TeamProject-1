@@ -9,7 +9,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Ohouse</title>
+  <title>O-house</title>
   <meta content="" name="descriptison">
   <meta content="" name="keywords">
 
@@ -40,7 +40,12 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
 </head>
-
+<style>
+.testimonial-img{
+	width:90px;
+	height:90px;
+}
+</style>
 <body>
 
   <!-- ======= Header ======= -->
@@ -48,7 +53,7 @@
     <div class="container d-flex">
 
       <div class="logo mr-auto">
-        <h1 class="text-light"><a href="<%=application.getContextPath()%>/">Ohouse</a></h1>
+        <h1 class="text-light"><a href="<%=application.getContextPath()%>/">O-house</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
@@ -57,7 +62,7 @@
         <ul>
         	<li class="active"><a href="<%=application.getContextPath()%>/">Home</a></li>
           	<li><a href="#services">Services</a></li>
-          	<li><a href="#portfolio">Photo List</a></li>
+          	<li><a href="<%=application.getContextPath()%>/photo/list">Photo List</a></li>
         	<li><a href="<%=application.getContextPath()%>/selfguide/selflist">Self Guide</a></li>
 
         	<li><a href="<%=application.getContextPath()%>/community">Community</a></li>
@@ -83,8 +88,8 @@
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
     <div class="container text-center text-md-left" data-aos="fade-up">
-      <h1>Welcome to Ohouse</h1>
-      <h2>김우진, 안형모, 노성규, 문윤정, 오현지, 서윤아</h2>
+      <h1>Welcome to O-house</h1>
+      <h2>HyungMo Ahn, HyunJi Oh, SungGyu Noh, WooJin Kim, YoonAh Seo, YoonJung Moon</h2>
       <a href="#services" class="btn-get-started scrollto">Get Started</a>
     </div>
   </section><!-- End Hero -->
@@ -101,7 +106,7 @@
 
         <div class="section-title" data-aos="fade-up">
           <h2>Services</h2>
-          <p>Motive Today House , Korea interior platform & comunity site O-house.<br/>
+          <p>Motive Today House , Korea interior platform & Community site O-house.<br/>
           made by team2 </p>
         </div>
 
@@ -153,8 +158,8 @@
 
         <div class="section-title" data-aos="fade-up">
           <h2>TEAM2</h2>
-          <p> We are IT developer trained by Korea Software Industry Association. We learend Java , 
-          JSP/Servlet , Spring framework etc. And We develope with Eclipse, vscode, sqldeveloper, Git etc. We can use our front-end & back-end prograiming skills to build a project well. </p>
+          <p>저희는 한국소프트웨어산업협회에서 교육받은 IT개발자 입니다. 저희는 JAVA, JSP/Servlet, Spring Framework등을 배우며
+          Eclipse,Vscode,Sql-develper,Git 등을 이용해 개발하였습니다. 저희는 프론트 엔드 및 백엔드 프로그래밍 기술을 사용하여 프로젝트를 구축했습니다.</p>
         </div>
 
         <div class="owl-carousel testimonials-carousel" data-aos="fade-up">
@@ -162,56 +167,67 @@
           <div class="testimonial-item">
             <p>
               <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-              Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+				Community와 Photo Reply을 담당하였습니다. Back-end & Front-end 담당하여 전체적인 흐름을 파악하였습니다.
               <i class="bx bxs-quote-alt-right quote-icon-right"></i>
             </p>
-            <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-            <h3>Saul Goodman</h3>
-            <h4>Ceo &amp; Founder</h4>
+            <img src="<%=application.getContextPath() %>/resources/img/yoonah.jpg" class="testimonial-img" >
+            <h3>YoonAh Seo</h3>
+            <h4>Team-Member</h4>
           </div>
 
           <div class="testimonial-item">
             <p>
               <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-              Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
+				Photo List와 Register를 담당하였습니다. Back-end & Front-end 담당하여 전체적인 흐름을 파악하였습니다.
               <i class="bx bxs-quote-alt-right quote-icon-right"></i>
             </p>
-            <img src="<%=application.getContextPath() %>/resources/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-            <h3>Sara Wilsson</h3>
-            <h4>Designer</h4>
+            <img src="<%=application.getContextPath() %>/resources/img/sungkyu.jpg" class="testimonial-img">
+            <h3>SungGyu Noh</h3>
+            <h4>Team-Member</h4>
           </div>
 
           <div class="testimonial-item">
             <p>
               <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-              Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
+				Q&A와 Customer Center를 담당하였습니다. Back-end & Front-end 담당하여 전체적인 흐름을 파악하였습니다.
               <i class="bx bxs-quote-alt-right quote-icon-right"></i>
             </p>
-            <img src="<%=application.getContextPath() %>/resources/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-            <h3>Jena Karlis</h3>
-            <h4>Store Owner</h4>
+            <img src="<%=application.getContextPath() %>/resources/img/yoonjung.jpg" class="testimonial-img">
+            <h3>YoonJung Moon</h3>
+            <h4>Team-Member</h4>
           </div>
 
           <div class="testimonial-item">
             <p>
               <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-              Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
+               Self Guide와 Follow를 담당하였습니다. Back-end & Front-end 담당하여 전체적인 흐름을 파악하였습니다.
               <i class="bx bxs-quote-alt-right quote-icon-right"></i>
             </p>
-            <img src="<%=application.getContextPath() %>/resources/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
-            <h3>Matt Brandon</h3>
-            <h4>Freelancer</h4>
+            <img src="<%=application.getContextPath() %>/resources/img/hina.jpg" class="testimonial-img" >
+            <h3> HyunJi Oh</h3>
+            <h4>Team-Member</h4>
           </div>
 
           <div class="testimonial-item">
             <p>
               <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-              Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
+              	Book Mark와 Self Guide를 담당하였습니다. Back-end & Front-end 담당하여 전체적인 흐름을 파악하였습니다.
               <i class="bx bxs-quote-alt-right quote-icon-right"></i>
             </p>
-            <img src="<%=application.getContextPath() %>/resources/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
-            <h3>John Larson</h3>
-            <h4>Entrepreneur</h4>
+            <img src="<%=application.getContextPath() %>/resources/img/baby.jpg" class="testimonial-img">
+            <h3>WooJin Kim</h3>
+            <h4>Team-Leader</h4>
+          </div>
+          
+           <div class="testimonial-item">
+            <p>
+              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+              	Community와 좋아요를 담당하였습니다. Back-end & Front-end 담당하여 전체적인 흐름을 파악하였습니다.
+              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+            </p>
+            <img src="<%=application.getContextPath() %>/resources/img/hyungmo.jpg" class="testimonial-img">
+            <h3>HyungMo Ahn</h3>
+            <h4>Team-Member</h4>
           </div>
 
         </div>
@@ -219,51 +235,7 @@
       </div>
     </section><!-- End Testimonials Section -->
 
-    <!-- ======= Portfolio Section ======= -->
-    <section id="portfolio" class="portfolio section-bg">
-      <div class="container">
-
-        <div class="section-title" data-aos="fade-up">
-          <h2>Portfolio</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-        </div>
-
-        <div class="row" data-aos="fade-up">
-          <div class="col-lg-12 d-flex justify-content-center">
-            <div class="text-center"><a href="<%=application.getContextPath()%>/photo/list" type="button" class="btn btn-primary mb-3">더 많은 사진 보러가기</a></div>
-          </div>
-        </div>
-
-        <div class="row portfolio-container" data-aos="fade-up">
-
-          <c:forEach var="i" begin="1" end="6">
-				<div class="col-lg-4 col-md-6 portfolio-item filter-app">
-					<div class="portfolio-wrap">
-						<img
-							src="<%=application.getContextPath()%>/resources/img/portfolio/portfolio-${i}.jpg"
-							class="img-fluid" alt="">
-						<div class="portfolio-info">
-							<h4>App 1</h4>
-							<p>App</p>
-							<div class="portfolio-links">
-								<a
-									href="<%=application.getContextPath()%>/resources/img/portfolio/portfolio-${i}.jpg"
-									data-gall="portfolioGallery" class="venobox" title="App 1">
-									<i class="bx bx-plus"></i>
-								</a>
-								<a href="<%=application.getContextPath()%>/photo/detail" title="More Details">
-									<i class="bx bx-link"></i>
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</c:forEach>
-
-        </div>
-
-      </div>
-    </section><!-- End Portfolio Section -->
+   
 
 
   </main><!-- End #main -->

@@ -51,6 +51,13 @@ public class QnaService {
 		
 	}
 
+	public void qnaUpdateAnswer(Qna qna) {
+		int rows = qnaDao.updateAnswer(qna);
+		
+	}
+
+
+
 	
 
 }

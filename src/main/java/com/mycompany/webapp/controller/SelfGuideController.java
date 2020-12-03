@@ -85,13 +85,30 @@ public class SelfGuideController {
 		
 		int rows = service.getRows();
 		logger.info(String.valueOf(rows));
-	
-		Pager pager = new Pager(5, 5, rows, pageNo);
-		guidelist = service.getselfguideList(pager);
+		
+		String url;
 
+
+
+		if(firstcount>=1) { 
+			url ="guide/selfguide-photos"; 
+		}else { 
+			url ="guide/selfguidelist";
+		}
+		Pager pager = new Pager(3, 5, rows, pageNo); 		
+		
 		SelfGuide sg = new SelfGuide();
+		sg.setEndRowNo(pager.getEndRowNo());
+		sg.setStartRowNo(pager.getStartRowNo());
 		
 		guidelist = service.getselfguidephotoList(sg);
+		for(SelfGuide sge : guidelist) {
+			logger.info(sge.getSwriter());
+			logger.info(sge.getStype());
+			logger.info(String.valueOf(sge.getSnumber()));
+			//logger.info(String.valueOf(sge.getHit_count()));
+			logger.info(sge.getStitle());
+		}
 		
 		//3위까지 가져오기위한 것이올시다.
 		List<SelfGuide> selforder=service.getOrder();
@@ -105,7 +122,7 @@ public class SelfGuideController {
 		model.addAttribute("order",selforder);
 		model.addAttribute("guidelist",guidelist);
 		model.addAttribute("pager",pager);
-		return "guide/selfguidelist";
+		return url;
 		
 	}
 	

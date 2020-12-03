@@ -19,26 +19,13 @@ public class CommunityService {
 	private C_ReplyDao c_replyDao;
 	
 	public void comm_write(Community community) {
-		communityDao.communityInsert(community);	
+		
+		communityDao.communityInsert(community);
+		
 	}
 	
 	public int comm_replyWrite(Community community) {
-		return c_replyDao.comm_replyInsert(community);
-	}
-	
-	public int getCount(Community community) {
-			int count = c_replyDao.communityReplyCount(community);
-			return count;
-		}
-	
-	public Community comm_replyList(int cnumber) {
-			Community community = c_replyDao.communityReplyList(cnumber);
-			return community;
-		}
-	
-	public List<Community> comm_ReplyList(Community community) {
-		List<Community> list = c_replyDao.ReplyPage(community);
-		return list;
+		return communityDao.comm_replyInsert(community);
 	}
 
 	public List<Community> Comm_list(Pager pager) {
@@ -52,7 +39,7 @@ public class CommunityService {
 	}
 
 	public Community Comm_one(Community community){
-		Community comm_list = c_replyDao.communitySelectOne(community);
+		Community comm_list = communityDao.communitySelectOne(community);
 		return comm_list;
 	}
 
@@ -73,6 +60,21 @@ public class CommunityService {
 	public int Comm_listLow(String temp) {
 		int rows = communityDao.communityCountSelectAll(temp);
 		return rows;
+	}
+
+	public void comm_delete(int c_number) {
+		communityDao.communityDelete(c_number);
+		
+	}
+
+	public int Comm_replyrows(int c_number) {
+		int rows = c_replyDao.comm_replyselectRows(c_number);
+		return rows;
+	}
+
+	public List<Community> Comm_replylist(Pager pager) {
+		List<Community> list = c_replyDao.comm_rlplylistAll(pager);
+		return list;
 	}
 	
 	

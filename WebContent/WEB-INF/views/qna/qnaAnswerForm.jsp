@@ -76,9 +76,9 @@ td a {
 <div class="container">
 <div class="row">
 	<div style="width: 1000px; margin-left: auto; margin-right: auto;" >
-		<h3 style="margin-bottom:50px; padding-left: 15px;">Q&A 질문 작성</h3>
-		<div class="col-sm">
-		<form id="qnaUpdateForm" method="post" action="qnaUpdate" enctype="multipart/form-data"><!-- input type="file사용할때 enctype="multipart/form-data" 사용하기  -->
+		<h3 style="margin-bottom:50px; padding-left: 15px;">Q&A 답변작성</h3>
+	<div class="col-sm">
+		<form id="qnaAnswerForm" method="post" action="qnaAnswer" >
 			<!-- <table style="width:auto" class="table table-sm table-bordered"> -->
 			<input type="hidden" id="qnumber" name="qnumber" value="${qna.qnumber}">
 			
@@ -90,25 +90,14 @@ td a {
 			</div>
 			
 			<div class="input-group">
-				<div class="input-group-prepend"><span class="input-group-text">내용</span></div>
-				<textarea id="qcontent" name="qcontent" class="form-control" rows="10">${qna.qcontent}</textarea>
-				<span id="qcontentError" class="error"></span>
+				<div class="input-group-prepend"><span class="input-group-text">답변 내용</span></div>
+				<textarea id="answer" name="answer" class="form-control" rows="10">${qna.answer}</textarea>
+				<span id="answerError" class="error"></span>
 			</div>
 			
-			
-			<div class="input-group">
-				<div class="input-group-prepend"><span class="input-group-text">사진</span></div>
-				<input type="file" name="attach" class="form-control">
-			</div> 
-			
-			<div class="input-group">
-				<div class="input-group-prepend"><span class="input-group-text">별명</span></div>
-				<input id="mnickname" type="text" name="mnickname" class="form-control" value="${member.mnickname}" readonly>
-				<span id="qtitleError" class="error"></span>
-			</div>
 			<!-- //로그인이 되면 로그인된 아이디가 들어간다.값이 없으면 필수, 값이  있으면 에러가 없어서 비워두겠다. -->	
 			<div style="text-align: center; margin-top: 10px;">
-				<input type="submit" class="btn btn-info" value="글수정"/>
+				<input type="submit" class="btn btn-info" value="답변 작성"/>
 				<a class="btn btn-info" href="qnaindex">취소</a>	
 			</div>
 		</form>
@@ -224,7 +213,7 @@ td a {
 		src="<%=application.getContextPath()%>/resources/vendor/aos/aos.js"></script>
 
 	<!-- Template Main JS File -->
-	<script src="<%=application.getContextPath()%>/resources/js/main.js"></script>
+	<script src="<%=application.getContextPath()%>/resources/js/main.js"></script> 
 
 
 </body>
