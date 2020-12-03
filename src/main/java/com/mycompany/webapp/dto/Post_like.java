@@ -10,7 +10,7 @@ public class Post_like {
 	private int pnumber;
 	private int likenumber;
 	private String aimage;
-	
+	private int snumber;
 
 
 	public String getAimage() {
@@ -51,6 +51,14 @@ public class Post_like {
 
 	public void setFirst_image(String first_image) {
 		this.first_image = first_image;
+	}
+
+	public int getSnumber() {
+		return snumber;
+	}
+
+	public void setSnumber(int snumber) {
+		this.snumber = snumber;
 	}
 
 }

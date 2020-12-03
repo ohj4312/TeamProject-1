@@ -74,6 +74,11 @@ public class SelfGuideDAO {
 	public List<SelfGuide> getselfguidephotoList(SelfGuide sg) {
 		return sst.selectList("mybatis.mapper.selfguide.getselfguidephotoList",sg);
 	}
+	
+	public List<SelfGuide> getselfguidephotoList(Pager pager) {
+		// TODO Auto-generated method stub
+		return sst.selectList("mybatis.mapper.selfguide.selectByPage",pager);
+	}
 
 
 	public void deleteSelf(int snumber) {
@@ -93,6 +98,8 @@ public class SelfGuideDAO {
 		List<SelfGuide> topThree=sst.selectList("mybatis.mapper.selfguide.selectOrder");
 		return topThree;
 	}
+
+
 
 	
 	

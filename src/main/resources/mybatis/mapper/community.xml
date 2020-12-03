@@ -11,6 +11,11 @@
       insert into c_reply(cr_rmnickname, cr_cnumber, cr_rdate, cr_rcontent, cr_rnumber)
       values(#{cr_rmnickname}, #{cr_cnumber}, sysdate, #{cr_rcontent}, SEQ_COM_REPLY.nextval)
    </insert>
+  
+   <insert id="comm_rlplylistReInsert" parameterType="community">
+	    insert into c_reply(cr_rmnickname,cr_replyrnumber,cr_rdate,cr_rcontent, cr_rnumber)
+		values(#{cr_rmnickname},#{cr_rnumber},SYSDATE,#{cr_rcontent}, SEQ_COM_REPLY.nextval)
+   </insert>
    
 
    
@@ -72,9 +77,9 @@
    <select id="communitylist" parameterType="pager" resultType="community">   		  		
 		select *from(
 		
-        select rownum as rnum, cr_cnumber, cr_rcontent,  mimage, cr_rmnickname, memail,cr_rdate       
+        select rownum as rnum, cr_cnumber, cr_rcontent,  mimage, cr_rmnickname, memail,cr_rdate,cr_rnumber       
         from (
-        select r.cr_cnumber, r.cr_rcontent,  m.mimage, r.cr_rmnickname, m.memail,r.cr_rdate
+        select r.cr_cnumber, r.cr_rcontent,  m.mimage, r.cr_rmnickname, m.memail,r.cr_rdate,r.cr_rnumber
 		from c_reply r, member m
 		where r.cr_rmnickname = m.mnickname and r.cr_cnumber = #{c_number}
 		order by r.cr_rdate desc
@@ -85,6 +90,12 @@
    
     <select id="communitySelectrow" parameterType="int" resultType="int">
    select count(*) from C_REPLY where cr_cnumber=#{c_number}
+   </select>
+   
+   <select id="comm_rlplylistReSelectAll" parameterType="int" resultType="community">
+     
+   select r.*,m.mimage from c_reply r,member m 
+ where CR_REPLYRNUMBER=#{cr_rnumber} and r.cr_rmnickname =m.mnickname 
    </select> 
 
 

@@ -93,8 +93,8 @@
 				</div>
 				<!-- //로그인이 되면 로그인된 아이디가 들어간다.값이 없으면 필수, 값이  있으면 에러가 없어서 비워두겠다. -->	
 				<div style="text-align: center; margin-top: 10px;">
-					<input type="submit" class="btn btn-info" value="글쓰기"/>
-					<a class="btn btn-info" href="qnaindex">취소</a>	
+					<input type="submit" class="btn btn" value="글쓰기" style="color: #007bff; border: 1px solid #dee2e6;"/>
+					<a class="btn btn" href="qnaindex" style="color: #007bff; border: 1px solid #dee2e6;">취소</a>	
 				</div>
 			</form>
 			</div>

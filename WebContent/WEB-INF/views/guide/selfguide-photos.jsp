@@ -4,53 +4,59 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <c:forEach var="selfguide" items="${guidelist }">
-		<div class="mb-4 mt-5 col-lg-4 col-md-6 portfolio-item  ${selfguide.snumber } ${selfguide.swriter } ${selfguide.scontent}">
-			<a href="<%=application.getContextPath()%>/selfguide/selfdetail?snumber=${selfguide.snumber}&swriter=${selfguide.swriter}&scontent=${selfguide.scontent}" style="color:black">
+	<div class="mb-4 mt-5 col-lg-4 col-md-6 portfolio-item  ${selfguide.snumber } ${selfguide.swriter } ${selfguide.scontent}">
+		<div class="portfolio-wrap" OnClick="location.href ='<%=application.getContextPath()%>/selfguide/selfdetail?snumber=${selfguide.snumber}'" style="border:none; cursor:pointer;">
+			<img class="mx-auto" style="width:100%; height:200px;"  src="<%=application.getContextPath()%>/file/selfguide?fileName=${selfguide.simage}" />
 			
-			<div class="row mb-4 card" style="border:none">
-				<img class="rounded mr-2 card-img-top" style="width:350px; height:200px;"  src="<%=application.getContextPath()%>/file/selfguide?fileName=${selfguide.simage}" />
+			<div class="portfolio-info">
+				<h4>조회수</h4>
+				<p class = "hitcount">${selfguide.hit_count }</p>
 			</div>
-			<div>
+			
+			<div class = "bg-light border">
 				<h5>${selfguide.stitle } </h5>
 				<div>${selfguide.swriter }</div>
 			</div>
-			<div class="card-img-overlay ">
-				<div class="card-text">조회수 ${selfguide.hit_count }</div>
+		</div>
+		<div class="row bg-light m-0">
+				<sec:authorize access="isAnonymous()">
+					<div class="col-5 mx-auto p-0">
+						<a id="App1BK${selfguide.snumber}" href="<%=application.getContextPath()%>/member/login"> 
+							<i id="selfitag${selfguide.snumber}"  class="material-icons pl-4" style="font-size: 30px;">bookmark_border</i>
+						</a>
+						<a id="likepush${selfguide.snumber}" href="<%=application.getContextPath()%>/member/login">
+							<i id="likeicon${selfguide.snumber}" class="material-icons pl-4" style="font-size: 30px;">favorite_border</i>
+						</a>
+					</div>
+				</sec:authorize>
+				
+				<sec:authorize access="isAuthenticated()">
+					<div class="col-5 mx-auto p-0">
+						<a id="App1BK${selfguide.snumber}" href="javascript:selftoggleUpdate(${selfguide.snumber}, '<%=application.getContextPath()%>/selfbookmark/selfcheckBookMark')">
+							<c:if test="${selfguide.bnumber == 0}">
+								<i id="selfitag${selfguide.snumber}" class="material-icons pl-4"
+								style="font-size: 30px;">bookmark_border</i>
+							</c:if> 
+							<c:if test="${selfguide.bnumber != 0}">
+								<i id="selfitag${selfguide.snumber}" class="material-icons pl-4"
+								style="font-size: 30px;">bookmark</i>
+							</c:if>
+						</a>
+						<a id="likepush${selfguide.snumber}" href="javascript:selftoggleUpdate(${selfguide.snumber}, '<%=application.getContextPath()%>/selflike/selflikePushCheck')">
+							<c:if test="${selfguide.likenumber == 0}">
+								<i id="selflikeicon${selfguide.snumber}" class="material-icons pl-4"
+								style="font-size: 30px;">favorite_border</i>
+							</c:if>
+							<c:if test="${selfguide.likenumber != 0}">
+								<i id="selflikeicon${selfguide.snumber}" class="material-icons pl-4"
+								style="font-size: 30px;">favorite</i>
+							</c:if>
+						</a>
+					</div>
+				</sec:authorize>
 			</div>
-			</a>
 			
-		
-
-	<%-- <div>
-		<sec:authorize access="isAuthenticated()">
-			<a id="App1BK${photo.pnumber}" class="col-4 "
-				href="javascript:toggleUpdate(${photo.pnumber}, '<%=application.getContextPath()%>/BK/CheckBookMark')">
-				<c:if test="${photo.bnumber == 0}">
-					<i id="itag${photo.pnumber}" class="material-icons pl-4"
-						style="font-size: 30px;">bookmark_border</i>
-				</c:if> <c:if test="${photo.bnumber != 0}">
-					<i id="itag${photo.pnumber}" class="material-icons pl-4"
-						style="font-size: 30px;">bookmark</i>
-				</c:if>
-			</a>
-			<a
-				href="<%=application.getContextPath()%>/photo/detail?pnumber=${photo.pnumber}"
-				class="col-4" title="More Details"> <i class="bx bx-link pl-4"
-				style="font-size: 30px;"></i>
-			</a>
-			<a id="likepush${photo.pnumber}" class="col-4"
-				href="javascript:toggleUpdate(${photo.pnumber}, '<%=application.getContextPath()%>/like/likePushCheck')">
-				<c:if test="${photo.likenumber == 0}">
-					<i id="likeicon${photo.pnumber}" class="material-icons pl-4"
-						style="font-size: 30px;">favorite_border</i>
-				</c:if> <c:if test="${photo.likenumber != 0}">
-					<i id="likeicon${photo.pnumber}" class="material-icons pl-4"
-						style="font-size: 30px;">favorite</i>
-				</c:if>
-			</a>
-		</sec:authorize>
-	</div> --%>
-
-</div>
+	</div>
 </c:forEach>
+
 
