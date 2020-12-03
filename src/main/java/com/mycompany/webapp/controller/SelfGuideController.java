@@ -88,8 +88,8 @@ public class SelfGuideController {
 		logger.info(String.valueOf(rows));
 		
 		String url;
-
-
+		
+		
 
 		if(firstcount>=1) { 
 			url ="guide/selfguide-photos"; 
@@ -97,6 +97,8 @@ public class SelfGuideController {
 			url ="guide/selfguidelist";
 		}
 		Pager pager = new Pager(3, 5, rows, pageNo); 		
+		
+		
 		
 		SelfGuide sg = new SelfGuide();
 		sg.setEndRowNo(pager.getEndRowNo());
@@ -120,7 +122,18 @@ public class SelfGuideController {
 		
 	}
 	
-	
+	/*
+	 * @RequestMapping("/selflistjson") public void selfphotoListjson(Model
+	 * model,@RequestParam(defaultValue = "1") int
+	 * pageNo, @RequestParam(defaultValue = "default1") String filter,HttpSession
+	 * session, HttpServletResponse response ) { Member member = (Member)
+	 * session.getAttribute("member"); List<SelfGuide> selflist;
+	 * 
+	 * int rows = service.getRows();
+	 * 
+	 * Pager pager = new Pager(3 , 5,rows, pageNo); logger.info(filter); if(member
+	 * ==null) { selflist = service.getselfList(pager, filter); } }
+	 */
 	
 
 	//셀프 가이드 리스트에서 한 게시물 선택시 상세 뷰.

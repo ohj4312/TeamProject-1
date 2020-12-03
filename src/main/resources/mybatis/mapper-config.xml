@@ -16,6 +16,9 @@
 		<typeAlias alias="selfreply" type="com.mycompany.webapp.dto.SelfGuide_reply"/>
 		<typeAlias alias="community" type="com.mycompany.webapp.dto.Community" />
 		<typeAlias alias="qna" type="com.mycompany.webapp.dto.Qna"/>	
+		<typeAlias alias="selfbookmark" type="com.mycompany.webapp.dto.Post_bookmark" />
+		<typeAlias alias="selflike" type="com.mycompany.webapp.dto.Post_like" />
+			
 	</typeAliases>
 </configuration>
   

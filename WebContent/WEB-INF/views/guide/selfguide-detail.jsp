@@ -80,20 +80,20 @@
       </div>
       </section>
 
-		<%-- <div class="container" style="text-align: center;">
+		<div class="container" style="text-align: center;">
 			<div class="row mx-auto">
 				<div id="RegBookMark" class="col-5">
 					<button type="button" class="btn btn-light w-100"
-						onclick="toggleUpdate(${photo.pnumber}, '<%=application.getContextPath()%>/BK/CheckBookMark')">
-						<c:if test="${photo.bnumber == 0}">
-							<i id="itag${photo.pnumber}" class="material-icons align-middle"
+						onclick="selftoggleUpdate(${sg.snumber}, '<%=application.getContextPath()%>/selfbookmark/selfcheckBookMark')">
+						<c:if test="${sg.bnumber == 0}">
+							<i id="selfitag${sg.snumber}" class="material-icons align-middle"
 								style="font-size: 30px; color: #1bac91;">bookmark_border</i>
-							<span id="bkcount" class="align-middle">${photo.bookcount}</span>
+							<span id="selfbkcount" class="align-middle">${sg.bookcount}</span>
 						</c:if>
-						<c:if test="${photo.bnumber != 0}">
-							<i id="itag${photo.pnumber}" class="material-icons align-middle"
+						<c:if test="${sg.bnumber != 0}">
+							<i id="selfitag${sg.snumber}" class="material-icons align-middle"
 								style="font-size: 30px; color: #1bac91;">bookmark</i>
-							<span id="bkcount" class="align-middle">${photo.bookcount}</span>
+							<span id="selfbkcount" class="align-middle">${sg.bookcount}</span>
 						</c:if>
 					</button>
 				</div>
@@ -101,23 +101,23 @@
 				<div id="likepush" class="col-5">
 
 					<button type="button" class="btn btn-light w-100"
-						onclick="toggleUpdate(${photo.pnumber}, '<%=application.getContextPath()%>/like/likePushCheck')">
-						<c:if test="${photo.likenumber == 0}">
-							<i id="likeicon${photo.pnumber}"
+						onclick="selftoggleUpdate(${sg.snumber}, '<%=application.getContextPath()%>/selflike/selflikePushCheck')">
+						<c:if test="${sg.likenumber == 0}">
+							<i id="selflikeicon${sg.snumber}"
 								class="material-icons align-middle"
 								style="font-size: 30px; color: red;">favorite_border</i>
-							<span id="lkcount" class="align-middle">${photo.likecount}</span>
+							<span id="selflkcount" class="align-middle">${sg.likecount}</span>
 						</c:if>
-						<c:if test="${photo.likenumber != 0}">
-							<i id="likeicon${photo.pnumber}"
+						<c:if test="${sg.likenumber != 0}">
+							<i id="selflikeicon${sg.snumber}"
 								class="material-icons align-middle"
 								style="font-size: 30px; color: red;">favorite</i>
-							<span id="lkcount" class="align-middle">${photo.likecount}</span>
+							<span id="selflkcount" class="align-middle">${sg.likecount}</span>
 						</c:if>
 					</button>
 				</div>
 			</div>
-		</div> --%>
+		</div>
 		<!-- ======= Blog Section ======= --> 
     <section id="blog" class="blog">
       <div class="container">  
@@ -371,6 +371,7 @@
 $(function(){
 	chechId('${sg.swriter}','${member.memail}'); 
 	selfreplyList(${sg.snumber}); 
+	var snumber = ${sg.snumber};
 });
 	 
 

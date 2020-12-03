@@ -17,36 +17,57 @@
 			</a>
 			
 		
+	<!-- app1bk 안쓴다. -->
+	<div class="row pl-3 pr-3 mt-2">
+			<sec:authorize access="isAnonymous()">
+				<a id="App1BK${selfguide.snumber}" class="col-4 "
+					href="<%=application.getContextPath()%>/member/login"> 
+					<i id="selfitag${selfguide.snumber}" class="material-icons pl-4"
+					style="font-size: 30px;">bookmark_border</i>
+				</a>
+				<a
+					href="<%=application.getContextPath()%>/selfguide/selfdetail?snumber=${selfguide.snumber}"
+					class="col-4" title="More Details"> <i class="bx bx-link pl-4"
+					style="font-size: 30px;"></i>
+				</a>
+				<a id="likepush${selfguide.snumber}" class="col-4"
+					href="<%=application.getContextPath()%>/member/login">
+					<i id="likeicon${selfguide.snumber}" class="material-icons pl-4"
+					style="font-size: 30px;">favorite_border</i>
+				</a>
+			</sec:authorize>
 
-	<%-- <div>
-		<sec:authorize access="isAuthenticated()">
-			<a id="App1BK${photo.pnumber}" class="col-4 "
-				href="javascript:toggleUpdate(${photo.pnumber}, '<%=application.getContextPath()%>/BK/CheckBookMark')">
-				<c:if test="${photo.bnumber == 0}">
-					<i id="itag${photo.pnumber}" class="material-icons pl-4"
+			<sec:authorize access="isAuthenticated()">
+			<a id="App1BK${selfguide.snumber}" class="col-4 "
+				href="javascript:selftoggleUpdate(${selfguide.snumber}, '<%=application.getContextPath()%>/selfbookmark/selfcheckBookMark')">
+				<c:if test="${selfguide.bnumber == 0}">
+					<i id="selfitag${selfguide.snumber}" class="material-icons pl-4"
 						style="font-size: 30px;">bookmark_border</i>
-				</c:if> <c:if test="${photo.bnumber != 0}">
-					<i id="itag${photo.pnumber}" class="material-icons pl-4"
+				</c:if> 
+				<c:if test="${selfguide.bnumber != 0}">
+					<i id="selfitag${selfguide.snumber}" class="material-icons pl-4"
 						style="font-size: 30px;">bookmark</i>
 				</c:if>
 			</a>
-			<a
-				href="<%=application.getContextPath()%>/photo/detail?pnumber=${photo.pnumber}"
+			<%-- <a
+				href="<%=application.getContextPath()%>/selfguide/selfdetail?snumber=${selfguide.snumber}"
 				class="col-4" title="More Details"> <i class="bx bx-link pl-4"
 				style="font-size: 30px;"></i>
-			</a>
-			<a id="likepush${photo.pnumber}" class="col-4"
-				href="javascript:toggleUpdate(${photo.pnumber}, '<%=application.getContextPath()%>/like/likePushCheck')">
-				<c:if test="${photo.likenumber == 0}">
-					<i id="likeicon${photo.pnumber}" class="material-icons pl-4"
+			</a> --%>
+			
+			<!-- 여기는 like 만들고 나서 해라. -->
+			<a id="likepush${selfguide.snumber}" class="col-4"
+				href="javascript:selftoggleUpdate(${selfguide.snumber}, '<%=application.getContextPath()%>/selflike/selflikePushCheck')">
+				<c:if test="${selfguide.likenumber == 0}">
+					<i id="selflikeicon${selfguide.snumber}" class="material-icons pl-4"
 						style="font-size: 30px;">favorite_border</i>
-				</c:if> <c:if test="${photo.likenumber != 0}">
-					<i id="likeicon${photo.pnumber}" class="material-icons pl-4"
+				</c:if> <c:if test="${selfguide.likenumber != 0}">
+					<i id="selflikeicon${selfguide.snumber}" class="material-icons pl-4"
 						style="font-size: 30px;">favorite</i>
 				</c:if>
 			</a>
 		</sec:authorize>
-	</div> --%>
+	</div>
 
 </div>
 </c:forEach>
