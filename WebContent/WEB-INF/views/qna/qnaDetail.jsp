@@ -173,24 +173,24 @@ table.type09 td {
 			</table>
 			
 				<c:if test="${member.mnickname == qna.mnickname}">
-				 	<div style="text-align: center; margin-top: 10px;">
+				 	<div style="text-align: center; margin-top: 10px; ">
 				    	 
 				    	<form method="post" action="qnaDelete?qnumber=${qna.qnumber}">
-				    		<input type="submit" value="삭제" class="btn btn-info" >
-				    		<a class="btn btn-info" href="qnaUpdate?qnumber=${qna.qnumber}">수정</a>
+				    		<input type="submit" value="삭제" class="btn btn "  style="color: #007bff; border: 1px solid #dee2e6;">
+				    		<a class="btn btn btn" href="qnaUpdate?qnumber=${qna.qnumber}" style="color: #007bff; border: 1px solid #dee2e6;">수정</a>
 				    		
 				    	</form>
 				    	
 				    </div>
 			   </c:if>
 			   	
-			   	<div style="text-align: center; margin-top: 10px;">
-						<a class="btn btn-info" href="qnaindex">목록</a>				   
+			   	<div style="text-align: center; margin-top: 10px; ">
+						<a class="btn btn btn" href="qnaindex" style="color: #007bff; border: 1px solid #dee2e6;" >목록</a>				   
 				   	<sec:authorize access="hasRole('ROLE_ADMIN')"><!-- admin이여야만 볼 수 있다. -->
-						<a class="btn btn-info" href="qnaAnswer?qnumber=${qna.qnumber}">답변</a>
+						<a class="btn btn btn" href="qnaAnswer?qnumber=${qna.qnumber}" style="color: #007bff; border: 1px solid #dee2e6;">답변</a>
 					</sec:authorize>
 			   </div>
-			  
+			 
 	    </div>
 </div>
 		

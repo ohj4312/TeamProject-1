@@ -88,8 +88,8 @@ public class SelfGuideController {
 		logger.info(String.valueOf(rows));
 		
 		String url;
-
-
+		
+		
 
 		if(firstcount>=1) { 
 			url ="guide/selfguide-photos"; 
@@ -97,12 +97,20 @@ public class SelfGuideController {
 			url ="guide/selfguidelist";
 		}
 		Pager pager = new Pager(3, 5, rows, pageNo); 		
-		
 		SelfGuide sg = new SelfGuide();
-		sg.setEndRowNo(pager.getEndRowNo());
-		sg.setStartRowNo(pager.getStartRowNo());
 		
-		guidelist = service.getselfguidephotoList(sg);
+		if(member == null) {
+			guidelist = service.getselfguidephotoList(pager);
+		}else {
+			
+			sg.setSwriter(member.getMemail());
+			sg.setEndRowNo(pager.getEndRowNo());
+			sg.setStartRowNo(pager.getStartRowNo());
+			
+			guidelist = service.getselfguidephotoList(sg);
+		}
+		
+		
 		for(SelfGuide sge : guidelist) {
 			logger.info(sge.getSwriter());
 			logger.info(sge.getStype());
@@ -111,21 +119,26 @@ public class SelfGuideController {
 			logger.info(sge.getStitle());
 		}
 		
-		
-		
-		
+		//3위까지 가져오기위한 것이올시다.
+		List<SelfGuide> selforder=service.getOrder();
+		for(SelfGuide sge : selforder) {
+			logger.info(sge.getSimage());
+			logger.info(sge.getStitle());
+			logger.info(String.valueOf(sge.getSnumber()));
+			//logger.info(String.valueOf(sge.getHit_count()));
+			logger.info(String.valueOf(sge.getHit_count()));
+		}
+		model.addAttribute("order",selforder);
 		model.addAttribute("guidelist",guidelist);
 		model.addAttribute("pager",pager);
 		return url;
 		
 	}
 	
-	
-	
 
 	//셀프 가이드 리스트에서 한 게시물 선택시 상세 뷰.
 	@GetMapping("/selfdetail")
-	public String selfphotoDetail(int snumber,String swriter,String scontent,Model model,HttpSession session) {
+	public String selfphotoDetail(int snumber,Model model,HttpSession session) {
 		
 		Member member = (Member) session.getAttribute("member");
 		//logger.info("snumber:"+String.valueOf(snumber));
@@ -135,18 +148,8 @@ public class SelfGuideController {
 		List<SelfGuide> list;
 		
 		sg.setSnumber(snumber);
-		sg.setSwriter(swriter);
-		sg.setScontent(scontent);
-		//sg.setHit_count(hit_count);
-		logger.info("swriter:"+swriter);
-				
-		//logger.info(String.valueOf(sg.getHit_count()));
-		 
-		
-		logger.info(String.valueOf(sg.getHit_count()));
 
-		list=service.selectSelfPhotoList(swriter);
-		
+		logger.info(String.valueOf(sg.getHit_count()));	
 		sg = service.selectSelfPhoto(sg);
 		service.updatehitcount(sg);
 		
@@ -156,14 +159,8 @@ public class SelfGuideController {
 		logger.info(sg.getStype());
 		logger.info(sg.getScontent());
 		//logger.info(String.valueOf(sg.getHit_count()));
-		
-		
-		
-		
 		model.addAttribute("sg",sg);
-		model.addAttribute("list",list);
-	
-		 
+
 		return "guide/selfguide-detail";
 	}
 	

@@ -61,6 +61,11 @@ public class SelfGuideService {
 		
 		return sgDAO.getselfguidephotoList(sg);
 	}
+	
+	public List<SelfGuide> getselfguidephotoList(Pager pager) {
+		// TODO Auto-generated method stub
+		return sgDAO.getselfguidephotoList(pager);
+	} 
 
 	public void deleteSelfguide(int snumber) {
 		sgDAO.deleteSelf(snumber);
@@ -74,12 +79,10 @@ public class SelfGuideService {
 	public void changeSelfPhoto(SelfGuide sg) {
 		sgDAO.updateSelfPhoto(sg);
 		
-	} 
+	}
 
-	
-	
-
-
-
-	
+	public List<SelfGuide> getOrder() {
+		List<SelfGuide> selforder=sgDAO.selectOrder();
+		return selforder;
+	}	
 }
