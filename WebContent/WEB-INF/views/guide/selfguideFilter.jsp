@@ -5,7 +5,7 @@
 <div class="col-lg-8 col-sm-12 mx-auto">
 	<ul class="nav" >
 		<li class="nav-item col-2 p-1 px-sm-3">
-			<a  href="<%=application.getContextPath()%>/selfguide/selflist">
+			<a  href="javascript:checkSelfGuidFilter('All', 1, 1)">
               	<div>
 					<div>
 						<img class="img-fluid" src="<%=application.getContextPath() %>/resources/img/all.png" alt="전체">
@@ -17,7 +17,7 @@
 			</a>
 		</li>                      
 		<li class="nav-item col-2 p-1 px-sm-3">
-			<a href="javascript:checkSelfGuidFilter('비용정리')">
+			<a href="javascript:checkSelfGuidFilter('비용정리',1, 1)">
 	             <div>
 					<div>
 						<img class="img-fluid" src="<%=application.getContextPath() %>/resources/img/cost.png" alt="비용정리">
@@ -29,7 +29,7 @@
 			</a>
 		</li>
 		<li class="nav-item col-2 p-1 px-sm-3">
-			<a href="javascript:checkSelfGuidFilter('공간배치')">
+			<a href="javascript:checkSelfGuidFilter('공간배치',1, 1)">
 	             <div>
 					<div>
 						<img class="img-fluid" src="<%=application.getContextPath() %>/resources/img/space.png" alt="공간배치">
@@ -41,7 +41,7 @@
 			</a>
 		</li>
 		<li class="nav-item col-2 p-1 px-sm-3">
-			<a href="javascript:checkSelfGuidFilter('계획하기')">
+			<a href="javascript:checkSelfGuidFilter('계획하기',1, 1)">
               	<div>
 					<div>
 						<img class="img-fluid" src="<%=application.getContextPath() %>/resources/img/plan.png" alt="계획하기">
@@ -53,7 +53,7 @@
 			</a>
 		</li>
 		<li class="nav-item col-2 p-1 px-sm-3">
-			<a href="javascript:checkSelfGuidFilter('페인트도배')">
+			<a href="javascript:checkSelfGuidFilter('페인트도배',1,1)">
               	<div>
 					<div>
 						<img class="img-fluid" src="<%=application.getContextPath() %>/resources/img/drawing.png" alt="페인트도배">
@@ -65,7 +65,7 @@
 			</a>
 		</li>
 		<li class="nav-item col-2 p-1 px-sm-3">
-			<a href="javascript:checkSelfGuidFilter('바닥깔기')">
+			<a href="javascript:checkSelfGuidFilter('바닥깔기',1,1)">
               	<div>
 					<div>
 						<img class="img-fluid" src="<%=application.getContextPath() %>/resources/img/tile.png" alt="바닥깔기">

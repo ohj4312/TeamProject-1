@@ -13,8 +13,8 @@
    </insert>
   
    <insert id="comm_rlplylistReInsert" parameterType="community">
-	    insert into c_reply(cr_rmnickname,cr_replyrnumber,cr_rdate,cr_rcontent, cr_rnumber)
-		values(#{cr_rmnickname},#{cr_rnumber},SYSDATE,#{cr_rcontent}, SEQ_COM_REPLY.nextval)
+       insert into c_reply(cr_rmnickname,cr_replyrnumber,cr_rdate,cr_rcontent, cr_rnumber)
+      values(#{cr_rmnickname},#{cr_rnumber},SYSDATE,#{cr_rcontent}, SEQ_COM_REPLY.nextval)
    </insert>
    
 
@@ -26,17 +26,17 @@
          from(
                select * from community
                order by c_date desc         )
-     		 where rownum &lt;= #{endRowNo}
-      								)
-      		where rnum &gt;= #{startRowNo}
+            where rownum &lt;= #{endRowNo}
+                              )
+            where rnum &gt;= #{startRowNo}
    </select>
        
    <select id="communityselctSerch" resultType="community" parameterType="pager">
       
       select*
       from(
-      select rownum as rnum, * from (select * from community where c_content like #{temp} or c_title like #{temp} order by c_date desc)
-      	here rownum &lt;= #{endRowNo}
+      select rownum as rnum, c_mnickname, c_content, c_count, c_title, c_date, c_image, c_number from (select * from community where c_content like #{temp} or c_title like #{temp} order by c_date desc)
+         where rownum &lt;= #{endRowNo}
       )
       where rnum &gt;= #{startRowNo}
       
@@ -74,18 +74,18 @@
    
    
    <!-- 댓글 페이지 별로 분리하기 -->
-   <select id="communitylist" parameterType="pager" resultType="community">   		  		
-		select *from(
-		
+   <select id="communitylist" parameterType="pager" resultType="community">                 
+      select *from(
+      
         select rownum as rnum, cr_cnumber, cr_rcontent,  mimage, cr_rmnickname, memail,cr_rdate,cr_rnumber       
         from (
         select r.cr_cnumber, r.cr_rcontent,  m.mimage, r.cr_rmnickname, m.memail,r.cr_rdate,r.cr_rnumber
-		from c_reply r, member m
-		where r.cr_rmnickname = m.mnickname and r.cr_cnumber = #{c_number}
-		order by r.cr_rdate desc
-		)
-		where rownum &lt;=#{endRowNo}
-		)where rnum &gt;=#{startRowNo}
+      from c_reply r, member m
+      where r.cr_rmnickname = m.mnickname and r.cr_cnumber = #{c_number}
+      order by r.cr_rdate desc
+      )
+      where rownum &lt;=#{endRowNo}
+      )where rnum &gt;=#{startRowNo}
    </select>
    
     <select id="communitySelectrow" parameterType="int" resultType="int">

@@ -185,7 +185,7 @@
 										</li>
 									</ul>
 									</div>
-									<div class="detail-right" style="display:inline-block; padding-left:5%;">
+									<div class="detail-right" style="display:inline-block; padding-left:20%;">
 									<a class="follow-btn">팔로우</a>
 									</div>
 									<hr>

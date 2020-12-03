@@ -27,14 +27,19 @@ public class SelfGuideService {
 		return row;
 	}
 	
-	public int getRows() {
-		return sgDAO.countAll();
+	public int getRows(String filter) {
+
+		if(filter.equals("All")) {
+			return sgDAO.countAll();
+		}else {
+			return sgDAO.countFilter(filter);
+		}
 	}
 
-	public List<SelfGuide> getselfguideList(Pager pager) {
+	/*public List<SelfGuide> getselfguideList(Pager pager) {
 		
 		return sgDAO.selectByPage(pager); 
-	}
+	}*/
 
 	
 	//self detail 부분
@@ -84,5 +89,24 @@ public class SelfGuideService {
 	public List<SelfGuide> getOrder() {
 		List<SelfGuide> selforder=sgDAO.selectOrder();
 		return selforder;
+	}
+
+	public List<SelfGuide> getselfguidephotoListFilter(SelfGuide sg) {
+		if(sg.getStype().equals("All")) {
+			//필터가 적용안 될 경우
+			if(sg.getSwriter() == null) {
+				return sgDAO.selectByPage(sg);
+			}else {
+				return sgDAO.selectByPageMember(sg);
+			}
+		}else {
+			//필터가 적용될 경우
+			if(sg.getSwriter() == null) {
+				return sgDAO.selectByPageFilter(sg);
+			}else {
+				return sgDAO.selectByMemberFilter(sg);
+			}
+		}
+		
 	}	
 }

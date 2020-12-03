@@ -37,12 +37,7 @@
   <!-- Template Main CSS File -->
   <link href="<%=application.getContextPath() %>/resources/css/style.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: Eterna - v2.1.0
-  * Template URL: https://bootstrapmade.com/eterna-free-multipurpose-bootstrap-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+
 </head>
 
 <body>
@@ -64,34 +59,12 @@
 			<jsp:include page="/WEB-INF/views/guide/selfguideFilter.jsp"/>
         </div>
 		<div style="clear:both"></div>
-      <div id = "12345" class="row portfolio-container abcd" data-aos="fade-up">
+      <div id = "12345" >
         <jsp:include page="/WEB-INF/views/guide/selfguide-photos.jsp"/>
        </div>
         
 
       </div>
-      
-   <div class="row text-center">
-
-   	<ul class="pagination mx-auto ">
-	          	<c:if test="${pager.groupNo>1}">
-	            	<li class="page-item"><a class="page-link" href="javascript:selfguidephotolist(${pager.startPageNo-1})">Pre</a></li>
-	            </c:if>
-	            
-	            <c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
-					<c:if test="${pager.pageNo==i}">
-	           	 		<li class="page-item"><a class="page-link" href="javascript:selfguidephotolist(${i})">${i}</a></li>
-	            	</c:if>
-	            	<c:if test="${pager.pageNo!=i}">
-	            		<li class="page-item"><a class="page-link" href="javascript:selfguidephotolist(${i})">${i}</a></li>
-	            	</c:if>
-	             </c:forEach>
-	             <c:if test="${pager.groupNo<pager.totalGroupNo}">
-	            	<li class="page-item"><a class="page-link" href="javascript:selfguidephotolist(${pager.endPageNo+1})">Next</a></li>
-	          	</c:if>
-	          </ul>
-	</div> 
-
     </section>
    
   </main><!-- End #main -->
@@ -112,13 +85,9 @@
  
   <!-- Template Main JS File -->
   <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>
+	
 	<script type="text/javascript">
-	$(function(){
-		//selfguidephotolist(0);
-		  
-	});
-	
-	
+
 	function pagingList(){
 	  $.ajax({
 			url : "<%=application.getContextPath()%>/selfguide/selflist",
@@ -129,19 +98,23 @@
 		});
 	}
 	
-	function checkSelfGuidFilter(filterString){
+	
+	function selfWrite(){
+		location.href="<%=application.getContextPath()%>/selfguide/selfguide-write";
+	}
+	
+	function checkSelfGuidFilter(filterString, firstcount, pageNo){
+		console.log("check실행");
 
 		$.ajax({
-				url : "<%=application.getContextPath()%>/selfguide/selfguideFilter",
-				data:{filterString:filterString},
+				url : "<%=application.getContextPath()%>/selfguide/selflist",
+				data:{filterString:filterString, firstcount:firstcount, pageNo:pageNo},
 				success:function(data){
 					 $("#12345").html(data);
 					
 				}
 			});
 		
-	
-						
 	}
 	
 	function selfWrite(){
@@ -169,8 +142,6 @@
 		
 
 	}	
-	
-	
 	</script>
 </body>
 
