@@ -94,14 +94,9 @@
 	<jsp:include page="/WEB-INF/views/include/Header.jsp" />
 
 	<main id="main">
-		<!-- ======= Breadcrumbs ======= -->
-		<section id="breadcrumbs" class="breadcrumbs">
-			
-		</section>
-		<!-- End Breadcrumbs -->
 
 		<!-- ======= Blog Section ======= -->
-		<section id="blog" class="blog">
+		<section id="blog" class="blog" style="padding-top:7%;">
 			
 			<div class="container">
 
@@ -183,7 +178,7 @@
 									<div class="detail-left" style="display:inline-block;">
 									<ul>
 										<li class="d-flex align-items-center">
-											<img src="<%=application.getContextPath()%>/file/photo?fileName=${list.mimage}" style="width:60px; height:60px; border-radius: 100%;">
+											<img src="<%=application.getContextPath()%>/file/member?fileName=${list.mimage}" style="width:60px; height:60px; border-radius: 100%;">
 										</li>
 										<li class="d-flex align-items-center">
 											<a href="<%=application.getContextPath()%>/member/yourhomesearch?pwriter=${list.memail}">${list.c_mnickname}</a>
