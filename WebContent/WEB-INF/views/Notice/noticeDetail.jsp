@@ -138,7 +138,7 @@ table.type09 td {
 						</tr>
 						<tr>
 							<th scope="row">내용</th>
-							<td>${notice.ncontent}</td>
+							<td >${notice.ncontent}</td>
 							
 						</tr>
 					</tbody>

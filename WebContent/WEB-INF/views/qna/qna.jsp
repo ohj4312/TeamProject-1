@@ -79,7 +79,7 @@
 		
 		
 			<table class="table table-lg table-bordered fade-up">
-				<thead class="thead-light ">
+				<thead style="background-color: #CDE4E1 "><!-- class="thead-light " -->
 					<tr>
 						<th id="th1" class="mobile" style="width: 70px; font-weight: bold;">번호</th>
 						<th id="th2" style="font-weight: bold; text-align:center; ">제목</th>

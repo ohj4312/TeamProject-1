@@ -43,14 +43,15 @@
 		
 		
 		#writeButton{
-		margin-right: 10px;
+			margin-right: 10px;
+		}
 		
 	}
 	
-	@media screen and (min-width: 1000px){
+	@media screen and (min-width: 1000px) {
 		#noticeList{
 			width: 1000px;
-			margin-left: auto;
+			margin-left: auto; 
 			margin-right: auto;
 		}
 	}
@@ -71,14 +72,14 @@
 	<h3 style="text-align:center; margin-bottom:50px;">Notice</h3>
 	
 	<div id="noticeList">
-		<div style="text-align:center; margin-bottom: 10px; margin-left:920px;">
+		<div style="text-align:right; margin-bottom: 10px;">
 			<sec:authorize access="hasRole('ROLE_ADMIN')">
-			<a id="writeButton" type="button" class="btn btn-info" href="noticeWrite">글작성</a>		
-		</sec:authorize>
+				<a id="writeButton" type="button" class="btn btn-info" href="noticeWrite" >글작성</a>		
+			</sec:authorize>
 		</div>
 		
-		<table class="table table-lg table-bordered fade-up " style="width:1000px; margin-left: auto; margin-right: auto;" >
-			<thead class="thead-light">
+		<table class="table table-lg table-bordered fade-up">
+			<thead style="background-color: #D0F4EF">
 				<tr>
 					<th style="width:70px; font-weight: bold;">번호</th>
 					<th style= "text-align:center; font-weight: bold;">제목</th>
@@ -88,7 +89,7 @@
 				<c:forEach var="notice" items="${list}">
 					<tr>
 						<td style="text-align:center;">${notice.nnumber}</td>
-						<td><a style="color:black;" href="noticeDetail?nnumber=${notice.nnumber}">${notice.ntitle}</a></td>
+						<td ><a style="color:black;" href="noticeDetail?nnumber=${notice.nnumber}">${notice.ntitle}</a></td>
 						
 					</tr>
 				</c:forEach>
