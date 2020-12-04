@@ -5,6 +5,7 @@
 
 <c:forEach var="photo" items="${list}">
 				<div class="mb-4 mt-5 col-lg-4 col-md-6 portfolio-item ${photo.ptype} ${photo.psize} ${photo.pstyle}">
+					<div class="shadow">
 					<div class = "row pl-3 pr-2 mb-4">
 						<a href="<%=application.getContextPath()%>/member/yourhomesearch?pwriter=${photo.pwriter}" class = "pr-3 " style="color: black;">
 							<img class="rounded-circle mr-2 "style="width:30px; height:30px;"  src="<%=application.getContextPath()%>/file/member?fileName=${photo.mimage}" />
@@ -50,7 +51,7 @@
 								<i class="bx bx-link pl-4" style = "font-size: 30px;"></i>
 							</a>
 							<a id="likepush${photo.pnumber}"  class = "col-4" href="<%=application.getContextPath()%>/member/login">
-								<i id="likeicon${photo.pnumber}" class="material-icons pl-4" style = "font-size: 30px;">favorite_border</i>
+								<i id="likeicon${photo.pnumber}" class="material-icons pl-4" style = "font-size: 30px; color: red;">favorite_border</i>
 							</a>
 						</sec:authorize>
 						
@@ -68,10 +69,10 @@
 							</a>
 							<a id="likepush${photo.pnumber}"  class = "col-4" href="javascript:toggleUpdate(${photo.pnumber}, '<%=application.getContextPath()%>/like/likePushCheck')">
 								<c:if test="${photo.likenumber == 0}">
-									<i id="likeicon${photo.pnumber}" class="material-icons pl-4" style = "font-size: 30px;">favorite_border</i>
+									<i id="likeicon${photo.pnumber}" class="material-icons pl-4" style = "font-size: 30px; color: red;">favorite_border</i>
 								</c:if>
 								<c:if test="${photo.likenumber != 0}">
-									<i id="likeicon${photo.pnumber}" class="material-icons pl-4" style = "font-size: 30px;">favorite</i>
+									<i id="likeicon${photo.pnumber}" class="material-icons pl-4" style = "font-size: 30px; color: red;">favorite</i>
 								</c:if>
 							</a>
 						</sec:authorize>
@@ -86,6 +87,7 @@
 									</c:if>
 								
 					</div>
+				</div>
 				</div>
 </c:forEach>
 			
