@@ -145,7 +145,7 @@ public class SelfGuideController {
 
 		SelfGuide sg = new SelfGuide();
 		
-		List<SelfGuide> list;
+		List<SelfGuide> list=service.selectSelfPhotoList(member.getMemail());
 		
 		sg.setSnumber(snumber);
 
@@ -160,7 +160,7 @@ public class SelfGuideController {
 		logger.info(sg.getScontent());
 		//logger.info(String.valueOf(sg.getHit_count()));
 		model.addAttribute("sg",sg);
-
+		model.addAttribute("list",list);
 		return "guide/selfguide-detail";
 	}
 	

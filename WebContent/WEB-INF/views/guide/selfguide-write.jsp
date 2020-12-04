@@ -116,7 +116,7 @@
 			<div class="row col-sm-12 align-self-center">
 				<div class="col-12 text-center mb-4 fancybox" style="position: relative; height: 300px;" style="border:1px solid gold">		
 					<input type="file" id="simageAttach" name ="simageAttach" style="display:none;"> 
-					<label id = "srclabel" for="simageAttach" style="max-width: 100%; height: auto;"> 
+					<label id = "srclabel" for="simageAttach" style="width: 100%; height: 100%;"> 
 	                	<i class="material-icons" 
 							 style="font-size: 7rem; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">photo_camera</i>
 	               		<span id="simageError" class="error"></span>
@@ -192,6 +192,15 @@
 					} 
 				}
 				
+		/* 		//이거 max-width로만 바꾸면 찌그러지는 거 사라짐
+				$("#srclabel").on('change', function(e){
+			        let elem = e.target;
+
+			        var src1 = URL.createObjectURL(elem.files[0]);
+			        var $div = $('<img src="'+src1+'" max-width="100%" height="100%" />');
+			        // $("#srclabel").html($div);
+			        $(elem).next().html($div);
+			      }); */
 				 
 			</script>
 			
