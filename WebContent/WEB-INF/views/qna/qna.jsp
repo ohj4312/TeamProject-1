@@ -77,7 +77,7 @@
 <%-- ########################################################################### --%>
 
 	<div>
-	<section style="padding-bottom:2rem" class="mb-0">
+	<section style="padding-bottom:2.2rem" class="mb-0">
 		<h3 style="text-align:center; margin-bottom:50px">Q&A</h3>
 		</section>
 		<div id="qnaList">
