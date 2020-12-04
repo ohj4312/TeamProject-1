@@ -32,20 +32,18 @@
 			<div class="col-lg-8 h-25" style="width:100%">
 		 			<c:forEach var="selfguide" items="${selfguide}">
           				<a href="<%=application.getContextPath()%>/selfguide/selfdetail?snumber=${selfguide.snumber}&swriter=${selfguide.swriter}">
-          					<%-- <img src="<%=application.getContextPath()%>/file/selfguide?fileName=${selfguide.simage}" class= "w-25 h-25"> -->--%>
-          				 <a title="${selfguide.stitle}" data-toggle="popover" data-trigger="focus" data-placement="right" data-content="${selfguide.scontent}">${selfguide.stitle}</a>
-          				</a><br/>
+          					<img src="<%=application.getContextPath()%>/file/selfguide?fileName=${selfguide.simage}" class= "w-25 h-25">
+          				</a>
 					</c:forEach>
 			</div>
-	<%-- 		<c:forEach var="selfguide" items="${selfguide}">
+			<c:forEach var="selfguide" items="${selfguide}">
    				<a class = "col-4 mb-2" href="<%=application.getContextPath()%>/selfguide/selfdetail?snumber=${selfguide.snumber}&swriter=${selfguide.swriter}">
    					<img class="img-fluid" style="height: 200px;" src="<%=application.getContextPath()%>/file/selfguide?fileName=${selfguide.simage}">
    				</a>
 			</c:forEach>
- --%>
+
     	</c:if>
 </div>
-
 
         	
      
