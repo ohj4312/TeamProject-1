@@ -39,14 +39,14 @@
   ======================================================== -->
 </head>
 <style>
-.nav{
+/* .nav{
 	display:flex;
 	text-align:center;
 }
 .bar{
 	width:100%;
 	text-align:center;
-}
+} */
 #btn111{
 	font-size:15px;
 	border-radius:4px;

@@ -43,4 +43,9 @@ public class SelfLikeService {
 		return check;
 	}
 
+	public List<SelfGuide> getLikePhotoList(String memail) {
+		
+		return slDAO.likePhotoAllSelect(memail);
+	}
+
 }

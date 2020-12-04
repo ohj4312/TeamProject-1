@@ -1,7 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 
-<div class="row col-md-12 col-lg-6 mb-4">
-     <div class="bar">
+<div class="mb-4">
        <ul class="nav">
          <li class="nav-item mr-3">
            <div class="dropdown">
@@ -71,5 +70,4 @@
       </li>
 
     </ul>
-  </div>
 </div>

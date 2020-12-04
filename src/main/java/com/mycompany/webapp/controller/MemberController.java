@@ -78,8 +78,10 @@ public class MemberController {
 		logger.info(String.valueOf(member.getFollowCheking()));
 		model.addAttribute("member", member);
 		List<SelfGuide> list=memberService.getSelfGuideList(memail.getMemail());
-		model.addAttribute("selfguide",list);
-
+		logger.info(String.valueOf(list.size()));
+		if(list.size() != 0) {
+			model.addAttribute("selfguide",list);
+		}
 		return "member/mypage";
 	}
 	
@@ -91,7 +93,10 @@ public class MemberController {
 		logger.info(String.valueOf(member.getFollowCheking()));
 		model.addAttribute("member", member);
 		List<SelfGuide> list=memberService.getSelfGuideList(memail.getMemail());
-		model.addAttribute("selfguide",list);
+		
+		if(list.size() != 0) {
+			model.addAttribute("selfguide",list);
+		}
 
 		return "member/returnmypage";
 	}

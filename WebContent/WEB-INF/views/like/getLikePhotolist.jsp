@@ -15,11 +15,11 @@
 
 <h5><strong>Self Guide Like</strong></h5>
 <div id="mypagephoto" class = "scroll" style="border:1px dashed #dbdbdb;width:100%;height: 320px;">
-    <div>
-       <c:forEach var="like" items="${selflikelist}">
-       		<a class = "col-4 mb-2" href="<%=application.getContextPath()%>/selfguide/selfdetail?snumber=${selfguide.snumber}&swriter=${selfguide.swriter}">
-       			<img class="img-fluid" height="150px;" src="<%=application.getContextPath()%>/file/selfguide?fileName=${selfguide.simage}"/>
-      		</a>
-       </c:forEach>
+    <div class = "row">
+    	<c:forEach var="like" items="${selflikelist}">
+			<a class = "col-4 mb-2" href="<%=application.getContextPath()%>/selfguide/selfdetail?snumber=${like.snumber}&swriter=${like.swriter}">
+			<img class="img-fluid" style="height: 180px;" src="<%=application.getContextPath()%>/file/selfguide?fileName=${like.simage}"/>
+			</a>
+		</c:forEach>
     </div>
 </div> 

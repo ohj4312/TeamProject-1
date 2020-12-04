@@ -35,8 +35,7 @@ public class MemberDAO {
 	}
 
 	public List<SelfGuide> selectSelfGuideList(String memail) {
-		List<SelfGuide> list=sst.selectList("mybatis.mapper.selfguide.selectSelfGuide", memail);
-		return list;
+		return sst.selectList("mybatis.mapper.selfguide.selectSelfGuide", memail);
 	}
 
 	public void updateMimage(Member member) {

@@ -28,7 +28,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.mycompany.webapp.dto.Member;
 import com.mycompany.webapp.dto.Post_bookmark;
 import com.mycompany.webapp.dto.Register_photo;
+import com.mycompany.webapp.dto.SelfGuide;
 import com.mycompany.webapp.service.BookMarkService;
+import com.mycompany.webapp.service.SelfBookMarkService;
 
 @Controller
 @RequestMapping("/BK")
@@ -38,6 +40,9 @@ public class BookMarkController {
 	//서비스 주입 받음.
 	@Resource
 	private BookMarkService service;
+	
+	@Resource
+	private SelfBookMarkService selfBookMark; 
 	
 	//photo-detail에서 요청 매핑을 받았을때  //여기가 photo-detail에서 북마크를 눌렀을때 요청매핑에 의해 컨트롤러로 넘어옴.
 	@GetMapping("/regBookMark")
@@ -142,10 +147,10 @@ public class BookMarkController {
 		
 		
 		List<Register_photo> list = service.getBookMarkList(memail);
-		
-		
+		List<SelfGuide> list1 = selfBookMark.getBookMarkList(memail);
 		
 		model.addAttribute("list",list);
+		model.addAttribute("list1",list1);
 		
 		return "member/bookmark"; 
 
