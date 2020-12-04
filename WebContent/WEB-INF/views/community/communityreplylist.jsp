@@ -8,10 +8,10 @@
 		<strong style="vertical-align: -2px;">Comments</strong>
 	</h4>
 	
-	<div class="row" style="padding-left:3%; text-align:center">
+	<div class="row m-1">
 
 		<input type="text" id="rcontent" class="form-control col-lg-10" placeholder="댓글을 남겨보세요!" style="width:100%;">
-		<a class="btn btn-outline col-lg-1" style="background-color:#1bac91; color:white;" href="javascript:commreplyWrite(${pager.c_number})">등록</a>
+		<a class="btn btn-outline" style="background-color:#1bac91; color:white;" href="javascript:commreplyWrite(${pager.c_number})">등록</a>
 	</div>
 	
 	<c:forEach var="list" items="${comm_replylist}">
