@@ -9,7 +9,6 @@
 	</h4>
 	
 	<div class="row m-1">
-
 		<input type="text" id="rcontent" class="form-control col-lg-10" placeholder="댓글을 남겨보세요!" style="width:100%;">
 		<a class="btn btn-outline" style="background-color:#1bac91; color:white;" href="javascript:commreplyWrite(${pager.c_number})">등록</a>
 	</div>
@@ -37,38 +36,6 @@
 	
 	
 	</div>	
-	
-	
-	<script type="text/javascript">
-	
-	
-	function InputRe(cr_rnumber,check){
-		
-		$(".lt").attr("style","display: none");
-		$(".lt").attr("style","display: none");
-		$("#Arcontent"+cr_rnumber).attr("style","display: line-block; background-color:#1bac91; color:white");
-		$("#rcontent"+cr_rnumber).attr("style","display: line-block;");	
-		
-	}
-	
-	 function commreplyListre(cr_rnumber){
-			$.ajax({
-				url:"/teamproject/community/comm_replyListRe",
-				data:{cr_rnumber:cr_rnumber},
-				success:function(data){
-					$("#comment-re"+cr_rnumber).html(data);
-					
-				}
-			});
-			
-		} 
-	
-	$(function () {
-		commreplyListre('${list.cr_rnumber}');
-	});
-	
-	</script>
-
 </c:forEach>
 
 <div class="row text-center" style="width:100%">
@@ -95,6 +62,36 @@
 	        </div>
 	        </c:if>	     	        
  </div>
+ 
+ <script type="text/javascript">
+	
+	
+	function InputRe(cr_rnumber,check){
+		
+		$(".lt").attr("style","display: none");
+		$(".lt").attr("style","display: none");
+		$("#Arcontent"+cr_rnumber).attr("style","display: line-block; background-color:#1bac91; color:white");
+		$("#rcontent"+cr_rnumber).attr("style","display: line-block;");	
+		
+	}
+
+	function commreplyListre(cr_rnumber){
+		$.ajax({
+			url:"/teamproject/community/comm_replyListRe",
+			data:{cr_rnumber:cr_rnumber},
+			success:function(data){
+				$("#comment-re"+cr_rnumber).html(data);
+				
+			}
+		});
+		
+	} 
+
+	$(function () {
+		commreplyListre('${list.cr_rnumber}');
+	});
+
+</script>
  
  
 
