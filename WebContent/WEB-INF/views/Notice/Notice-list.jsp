@@ -60,17 +60,18 @@
 </head>
 
 <body>
-
-	<jsp:include page="/WEB-INF/views/include/Header.jsp" />
 	
-	<section id="services" class="section-bg mt-5" style="background-color: #ffffff;">
+	<jsp:include page="/WEB-INF/views/include/Header.jsp" />
+	<section id="services" class="section-bg mt-3" style="background-color: #ffffff;">
 	
 <%-- ########################################################################### --%>
 		
 		
 <div>
-	<h3 style="text-align:center; margin-bottom:50px;">Notice</h3>
-	
+	<section style="padding-bottom:3rem" class="mt-2">
+	<h3 style="text-align:center; margin-bottom:40px;">Notice</h3>
+	</section>
+	<section>
 	<div id="noticeList">
 		<div style="text-align:right; margin-bottom: 10px;">
 			<sec:authorize access="hasRole('ROLE_ADMIN')">
@@ -87,7 +88,7 @@
 			</thead>
 			<tbody>
 				<c:forEach var="notice" items="${list}">
-					<tr>
+					<tr >
 						<td style="text-align:center;">${notice.nnumber}</td>
 						<td ><a style="color:black;" href="noticeDetail?nnumber=${notice.nnumber}">${notice.ntitle}</a></td>
 						
@@ -117,10 +118,12 @@
 		</div>
 		
 	</div>
+	</section>
 </div>
 		
 	
-</section>		
+</section>	
+
 <%-- ########################################################################### --%>	
  <jsp:include page="/WEB-INF/views/include/footer.jsp"/>
 

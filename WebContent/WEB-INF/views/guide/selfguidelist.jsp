@@ -39,7 +39,28 @@
 
 
 </head>
+<style>
+.btn{
+	box-sizing:border-box; 
+	text-align:center; 
+	border-style:solid; 
+	border-radius:4px; 
+	float: right;
+	height:40px; 
+	font-size:15px;
+	background-color:#ffffff;
+	border-color:#e2e2e2;
+	float:right;
+}
+.shadow{
+	box-sizing:border-box; 
+	border-style:solid; 
+	border-radius:4px; 
+	border-color:#ffffff;
+	margin-left:3%;
+}
 
+</style>
 <body>
 	
 <jsp:include page="/WEB-INF/views/include/Header.jsp"/>
@@ -51,13 +72,15 @@
         <div id="addtag" style="width:100%; padding:0; margin:0" class="row col-md-12 mb-4 mt-4">
 			<jsp:include page="/WEB-INF/views/guide/selfguideFilter.jsp"/>
         </div>
-		<div class = "row m-0" style="text-align: right;">
-			<sec:authorize access="isAuthenticated()">
-      			<a class="btn btn-light btn-sm" style="text-align: right; float: right;" href="javascript:selfWrite();">글쓰기</a>
-      		</sec:authorize>
-		</div>
+	 <div class = "pb-1">
+		<sec:authorize access="isAuthenticated()">
+  			<a class="btn col-sm-1" href="javascript:selfWrite();"><strong style="vertical-align: -2px;">글쓰기</strong></a>
+  		</sec:authorize>
+	</div> 
+	<hr>
       <div id = "12345" >
         <jsp:include page="/WEB-INF/views/guide/selfguide-photos.jsp"/>
+
        </div>
         
 

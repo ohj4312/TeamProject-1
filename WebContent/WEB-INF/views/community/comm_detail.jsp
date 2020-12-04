@@ -102,11 +102,13 @@
 									</div>
 									
 									<div class="dropdown col-sm-2 col-lg-2 p-0" style="display:inline-block; text-align:right">
-									<a type="button" class="dropdown-toggle" data-toggle="dropdown">
-									<i class="material-icons">
-										more_vert
-									</i>
-									</a>
+									<c:if test="${member.mnickname==list.c_mnickname}">
+										<a type="button" class="dropdown-toggle" data-toggle="dropdown">
+											<i class="material-icons">
+												more_vert
+											</i>
+										</a>
+									</c:if>
 									
 									<div class="dropdown-menu" id="myDropdown">
 										<a class="dropdown-item" href="<%=application.getContextPath()%>/community/comm_updateform?c_number=${list.c_number}&c_mnickname=${list.c_mnickname}">수정</a>
@@ -288,8 +290,28 @@
 					}
 			
 				});		
+		}						
+		function InputRe(cr_rnumber,check){
+			
+			$(".lt").attr("style","display: none");
+			$(".lt").attr("style","display: none");
+			$("#Arcontent"+cr_rnumber).attr("style","display: line-block; background-color:#1bac91; color:white");
+			$("#rcontent"+cr_rnumber).attr("style","display: line-block;");	
+			
 		}
-		
+
+		function commreplyListre(cr_rnumber){
+			$.ajax({
+				url:"/teamproject/community/comm_replyListRe",
+				data:{cr_rnumber:cr_rnumber},
+				success:function(data){
+					$("#comment-re"+cr_rnumber).html(data);
+					
+				}
+			});
+			
+		} 
+			
 		$(function () {
 			commreplyList();
 		});
