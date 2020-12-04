@@ -92,11 +92,7 @@ public class SelfGuideController {
 		if(member == null) {
 			guidelist = service.getselfguidephotoListFilter(sg);
 		} else {
-			
 			sg.setSwriter(member.getMemail());
-			sg.setEndRowNo(pager.getEndRowNo());
-			sg.setStartRowNo(pager.getStartRowNo());
-			
 			guidelist = service.getselfguidephotoListFilter(sg);
 		}
 		
@@ -122,24 +118,20 @@ public class SelfGuideController {
 	public String selfphotoDetail(int snumber,Model model,HttpSession session) {
 		
 		Member member = (Member) session.getAttribute("member");
-		//logger.info("snumber:"+String.valueOf(snumber));
-
 		SelfGuide sg = new SelfGuide();
-		
-		List<SelfGuide> list;
-		
 		sg.setSnumber(snumber);
-
-		logger.info(String.valueOf(sg.getHit_count()));	
-		sg = service.selectSelfPhoto(sg);
-		service.updatehitcount(sg);
 		
-		logger.info("snumber:"+String.valueOf(sg.getSnumber()));
-		logger.info(sg.getSwriter());
-		logger.info(sg.getStitle());
-		logger.info(sg.getStype());
-		logger.info(sg.getScontent());
-		//logger.info(String.valueOf(sg.getHit_count()));
+		if(member == null) {
+			sg = service.selectSelfPhoto(sg);
+		} else {
+			sg.setSwriter(member.getMemail());
+			sg = service.getASelfPhoto(sg);
+		}
+		service.updatehitcount(sg);
+
+		logger.info(String.valueOf(sg.getLikenumber()));
+		logger.info(String.valueOf(sg.getBnumber()));
+		
 		model.addAttribute("sg",sg);
 
 		return "guide/selfguide-detail";
