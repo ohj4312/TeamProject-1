@@ -5,7 +5,7 @@
 
 <c:forEach var="photo" items="${list}">
 				<div class="mb-4 mt-5 col-lg-4 col-md-6 portfolio-item ${photo.ptype} ${photo.psize} ${photo.pstyle}">
-					<div class="shadow">
+					<div class="shadow" style="height: 467px;">
 					<div class = "row pl-3 pr-2 mb-3 pt-3">
 						<a href="<%=application.getContextPath()%>/member/yourhomesearch?pwriter=${photo.pwriter}" class = "pr-3 " style="color: black;">
 							<img class="rounded-circle mr-2 "style="width:30px; height:30px;"  src="<%=application.getContextPath()%>/file/member?fileName=${photo.mimage}" />

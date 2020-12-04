@@ -2,10 +2,10 @@
 
 <div class="mb-4">
        <ul class="nav">
-         <li class="nav-item mr-3">
+         <li class="nav-item mr-lg-3">
            <div class="dropdown">
              <button id="btn111" class="btn" type="button" data-toggle="dropdown" aria-haspopup="true">정렬
-                 <i class="material-icons" style="margin-left:4px; vertical-align: -6px;">
+                 <i class="material-icons" style="vertical-align: -6px;">
                    keyboard_arrow_down
                  </i>			
 			</button>
@@ -16,10 +16,10 @@
            </div>
          </li>
 
-         <li class="nav-item mr-3">
+         <li class="nav-item mr-lg-3">
            <div class="dropdown">
              <button id="btn111" class="btn" type="button" data-toggle="dropdown" aria-haspopup="true" >주거형태
-                 <i class="material-icons" style="margin-left:4px; vertical-align: -6px;">
+                 <i class="material-icons" style="vertical-align: -6px;">
                    keyboard_arrow_down
                  </i>
              </button>
@@ -35,10 +35,10 @@
            </div>
          </li>
 
-         <li class="nav-item mr-3">
+         <li class="nav-item mr-lg-3">
            <div class="dropdown">
              <button id="btn111" class="btn" type="button" data-toggle="dropdown" aria-haspopup="true">평수
-                 <i class="material-icons"  style="margin-left:4px; vertical-align: -6px;">
+                 <i class="material-icons"  style="vertical-align: -6px;">
                    keyboard_arrow_down
                  </i>
              </button>
@@ -53,10 +53,10 @@
            </div>
          </li>
 
-     	<li class="nav-item mr-3">
+     	<li class="nav-item mr-lg-3">
        <div class="dropdown">
          <button id="btn111" class="btn btn-light" type="button" data-toggle="dropdown" aria-haspopup="true">스타일
-             <i class="material-icons"  style="margin-left:4px; vertical-align: -6px;">
+             <i class="material-icons"  style="vertical-align: -6px;">
                 keyboard_arrow_down
               </i>
           </button>
