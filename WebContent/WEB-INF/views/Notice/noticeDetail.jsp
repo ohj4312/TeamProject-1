@@ -82,13 +82,14 @@ table.type09 thead th {
     border-bottom: 3px solid #036;
 }
 table.type09 tbody th {
-    padding: 10px;
+    padding: 20px;
     font-weight: bold;
     vertical-align: top;
     border-bottom: 1px solid #ccc;
     background: #f3f6f7;
-    background-color: #CDE4E1 ;
+    background-color: #CDE4E1; 
     text-align:center;
+   
 }
 table.type09 td {
     padding: 10px;
@@ -124,12 +125,15 @@ table.type09 td {
 <body>
 
 	<jsp:include page="/WEB-INF/views/include/Header.jsp" />
-	<section id="services" class="section-bg mt-5" style="background-color: #ffffff;">
+	<section id="services" class="section-bg mt-1" style="background-color: #ffffff;">
 	
 <%-- ########################################################################### --%>
 
 	<div>
+	<section style="padding-bottom:5rem" class="mt-3">
 		<h3 style="text-align:center; margin-bottom: 50px;">Notice</h3>
+		</section>
+		<section class="mb-3">
 			<div>
 				<table class="type09" style="margin-left:auto; margin-right:auto;">
 					
@@ -165,6 +169,7 @@ table.type09 td {
 					<a class="btn btn btn" href="list" style="color:#007bff; border: 1px solid #dee2e6;">목록</a>
 				</div>
 			</div>
+			</section>
 	</div>
 
 

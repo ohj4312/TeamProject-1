@@ -59,13 +59,16 @@
 <body>
 
 	<jsp:include page="/WEB-INF/views/include/Header.jsp" />
-	<section id="services" class="section-bg mt-5" style="background-color: #ffffff;">
+	<section id="services" class="section-bg mt-4" style="background-color: #ffffff;">
 	
 <%-- ########################################################################### --%>
 <div class="container">
 	<div class="row">
 		<div  style="width: 1000px; margin-left: auto; margin-right: auto; " >
+		<section style="padding-bottom:2rem" class="mb-1">
 			<h3 style="margin-bottom:50px; padding-left: 15px;">Q&A 질문 작성</h3>
+			</section>
+			<section>
 			<div class="col-md">
 			<form id="qnaWriteForm" method="post" action="qnaWrite" enctype="multipart/form-data">
 				<!-- <table style="width:auto" class="table table-sm table-bordered"> -->
@@ -103,6 +106,7 @@
 				</div>
 			</form>
 			</div>
+			</section>
 		</div>
 	</div>
 </div>	

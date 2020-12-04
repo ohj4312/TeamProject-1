@@ -2,6 +2,7 @@ package com.mycompany.webapp.controller;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
@@ -127,7 +128,7 @@ public class CommunityController {
 		comm_list.setC_number(cnumber);
 		comm_list.setC_mnickname(cmnickname);
 		comm_list=service.Comm_one(comm_list);
-		logger.info("이미지출력해보자"+comm_list.getMimage());
+		
 		model.addAttribute("list", comm_list);
 		return "community/comm_detail";
 	}
@@ -243,7 +244,25 @@ public class CommunityController {
 		
 		service.comm_replyWriteRe(community);		
 		return "redirect:/community/comm_detail?cnumber="+c_number+"&cmnickname="+c_mnickname;	
-	} 
+	}
+	@GetMapping("comm_replyDelete")
+	public void comm_replyDelete(int cr_rnumber,HttpServletResponse response) throws Exception{
+		service.comm_replyDelete(cr_rnumber);
+		
+		
+		response.setContentType("application/json; charset=utf-8");
+		
+		JSONObject jsonObject = new JSONObject();
+		
+		jsonObject.put("result", "success");
+		String json = jsonObject.toString();
+		PrintWriter out = response.getWriter();
+		out.println(json);
+		out.flush();
+		out.close();
+		
+		
+	}
 
 
 }

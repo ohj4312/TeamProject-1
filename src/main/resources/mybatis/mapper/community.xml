@@ -103,6 +103,11 @@
    select r.*,m.mimage from c_reply r,member m 
  where CR_REPLYRNUMBER=#{cr_rnumber} and r.cr_rmnickname =m.mnickname 
    </select> 
+   
+   <delete id="comm_replyDelete" parameterType="int">
+   delete from c_reply where cr_rnumber=#{cr_rnumber}
+   
+   </delete>
 
 
 </mapper>

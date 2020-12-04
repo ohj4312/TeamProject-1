@@ -72,13 +72,14 @@
 
 	<jsp:include page="/WEB-INF/views/include/Header.jsp" />
 	
-	<section id="services" class="section-bg mt-5" style="background-color: #ffffff;">
+	<section id="services" class="section-bg mb-0" style="background-color: #ffffff;">
 	
 <%-- ########################################################################### --%>
 
 	<div>
+	<section style="padding-bottom:2.2rem" class="mb-0">
 		<h3 style="text-align:center; margin-bottom:50px">Q&A</h3>
-		
+		</section>
 		<div id="qnaList">
 			<div style="text-align: right; margin-bottom: 10px; ">
 				<a id="writeButton" type="button" class="btn btn-info" href="qnaWrite">글작성</a>
@@ -97,7 +98,7 @@
 				</thead>
 				<tbody>
 					<c:forEach var="qna" items="${list}">
-						<tr>
+						<tr >
 							<td class="mobile" style="text-align:center;">${qna.qnumber}</td>
 							<td ><a style="color:black;" href="qnaDetail?qnumber=${qna.qnumber}">${qna.qtitle}</a></td>
 							<td class="mobile"><img class="rounded" width="70px" height="50px" src="<%=application.getContextPath()%>/file/qna?fileName=${qna.qphoto}"/></td>
@@ -157,6 +158,8 @@
 		</div>
 	</div>
 </section>		
+
+
 <%-- ########################################################################### --%>	
  <jsp:include page="/WEB-INF/views/include/footer.jsp"/>
 

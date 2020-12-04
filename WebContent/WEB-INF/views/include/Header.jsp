@@ -8,7 +8,7 @@
         <h1 class="text-light"><a href="<%=application.getContextPath()%>/">O-house</a></h1>
       </div>
 
-      <nav class="nav-menu d-none d-lg-block">
+      <nav class="nav-menu d-none d-lg-block nav-second">
         <ul>
         	
           <li><a href="<%=application.getContextPath()%>/">Home</a></li>
@@ -37,3 +37,10 @@
 
     </div>
   </header>
+  
+  <script>
+  $(document).ready(function() {
+	  $('.nav-menu .active, .mobile-nav .active').removeClass('active');
+
+	  });
+  </script>
