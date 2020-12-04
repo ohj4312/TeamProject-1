@@ -29,14 +29,13 @@
 		<c:if test="${member.memail != null}"> 
 		<a href="javascript:InputRe('${list.cr_rnumber}')" class="reply"><i class="icofont-reply"></i>답글</a>
 		</c:if>
+		<c:if test="${member.mnickname==list.cr_rmnickname}">			
+				<a style="font-size:5px;display:inline-block;width:10%;margin-left: 10px;color: gray"  href="javascript:comm_replyDelete(${list.cr_rnumber})">삭제</a>			
+		</c:if>
 		</h5>	
 		<time >${cr_rdate}</time>
 		<p>${list.cr_rcontent}</p>	
-		<c:if test="${member.mnickname==list.cr_rmnickname}">	
-			<div style="display:inline-block; width:10%">
-				<a style="font-size:13px;" href="javascript:comm_replyDelete(${list.cr_rnumber})">삭제</a>
-			</div>
-		</c:if>
+		
 	</div>
 	<form method="post" action="<%=application.getContextPath()%>/community/comm_replyListReWrite">	
 	<input type="text" id="rcontent${list.cr_rnumber}" class="lt form-control" placeholder="댓글을 남겨보세요!" style="display: none; width:91%;" name="rcontent">
