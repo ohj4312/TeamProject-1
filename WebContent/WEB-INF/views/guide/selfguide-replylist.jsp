@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 
-<div class="row">
+<div class="row m-1">
    <div class="col-sm-12" style="width: 100%">
       <div class="input-group mb-3"
          style="width: 100%; float: none; margin: 0 auto">

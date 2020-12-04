@@ -83,7 +83,7 @@ public class SelfGuideController {
 		logger.info(filterString);
 		int rows = service.getRows(filterString);
 
-		Pager pager = new Pager(3, 5, rows, pageNo); 		
+		Pager pager = new Pager(6, 5, rows, pageNo); 		
 		SelfGuide sg = new SelfGuide();
 		sg.setStype(filterString);
 		sg.setEndRowNo(pager.getEndRowNo());
