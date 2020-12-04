@@ -71,7 +71,7 @@
 
         <div class="row">
 
-          <div class="col-lg-11 entries">
+          <div class="col-lg-9 mx-auto entries">
 
             <article class="entry entry-single">
 				
@@ -141,91 +141,20 @@
                 
 				</div>
 				</article>
+				
+				<article>
+					<div class="scroll h-25" style="width:100%">
+			 			<c:forEach var="selfguide" items="${list}">
+	          				<a href="javascript:otherselfguidephoto('${selfguide.simage}', '${selfguide.scontent}','${selfguide.stitle }','${selfguide.stype }',${selfguide.snumber })"><img src="<%=application.getContextPath()%>/file/selfguide?fileName=${selfguide.simage}" class= "w-25 h-25"></a>
+						</c:forEach>
+					 </div>
+				</article>
+				<div id="reply_result2" style="margin-top:30px">
+     	 		</div>
               </div>
-
-             
-
-            <!-- End blog entry -->
-
-            <div class="col-lg-11">
-              <article>
-				<div class="scroll col-lg-8 h-25" style="width:100%">
-		 			<c:forEach var="selfguide" items="${list}">
-          				<a href="javascript:otherselfguidephoto('${selfguide.simage}', '${selfguide.scontent}','${selfguide.stitle }','${selfguide.stype }',${selfguide.snumber })"><img src="<%=application.getContextPath()%>/file/selfguide?fileName=${selfguide.simage}" class= "w-25 h-25"></a>
-					</c:forEach>
-				 </div>
-			</article>
-           </div>
-           <script type="text/javascript">
-          	 	function otherselfguidephoto(simage, scontent,stitle,stype,snumber){
-        		location.href="<%=application.getContextPath()%>/selfguide/selfdetail?snumber="+snumber;
-        	} 
-          	 	
-          	function selfreplyWrite(snumber) {
-          	 	var rcontent = $("#rcontent2").val().trim();
-          	 	if(rcontent!=""){
-	          	 	console.log(snumber);
-	          	 	$.ajax({
-	          	 		url:"<%=application.getContextPath()%>/selfguide/replyWrite",
-	          	 		method:"post",
-	          	 		data : {rcontent:rcontent, snumber:snumber},
-	          	 		success:function(data){
-	          	 			console.log("성공후 실행");
-	          	 			if(data.result=="success"){
-	          	 				
-	          	 				selfreplyList(snumber);
-	          	 			}
-	          	 			$("#reply_result").html(data);
-	          	 		}
-	          	 	});
-          		}
-          	} 
-          	
-          	function selfreplyList(snumber, pageNo){
-          		if(!pageNo){
-          			pageNo=1;
-          		}
-          		$.ajax({
-          			url:"/teamproject/selfguide/replyList",
-          			data:{ snumber:snumber,pageNo:pageNo},
-          			success:function(data){
-          				$("#reply_result2").html(data);
-          			}
-          		});
-          	}
-          	
-
-          	function selfreplyDelete(rnumber, snumber){
-          		$.ajax({
-          			url:"/teamproject/selfguide/replyDelete",
-          			data:{rnumber:rnumber, snumber:snumber},
-          			method:"post",
-          			success:function(data){
-          				if(data.result=="success"){
-          					selfreplyList(snumber);
-          				}
-          			}
-          		});
-          	}
-        	
-          	
-          	function chechId(swriter,memail){
-          		if(swriter!=memail){
-          				$("#deleteSelfGuideDetail").css('display','none');
-          				$("#updateSelfGuideDetail").css('display','none');
-          		} 
-          	}
-          	
-           </script>
              
             </div><!-- End blog author bio -->
 
-		<div class="container">
-     	 	<div id="reply_result2" style="margin-top:30px">
-     	 	</div>
-    	</div>
-		
-		
 <div>
 	
 	</div>
@@ -233,20 +162,9 @@
 		
         </div>
 
-     
-
-       
-
-        
-
-     
     </section>
 
   </main><!-- End #main -->
-	
-  
-	
-	
  <jsp:include page="/WEB-INF/views/include/footer.jsp"/>
   <!-- Vendor JS Files -->
    <script src="<%=application.getContextPath() %>/resources/vendor/jquery/jquery.min.js"></script>
@@ -263,11 +181,70 @@
 <script type="text/javascript">
 $(function(){
 	chechId('${sg.swriter}','${member.memail}'); 
-	selfreplyList(${sg.snumber}); 
+	selfreplyList('${sg.snumber}'); 
 });
 	 
 
-</script>
+	 	function otherselfguidephoto(simage, scontent,stitle,stype,snumber){
+location.href="<%=application.getContextPath()%>/selfguide/selfdetail?snumber="+snumber;
+} 
+ 	 	
+ 	function selfreplyWrite(snumber) {
+ 	 	var rcontent = $("#rcontent2").val().trim();
+ 	 	if(rcontent!=""){
+  	 	console.log(snumber);
+  	 	$.ajax({
+  	 		url:"<%=application.getContextPath()%>/selfguide/replyWrite",
+	 		method:"post",
+	 		data : {rcontent:rcontent, snumber:snumber},
+	 		success:function(data){
+	 			console.log("성공후 실행");
+	 			if(data.result=="success"){
+	 				
+	 				selfreplyList(snumber);
+	 			}
+	 			$("#reply_result").html(data);
+	 		}
+	 	});
+	}
+} 
+
+function selfreplyList(snumber, pageNo){
+	if(!pageNo){
+		pageNo=1;
+	}
+	$.ajax({
+		url:"/teamproject/selfguide/replyList",
+		data:{ snumber:snumber,pageNo:pageNo},
+		success:function(data){
+			$("#reply_result2").html(data);
+		}
+	});
+}
+
+
+function selfreplyDelete(rnumber, snumber){
+	$.ajax({
+		url:"/teamproject/selfguide/replyDelete",
+		data:{rnumber:rnumber, snumber:snumber},
+		method:"post",
+		success:function(data){
+			if(data.result=="success"){
+				selfreplyList(snumber);
+			}
+		}
+	});
+}
+
+
+function chechId(swriter,memail){
+	if(swriter!=memail){
+			$("#deleteSelfGuideDetail").css('display','none');
+			$("#updateSelfGuideDetail").css('display','none');
+	} 
+}
+          	
+           </script>
 </body>
 
 </html>
