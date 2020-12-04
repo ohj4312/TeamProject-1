@@ -91,7 +91,8 @@
             </div>
           </div>
           <!-- 사이드 바 조회수 순  -->
-	</div>
+		</div>
+		
       </div>
     </section><!-- End Blog Section -->
 

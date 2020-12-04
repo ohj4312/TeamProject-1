@@ -73,16 +73,6 @@
 .dropdown-menu{
 	display:none;
 }
-/* .comm-detail-list{
-	width:150px;
-	margin:0 -1px;
-	padding:10px;
-	box-sizing:border-box;
-	background-color:#fff;
-	border:1px solid #dbdbdb;
-	border-radius:4px;
-	overflow:hidden;
-} */
 .comm-detail-list-item{
 	list-style:none;
 }
@@ -198,11 +188,10 @@
 						
 						<!-- End blog author bio -->
 					
+
+						<div id="reply_result" class="blog-comments col-lg-8">						
 						
-							<div id="reply_result" class="blog-comments col-lg-8">						
-							
-							</div>
-							
+						</div>
 							
 							
 							

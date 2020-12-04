@@ -4,17 +4,25 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 
-	<h4 class="comments-count">${pager.totalRows} <strong style="vertical-align: -3px;">Comments</strong></h4>
-	<input type="text" id="rcontent" class="form-control" placeholder="댓글을 남겨보세요!" style="display:inline-block; width:91%;">
-	<a class="btn btn-outline" style="display:inline-block; background-color:#1bac91; color:white" href="javascript:commreplyWrite(${pager.c_number})">등록</a>
-	<c:forEach var="list" items="${comm_replylist}">
-	<div  class="comment clearfix">
-	<img src="<%=application.getContextPath()%>/file/member?fileName=${list.mimage}" class="comment-img  float-left" alt="">
-	<h5><a href="">${list.cr_rmnickname}</a> 
-	<a href="javascript:InputRe('${list.cr_rnumber}')" class="reply"><i class="icofont-reply"></i>답글</a></h5>	
-	<time >${list.cr_rdate}</time>	
-	<p>${list.cr_rcontent}</p>	
+	<h4 class="comments-count">${pager.totalRows} 
+		<strong style="vertical-align: -2px;">Comments</strong>
+	</h4>
+	
+	<div class="row" style="padding-left:3%; text-align:center">
+
+		<input type="text" id="rcontent" class="form-control col-lg-10" placeholder="댓글을 남겨보세요!" style="width:100%;">
+		<a class="btn btn-outline col-lg-1" style="background-color:#1bac91; color:white;" href="javascript:commreplyWrite(${pager.c_number})">등록</a>
 	</div>
+	
+	<c:forEach var="list" items="${comm_replylist}">
+		<div  class="comment clearfix">
+			<img src="<%=application.getContextPath()%>/file/member?fileName=${list.mimage}" class="comment-img  float-left" alt="">
+			<h5><a href="">${list.cr_rmnickname}</a> 
+			<a href="javascript:InputRe('${list.cr_rnumber}')" class="reply"><i class="icofont-reply"></i>답글</a></h5>	
+			<time >${list.cr_rdate}</time>	
+			<p>${list.cr_rcontent}</p>	
+		</div>
+	
 	<form method="post" action="<%=application.getContextPath()%>/community/comm_replyListReWrite">	
 	<input type="text" id="rcontent${list.cr_rnumber}" class="lt form-control" placeholder="댓글을 남겨보세요!" style="display: none; width:91%;" name="rcontent">
 	<input type="hidden" id="cr_rnumber" name="cr_rnumber" value="${list.cr_rnumber}">
@@ -58,11 +66,13 @@
 	</script>
 </c:forEach>
 
-<div class="row text-center" style="width:100%">
-			<c:if test="${pager.totalRows>0}">
-	        <div class="input-group mb-3" style="width:50%; float:none; margin:0 auto">
+	<div class="row text-center" style="width:100%;">
 			
-	          <ul class="pagination" style="text-align:left">
+		<c:if test="${pager.totalRows>0}">
+	       
+	        <div class="input-group mb-12" style="width:100%; margin:0 auto; text-align:center">
+			
+	          <ul class="pagination" style="text-align:center">
 	          	<c:if test="${pager.groupNo>1}">
 	            	<li class="page-item"><a class="page-link" href="javascript:commreplyList(${pager.startPageNo-1})">Previous</a></li>
 	            </c:if>
@@ -80,8 +90,8 @@
 	          	</c:if>
 	          </ul>
 	        </div>
-	        </c:if>	     	        
- </div>
+	     </c:if>	     	        
+ 	</div>
  
  
 
