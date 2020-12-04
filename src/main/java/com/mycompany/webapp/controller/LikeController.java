@@ -1,17 +1,9 @@
 package com.mycompany.webapp.controller;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.List;
-import java.util.Set;
 
 import javax.annotation.Resource;
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -20,13 +12,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mycompany.webapp.dto.Member;
 import com.mycompany.webapp.dto.Post_like;
+import com.mycompany.webapp.dto.SelfGuide;
 import com.mycompany.webapp.service.LikeService;
+import com.mycompany.webapp.service.SelfLikeService;
 
 @Controller
 @RequestMapping("/like")
@@ -34,16 +27,26 @@ public class LikeController {
 	private Logger logger = LoggerFactory.getLogger(LikeController.class);
 	@Resource
 	private LikeService service;
-
+	@Resource
+	private SelfLikeService SLservice;
+	
 	@GetMapping("/getLikePhotolist")
 	public String getLikePhoto(Model model, HttpSession session) {
 
 		Member member = (Member) session.getAttribute("member");
 		String memail = member.getMemail();
+		logger.info("왜안되는거냐고");;
+		logger.info(memail);
 		List<Post_like> likelist = service.getLikePhotoList(memail);
-
+		logger.info(memail+"1111111");
+		List<SelfGuide> list = SLservice.selfgetLikePhotoList(memail);
+		for(SelfGuide sef:list) {
+			logger.info(""+sef.getSnumber());
+			logger.info(sef.getSwriter());
+		}
 		model.addAttribute("likelist", likelist);
-
+		model.addAttribute("selflikelist", list);
+		
 		return "like/getLikePhotolist";
 	}
 

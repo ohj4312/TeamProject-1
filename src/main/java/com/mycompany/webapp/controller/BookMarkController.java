@@ -148,10 +148,7 @@ public class BookMarkController {
 		model.addAttribute("list",list);
 		
 		return "member/bookmark"; 
-		
-		
-		
-		
+
 	}
 }
 

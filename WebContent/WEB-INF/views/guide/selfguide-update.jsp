@@ -83,9 +83,9 @@
   <main id="main">
 	<div class="mt-5 mb-5 row">    </div>
     <!-- ======= Breadcrumbs ======= -->
-    <section id="portfolio" class="portfolio_section">
+    <section id="portfolio" class="portfolio_section col-lg-6 mx-auto">
     	<div id = "listappend" class="container">
-      		<p><h2">셀프 인테리어 가이드북 </h2></p>
+      		<h2>셀프 인테리어 가이드북 </h2>
 			<h5>나만의 노하우 올리기 </h5>
 			<hr/>
 			<br/>
@@ -117,15 +117,15 @@
 				<div class="col-12 text-center mb-4 fancybox p-0" style="position: relative; height: 300px;" style="border:1px solid gold">		
 					<input type="file" id="simageAttach" name ="simageAttach" style="display:none;"> 
 					<label id = "srclabel" for="simageAttach" style="width: 100%; height: 100%;"> 
-	                	<img src="<%=application.getContextPath()%>/file/selfguide?fileName=${sg.simage}" max-width="100%" height="100%">
+	                	<img src="<%=application.getContextPath()%>/file/selfguide?fileName=${sg.simage}" width="100%" height="100%">
 	                </label> 
 	                <input type = "hidden" name = "simage" value = "${sg.simage}"/>
 						
 				</div>
 				
 			</div>
-			<div class="row col-sm-12 align-self-center">
-				<div class="col-12">
+			<div class="row col-sm-12 align-self-center p-0 m-0">
+				<div class="col-12 p-0">
 					<div>
 						<div class="form-group">
 							<textarea class="form-control" rows="10" id="scontent" 

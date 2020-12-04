@@ -16,10 +16,10 @@
 	</select>
 	
 	<select id="selflikeAll" parameterType="String" resultType="selfguide">
-		select s.simage , s.snumber from self_guide s
+		select s.simage , s.snumber, s.swriter from self_guide s
 		where s.snumber in 
 		(select p.snumber from Post_like p
-		where p.memail = #{memail} )
+		where p.memail = #{memail})
 	</select>
 	
 </mapper>

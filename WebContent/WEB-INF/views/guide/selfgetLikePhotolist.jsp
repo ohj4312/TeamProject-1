@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<h5><strong>사진</strong></h5>
+<h5><strong>좋아요</strong></h5>
 <div id="mypagephoto" style="border:1px dashed #dbdbdb;width:100%;height: 390px;">
     <div>
        <c:forEach var="like" items="${likelist}">
