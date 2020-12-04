@@ -37,6 +37,11 @@ public class C_ReplyDao {
 		
 	}
 
+	public void comm_replyDelete(int cr_rnumber) {
+		sst.delete("mybatis.mapper.community.comm_replyDelete",cr_rnumber);
+		
+	}
+
 
 	
 	

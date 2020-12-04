@@ -235,6 +235,7 @@
 
 	<script>
 	
+		
 		function commreplyWrite(c_number){
 			var rcontent = $("#rcontent").val().trim();	
 			if(rcontent!=""){
@@ -272,7 +273,22 @@
 				}
 			});
 			
-		} 
+		}
+		function comm_replyDelete(cr_rnumber) {
+			console.log(cr_rnumber);
+			$.ajax({
+				url:"/teamproject/community/comm_replyDelete",
+				data:{cr_rnumber:cr_rnumber},
+				success:function(data){					
+					if(data.result == "success"){
+						console.log("여기는 삭제 창!");
+						commreplyList();
+											
+					}
+					}
+			
+				});		
+		}
 		
 		$(function () {
 			commreplyList();
