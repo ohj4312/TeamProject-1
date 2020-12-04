@@ -24,11 +24,38 @@ public class SelfGuide_reply {
 	private int startRowNo;
 	private int endRowNo;
 	private int count;
+	private String mimage;
 	List<SelfGuide_reply> list;
 	
 	public String getRwriter() {
 		return rwriter;
 	}
+
+	
+	
+	public String getMimage() {
+		return mimage;
+	}
+
+
+
+	public void setMimage(String mimage) {
+		this.mimage = mimage;
+	}
+
+
+
+	public List<SelfGuide_reply> getList() {
+		return list;
+	}
+
+
+
+	public void setList(List<SelfGuide_reply> list) {
+		this.list = list;
+	}
+
+
 
 	public void setRwriter(String rwriter) {
 		this.rwriter = rwriter;
