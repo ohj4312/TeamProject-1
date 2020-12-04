@@ -371,7 +371,7 @@
 $(function(){
 	chechId('${sg.swriter}','${member.memail}'); 
 	selfreplyList(${sg.snumber}); 
-	var snumber = ${sg.snumber};
+ㄴ
 });
 	 
 

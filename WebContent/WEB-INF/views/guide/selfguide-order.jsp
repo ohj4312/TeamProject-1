@@ -15,7 +15,7 @@
 	<!-- foreach로 세개 가져오기, 가져온거 첫번째면 active 주기 조건문 설정 -->
 	<c:forEach var="selforder" items="${order}" varStatus="status">
 		<c:if test="${status.first}">
-			<div class="carousel-item active bg-warning">
+			<div class="carousel-item active">
 				<div class = "row">
 	     	 		<img class = "col-md-5" src="<%=application.getContextPath()%>/file/selfguide?fileName=${selforder.simage}" alt="${selforder.stitle}" width="auto" height="300">
 	    			<div class = "col-md-7 ">
@@ -28,7 +28,7 @@
     		</div>
 		</c:if>
 		<c:if test="${!status.first}">
-			<div class="carousel-item bg-warning">
+			<div class="carousel-item" style="background-color: #fffff0">
 				<div class = "row">
      	 			<img class = "col-md-5" src="<%=application.getContextPath()%>/file/selfguide?fileName=${selforder.simage}" alt="${selforder.stitle}" width="auto" height="300">
     				
