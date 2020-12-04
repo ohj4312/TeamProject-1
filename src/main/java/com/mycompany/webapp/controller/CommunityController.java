@@ -74,6 +74,7 @@ public class CommunityController {
 
 		return "redirect:/community";
 	}
+	
 
 	@GetMapping("/comm_list")
 	public String Comm_list(Model model, int check, String search,@RequestParam(defaultValue="1")int pageNo) {
@@ -130,7 +131,40 @@ public class CommunityController {
 		model.addAttribute("list", comm_list);
 		return "community/comm_detail";
 	}
-	
+	@GetMapping("/comm_updateform")
+	public String comm_updateform(Community community,Model model) {
+		
+		community=service.Comm_one(community);
+		logger.info(community.getC_content());
+			
+		model.addAttribute("community",community);
+		return"community/comm_update";
+	}
+	@PostMapping("/comm_update")
+	public String comm_update(Community community,HttpSession session){
+		
+		Member member = (Member) session.getAttribute("member");
+		community.setC_mnickname((member.getMnickname()));
+
+		// 유저가 사진을 넣었을 경우
+		if (!community.getCimage().isEmpty()) {
+			// 파일 이름 중복 방지를 위한 밀리세컨드 단위의 시간초를 파일 이름 앞에 붙여줌.
+			String saveFilename = new Date().getTime() + "_" + community.getCimage().getOriginalFilename();
+			community.setC_image(saveFilename);
+			try {
+				// 실제 사용자의 요청에 파일을 서버에 저장
+				community.getCimage().transferTo(new File("D:/MyWorkspace/photo/community/" + saveFilename));
+			} catch (Exception e) {
+			}
+
+		}
+		logger.info(community.getC_image());
+		logger.info(""+community.getC_number());
+		logger.info(""+community.getC_content());
+		logger.info(""+community.getC_title());
+		service.comm_update(community);
+		return "redirect:/community";
+	}
 	@GetMapping("/comm_delete")
 	public String comm_delete(int c_number){
 		service.comm_delete(c_number);
@@ -138,6 +172,8 @@ public class CommunityController {
 		return "redirect:/community";
 		
 	}
+	
+	//리플-----------------------------------
 	
 	@PostMapping("/comm_replyWrite")
 	public void comm_replyWrite(Community comm_list, String rcontent,int c_number,HttpServletResponse response, HttpSession session, Model model) throws Exception {

@@ -43,10 +43,12 @@
 		
 		.mobile {
 			display: none;
+			
 		}
 		
 		#writeButton {
 			margin-right: 10px;
+			
 		}
 	}
 	
@@ -55,6 +57,11 @@
 			width: 1000px;
 			margin-left: auto; 
 			margin-right: auto;
+		}
+		
+		.mobile {
+			
+			text-align:center;
 		}
 	}	
   </style>
@@ -83,7 +90,7 @@
 					<tr>
 						<th id="th1" class="mobile" style="width: 70px; font-weight: bold;">번호</th>
 						<th id="th2" style="font-weight: bold; text-align:center; ">제목</th>
-						<th id="th3" class="mobile" style="width: 100px; font-weight: bold;">사진</th>
+						<th id="th3" class="mobile" style="width: 100px; font-weight: bold;  ">사진</th>
 						<th id="th4" class="mobile" style="width: 100px; font-weight: bold;">작성자</th>
 						<th id="th5" class="mobile" style="width: 120px; font-weight: bold;">날짜</th>
 					</tr>

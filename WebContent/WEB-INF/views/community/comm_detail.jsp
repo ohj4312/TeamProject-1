@@ -107,7 +107,7 @@
 									</a>
 									
 									<div class="dropdown-menu" id="myDropdown">
-										<a class="dropdown-item" >수정</a>
+										<a class="dropdown-item" href="<%=application.getContextPath()%>/community/comm_updateform?c_number=${list.c_number}&c_mnickname=${list.c_mnickname}">수정</a>
 										<a class="dropdown-item" onclick="return confirm('정말로 삭제하시겠습니까?')" href="<%=application.getContextPath()%>/community/comm_delete?c_number=${list.c_number}" >삭제</a>
 									</div>
 									
