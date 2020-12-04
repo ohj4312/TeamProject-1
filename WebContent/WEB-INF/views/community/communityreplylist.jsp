@@ -8,11 +8,12 @@
 	<input type="text" id="rcontent" class="form-control" placeholder="댓글을 남겨보세요!" style="display:inline-block; width:91%;">
 	<a class="btn btn-outline" style="display:inline-block; background-color:#1bac91; color:white" href="javascript:commreplyWrite(${pager.c_number})">등록</a>
 	<c:forEach var="list" items="${comm_replylist}">
+	<fmt:formatDate var="cr_rdate" value="${list.cr_rdate}" pattern="yyyy-MM-dd HH:mm" />
 	<div  class="comment clearfix">
 	<img src="<%=application.getContextPath()%>/file/member?fileName=${list.mimage}" class="comment-img  float-left" alt="">
 	<h5><a href="">${list.cr_rmnickname}</a> 
 	<a href="javascript:InputRe('${list.cr_rnumber}')" class="reply"><i class="icofont-reply"></i>답글</a></h5>	
-	<time >${list.cr_rdate}</time>	
+	<time >${cr_rdate}</time>
 	<p>${list.cr_rcontent}</p>	
 	</div>
 	<form method="post" action="<%=application.getContextPath()%>/community/comm_replyListReWrite">	

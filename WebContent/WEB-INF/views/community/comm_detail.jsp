@@ -94,7 +94,7 @@
 	<jsp:include page="/WEB-INF/views/include/Header.jsp" />
 
 	<main id="main">
-
+		<fmt:formatDate var="c_date" value="${list.c_date}" pattern="yyyy-MM-dd HH:mm" />
 		<!-- ======= Blog Section ======= -->
 		<section id="blog" class="blog" style="padding-top:7%;">
 			
@@ -133,7 +133,7 @@
 											${list.c_mnickname}</a></li>
 									<li class="d-flex align-items-center" ><i
 										class="icofont-wall-clock"></i> <a href="blog-single.html"><time
-												>  ${list.c_date}</time></a></li>
+												>  ${c_date}</time></a></li>								
 								</ul>
 							</div>
 
