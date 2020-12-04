@@ -68,5 +68,10 @@ public class CommunityDao {
 		
 	}
 
+	public void communityUpdate(Community community) {
+		sst.update("mybatis.mapper.community.communityUpdate",community);
+		
+	}
+
 	
 }
