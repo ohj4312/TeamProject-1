@@ -76,7 +76,10 @@ td a {
 <div class="container">
 <div class="row">
 	<div style="width: 1000px; margin-left: auto; margin-right: auto;" >
+	<section style="padding-bottom:5rem" class="mb-2">
 		<h3 style="margin-bottom:50px; padding-left: 15px;">Q&A 답변작성</h3>
+		</section>
+		<section>
 	<div class="col-sm">
 		<form id="qnaAnswerForm" method="post" action="qnaAnswer" >
 			<!-- <table style="width:auto" class="table table-sm table-bordered"> -->
@@ -105,6 +108,7 @@ td a {
 			</div>
 		</form>
 		</div>
+		</section>
 	</div>
 	</div>
 </div>	

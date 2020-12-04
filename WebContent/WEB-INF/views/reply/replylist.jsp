@@ -9,7 +9,7 @@
 		<h4 style="color:DodgerBlue; padding-left:10px">${count}</h4>
 	</div>
 	<div class="col-lg-8 col-md-12 p-0">
-		<div class="input-group mb-3">
+		<div class="input-group mb-3">			
 			<c:if test="${member.memail != null}">
   				<input type="text" id="rcontent" class="form-control" placeholder="칭찬과 격려는 큰 힘이됩니다!" >
   			</c:if>
@@ -19,7 +19,7 @@
 			<div class="input-group-apeend">
 				<c:if test="${member.memail != null}">
 				<a class="btn btn-outline btn-primary" href="javascript:replyWrite(${pnumber})">등록</a>
-				</c:if>
+				</c:if>   		
     		</div>
   		</div>
 	</div>
