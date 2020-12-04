@@ -83,13 +83,15 @@ td a {
 					<input type="hidden" id="nnumber" name="nnumber" value="${notice.nnumber}">
 					
 					<div class="input-group">
-						<div class="input-group-prepend"><span class="input-group-text">제목</span></div>
+						<div class="input-group-prepend"><span class="input-group-text" 
+							 style="background-color: #CDE4E1; font-weight: bold; ">제목</span></div>
 						<input id="ntitle" type="text" name="ntitle" class="form-control" value="${notice.ntitle}">
 						<span id="ntitleError" class="error"></span>
 					</div>
 					
 					<div class="input-group">
-						<div class="input-group-prepend"><span class="input-group-text">내용</span></div>
+						<div class="input-group-prepend"><span class="input-group-text"
+							 style="background-color: #CDE4E1; font-weight: bold; ">내용</span></div>
 						<textarea id="ncontent" name="ncontent" class="form-control" rows="10">${notice.ncontent}</textarea>
 						<span id="ncontentError" class="error"></span>
 					</div>

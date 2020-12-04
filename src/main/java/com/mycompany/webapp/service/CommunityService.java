@@ -67,6 +67,12 @@ public class CommunityService {
 		
 	}
 
+	public void comm_update(Community community) {
+		communityDao.communityUpdate(community);
+		
+	}
+	
+	
 	public int Comm_replyrows(int c_number) {
 		int rows = c_replyDao.comm_replyselectRows(c_number);
 		return rows;
@@ -87,6 +93,8 @@ public class CommunityService {
 		
 		
 	}
+
+	
 	
 	
 	

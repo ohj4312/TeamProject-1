@@ -117,7 +117,7 @@
 				<div class="col-12 text-center mb-4 fancybox" style="position: relative; height: 300px;" style="border:1px solid gold">		
 					<input type="file" id="simageAttach" name ="simageAttach" style="display:none;"> 
 					<label id = "srclabel" for="simageAttach" style="width: 100%; height: 100%;"> 
-	                	<img src="<%=application.getContextPath()%>/file/selfguide?fileName=${sg.simage}" width="100%" height="100%">
+	                	<img src="<%=application.getContextPath()%>/file/selfguide?fileName=${sg.simage}" max-width="100%" height="100%">
 	                </label> 
 	                <input type = "hidden" name = "simage" value = "${sg.simage}"/>
 						

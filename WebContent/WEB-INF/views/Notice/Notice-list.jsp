@@ -81,8 +81,8 @@
 		<table class="table table-lg table-bordered fade-up">
 			<thead style="background-color: #CDE4E1">
 				<tr>
-					<th style="width:70px; font-weight: bold;">번호</th>
-					<th style= "text-align:center; font-weight: bold;">제목</th>
+					<th style="width:70px; font-weight: bold; text-align:center;">번호</th>
+					<th style= "text-align:center; font-weight: bold; padding-right:80px">제목</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -96,8 +96,8 @@
 			</tbody>
 		</table>
 		
-		<div class="input-group mb-3" style="width:10px; float:none; margin:0 auto">
-			<ul class="pagination" style="text-align: left;">
+		<div class="row text-center">
+			<ul class="pagination mx-auto"  >
 				<c:if test="${pager.groupNo>1}">
 					<li class="page-item"><a class="page-link" href="list?pageNo=${pager.startPageNo-1}">Previous</a></li>					
 				</c:if>

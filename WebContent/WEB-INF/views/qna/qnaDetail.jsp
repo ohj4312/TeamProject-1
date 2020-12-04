@@ -87,6 +87,8 @@ table.type09 tbody th {
     vertical-align: top;
     border-bottom: 1px solid #ccc;
     background: #f3f6f7;
+    background-color: #CDE4E1 ;
+    text-align:center;
 }
 table.type09 td {
     padding: 10px;

@@ -49,23 +49,7 @@
    }
    .scroll img{
    }
-  
-  .cut { 
-  /* 한 줄 자르기 */ 
-  display: inline-block; 
-  width: 200px; 
-  white-space: nowrap; 
-  overflow: hidden; 
-  text-overflow: ellipsis; 
-  /* 여러 줄 자르기 추가 스타일 */ 
-  white-space: normal; 
-  line-height: 1.2; 
-  height: 2.4em; 
-  }
-
-  
-  </style>
-
+ </style>
 </head>
 
 <body>
@@ -73,29 +57,14 @@
   <!-- ======= Header ======= -->
   	
   	
-
-  <main id="main">
+	
+  <main id="main" data-aos="fade-up" style="margin-top:2rem">
 
     <!-- ======= Breadcrumbs ======= -->
-    <section class="section mt-3">
-      <div class="container mt-5">
-        <div class="row">
-          <div class="col-lg-10" data-aos="fade-up">
-           <pre> <h3 id="title">${sg.stitle}</h3></pre>
-          	<h4 id="type">${sg.stype} 
-          		<a id="deleteSelfGuideDetail" href="<%=application.getContextPath() %>/selfguide/deleteSelfguide?snumber=${sg.snumber}" class="btn btn-danger" style="float:right">삭제하기</a>
-          		<a id="updateSelfGuideDetail" href="<%=application.getContextPath() %>/selfguide/updateSelfguide?snumber=${sg.snumber}" class="btn btn-info" style="float:right">수정하기</a>
-          	</h4>
-          	
-            	<img id="self_image" style="width:100%; height:400px;" src="<%=application.getContextPath()%>/file/selfguide?fileName=${sg.simage}"/>
-          		 <div><h2>${sg.swriter } </h2>
-          		
-          		</div> 
-          </div> 
-        </div>
-      </div>
-      </section>
 
+      
+      !!!!!!!!!!!!!!!여기 우진이오빠한테 물어보고 아래 하트에 합치는게 어떨까!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      <!-- ======= Blog Section ======= --> 
 		<div class="container" style="text-align: center;">
 			<div class="row mx-auto">
 				<div id="RegBookMark" class="col-5">
@@ -140,30 +109,51 @@
 
         <div class="row">
 
-          <div class="col-lg-10 entries">
+          <div class="col-lg-11 entries">
 
             <article class="entry entry-single">
+				
+				  <h2 class="entry-title">${sg.stitle} </h2>
+              <img id="self_image" style="width:100%; height:400px;" src="<%=application.getContextPath()%>/file/selfguide?fileName=${sg.simage}"/>
 
-              
+            
 
-              <h2 class="entry-title">
-                <a href="blog-single.html">${sg.stitle}</a>
-              </h2>
-
-              <div class="entry-meta">
+              <div class="entry-meta mt-4">
                 <ul>
-                  <li class="d-flex align-items-center"><i class="icofont-user"></i> <a href="blog-single.html">John Doe</a></li>
-                  <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <a href="blog-single.html"><time datetime="2020-01-01">Jan 1, 2020</time></a></li>
-                  <li class="d-flex align-items-center"><i class="icofont-comment"></i> <a href="blog-single.html">12 Comments</a></li>
+                  <li class="d-flex align-items-center"><i class="icofont-user"></i> <a href="<%=application.getContextPath()%>/member/mypage">${sg.swriter }</a></li>
+            	  <li class="d-flex align-items-center"><i class="icofont-card"></i> <a href="<%=application.getContextPath()%>/member/mypage">${sg.stype }</a></li>
+                  <li class="d-flex align-items-center"><i class="icofont-comment"></i>${count} Comments</li>
                 </ul>
               </div>
 
               <div class="entry-content">
               
                
-               		<div id="sg">${sg.scontent }</div>
-                	
-                	<div id="rcontent"></div>
+               		<div id="sg" class="p-3">${sg.scontent }</div>
+								<div class="container mt-5">
+									<div class="row">
+										<div class="col-lg-12">
+											<h4 id="type">
+												<a id="deleteSelfGuideDetail"
+													href="<%=application.getContextPath() %>/selfguide/deleteSelfguide?snumber=${sg.snumber}"
+													class="btn btn-light" style="float: right; font-weight:bold">삭제하기</a> <a
+													id="updateSelfGuideDetail"
+													href="<%=application.getContextPath() %>/selfguide/updateSelfguide?snumber=${sg.snumber}"
+													class="btn btn-light mr-1" style="float: right; font-weight:bold">수정하기</a>
+											</h4>
+											<div>
+												<a href="#"><i id="itag"
+													class="material-icons align-middle mr-3"
+													style="float: right; font-size: 30px; color: #1bac91;">bookmark_border</i></a>
+												<a href="#"><i id="likeicon"
+													class="material-icons align-middle mr-1"
+													style="float: right; font-size: 30px; color: red;">favorite_border</i></a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div id="rcontent"></div>
                 
 				</div>
 				</article>
@@ -173,7 +163,7 @@
 
             <!-- End blog entry -->
 
-            <div class="blog-author clearfix">
+            <div class="col-lg-11">
               <article>
 				<div class="scroll col-lg-8 h-25" style="width:100%">
 		 			<c:forEach var="selfguide" items="${list}">
@@ -185,7 +175,7 @@
            <script type="text/javascript">
           	 	function otherselfguidephoto(simage, scontent,stitle,stype){
         		
-        		var imagepath = '<%=application.getContextPath() %>/selfguide/photodownload?fileName='+simage;
+        		var imagepath = '<%=application.getContextPath()%>/file/selfguide?fileName='+simage;
         		console.log(imagepath);
         		console.log(scontent);
         		$("#self_image").attr("src", imagepath);
@@ -257,8 +247,6 @@
           		} 
           	}
           	
-          	
-          
            </script>
              
             </div><!-- End blog author bio -->
@@ -380,14 +368,10 @@
   <!-- Template Main JS File -->
   <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>
 <script type="text/javascript">
-
-
-	 
-
 $(function(){
 	chechId('${sg.swriter}','${member.memail}'); 
 	selfreplyList(${sg.snumber}); 
-	var snumber = ${sg.snumber};
+ㄴ
 });
 	 
 
