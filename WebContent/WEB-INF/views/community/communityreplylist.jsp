@@ -70,7 +70,7 @@
 			
 		<c:if test="${pager.totalRows>0}">
 	       
-	        <div class="input-group mb-12" style="width:100%; margin:0 auto; text-align:center">
+	        <div class="input-group mb-12" style="width:10%; margin:0 auto; text-align:center">
 			
 	          <ul class="pagination" style="text-align:center">
 	          	<c:if test="${pager.groupNo>1}">

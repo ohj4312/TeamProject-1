@@ -92,7 +92,7 @@
 
 				<div class="row">
 
-					<div class="col-lg-8 entries">
+					<div class="col-lg-8 entries col-sm-8">
 						<article class="entry entry-single" >
 
 							<div class="container">
@@ -162,7 +162,7 @@
 					</div>
 					<!-- End blog entry -->
 						
-						<div class="col-lg-4">
+						<div class="col-lg-4 col-sm-8">
 							<div class="sidebar">
 								<div class="detail_container_sidebar_content">
 									<div class="detail-left" style="display:inline-block;">
