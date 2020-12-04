@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.mapper.notice">
+
+	<select id="countAll" resultType="int">
+		select count(*) from notice
+	</select>
+	
+	<select id="selectByPage" parameterType="pager" resultType="notice">
+		select rnum, nnumber, ntitle, ncontent
+		from(
+			select rownum as rnum, nnumber, ntitle, ncontent
+			from(
+				select nnumber, ntitle, ncontent 
+				from notice
+				order by nnumber desc
+			)
+			where rownum &lt;=#{endRowNo}
+		)
+		where rnum &gt;=#{startRowNo}
+	</select>
+	
+	<select id="selectByBno" parameterType="int" resultType="notice">
+		select nnumber, ntitle, ncontent
+		from notice
+		where notice.nnumber=#{nnumber}
+	</select>
+	
+	<insert id="insert" parameterType="notice">
+		insert into notice (nnumber, ntitle, ncontent)
+		values (seq_nnumber.nextval, #{ntitle}, #{ncontent})
+	</insert>
+	
+	<delete id="deleteByBno" parameterType="int">
+		delete from notice where nnumber=#{nnumber}
+	</delete>
+	
+	<update id="update" parameterType="notice">
+		update notice set ntitle=#{ntitle}, ncontent=#{ncontent} where nnumber=#{nnumber}
+	</update>
+</mapper>

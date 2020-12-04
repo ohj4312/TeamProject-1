@@ -148,29 +148,7 @@
     }
   });
 
-  /*// Porfolio isotope and filter
-  $(window).on('load', function() {
-    var portfolioIsotope = $('.portfolio-container').isotope({
-      itemSelector: '.portfolio-item',
-      layoutMode: 'fitRows'
-    });
-
-    $('#portfolio-flters li').on('click', function() {
-      $("#portfolio-flters li").removeClass('filter-active');
-      $(this).addClass('filter-active');
-
-      portfolioIsotope.isotope({
-        filter: $(this).data('filter')
-      });
-      aos_init();
-    });
-
-    // Initiate venobox (lightbox feature used in portofilo)
-    $(document).ready(function() {
-      $('.venobox').venobox();
-    });
-  });
-*/
+ 
   // Portfolio details carousel
   $(".portfolio-details-carousel").owlCarousel({
     autoplay: true,
@@ -938,3 +916,33 @@ function getfollowList(){
 			});
 			
 		}     	
+		
+//===============================================================================
+function pagingList(){
+	  $.ajax({
+			url : "/teamproject/selfguide/selflist",
+			method: "get",
+			success:function(data){
+				location.href="/teamproject/selfguide/selflist";
+			}
+		});
+	}
+	
+	
+	function selfWrite(){
+		location.href="/teamproject/selfguide/selfguide-write";
+	}
+	
+	function checkSelfGuidFilter(filterString, firstcount, pageNo){
+		console.log("check실행");
+
+		$.ajax({
+				url : "/teamproject/selfguide/selflist",
+				data:{filterString:filterString, firstcount:firstcount, pageNo:pageNo},
+				success:function(data){
+					 $("#12345").html(data);
+					
+				}
+			});
+		
+	}	

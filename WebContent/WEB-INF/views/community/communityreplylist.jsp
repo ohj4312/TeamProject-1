@@ -79,14 +79,14 @@
 	            
 	            <c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
 					<c:if test="${pager.pageNo==i}">
-	           	 		<li class="page-item"><a class="page-link" href="javascript:commreplyList(${i})">${i}</a></li>
+	           	 		<li class="page-item" style="text-align:center"><a class="page-link" href="javascript:commreplyList(${i})">${i}</a></li>
 	            	</c:if>
 	            	<c:if test="${pager.pageNo!=i}">
-	            		<li class="page-item"><a class="page-link" href="javascript:commreplyList(${i})">${i}</a></li>
+	            		<li class="page-item" style="text-align:center"><a class="page-link" href="javascript:commreplyList(${i})">${i}</a></li>
 	            	</c:if>
 	             </c:forEach>
 	             <c:if test="${pager.groupNo<pager.totalGroupNo}">
-	            	<li class="page-item"><a class="page-link" href="javascript:commreplyList(${pager.endPageNo+1})">Next</a></li>
+	            	<li class="page-item" style="text-align:center"><a class="page-link" href="javascript:commreplyList(${pager.endPageNo+1})">Next</a></li>
 	          	</c:if>
 	          </ul>
 	        </div>
