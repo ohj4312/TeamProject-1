@@ -46,12 +46,8 @@
   <main id="main">
   <section id="portfolio" class="portfolio pb-1">
       <div id = "listappend" class="container mt-5">
-      		
-      		<h2 style="float:left">셀프 인테리어 가이드북 </h2>
-      		<div class="mb-4" style="clear:both;"></div>
+      		<div class="mb-4 mt-5" style="clear:both;"></div>
       		<jsp:include page="/WEB-INF/views/guide/selfguide-order.jsp"/>
-      		<!-- <img style="width:100%; height:200px;"src="https://image.ohou.se/i/bucketplace-v2-development/uploads/advices/guides/self_interior/pc_banner_image.v3.png?gif=1&w=1280&webp=1"/> -->
-      		
         <div id="addtag" style="width:100%; padding:0; margin:0" class="row col-md-12 mb-4 mt-4">
 			<jsp:include page="/WEB-INF/views/guide/selfguideFilter.jsp"/>
         </div>

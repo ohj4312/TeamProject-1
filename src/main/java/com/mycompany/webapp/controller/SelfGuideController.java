@@ -83,7 +83,7 @@ public class SelfGuideController {
 		logger.info(filterString);
 		int rows = service.getRows(filterString);
 
-		Pager pager = new Pager(3, 5, rows, pageNo); 		
+		Pager pager = new Pager(6, 5, rows, pageNo); 		
 		SelfGuide sg = new SelfGuide();
 		sg.setStype(filterString);
 		sg.setEndRowNo(pager.getEndRowNo());
@@ -120,7 +120,7 @@ public class SelfGuideController {
 		SelfGuide sg = new SelfGuide();
 		sg.setSnumber(snumber);
 		
-		List<SelfGuide> list=service.selectSelfPhotoList(member.getMemail());
+		
 		
 		if(member == null) {
 			sg = service.selectSelfPhoto(sg);
@@ -132,7 +132,7 @@ public class SelfGuideController {
 
 		logger.info(String.valueOf(sg.getLikenumber()));
 		logger.info(String.valueOf(sg.getBnumber()));
-		
+		List<SelfGuide> list=service.selectSelfPhotoList(sg.getSwriter());
 		model.addAttribute("sg",sg);
 		model.addAttribute("list",list);
 		return "guide/selfguide-detail";
