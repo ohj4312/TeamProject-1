@@ -4,7 +4,8 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <div class="row portfolio-container abcd" data-aos="fade-up">
 <c:forEach var="selfguide" items="${guidelist }">
-	<div class="mb-4 mt-5 col-lg-4 col-md-6 portfolio-item  ${selfguide.snumber } ${selfguide.swriter } ${selfguide.scontent}">
+	<div class=" mb-4 mt-5 col-lg-4 col-md-6 portfolio-item  ${selfguide.snumber } ${selfguide.swriter } ${selfguide.scontent}">
+		<div class="shadow">
 		<div class="portfolio-wrap" OnClick="location.href ='<%=application.getContextPath()%>/selfguide/selfdetail?snumber=${selfguide.snumber}'" style="border:none; cursor:pointer;">
 			<img class="mx-auto" style="width:100%; height:200px;"  src="<%=application.getContextPath()%>/file/selfguide?fileName=${selfguide.simage}" />
 			
@@ -13,19 +14,19 @@
 				<p class = "hitcount">${selfguide.hit_count }</p>
 			</div>
 			
-			<div class = "bg-light border">
+			<div class = "bg-white">
 				<h5>${selfguide.stitle } </h5>
 				<div>${selfguide.swriter }</div>
 			</div>
 		</div>
-		<div class="row bg-light m-0">
+		<div class="row bg-white m-0">
 				<sec:authorize access="isAnonymous()">
 					<div class="col-5 mx-auto p-0">
 						<a id="App1BK${selfguide.snumber}" href="<%=application.getContextPath()%>/member/login"> 
 							<i id="selfitag${selfguide.snumber}"  class="material-icons pl-4" style="font-size: 30px;">bookmark_border</i>
 						</a>
 						<a id="likepush${selfguide.snumber}" href="<%=application.getContextPath()%>/member/login">
-							<i id="likeicon${selfguide.snumber}" class="material-icons pl-4" style="font-size: 30px;">favorite_border</i>
+							<i id="likeicon${selfguide.snumber}" class="material-icons pl-4" style="font-size: 30px; color: red;">favorite_border</i>
 						</a>
 					</div>
 				</sec:authorize>
@@ -45,17 +46,17 @@
 						<a id="likepush${selfguide.snumber}" href="javascript:selftoggleUpdate(${selfguide.snumber}, '<%=application.getContextPath()%>/selflike/selflikePushCheck')">
 							<c:if test="${selfguide.likenumber == 0}">
 								<i id="selflikeicon${selfguide.snumber}" class="material-icons pl-4"
-								style="font-size: 30px;">favorite_border</i>
+								style="font-size: 30px; color: red;">favorite_border</i>
 							</c:if>
 							<c:if test="${selfguide.likenumber != 0}">
 								<i id="selflikeicon${selfguide.snumber}" class="material-icons pl-4"
-								style="font-size: 30px;">favorite</i>
+								style="font-size: 30px; color: red;">favorite</i>
 							</c:if>
 						</a>
 					</div>
 				</sec:authorize>
 			</div>
-			
+			</div>
 	</div>
 </c:forEach>
 </div>

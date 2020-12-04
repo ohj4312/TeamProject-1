@@ -48,9 +48,6 @@
 <body>
 	
 	 <jsp:include page="/WEB-INF/views/include/Header.jsp"/>
-
- 
-
   <main id="main">
 	<div class="mt-5 mb-5 row">    </div>
     <!-- ======= Breadcrumbs ======= -->
@@ -113,9 +110,24 @@
       </div>
       
       <div class="container">
+		</div>
+    </section>
+  </main><!-- End #main -->
 
-			
-			<script type="text/javascript">
+ <jsp:include page="/WEB-INF/views/include/footer.jsp"/>
+ 
+  <!-- Vendor JS Files -->
+   <script src="<%=application.getContextPath() %>/resources/vendor/jquery/jquery.min.js"></script>
+  <script src="<%=application.getContextPath() %>/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="<%=application.getContextPath() %>/resources/vendor/php-email-form/validate.js"></script>
+  <script src="<%=application.getContextPath() %>/resources/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="<%=application.getContextPath() %>/resources/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="<%=application.getContextPath() %>/resources/vendor/venobox/venobox.min.js"></script>
+  <script src="<%=application.getContextPath() %>/resources/vendor/aos/aos.js"></script>
+  <script src="<%=application.getContextPath() %>/resources/vendor/jquery.easing/jquery.easing.min.js"></script>
+
+  <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>
+  <script type="text/javascript">
 				function selfWriteForm(){
 					var stitle = $("#stitle").val().trim();
 					var stitleLen=$("#stitle").val().length;
@@ -172,42 +184,6 @@
 			      });
 				 
 			</script>
-			
-
-		</div>
-    </section>
-
-
-    <!-- ======= Portfolio Section ======= -->
-    <section id="portfolio" class="portfolio">
-      
-
-    </section><!-- End Portfolio Section -->
-
-   
-  </main><!-- End #main -->
- <jsp:include page="/WEB-INF/views/include/footer.jsp"/>
-
-  <!-- Vendor JS Files -->
-   <script src="<%=application.getContextPath() %>/resources/vendor/jquery/jquery.min.js"></script>
-  <script src="<%=application.getContextPath() %>/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="<%=application.getContextPath() %>/resources/vendor/php-email-form/validate.js"></script>
-  <script src="<%=application.getContextPath() %>/resources/vendor/owl.carousel/owl.carousel.min.js"></script>
-  <script src="<%=application.getContextPath() %>/resources/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="<%=application.getContextPath() %>/resources/vendor/venobox/venobox.min.js"></script>
-  <script src="<%=application.getContextPath() %>/resources/vendor/aos/aos.js"></script>
-  <script src="<%=application.getContextPath() %>/resources/vendor/jquery.easing/jquery.easing.min.js"></script>
-
-
-  
-  <!-- End Footer -->
-
- 
-
-  <!-- Vendor JS Files -->
- 
-  <!-- Template Main JS File -->
-  <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>
 
 </body>
 

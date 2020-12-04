@@ -94,6 +94,11 @@ public class CommunityService {
 		
 	}
 
+	public void comm_replyDelete(int cr_rnumber) {
+		c_replyDao.comm_replyDelete(cr_rnumber);
+		
+	}
+
 	
 	
 	
