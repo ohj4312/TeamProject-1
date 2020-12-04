@@ -43,6 +43,3 @@
 			</c:forEach>
     	</c:if>
 </div>
-
-        	
-     

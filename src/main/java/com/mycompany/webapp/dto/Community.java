@@ -15,8 +15,7 @@ public class Community {
 	private String cr_mimage;// 리플 이미지 //멤버이미지 참조
 	private String cr_rmnickname;// 리플 작성자 //멤머닉네임 참조
 	private int CR_REPLYRNUMBER;
-	private String rmimage;
-	private String rmemail;
+	
 	//Community	
 	private String c_mnickname; //작성자 // 멤버 닉네임 참조
 	private String c_content;// 커뮤니티 내용

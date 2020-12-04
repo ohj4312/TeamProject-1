@@ -19,7 +19,6 @@
 		<typeAlias alias="notice" type="com.mycompany.webapp.dto.Notice"/>	
 		<typeAlias alias="selfbookmark" type="com.mycompany.webapp.dto.Post_bookmark" />
 		<typeAlias alias="selflike" type="com.mycompany.webapp.dto.Post_like" />
-			
 	</typeAliases>
 </configuration>
   

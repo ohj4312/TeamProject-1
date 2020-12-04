@@ -52,6 +52,12 @@
    <update id="communityUpdatehits" parameterType="int">
    update community set c_count = c_count + 1 where c_number=#{cnumber}
    </update>
+   
+   <update id="communityUpdate" parameterType="community">
+   update community set c_content = #{c_content},c_title=#{c_title}, c_image=#{c_image},c_date= sysdate where c_number=#{c_number}
+    
+   </update>
+   
     
    <select id="communityHitsselctAll" resultType="community">   
    SELECT *FROM 

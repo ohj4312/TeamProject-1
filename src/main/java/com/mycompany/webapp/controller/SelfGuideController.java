@@ -108,8 +108,7 @@ public class SelfGuideController {
 		}else {
 			return "guide/selfguide-photos";
 		}
-		
-		
+
 	}
 	
 
@@ -120,6 +119,8 @@ public class SelfGuideController {
 		Member member = (Member) session.getAttribute("member");
 		SelfGuide sg = new SelfGuide();
 		sg.setSnumber(snumber);
+		
+		List<SelfGuide> list=service.selectSelfPhotoList(member.getMemail());
 		
 		if(member == null) {
 			sg = service.selectSelfPhoto(sg);
@@ -133,7 +134,7 @@ public class SelfGuideController {
 		logger.info(String.valueOf(sg.getBnumber()));
 		
 		model.addAttribute("sg",sg);
-
+		model.addAttribute("list",list);
 		return "guide/selfguide-detail";
 	}
 

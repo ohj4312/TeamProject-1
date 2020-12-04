@@ -192,6 +192,15 @@
 					} 
 				}
 				
+		/* 		//이거 max-width로만 바꾸면 찌그러지는 거 사라짐
+				$("#srclabel").on('change', function(e){
+			        let elem = e.target;
+
+			        var src1 = URL.createObjectURL(elem.files[0]);
+			        var $div = $('<img src="'+src1+'" max-width="100%" height="100%" />');
+			        // $("#srclabel").html($div);
+			        $(elem).next().html($div);
+			      }); */
 				 
 			</script>
 			
