@@ -48,9 +48,6 @@
       <div id = "listappend" class="container mt-5">
       		
       		<h2 style="float:left">셀프 인테리어 가이드북 </h2>
-      		<sec:authorize access="isAuthenticated()">
-      			<span style="float:right" class="btn btn-info btn-lg" onClick="selfWrite()">글쓰기</span>
-      		</sec:authorize>
       		<div class="mb-4" style="clear:both;"></div>
       		<jsp:include page="/WEB-INF/views/guide/selfguide-order.jsp"/>
       		<!-- <img style="width:100%; height:200px;"src="https://image.ohou.se/i/bucketplace-v2-development/uploads/advices/guides/self_interior/pc_banner_image.v3.png?gif=1&w=1280&webp=1"/> -->
@@ -58,7 +55,11 @@
         <div id="addtag" style="width:100%; padding:0; margin:0" class="row col-md-12 mb-4 mt-4">
 			<jsp:include page="/WEB-INF/views/guide/selfguideFilter.jsp"/>
         </div>
-		<div style="clear:both"></div>
+		<div class = "row m-0" style="text-align: right;">
+			<sec:authorize access="isAuthenticated()">
+      			<a class="btn btn-light btn-sm" style="text-align: right; float: right;" href="javascript:selfWrite();">글쓰기</a>
+      		</sec:authorize>
+		</div>
       <div id = "12345" >
         <jsp:include page="/WEB-INF/views/guide/selfguide-photos.jsp"/>
        </div>
@@ -86,37 +87,6 @@
   <!-- Template Main JS File -->
   <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>
 	
-	<script type="text/javascript">
-
-	function pagingList(){
-	  $.ajax({
-			url : "<%=application.getContextPath()%>/selfguide/selflist",
-			method: "get",
-			success:function(data){
-				location.href="<%=application.getContextPath()%>/selfguide/selflist";
-			}
-		});
-	}
-	
-	
-	function selfWrite(){
-		location.href="<%=application.getContextPath()%>/selfguide/selfguide-write";
-	}
-	
-	function checkSelfGuidFilter(filterString, firstcount, pageNo){
-		console.log("check실행");
-
-		$.ajax({
-				url : "<%=application.getContextPath()%>/selfguide/selflist",
-				data:{filterString:filterString, firstcount:firstcount, pageNo:pageNo},
-				success:function(data){
-					 $("#12345").html(data);
-					
-				}
-			});
-		
-	}	
-	</script>
 </body>
 
 </html>

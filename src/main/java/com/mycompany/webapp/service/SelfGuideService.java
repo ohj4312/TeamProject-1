@@ -36,13 +36,6 @@ public class SelfGuideService {
 		}
 	}
 
-	/*public List<SelfGuide> getselfguideList(Pager pager) {
-		
-		return sgDAO.selectByPage(pager); 
-	}*/
-
-	
- 
 	public SelfGuide selectSelfPhoto(SelfGuide sg) {
 		sg = sgDAO.selectSelfPhoto(sg.getSnumber());
 		
@@ -108,5 +101,10 @@ public class SelfGuideService {
 			}
 		}
 		
+	}
+
+	public SelfGuide getASelfPhoto(SelfGuide sg) {
+		// TODO Auto-generated method stub
+		return sgDAO.selectSelfPhotoBySnumber(sg);
 	}	
 }

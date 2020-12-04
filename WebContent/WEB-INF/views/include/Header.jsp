@@ -19,7 +19,7 @@
           <sec:authorize access="isAnonymous()">
           	<li><a href="<%=application.getContextPath()%>/member/login">Login</a></li>
           	<li><a href="<%=application.getContextPath()%>/member/join">Register</a></li>
-          	<li><a href="<%=application.getContextPath()%>/customer/list">Customer Center</a></li>
+          	<li><a href="<%=application.getContextPath()%>/Notice/list">Notice</a></li>
           </sec:authorize>
           <sec:authorize access="isAuthenticated()">
           	
@@ -27,7 +27,7 @@
           	<li><a href="<%=application.getContextPath()%>/photo/write">Photo Write</a></li>
           	<li><a href="<%=application.getContextPath()%>/logout">LogOut</a></li>
           	<li><a href="<%=application.getContextPath()%>/qna/qnaindex">Q&A</a></li>
-          	<li><a href="<%=application.getContextPath()%>/customer/list">Customer Center</a></li>
+          	<li><a href="<%=application.getContextPath()%>/Notice/list">Notice</a></li>
           </sec:authorize>
          
           	

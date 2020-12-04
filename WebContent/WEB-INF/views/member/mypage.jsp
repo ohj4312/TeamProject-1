@@ -159,6 +159,10 @@
         $(elem).next().html($div);
         $('#update').prop("disabled", false);
       });
+	
+	$(document).ready(function(){
+		  $('[data-toggle="popover"]').popover();   
+		});
  </script>
 </body>
 

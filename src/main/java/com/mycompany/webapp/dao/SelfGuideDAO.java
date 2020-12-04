@@ -51,7 +51,7 @@ public class SelfGuideDAO {
 
 	public SelfGuide selectSelfPhoto(int snumber) {
 		
-		return sst.selectOne("mybatis.mapper.selfguide.selectSelfPhotoList",snumber );
+		return sst.selectOne("mybatis.mapper.selfguide.selectSelfPhoto",snumber );
 	}
 
 	public void updateHitCount(SelfGuide sg) {
@@ -115,5 +115,11 @@ public class SelfGuideDAO {
 	public List<SelfGuide> selectByMemberFilter(SelfGuide sg) {
 		return sst.selectList("mybatis.mapper.selfguide.getselfguidephotoListFilter",sg);
 		
+	}
+
+
+	public SelfGuide selectSelfPhotoBySnumber(SelfGuide sg) {
+		// TODO Auto-generated method stub
+		return sst.selectOne("mybatis.mapper.selfguide.selectSelfPhotoBySnumber",sg );
 	}	
 }

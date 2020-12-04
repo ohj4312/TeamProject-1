@@ -101,7 +101,6 @@ public class SelfGuideReplyController {
 		model.addAttribute("snumber", snumber);
 		model.addAttribute("count", replyCount);
 		model.addAttribute("member",member);
-		logger.info(member.getMemail());
 		return "guide/selfguide-replylist";
 	}
 	
