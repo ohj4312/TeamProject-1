@@ -22,7 +22,6 @@
 			<time >${list.cr_rdate}</time>	
 			<p>${list.cr_rcontent}</p>	
 		</div>
-	
 	<form method="post" action="<%=application.getContextPath()%>/community/comm_replyListReWrite">	
 	<input type="text" id="rcontent${list.cr_rnumber}" class="lt form-control" placeholder="댓글을 남겨보세요!" style="display: none; width:91%;" name="rcontent">
 	<input type="hidden" id="cr_rnumber" name="cr_rnumber" value="${list.cr_rnumber}">
@@ -35,35 +34,6 @@
 	
 	
 	</div>	
-	
-	
-	<script type="text/javascript">
-	
-	function InputRe(cr_rnumber,check){
-		
-		$(".lt").attr("style","display: none");
-		$(".lt").attr("style","display: none");
-		$("#Arcontent"+cr_rnumber).attr("style","display: line-block; background-color:#1bac91; color:white");
-		$("#rcontent"+cr_rnumber).attr("style","display: line-block;");	
-		
-	}
-	
-	 function commreplyListre(cr_rnumber){
-			$.ajax({
-				url:"/teamproject/community/comm_replyListRe",
-				data:{cr_rnumber:cr_rnumber},
-				success:function(data){
-					$("#comment-re"+cr_rnumber).html(data);
-				}
-			});
-			
-		} 
-	
-	$(function () {
-		commreplyListre('${list.cr_rnumber}');
-	});
-	
-	</script>
 </c:forEach>
 
 	<div class="row text-center" style="width:100%;">
@@ -92,6 +62,62 @@
 	        </div>
 	     </c:if>	     	        
  	</div>
+ 	
+ 	<script type="text/javascript">
+	
+	function InputRe(cr_rnumber,check){
+		
+		$(".lt").attr("style","display: none");
+		$(".lt").attr("style","display: none");
+		$("#Arcontent"+cr_rnumber).attr("style","display: line-block; background-color:#1bac91; color:white");
+		$("#rcontent"+cr_rnumber).attr("style","display: line-block;");	
+		
+	}
+	
+	 function commreplyListre(cr_rnumber){
+			$.ajax({
+				url:"/teamproject/community/comm_replyListRe",
+				data:{cr_rnumber:cr_rnumber},
+				success:function(data){
+					$("#comment-re"+cr_rnumber).html(data);
+				}
+			});
+			
+		} 
+	
+	$(function () {
+		commreplyListre('${list.cr_rnumber}');
+	});
+	
+	<script type="text/javascript">
+	
+	function InputRe(cr_rnumber,check){
+		
+		$(".lt").attr("style","display: none");
+		$(".lt").attr("style","display: none");
+		$("#Arcontent"+cr_rnumber).attr("style","display: line-block; background-color:#1bac91; color:white");
+		$("#rcontent"+cr_rnumber).attr("style","display: line-block;");	
+		
+	}
+	
+	 function commreplyListre(cr_rnumber){
+			$.ajax({
+				url:"/teamproject/community/comm_replyListRe",
+				data:{cr_rnumber:cr_rnumber},
+				success:function(data){
+					$("#comment-re"+cr_rnumber).html(data);
+				}
+			});
+			
+		} 
+	
+	$(function () {
+		commreplyListre('${list.cr_rnumber}');
+	});
+	
+	</script>
+	
+	</script>
  
  
 
