@@ -9,7 +9,7 @@
 						<img class="img-fluid" src="<%=application.getContextPath() %>/resources/img/all.png" alt="전체">
 					</div>
 					<div>
-						<p class = "small text-center" style="color: black">전체</p>
+						<p class = "small text-center" style="color: black"><strong>전체</strong></p>
 					</div>
 				</div>
 			</a>
@@ -21,7 +21,7 @@
 						<img class="img-fluid" src="<%=application.getContextPath() %>/resources/img/cost.png" alt="비용정리">
 					</div>
 					<div>
-						<p class = "small text-center" style="color: black">비용<br/>정리</p>
+						<p class = "small text-center" style="color: black"><strong>비용<br/>정리</strong></p>
 					</div>
 				</div>
 			</a>
@@ -33,7 +33,7 @@
 						<img class="img-fluid" src="<%=application.getContextPath() %>/resources/img/space.png" alt="공간배치">
 					</div>
 					<div>
-						<p class = "small text-center" style="color: black">공간<br/>배치</p>
+						<p class = "small text-center" style="color: black"><strong>공간<br/>배치</strong></p>
 					</div>
 				</div>
 			</a>
@@ -45,7 +45,7 @@
 						<img class="img-fluid" src="<%=application.getContextPath() %>/resources/img/plan.png" alt="계획하기">
 					</div>
 					<div>
-						<p class = "small text-center" style="color: black">계획<br/>하기</p>
+						<p class = "small text-center" style="color: black"><strong>계획<br/>하기</strong></p>
 					</div>
 				</div>
 			</a>
@@ -57,7 +57,7 @@
 						<img class="img-fluid" src="<%=application.getContextPath() %>/resources/img/drawing.png" alt="페인트도배">
 					</div>
 					<div>
-						<p class = "small text-center" style="color: black">페인트<br/>도배</p>
+						<p class = "small text-center" style="color: black"><strong>페인트<br/>도배</strong></p>
 					</div>
 				</div>
 			</a>
@@ -69,7 +69,7 @@
 						<img class="img-fluid" src="<%=application.getContextPath() %>/resources/img/tile.png" alt="바닥깔기">
 					</div>
 					<div>
-						<p class = "small text-center" style="color: black">바닥<br/>깔기</p>
+						<p class = "small text-center" style="color: black"><strong>바닥<br/>깔기</strong></p>
 					</div>
 				</div>
 			</a>
