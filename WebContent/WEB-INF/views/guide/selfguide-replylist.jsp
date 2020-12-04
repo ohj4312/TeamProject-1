@@ -48,10 +48,11 @@
             </div>
          </c:forEach>
          
+
          <div class = "mt-3">
           <c:if test="${count>0}">
-           <div>
-             <ul class="pagination">
+           <div class="input-group">
+             <ul class="pagination mx-auto">
                 <c:if test="${pager.groupNo>1}">
                   <li class="page-item"><a class="page-link" href="javascript:selfreplyList(${pager.startPageNo-1})">Previous</a></li>
                </c:if>
