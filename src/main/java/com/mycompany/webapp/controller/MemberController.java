@@ -147,7 +147,7 @@ public class MemberController {
 		} catch (Exception e) {} 
 		
 		memberService.updateMimage(member);
-		return "member/mypage";
+		return "redirect:/member/mypage";
 	}
 	
 	@GetMapping("/updatePassword")
