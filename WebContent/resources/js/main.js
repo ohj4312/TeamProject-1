@@ -148,29 +148,7 @@
     }
   });
 
-  /*// Porfolio isotope and filter
-  $(window).on('load', function() {
-    var portfolioIsotope = $('.portfolio-container').isotope({
-      itemSelector: '.portfolio-item',
-      layoutMode: 'fitRows'
-    });
-
-    $('#portfolio-flters li').on('click', function() {
-      $("#portfolio-flters li").removeClass('filter-active');
-      $(this).addClass('filter-active');
-
-      portfolioIsotope.isotope({
-        filter: $(this).data('filter')
-      });
-      aos_init();
-    });
-
-    // Initiate venobox (lightbox feature used in portofilo)
-    $(document).ready(function() {
-      $('.venobox').venobox();
-    });
-  });
-*/
+ 
   // Portfolio details carousel
   $(".portfolio-details-carousel").owlCarousel({
     autoplay: true,
@@ -620,11 +598,12 @@ function getList(page){
 						}
 						
 						if(list[loop].likenumber == 0){
-							likenumber='<i id="likeicon'+list[loop].pnumber+'" class="material-icons pl-4" style = "font-size: 30px;">favorite_border</i>';
+							likenumber='<i id="likeicon'+list[loop].pnumber+'" class="material-icons pl-4" style = "font-size: 30px; color: red;">favorite_border</i>';
 						}else{
-							likenumber='<i id="likeicon'+list[loop].pnumber+'" class="material-icons pl-4" style = "font-size: 30px;">favorite</i>';
+							likenumber='<i id="likeicon'+list[loop].pnumber+'" class="material-icons pl-4" style = "font-size: 30px; color: red;">favorite</i>';
 						}
 						$items = $('<div class="mb-4 mt-5 col-lg-4 col-md-6 portfolio-item '+list[loop].ptype+' '+list[loop].psize+' '+list[loop].pstyle+'">'+
+									'<div class="shadow">'+
 									'<div class = "row pl-3 pr-2 mb-4">'+
 										'<a href="/teamproject/member/yourhomesearch?pwriter='+ list[loop].pwriter+ '" class = "pr-3 " style="color: black;">'+
 											'<img class="rounded-circle mr-2 "style="width:30px; height:30px;"  src="/teamproject/file/member?fileName='+list[loop].mimage+'" />'+
@@ -656,6 +635,7 @@ function getList(page){
 									'</div>'+
 									'<div div class = "row pl-3 pr-3 mt-2">'+
 												'<a>'+list[loop].first_content+'</a>'+
+									'</div>'+
 									'</div>'+
 								'</div>');
 								
@@ -938,3 +918,33 @@ function getfollowList(){
 			});
 			
 		}     	
+		
+//===============================================================================
+function pagingList(){
+	  $.ajax({
+			url : "/teamproject/selfguide/selflist",
+			method: "get",
+			success:function(data){
+				location.href="/teamproject/selfguide/selflist";
+			}
+		});
+	}
+	
+	
+	function selfWrite(){
+		location.href="/teamproject/selfguide/selfguide-write";
+	}
+	
+	function checkSelfGuidFilter(filterString, firstcount, pageNo){
+		console.log("check실행");
+
+		$.ajax({
+				url : "/teamproject/selfguide/selflist",
+				data:{filterString:filterString, firstcount:firstcount, pageNo:pageNo},
+				success:function(data){
+					 $("#12345").html(data);
+					
+				}
+			});
+		
+	}	

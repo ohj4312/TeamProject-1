@@ -20,7 +20,12 @@ public class SelfLikeDAO {
 	private SqlSessionTemplate sst;
 	
 	public List<SelfGuide> selfgetLikeList(String memail) {
+		logger.info("가져오는건가 못들어가는건가?");
 		List<SelfGuide> likelist = sst.selectList("mybatis.mapper.selflike.selflikeAll",memail);
+		for(SelfGuide sef:likelist) {
+			logger.info(""+sef.getSnumber());
+			logger.info(sef.getSwriter());
+		}
 		return likelist;
 	}
 

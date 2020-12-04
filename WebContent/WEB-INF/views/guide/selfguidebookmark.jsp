@@ -4,9 +4,6 @@
 
 
 
-
-
-
 <h5><strong>북마크</strong></h5>
 <div id="mypagephoto" style="border:1px dashed #dbdbdb;width:100%;height: 390px;">
 	<c:forEach var="bookmark" items="${list }">

@@ -7,12 +7,17 @@
 		
 		
 		<c:forEach var="list2" items="${comm_replylistRe}">
-	
+	<fmt:formatDate var="cr_rdate" value="${list2.cr_rdate}" pattern="yyyy-MM-dd HH:mm" />
               
                 <img src="<%=application.getContextPath()%>/file/member?fileName=${list2.mimage}" class="comment-img  float-left" alt="">
-                <h5><a href="">${list2.cr_rmnickname}</a> <a href="#" class="reply"><i class="icofont-reply"></i> Reply</a></h5>
-                <time>${list2.cr_rdate}</time>
+                <h5><a href="">${list2.cr_rmnickname}</a> 
+                <c:if test="${member.mnickname==list2.cr_rmnickname}">	
+  					<a style="font-size:5px; display:inline-block; width:10%; margin-left: 10px;color: gray" href="javascript:comm_replyDelete(${list2.cr_rnumber})">삭제</a>			     
+				</c:if>
+					</h5>
+                <time>${cr_rdate}</time>
                 <p>${list2.cr_rcontent}</p>
+    				
             
         </c:forEach>
 

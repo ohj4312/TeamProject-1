@@ -48,11 +48,10 @@ public class SelfGuideDAO {
 		
 		return sst.selectList("mybatis.mapper.selfguide.selectByPageList",sg);
 	}
-	
-	//self detail 부분
-	public SelfGuide selectSelfPhoto(SelfGuide sg) {
+
+	public SelfGuide selectSelfPhoto(int snumber) {
 		
-		return sst.selectOne("mybatis.mapper.selfguide.selectSelfPhotoList",sg);
+		return sst.selectOne("mybatis.mapper.selfguide.selectSelfPhoto",snumber );
 	}
 
 	public void updateHitCount(SelfGuide sg) {
@@ -72,7 +71,7 @@ public class SelfGuideDAO {
 
 
 	public void updatehitcount(SelfGuide sg) {
-		sst.update("mybatis.mapper.selfguide.updateselfhitcount",sg);
+		sst.update("mybatis.mapper.selfguide.updatehitcount",sg);
 	}
 
 
@@ -116,5 +115,11 @@ public class SelfGuideDAO {
 	public List<SelfGuide> selectByMemberFilter(SelfGuide sg) {
 		return sst.selectList("mybatis.mapper.selfguide.getselfguidephotoListFilter",sg);
 		
+	}
+
+
+	public SelfGuide selectSelfPhotoBySnumber(SelfGuide sg) {
+		// TODO Auto-generated method stub
+		return sst.selectOne("mybatis.mapper.selfguide.selectSelfPhotoBySnumber",sg );
 	}	
 }

@@ -52,6 +52,12 @@
    <update id="communityUpdatehits" parameterType="int">
    update community set c_count = c_count + 1 where c_number=#{cnumber}
    </update>
+   
+   <update id="communityUpdate" parameterType="community">
+   update community set c_content = #{c_content},c_title=#{c_title}, c_image=#{c_image},c_date= sysdate where c_number=#{c_number}
+    
+   </update>
+   
     
    <select id="communityHitsselctAll" resultType="community">   
    SELECT *FROM 
@@ -97,6 +103,11 @@
    select r.*,m.mimage from c_reply r,member m 
  where CR_REPLYRNUMBER=#{cr_rnumber} and r.cr_rmnickname =m.mnickname 
    </select> 
+   
+   <delete id="comm_replyDelete" parameterType="int">
+   delete from c_reply where cr_rnumber=#{cr_rnumber}
+   
+   </delete>
 
 
 </mapper>

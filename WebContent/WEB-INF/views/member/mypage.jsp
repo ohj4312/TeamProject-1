@@ -53,7 +53,7 @@
           <h2>My Page</h2>
         <div class="row no-gutters justify-content-center" style="display: flex;" data-aos="fade-up">
 		
-          <div class="col-md-2 mr-lg-4">
+          <div class="col-12 col-lg-2 mr-lg-4">
         		<section>
         		<div class="user-profile mt-4" style="border:1px solid #dadce0; ">
         		
@@ -117,7 +117,7 @@
         		
           </div>
 
-          <div class="col-md-7 ml-lg-4">
+          <div class="col-12 col-lg-7 ml-lg-4">
         		<section id="photoList" class="contents">
         			<div id="formchange" class="post post--cards pd">
         				<jsp:include page="/WEB-INF/views/member/returnmypage.jsp"/>
@@ -159,6 +159,10 @@
         $(elem).next().html($div);
         $('#update').prop("disabled", false);
       });
+	
+	$(document).ready(function(){
+		  $('[data-toggle="popover"]').popover();   
+		});
  </script>
 </body>
 

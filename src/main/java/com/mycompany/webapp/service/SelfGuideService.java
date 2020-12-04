@@ -36,15 +36,8 @@ public class SelfGuideService {
 		}
 	}
 
-	/*public List<SelfGuide> getselfguideList(Pager pager) {
-		
-		return sgDAO.selectByPage(pager); 
-	}*/
-
-	
-	//self detail 부분
 	public SelfGuide selectSelfPhoto(SelfGuide sg) {
-		sg = sgDAO.selectSelfPhoto(sg);
+		sg = sgDAO.selectSelfPhoto(sg.getSnumber());
 		
 		
 		return sg;
@@ -78,7 +71,7 @@ public class SelfGuideService {
 
 	public void updatehitcount(SelfGuide sg) {
 		
-		sgDAO.updatehitcount(sg);
+		sgDAO.updatehitcount(sg);;
 	}
 
 	public void changeSelfPhoto(SelfGuide sg) {
@@ -108,5 +101,10 @@ public class SelfGuideService {
 			}
 		}
 		
+	}
+
+	public SelfGuide getASelfPhoto(SelfGuide sg) {
+		// TODO Auto-generated method stub
+		return sgDAO.selectSelfPhotoBySnumber(sg);
 	}	
 }

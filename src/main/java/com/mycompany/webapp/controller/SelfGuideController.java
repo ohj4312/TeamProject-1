@@ -83,7 +83,7 @@ public class SelfGuideController {
 		logger.info(filterString);
 		int rows = service.getRows(filterString);
 
-		Pager pager = new Pager(3, 5, rows, pageNo); 		
+		Pager pager = new Pager(6, 5, rows, pageNo); 		
 		SelfGuide sg = new SelfGuide();
 		sg.setStype(filterString);
 		sg.setEndRowNo(pager.getEndRowNo());
@@ -92,11 +92,7 @@ public class SelfGuideController {
 		if(member == null) {
 			guidelist = service.getselfguidephotoListFilter(sg);
 		} else {
-			
 			sg.setSwriter(member.getMemail());
-			sg.setEndRowNo(pager.getEndRowNo());
-			sg.setStartRowNo(pager.getStartRowNo());
-			
 			guidelist = service.getselfguidephotoListFilter(sg);
 		}
 		
@@ -112,7 +108,7 @@ public class SelfGuideController {
 		}else {
 			return "guide/selfguide-photos";
 		}
-		
+
 	}
 	
 
@@ -121,57 +117,26 @@ public class SelfGuideController {
 	public String selfphotoDetail(int snumber,Model model,HttpSession session) {
 		
 		Member member = (Member) session.getAttribute("member");
-		//logger.info("snumber:"+String.valueOf(snumber));
-
 		SelfGuide sg = new SelfGuide();
-		
-		List<SelfGuide> list;
-		if(member ==null) {
-			return "member/login";
-		}
 		sg.setSnumber(snumber);
-		sg.setSwriter(member.getMemail());
-		logger.info(String.valueOf(sg.getHit_count()));	
-		
-		sg = service.selectSelfPhoto(sg);//self detail 부분
 		
 		
+		
+		if(member == null) {
+			sg = service.selectSelfPhoto(sg);
+		} else {
+			sg.setSwriter(member.getMemail());
+			sg = service.getASelfPhoto(sg);
+		}
 		service.updatehitcount(sg);
-		
-		logger.info("snumber:"+String.valueOf(sg.getSnumber()));
-		logger.info(sg.getSwriter());
-		logger.info(sg.getStitle());
-		logger.info(sg.getStype());
-		logger.info(sg.getScontent());
-		//logger.info(String.valueOf(sg.getHit_count()));
-		model.addAttribute("sg",sg);
 
+		logger.info(String.valueOf(sg.getLikenumber()));
+		logger.info(String.valueOf(sg.getBnumber()));
+		List<SelfGuide> list=service.selectSelfPhotoList(sg.getSwriter());
+		model.addAttribute("sg",sg);
+		model.addAttribute("list",list);
 		return "guide/selfguide-detail";
 	}
-	
-	
-	@GetMapping("/selfguideFilter")
-	public String selfguideFilter(String filterString,Model model) {
-		logger.info(filterString);
-		SelfGuide sg = new SelfGuide();
-		
-		sg.setStype(filterString);
-		//int rows = service.getFilterRows(sg.getStype());
-		//logger.info(String.valueOf(rows));
-		
-		//Pager pager = new Pager(3, 5, rows, pageNo);
-		List<SelfGuide> filterlist=service.getselfFilter(filterString);
-		
-		for(SelfGuide self:filterlist) {
-			logger.info(self.getScontent());
-			logger.info(self.getStitle());
-		}
-		
-		model.addAttribute("guidelist",filterlist);
-		
-		return "guide/selfguide-photos";
-	}
-	
 
 	@GetMapping("/deleteSelfguide")
 	public String deleteSelfguide(int snumber) {

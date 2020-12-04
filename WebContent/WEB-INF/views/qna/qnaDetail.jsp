@@ -87,6 +87,8 @@ table.type09 tbody th {
     vertical-align: top;
     border-bottom: 1px solid #ccc;
     background: #f3f6f7;
+    background-color: #CDE4E1 ;
+    text-align:center;
 }
 table.type09 td {
     padding: 10px;
@@ -122,11 +124,14 @@ table.type09 td {
 <body>
 
 	<jsp:include page="/WEB-INF/views/include/Header.jsp" />
-	<section id="services" class="section-bg mt-5" style="background-color: #ffffff;">
+	<section id="services" class="section-bg mt-2" style="background-color: #ffffff;">
 	
 <%-- ########################################################################### --%>
 <div>
+<section style="padding-bottom:2rem" class="mb-0">
 	<h3 style="text-align:center; margin-bottom:50px">Q&A</h3>
+	</section>
+		<section>
 		<div>
 			<table class="type09" style="margin-left: auto; margin-right: auto;">
 			    
@@ -192,10 +197,11 @@ table.type09 td {
 			   </div>
 			 
 	    </div>
-</div>
-		
+	    </section>
+	    </section>
+
 <%-- ########################################################################### --%>	
-	</section>
+	
 	
 	<!-- ======= Footer ======= -->
 	 <jsp:include page="/WEB-INF/views/include/footer.jsp"/>

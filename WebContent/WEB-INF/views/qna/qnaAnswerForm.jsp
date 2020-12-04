@@ -76,21 +76,27 @@ td a {
 <div class="container">
 <div class="row">
 	<div style="width: 1000px; margin-left: auto; margin-right: auto;" >
+	<section style="padding-bottom:5rem" class="mb-2">
 		<h3 style="margin-bottom:50px; padding-left: 15px;">Q&A 답변작성</h3>
+		</section>
+		<section>
 	<div class="col-sm">
 		<form id="qnaAnswerForm" method="post" action="qnaAnswer" >
 			<!-- <table style="width:auto" class="table table-sm table-bordered"> -->
 			<input type="hidden" id="qnumber" name="qnumber" value="${qna.qnumber}">
 			
-			<div class="input-group">
-				<div class="input-group-prepend"><span class="input-group-text">제목</span></div>
+			<div class="input-group" >
+				<div class="input-group-prepend" ><span class="input-group-text" 
+					 style="background-color: #CDE4E1; font-weight: bold; ">제목</span></div>
 				<input id="qtitle" type="text" name="qtitle" class="form-control" value="${qna.qtitle}">
 			
 				<span id="qtitleError" class="error"></span>
 			</div>
 			
+			
 			<div class="input-group">
-				<div class="input-group-prepend"><span class="input-group-text">답변 내용</span></div>
+				<div class="input-group-prepend"><span class="input-group-text" 
+				 	 style="background-color: #CDE4E1; font-weight: bold; ">답변 내용</span></div>
 				<textarea id="answer" name="answer" class="form-control" rows="10">${qna.answer}</textarea>
 				<span id="answerError" class="error"></span>
 			</div>
@@ -102,6 +108,7 @@ td a {
 			</div>
 		</form>
 		</div>
+		</section>
 	</div>
 	</div>
 </div>	

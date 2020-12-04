@@ -49,23 +49,7 @@
    }
    .scroll img{
    }
-  
-  .cut { 
-  /* 한 줄 자르기 */ 
-  display: inline-block; 
-  width: 200px; 
-  white-space: nowrap; 
-  overflow: hidden; 
-  text-overflow: ellipsis; 
-  /* 여러 줄 자르기 추가 스타일 */ 
-  white-space: normal; 
-  line-height: 1.2; 
-  height: 2.4em; 
-  }
-
-  
-  </style>
-
+ </style>
 </head>
 
 <body>
@@ -73,202 +57,104 @@
   <!-- ======= Header ======= -->
   	
   	
-
-  <main id="main">
+	
+  <main id="main" data-aos="fade-up" style="margin-top:2rem">
 
     <!-- ======= Breadcrumbs ======= -->
-    <section class="section mt-3">
-      <div class="container mt-5">
-        <div class="row">
-          <div class="col-lg-10" data-aos="fade-up">
-           <pre> <h3 id="title">${sg.stitle}</h3></pre>
-          	<h4 id="type">${sg.stype} 
-          		<a id="deleteSelfGuideDetail" href="<%=application.getContextPath() %>/selfguide/deleteSelfguide?snumber=${sg.snumber}" class="btn btn-danger" style="float:right">삭제하기</a>
-          		<a id="updateSelfGuideDetail" href="<%=application.getContextPath() %>/selfguide/updateSelfguide?snumber=${sg.snumber}" class="btn btn-info" style="float:right">수정하기</a>
-          	</h4>
-          	
-            	<img id="self_image" style="width:100%; height:400px;" src="<%=application.getContextPath()%>/file/selfguide?fileName=${sg.simage}"/>
-          		 <div><h2>${sg.swriter } </h2>
-          		
-          		</div> 
-          </div> 
-        </div>
-      </div>
-      </section>
 
-		<div class="container" style="text-align: center;">
-			<div class="row mx-auto">
-				<div id="RegBookMark" class="col-5">
-					<button type="button" class="btn btn-light w-100"
-						onclick="selftoggleUpdate(${sg.snumber}, '<%=application.getContextPath()%>/selfbookmark/selfcheckBookMark')">
-						<c:if test="${sg.bnumber == 0}">
-							<i id="selfitag${sg.snumber}" class="material-icons align-middle"
-								style="font-size: 30px; color: #1bac91;">bookmark_border</i>
-							<span id="selfbkcount" class="align-middle">${sg.bookcount}</span>
-						</c:if>
-						<c:if test="${sg.bnumber != 0}">
-							<i id="selfitag${sg.snumber}" class="material-icons align-middle"
-								style="font-size: 30px; color: #1bac91;">bookmark</i>
-							<span id="selfbkcount" class="align-middle">${sg.bookcount}</span>
-						</c:if>
-					</button>
-				</div>
-
-				<div id="likepush" class="col-5">
-
-					<button type="button" class="btn btn-light w-100"
-						onclick="selftoggleUpdate(${sg.snumber}, '<%=application.getContextPath()%>/selflike/selflikePushCheck')">
-						<c:if test="${sg.likenumber == 0}">
-							<i id="selflikeicon${sg.snumber}"
-								class="material-icons align-middle"
-								style="font-size: 30px; color: red;">favorite_border</i>
-							<span id="selflkcount" class="align-middle">${sg.likecount}</span>
-						</c:if>
-						<c:if test="${sg.likenumber != 0}">
-							<i id="selflikeicon${sg.snumber}"
-								class="material-icons align-middle"
-								style="font-size: 30px; color: red;">favorite</i>
-							<span id="selflkcount" class="align-middle">${sg.likecount}</span>
-						</c:if>
-					</button>
-				</div>
-			</div>
-		</div>
+      
+      <!-- ======= Blog Section ======= --> 
+		
 		<!-- ======= Blog Section ======= --> 
     <section id="blog" class="blog">
       <div class="container">  
 
         <div class="row">
 
-          <div class="col-lg-10 entries">
+          <div class="col-lg-9 mx-auto entries">
 
             <article class="entry entry-single">
+				
+				  <h2 class="entry-title">${sg.stitle} </h2>
+              <img id="self_image" style="width:100%; height:400px;" src="<%=application.getContextPath()%>/file/selfguide?fileName=${sg.simage}"/>
 
-              
+            
 
-              <h2 class="entry-title">
-                <a href="blog-single.html">${sg.stitle}</a>
-              </h2>
-
-              <div class="entry-meta">
+              <div class="entry-meta mt-4">
                 <ul>
-                  <li class="d-flex align-items-center"><i class="icofont-user"></i> <a href="blog-single.html">John Doe</a></li>
-                  <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <a href="blog-single.html"><time datetime="2020-01-01">Jan 1, 2020</time></a></li>
-                  <li class="d-flex align-items-center"><i class="icofont-comment"></i> <a href="blog-single.html">12 Comments</a></li>
+                  <li class="d-flex align-items-center"><i class="icofont-user"></i> <a href="<%=application.getContextPath()%>/member/mypage">${sg.swriter }</a></li>
+            	  <li class="d-flex align-items-center"><i class="icofont-card"></i> <a href="<%=application.getContextPath()%>/member/mypage">${sg.stype }</a></li>
                 </ul>
               </div>
 
               <div class="entry-content">
               
                
-               		<div id="sg">${sg.scontent }</div>
-                	
-                	<div id="rcontent"></div>
+               		<div id="sg" class="p-3">${sg.scontent }</div>
+								<div class="container mt-5">
+									<div class="row">
+										<div class="col-lg-12 p-0">
+											<h4 id="type">
+												<a id="deleteSelfGuideDetail"
+													href="<%=application.getContextPath() %>/selfguide/deleteSelfguide?snumber=${sg.snumber}"
+													class="btn btn-light"
+													style="float: right; font-weight: bold">삭제하기</a> <a
+													id="updateSelfGuideDetail"
+													href="<%=application.getContextPath() %>/selfguide/updateSelfguide?snumber=${sg.snumber}"
+													class="btn btn-light mr-1"
+													style="float: right; font-weight: bold">수정하기</a>
+											</h4>
+											<div>
+												<a
+													href="javascript:selftoggleUpdate(${sg.snumber}, '<%=application.getContextPath()%>/selfbookmark/selfcheckBookMark')">
+													<c:if test="${sg.bnumber == 0}">
+														<span id="selfbkcount" class="align-middle mr-3" style="float: right">${sg.bookcount}</span>
+														<i id="selfitag${sg.snumber}"
+															class="material-icons align-middle mr-1"
+															style="float: right; font-size: 30px; color: #1bac91;">bookmark_border</i>
+													</c:if> <c:if test="${sg.bnumber != 0}">
+														<span id="selfbkcount" class="align-middle mr-3" style="float: right">${sg.bookcount}</span>
+														<i id="selfitag${sg.snumber}"
+															class="material-icons align-middle mr-1"
+															style="float: right; font-size: 30px; color: #1bac91;">bookmark</i>
+													</c:if>
+												</a> <a
+													href="javascript:selftoggleUpdate(${sg.snumber}, '<%=application.getContextPath()%>/selflike/selflikePushCheck')">
+													<c:if test="${sg.likenumber == 0}">
+														<span id="selflkcount" class="align-middle mr-1" style="float: right">${sg.likecount}</span>
+														<i id="selflikeicon${sg.snumber}"
+															class="material-icons align-middle mr-1"
+															style="float: right; font-size: 30px; color: red;">favorite_border</i>
+													</c:if> <c:if test="${sg.likenumber != 0}">
+														<span id="selflkcount" class="align-middle mr-1" style="float: right">${sg.likecount}</span>
+														<i id="selflikeicon${sg.snumber}"
+															class="material-icons align-middle mr-1"
+															style="float: right; font-size: 30px; color: red;">favorite</i>
+														
+													</c:if>
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div id="rcontent"></div>
                 
 				</div>
 				</article>
+				
+				<article>
+					<div class="scroll h-25" style="width:100%">
+			 			<c:forEach var="selfguide" items="${list}">
+	          				<a href="javascript:otherselfguidephoto('${selfguide.simage}', '${selfguide.scontent}','${selfguide.stitle }','${selfguide.stype }',${selfguide.snumber })"><img src="<%=application.getContextPath()%>/file/selfguide?fileName=${selfguide.simage}" class= "w-25 h-25"></a>
+						</c:forEach>
+					 </div>
+				</article>
+				<div id="reply_result2" style="margin-top:30px">
+     	 		</div>
               </div>
-
-             
-
-            <!-- End blog entry -->
-
-            <div class="blog-author clearfix">
-              <article>
-				<div class="scroll col-lg-8 h-25" style="width:100%">
-		 			<c:forEach var="selfguide" items="${list}">
-          				<a href="javascript:otherselfguidephoto('${selfguide.simage}', '${selfguide.scontent}','${selfguide.stitle }','${selfguide.stype }')"><img src="<%=application.getContextPath()%>/file/selfguide?fileName=${selfguide.simage}" class= "w-25 h-25"></a>
-					</c:forEach>
-				 </div>
-			</article>
-           </div>
-           <script type="text/javascript">
-          	 	function otherselfguidephoto(simage, scontent,stitle,stype){
-        		
-        		var imagepath = '<%=application.getContextPath() %>/selfguide/photodownload?fileName='+simage;
-        		console.log(imagepath);
-        		console.log(scontent);
-        		$("#self_image").attr("src", imagepath);
-        		$("#sg").hide();
-        		$("#rcontent").html(scontent);
-        		$("#title").html(stitle);
-        		$("#type").html(stype);
-        		
-        	} 
-          	 	
-          	function selfreplyWrite(snumber) {
-          	 	var rcontent = $("#rcontent2").val().trim();
-          	 	console.log("rcontent:", rcontent); 
-          	 	
-          	 	if(rcontent!=""){
-	          	 	console.log(snumber);
-	          	 	$.ajax({
-	          	 		url:"<%=application.getContextPath()%>/selfguide/replyWrite",
-	          	 		method:"post",
-	          	 		data : {rcontent:rcontent, snumber:snumber},
-	          	 		success:function(data){
-	          	 			console.log("성공후 실행");
-	          	 			if(data.result=="success"){
-	          	 				
-	          	 				selfreplyList(snumber);
-	          	 				
-	          	 			}
-	          	 			$("#reply_result").html(data);
-	          	 		}
-	          	 	});
-          		}
-          	} 
-          	
-          	function selfreplyList(snumber, pageNo){
-          		if(!pageNo){
-          			pageNo=1;
-          		}
-          		console.log("selfreplyList snum:"+snumber);
-          		console.log("selfreplyList pageno:"+pageNo);
-          		$.ajax({
-          			url:"/teamproject/selfguide/replyList",
-          			data:{ snumber:snumber,pageNo:pageNo},
-          			success:function(data){
-          				$("#reply_result2").html(data);
-          			}
-          		});
-          	}
-          	
-
-          	function selfreplyDelete(rnumber, snumber){
-          		$.ajax({
-          			url:"/teamproject/selfguide/replyDelete",
-          			data:{rnumber:rnumber, snumber:snumber},
-          			method:"post",
-          			success:function(data){
-          				if(data.result=="success"){
-          					console.log("여기는 삭제 창!");
-          					selfreplyList(snumber);
-          				}
-          			}
-          		});
-          	}
-        	
-          	
-          	function chechId(swriter,memail){
-          		if(swriter!=memail){
-          				$("#deleteSelfGuideDetail").css('display','none');
-          				$("#updateSelfGuideDetail").css('display','none');
-          		} 
-          	}
-          	
-          	
-          
-           </script>
              
             </div><!-- End blog author bio -->
 
-		<div class="container">
-     	 	<div id="reply_result2" style="margin-top:30px">
-     	 	</div>
-    	</div>
-		
-		
 <div>
 	
 	</div>
@@ -276,97 +162,10 @@
 		
         </div>
 
-     
-
-       
-
-        
-
-     
     </section>
 
   </main><!-- End #main -->
-	
-  
-	
-	
-	
-  <!-- ======= Footer 수  정 ======= -->
-  <footer id="footer">
-    <div class="footer-top">
-      <div class="container">
-        <div class="row">
-
-          <div class="col-lg-3 col-md-6">
-            <div class="footer-info">
-              <h3>Maxim</h3>
-              <p>
-                A108 Adam Street <br>
-                NY 535022, USA<br><br>
-                <strong>Phone:</strong> +1 5589 55488 55<br>
-                <strong>Email:</strong> info@example.com<br>
-              </p>
-              <div class="social-links mt-3">
-                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-2 col-md-6 footer-links">
-            <h4>Useful Links</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Our Services</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-4 col-md-6 footer-newsletter">
-            <h4>Our Newsletter</h4>
-            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-            <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
-            </form>
-
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong><span>Maxim</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        All the links in the footer should remain intact.
-        You can delete the links only if you purchased the pro version.
-        Licensing information: https://bootstrapmade.com/license/
-        Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/maxim-free-onepage-bootstrap-theme/
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
-  </footer> <!-- End Footer -->
-
-  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
-
+ <jsp:include page="/WEB-INF/views/include/footer.jsp"/>
   <!-- Vendor JS Files -->
    <script src="<%=application.getContextPath() %>/resources/vendor/jquery/jquery.min.js"></script>
   <script src="<%=application.getContextPath() %>/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -380,18 +179,72 @@
   <!-- Template Main JS File -->
   <script src="<%=application.getContextPath() %>/resources/js/main.js"></script>
 <script type="text/javascript">
-
-
-	 
-
 $(function(){
 	chechId('${sg.swriter}','${member.memail}'); 
-	selfreplyList(${sg.snumber}); 
-	var snumber = ${sg.snumber};
+	selfreplyList('${sg.snumber}'); 
 });
 	 
 
-</script>
+	 	function otherselfguidephoto(simage, scontent,stitle,stype,snumber){
+location.href="<%=application.getContextPath()%>/selfguide/selfdetail?snumber="+snumber;
+} 
+ 	 	
+ 	function selfreplyWrite(snumber) {
+ 	 	var rcontent = $("#rcontent2").val().trim();
+ 	 	if(rcontent!=""){
+  	 	console.log(snumber);
+  	 	$.ajax({
+  	 		url:"<%=application.getContextPath()%>/selfguide/replyWrite",
+	 		method:"post",
+	 		data : {rcontent:rcontent, snumber:snumber},
+	 		success:function(data){
+	 			console.log("성공후 실행");
+	 			if(data.result=="success"){
+	 				
+	 				selfreplyList(snumber);
+	 			}
+	 			$("#reply_result").html(data);
+	 		}
+	 	});
+	}
+} 
+
+function selfreplyList(snumber, pageNo){
+	if(!pageNo){
+		pageNo=1;
+	}
+	$.ajax({
+		url:"/teamproject/selfguide/replyList",
+		data:{ snumber:snumber,pageNo:pageNo},
+		success:function(data){
+			$("#reply_result2").html(data);
+		}
+	});
+}
+
+
+function selfreplyDelete(rnumber, snumber){
+	$.ajax({
+		url:"/teamproject/selfguide/replyDelete",
+		data:{rnumber:rnumber, snumber:snumber},
+		method:"post",
+		success:function(data){
+			if(data.result=="success"){
+				selfreplyList(snumber);
+			}
+		}
+	});
+}
+
+
+function chechId(swriter,memail){
+	if(swriter!=memail){
+			$("#deleteSelfGuideDetail").css('display','none');
+			$("#updateSelfGuideDetail").css('display','none');
+	} 
+}
+          	
+           </script>
 </body>
 
 </html>

@@ -43,10 +43,12 @@
 		
 		.mobile {
 			display: none;
+			
 		}
 		
 		#writeButton {
 			margin-right: 10px;
+			
 		}
 	}
 	
@@ -55,6 +57,11 @@
 			width: 1000px;
 			margin-left: auto; 
 			margin-right: auto;
+		}
+		
+		.mobile {
+			
+			text-align:center;
 		}
 	}	
   </style>
@@ -65,13 +72,14 @@
 
 	<jsp:include page="/WEB-INF/views/include/Header.jsp" />
 	
-	<section id="services" class="section-bg mt-5" style="background-color: #ffffff;">
+	<section id="services" class="section-bg mb-0" style="background-color: #ffffff;">
 	
 <%-- ########################################################################### --%>
 
 	<div>
+	<section style="padding-bottom:2.2rem" class="mb-0">
 		<h3 style="text-align:center; margin-bottom:50px">Q&A</h3>
-		
+		</section>
 		<div id="qnaList">
 			<div style="text-align: right; margin-bottom: 10px; ">
 				<a id="writeButton" type="button" class="btn btn-info" href="qnaWrite">글작성</a>
@@ -79,18 +87,18 @@
 		
 		
 			<table class="table table-lg table-bordered fade-up">
-				<thead class="thead-light ">
+				<thead style="background-color: #CDE4E1 "><!-- class="thead-light " -->
 					<tr>
 						<th id="th1" class="mobile" style="width: 70px; font-weight: bold;">번호</th>
-						<th id="th2" style="font-weight: bold; ">제목</th>
-						<th id="th3" class="mobile" style="width: 100px; font-weight: bold;">사진</th>
+						<th id="th2" style="font-weight: bold; text-align:center; ">제목</th>
+						<th id="th3" class="mobile" style="width: 100px; font-weight: bold;  ">사진</th>
 						<th id="th4" class="mobile" style="width: 100px; font-weight: bold;">작성자</th>
 						<th id="th5" class="mobile" style="width: 120px; font-weight: bold;">날짜</th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach var="qna" items="${list}">
-						<tr>
+						<tr >
 							<td class="mobile" style="text-align:center;">${qna.qnumber}</td>
 							<td ><a style="color:black;" href="qnaDetail?qnumber=${qna.qnumber}">${qna.qtitle}</a></td>
 							<td class="mobile"><img class="rounded" width="70px" height="50px" src="<%=application.getContextPath()%>/file/qna?fileName=${qna.qphoto}"/></td>
@@ -150,6 +158,8 @@
 		</div>
 	</div>
 </section>		
+
+
 <%-- ########################################################################### --%>	
  <jsp:include page="/WEB-INF/views/include/footer.jsp"/>
 

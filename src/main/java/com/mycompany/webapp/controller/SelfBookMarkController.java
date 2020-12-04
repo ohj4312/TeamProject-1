@@ -130,18 +130,11 @@ public class SelfBookMarkController {
 		Member member = (Member) session.getAttribute("member"); 
 		String memail =	member.getMemail();
 		
-		
 		//-------------------서비스--------//
 		List<SelfGuide> list = service.selfgetBookMarkList(memail);
 		
-		
-		
-		model.addAttribute("list",list);
-		
-		return "guide/selfguidebookmark"; 
-		
-		
-		
+		model.addAttribute("selflist",list);		
+		return "member/bookmark"; 
 		
 	}
 	
