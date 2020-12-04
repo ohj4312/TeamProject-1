@@ -87,7 +87,8 @@ table.type09 tbody th {
     vertical-align: top;
     border-bottom: 1px solid #ccc;
     background: #f3f6f7;
-    background-color: #CDE4E1 
+    background-color: #CDE4E1 ;
+    text-align:center;
 }
 table.type09 td {
     padding: 10px;
@@ -152,11 +153,16 @@ table.type09 td {
 				<div style="text-align: center; margin-top:10px">
 				<sec:authorize access="hasRole('ROLE_ADMIN')">
 					<form  method="post" action="noticeDelete?nnumber=${notice.nnumber}">
-						<input type="submit" value="삭제" class="btn btn" style="color: #007bff; border: 1px solid #dee2e6;">
-						<a class="btn btn btn" href="noticeUpdate?nnumber=${notice.nnumber}" style="color: #007bff; border: 1px solid #dee2e6;">수정</a>
+						<input type="submit" value="삭제" class="btn btn" 
+							   style="color: #007bff; border: 1px solid #dee2e6;">
+						<a class="btn btn btn" href="noticeUpdate?nnumber=${notice.nnumber}" 
+						   style="color: #007bff; border: 1px solid #dee2e6;">수정</a>
 					</form>
 				</sec:authorize>
-				<a class="btn btn btn" href="list" style="color:#007bff; border: 1px solid #dee2e6;">목록</a>
+				
+				</div>
+				<div style="text-align: center; margin-top:10px">
+					<a class="btn btn btn" href="list" style="color:#007bff; border: 1px solid #dee2e6;">목록</a>
 				</div>
 			</div>
 	</div>
