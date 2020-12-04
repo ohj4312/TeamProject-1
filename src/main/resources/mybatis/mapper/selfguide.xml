@@ -18,35 +18,51 @@
 		select count(*) from self_guide 
 	</select>
 	
-	<select id="selectByPage" parameterType="pager" resultType="selfguide">
+	<select id="countFilter" parameterType="String" resultType="int">
+		select count(*) from self_guide where stype = #{stype}
+	</select>
+	
+	
+	<select id="selectByPage" parameterType="SelfGuide" resultType="SelfGuide">
 		select rnum, snumber, hit_count, swriter, stitle, simage,stype
 		from ( select rownum as rnum, snumber, hit_count, swriter, stitle, simage,stype 
 			  from self_guide s, member m 
-			  where rownum &lt;=#{endRowNo} and s.swriter=m.memail  order by snumber desc )
-			  where rnum &gt; =#{startRowNo}
+			  where rownum &lt;=#{endRowNo} and s.swriter=m.memail)
+			  where rnum &gt; =#{startRowNo} order by snumber desc
 	</select>
-	 
 	
-	<select id="getselfguidephotoList" parameterType="SelfGuide" resultType="SelfGuide">
+	<select id="selectByPageList" parameterType="SelfGuide" resultType="SelfGuide">
 		
 			   
 		select rnum , snumber , hit_count, swriter , stitle, simage, stype,bnumber,likenumber	
 		from ( select rownum as rnum, list.snumber, hit_count, swriter, stitle, simage, stype, bnumber, likenumber
 			from ( select snumber, hit_count, swriter, stitle, simage ,stype  
-				   from Self_Guide s, member m where s.swriter=m.memail order by snumber desc) list,
+				   from Self_Guide s, member m where s.swriter=m.memail) list,
 				 (select * from post_bookmark where memail = #{swriter}) pb,
 				 (select * from post_like where memail = #{swriter}) pl
 				 where rownum &lt; = #{endRowNo} and list.snumber = pb.snumber(+) and list.snumber = pl.snumber(+) )
-				 where rnum &gt; = #{startRowNo}
-		
-		
+				 where rnum &gt; = #{startRowNo} order by snumber desc
 	</select>
 	
-	<select id="selectSelfPhotoList" parameterType="int" resultType="selfguide">
-		select simage, swriter, stype ,stitle, scontent,snumber
-		from Self_Guide 
-		where  snumber = #{snumber}
+	<select id="selectByPageFilter" parameterType="SelfGuide" resultType="SelfGuide">
+		select rnum, snumber, hit_count, swriter, stitle, simage,stype
+		from ( select rownum as rnum, snumber, hit_count, swriter, stitle, simage,stype 
+			  from self_guide s, member m 
+			  where rownum &lt;=#{endRowNo} and s.swriter=m.memail and stype=#{stype})
+			  where rnum &gt; =#{startRowNo} order by snumber desc
+	</select>
+	
+	<select id="getselfguidephotoListFilter" parameterType="SelfGuide" resultType="SelfGuide">
 		
+			   
+		select rnum , snumber , hit_count, swriter , stitle, simage, stype,bnumber,likenumber	
+		from ( select rownum as rnum, list.snumber, hit_count, swriter, stitle, simage, stype, bnumber, likenumber
+			from ( select snumber, hit_count, swriter, stitle, simage ,stype  
+				   from Self_Guide s, member m where s.swriter=m.memail and stype=#{stype}) list,
+				 (select * from post_bookmark where memail = #{swriter}) pb,
+				 (select * from post_like where memail = #{swriter}) pl
+				 where rownum &lt; = #{endRowNo} and list.snumber = pb.snumber(+) and list.snumber = pl.snumber(+) )
+				 where rnum &gt; = #{startRowNo} order by snumber desc
 	</select>
 	
 	<select id="selectSelfPhotoList2" parameterType="String" resultType="selfguide">
@@ -61,6 +77,23 @@
 	
 	<select id="selectOrder" resultType="selfguide">
 		select * from (select * from Self_Guide order by hit_count desc) where rownum&lt;=3
+	</select>
+	
+	<select id="selectSelfPhotoBySnumber" parameterType="selfguide" resultType="selfguide">
+		select simage, swriter, stype ,stitle, scontent,snumber,
+		(select count(*) from post_bookmark where snumber = #{snumber}) bookcount, 
+		(select count(*) from post_like where snumber = #{snumber}) likecount,
+		(select count(*) from post_bookmark where memail = #{swriter} and snumber = #{snumber}) bnumber, 
+		(select count(*) from post_like where memail = #{swriter} and snumber = #{snumber}) likenumber
+		from Self_Guide where snumber = #{snumber}
+	</select>
+	
+	<select id="selectSelfPhoto" parameterType="int" resultType="selfguide">
+		select simage, swriter, stype ,stitle, scontent,snumber,
+		(select count(*) from post_bookmark where snumber = #{snumber}) bookcount, 
+		(select count(*) from post_like where snumber = #{snumber}) likecount
+		from Self_Guide 
+		where  snumber = #{snumber}		
 	</select>
 
 	<update id="updatehitcount" parameterType="selfguide" >

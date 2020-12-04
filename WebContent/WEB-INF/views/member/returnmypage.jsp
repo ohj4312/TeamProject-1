@@ -41,9 +41,5 @@
    					<img class="img-fluid" style="height: 200px;" src="<%=application.getContextPath()%>/file/selfguide?fileName=${selfguide.simage}">
    				</a>
 			</c:forEach>
-
     	</c:if>
 </div>
-
-        	
-     

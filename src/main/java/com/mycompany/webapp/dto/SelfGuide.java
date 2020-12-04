@@ -27,6 +27,7 @@ public class SelfGuide {
 	List<SelfGuide> list;
 	
 	
+	
 	public int getSnumber() {
 		return snumber;
 	}

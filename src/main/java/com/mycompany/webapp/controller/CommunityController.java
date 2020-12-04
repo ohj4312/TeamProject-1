@@ -119,7 +119,7 @@ public class CommunityController {
 
 	}		
 	@GetMapping("/comm_detail")
-	public String Comm_Detail(int cnumber, String cmnickname, Model model, HttpSession session) {	
+	public String Comm_Detail(int cnumber, String cmnickname,Model model, HttpSession session) {	
 		service.Comm_hits(cnumber);	//조회수		
 		
 		Community comm_list = new Community();
@@ -162,7 +162,7 @@ public class CommunityController {
 	}
 	
 	@GetMapping("/comm_replyList")
-	public String comm_replyList(@RequestParam(defaultValue="1")int pageNo, Model model, int c_number) {
+	public String comm_replyList(@RequestParam(defaultValue="1")int pageNo, Model model, int c_number,String c_mnickname) {
 		logger.info("실행");
 		
 		int rows = service.Comm_replyrows(c_number);
@@ -170,9 +170,44 @@ public class CommunityController {
 		pager.setC_number(c_number);
 		List<Community> comm_replylist =service.Comm_replylist(pager);
 		model.addAttribute("comm_replylist",comm_replylist);
-		model.addAttribute("pager",pager);				
+		model.addAttribute("pager",pager);
+		model.addAttribute("c_mnickname",c_mnickname);
+		
 		
 		return "community/communityreplylist";
 	}
+	
+	@GetMapping("/comm_replyListRe")
+	public String comm_replyListRe(Model model, int cr_rnumber) {
+		logger.info("리플실행");
+		
+		logger.info(""+cr_rnumber);			
+		List<Community> comm_replylistRe =service.Comm_replylistre(cr_rnumber);
+		for(Community r : comm_replylistRe) {
+			
+			logger.info("asdasdasd"+r.getCr_rmnickname());
+			
+			
+			
+		}		
+		model.addAttribute("comm_replylistRe",comm_replylistRe);
+			
+		
+		return "community/communityreplylist-lp";
+	}
+	@PostMapping("/comm_replyListReWrite")
+	public String comm_replyListReWrite(HttpSession session,String rcontent,int cr_rnumber,int c_number,String c_mnickname){			
+		Community community = new Community();
+		Member member=(Member)session.getAttribute("member");
+		community.setCr_rmnickname(member.getMnickname());
+		community.setCr_rcontent(rcontent);
+		community.setCr_rnumber(cr_rnumber);
+		logger.info(community.getCr_rcontent());
+		logger.info("맞아 ?"+community.getCr_rnumber());
+		
+		service.comm_replyWriteRe(community);		
+		return "redirect:/community/comm_detail?cnumber="+c_number+"&cmnickname="+c_mnickname;	
+	} 
+
 
 }
