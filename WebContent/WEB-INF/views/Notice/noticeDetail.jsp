@@ -87,6 +87,7 @@ table.type09 tbody th {
     vertical-align: top;
     border-bottom: 1px solid #ccc;
     background: #f3f6f7;
+    background-color: #CDE4E1 
 }
 table.type09 td {
     padding: 10px;
@@ -131,7 +132,7 @@ table.type09 td {
 			<div>
 				<table class="type09" style="margin-left:auto; margin-right:auto;">
 					
-					<tbody>
+					<tbody >
 						<tr>
 							<th scope="row">번호</th>
 							<td>${notice.nnumber}</td>
