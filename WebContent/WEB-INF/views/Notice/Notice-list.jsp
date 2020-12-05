@@ -62,16 +62,16 @@
 <body>
 	
 	<jsp:include page="/WEB-INF/views/include/Header.jsp" />
-	<section id="services" class="section-bg mb-4" style="background-color: #ffffff; padding-bottom:1rem">
+	<section id="services" class="section-bg mb-2" style="background-color: #ffffff; padding-bottom:1rem">
 	
 <%-- ########################################################################### --%>
 		
 		
 <div>
-	<section style="padding-bottom:2.41rem" class="mb-2">
-	<h3 style="text-align:center; margin-top:10px;">Notice</h3>
+	<section style="padding-bottom:2.55rem" class="mb-0">
+	<h3 style="text-align:center; margin-top:40px;">Notice</h3>
 	</section>
-<section>
+
 	<div id="noticeList">
 		<div style="text-align:right; margin-bottom: 10px;">
 			<sec:authorize access="hasRole('ROLE_ADMIN')">
@@ -119,9 +119,9 @@
 		
 	</div>
 	</section>
-	</section>
+	
 </div>
-		
+<section style="padding-bottom: 0.9rem"></section>		
 	
 
 <%-- ########################################################################### --%>	

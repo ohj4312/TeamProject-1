@@ -74,12 +74,12 @@ td a {
 	
 <%-- ########################################################################### --%>
 
-<div class="container">
+<div class="container" style="margin-top: 70px">
 	<div class="row">
 		<div style="width:1000px; margin-left: auto; margin-right: auto;">
-		<section style="padding-bottom:5rem" class="mt-2">
-			<h3 style="margin-bottom: 50px; padding-left: 15px;">Notice 작성</h3>
-			</section>
+		
+			<h3 style="margin-bottom:54px; padding-left:15px;">Notice 작성</h3>
+			
 			<section>
 			<div class="col-sm">
 				<form id="noticeUpdateForm" method="post" action="noticeUpdate">
@@ -114,6 +114,7 @@ td a {
 
 
 </section>
+<section style="padding-bottom: 0.9rem"></section>
 <%-- ########################################################################### --%>	
 	
 	<jsp:include page="/WEB-INF/views/include/footer.jsp"/>

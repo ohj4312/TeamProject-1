@@ -73,7 +73,7 @@ table.type09 {
     text-align: left;
     line-height: 2.0;
     border: 1px solid #ccc;
-    top:100px;
+    
 
 }
 table.type09 thead th {
@@ -130,17 +130,17 @@ table.type09 td {
 	   pageContext.setAttribute("cn", "\n"); %>
 
 	<jsp:include page="/WEB-INF/views/include/Header.jsp" />
-	<section id="services" class="section-bg mb-1" style="background-color: #ffffff;">
+	<section id="services" class="section-bg mt-5" style="background-color: #ffffff;">
 	
 <%-- ########################################################################### --%>
 
 	<div>
-	<section style="padding-bottom:4rem" class="mt-5">
-		<h3 style="text-align:center; margin-bottom: 50px;">Notice</h3>
-		</section>
-		<section class="mb-3">
-			<div>
-				<table class="type09" style="margin-left:auto; margin-right:auto; ">
+
+		<h3 style="text-align:center; margin-top: 55px;">Notice</h3>
+		
+		<section class="mb-3" >
+			<div >
+				<table class="type09" style="margin-left:auto; margin-right:auto; margin-top: 50px">
 					
 					<tbody >
 						<tr>
@@ -177,7 +177,7 @@ table.type09 td {
 			</section>
 	</div>
 
-
+<div style="padding-top: 1.1rem"></div>
 
 
 		

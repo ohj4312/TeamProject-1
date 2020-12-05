@@ -72,13 +72,13 @@
 
 	<jsp:include page="/WEB-INF/views/include/Header.jsp" />
 	
-	<section id="services" class="section-bg mb-0" style="background-color: #ffffff;">
+	<section id="services" class="section-bg mb-2" style="background-color: #ffffff;">
 	
 <%-- ########################################################################### --%>
 
 	<div>
-	<section style="padding-bottom:2.2rem" class="mb-0">
-		<h3 style="text-align:center; margin-bottom:50px">Q&A</h3>
+	<section style="padding-bottom:2.45rem" class="mt-2">
+		<h3 style="text-align:center; margin-bottom:30px">Q&A</h3>
 		</section>
 		<div id="qnaList">
 			<div style="text-align: right; margin-bottom: 10px; ">

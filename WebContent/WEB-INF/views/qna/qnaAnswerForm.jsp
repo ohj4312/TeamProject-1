@@ -73,12 +73,12 @@ td a {
 	<section id="services" class="section-bg mt-5" style="background-color: #ffffff;">
 	
 <%-- ########################################################################### --%>
-<div class="container">
+<div class="container" style="margin-top: 70px">
 <div class="row">
 	<div style="width: 1000px; margin-left: auto; margin-right: auto;" >
-	<section style="padding-bottom:5rem" class="mb-2">
-		<h3 style="margin-bottom:50px; padding-left: 15px;">Q&A 답변작성</h3>
-		</section>
+	
+		<h3 style="margin-bottom:54px; padding-left:15px;">Q&A 답변작성</h3>
+		
 		<section>
 	<div class="col-sm">
 		<form id="qnaAnswerForm" method="post" action="qnaAnswer" >
@@ -113,6 +113,7 @@ td a {
 	</div>
 </div>	
 </section>
+<section style="padding-bottom: 0.9rem"></section>
 <%-- ########################################################################### --%>	
 	 <jsp:include page="/WEB-INF/views/include/footer.jsp"/>
 	

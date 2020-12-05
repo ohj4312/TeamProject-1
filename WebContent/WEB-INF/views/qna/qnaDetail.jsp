@@ -137,7 +137,7 @@ table.type09 td {
 		</section>
 			
 				<div>
-					<table class="type09" style="margin-left: auto; margin-right: auto;">
+					<table class="type09" style="margin-left: auto; margin-right: auto; ">
 					    <tbody>
 					    <tr>
 					        <th scope="row">번호</th>
