@@ -43,6 +43,7 @@ public class LikeController {
 		for(SelfGuide sef:list) {
 			logger.info(""+sef.getSnumber());
 			logger.info(sef.getSwriter());
+			logger.info(sef.getSimage());
 		}
 		model.addAttribute("likelist", likelist);
 		model.addAttribute("selflikelist", list);
