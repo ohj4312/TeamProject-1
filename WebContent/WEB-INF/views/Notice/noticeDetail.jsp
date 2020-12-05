@@ -3,6 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!DOCTYPE html>
 <html>
@@ -72,6 +73,7 @@ table.type09 {
     text-align: left;
     line-height: 2.0;
     border: 1px solid #ccc;
+    top:100px;
 
 }
 table.type09 thead th {
@@ -123,19 +125,22 @@ table.type09 td {
 </head>
 
 <body>
+	
+	<% pageContext.setAttribute("br", "<br/>");
+	   pageContext.setAttribute("cn", "\n"); %>
 
 	<jsp:include page="/WEB-INF/views/include/Header.jsp" />
-	<section id="services" class="section-bg mt-1" style="background-color: #ffffff;">
+	<section id="services" class="section-bg mb-1" style="background-color: #ffffff;">
 	
 <%-- ########################################################################### --%>
 
 	<div>
-	<section style="padding-bottom:5rem" class="mt-3">
+	<section style="padding-bottom:4rem" class="mt-5">
 		<h3 style="text-align:center; margin-bottom: 50px;">Notice</h3>
 		</section>
 		<section class="mb-3">
 			<div>
-				<table class="type09" style="margin-left:auto; margin-right:auto;">
+				<table class="type09" style="margin-left:auto; margin-right:auto; ">
 					
 					<tbody >
 						<tr>
@@ -149,7 +154,7 @@ table.type09 td {
 						</tr>
 						<tr>
 							<th scope="row">내용</th>
-							<td >${notice.ncontent}</td>
+							<td >${fn:replace(notice.ncontent, cn, br)}</td>
 							
 						</tr>
 					</tbody>

@@ -3,6 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!DOCTYPE html>
 <html>
@@ -123,82 +124,89 @@ table.type09 td {
 
 <body>
 
+	<% pageContext.setAttribute("br", "<br/>");
+	   pageContext.setAttribute("cn", "\n"); %>
+
 	<jsp:include page="/WEB-INF/views/include/Header.jsp" />
-	<section id="services" class="section-bg mt-2" style="background-color: #ffffff;">
+	<section id="services" class="section-bg mt-4" style="background-color: #ffffff;">
 	
 <%-- ########################################################################### --%>
-<div>
-<section style="padding-bottom:2rem" class="mb-0">
+
+<section style="padding-bottom:5rem" class="mt-2">
 	<h3 style="text-align:center; margin-bottom:50px">Q&A</h3>
-	</section>
-		<section>
-		<div>
-			<table class="type09" style="margin-left: auto; margin-right: auto;">
-			    
-			    <tbody>
-			    <tr>
-			        <th scope="row">번호</th>
-			        <td>${qna.qnumber}</td>
-			    </tr>
+		</section>
 			
-			    <tr>
-			        <th scope="row">제목</th>
-			        <td>${qna.qtitle}</td>
-			    </tr>
-			    <tr>
-			        <th scope="row">사진</th>
-			        <td><img class="rounded" width="70px" height="50px" src="<%=application.getContextPath()%>/file/qna?fileName=${qna.qphoto}"/></td>
-			    </tr>
-			    <tr>
-			        <th scope="row">글쓴이</th>
-			        <td>${qna.mnickname}</td>
-			    </tr>
-			    <tr>
-			        <th scope="row">날짜</th>
-			        <td><fmt:formatDate value="${qna.qdate}" pattern="yyyy-MM-dd"/></td>
-			    </tr>
-			    <tr>
-			        <th scope="row">내용</th>
-			        <td style="width:100px">${qna.qcontent}</td>
-			    </tr>
-			    <c:if test="${qna.answer == null}">
-				    <tr>			        
-				    	<th scope="row">답변내용</th>
-				        <td style="width:100px; color:red;">아직 답변이 없습니다.</td>
-				    </tr>
-			    </c:if>
-			    <c:if test="${qna.answer != null}">
-				    <tr>			        
-				    	<th scope="row">답변내용</th>
-				        <td style="width:100px">${qna.answer}</td>
-				    </tr>
-				</c:if>
-			    </tbody>
-			  
-			</table>
-			
-				<c:if test="${member.mnickname == qna.mnickname}">
-				 	<div style="text-align: center; margin-top: 10px; ">
-				    	 
-				    	<form method="post" action="qnaDelete?qnumber=${qna.qnumber}">
-				    		<input type="submit" value="삭제" class="btn btn "  style="color: #007bff; border: 1px solid #dee2e6;">
-				    		<a class="btn btn btn" href="qnaUpdate?qnumber=${qna.qnumber}" style="color: #007bff; border: 1px solid #dee2e6;">수정</a>
-				    		
-				    	</form>
-				    	
-				    </div>
-			   </c:if>
-			   	
-			   	<div style="text-align: center; margin-top: 10px; ">
-						<a class="btn btn btn" href="qnaindex" style="color: #007bff; border: 1px solid #dee2e6;" >목록</a>				   
-				   	<sec:authorize access="hasRole('ROLE_ADMIN')"><!-- admin이여야만 볼 수 있다. -->
-						<a class="btn btn btn" href="qnaAnswer?qnumber=${qna.qnumber}" style="color: #007bff; border: 1px solid #dee2e6;">답변</a>
-					</sec:authorize>
-			   </div>
-			 
-	    </div>
-	    </section>
-	    </section>
+				<div>
+					<table class="type09" style="margin-left: auto; margin-right: auto;">
+					    <tbody>
+					    <tr>
+					        <th scope="row">번호</th>
+					        <td>${qna.qnumber}</td>
+					    </tr>
+					
+					    <tr>
+					        <th scope="row">제목</th>
+					        <td>${qna.qtitle}</td>
+					    </tr>
+					    <tr>
+					        <th scope="row">사진</th>
+					        <td><img class="rounded" width="70px" height="50px" src="<%=application.getContextPath()%>/file/qna?fileName=${qna.qphoto}"/></td>
+					    </tr>
+					    <tr>
+					        <th scope="row">글쓴이</th>
+					        <td>${qna.mnickname}</td>
+					    </tr>
+					    <tr>
+					        <th scope="row">날짜</th>
+					        <td><fmt:formatDate value="${qna.qdate}" pattern="yyyy-MM-dd"/></td>
+					    </tr>
+					    <tr>
+					        <th scope="row">내용</th>
+					        <td style="width:100px">${fn:replace(qna.qcontent, cn, br)}</td>
+					    </tr>
+					    <c:if test="${qna.answer == null}">
+						    <tr>			        
+						    	<th scope="row">답변내용</th>
+						        <td style="width:100px; color:red;">아직 답변이 없습니다.</td>
+						    </tr>
+					    </c:if>
+					    <c:if test="${qna.answer != null}">
+						    <tr>			        
+						    	<th scope="row">답변내용</th>
+						        <td style="width:100px">${qna.answer}</td>
+						    </tr>
+						</c:if>
+					    </tbody>
+					  
+					</table>
+					
+						<c:if test="${member.mnickname == qna.mnickname}">
+						 	<div style="text-align: center; margin-top: 10px; ">
+						    	 
+						    	<form method="post" action="qnaDelete?qnumber=${qna.qnumber}">
+						    		<input type="submit" value="삭제" class="btn btn "  style="color: #007bff; border: 1px solid #dee2e6;">
+						    		<a class="btn btn btn" href="qnaUpdate?qnumber=${qna.qnumber}" style="color: #007bff; border: 1px solid #dee2e6;">수정</a>
+						    		
+						    	</form>
+						    	
+						    </div>
+					   </c:if>
+					   	
+					   	<div style="text-align: center; margin-top: 10px; ">
+							<a class="btn btn btn" href="qnaindex" style="color: #007bff; border: 1px solid #dee2e6;" >목록</a>	
+						</div>
+						
+						<div style="text-align: center; margin-top: 10px; ">
+							<sec:authorize access="hasRole('ROLE_ADMIN')"><!-- admin이여야만 볼 수 있다. -->
+								<form method="post" action="qnaDelete?qnumber=${qna.qnumber}">
+						    		<input type="submit" value="삭제" class="btn btn "  style="color: #007bff; border: 1px solid #dee2e6;">
+						    			<a class="btn btn btn" href="qnaAnswer?qnumber=${qna.qnumber}" style="color: #007bff; border: 1px solid #dee2e6;">답변</a>
+						    	</form>
+							</sec:authorize>
+					   </div>
+			    </div>
+		 
+</section>
 
 <%-- ########################################################################### --%>	
 	

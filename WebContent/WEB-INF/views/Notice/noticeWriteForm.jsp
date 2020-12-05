@@ -68,7 +68,7 @@
 		<section style="padding-bottom:5rem" class="mt-2">
 			<h3 style="margin-bottom:50px; padding-left:15px;">Notice 작성</h3>
 			</section>
-			<section>
+			<section >
 			<div class="col-md">
 				<form id="noticeForm" method="post" action="noticeWrite">
 				

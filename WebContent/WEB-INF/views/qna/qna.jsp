@@ -101,7 +101,7 @@
 						<tr >
 							<td class="mobile" style="text-align:center;">${qna.qnumber}</td>
 							<td ><a style="color:black;" href="qnaDetail?qnumber=${qna.qnumber}">${qna.qtitle}</a></td>
-							<td class="mobile"><img class="rounded" width="70px" height="50px" src="<%=application.getContextPath()%>/file/qna?fileName=${qna.qphoto}"/></td>
+							<td class="mobile" ><img class="rounded" width="70px" height="50px" src="<%=application.getContextPath()%>/file/qna?fileName=${qna.qphoto}"/></td>
 							<td class="mobile">${qna.mnickname}</td>
 							<td class="mobile"><fmt:formatDate value="${qna.qdate}" pattern="yyyy-MM-dd"/></td>
 						</tr>
@@ -144,10 +144,10 @@
 	            
 	            <c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
 					<c:if test="${pager.pageNo==i}">
-	           	 		<li class="page-item"><a class="page-link"  href="qnaindex?pageNo=${i}">${i}</a></li>
+	           	 		<li class="page-item"><a style="color:#17a2b8" class="page-link"  href="qnaindex?pageNo=${i}">${i}</a></li>
 	            	</c:if>
 	            	<c:if test="${pager.pageNo!=i}">
-	            		<li class="page-item"><a class="page-link" href="qnaindex?pageNo=${i}">${i}</a></li>
+	            		<li class="page-item"><a style="color:#17a2b8" class="page-link" href="qnaindex?pageNo=${i}">${i}</a></li>
 	            	</c:if>
 	             </c:forEach>
 	             <c:if test="${pager.groupNo<pager.totalGroupNo}">
