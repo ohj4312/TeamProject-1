@@ -28,4 +28,12 @@
 		 where p.memail = #{memail}	)
 	</select>
 	
+	<select id="selectBookMark" parameterType="String" resultType="selfguide">
+		select s.simage , s.snumber from self_guide s
+		where s.snumber in 
+		( select p.snumber
+		 from Post_bookmark p 
+		 where p.memail = #{memail}	)
+	</select>
+	
 </mapper>

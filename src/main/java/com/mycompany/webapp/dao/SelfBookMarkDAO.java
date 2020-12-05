@@ -36,6 +36,11 @@ public class SelfBookMarkDAO {
 		return sst.selectList("mybatis.mapper.selfbookmark.selectselfBookMark",memail);
 	}
 
+	public List<SelfGuide> selectBookMark(String memail) {
+		// TODO Auto-generated method stub
+		return sst.selectList("mybatis.mapper.selfbookmark.selectBookMark",memail);
+	}
+
 	
 
 	

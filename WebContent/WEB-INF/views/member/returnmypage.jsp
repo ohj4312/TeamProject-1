@@ -22,18 +22,19 @@
 </div>
 
 <h5><strong>Self Guide</strong></h5>
-<div id="mypagephoto2" class = "scroll" style="border:1px dashed #dbdbdb;width:100%;height: 320px;">
+<div id="mypagephoto2" class = "mb-4 scroll" style="border:1px dashed #dbdbdb;width:100%;height: 320px;">
+	<div class = "row">
     	<c:if test="${selfguide == null}">
 	    	<span class="material-icons ">add </span>
 			<a class="post__upload" href="<%=application.getContextPath()%>/selfguide/selfguide-write"> 첫 번째 가이드를 올려보세요</a>
     	</c:if>
     	
     	<c:if test="${selfguide != null}">
-
 			<c:forEach var="selfguide" items="${selfguide}">
    				<a class = "col-4 mb-2" href="<%=application.getContextPath()%>/selfguide/selfdetail?snumber=${selfguide.snumber}&swriter=${selfguide.swriter}">
    					<img class="img-fluid" style="height: 180px;" src="<%=application.getContextPath()%>/file/selfguide?fileName=${selfguide.simage}">
    				</a>
 			</c:forEach>
     	</c:if>
+    </div>
 </div>

@@ -72,13 +72,17 @@
         <div id="addtag" style="width:100%; padding:0; margin:0" class="row col-md-12 mb-4 mt-4">
 			<jsp:include page="/WEB-INF/views/guide/selfguideFilter.jsp"/>
         </div>
-	 <div class = "pb-1">
-		<sec:authorize access="isAuthenticated()">
-  			<a class="btn col-sm-1" href="javascript:selfWrite();"><strong style="vertical-align: -2px;">글쓰기</strong></a>
-  		</sec:authorize>
-	</div> 
-	<hr>
-      <div id = "12345" >
+        
+        <div class = "m-0 clearfix mb-1" >
+        <sec:authorize access="isAuthenticated()">
+  			<a class="btn float-right" href="javascript:selfWrite();"><strong style="vertical-align: -2px;">글쓰기</strong></a>
+  			</sec:authorize>
+        </div>
+        
+  		
+  		
+		
+      <div id = "12345" class = "border border-right-0 border-bottom-0 border-left-0" >
         <jsp:include page="/WEB-INF/views/guide/selfguide-photos.jsp"/>
 
        </div>

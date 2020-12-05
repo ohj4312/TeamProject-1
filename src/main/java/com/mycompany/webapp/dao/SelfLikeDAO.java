@@ -45,4 +45,8 @@ public class SelfLikeDAO {
 		return sst.selectOne("mybatis.mapper.selflike.selflikeCheck",post_like);
 	}
 
+	public List<SelfGuide> likePhotoAllSelect(String memail) {
+		return sst.selectList("mybatis.mapper.selflike.likePhotoAll",memail);
+	}
+
 }
