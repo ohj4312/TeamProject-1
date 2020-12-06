@@ -195,6 +195,8 @@
 }
 </style>
 <body>
+	<% pageContext.setAttribute("br", "<br/>");
+	   pageContext.setAttribute("cn", "\n"); %>
 	<jsp:include page="/WEB-INF/views/include/Header.jsp" />
 
 	<main id="main">
