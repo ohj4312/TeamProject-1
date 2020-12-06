@@ -64,7 +64,6 @@
 
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-        	<li class="active"><a href="<%=application.getContextPath()%>/">Home</a></li>
           	<li><a href="#services">Services</a></li>
           	
         	<sec:authorize access="isAnonymous()">

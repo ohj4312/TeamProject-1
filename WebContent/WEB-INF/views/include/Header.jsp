@@ -11,7 +11,6 @@
       <nav class="nav-menu d-none d-lg-block nav-second">
         <ul>
         	
-          <li><a href="<%=application.getContextPath()%>/">Home</a></li>
           <sec:authorize access="isAnonymous()">
           		<li><a href="<%=application.getContextPath()%>/photo/list">Photo List</a></li>
 		  		<li><a href="<%=application.getContextPath()%>/selfguide/selflist">Self Guide</a></li>
