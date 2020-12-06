@@ -2109,3 +2109,7 @@ section {
   color: #ededed;
   font-size: 14px;
 }
+
+.dropdown:hover>.dropdown-menu {
+  display: block;
+}
