@@ -3,10 +3,11 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-
-	<h4 class="comments-count">${pager.totalRows} 
-		<strong style="vertical-align: -2px;">Comments</strong>
-	</h4>
+	<div class="input-group mb-3" style="padding-top:2%;">
+		<h4><strong>댓글</strong> </h4>
+		<h4 style="color:#1bac91; padding-left:10px"><strong>${pager.totalRows}</strong></h4>
+	</div>
+	
 	
 	<div class="row m-1">
 	<c:if test="${member.memail != null}">
@@ -23,7 +24,7 @@
 	<c:forEach var="list" items="${comm_replylist}">
 	<fmt:formatDate var="cr_rdate" value="${list.cr_rdate}" pattern="yyyy-MM-dd HH:mm" />
 	<div  class="comment clearfix">
-		<img src="<%=application.getContextPath()%>/file/member?fileName=${list.mimage}" class="comment-img  float-left" alt="">
+		<img src="<%=application.getContextPath()%>/file/member?fileName=${list.mimage}" class="comment-img  float-left" alt="" style="border-radius:70%;">
 		<h5><a href="">${list.cr_rmnickname}</a> 
 		
 		<c:if test="${member.memail != null}"> 
@@ -37,17 +38,20 @@
 		<p>${list.cr_rcontent}</p>	
 		
 	</div>
-	<form method="post" action="<%=application.getContextPath()%>/community/comm_replyListReWrite">	
-	<input type="text" id="rcontent${list.cr_rnumber}" class="lt form-control" placeholder="댓글을 남겨보세요!" style="display: none; width:91%;" name="rcontent">
+	<form method="post" action="<%=application.getContextPath()%>/community/comm_replyListReWrite" style="width:100%; padding-left:10%;">	
+	<div class="row">
+	<input type="text" id="rcontent${list.cr_rnumber}" class="lt form-control col-8" placeholder="댓글을 남겨보세요!" style="width:100%; display: none;" name="rcontent">
+	<button id="Arcontent${list.cr_rnumber}" class="lt btn btn-outline col-1.8" style="display: none; background-color:#1bac91; color:white;" onclick="submit">등록
+	</button>
+	</div>
 	<input type="hidden" id="cr_rnumber" name="cr_rnumber" value="${list.cr_rnumber}">
 	<input type="hidden" id="c_number" name="c_number" value="${pager.c_number}">
 	<input type="hidden" id="c_mnickname" name="c_mnickname" value="${c_mnickname}">
-	<button id="Arcontent${list.cr_rnumber}" class="lt btn btn-outline" style="display: none; background-color:#1bac91; color:white" onclick="submit">등록
-	</button>
-	</form >	
 	
+	</form >
+		
 	
-	<div id="comment-re${list.cr_rnumber}" class="comment clearfix">
+	<div id="comment-re${list.cr_rnumber}" class="comment clearfix" style="padding-left:10%;">
 	
 	
 	</div>
