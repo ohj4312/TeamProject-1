@@ -55,18 +55,6 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
 <style type="text/css">
-#a {
-	background-position: left;
-}
-
-#menu {
-	margin-left: 250px;
-}
-
-td a {
-	text-decoration: none;
-	color: inherit;
-}
 
 table.type09 {
     border-collapse: collapse;
@@ -135,49 +123,46 @@ table.type09 td {
 <%-- ########################################################################### --%>
 
 	<div>
-
-		<h3 style="text-align:center; margin-top: 55px;">Notice</h3>
-		
-		<section class="mb-3" >
-			<div >
-				<table class="type09" style="margin-left:auto; margin-right:auto; margin-top: 50px">
+		<h3 style="text-align:center; margin-top: 55px; font-weight:900;">Notice</h3>
+			<section class="mb-3" >
+				<div >
+					<table class="type09" style="margin-left:auto; margin-right:auto; margin-top: 50px">
+						
+						<tbody >
+							<tr>
+								<th scope="row">번호</th>
+								<td>${notice.nnumber}</td>
+							</tr>
+							<tr>
+								<th scope="row">제목</th>
+								<td >${notice.ntitle}</td>
+								
+							</tr>
+							<tr>
+								<th scope="row">내용</th>
+								<td >${fn:replace(notice.ncontent, cn, br)}</td>
+								
+							</tr>
+						</tbody>
+					</table>
+					<div style="text-align: center; margin-top:10px">
+						<sec:authorize access="hasRole('ROLE_ADMIN')">
+							<form  method="post" action="noticeDelete?nnumber=${notice.nnumber}">
+								<input type="submit" value="삭제" class="btn btn" 
+									   style="color: #007bff; border: 1px solid #dee2e6;">
+								<a class="btn btn btn" href="noticeUpdate?nnumber=${notice.nnumber}" 
+								   style="color: #007bff; border: 1px solid #dee2e6;">수정</a>
+							</form>
+						</sec:authorize>
+					</div>
 					
-					<tbody >
-						<tr>
-							<th scope="row">번호</th>
-							<td>${notice.nnumber}</td>
-						</tr>
-						<tr>
-							<th scope="row">제목</th>
-							<td >${notice.ntitle}</td>
-							
-						</tr>
-						<tr>
-							<th scope="row">내용</th>
-							<td >${fn:replace(notice.ncontent, cn, br)}</td>
-							
-						</tr>
-					</tbody>
-				</table>
-				<div style="text-align: center; margin-top:10px">
-				<sec:authorize access="hasRole('ROLE_ADMIN')">
-					<form  method="post" action="noticeDelete?nnumber=${notice.nnumber}">
-						<input type="submit" value="삭제" class="btn btn" 
-							   style="color: #007bff; border: 1px solid #dee2e6;">
-						<a class="btn btn btn" href="noticeUpdate?nnumber=${notice.nnumber}" 
-						   style="color: #007bff; border: 1px solid #dee2e6;">수정</a>
-					</form>
-				</sec:authorize>
-				
+					<div style="text-align: center; margin-top:10px">
+						<a class="btn btn btn" href="list" style="color:#007bff; border: 1px solid #dee2e6;">목록</a>
+					</div>
 				</div>
-				<div style="text-align: center; margin-top:10px">
-					<a class="btn btn btn" href="list" style="color:#007bff; border: 1px solid #dee2e6;">목록</a>
-				</div>
-			</div>
 			</section>
-	</div>
-
-<div style="padding-top: 1.1rem"></div>
+		</div>
+	<div style="padding-top: 1.1rem"></div>
 
 
 		

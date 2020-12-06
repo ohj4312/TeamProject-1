@@ -63,7 +63,14 @@
 			
 			text-align:center;
 		}
-	}	
+	
+	#aa:hover{
+		text-decoration: underline;
+		background-color: #f5f6f7;
+		font-weight:900;
+	
+	}
+}	
   </style>
 
 </head>
@@ -76,15 +83,14 @@
 	
 <%-- ########################################################################### --%>
 
-	<div>
+<div>
 	<section style="padding-bottom:2.45rem" class="mt-2">
-		<h3 style="text-align:center; margin-bottom:30px">Q&A</h3>
-		</section>
+		<h3 style="text-align:center; margin-bottom:30px; font-weight:900;">Q&A</h3>
+	</section>
 		<div id="qnaList">
 			<div style="text-align: right; margin-bottom: 10px; ">
 				<a id="writeButton" type="button" class="btn btn-info" href="qnaWrite">글작성</a>
 			</div>
-		
 		
 			<table class="table table-lg table-bordered fade-up">
 				<thead style="background-color: #CDE4E1 "><!-- class="thead-light " -->
@@ -100,38 +106,13 @@
 					<c:forEach var="qna" items="${list}">
 						<tr >
 							<td class="mobile" style="text-align:center;">${qna.qnumber}</td>
-							<td ><a style="color:black;" href="qnaDetail?qnumber=${qna.qnumber}">${qna.qtitle}</a></td>
-							<td class="mobile" ><img class="rounded" width="70px" height="50px" src="<%=application.getContextPath()%>/file/qna?fileName=${qna.qphoto}"/></td>
+							<td id="aa"><a style="color:black;" href="qnaDetail?qnumber=${qna.qnumber}">${qna.qtitle}</a></td>
+							<td class="mobile" ><img class="rounded" width="70px" height="50px" 
+								src="<%=application.getContextPath()%>/file/qna?fileName=${qna.qphoto}"/></td>
 							<td class="mobile">${qna.mnickname}</td>
 							<td class="mobile"><fmt:formatDate value="${qna.qdate}" pattern="yyyy-MM-dd"/></td>
 						</tr>
 					</c:forEach>
-	
-					<!-- 컬럼 합침 -->
-					<tr class="row text-center" style="width:1000%" >
-						<%-- <td colspan="5" style="text-align: center; "><!-- <a
-							class="btn btn-outline-none btn-sm"
-							href="qnaindex?pageNo(1)" style=" border: 2px solid #e7e7e7;">&lt;</a> --> <c:if
-								test="${pager.groupNo > 1}">
-								 <a class="btn btn-outline-none btn-sm"
-									href="qnaindex?pageNo=${pager.startPageNo-1}">이전</a> 
-							</c:if> <c:forEach var="i" begin="${pager.startPageNo}"
-								end="${pager.endPageNo}">
-								<c:if test="${pager.pageNo == i }">
-									<a class="btn  btn-sm" 
-										href="qnaindex?pageNo=${i}">${i}</a>
-								</c:if>
-								<c:if test="${pager.pageNo != i }">
-									<a class="btn  btn-sm" 
-										href="qnaindex?pageNo=${i}">${i}</a>
-								</c:if>
-							</c:forEach> <c:if test="${pager.groupNo < pager.totalGroupNo}">
-								 <a class="btn btn-outline-none btn-sm"
-									href="qnaindex?pageNo=${pager.endPageNo+1}">다음</a> 
-							</c:if>  <a class="btn btn-outline-none btn-sm"
-							 href="qnaindex?pageNo=${pager.totalPageNo}" style=" border: 2px solid #e7e7e7;">&gt;</a></td> --%>
-	
-					</tr>
 				</tbody>
 			</table>
 			

@@ -54,7 +54,13 @@
 			margin-left: auto; 
 			margin-right: auto;
 		}
-	}
+		
+	#bb:hover{
+		text-decoration: underline;
+		background-color: #f5f6f7;
+		font-weight:900;
+	}	
+}
   </style>
 
 </head>
@@ -69,7 +75,7 @@
 		
 <div>
 	<section style="padding-bottom:2.55rem" class="mb-0">
-	<h3 style="text-align:center; margin-top:40px;">Notice</h3>
+		<h3 style="text-align:center; margin-top:40px; font-weight:900;">Notice</h3>
 	</section>
 
 	<div id="noticeList">
@@ -79,7 +85,7 @@
 			</sec:authorize>
 		</div>
 		
-		<table class="table table-lg table-bordered fade-up">
+		<table class="table table-lg table-bordered fade-up" >
 			<thead style="background-color: #CDE4E1">
 				<tr>
 					<th style="width:70px; font-weight: bold; text-align:center;">번호</th>
@@ -90,7 +96,7 @@
 				<c:forEach var="notice" items="${list}">
 					<tr >
 						<td style="text-align:center; height:70px;">${notice.nnumber}</td>
-						<td  style="height: 70px;"><a style="color:black;" href="noticeDetail?nnumber=${notice.nnumber}">${notice.ntitle}</a></td>
+						<td id="bb" style="height: 70px;"><a style="color:black;" href="noticeDetail?nnumber=${notice.nnumber}">${notice.ntitle}</a></td>
 						
 					</tr>
 				</c:forEach>
@@ -116,10 +122,8 @@
 				</c:if>
 			</ul>
 		</div>
-		
 	</div>
 	</section>
-	
 </div>
 <section style="padding-bottom: 0.9rem"></section>		
 	
