@@ -224,12 +224,12 @@
 						<div class="all-content" id="all-content">
 							<input id="cimage" type="file" name="cimage" multiple="multiple"
 								class="addFile" />
+								<span class="material-icons" style="">
+									<img src="<%=application.getContextPath()%>/file/community?fileName=${community.c_image}" width="100%" height="100%">
+								</span>	
 							<input type = "hidden" name = "c_image" value = "${community.c_image}"/>
 							<input type = "hidden" name = "c_number" value = "${community.c_number}">
-							<div class="content" id="content" style="width:100%; height:400px;">
-								<span class="material-icons" style=""><img src="<%=application.getContextPath()%>/file/community?fileName=${community.c_image}" width="50%" height="50%"></span>
-								<h4 style="color: black; font-size: 20px; font-weight: bold;">
-								수정하실 파일을 끌어오세요.</h4>
+							<div class="content" id="content" style="width:100%; height:100%;">															
 							</div>
 							
 						</div>

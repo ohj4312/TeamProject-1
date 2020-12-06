@@ -223,12 +223,13 @@
 					<div class="question-photo">
 						<div class="all-content" id="all-content">
 							<input id="cimage" type="file" name="cimage" multiple="multiple"
-								class="addFile" />
+								class="addFile" >
 							<div class="content" id="content" style="width:100%; height:400px;">
 								<span class="material-icons" style="padding-top:25%;">add</span>
 								<h4 style="color: black; font-size: 20px; font-weight: bold;">
 								마우스로 파일을 끌어오세요.</h4>
 							</div>
+							
 							
 						</div>
 					</div>
