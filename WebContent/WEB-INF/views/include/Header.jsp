@@ -37,10 +37,3 @@
 
     </div>
   </header>
-  
-  <script>
-  $(document).ready(function() {
-	  $('.nav-menu .active, .mobile-nav .active').removeClass('active');
-
-	  });
-  </script>
