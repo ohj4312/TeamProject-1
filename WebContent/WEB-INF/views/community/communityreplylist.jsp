@@ -3,10 +3,11 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-
-	<h4 class="comments-count">${pager.totalRows} 
-		<strong style="vertical-align: -2px;">Comments</strong>
-	</h4>
+	<div class="input-group mb-3" style="padding-top:2%;">
+		<h4><strong>댓글</strong> </h4>
+		<h4 style="color:#1bac91; padding-left:10px"><strong>${pager.totalRows}</strong></h4>
+	</div>
+	
 	
 	<div class="row m-1">
 	<c:if test="${member.memail != null}">
