@@ -44,16 +44,7 @@
 <!-- Template Main CSS File -->
 <link href="<%=application.getContextPath()%>/resources/css/style.css"
 	rel="stylesheet">
-
-<!-- =======================================================
-  * Template Name: Maxim - v2.2.0
-  * Template URL: https://bootstrapmade.com/maxim-free-onepage-bootstrap-theme/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-<style type="text/css">
-
-</style>
+s
 </head>
 
 <body>
@@ -62,43 +53,40 @@
 	<section id="services" class="section-bg mt-5" style="background-color: #ffffff;">
 	
 <%-- ########################################################################### --%>
-<div class="container">
+<div class="container" style="margin-top: 70px">
 	<div class="row">
 		<div style="width:1000px; margin-left:auto; margin-right:auto;">
-		<section style="padding-bottom:5rem" class="mt-2">
-			<h3 style="margin-bottom:50px; padding-left:15px;">Notice 작성</h3>
-			</section>
-			<section>
-			<div class="col-md">
-				<form id="noticeForm" method="post" action="noticeWrite">
-				
-					<div class="input-group">
-						<div class="input-group-prepend"><span class="input-group-text"
-							 style="background-color: #CDE4E1; font-weight: bold; ">제목</span></div>
-						<input id="ntitle" type="text" name="ntitle" class="form-control">
-						<span id="ncontentError" class="error"></span>
-					</div>
-					
-					<div class="input-group">
-						<div class="input-group-prepend"><span class="input-group-text"
-							 style="background-color: #CDE4E1; font-weight: bold; ">내용</span></div>
-						<textarea id="ncontent" name="ncontent" class="form-control" rows="10"></textarea>
-						<span id="ncontentError" class="error"></span>
-					</div>
-					
-					<div style="text-align: center; margin-top:10px;">
-						<input type="submit" class="btn btn" value="글쓰기" style="color:#007bff; border: 1px solid #dee2e6;">
-						<a class="btn btn" href="list" style="color: #007bff; border: 1px solid #dee2e6;">취소</a>
-					</div>
-					
-				</form>
-			</div>
+			<h3 style="margin-bottom:54px; padding-left:15px; font-weight:900;">Notice 작성</h3>
+			<section >
+				<div class="col-md">
+					<form id="noticeForm" method="post" action="noticeWrite">
+						<div class="input-group">
+							<div class="input-group-prepend"><span class="input-group-text"
+								 style="background-color: #CDE4E1; font-weight: bold; ">제목</span></div>
+							<input id="ntitle" type="text" name="ntitle" class="form-control">
+							<span id="ncontentError" class="error"></span>
+						</div>
+						
+						<div class="input-group">
+							<div class="input-group-prepend"><span class="input-group-text"
+								 style="background-color: #CDE4E1; font-weight: bold; ">내용</span></div>
+							<textarea id="ncontent" name="ncontent" class="form-control" rows="10"></textarea>
+							<span id="ncontentError" class="error"></span>
+						</div>
+						
+						<div style="text-align: center; margin-top:10px;">
+							<input type="submit" class="btn btn" value="글쓰기" style="color:#007bff; border: 1px solid #dee2e6;">
+							<a class="btn btn" href="list" style="color: #007bff; border: 1px solid #dee2e6;">취소</a>
+						</div>
+					</form>
+				</div>
 			</section>
 		</div>
-
 	</div>
 </div>
 </section>
+<section style="padding-bottom: 0.9rem"></section>
+
 <%-- ########################################################################### --%>	
 <jsp:include page="/WEB-INF/views/include/footer.jsp"/>
 

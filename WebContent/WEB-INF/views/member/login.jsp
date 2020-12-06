@@ -80,8 +80,9 @@
 
       </div>
     </section><!-- End Contact Section -->
-    <section></section>
-    <section></section>
+    <section class="mb-3"></section>
+    <section class="mb-4" style="padding-bottom: 5rem"></section>
+    
 
   </main><!-- End #main -->
 

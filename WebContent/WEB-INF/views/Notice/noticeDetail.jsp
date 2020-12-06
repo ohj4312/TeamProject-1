@@ -3,6 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!DOCTYPE html>
 <html>
@@ -54,24 +55,13 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
 <style type="text/css">
-#a {
-	background-position: left;
-}
-
-#menu {
-	margin-left: 250px;
-}
-
-td a {
-	text-decoration: none;
-	color: inherit;
-}
 
 table.type09 {
     border-collapse: collapse;
     text-align: left;
     line-height: 2.0;
     border: 1px solid #ccc;
+    
 
 }
 table.type09 thead th {
@@ -123,56 +113,56 @@ table.type09 td {
 </head>
 
 <body>
+	
+	<% pageContext.setAttribute("br", "<br/>");
+	   pageContext.setAttribute("cn", "\n"); %>
 
 	<jsp:include page="/WEB-INF/views/include/Header.jsp" />
-	<section id="services" class="section-bg mt-1" style="background-color: #ffffff;">
+	<section id="services" class="section-bg mt-5" style="background-color: #ffffff;">
 	
 <%-- ########################################################################### --%>
 
 	<div>
-	<section style="padding-bottom:5rem" class="mt-3">
-		<h3 style="text-align:center; margin-bottom: 50px;">Notice</h3>
-		</section>
-		<section class="mb-3">
-			<div>
-				<table class="type09" style="margin-left:auto; margin-right:auto;">
+		<h3 style="text-align:center; margin-top: 55px; font-weight:900;">Notice</h3>
+			<section class="mb-3" >
+				<div >
+					<table class="type09" style="margin-left:auto; margin-right:auto; margin-top: 50px">
+						
+						<tbody >
+							<tr>
+								<th scope="row">번호</th>
+								<td>${notice.nnumber}</td>
+							</tr>
+							<tr>
+								<th scope="row">제목</th>
+								<td >${notice.ntitle}</td>
+								
+							</tr>
+							<tr>
+								<th scope="row">내용</th>
+								<td >${fn:replace(notice.ncontent, cn, br)}</td>
+								
+							</tr>
+						</tbody>
+					</table>
+					<div style="text-align: center; margin-top:10px">
+						<sec:authorize access="hasRole('ROLE_ADMIN')">
+							<form  method="post" action="noticeDelete?nnumber=${notice.nnumber}">
+								<input type="submit" value="삭제" class="btn btn" 
+									   style="color: #007bff; border: 1px solid #dee2e6;">
+								<a class="btn btn btn" href="noticeUpdate?nnumber=${notice.nnumber}" 
+								   style="color: #007bff; border: 1px solid #dee2e6;">수정</a>
+							</form>
+						</sec:authorize>
+					</div>
 					
-					<tbody >
-						<tr>
-							<th scope="row">번호</th>
-							<td>${notice.nnumber}</td>
-						</tr>
-						<tr>
-							<th scope="row">제목</th>
-							<td >${notice.ntitle}</td>
-							
-						</tr>
-						<tr>
-							<th scope="row">내용</th>
-							<td >${notice.ncontent}</td>
-							
-						</tr>
-					</tbody>
-				</table>
-				<div style="text-align: center; margin-top:10px">
-				<sec:authorize access="hasRole('ROLE_ADMIN')">
-					<form  method="post" action="noticeDelete?nnumber=${notice.nnumber}">
-						<input type="submit" value="삭제" class="btn btn" 
-							   style="color: #007bff; border: 1px solid #dee2e6;">
-						<a class="btn btn btn" href="noticeUpdate?nnumber=${notice.nnumber}" 
-						   style="color: #007bff; border: 1px solid #dee2e6;">수정</a>
-					</form>
-				</sec:authorize>
-				
+					<div style="text-align: center; margin-top:10px">
+						<a class="btn btn btn" href="list" style="color:#007bff; border: 1px solid #dee2e6;">목록</a>
+					</div>
 				</div>
-				<div style="text-align: center; margin-top:10px">
-					<a class="btn btn btn" href="list" style="color:#007bff; border: 1px solid #dee2e6;">목록</a>
-				</div>
-			</div>
 			</section>
-	</div>
-
-
+		</div>
+	<div style="padding-top: 1.1rem"></div>
 
 
 		

@@ -54,7 +54,13 @@
 			margin-left: auto; 
 			margin-right: auto;
 		}
-	}
+		
+	#bb:hover{
+		text-decoration: underline;
+		background-color: #f5f6f7;
+		font-weight:900;
+	}	
+}
   </style>
 
 </head>
@@ -62,24 +68,24 @@
 <body>
 	
 	<jsp:include page="/WEB-INF/views/include/Header.jsp" />
-	<section id="services" class="section-bg mt-3" style="background-color: #ffffff;">
+	<section id="services" class="section-bg mb-2" style="background-color: #ffffff; padding-bottom:1rem">
 	
 <%-- ########################################################################### --%>
 		
 		
 <div>
-	<section style="padding-bottom:3rem" class="mt-2">
-	<h3 style="text-align:center; margin-bottom:40px;">Notice</h3>
+	<section style="padding-bottom:2.55rem" class="mb-0">
+		<h3 style="text-align:center; margin-top:40px; font-weight:900;">Notice</h3>
 	</section>
-	<section>
+
 	<div id="noticeList">
 		<div style="text-align:right; margin-bottom: 10px;">
 			<sec:authorize access="hasRole('ROLE_ADMIN')">
-				<a id="writeButton" type="button" class="btn btn-info" href="noticeWrite" >글작성</a>		
+				<a id="writeButton" type="button" class="btn btn" href="noticeWrite" style="background-color:#17a2b8; color:#ffffff">글작성</a>		
 			</sec:authorize>
 		</div>
 		
-		<table class="table table-lg table-bordered fade-up">
+		<table class="table table-lg table-bordered fade-up" >
 			<thead style="background-color: #CDE4E1">
 				<tr>
 					<th style="width:70px; font-weight: bold; text-align:center;">번호</th>
@@ -89,8 +95,8 @@
 			<tbody>
 				<c:forEach var="notice" items="${list}">
 					<tr >
-						<td style="text-align:center;">${notice.nnumber}</td>
-						<td ><a style="color:black;" href="noticeDetail?nnumber=${notice.nnumber}">${notice.ntitle}</a></td>
+						<td style="text-align:center; height:70px;">${notice.nnumber}</td>
+						<td id="bb" style="height: 70px;"><a style="color:black;" href="noticeDetail?nnumber=${notice.nnumber}">${notice.ntitle}</a></td>
 						
 					</tr>
 				</c:forEach>
@@ -105,10 +111,10 @@
 				
 				<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
 					<c:if test="${pager.pageNo==i}">
-						<li class="page-item"><a class="page-link" href="list?pageNo=${i}">${i}</a></li>
+						<li class="page-item"><a style="color:#17a2b8" class="page-link" href="list?pageNo=${i}">${i}</a></li>
 					</c:if>
 					<c:if test="${pager.pageNo!=i}">
-						<li class="page-item"><a class="page-link" href="list?pageNo=${i}">${i}</a></li>
+						<li class="page-item"><a style="color:#17a2b8" class="page-link" href="list?pageNo=${i}">${i}</a></li>
 					</c:if>
 				</c:forEach>
 				<c:if test="${pager.groupNo<pager.totalGroupNo}">
@@ -116,13 +122,11 @@
 				</c:if>
 			</ul>
 		</div>
-		
 	</div>
 	</section>
 </div>
-		
+<section style="padding-bottom: 0.9rem"></section>		
 	
-</section>	
 
 <%-- ########################################################################### --%>	
  <jsp:include page="/WEB-INF/views/include/footer.jsp"/>

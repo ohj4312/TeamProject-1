@@ -45,26 +45,7 @@
 <link href="<%=application.getContextPath()%>/resources/css/style.css"
 	rel="stylesheet">
 
-<!-- =======================================================
-  * Template Name: Maxim - v2.2.0
-  * Template URL: https://bootstrapmade.com/maxim-free-onepage-bootstrap-theme/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-<style type="text/css">
-#a {
-	background-position: left;
-}
 
-#menu {
-	margin-left: 250px;
-}
-
-td a {
-	text-decoration: none;
-	color: inherit;
-}
-</style>
 </head>
 
 <body>
@@ -74,38 +55,36 @@ td a {
 	
 <%-- ########################################################################### --%>
 
-<div class="container">
+<div class="container" style="margin-top: 70px">
 	<div class="row">
 		<div style="width:1000px; margin-left: auto; margin-right: auto;">
-		<section style="padding-bottom:5rem" class="mt-2">
-			<h3 style="margin-bottom: 50px; padding-left: 15px;">Notice 작성</h3>
-			</section>
+			<h3 style="margin-bottom:54px; padding-left:15px; font-weight:900;">Notice 작성</h3>
 			<section>
-			<div class="col-sm">
-				<form id="noticeUpdateForm" method="post" action="noticeUpdate">
-					<input type="hidden" id="nnumber" name="nnumber" value="${notice.nnumber}">
-					
-					<div class="input-group">
-						<div class="input-group-prepend"><span class="input-group-text" 
-							 style="background-color: #CDE4E1; font-weight: bold; ">제목</span></div>
-						<input id="ntitle" type="text" name="ntitle" class="form-control" value="${notice.ntitle}">
-						<span id="ntitleError" class="error"></span>
-					</div>
-					
-					<div class="input-group">
-						<div class="input-group-prepend"><span class="input-group-text"
-							 style="background-color: #CDE4E1; font-weight: bold; ">내용</span></div>
-						<textarea id="ncontent" name="ncontent" class="form-control" rows="10">${notice.ncontent}</textarea>
-						<span id="ncontentError" class="error"></span>
-					</div>
-					
-					<div style="text-align:center; margin-top:10px;">
-						<input type="submit" class="btn btn" value="글 수정" style="color: #007bff; border:1px solid #dee2e6;">
-						<a class="btn btn" href="list" style="color:#007bff; border:1px solid #dee2e6;">취소</a>
-					</div>
-					
-				</form>
-			</div>
+				<div class="col-sm">
+					<form id="noticeUpdateForm" method="post" action="noticeUpdate">
+						<input type="hidden" id="nnumber" name="nnumber" value="${notice.nnumber}">
+						
+						<div class="input-group">
+							<div class="input-group-prepend"><span class="input-group-text" 
+								 style="background-color: #CDE4E1; font-weight: bold; ">제목</span></div>
+							<input id="ntitle" type="text" name="ntitle" class="form-control" value="${notice.ntitle}">
+							<span id="ntitleError" class="error"></span>
+						</div>
+						
+						<div class="input-group">
+							<div class="input-group-prepend"><span class="input-group-text"
+								 style="background-color: #CDE4E1; font-weight: bold; ">내용</span></div>
+							<textarea id="ncontent" name="ncontent" class="form-control" rows="10">${notice.ncontent}</textarea>
+							<span id="ncontentError" class="error"></span>
+						</div>
+						
+						<div style="text-align:center; margin-top:10px;">
+							<input type="submit" class="btn btn" value="글 수정" style="color: #007bff; border:1px solid #dee2e6;">
+							<a class="btn btn" href="list" style="color:#007bff; border:1px solid #dee2e6;">취소</a>
+						</div>
+						
+					</form>
+				</div>
 			</section>
 		</div>
 	</div>
@@ -114,6 +93,7 @@ td a {
 
 
 </section>
+<section style="padding-bottom: 0.9rem"></section>
 <%-- ########################################################################### --%>	
 	
 	<jsp:include page="/WEB-INF/views/include/footer.jsp"/>
