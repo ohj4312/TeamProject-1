@@ -28,21 +28,19 @@ public class LikeController {
 	@Resource
 	private LikeService service;
 	@Resource
-	private SelfLikeService SLservice;
+	private SelfLikeService selfLikeService;
 	
 	@GetMapping("/getLikePhotolist")
 	public String getLikePhoto(Model model, HttpSession session) {
 
 		Member member = (Member) session.getAttribute("member");
 		String memail = member.getMemail();
-		logger.info("왜안되는거냐고");;
-		logger.info(memail);
+	
 		List<Post_like> likelist = service.getLikePhotoList(memail);
-		logger.info(memail+"1111111");
-		List<SelfGuide> list = SLservice.selfgetLikePhotoList(memail);
-		for(SelfGuide sef:list) {
-			logger.info(""+sef.getSnumber());
-			logger.info(sef.getSwriter());
+		List<SelfGuide> list = selfLikeService.getLikePhotoList(memail);
+		for(SelfGuide self : list) {
+			logger.info(self.getSimage());
+			logger.info(self.getSwriter());
 		}
 		model.addAttribute("likelist", likelist);
 		model.addAttribute("selflikelist", list);

@@ -22,4 +22,11 @@
 		where p.memail = #{memail})
 	</select>
 	
+	<select id="likePhotoAll" parameterType="String" resultType="selfguide">
+		select s.simage , s.snumber, s.swriter from self_guide s
+		where s.snumber in 
+		(select p.snumber from Post_like p
+		where p.memail = #{memail})
+	</select>
+	
 </mapper>

@@ -178,10 +178,27 @@
 											<a href="<%=application.getContextPath()%>/member/yourhomesearch?pwriter=${list.memail}">${list.c_mnickname}</a>
 										</li>
 									</ul>
+										
+									
 									</div>
-									<div class="detail-right" style="display:inline-block; padding-left:20%;">
-									<a class="follow-btn">팔로우</a>
-									</div>
+									<c:if test="${member.memail!=null}">
+									<div>
+										<c:if test="${follwsCheck==0}">
+										<a id="follow_check" href="javascript:followCheck('${list.memail}', '<%=application.getContextPath()%>/follow/followCheck')" style = "color: #1bac91;"  class="col-3 h-50 mt-2 font-weight-bolder btn btn-sm btn-outline-info" role="button">
+											팔로우
+										</a>															
+										</c:if>
+										<c:if test="${follwsCheck!=0}">
+										<a id="follow_check" href="javascript:followCheck('${list.memail}', '<%=application.getContextPath()%>/follow/followCheck')" style = "background-color: #1bac91; color: white;" class="col-3 font-weight-bolder btn btn-sm h-50 mt-2" role="button">
+											팔로잉
+										</a>
+										</c:if>
+									</div>										
+									</c:if>
+																		
+																																						
+									
+									
 									<hr>
 									<div id="comm_hitsList" style="padding-top:10%;">
 									

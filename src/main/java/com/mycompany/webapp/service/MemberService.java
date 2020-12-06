@@ -70,8 +70,7 @@ public class MemberService {
 	}
 
 	public List<SelfGuide> getSelfGuideList(String memail) {
-		List<SelfGuide> list=memberDAO.selectSelfGuideList(memail);
-		return list;
+		return memberDAO.selectSelfGuideList(memail);
 	}
 
 	public void updateMimage(Member member) {

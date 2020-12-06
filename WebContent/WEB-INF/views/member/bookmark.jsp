@@ -16,9 +16,11 @@
 
 <h5><strong>Self Guide BookMark</strong></h5>
 <div id="mypagephoto2" class = "scroll" style="border:1px dashed #dbdbdb; width:100%;height: 320px;">
-    	<c:forEach var="selfguide" items="${selfguide}">
-   				<a class = "col-4 mb-2" href="<%=application.getContextPath()%>/selfguide/selfdetail?snumber=${selfguide.snumber}&swriter=${selfguide.swriter}">
-   					<img class="img-fluid" height="150px;" src="<%=application.getContextPath()%>/file/selfguide?fileName=${selfguide.simage}">
-   				</a>
+    <div class = "row">
+    	<c:forEach var="bookmark" items="${list1}">
+			<a class = "col-4 mb-2" href="<%=application.getContextPath()%>/selfguide/selfdetail?snumber=${bookmark.snumber}&swriter=${bookmark.swriter}">
+			<img class="img-fluid" style="height: 180px;" src="<%=application.getContextPath()%>/file/selfguide?fileName=${bookmark.simage}"/>
+			</a>
 		</c:forEach>
+    </div>
 </div>

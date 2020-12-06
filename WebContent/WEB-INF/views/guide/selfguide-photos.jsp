@@ -62,6 +62,7 @@
 		</div>
 </c:forEach>
 </div>
+
 <div class="row text-center">
 	<ul class="pagination mx-auto ">
 		<c:if test="${pager.groupNo>1}">

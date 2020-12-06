@@ -3,6 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!DOCTYPE html>
 <html>
@@ -54,18 +55,6 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
 <style type="text/css">
-#a {
-	background-position: left;
-}
-
-#menu {
-	margin-left: 250px;
-}
-
-td a {
-	text-decoration: none;
-	color: inherit;
-}
 
 table.type09 {
     border-collapse: collapse;
@@ -123,18 +112,19 @@ table.type09 td {
 
 <body>
 
+	<% pageContext.setAttribute("br", "<br/>");
+	   pageContext.setAttribute("cn", "\n"); %>
+
 	<jsp:include page="/WEB-INF/views/include/Header.jsp" />
-	<section id="services" class="section-bg mt-2" style="background-color: #ffffff;">
+	<section id="services" class="section-bg mt-4" style="background-color: #ffffff;">
 	
 <%-- ########################################################################### --%>
-<div>
-<section style="padding-bottom:2rem" class="mb-0">
-	<h3 style="text-align:center; margin-bottom:50px">Q&A</h3>
+
+	<section style="padding-bottom:5rem" class="mt-2">
+		<h3 style="text-align:center; margin-bottom:50px; font-weight:900;">Q&A</h3>
 	</section>
-		<section>
 		<div>
-			<table class="type09" style="margin-left: auto; margin-right: auto;">
-			    
+			<table class="type09" style="margin-left: auto; margin-right: auto; ">
 			    <tbody>
 			    <tr>
 			        <th scope="row">번호</th>
@@ -159,7 +149,7 @@ table.type09 td {
 			    </tr>
 			    <tr>
 			        <th scope="row">내용</th>
-			        <td style="width:100px">${qna.qcontent}</td>
+			        <td style="width:100px">${fn:replace(qna.qcontent, cn, br)}</td>
 			    </tr>
 			    <c:if test="${qna.answer == null}">
 				    <tr>			        
@@ -179,26 +169,27 @@ table.type09 td {
 			
 				<c:if test="${member.mnickname == qna.mnickname}">
 				 	<div style="text-align: center; margin-top: 10px; ">
-				    	 
 				    	<form method="post" action="qnaDelete?qnumber=${qna.qnumber}">
 				    		<input type="submit" value="삭제" class="btn btn "  style="color: #007bff; border: 1px solid #dee2e6;">
 				    		<a class="btn btn btn" href="qnaUpdate?qnumber=${qna.qnumber}" style="color: #007bff; border: 1px solid #dee2e6;">수정</a>
-				    		
 				    	</form>
-				    	
 				    </div>
 			   </c:if>
 			   	
 			   	<div style="text-align: center; margin-top: 10px; ">
-						<a class="btn btn btn" href="qnaindex" style="color: #007bff; border: 1px solid #dee2e6;" >목록</a>				   
-				   	<sec:authorize access="hasRole('ROLE_ADMIN')"><!-- admin이여야만 볼 수 있다. -->
-						<a class="btn btn btn" href="qnaAnswer?qnumber=${qna.qnumber}" style="color: #007bff; border: 1px solid #dee2e6;">답변</a>
+					<a class="btn btn btn" href="qnaindex" style="color: #007bff; border: 1px solid #dee2e6;" >목록</a>	
+				</div>
+				
+				<div style="text-align: center; margin-top: 10px; ">
+					<sec:authorize access="hasRole('ROLE_ADMIN')"><!-- admin이여야만 볼 수 있다. -->
+						<form method="post" action="qnaDelete?qnumber=${qna.qnumber}">
+				    		<input type="submit" value="삭제" class="btn btn "  style="color: #007bff; border: 1px solid #dee2e6;">
+				    			<a class="btn btn btn" href="qnaAnswer?qnumber=${qna.qnumber}" style="color: #007bff; border: 1px solid #dee2e6;">답변</a>
+				    	</form>
 					</sec:authorize>
 			   </div>
-			 
 	    </div>
-	    </section>
-	    </section>
+</section>
 
 <%-- ########################################################################### --%>	
 	

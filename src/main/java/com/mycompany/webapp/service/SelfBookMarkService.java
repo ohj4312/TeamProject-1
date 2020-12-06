@@ -40,4 +40,9 @@ public class SelfBookMarkService {
 		return list;
 	}
 
+	public List<SelfGuide> getBookMarkList(String memail) {
+		// TODO Auto-generated method stub
+		return selfbookmarkDAO.selectBookMark(memail);
+	}
+
 }
