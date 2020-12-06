@@ -73,9 +73,7 @@
                 </form>
               </div>
               <div style="width:100%; height:45px; text-align:right;">
-              <a href="<%=application.getContextPath() %>/community/comm_writeFrom" class="btn btn-sm" id="write-btn">
-						Write
-              </a>
+            
               </div>
               <hr>
               <br>

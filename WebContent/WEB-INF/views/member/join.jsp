@@ -45,7 +45,7 @@
  
 
     <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact mt-5">
+    <section id="contact" class="contact mt-5" style="margin-bottom: 2.25rem">
       <div class="container mt-6">
 
         <div class="section-title" data-aos="fade-up">
@@ -89,7 +89,6 @@
 
       </div>
     </section><!-- End Contact Section -->
-
   </main><!-- End #main -->
 
   <jsp:include page="/WEB-INF/views/include/footer.jsp"/>

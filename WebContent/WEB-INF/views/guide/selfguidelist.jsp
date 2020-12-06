@@ -73,11 +73,6 @@
 			<jsp:include page="/WEB-INF/views/guide/selfguideFilter.jsp"/>
         </div>
         
-        <div class = "m-0 clearfix mb-1" >
-        <sec:authorize access="isAuthenticated()">
-  			<a class="btn float-right" href="javascript:selfWrite();"><strong style="vertical-align: -2px;">글쓰기</strong></a>
-  			</sec:authorize>
-        </div>
         
   		
   		
