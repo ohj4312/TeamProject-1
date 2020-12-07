@@ -31,6 +31,15 @@ public class MemberService {
 	
 	
 	public boolean memberJoin(Member member) {
+		PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+		String encodedPassword = passwordEncoder.encode(member.getMpassword());
+		member.setMpassword(encodedPassword);
+		
+		member.setMenabled(true);
+		member.setMrole("ROLE_USER");
+		member.setMgender(0);
+		member.setMimage("12345_unnamed.png");
+		
 		if(memberDAO.insert(member) > 0) {
 			return true;
 		}else {

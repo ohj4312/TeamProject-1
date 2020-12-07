@@ -88,8 +88,10 @@ public class SelfGuideService {
 		if(sg.getStype().equals("All")) {
 			//필터가 적용안 될 경우
 			if(sg.getSwriter() == null) {
+				logger.info("필터적용의 if문");
 				return sgDAO.selectByPage(sg);
 			}else {
+				logger.info("필터적용의 else문");
 				return sgDAO.selectByPageMember(sg);
 			}
 		}else {

@@ -103,6 +103,7 @@ public class SelfGuideController {
 		//3위까지 가져오기위한 것이올시다.
 		List<SelfGuide> selforder=service.getOrder();
 		model.addAttribute("order",selforder);
+		
 		if(firstcount == 0) {
 			return "guide/selfguidelist";
 		}else {

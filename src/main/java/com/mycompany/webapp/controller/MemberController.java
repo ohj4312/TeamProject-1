@@ -39,9 +39,9 @@ public class MemberController {
 	private FollowService followService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
+	
 	@RequestMapping("/login")
 	public String loginForm(HttpServletRequest request) {
-		logger.info(request.getParameter("failed"));
 		return "member/login";
 	}
 	
@@ -53,15 +53,7 @@ public class MemberController {
 	
 	@PostMapping("/join")
 	public String join(Member member) {
-		logger.info("실행");
 		
-		PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-		String encodedPassword = passwordEncoder.encode(member.getMpassword());
-		member.setMpassword(encodedPassword);
-		
-		member.setMenabled(true);
-		member.setMrole("ROLE_USER");
-		member.setMgender(0);
 		boolean result = memberService.memberJoin(member);
 		if(result) {
 			return "member/join_success";
@@ -79,6 +71,7 @@ public class MemberController {
 		model.addAttribute("member", member);
 		List<SelfGuide> list=memberService.getSelfGuideList(memail.getMemail());
 		logger.info(String.valueOf(list.size()));
+		
 		if(list.size() != 0) {
 			model.addAttribute("selfguide",list);
 		}
