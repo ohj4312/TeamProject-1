@@ -228,7 +228,7 @@
           <div class="testimonial-item">
             <p>
               <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-				Q&A와 Customer Center를 담당하였습니다. Back-end & Front-end 담당하여 전체적인 흐름을 파악하였습니다.
+				Q&A와 Notice를 담당하였습니다. Back-end & Front-end 담당하여 전체적인 흐름을 파악하였습니다.
               <i class="bx bxs-quote-alt-right quote-icon-right"></i>
             </p>
             <img src="<%=application.getContextPath() %>/resources/img/yoonjung.jpg" class="testimonial-img">

@@ -58,7 +58,7 @@ public class QNAController {
 	
 	//글작성 , 파일데이터 전송
 	@PostMapping("/qnaWrite")
-	public String qnaWrite(Qna qna) {//json응답을 직접 여기서 만들어서 void라고 줌
+	public String qnaWrite(Qna qna) {
 		//받은 파일을 저장하고 저장된 이름을 Qna 객체에 저장
 		if(!qna.getAttach().isEmpty()) {
 			String saveFileName = new Date().getTime() + "_" + qna.getAttach().getOriginalFilename();//같은 그림이어도 시간함수여서 사진이 저장될때 중복이 안된다.
