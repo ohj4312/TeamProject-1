@@ -7,6 +7,7 @@
 <jsp:useBean id="nowtime" class="java.util.Date" />
 <fmt:parseNumber var="nowtimeD" value="${nowtime.time /(1000*60*60*24)}" integerOnly="true" />
 
+<!-- ㄴㄴㄴㄴㄴㄴ -->
 <c:forEach var="list" items="${comm_list}">
 <fmt:parseNumber var="cdateD" value="${list.c_date.time /(1000*60*60*24)}" integerOnly="true" />
 	
@@ -16,7 +17,7 @@
 				src="<%=application.getContextPath() %>/file/community?fileName=${list.c_image}"
 				style="height: 80px; border-radius:30%;">
 			
-			<h6 class = "col-9 col-lg-9 p-0 mt-lg-3 ml-lg-3"> 
+			<h6 class = "col-9 col-lg-9 p-0 mt-4 ml-lg-3"> 
 				<strong><a style="color: black;" href="<%=application.getContextPath()%>/community/comm_detail?cnumber=${list.c_number}&cmnickname=${list.c_mnickname}">${list.c_title}</a></strong>
 			</h6>
 		
@@ -29,15 +30,15 @@
 			<div class="read-more col-xs-12 mb-2">
 				<a href="<%=application.getContextPath()%>/community/comm_detail?cnumber=${list.c_number}&cmnickname=${list.c_mnickname}" style="background-color:#F08282">Read More</a>
 			</div>
-			<div class="entry-meta m-0 mt-3">
+			<div class="entry-meta m-0 mt-3 col-lg-8 p-0">
 				<ul>
-					<li class="col-3 p-0">
+					<li class="col-sm-3 col-6 p-0">
 						<div>
 						<i class="icofont-user"></i>
 						<a href="<%=application.getContextPath()%>/community/comm_detail?cnumber=${list.c_number}&cmnickname=${list.c_mnickname}"><small>${list.c_mnickname}</small></a>
 						</div>
 					</li>
-					<li class="col-3 p-0"><i
+					<li class="col-sm-3 col-6 p-0"><i
 						class="icofont-wall-clock"></i> <a href="blog-single.html"><time
 								>
 								
@@ -77,10 +78,10 @@
     								</c:otherwise>
 								</c:choose>								
 								</time></a></li>
-					<li class="col-3 p-0">
+					<li class="col-lg-2 col-6 p-0">
 					<i	class="icofont-comment"></i> 
 						<a href="<%=application.getContextPath()%>/community/comm_detail?cnumber=${list.c_number}&cmnickname=${list.c_mnickname}">${list.replyCount}</a></li>
-						<li class = "col-3 p-0" >조회수 ${list.c_count}</li>
+						<li class = "col-sm-3 col-6 p-0" >조회수 ${list.c_count}</li>
 						
 				</ul>
 			</div>
