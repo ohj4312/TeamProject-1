@@ -101,7 +101,7 @@
    <select id="comm_rlplylistReSelectAll" parameterType="int" resultType="community">
      
    select r.*,m.mimage from c_reply r,member m 
- where CR_REPLYRNUMBER=#{cr_rnumber} and r.cr_rmnickname =m.mnickname 
+ where CR_REPLYRNUMBER=#{cr_rnumber} and r.cr_rmnickname =m.mnickname order by r.cr_rdate asc 
    </select> 
    
    <delete id="comm_replyDelete" parameterType="int">

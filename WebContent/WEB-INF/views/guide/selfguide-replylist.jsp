@@ -8,8 +8,8 @@
    <div class="col-sm-12">
       <div class="input-group mb-3"
          style="width: 100%; float: none; margin: 0 auto">
-         <h4>댓글</h4>
-         <h4 style="color: DodgerBlue; padding-left: 10px">${count }</h4>
+         <h4><strong>댓글</strong></h4>
+         <h4 style="color: #1bac91; padding-left: 10px"><strong>${count }</strong></h4>
          
       </div>
 
@@ -27,7 +27,7 @@
   			</c:if>
              <div class="input-group-append">
                 <c:if test="${member.memail != null}">
-                   <a class="btn btn-outline btn-primary"
+                   <a class="btn btn-outline" style="background-color:#1bac91; color:white"
                       href="javascript:selfreplyWrite(${snumber})">등록</a>
                 </c:if>
              </div>
@@ -36,7 +36,7 @@
           <c:forEach var="reply" items="${list}">
             <div>
                <a href="<%=application.getContextPath()%>/member/yourhomesearch?pwriter=${reply.rwriter}">
-               <img class="rounded-circle" width="50px" height="50px" src="<%=application.getContextPath() %>/resources/img/person_1.jpg">
+               <img class="rounded-circle" width="50px" height="50px" src="<%=application.getContextPath() %>/photo/photodownload?fileName=${reply.mimage}">
                <span style="padding-right:5px">${reply.mnickname}</span>
                </a>
                <span>${reply.rcontent}</span>
