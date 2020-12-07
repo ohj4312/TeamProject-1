@@ -27,14 +27,14 @@
 			<p style="margin: 0px; font-size: 13px">						
 			${fn:substring(list.c_content,0,43)}
 			</p>
-			<div class="read-more col-xs-12">
+			<div class="read-more col-xs-12" style="padding-bottom:3%;">
 				<a href="<%=application.getContextPath()%>/community/comm_detail?cnumber=${list.c_number}&cmnickname=${list.c_mnickname}" style="background-color:#F08282">Read More</a>
 			</div>
-			<div class="entry-meta">
+			<div class="entry-meta row">
 				<ul>
-					<li class="d-flex align-items-center"><i class="icofont-user"></i>
+					<li class="d-flex align-items-center col-3.5"><i class="icofont-user"></i>
 						<a href="<%=application.getContextPath()%>/community/comm_detail?cnumber=${list.c_number}&cmnickname=${list.c_mnickname}">${list.c_mnickname}</a></li>
-					<li class="d-flex align-items-center"><i
+					<li class="d-flex align-items-center col-3.5"><i
 						class="icofont-wall-clock"></i> <a href="blog-single.html"><time
 								>
 								
@@ -74,10 +74,10 @@
     								</c:otherwise>
 								</c:choose>								
 								</time></a></li>
-					<li class="d-flex align-items-center">
+					<li class="d-flex align-items-center col-1">
 					<i	class="icofont-comment"></i> 
 						<a href="<%=application.getContextPath()%>/community/comm_detail?cnumber=${list.c_number}&cmnickname=${list.c_mnickname}">${list.replyCount}</a></li>
-						<li >조회수 ${list.c_count}</li>
+						<li class="col-3.5" style="color:#a1a1a1; font-size:14px; display:inline-block; line-height:1;">조회수 ${list.c_count}</li>
 						
 				</ul>
 			</div>
