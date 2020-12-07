@@ -48,7 +48,7 @@
   <jsp:include page="/WEB-INF/views/include/Header.jsp"/>
 
    <main id="main">
-
+	<section style="padding:22"></section>
     <section id="contact" class="contact mt-3">
       <div class="container mt-5">
 
