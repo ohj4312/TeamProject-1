@@ -36,7 +36,7 @@
           <c:forEach var="reply" items="${list}">
             <div>
                <a href="<%=application.getContextPath()%>/member/yourhomesearch?pwriter=${reply.rwriter}">
-               <img class="rounded-circle" width="50px" height="50px" src="<%=application.getContextPath() %>/photo/photodownload?fileName=${reply.mimage}">
+               <img class="rounded-circle" width="50px" height="50px" src="<%=application.getContextPath() %>/file/member?fileName=${reply.mimage}">
                <span style="padding-right:5px">${reply.mnickname}</span>
                </a>
                <span>${reply.rcontent}</span>
