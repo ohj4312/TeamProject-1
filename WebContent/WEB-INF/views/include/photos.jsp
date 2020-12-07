@@ -79,8 +79,8 @@
 					</div>
 					<div class = "row pl-3 pr-3 mt-2">
 								
-									${fn:substring(photo.first_content,0,50)}
-									<c:if test="${fn:length(photo.first_content) > 50}">
+									${fn:substring(photo.first_content,0,40)}
+									<c:if test="${fn:length(photo.first_content) > 40}">
 										<div>
 											<a href="<%=application.getContextPath()%>/photo/detail?pnumber=${photo.pnumber}">더보기</a>
 										</div>

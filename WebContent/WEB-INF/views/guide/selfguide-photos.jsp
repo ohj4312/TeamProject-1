@@ -17,12 +17,12 @@
 						<p class = "hitcount">${selfguide.hit_count }</p>
 					</div>
 					<div class = "bg-white pt-2 pb-1">
-						<h5 style="text-align:center">${selfguide.stitle } </h5>
+						<h5 style="text-align:center; width:100%; height:40px">${selfguide.stitle } </h5>
 						<div style="text-align:center">${selfguide.swriter }</div>
 					</div>
 				</div>
 			<div class="bg-white m-0 clearfix">
-					<sec:authorize access="isAnonymous()">
+					<sec:authorize access="isAnonymous()"> 
 						<div class="col-3 p-0 float-right">
 							<a id="App1BK${selfguide.snumber}" href="<%=application.getContextPath()%>/member/login"> 
 								<i id="selfitag${selfguide.snumber}"  class="material-icons" style="font-size: 30px;">bookmark_border</i>

@@ -11,7 +11,7 @@
 <c:forEach var="list" items="${comm_list}">
 <fmt:parseNumber var="cdateD" value="${list.c_date.time /(1000*60*60*24)}" integerOnly="true" />
 	
-	<article class="entry">
+	<article class="entry"> 
 		<div
 			style="display: inline-block; padding-bottom: 3%; padding-right: 3%;">
 			<img

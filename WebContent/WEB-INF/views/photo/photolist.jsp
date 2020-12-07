@@ -119,12 +119,23 @@
 		        		  $('.login a').attr('href', '/teamproject/member/login');
 		        		  $('.follow').attr('href', '/teamproject/member/login');
 		        	  }
-
-					 if($(window).scrollTop() == $(document).height() - $(window).height()){
+					 
+					 console.log($(window).scrollTop()+'|'+$(document).height()+'|'+$(window).height());
+				if ($(window).scrollTop() >= $(document).height() - $(window).height()){
 						 console.log(page);
 			        	  getList(page);
 			        	   page++;
 			          }
+			          
+			      /*     var max_height = $(document).height();
+
+			  		var now_height = $(window).scrollTop() + $(window).height();
+				
+				if(max_height <= now_height + 400){
+					console.log(page);
+		        	  getList(page);
+		        	   page++;
+				} */
 				 });
 			 });
 	</script>

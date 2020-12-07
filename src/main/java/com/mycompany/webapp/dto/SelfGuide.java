@@ -17,6 +17,7 @@ public class SelfGuide {
 	private String scontent;
 	private String stype;
 	private String simage;
+	
 	private int startRowNo;
 	private int endRowNo;
 	private int bnumber;

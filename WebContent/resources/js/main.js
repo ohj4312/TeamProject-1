@@ -581,6 +581,7 @@ function getList(page){
 						var follow;
 						var bnumber;
 						var likenumber;
+						var content;
 						if(list[loop].following == null){
 							follow = '<a class = "pl-2 follow font-weight-bolder btn btn-sm btn-outline-info '+list[loop].pwritersubstring+'" style = "color: #1bac91;" href="javascript:followCheck(\''+list[loop].pwriter+'\', \'/teamproject/follow/followCheck\', \''+list[loop].pwritersubstring+'\')">'+
 												'팔로우'+
@@ -602,9 +603,16 @@ function getList(page){
 						}else{
 							likenumber='<i id="likeicon'+list[loop].pnumber+'" class="material-icons pl-4" style = "font-size: 30px; color: red;">favorite</i>';
 						}
+						
+						if(list[loop].first_content.length > 40){
+							content = list[loop].first_content.substring(0,40) + '<div><a href="/teamproject/photo/detail?pnumber='+list[loop].pnumber+'">더보기</a></div>'
+						}else{
+							content = list[loop].first_content
+						}
+						
 						$items = $('<div class="mb-4 mt-5 col-lg-4 col-md-6 portfolio-item '+list[loop].ptype+' '+list[loop].psize+' '+list[loop].pstyle+'">'+
-									'<div class="shadow">'+
-									'<div class = "row pl-3 pr-2 mb-4">'+
+									'<div class="shadow" style = "height: 467px;">'+
+									'<div class = "row pl-3 pr-2 mb-3 pt-3">'+
 										'<a href="/teamproject/member/yourhomesearch?pwriter='+ list[loop].pwriter+ '" class = "pr-3 " style="color: black;">'+
 											'<img class="rounded-circle mr-2 "style="width:30px; height:30px;"  src="/teamproject/file/member?fileName='+list[loop].mimage+'" />'+
 											list[loop].mnickname+
@@ -634,7 +642,7 @@ function getList(page){
 										'</a>'+
 									'</div>'+
 									'<div div class = "row pl-3 pr-3 mt-2">'+
-												'<a>'+list[loop].first_content+'</a>'+
+												content+
 									'</div>'+
 									'</div>'+
 								'</div>');
