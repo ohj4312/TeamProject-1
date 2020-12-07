@@ -7,11 +7,11 @@
 <jsp:useBean id="nowtime" class="java.util.Date" />
 <fmt:parseNumber var="nowtimeD" value="${nowtime.time /(1000*60*60*24)}" integerOnly="true" />
 
-<!--  -->
+
 <c:forEach var="list" items="${comm_list}">
 <fmt:parseNumber var="cdateD" value="${list.c_date.time /(1000*60*60*24)}" integerOnly="true" />
 	
-	<article class="entry"> 
+	<article class="entry">
 		<div
 			style="display: inline-block; padding-bottom: 3%; padding-right: 3%;">
 			<img
@@ -27,14 +27,14 @@
 			<p style="margin: 0px; font-size: 13px">						
 			${fn:substring(list.c_content,0,43)}
 			</p>
-			<div class="read-more col-xs-12" style="padding-bottom:3%;">
+			<div class="read-more col-xs-12">
 				<a href="<%=application.getContextPath()%>/community/comm_detail?cnumber=${list.c_number}&cmnickname=${list.c_mnickname}" style="background-color:#F08282">Read More</a>
 			</div>
 			<div class="entry-meta">
-				<ul style="width:100%;">
-					<li class="d-flex align-items-center" style="display:inline-block;"><i class="icofont-user"></i>
+				<ul>
+					<li class="d-flex align-items-center"><i class="icofont-user"></i>
 						<a href="<%=application.getContextPath()%>/community/comm_detail?cnumber=${list.c_number}&cmnickname=${list.c_mnickname}">${list.c_mnickname}</a></li>
-					<li class="d-flex align-items-center" style="display:inline-block;"><i
+					<li class="d-flex align-items-center"><i
 						class="icofont-wall-clock"></i> <a href="blog-single.html"><time
 								>
 								
@@ -74,10 +74,10 @@
     								</c:otherwise>
 								</c:choose>								
 								</time></a></li>
-					<li class="d-flex align-items-center" style="display:inline-block;">
+					<li class="d-flex align-items-center">
 					<i	class="icofont-comment"></i> 
 						<a href="<%=application.getContextPath()%>/community/comm_detail?cnumber=${list.c_number}&cmnickname=${list.c_mnickname}">${list.replyCount}</a></li>
-						<li style="font-size:14px; display:inline-block;">조회수 ${list.c_count}</li>
+						<li >조회수 ${list.c_count}</li>
 						
 				</ul>
 			</div>
