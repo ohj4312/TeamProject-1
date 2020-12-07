@@ -119,8 +119,11 @@
 		        		  $('.login a').attr('href', '/teamproject/member/login');
 		        		  $('.follow').attr('href', '/teamproject/member/login');
 		        	  }
+					 
+					 
 
-					 if($(window).scrollTop() == $(document).height() - $(window).height()){
+
+					 if ($(window).scrollTop() == $(document).height() - $(window).height()){
 						 console.log(page);
 			        	  getList(page);
 			        	   page++;
