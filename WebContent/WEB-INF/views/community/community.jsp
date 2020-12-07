@@ -64,7 +64,7 @@
       
         <div class="row">
           <div class="col-lg-8 entries">
-            <div class="sidebar">
+            <div class="sidebar m-0">
               <h3 class="sidebar-title">Search</h3>
               <div class="sidebar-item search-form">
                 <form action="javascript:communitylist(1)">

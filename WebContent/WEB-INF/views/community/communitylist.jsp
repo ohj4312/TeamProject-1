@@ -12,29 +12,33 @@
 <fmt:parseNumber var="cdateD" value="${list.c_date.time /(1000*60*60*24)}" integerOnly="true" />
 	
 	<article class="entry"> 
-		<div
-			style="display: inline-block; padding-bottom: 3%; padding-right: 3%;">
-			<img
+		<div class ="row mb-4">
+			<img class = "col-3 col-lg-2 px-lg-2 p-0"
 				src="<%=application.getContextPath() %>/file/community?fileName=${list.c_image}"
-				style="border-radius: 20px; width: 60px; height: 60px">
-		</div>
-		<div style="display: inline-block; text-align: right;">
-			<h5>
-				<strong><a style="color: black; font-size: 16px" href="<%=application.getContextPath()%>/community/comm_detail?cnumber=${list.c_number}&cmnickname=${list.c_mnickname}">${list.c_title}</a></strong>
-			</h5>
+				style="height: 80px; border-radius:30%;">
+			
+			<h6 class = "col-9 col-lg-9 p-0 mt-lg-3 ml-lg-3"> 
+				<strong><a style="color: black;" href="<%=application.getContextPath()%>/community/comm_detail?cnumber=${list.c_number}&cmnickname=${list.c_mnickname}">${list.c_title}</a></strong>
+			</h6>
+		
+			
 		</div>	
 		<div class="entry-content">
 			<p style="margin: 0px; font-size: 13px">						
 			${fn:substring(list.c_content,0,43)}
 			</p>
-			<div class="read-more col-xs-12">
+			<div class="read-more col-xs-12 mb-2">
 				<a href="<%=application.getContextPath()%>/community/comm_detail?cnumber=${list.c_number}&cmnickname=${list.c_mnickname}" style="background-color:#F08282">Read More</a>
 			</div>
-			<div class="entry-meta">
+			<div class="entry-meta m-0 mt-3">
 				<ul>
-					<li class="d-flex align-items-center"><i class="icofont-user"></i>
-						<a href="<%=application.getContextPath()%>/community/comm_detail?cnumber=${list.c_number}&cmnickname=${list.c_mnickname}">${list.c_mnickname}</a></li>
-					<li class="d-flex align-items-center"><i
+					<li class="col-3 p-0">
+						<div>
+						<i class="icofont-user"></i>
+						<a href="<%=application.getContextPath()%>/community/comm_detail?cnumber=${list.c_number}&cmnickname=${list.c_mnickname}"><small>${list.c_mnickname}</small></a>
+						</div>
+					</li>
+					<li class="col-3 p-0"><i
 						class="icofont-wall-clock"></i> <a href="blog-single.html"><time
 								>
 								
@@ -74,10 +78,10 @@
     								</c:otherwise>
 								</c:choose>								
 								</time></a></li>
-					<li class="d-flex align-items-center">
+					<li class="col-3 p-0">
 					<i	class="icofont-comment"></i> 
 						<a href="<%=application.getContextPath()%>/community/comm_detail?cnumber=${list.c_number}&cmnickname=${list.c_mnickname}">${list.replyCount}</a></li>
-						<li >조회수 ${list.c_count}</li>
+						<li class = "col-3 p-0" >조회수 ${list.c_count}</li>
 						
 				</ul>
 			</div>
