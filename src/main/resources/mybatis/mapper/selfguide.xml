@@ -24,11 +24,12 @@
 	
 	
 	<select id="selectByPage" parameterType="SelfGuide" resultType="SelfGuide">
-		select rnum, snumber, hit_count, swriter, stitle, simage,stype
-		from ( select rownum as rnum, snumber, hit_count, swriter, stitle, simage,stype 
-			  from self_guide s, member m 
-			  where rownum &lt;=#{endRowNo} and s.swriter=m.memail order by snumber desc )
-			  where rnum &gt; =#{startRowNo} order by snumber desc
+		select rnum , snumber , hit_count, swriter , stitle, simage, stype	
+		from ( select rownum as rnum, snumber, hit_count, swriter, stitle, simage, stype
+			from ( select snumber, hit_count, swriter, stitle, simage ,stype  
+				   from Self_Guide s, member m where s.swriter=m.memail order by snumber desc)
+			where rownum &lt; = #{endRowNo} )
+		where rnum &gt; = #{startRowNo} order by snumber desc
 	</select>
 	
 	<select id="selectByPageList" parameterType="SelfGuide" resultType="SelfGuide">
