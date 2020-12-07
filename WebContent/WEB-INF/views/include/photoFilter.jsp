@@ -43,12 +43,12 @@
                  </i>
              </button>
              <div class="dropdown-menu">
-               <a class="dropdown-item" href="javascript:addTag('10평 미만','size');">10평 미만</a>
+               <a class="dropdown-item" href="javascript:addTag('10평미만','size');">10평 미만</a>
                <a class="dropdown-item" href="javascript:addTag('10평대','size');">10평대</a>
                <a class="dropdown-item" href="javascript:addTag('20평대','size');">20평대</a>
                <a class="dropdown-item" href="javascript:addTag('30평대','size');">30평대</a>
                <a class="dropdown-item" href="javascript:addTag('40평대','size');">40평대</a>
-               <a class="dropdown-item" href="javascript:addTag('50평대 이상','size');">50평대 이상</a>
+               <a class="dropdown-item" href="javascript:addTag('50평이상','size');">50평대 이상</a>
              </div>
            </div>
          </li>

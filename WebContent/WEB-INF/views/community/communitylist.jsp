@@ -86,11 +86,11 @@
 </c:forEach>
  <!-- 패이징 -->
  
- 			<div class="row text-center" style="width:100%">
+ 			<div class="row">
 			
-	        <div class="input-group mb-3" style="width:10%; float:none; margin:0 auto">
+	        <div class="input-group mb-3 mx-auto">
 			
-	          <ul class="pagination" style="text-align:left">
+	          <ul class="pagination mx-auto">
 	          	<c:if test="${pager.groupNo>1}">
 	            	<li class="page-item"><a class="page-link" href="javascript:communitylist(${pager.startPageNo-1})">Previous</a></li>
 	            </c:if>
