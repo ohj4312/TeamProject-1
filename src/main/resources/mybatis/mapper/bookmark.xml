@@ -11,11 +11,8 @@
 	<select id="selectBookMark" parameterType="String" resultType="registerPhoto">
 		select r.first_image , r.pnumber from Register_photo r where r.pnumber in ( 
 		select p.pnumber from Post_bookmark p where p.memail = #{memail}  )
-		
 	</select>
-	
-	
-	
+		
 	<select id="CheckBookMark" parameterType="bookmark" resultType="int">
 		select count(*) from POST_BOOKMARK where memail=#{memail} and pnumber=#{pnumber}
 	</select>
