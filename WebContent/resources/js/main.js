@@ -613,7 +613,7 @@ function getList(page){
 									'</div>'+
 									'<a href="/teamproject/photo/detail?pnumber='+list[loop].pnumber+'">'+
 									'<div class="portfolio-wrap">'+
-										'<img style=" height: 280px;"'+
+										'<img style=" height: 280px; width: 350px;"'+
 											'src="/teamproject/file/photo?fileName='+list[loop].first_image+'"'+
 											'class="img-fluid rounded" alt="">'+
 										'<div class="portfolio-info">'+
@@ -774,7 +774,7 @@ function selftoggleUpdate(snumber, urlpath){
 		data: {snumber: snumber},
 		success:function(data){ 
 			
-			 if(data.result == "bookmarksuccess"){
+			if(data.result == "bookmarksuccess"){
 				 
 				console.log("bookmarksuccess");
 				$("#selfitag"+snumber).html("bookmark");

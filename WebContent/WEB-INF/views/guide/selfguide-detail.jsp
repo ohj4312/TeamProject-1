@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!DOCTYPE html>
 <html >
@@ -55,7 +56,8 @@
 <body>
     <jsp:include page="/WEB-INF/views/include/Header.jsp"/>
   <!-- ======= Header ======= -->
-  	
+  	<% pageContext.setAttribute("br", "<br/>");
+	   pageContext.setAttribute("cn", "\n"); %>
   	
 	
   <main id="main" data-aos="fade-up" style="margin-top:2rem">
@@ -88,9 +90,9 @@
               </div>
 
               <div class="entry-content">
-              
+              		
                
-               		<div id="sg" class="p-3">${sg.scontent }</div>
+               		<div id="sg" class="p-3"><p>${fn:replace(sg.scontent, cn, br)}</p></div>
 								<div class="container mt-5">
 									<div class="row">
 										<div class="col-lg-12 p-0">

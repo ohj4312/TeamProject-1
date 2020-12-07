@@ -1,35 +1,23 @@
 package com.mycompany.webapp.controller;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.PrintWriter;
-import java.util.Date;
-import java.util.List;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
 import javax.annotation.Resource;
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import com.mycompany.webapp.dto.A_photo;
 import com.mycompany.webapp.dto.Member;
-import com.mycompany.webapp.dto.Pager;
 import com.mycompany.webapp.dto.Register_photo;
 import com.mycompany.webapp.service.PhotoService;
 
@@ -41,23 +29,13 @@ public class PhotoController {
 	@Resource
 	PhotoService photoService;
 	
+	List<Register_photo> photolist;
+	Register_photo photo;
+	
 	@RequestMapping("/list")
-	public String photoList(Model model, @RequestParam(defaultValue = "1") int pageNo, @RequestParam(defaultValue = "default1") String filter, HttpSession session) {
-		
-		Member member = (Member) session.getAttribute("member");
-		List<Register_photo> photolist;
-		int totalRows = photoService.getTotalRows();
-		Pager pager = new Pager(12, 5, totalRows, pageNo);
-		logger.info(filter);
-		if(member == null) {
-			photolist =  photoService.getPhotoList(pager, filter);
-		}else {
-			Register_photo photo = new Register_photo();
-			photo.setPwriter(member.getMemail());
-			photo.setEndRowNo(pager.getEndRowNo());
-			photo.setStartRowNo(pager.getStartRowNo());
-			photolist =  photoService.getPhotoList(photo, filter);
-		}
+	public String photoList(Model model, @RequestParam(defaultValue = "1") int pageNo, @RequestParam(defaultValue = "default1") String filter, HttpSession session) {		
+
+		photolist = photoService.getPhotoList(pageNo, filter, session, 6);
 
 		model.addAttribute("list", photolist);
 		model.addAttribute("initcount", 2);
@@ -66,28 +44,13 @@ public class PhotoController {
 		}else {
 			return "include/photos";
 		}
-	
-		
 	}
 	
 	@RequestMapping("/listjson")
 	public void photoListjson(Model model, @RequestParam(defaultValue = "1") int pageNo, @RequestParam(defaultValue = "default1") String filter,HttpSession session, HttpServletResponse response) throws IOException {
 		
-		Member member = (Member) session.getAttribute("member");
-		List<Register_photo> photolist;
-		int totalRows = photoService.getTotalRows();
-		Pager pager = new Pager(9, 5, totalRows, pageNo);
-		logger.info(filter);
-		if(member == null) {
-			photolist =  photoService.getPhotoList(pager, filter);
-		}else {
-			Register_photo photo = new Register_photo();
-			photo.setPwriter(member.getMemail());
-			photo.setEndRowNo(pager.getEndRowNo());
-			photo.setStartRowNo(pager.getStartRowNo());
-			photolist =  photoService.getPhotoList(photo, filter);
-		}
-
+		photolist = photoService.getPhotoList(pageNo, filter, session, 6);
+		
 		JSONArray jarry = new JSONArray();
 		
 		for(Register_photo photo : photolist) {
@@ -122,30 +85,24 @@ public class PhotoController {
 		out.println(json);
 		out.flush();
 		out.close();
-		
-	
-		
 	}
-	
-	
-	
 	
 	@GetMapping("/detail")
 	public String photoDetail(int pnumber, Model model, HttpSession session) {
 		Member member = (Member) session.getAttribute("member");
 		int check = 0;
 		logger.info(String.valueOf(pnumber));
-		Register_photo photo = new Register_photo();
-	
+		photo = new Register_photo();
 		photo.setPnumber(pnumber);
 		
 		if(member != null) {
 			photo.setPwriter(member.getMemail());
-			check = photoService.checkPwriter(photo);
+			check = photoService.isWriter(photo);
 		}
 
-		photo = photoService.selectPhoto(photo);
-
+		photo = photoService.getRegisterPhoto(photo);
+		
+		
 
 		model.addAttribute("photo", photo);
 		model.addAttribute("updatecheck", check);
@@ -161,54 +118,17 @@ public class PhotoController {
 	
 	@PostMapping("/write")
 	public String writePhoto(Register_photo rphoto, HttpSession session) {
-		
-		//현재 로그인 이메일 가져오기
-		Member member = (Member) session.getAttribute("member");
-		
-		//이메일 정보 set
-		rphoto.setPwriter(member.getMemail());
-		
-		
-		//리스트로 받아온 aphoto에 이미지 업로드
-		for(A_photo photo: rphoto.getList()) {
-			int savefirst = 0;
-			if(!photo.getAimageAttach().isEmpty()) {
-				//파일 오리지널 이름 aphot에 set
-				logger.info(photo.getAimageAttach().getOriginalFilename());
-				
-				
-				//파일 이름 중복 방지를 위한 밀리세컨드 단위의 시간초를 파일 이름 앞에 붙여줌.
-				String saveFilename = new Date().getTime()+"_"+photo.getAimageAttach().getOriginalFilename();
-				photo.setAimage(saveFilename);
-				if(savefirst == 0) {
-					rphoto.setFirst_image(saveFilename);
-					rphoto.setFirst_content(photo.getAcontent());
-				}
-				
-				savefirst++;
-				
-				logger.info(saveFilename);
-				try {
-					//실제 사용자의 요청에 파일을 서버에 저장
-					photo.getAimageAttach().transferTo(new File("D:/MyWorkSpace/photo/photo/"+saveFilename));
-				} catch (Exception e) {} 
-				}
-			}
-		
-		//두개의 테이블에 insert하기 위한 service 요청
-		
-		//테스트용 insert
-		/*for(int i = 0; i < 10; i++) {
-			photoService.writePhoto(rphoto);
-		}*/
-		photoService.writePhoto(rphoto);
-		
-		
-		
-		
+		try {
+			photoService.writePhoto(rphoto, session);
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		return "redirect:/photo/list";
-
 	}
 	
 	@GetMapping("/delete")
@@ -221,7 +141,7 @@ public class PhotoController {
 	public String updateForm(int pnumber, HttpSession session, Model model) {
 		Member member = (Member) session.getAttribute("member");
 		logger.info(String.valueOf(pnumber));
-		Register_photo photo = new Register_photo();
+		photo = new Register_photo();
 	
 		photo.setPnumber(pnumber);
 		
@@ -229,7 +149,7 @@ public class PhotoController {
 			photo.setPwriter(member.getMemail());
 		}
 
-		photo = photoService.selectPhoto(photo);
+		photo = photoService.getRegisterPhoto(photo);
 
 
 		model.addAttribute("photo", photo);
@@ -239,45 +159,16 @@ public class PhotoController {
 	
 	@PostMapping("/update")
 	public String update(Register_photo rphoto, HttpSession session) {
-		//현재 로그인 이메일 가져오기
-		Member member = (Member) session.getAttribute("member");
-		
-		//이메일 정보 set
-		rphoto.setPwriter(member.getMemail());
-		logger.info(String.valueOf(rphoto.getPnumber()));
-		
-
-		//리스트로 받아온 aphoto에 이미지 업로드 -> 새로 들어온 파일들은 업로드 
-		for(A_photo photo: rphoto.getList()) {
-			if(!photo.getAimage().isEmpty()) {
-				logger.info(photo.getAimage());
-			}
-			if(!photo.getAimageAttach().isEmpty()) {
-				//파일 오리지널 이름 aphot에 set
-				logger.info(photo.getAimageAttach().getOriginalFilename());
-				
-				//파일 이름 중복 방지를 위한 밀리세컨드 단위의 시간초를 파일 이름 앞에 붙여줌.
-				String saveFilename = new Date().getTime()+"_"+photo.getAimageAttach().getOriginalFilename();
-				photo.setAimage(saveFilename);
-				logger.info(saveFilename);
-				try {
-					//실제 사용자의 요청에 파일을 서버에 저장
-					photo.getAimageAttach().transferTo(new File("D:/MyWorkSpace/photo/photo/"+saveFilename));
-				} catch (Exception e) {}
-				}
-			}
-		
-		//첫번째값 가져오기
-		rphoto.setFirst_content(rphoto.getList().get(0).getAcontent());
-		rphoto.setFirst_image(rphoto.getList().get(0).getAimage());
-		logger.info(rphoto.getFirst_content());
-		logger.info(rphoto.getFirst_image());
-
-		photoService.updatePhoto(rphoto);
-		
-		
-				
+	
+		try {
+			photoService.updatePhoto(rphoto, session);
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return "redirect:/photo/list";
 	}
-
 }
