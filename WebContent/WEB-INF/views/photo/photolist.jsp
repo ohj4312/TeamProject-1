@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Maxim Bootstrap Template - Index</title>
+  <title>OHOUSE</title>
   <meta content="" name="descriptison">
   <meta content="" name="keywords">
 
@@ -106,6 +106,7 @@
 			//리스트 페이징 처리
 			//var page = 2;
 			var page = ${initcount};
+			var paging = false;
 			 $(function(){
 				 console.log("aaaa");
 				 if('${member.memail}' == ''){
@@ -120,14 +121,17 @@
 		        		  $('.follow').attr('href', '/teamproject/member/login');
 		        	  }
 					 
-					 console.log($(window).scrollTop()+'|'+$(document).height()+'|'+$(window).height());
-				if ($(window).scrollTop() >= $(document).height() - $(window).height()){
-						 console.log(page);
-			        	  getList(page);
-			        	   page++;
-			          }
+					 //console.log($(window).scrollTop()+'|'+$(document).height()+'|'+$(window).height());
+				 if ($(window).scrollTop() >= ($(document).height() - $(window).height())-200){
+					 	if(paging == false) {
+					 		paging = true;
+						 	console.log(page);
+			        	  	getList(page);
+			        	   	page++;
+					 	}
+			          } 
 			          
-			      /*     var max_height = $(document).height();
+			      /*   var max_height = $(document).height();
 
 			  		var now_height = $(window).scrollTop() + $(window).height();
 				
@@ -135,7 +139,7 @@
 					console.log(page);
 		        	  getList(page);
 		        	   page++;
-				} */
+				}  */
 				 });
 			 });
 	</script>

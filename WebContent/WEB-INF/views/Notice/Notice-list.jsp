@@ -9,7 +9,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Maxim Bootstrap Template - Index</title>
+  <title>OHOUSE</title>
   <meta content="" name="descriptison">
   <meta content="" name="keywords">
 
@@ -41,6 +41,10 @@
 			margin-right: auto;
 		}
 		
+		.mobile {
+			display: none;
+			
+		}
 		
 		#writeButton{
 			margin-right: 10px;
@@ -88,14 +92,14 @@
 		<table class="table table-lg table-bordered fade-up" >
 			<thead style="background-color: #CDE4E1">
 				<tr>
-					<th style="width:70px; font-weight: bold; text-align:center;">번호</th>
+					<th class="mobile" style="width:70px; font-weight: bold; text-align:center;">번호</th>
 					<th style= "text-align:center; font-weight: bold; padding-right:80px">제목</th>
 				</tr>
 			</thead>
 			<tbody>
 				<c:forEach var="notice" items="${list}">
 					<tr >
-						<td style="text-align:center; height:70px;">${notice.nnumber}</td>
+						<td class="mobile" style="text-align:center; height:70px;">${notice.nnumber}</td>
 						<td id="bb" style="height: 70px;"><a style="color:black;" href="noticeDetail?nnumber=${notice.nnumber}">${notice.ntitle}</a></td>
 						
 					</tr>
