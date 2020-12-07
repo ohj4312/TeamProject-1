@@ -85,6 +85,10 @@ public class CommunityController {
 			String temp = "%";
 			temp += search + "%";
 			int rows = service.Comm_listLow(temp);
+			if(rows==0)
+			{
+				return "community/communitylistdefault";
+			}
 			Pager pager = new Pager(5, 5,rows, pageNo);
 			pager.setTemp(temp);
 			List<Community> comm_list = service.Comm_search(pager);
