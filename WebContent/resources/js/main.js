@@ -621,7 +621,7 @@ function getList(page){
 									'</div>'+
 									'<a href="/teamproject/photo/detail?pnumber='+list[loop].pnumber+'">'+
 									'<div class="portfolio-wrap">'+
-										'<img style=" height: 280px; width: 350px;"'+
+										'<img style=" height: 280px;width: 100%;'+
 											'src="/teamproject/file/photo?fileName='+list[loop].first_image+'"'+
 											'class="img-fluid rounded" alt="">'+
 										'<div class="portfolio-info">'+
@@ -651,6 +651,7 @@ function getList(page){
 								    // add and lay out newly appended elements
 								    .isotope( 'appended', $items);
 					    }
+						paging = false;
 		       		},
 		       error:function(e){
 		           if(e.status==300){
