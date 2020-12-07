@@ -1,6 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html>
 <html>
 
@@ -48,7 +50,8 @@
 
   <!-- ======= Header ======= -->
   <jsp:include page="/WEB-INF/views/include/Header.jsp"/>
-
+  	<% pageContext.setAttribute("br", "<br/>");
+	   pageContext.setAttribute("cn", "\n"); %>
   <main id="main">
 
     <!-- ======= Breadcrumbs Section ======= -->
@@ -131,7 +134,7 @@
 						</c:if>	
 				</div>
 				<div id = "acontent"class="row mx-auto mt-5">
-					${photo.first_content}
+					${fn:replace(photo.first_content, cn, br)}
 				</div>
           </div>
         </div>
@@ -144,7 +147,7 @@
     <div class="container">
 		<div class="scroll col-md-8 h-25" style="width:100%">
 		 	<c:forEach var="photo" items="${photo.list}">
-          		<a href="javascript:photoChange('${photo.aimage}', '${photo.acontent}')"><img src="/teamproject/file/photo?fileName=${photo.aimage}" class= "w-25 h-25"></a>
+          		<a href="javascript:photoChange('${photo.aimage}', '${fn:replace(photo.acontent, cn, br)}')"><img src="/teamproject/file/photo?fileName=${photo.aimage}" class= "w-25 h-25"></a>
 			</c:forEach>
 		 </div>
 		 <div id="reply_result" style="margin-top:30px">
