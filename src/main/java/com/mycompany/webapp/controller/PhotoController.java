@@ -35,7 +35,7 @@ public class PhotoController {
 	@RequestMapping("/list")
 	public String photoList(Model model, @RequestParam(defaultValue = "1") int pageNo, @RequestParam(defaultValue = "default1") String filter, HttpSession session) {		
 
-		photolist = photoService.getPhotoList(pageNo, filter, session, 9);
+		photolist = photoService.getPhotoList(pageNo, filter, session, 6);
 
 		model.addAttribute("list", photolist);
 		model.addAttribute("initcount", 2);

@@ -32,9 +32,9 @@
 					
 					<a href="<%=application.getContextPath()%>/photo/detail?pnumber=${photo.pnumber}">
 					<div class="portfolio-wrap">
-						<img style=" height: 280px;"
+						<img style="height: 280px;width: 350px;"
 							src="<%=application.getContextPath()%>/file/photo?fileName=${photo.first_image}"
-							class="img-fluid rounded" alt="">
+							class="rounded" alt="">
 						<div class="portfolio-info">
 								<h4>조회수</h4>
 								<p class = "hitcount">${photo.phit_count}</p>
