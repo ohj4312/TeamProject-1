@@ -64,12 +64,12 @@
 							<select id="psize" name="psize" class="form-control mr-2 ml-2"
 								style="height: auto;">
 								<option selected>평수</option>
-								<option value="10평 미만">10평 미만</option>
+								<option value="10평미만">10평 미만</option>
 								<option value="10평대">10평대</option>
 								<option value="20평대">20평대</option>
 								<option value="30평대">30평대</option>
 								<option value="40평대">40평대</option>
-								<option value="50평 이상">50평 이상</option>
+								<option value="50평이상">50평 이상</option>
 							</select>
 							<select id="ptype" name="ptype" class="form-control mr-2 ml-2"
 								style="height: auto;">
