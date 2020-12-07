@@ -13,7 +13,7 @@
 	
 	<article class="entry"> 
 		<div
-			style="display: inline-block; padding-bottom: 3%; padding-right: 3%;">
+			style="display: inline-block; padding-bottom: 3%; padding-right: 3%; ">
 			<img
 				src="<%=application.getContextPath() %>/file/community?fileName=${list.c_image}"
 				style="border-radius: 20px; width: 60px; height: 60px">
