@@ -7,7 +7,6 @@
 <jsp:useBean id="nowtime" class="java.util.Date" />
 <fmt:parseNumber var="nowtimeD" value="${nowtime.time /(1000*60*60*24)}" integerOnly="true" />
 
-<!-- ㄴㄴㄴㄴㄴㄴ -->
 <c:forEach var="list" items="${comm_list}">
 <fmt:parseNumber var="cdateD" value="${list.c_date.time /(1000*60*60*24)}" integerOnly="true" />
 	
