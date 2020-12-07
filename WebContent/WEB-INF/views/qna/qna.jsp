@@ -95,21 +95,21 @@
 			<table class="table table-lg table-bordered fade-up">
 				<thead style="background-color: #CDE4E1 "><!-- class="thead-light " -->
 					<tr>
-						<th id="th1" class="mobile" style="width: 70px; font-weight: bold;">번호</th>
+						<th id="th1" style="width: 70px; font-weight: bold;">번호</th>
 						<th id="th2" style="font-weight: bold; text-align:center; ">제목</th>
 						<th id="th3" class="mobile" style="width: 100px; font-weight: bold;  ">사진</th>
-						<th id="th4" class="mobile" style="width: 100px; font-weight: bold;">작성자</th>
+						<th id="th4" style="width: 100px; font-weight: bold;">작성자</th>
 						<th id="th5" class="mobile" style="width: 120px; font-weight: bold;">날짜</th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach var="qna" items="${list}">
 						<tr >
-							<td class="mobile" style="text-align:center;">${qna.qnumber}</td>
+							<td style="text-align:center;">${qna.qnumber}</td>
 							<td id="aa"><a style="color:black;" href="qnaDetail?qnumber=${qna.qnumber}">${qna.qtitle}</a></td>
 							<td class="mobile" ><img class="rounded" width="70px" height="50px" 
 								src="<%=application.getContextPath()%>/file/qna?fileName=${qna.qphoto}"/></td>
-							<td class="mobile">${qna.mnickname}</td>
+							<td >${qna.mnickname}</td>
 							<td class="mobile"><fmt:formatDate value="${qna.qdate}" pattern="yyyy-MM-dd"/></td>
 						</tr>
 					</c:forEach>
