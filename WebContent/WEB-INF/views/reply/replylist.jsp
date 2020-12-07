@@ -5,8 +5,8 @@
 
 <div class="col-sm-12">
 	<div class="input-group mb-3">
-		<h4>댓글 </h4>
-		<h4 style="color:DodgerBlue; padding-left:10px">${count}</h4>
+		<h4><strong>댓글</strong> </h4>
+		<h4 style="color:#1bac91; padding-left:10px">${count}</h4>
 	</div>
 	<div class="col-lg-8 col-md-12 p-0">
 		<div class="input-group mb-3">			
@@ -18,7 +18,7 @@
   			</c:if>
 			<div class="input-group-apeend">
 				<c:if test="${member.memail != null}">
-				<a class="btn btn-outline btn-primary" href="javascript:replyWrite(${pnumber})">등록</a>
+				<a class="btn btn-outline" style="background-color:#1bac91; color:white" href="javascript:replyWrite(${pnumber})">등록</a>
 				</c:if>   		
     		</div>
   		</div>

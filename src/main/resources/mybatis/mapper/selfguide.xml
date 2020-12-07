@@ -27,21 +27,31 @@
 		select rnum, snumber, hit_count, swriter, stitle, simage,stype
 		from ( select rownum as rnum, snumber, hit_count, swriter, stitle, simage,stype 
 			  from self_guide s, member m 
-			  where rownum &lt;=#{endRowNo} and s.swriter=m.memail)
+			  where rownum &lt;=#{endRowNo} and s.swriter=m.memail order by snumber desc )
 			  where rnum &gt; =#{startRowNo} order by snumber desc
 	</select>
 	
 	<select id="selectByPageList" parameterType="SelfGuide" resultType="SelfGuide">
 		
 			   
-		select rnum , snumber , hit_count, swriter , stitle, simage, stype,bnumber,likenumber	
+		 <!-- select rnum , snumber , hit_count, swriter , stitle, simage, stype,bnumber,likenumber	
 		from ( select rownum as rnum, list.snumber, hit_count, swriter, stitle, simage, stype, bnumber, likenumber
 			from ( select snumber, hit_count, swriter, stitle, simage ,stype  
 				   from Self_Guide s, member m where s.swriter=m.memail) list,
 				 (select * from post_bookmark where memail = #{swriter}) pb,
 				 (select * from post_like where memail = #{swriter}) pl
 				 where rownum &lt; = #{endRowNo} and list.snumber = pb.snumber(+) and list.snumber = pl.snumber(+) )
-				 where rnum &gt; = #{startRowNo} order by snumber desc
+				 where rnum &gt; = #{startRowNo} order by snumber desc -->
+				 
+		select rnum , snumber , hit_count, swriter , stitle, simage, stype	
+		from ( select rownum as rnum, list.snumber, hit_count, swriter, stitle, simage, stype
+			from ( select snumber, hit_count, swriter, stitle, simage ,stype  
+				   from Self_Guide s, member m where s.swriter=m.memail order by snumber desc) list
+				 where rownum &lt; = #{endRowNo} and list.snumber = snumber )
+				 where rnum &gt; = #{startRowNo} order by snumber desc		 
+		
+		
+		
 	</select>
 	
 	<select id="selectByPageFilter" parameterType="SelfGuide" resultType="SelfGuide">

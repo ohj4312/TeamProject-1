@@ -2,6 +2,8 @@ package com.mycompany.webapp.controller;
 
 import java.io.File;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.Date;
 import java.util.List;
 
@@ -236,7 +238,7 @@ public class CommunityController {
 		return "community/communityreplylist-lp";
 	}
 	@PostMapping("/comm_replyListReWrite")
-	public String comm_replyListReWrite(HttpSession session,String rcontent,int cr_rnumber,int c_number,String c_mnickname){			
+	public String comm_replyListReWrite(HttpSession session,String rcontent,int cr_rnumber,int c_number,String c_mnickname) throws Exception{			
 		Community community = new Community();
 		Member member=(Member)session.getAttribute("member");
 		community.setCr_rmnickname(member.getMnickname());
@@ -245,7 +247,8 @@ public class CommunityController {
 		logger.info(community.getCr_rcontent());
 		logger.info("맞아 ?"+community.getCr_rnumber());
 		
-		service.comm_replyWriteRe(community);		
+		service.comm_replyWriteRe(community);
+		c_mnickname= URLEncoder.encode(c_mnickname, "UTF-8");
 		return "redirect:/community/comm_detail?cnumber="+c_number+"&cmnickname="+c_mnickname;	
 	}
 	@GetMapping("comm_replyDelete")

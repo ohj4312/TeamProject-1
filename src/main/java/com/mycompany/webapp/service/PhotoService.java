@@ -80,7 +80,7 @@ public class PhotoService {
 		
 		
 	}
-	
+		
 	public void saveAphoto(List<A_photo> list) throws IllegalStateException, IOException {
 		for (A_photo photo : list) {
 
