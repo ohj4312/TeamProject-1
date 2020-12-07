@@ -9,7 +9,7 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<title>Maxim Bootstrap Template - Index</title>
+<title>Community</title>
 <meta content="" name="descriptison">
 <meta content="" name="keywords">
 
@@ -169,32 +169,34 @@
 						<div class="col-lg-4 col-sm-8">
 							<div class="sidebar m-0">
 								<div class="detail_container_sidebar_content">
-									<div class="detail-left" style="display:inline-block;">
-									<ul>
-										<li class="d-flex align-items-center">
-											<img src="<%=application.getContextPath()%>/file/member?fileName=${list.mimage}" style="width:60px; height:60px; border-radius: 100%;">
-										</li>
-										<li class="d-flex align-items-center">
-											<a href="<%=application.getContextPath()%>/member/yourhomesearch?pwriter=${list.memail}">${list.c_mnickname}</a>
-										</li>
-									</ul>
+									<div class="row" style="text-align:left;">
+										<div class="detail-left col-lg-4 col-4">
+										<ul style="padding:0;">
+											<li class="d-flex align-items-center">
+												<img src="<%=application.getContextPath()%>/file/member?fileName=${list.mimage}" style="width:60px; height:60px; border-radius: 100%;">
+											</li>
+											<li class="d-flex align-items-center">
+												<a href="<%=application.getContextPath()%>/member/yourhomesearch?pwriter=${list.memail}">${list.c_mnickname}</a>
+											</li>
+										</ul>
+										</div>
 										
-									
+										
+										<c:if test="${member.memail!=null}">
+										<div class="col-lg-4 col-4" style="padding-top:7%;">
+											<c:if test="${follwsCheck==0}">
+											<a id="follow_check" href="javascript:followCheck('${list.memail}', '<%=application.getContextPath()%>/follow/followCheck')" style = "color: #1bac91;"  class=" h-40 mt-2 font-weight-bolder btn btn-sm btn-outline-info" role="button">
+												팔로우
+											</a>															
+											</c:if>
+											<c:if test="${follwsCheck!=0}">
+											<a id="follow_check" href="javascript:followCheck('${list.memail}', '<%=application.getContextPath()%>/follow/followCheck')" style = "background-color: #1bac91; color: white;" class=" font-weight-bolder btn btn-sm h-40 mt-2" role="button">
+												팔로잉
+											</a>
+											</c:if>
+										</div>										
+										</c:if>
 									</div>
-									<c:if test="${member.memail!=null}">
-									<div>
-										<c:if test="${follwsCheck==0}">
-										<a id="follow_check" href="javascript:followCheck('${list.memail}', '<%=application.getContextPath()%>/follow/followCheck')" style = "color: #1bac91;"  class="col-3 h-50 mt-2 font-weight-bolder btn btn-sm btn-outline-info" role="button">
-											팔로우
-										</a>															
-										</c:if>
-										<c:if test="${follwsCheck!=0}">
-										<a id="follow_check" href="javascript:followCheck('${list.memail}', '<%=application.getContextPath()%>/follow/followCheck')" style = "background-color: #1bac91; color: white;" class="col-3 font-weight-bolder btn btn-sm h-50 mt-2" role="button">
-											팔로잉
-										</a>
-										</c:if>
-									</div>										
-									</c:if>
 																		
 																																						
 									
