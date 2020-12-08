@@ -43,7 +43,7 @@
 
   <jsp:include page="/WEB-INF/views/include/Header.jsp"/>
 
- 
+ <section></section>
 
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact mt-5">
@@ -77,7 +77,7 @@
 
       </div>
     </section><!-- End Contact Section -->
-
+	<section></section>
   </main><!-- End #main -->
 
   <jsp:include page="/WEB-INF/views/include/footer.jsp"/>
