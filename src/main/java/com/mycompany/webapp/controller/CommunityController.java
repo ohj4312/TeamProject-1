@@ -219,7 +219,6 @@ public class CommunityController {
 		model.addAttribute("pager",pager);
 		model.addAttribute("c_mnickname",c_mnickname);
 		
-		
 		return "community/communityreplylist";
 	}
 	
@@ -232,7 +231,7 @@ public class CommunityController {
 		for(Community r : comm_replylistRe) {
 			
 			logger.info("asdasdasd"+r.getCr_rmnickname());
-			
+			logger.info("아이디 출력"+r.getMemail());
 			
 			
 		}		

@@ -10,7 +10,7 @@
 	<fmt:formatDate var="cr_rdate" value="${list2.cr_rdate}" pattern="yyyy-MM-dd HH:mm" />
               
                 <img src="<%=application.getContextPath()%>/file/member?fileName=${list2.mimage}" class="comment-img  float-left" alt="" style="border-radius: 70%; width:50px; height:50px;">
-                <h5><a href="">${list2.cr_rmnickname}</a> 
+                <h5><a href="<%=application.getContextPath()%>/member/yourhomesearch?pwriter=${list2.memail}" style="color:#1bac91; font-size:14px;">${list2.cr_rmnickname}</a> 
                 <c:if test="${member.mnickname==list2.cr_rmnickname}">	
   					<a style="font-size:5px; display:inline-block; width:10%; margin-left: 10px;color: gray" href="javascript:comm_replyDelete(${list2.cr_rnumber})">삭제</a>			     
 				</c:if>

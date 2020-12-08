@@ -25,7 +25,7 @@
 	<fmt:formatDate var="cr_rdate" value="${list.cr_rdate}" pattern="yyyy-MM-dd HH:mm" />
 	<div  class="comment clearfix">
 		<img src="<%=application.getContextPath()%>/file/member?fileName=${list.mimage}" class="comment-img  float-left" alt="" style="border-radius:70%; width:50px; height:50px;">
-		<h5><a href="">${list.cr_rmnickname}</a> 
+		<h5><a href="<%=application.getContextPath()%>/member/yourhomesearch?pwriter=${list.memail}" style="color:#1bac91; font-size:14px;">${list.cr_rmnickname}</a> 
 		
 		<c:if test="${member.memail != null}"> 
 		<a href="javascript:InputRe('${list.cr_rnumber}')" class="reply"><i class="icofont-reply"></i>답글</a>
