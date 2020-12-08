@@ -6,6 +6,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
 public class Community {
+	
+	//푸쉬용
 
 //Community_reply
 	private int cr_cnumber;	//Community넘버	 //커뮤니티 넘버 참조 
