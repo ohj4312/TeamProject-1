@@ -28,10 +28,10 @@
 		<h5><a href="<%=application.getContextPath()%>/member/yourhomesearch?pwriter=${list.memail}" style="color:#1bac91; font-size:14px;">${list.cr_rmnickname}</a> 
 		
 		<c:if test="${member.memail != null}"> 
-		<a href="javascript:InputRe('${list.cr_rnumber}')" class="reply"><i class="icofont-reply"></i>답글</a>
+		<a href="javascript:InputRe('${list.cr_rnumber}')" class="reply"  style="color:black; font-size:11px;"><i class="icofont-reply"></i>답글</a>
 		</c:if>
 		<c:if test="${member.mnickname==list.cr_rmnickname}">			
-				<a style="font-size:5px;display:inline-block;width:10%;margin-left: 10px;color: gray"  href="javascript:comm_replyDelete(${list.cr_rnumber})">삭제</a>			
+				<a style="font-size:11px; display:inline-block;width:10%;margin-left: 10px;color: gray" href="javascript:comm_replyDelete(${list.cr_rnumber})">삭제</a>			
 		</c:if>
 		</h5>	
 		<time >${cr_rdate}</time>
