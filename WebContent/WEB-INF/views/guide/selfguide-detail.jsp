@@ -147,7 +147,9 @@
 				<article>
 					<div class="scroll h-25" style="width:100%">
 			 			<c:forEach var="selfguide" items="${list}">
-	          				<a href="javascript:otherselfguidephoto('${selfguide.simage}', '${selfguide.scontent}','${selfguide.stitle }','${selfguide.stype }','${selfguide.snumber }')"><img src="<%=application.getContextPath()%>/file/selfguide?fileName=${selfguide.simage}" class= "w-25 h-25"></a>
+	          				<a href="<%=application.getContextPath()%>/selfguide/selfdetail?snumber=${selfguide.snumber}">
+	          				<img src="<%=application.getContextPath()%>/file/selfguide?fileName=${selfguide.simage}" class= "w-25 h-25">
+	          				</a>
 						</c:forEach>
 					 </div>
 				</article>
@@ -188,9 +190,9 @@ $(function(){
 	 
 
 	 	function otherselfguidephoto(simage,scontent,stitle,stype,snumber){
-	 			
-			location.href="<%=application.getContextPath()%>/selfguide/selfdetail?snumber=${sg.snumber}";
-		} 
+			location.href="/teamproject/selfguide/selfdetail?snumber="+snumber+"";
+
+	 	} 
  	 	
  	function selfreplyWrite(snumber) {
  	 	var rcontent = $("#rcontent2").val().trim();
