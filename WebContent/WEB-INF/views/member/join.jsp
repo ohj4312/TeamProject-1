@@ -42,7 +42,6 @@
 
   <jsp:include page="/WEB-INF/views/include/Header.jsp"/>
 
- 
 
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact mt-5" style="margin-bottom: 2.25rem">
