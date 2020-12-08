@@ -44,7 +44,7 @@
    </select>
    
    <select id="communityselectOne" resultType="community" parameterType="community">
-      select c_mnickname, c_content, c_title, c_number, c_date, c_image, mimage, memail
+      select c_mnickname, c_content, c_title, c_number, c_date, c_image, mimage, memail,C_COUNT
       from community, member
       where c_number = #{c_number} and member.mnickname=#{c_mnickname}
    </select>

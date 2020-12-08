@@ -108,13 +108,13 @@
 												more_vert
 											</i>
 										</a>
-									</c:if>
+									
 									
 									<div class="dropdown-menu" id="myDropdown">
 										<a class="dropdown-item" href="<%=application.getContextPath()%>/community/comm_updateform?c_number=${list.c_number}&c_mnickname=${list.c_mnickname}">수정</a>
 										<a class="dropdown-item" onclick="return confirm('정말로 삭제하시겠습니까?')" href="<%=application.getContextPath()%>/community/comm_delete?c_number=${list.c_number}" >삭제</a>
 									</div>
-									
+									</c:if>
 									</div>
 									
 								</div>
@@ -126,8 +126,9 @@
 										<a href="<%=application.getContextPath()%>/member/yourhomesearch?pwriter=${list.memail}">
 											${list.c_mnickname}</a></li>
 									<li class="d-flex align-items-center" ><i
-										class="icofont-wall-clock"></i> <a href="blog-single.html"><time
-												>  ${c_date}</time></a></li>								
+										class="icofont-wall-clock"></i> <a href="blog-single.html">
+										<time>${c_date}</time></a></li>	
+									<li class="d-flex align-items-center" style="font-size:14px;">조회수 ${list.c_count}</li>							
 								</ul>
 							</div>
 
