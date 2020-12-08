@@ -24,7 +24,7 @@
 	<c:forEach var="list" items="${comm_replylist}">
 	<fmt:formatDate var="cr_rdate" value="${list.cr_rdate}" pattern="yyyy-MM-dd HH:mm" />
 	<div  class="comment clearfix">
-		<img src="<%=application.getContextPath()%>/file/member?fileName=${list.mimage}" class="comment-img  float-left" alt="" style="border-radius:70%;">
+		<img src="<%=application.getContextPath()%>/file/member?fileName=${list.mimage}" class="comment-img  float-left" alt="" style="border-radius:70%; width:50px; height:50px;">
 		<h5><a href="">${list.cr_rmnickname}</a> 
 		
 		<c:if test="${member.memail != null}"> 
