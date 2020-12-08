@@ -12,6 +12,7 @@ import com.mycompany.webapp.dto.Pager;
 
 @Repository
 public class CommunityDao {
+	//푸쉬
 	@Resource
 	private SqlSessionTemplate sst; 
 
