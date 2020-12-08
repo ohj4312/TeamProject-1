@@ -147,7 +147,7 @@
 				<article>
 					<div class="scroll h-25" style="width:100%">
 			 			<c:forEach var="selfguide" items="${list}">
-	          				<a href="javascript:otherselfguidephoto('${selfguide.simage}', '${selfguide.scontent}','${selfguide.stitle }','${selfguide.stype }',${selfguide.snumber })"><img src="<%=application.getContextPath()%>/file/selfguide?fileName=${selfguide.simage}" class= "w-25 h-25"></a>
+	          				<a href="javascript:otherselfguidephoto('${selfguide.simage}',${selfguide.snumber })"><img src="<%=application.getContextPath()%>/file/selfguide?fileName=${selfguide.simage}" class= "w-25 h-25"></a>
 						</c:forEach>
 					 </div>
 				</article>
@@ -155,7 +155,7 @@
      	 		</div>
               </div>
              
-            </div><!-- End blog author bio -->
+            </div>
 
 <div>
 	
