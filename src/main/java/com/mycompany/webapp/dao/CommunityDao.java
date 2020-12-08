@@ -13,7 +13,7 @@ import com.mycompany.webapp.dto.Pager;
 @Repository
 public class CommunityDao {
 	@Resource
-	private SqlSessionTemplate sst;
+	private SqlSessionTemplate sst; 
 
 	public void communityInsert(Community community) {
 		sst.insert("mybatis.mapper.community.communityInsert",community);
