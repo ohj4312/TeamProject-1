@@ -53,7 +53,6 @@
 	
 	<div id="comment-re${list.cr_rnumber}" class="comment clearfix" style="padding-left:10%;">
 	
-	
 	</div>
 <script>
 	 $(function () {
