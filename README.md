@@ -1,7 +1,8 @@
 # TeamProject 
 ### O-House
-
+### 한국산업소프트웨어협회 JAVA 개발자 양성과정 Final Project
 ### 자신만의 인테리어 공간 및 소품 등을 공유하는 소셜 네트워크 공간
+
 
 <br>
 
